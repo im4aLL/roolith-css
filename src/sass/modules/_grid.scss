@@ -1,0 +1,102 @@
+$global-width: rem(1200) !default;
+$grid-gutter: (
+    small: rem(20),
+    medium: rem(20),
+    large: rem(20)
+) !default;
+$grid-column-count: 12 !default;
+
+$grid-small-gutter: map-get($grid-gutter, 'small') / 2 !default;
+$grid-medium-gutter: map-get($grid-gutter, 'medium') / 2 !default;
+$grid-large-gutter: map-get($grid-gutter, 'large') / 2 !default;
+
+@mixin add-gutter() {
+    padding-left: $grid-small-gutter;
+    padding-right: $grid-small-gutter;
+
+    @include breakpoint(medium-up) {
+        padding-left: $grid-medium-gutter;
+        padding-right: $grid-medium-gutter;
+    }
+
+    @include breakpoint(large-up) {
+        padding-left: $grid-large-gutter;
+        padding-right: $grid-large-gutter;
+    }
+}
+
+@mixin roolith-grid() {
+    .container {
+        max-width: $global-width;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .row {
+        @include clearfix();
+        @include add-gutter();
+    }
+
+    .columns {
+        float: left;
+        @include add-gutter();
+    }
+
+    .column {
+        padding-left: map-get($grid-gutter, 'small');
+        padding-right: map-get($grid-gutter, 'small');
+
+        @include breakpoint(medium-up) {
+            padding-left: map-get($grid-gutter, 'medium');
+            padding-right: map-get($grid-gutter, 'medium');
+        }
+
+        @include breakpoint(large-up) {
+            padding-left: map-get($grid-gutter, 'large');
+            padding-right: map-get($grid-gutter, 'large');
+        }
+    }
+
+    [class*="large-"], [class*="medium-"] {
+        width: 100%;
+    }
+
+    @for $i from 1 through $grid-column-count {
+        .small-#{$i} {
+            width: percentage($i / $grid-column-count);
+        }
+    }
+
+    @include breakpoint(medium-up) {
+        @for $i from 1 through $grid-column-count {
+            .medium-#{$i} {
+                width: percentage($i / $grid-column-count);
+            }
+        }
+    }
+
+    @include breakpoint(large-up) {
+        @for $i from 1 through $grid-column-count {
+            .large-#{$i} {
+                width: percentage($i / $grid-column-count);
+            }
+        }
+    }
+
+    .row .row {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: - $grid-small-gutter;
+        margin-right: - $grid-small-gutter;
+
+        @include breakpoint(medium-up) {
+            margin-left: - $grid-medium-gutter;
+            margin-right: - $grid-medium-gutter;
+        }
+
+        @include breakpoint(large-up) {
+            margin-left: - $grid-large-gutter;
+            margin-right: - $grid-large-gutter;
+        }
+    }
+}

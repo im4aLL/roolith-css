@@ -1,2 +1,231 @@
+/**
+ * ===========================================================
+ * roolith CSS framework
+ * 
+ * @version 1.0.0
+ * @url http://roolith.com
+ * ===========================================================
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
 body {
-  background: #ffffff; }
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit; }
+
+html {
+  font-size: 16px; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif; }
+
+.container {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto; }
+
+.row {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  .row:before, .row:after {
+    content: "";
+    display: table; }
+  .row:after {
+    clear: both; }
+  @media (min-width: 640px) {
+    .row {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media (min-width: 1024px) {
+    .row {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+
+.columns {
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  @media (min-width: 640px) {
+    .columns {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media (min-width: 1024px) {
+    .columns {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+
+.column {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem; }
+  @media (min-width: 640px) {
+    .column {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem; } }
+  @media (min-width: 1024px) {
+    .column {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem; } }
+
+[class*="large-"], [class*="medium-"] {
+  width: 100%; }
+
+.small-1 {
+  width: 8.33333%; }
+
+.small-2 {
+  width: 16.66667%; }
+
+.small-3 {
+  width: 25%; }
+
+.small-4 {
+  width: 33.33333%; }
+
+.small-5 {
+  width: 41.66667%; }
+
+.small-6 {
+  width: 50%; }
+
+.small-7 {
+  width: 58.33333%; }
+
+.small-8 {
+  width: 66.66667%; }
+
+.small-9 {
+  width: 75%; }
+
+.small-10 {
+  width: 83.33333%; }
+
+.small-11 {
+  width: 91.66667%; }
+
+.small-12 {
+  width: 100%; }
+
+@media (min-width: 640px) {
+  .medium-1 {
+    width: 8.33333%; }
+  .medium-2 {
+    width: 16.66667%; }
+  .medium-3 {
+    width: 25%; }
+  .medium-4 {
+    width: 33.33333%; }
+  .medium-5 {
+    width: 41.66667%; }
+  .medium-6 {
+    width: 50%; }
+  .medium-7 {
+    width: 58.33333%; }
+  .medium-8 {
+    width: 66.66667%; }
+  .medium-9 {
+    width: 75%; }
+  .medium-10 {
+    width: 83.33333%; }
+  .medium-11 {
+    width: 91.66667%; }
+  .medium-12 {
+    width: 100%; } }
+
+@media (min-width: 1024px) {
+  .large-1 {
+    width: 8.33333%; }
+  .large-2 {
+    width: 16.66667%; }
+  .large-3 {
+    width: 25%; }
+  .large-4 {
+    width: 33.33333%; }
+  .large-5 {
+    width: 41.66667%; }
+  .large-6 {
+    width: 50%; }
+  .large-7 {
+    width: 58.33333%; }
+  .large-8 {
+    width: 66.66667%; }
+  .large-9 {
+    width: 75%; }
+  .large-10 {
+    width: 83.33333%; }
+  .large-11 {
+    width: 91.66667%; }
+  .large-12 {
+    width: 100%; } }
+
+.row .row {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -0.625rem;
+  margin-right: -0.625rem; }
+  @media (min-width: 640px) {
+    .row .row {
+      margin-left: -0.625rem;
+      margin-right: -0.625rem; } }
+  @media (min-width: 1024px) {
+    .row .row {
+      margin-left: -0.625rem;
+      margin-right: -0.625rem; } }
+
+.box {
+  width: 100%;
+  background: #ddd;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 3px;
+  margin: 0.625rem 0; }

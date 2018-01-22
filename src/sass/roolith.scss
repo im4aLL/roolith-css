@@ -1,5 +1,31 @@
-$color: #ffffff;
+/**
+ * ===========================================================
+ * roolith CSS framework
+ * 
+ * @version 1.0.0
+ * @url http://roolith.com
+ * ===========================================================
+ */
 
-body {
-    background: $color;
+@import "./function";
+@import "./mixin";
+@import "./settings";
+@import "./reset";
+@import "./base";
+@import "./typography";
+@import "./modules/grid";
+
+@include roolith-reset();
+@include roolith-base();
+@include roolith-grid();
+
+.box {
+    width: 100%;
+    background: #ddd;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    margin: rem(10) 0;
 }

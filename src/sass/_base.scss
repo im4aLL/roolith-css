@@ -1,0 +1,17 @@
+@mixin roolith-base {
+    html {
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    html {
+        font-size: $global-base-font-size;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
