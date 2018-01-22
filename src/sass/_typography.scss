@@ -1,0 +1,99 @@
+@mixin roolith-typography() {
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+    }
+
+    h1, .h1 {
+        font-size: rem(32);
+        line-height: rem(38);
+
+        @include breakpoint(large-up) {
+            font-size: rem(52);
+            line-height: rem(56);
+        }
+    }
+
+    h2, .h2 {
+        font-size: rem(28);
+        line-height: rem(34);
+
+        @include breakpoint(large-up) {
+            font-size: rem(42);
+            line-height: rem(48);
+        }
+    }
+
+    h3, .h3 {
+        font-size: rem(24);
+        line-height: rem(32);
+
+        @include breakpoint(large-up) {
+            font-size: rem(36);
+            line-height: rem(42);
+        }
+    }
+
+    h4, .h4 {
+        font-size: rem(22);
+        line-height: rem(28);
+
+        @include breakpoint(large-up) {
+            font-size: rem(32);
+            line-height: rem(38);
+        }
+    }
+
+    h5, .h5 {
+        font-size: rem(18);
+        line-height: rem(22);
+
+        @include breakpoint(large-up) {
+            font-size: rem(26);
+            line-height: rem(32);
+        }
+    }
+
+    h6, .h6 {
+        font-size: rem(16);
+        line-height: rem(20);
+
+        @include breakpoint(large-up) {
+            font-size: rem(18);
+            line-height: rem(24);
+        }
+    }
+
+    p {
+        font-size: rem(14);
+        line-height: rem(22);
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    a {
+        color: map-get($colors, 'link');
+    }
+
+    u {
+        text-decoration: underline;
+    }
+
+    code {
+        font-family: Consolas, monaco, monospace;
+        padding: rem(2) rem(5);
+        margin: 0 rem(2);
+        font-size: 90%;
+        white-space: nowrap;
+        background: #F1F1F1;
+        border: rem(1) solid #E1E1E1;
+        border-radius: rem(3);
+    }
+
+}

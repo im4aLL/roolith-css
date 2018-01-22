@@ -1,0 +1,36 @@
+$button-radius: rem(3) !default;
+$button-hover-shadow-color: map-get($colors, 'black') !default;
+$button-hover-shadow: 0 rem(1) rem(1) rgba($button-hover-shadow-color, 0.1) !default;
+
+@mixin roolith-button() {
+
+    button,
+    .button,
+    input[type="button"],
+    input[type="submit"] {
+        display: inline-block;
+        background: none;
+        border: none;
+        font-family: $global-base-font;
+        font-size: rem(14);
+        text-decoration: none;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background: linear-gradient(to bottom, #f5f5f5 0%, #f1f1f1 100%);
+        border: rem(1) solid #dcdcdc;
+        border-radius: $button-radius;
+        height: rem(35);
+        line-height: rem(35);
+        min-width: rem(60);
+        padding: 0 rem(15);
+        color: map-get($colors, 'dark');
+
+        &:hover {
+            background-color: #F8F8F8;
+            background: linear-gradient(to bottom, #f8f8f8 0%, #f1f1f1 100%);
+            border: rem(1) solid #C6C6C6;
+            box-shadow: $button-hover-shadow;
+        }
+    }
+
+}

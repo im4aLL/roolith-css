@@ -1,7 +1,7 @@
 /**
  * ===========================================================
  * roolith CSS framework
- * 
+ *
  * @version 1.0.0
  * @url http://roolith.com
  * ===========================================================
@@ -61,6 +61,86 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif; }
+
+a, button, input {
+  outline: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold; }
+
+h1, .h1 {
+  font-size: 2rem;
+  line-height: 2.375rem; }
+  @media (min-width: 1024px) {
+    h1, .h1 {
+      font-size: 3.25rem;
+      line-height: 3.5rem; } }
+
+h2, .h2 {
+  font-size: 1.75rem;
+  line-height: 2.125rem; }
+  @media (min-width: 1024px) {
+    h2, .h2 {
+      font-size: 2.625rem;
+      line-height: 3rem; } }
+
+h3, .h3 {
+  font-size: 1.5rem;
+  line-height: 2rem; }
+  @media (min-width: 1024px) {
+    h3, .h3 {
+      font-size: 2.25rem;
+      line-height: 2.625rem; } }
+
+h4, .h4 {
+  font-size: 1.375rem;
+  line-height: 1.75rem; }
+  @media (min-width: 1024px) {
+    h4, .h4 {
+      font-size: 2rem;
+      line-height: 2.375rem; } }
+
+h5, .h5 {
+  font-size: 1.125rem;
+  line-height: 1.375rem; }
+  @media (min-width: 1024px) {
+    h5, .h5 {
+      font-size: 1.625rem;
+      line-height: 2rem; } }
+
+h6, .h6 {
+  font-size: 1rem;
+  line-height: 1.25rem; }
+  @media (min-width: 1024px) {
+    h6, .h6 {
+      font-size: 1.125rem;
+      line-height: 1.5rem; } }
+
+p {
+  font-size: 0.875rem;
+  line-height: 1.375rem; }
+
+strong {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
+a {
+  color: #67BCEF; }
+
+u {
+  text-decoration: underline; }
+
+code {
+  font-family: Consolas, monaco, monospace;
+  padding: 0.125rem 0.3125rem;
+  margin: 0 0.125rem;
+  font-size: 90%;
+  white-space: nowrap;
+  background: #F1F1F1;
+  border: 0.0625rem solid #E1E1E1;
+  border-radius: 0.1875rem; }
 
 .container {
   max-width: 75rem;
@@ -213,6 +293,38 @@ body {
     .row .row {
       margin-left: -0.625rem;
       margin-right: -0.625rem; } }
+
+button,
+.button,
+input[type="button"],
+input[type="submit"] {
+  display: inline-block;
+  background: none;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#f1f1f1));
+  background: linear-gradient(to bottom, #f5f5f5 0%, #f1f1f1 100%);
+  border: 0.0625rem solid #dcdcdc;
+  border-radius: 0.1875rem;
+  height: 2.1875rem;
+  line-height: 2.1875rem;
+  min-width: 3.75rem;
+  padding: 0 0.9375rem;
+  color: #212121; }
+  button:hover,
+  .button:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover {
+    background-color: #F8F8F8;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f1f1f1));
+    background: linear-gradient(to bottom, #f8f8f8 0%, #f1f1f1 100%);
+    border: 0.0625rem solid #C6C6C6;
+    -webkit-box-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.1); }
 
 .box {
   width: 100%;

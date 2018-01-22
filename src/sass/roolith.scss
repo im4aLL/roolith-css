@@ -1,7 +1,7 @@
 /**
  * ===========================================================
  * roolith CSS framework
- * 
+ *
  * @version 1.0.0
  * @url http://roolith.com
  * ===========================================================
@@ -14,10 +14,13 @@
 @import "./base";
 @import "./typography";
 @import "./modules/grid";
+@import "./modules/button";
 
 @include roolith-reset();
 @include roolith-base();
+@include roolith-typography();
 @include roolith-grid();
+@include roolith-button();
 
 .box {
     width: 100%;
