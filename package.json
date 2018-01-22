@@ -1,0 +1,39 @@
+{
+  "name": "roolith-css",
+  "version": "1.0.0",
+  "description": "a CSS framework ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/im4aLL/roolith-css.git"
+  },
+  "keywords": [
+    "css",
+    "framework"
+  ],
+  "author": "Habib Hadi <me@habibhadi.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/im4aLL/roolith-css/issues"
+  },
+  "homepage": "https://gitlab.com/im4aLL/roolith-css#README",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.23.5",
+    "browserify": "^15.2.0",
+    "browserify-shim": "^3.8.14",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^5.0.0",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
