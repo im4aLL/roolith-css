@@ -5,34 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>roolith CSS framework</title>
 
-    <link rel="stylesheet" href="dist/css/roolith.css">
+    <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>">
+    <style>
+
+    </style>
 </head>
 <body>
     <div class="container">
-        <br><br>
+        <!-- <div class="row">
+            <div class="columns large-4">
+                <ul class="nav">
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="columns large-4">
+                <a href="./"><h3>roolith</h3></a>
+            </div>
+            <div class="columns large-4">
+                <ul class="nav">
+                    <li><a href="#">Github</a></li>
+                </ul>
+            </div>
+        </div>
 
         <div class="column">
+            <div class="row">
+                <div class="columns large-6">a</div>
+                <div class="columns large-6">b</div>
+            </div>
+        </div> -->
+
+        <div class="column">
+            <br><br>
+
+            <ul class="nav">
+                <li class="nav-item"><a href="#" class="nav-link">Documentation</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Modules</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Helper</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            </ul>
+
+            <br>
+
+            <ul class="nav nav-right">
+                <li class="nav-item"><a href="#" class="nav-link">Documentation</a></li>
+                <li class="nav-item active"><a href="#" class="nav-link">Active menu</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Helper</a></li>
+                <li class="nav-item"><a href="#" class="nav-link dimmed">About</a></li>
+            </ul>
+
+            <br>
+
+            <ul class="nav nav-primary">
+                <li class="nav-item"><a href="#" class="nav-link">Documentation</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Modules</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Helper</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            </ul>
+
+            <!-- <ul class="nav nav-secondary">
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Modules</a></li>
+                <li><a href="#">Helper</a></li>
+                <li><a href="#">About</a></li>
+            </ul> -->
+
+            <br><br>
+        </div>
+
+        <!-- <div class="column">
             <a class="button" href="#">Anchor button</a>
             <button>Button element</button>
-            <input type="submit" value="submit input">
-            <input type="button" value="button input">
+            <input type="submit" value="Submit input">
+            <input type="button" value="Button input">
 
             <br><br>
 
             <a class="button button-primary" href="#">Anchor button</a>
-            <button class="button-primary">Button element</button>
-            <input class="button-primary" type="submit" value="submit input">
-            <input class="button-primary" type="button" value="button input">
+            <button class="button button-primary">Button element</button>
+            <input class="button button-primary" type="submit" value="Submit input">
+            <input class="button button-primary" type="button" value="Button input">
 
             <br><br>
 
-            <a class="button button-secondary" href="#">Anchor button</a>
-            <a class="button button-tertiary" href="#">Anchor button</a>
-            <a class="button button-info" href="#">Anchor button</a>
-            <a class="button button-success" href="#">Anchor button</a>
-            <a class="button button-danger" href="#">Anchor button</a>
-            <a class="button button-link" href="#">Anchor button</a>
-        </div>
+            <a class="button button-small" href="#">Small</a>
+            <a class="button button-primary button-small" href="#">Primary</a>
+            <a class="button button-secondary button-small" href="#">Secondary</a>
+            <a class="button button-tertiary button-small" href="#">Tertiary</a>
+            <a class="button button-info button-small" href="#">Info</a>
+            <a class="button button-success button-small" href="#">Success</a>
+            <a class="button button-danger button-small" href="#">Danger</a>
+            <a class="button button-link button-small" href="#">Link</a>
+
+            <br><br>
+
+            <a class="button button-medium" href="#">Medium</a>
+            <a class="button button-primary button-medium" href="#">Primary</a>
+            <a class="button button-secondary button-medium" href="#">Secondary</a>
+            <a class="button button-tertiary button-medium" href="#">Tertiary</a>
+            <a class="button button-info button-medium" href="#">Info</a>
+            <a class="button button-success button-medium" href="#">Success</a>
+            <a class="button button-danger button-medium" href="#">Danger</a>
+            <a class="button button-link button-medium" href="#">Link</a>
+
+            <br><br>
+
+            <a class="button" href="#">Normal</a>
+            <a class="button button-primary" href="#">Primary</a>
+            <a class="button button-secondary" href="#">Secondary</a>
+            <a class="button button-tertiary" href="#">Tertiary</a>
+            <a class="button button-info" href="#">Info</a>
+            <a class="button button-success" href="#">Success</a>
+            <a class="button button-danger" href="#">Danger</a>
+            <a class="button button-link" href="#">Link</a>
+
+            <br><br>
+
+            <a class="button button-large" href="#">Large</a>
+            <a class="button button-primary button-large" href="#">Primary</a>
+            <a class="button button-secondary button-large" href="#">Secondary</a>
+            <a class="button button-tertiary button-large" href="#">Tertiary</a>
+            <a class="button button-info button-large" href="#">Info</a>
+            <a class="button button-success button-large" href="#">Success</a>
+            <a class="button button-danger button-large" href="#">Danger</a>
+            <a class="button button-link button-large" href="#">Link</a>
+        </div> -->
 
         <!-- <div class="column">
             <h1>Heading</h1>

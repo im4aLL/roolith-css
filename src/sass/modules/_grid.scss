@@ -83,6 +83,7 @@ $grid-large-gutter: map-get($grid-gutter, 'large') / 2 !default;
         }
     }
 
+    .column .row,
     .row .row {
         padding-left: 0;
         padding-right: 0;

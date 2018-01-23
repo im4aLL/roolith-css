@@ -1,0 +1,39 @@
+$nav-link-color: map-get($colors, link) !default;
+$nav-dimmed-link-color: map-get($colors, black) !default;
+$nav-active-link-color: map-get($colors, primary) !default;
+
+@mixin roolith-nav() {
+    .nav {
+        @include clearfix();
+        margin-left: rem(-10);
+        float: left;
+    }
+
+    .nav-right {
+        float: right;
+        margin-left: 0;
+        margin-right: rem(-10);
+    }
+
+    .nav-item {
+        float: left;
+    }
+
+    .nav-link {
+        display: block;
+        padding: rem(5) rem(10);
+        font-size: rem(14);
+        color: $nav-link-color;
+        position: relative;
+        @include transition('color');
+
+        &:hover,
+        .active & {
+            color: $nav-active-link-color;
+        }
+
+        &.dimmed {
+            color: lighten($nav-dimmed-link-color, 70%);
+        }
+    }
+}

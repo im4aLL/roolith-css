@@ -1,6 +1,9 @@
-$button-radius: rem(3) !default;
-$button-hover-shadow-color: map-get($colors, 'black') !default;
-$button-hover-shadow: 0 rem(1) rem(1) rgba($button-hover-shadow-color, 0.1) !default;
+$button-radius: rem(2) !default;
+$button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
+$button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
+$button-base-white: #ffffff !default;
+$button-primary-color: map-get($colors, primary) !default;
+$button-secondary-color: map-get($colors, secondary) !default;
 
 @mixin roolith-button() {
 
@@ -9,27 +12,65 @@ $button-hover-shadow: 0 rem(1) rem(1) rgba($button-hover-shadow-color, 0.1) !def
     input[type="button"],
     input[type="submit"] {
         display: inline-block;
-        background: none;
-        border: none;
         font-family: $global-base-font;
-        font-size: rem(14);
         text-decoration: none;
         cursor: pointer;
-        background-color: #f5f5f5;
-        background: linear-gradient(to bottom, #f5f5f5 0%, #f1f1f1 100%);
-        border: rem(1) solid #dcdcdc;
+        background-color: darken($button-base-white, 4%);
+        background: linear-gradient(to bottom, darken($button-base-white, 4%) 0%, darken($button-base-white, 7%) 100%);
+        border: rem(1) solid darken($button-base-white, 15%);
         border-radius: $button-radius;
-        height: rem(35);
+        font-size: rem(14);
         line-height: rem(35);
         min-width: rem(60);
+        height: rem(35);
         padding: 0 rem(15);
-        color: map-get($colors, 'dark');
+        color: lighten(map-get($colors, 'dark'), 20%);
 
         &:hover {
-            background-color: #F8F8F8;
-            background: linear-gradient(to bottom, #f8f8f8 0%, #f1f1f1 100%);
-            border: rem(1) solid #C6C6C6;
+            background-color: darken($button-base-white, 6%);
+            background: linear-gradient(to bottom, darken($button-base-white, 3%) 0%, darken($button-base-white, 6%) 100%);
+            border: rem(1) solid darken($button-base-white, 20%);
             box-shadow: $button-hover-shadow;
+        }
+    }
+
+    .button-small {
+        font-size: rem(12);
+        line-height: rem(25);
+        min-width: rem(50);
+        height: rem(25);
+        padding: 0 rem(10);
+    }
+
+    .button-medium {
+        font-size: rem(12);
+        line-height: rem(30);
+        min-width: rem(50);
+        height: rem(30);
+        padding: 0 rem(12);
+    }
+
+    .button-large {
+        font-size: rem(16);
+        line-height: rem(45);
+        min-width: rem(80);
+        height: rem(45);
+        padding: 0 rem(20);
+    }
+
+    @each $name, $value in $colors {
+        .button-#{$name} {
+            background: $value;
+            background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
+            color: map-get($colors, white);
+            border: rem(1) solid darken($value, 5%);
+
+            &:hover {
+                background: lighten($value, 3%);
+                background: linear-gradient(to bottom, lighten($value, 7%) 0%, lighten($value, 3%) 100%);
+                border: rem(1) solid $value;
+                box-shadow: $button-hover-shadow-dark;
+            }
         }
     }
 
