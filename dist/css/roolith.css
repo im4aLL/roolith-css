@@ -62,7 +62,7 @@ html {
 body {
   font-family: Arial, Helvetica, sans-serif; }
 
-a, button, input {
+a, button {
   outline: none; }
 
 a {
@@ -134,6 +134,9 @@ a {
 
 u {
   text-decoration: underline; }
+
+small {
+  font-size: 80%; }
 
 code {
   font-family: Consolas, monaco, monospace;
@@ -834,6 +837,66 @@ input[type="submit"] {
     -webkit-box-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.2);
             box-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.2);
     color: #ffffff; }
+
+::-webkit-input-placeholder {
+  color: #bababa; }
+
+:-ms-input-placeholder {
+  color: #bababa; }
+
+::-ms-input-placeholder {
+  color: #bababa; }
+
+::placeholder {
+  color: #bababa; }
+
+input, textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  outline: none; }
+
+.form-field {
+  padding-bottom: 1.25rem; }
+
+.form-label {
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  padding-bottom: 0.625rem;
+  display: block; }
+
+.form-input, .form-textarea {
+  width: 100%;
+  border: 0.0625rem solid #bababa;
+  border-radius: 0.125rem;
+  padding: 0.5rem 0.625rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition-property: border, -webkit-box-shadow;
+  transition-property: border, -webkit-box-shadow;
+  transition-property: border, box-shadow;
+  transition-property: border, box-shadow, -webkit-box-shadow;
+  -webkit-transition-duration: 150ms;
+          transition-duration: 150ms;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out; }
+  .form-input:hover, .form-textarea:hover {
+    border-color: #67BCEF; }
+  .form-input:focus, .form-textarea:focus {
+    border-color: #0099FF;
+    -webkit-box-shadow: 0 0 0 0.125rem rgba(0, 153, 255, 0.3);
+            box-shadow: 0 0 0 0.125rem rgba(0, 153, 255, 0.3); }
+
+.form-textarea {
+  resize: vertical;
+  height: 6.25rem; }
+
+.form-text {
+  padding-top: 0.5rem;
+  color: #a1a1a1;
+  font-size: 0.6875rem;
+  display: block; }
 
 .box {
   width: 100%;

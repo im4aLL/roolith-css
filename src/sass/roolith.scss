@@ -17,6 +17,7 @@
 @import "./modules/css-grid";
 @import "./modules/button";
 @import "./modules/nav";
+@import "./modules/form";
 
 @include roolith-reset();
 @include roolith-base();
@@ -25,6 +26,7 @@
 @include roolith-css-grid();
 @include roolith-button();
 @include roolith-nav();
+@include roolith-form();
 
 .box {
     width: 100%;

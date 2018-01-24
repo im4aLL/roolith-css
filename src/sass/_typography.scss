@@ -85,6 +85,10 @@
         text-decoration: underline;
     }
 
+    small {
+        font-size: 80%;
+    }
+
     code {
         font-family: Consolas, monaco, monospace;
         padding: rem(2) rem(5);

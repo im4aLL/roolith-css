@@ -1,0 +1,70 @@
+$form-input-placeholder-color: lighten(map-get($colors, dark), 60%) !default;
+$form-input-border-color: lighten(map-get($colors, dark), 60%) !default;
+
+$form-input-hover-border-color: map-get($colors, link) !default;
+$form-input-focus-border-color: map-get($colors, primary) !default;
+
+$form-text-color: lighten(map-get($colors, dark), 50%) !default;
+$form-input-radius: rem(2) !default;
+
+@mixin roolith-form() {
+
+    ::placeholder {
+        color: $form-input-placeholder-color;
+    }
+
+    input, textarea {
+        font-family: $global-base-font;
+        font-size: rem(14);
+        -webkit-appearance: none;
+        -webkit-border-radius: 0;
+        outline: none;
+    }
+
+    .form {
+
+    }
+
+    .form-field {
+        padding-bottom: rem(20);
+    }
+
+    .form-label {
+        font-size: rem(14);
+        line-height: rem(18);
+        padding-bottom: rem(10);
+        display: block;
+    }
+
+    .form-input {
+        width: 100%;
+        border: rem(1) solid $form-input-border-color;
+        border-radius: $form-input-radius;
+        padding: rem(8) rem(10);
+        box-shadow: none;
+        @include transition('border, box-shadow');
+
+        &:hover {
+            border-color: $form-input-hover-border-color;
+        }
+
+        &:focus {
+            border-color: $form-input-focus-border-color;
+            box-shadow: 0 0 0 rem(2) rgba($form-input-focus-border-color, 0.3);
+        }
+    }
+
+    .form-textarea {
+        @extend .form-input;
+        resize: vertical;
+        height: rem(100);
+    }
+
+    .form-text {
+        padding-top: rem(8);
+        color: $form-text-color;
+        font-size: rem(11);
+        display: block;
+    }
+
+}

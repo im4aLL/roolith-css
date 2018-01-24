@@ -13,6 +13,35 @@
 <body>
     <div class="container">
 
+        <br><br>
+        <form class="form" action="./" method="post">
+            <div class="row">
+                <div class="columns large-6">
+                    <div class="form-field">
+                        <label for="name" class="form-label">Enter your name</label>
+                        <input type="text" name="name" id="name" class="form-input" placeholder="e.g James smith">
+                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" name="email" id="email" class="form-input" placeholder="e.g james@example.com">
+                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                    </div>
+
+                </div>
+                <div class="columns large-6">
+
+                    <div class="form-field">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea name="message" id="message" class="form-textarea" placeholder="e.g Write something here!"></textarea>
+                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
         <!-- <div class="column">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem qui molestias consequatur inventore. Perspiciatis odio vitae necessitatibus cum sunt, illo voluptas, placeat odit similique repellendus ipsam cumque autem dolorum quia?</p>
         </div>
