@@ -35,3 +35,11 @@ $colors: (
     black: #000000,
     white: #ffffff
 ) !default;
+
+// button
+$button-radius: rem(2) !default;
+$button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
+$button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
+$button-base-white: #ffffff !default;
+$button-primary-color: map-get($colors, primary) !default;
+$button-secondary-color: map-get($colors, secondary) !default;

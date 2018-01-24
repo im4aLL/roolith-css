@@ -1,18 +1,22 @@
+$nav-border-radius: rem(2) !default;
 $nav-link-color: map-get($colors, link) !default;
 $nav-dimmed-link-color: map-get($colors, black) !default;
 $nav-active-link-color: map-get($colors, primary) !default;
+$nav-spacing: rem(13) !default;
+
+$nav-primary-color: map-get($colors, primary) !default;
 
 @mixin roolith-nav() {
     .nav {
         @include clearfix();
-        margin-left: rem(-10);
+        margin-left: - $nav-spacing;
         float: left;
     }
 
     .nav-right {
         float: right;
         margin-left: 0;
-        margin-right: rem(-10);
+        margin-right: - $nav-spacing;
     }
 
     .nav-item {
@@ -21,7 +25,7 @@ $nav-active-link-color: map-get($colors, primary) !default;
 
     .nav-link {
         display: block;
-        padding: rem(5) rem(10);
+        padding: rem(7) $nav-spacing;
         font-size: rem(14);
         color: $nav-link-color;
         position: relative;
@@ -34,6 +38,59 @@ $nav-active-link-color: map-get($colors, primary) !default;
 
         &.dimmed {
             color: lighten($nav-dimmed-link-color, 70%);
+        }
+    }
+
+    .nav-center {
+        text-align: center;
+        float: none;
+
+        .nav-item {
+            float: none;
+            display: inline-block;
+        }
+    }
+
+    .nav-vertical {
+        float: none;
+        margin: 0;
+
+        .nav-item {
+            float: none;
+            display: block;
+            padding: 0 0 rem(5);
+
+            &:last-child {
+                padding: 0;
+            }
+        }
+    }
+
+    .nav-primary {
+
+        .nav-link {
+            border-radius: $nav-border-radius;
+        }
+
+        .active .nav-link {
+            background: $nav-primary-color;
+            color: map-get($colors, white);
+        }
+
+    }
+
+    @each $name, $value in $colors {
+        .nav-link-#{$name} {
+            background: $value;
+            background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
+            color: map-get($colors, white);
+
+            &:hover {
+                background: lighten($value, 3%);
+                background: linear-gradient(to bottom, lighten($value, 7%) 0%, lighten($value, 3%) 100%);
+                box-shadow: $button-hover-shadow-dark;
+                color: map-get($colors, white);
+            }
         }
     }
 }

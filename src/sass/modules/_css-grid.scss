@@ -1,0 +1,75 @@
+$global-width: rem(1200) !default;
+$grid-gutter: (
+    small: rem(20),
+    medium: rem(20),
+    large: rem(20)
+) !default;
+$grid-column-count: 12 !default;
+
+$grid-css-grid-small-gutter: map-get($grid-gutter, 'small') !default;
+$grid-css-grid-medium-gutter: map-get($grid-gutter, 'medium') !default;
+$grid-css-grid-large-gutter: map-get($grid-gutter, 'large') !default;
+
+@mixin add-css-grid-gutter() {
+    padding-left: $grid-css-grid-small-gutter;
+    padding-right: $grid-css-grid-small-gutter;
+
+    @include breakpoint(medium-up) {
+        padding-left: $grid-css-grid-medium-gutter;
+        padding-right: $grid-css-grid-medium-gutter;
+    }
+
+    @include breakpoint(large-up) {
+        padding-left: $grid-css-grid-large-gutter;
+        padding-right: $grid-css-grid-large-gutter;
+    }
+}
+
+@mixin roolith-css-grid() {
+    .container {
+        max-width: $global-width;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .grid {
+        @include add-css-grid-gutter();
+        display: grid;
+        grid-template-columns: repeat($grid-column-count, 1fr);
+        grid-gap: $grid-css-grid-small-gutter;
+
+        @include breakpoint(medium-up) {
+            grid-gap: $grid-css-grid-medium-gutter;
+        }
+
+        @include breakpoint(large-up) {
+            grid-gap: $grid-css-grid-large-gutter;
+        }
+    }
+
+    .cell {
+        width: 100%;
+    }
+
+    @for $i from 1 through $grid-column-count {
+        .sm-#{$i} {
+            grid-column: span $i;
+        }
+    }
+
+    @include breakpoint(medium-up) {
+        @for $i from 1 through $grid-column-count {
+            .md-#{$i} {
+                grid-column: span $i;
+            }
+        }
+    }
+
+    @include breakpoint(large-up) {
+        @for $i from 1 through $grid-column-count {
+            .lg-#{$i} {
+                grid-column: span $i;
+            }
+        }
+    }
+}

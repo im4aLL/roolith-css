@@ -12,6 +12,35 @@
 </head>
 <body>
     <div class="container">
+
+        <!-- <div class="column">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem qui molestias consequatur inventore. Perspiciatis odio vitae necessitatibus cum sunt, illo voluptas, placeat odit similique repellendus ipsam cumque autem dolorum quia?</p>
+        </div>
+
+        <div class="grid">
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box">1</div></div>
+        </div>
+
+        <br><br>
+
+        <div class="grid">
+            <div class="cell sm-4 md-6 lg-3"><div class="box">box</div></div>
+            <div class="cell sm-4 md-6 lg-3"><div class="box">box</div></div>
+            <div class="cell sm-4 md-6 lg-3"><div class="box">box</div></div>
+            <div class="cell sm-12 md-6 lg-3"><div class="box">box</div></div>
+        </div> -->
+
         <!-- <div class="row">
             <div class="columns large-4">
                 <ul class="nav">
@@ -36,7 +65,7 @@
             </div>
         </div> -->
 
-        <div class="column">
+        <!-- <div class="column">
             <br><br>
 
             <ul class="nav">
@@ -46,7 +75,7 @@
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             </ul>
 
-            <br>
+            <br><br>
 
             <ul class="nav nav-right">
                 <li class="nav-item"><a href="#" class="nav-link">Documentation</a></li>
@@ -55,24 +84,52 @@
                 <li class="nav-item"><a href="#" class="nav-link dimmed">About</a></li>
             </ul>
 
-            <br>
+            <br><br>
 
-            <ul class="nav nav-primary">
+            <ul class="nav nav-center">
                 <li class="nav-item"><a href="#" class="nav-link">Documentation</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Modules</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Helper</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             </ul>
 
-            <!-- <ul class="nav nav-secondary">
-                <li><a href="#">Documentation</a></li>
-                <li><a href="#">Modules</a></li>
-                <li><a href="#">Helper</a></li>
-                <li><a href="#">About</a></li>
-            </ul> -->
+            <br><br>
+
+            <ul class="nav nav-primary">
+                <li class="nav-item"><a href="#" class="nav-link">Documentation</a></li>
+                <li class="nav-item active"><a href="#" class="nav-link">Modules</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Helper</a></li>
+                <li class="nav-item"><a href="#" class="nav-link dimmed">About</a></li>
+            </ul>
 
             <br><br>
-        </div>
+            <br><br>
+
+            <ul class="nav nav-primary nav-center">
+                <li class="nav-item"><a href="#" class="nav-link">Documentation</a></li>
+                <li class="nav-item active"><a href="#" class="nav-link">Modules</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Helper</a></li>
+                <li class="nav-item"><a href="#" class="nav-link dimmed">About</a></li>
+                <li class="nav-item"><a href="#" class="nav-link nav-link-danger">Sign in</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Menu item</a></li>
+                <li class="nav-item"><a href="#" class="nav-link nav-link-tertiary">Create new account</a></li>
+            </ul>
+
+            <br><br><br><br>
+
+            <ul class="nav nav-primary nav-vertical" style="max-width: 250px">
+                <li class="nav-item"><a href="#" class="nav-link">Documentation</a></li>
+                <li class="nav-item active"><a href="#" class="nav-link">Modules</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Helper</a></li>
+                <li class="nav-item"><a href="#" class="nav-link dimmed">About</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sign in</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Menu item</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Create new account</a></li>
+            </ul>
+
+            <br><br><br><br>
+
+        </div> -->
 
         <!-- <div class="column">
             <a class="button" href="#">Anchor button</a>

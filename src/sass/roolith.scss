@@ -14,6 +14,7 @@
 @import "./base";
 @import "./typography";
 @import "./modules/grid";
+@import "./modules/css-grid";
 @import "./modules/button";
 @import "./modules/nav";
 
@@ -21,6 +22,7 @@
 @include roolith-base();
 @include roolith-typography();
 @include roolith-grid();
+@include roolith-css-grid();
 @include roolith-button();
 @include roolith-nav();
 
@@ -33,4 +35,8 @@
     align-items: center;
     border-radius: 3px;
     margin: rem(10) 0;
+
+    .grid & {
+        margin: 0;
+    }
 }
