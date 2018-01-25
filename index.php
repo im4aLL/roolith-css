@@ -29,6 +29,10 @@
                         <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
                     </div>
 
+                    <div class="form-field">
+                        <label class="form-checkbox-label small"><input type="checkbox" class="form-check-input"> I agree with the <a href="">terms and conditions</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum, libero molestias eaque debitis asperiores, sint ratione.</label>
+                    </div>
+
                 </div>
                 <div class="columns large-6">
 

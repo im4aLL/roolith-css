@@ -853,7 +853,6 @@ input[type="submit"] {
 input, textarea {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
-  -webkit-appearance: none;
   -webkit-border-radius: 0;
   outline: none; }
 
@@ -897,6 +896,24 @@ input, textarea {
   color: #a1a1a1;
   font-size: 0.6875rem;
   display: block; }
+
+.form-checkbox-label {
+  position: relative;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  padding-left: 1.5625rem;
+  display: block;
+  color: #545454; }
+  .form-checkbox-label.small {
+    font-size: 0.75rem;
+    line-height: 1.125rem; }
+
+.form-check-input {
+  position: absolute;
+  left: 0;
+  top: 0.125rem; }
+  .small .form-check-input {
+    top: 0; }
 
 .box {
   width: 100%;
