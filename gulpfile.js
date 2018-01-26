@@ -31,7 +31,7 @@ let config = {
         dist: './dist/images'
     },
     sync: {
-        server: true
+        proxy: 'roolith-css.local'
     }
 };
 // https://www.browsersync.io/docs/options/

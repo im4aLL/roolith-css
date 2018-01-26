@@ -86,6 +86,7 @@ $form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
         position: absolute;
         left: 0;
         top: rem(2);
+        margin: 0;
 
         .small & {
             top: 0;

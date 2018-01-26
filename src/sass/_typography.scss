@@ -1,7 +1,9 @@
+$global-font-bold-weight: bold !default;
+
 @mixin roolith-typography() {
 
     h1, h2, h3, h4, h5, h6 {
-        font-weight: bold;
+        font-weight: $global-font-bold-weight;
     }
 
     h1, .h1 {

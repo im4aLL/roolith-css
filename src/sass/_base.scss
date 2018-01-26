@@ -1,3 +1,7 @@
+$global-base-font: Arial, Helvetica, sans-serif !default;
+$global-font-weight: normal !default;
+$global-font-bold-weight: bold !default;
+
 @mixin roolith-base {
     html {
         box-sizing: border-box;
@@ -13,6 +17,7 @@
 
     body {
         font-family: $global-base-font;
+        font-weight: $global-font-weight;
     }
 
     a, button {

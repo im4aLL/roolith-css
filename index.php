@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="columns large-6">
                     <div class="form-field">
-                        <label for="name" class="form-label">Enter your name</label>
+                        <label for="name" class="form-label">Name</label>
                         <input type="text" name="name" id="name" class="form-input" placeholder="e.g James smith">
                         <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
                     </div>
