@@ -1,22 +1,32 @@
-@mixin triangle($direction, $color: currentcolor, $size: 1em) {
-    @if not index(top right bottom left, $direction) {
-        @error "Direction must be either `top`, `right`, `bottom` or `left`.";
-    }
-
-    width: 0;
-    height: 0;
+@mixin triangle($direction, $size, $color: currentColor){
     content: '';
-    z-index: 2;
-    border-#{opposite-position($direction)}: ($size * 1.5) solid $color;
-
-    $perpendicular-borders: $size solid transparent;
-
-    @if $direction==top or $direction==bottom {
-        border-left: $perpendicular-borders;
-        border-right: $perpendicular-borders;
+    display: inline-block;
+    height: 0;
+    width: 0;
+    @if ($direction == 'up'){
+        border-bottom: $size solid $color;
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
     }
-    @else if $direction==right or $direction==left {
-        border-bottom: $perpendicular-borders;
-        border-top: $perpendicular-borders;
+    @else if ($direction == 'down'){
+        border-top: $size solid $color;
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+    }
+    @else if ($direction == 'left'){
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+    }
+    @else if ($direction == 'right'){
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+    }
+    @else {
+        border-bottom: $size solid $color;
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        transform: rotate(#{$direction}deg);
     }
 }

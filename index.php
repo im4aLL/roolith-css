@@ -15,12 +15,26 @@
 
         <br><br>
 
-        <div class="column">
+        <!-- <div class="column">
             <div class="dropdown">
-                <button class="button">Dropdown</button>
-
+                <button class="button has-dropdown-icon">Dropdown</button>
+                <div class="dropdown-body">
+                    <div class="dropdown-body-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt eveniet dolore maxime ducimus commodi impedit est nulla deleniti voluptatibus similique labore, repellat alias totam mollitia veniam nostrum repellendus debitis quisquam.</div>
+                </div>
             </div>
-        </div>
+
+            <br><br>
+
+            <div class="dropdown active">
+                <button class="button button-primary has-dropdown-icon">Dropdown</button>
+                <div class="dropdown-body">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <span class="dropdown-item-sep"></span>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+        </div> -->
 
         <!-- <div class="row">
             <div class="columns large-4">

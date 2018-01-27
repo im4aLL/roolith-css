@@ -1,7 +1,84 @@
-
+$dropdown-icons-size: rem(5) !default;
+$dropdown-icons-size-small: rem(4) !default;
+$dropdown-icons-size-large: rem(7) !default;
+$dropdown-width: rem(220) !default;
+$dropdown-background: darken(map-get($colors, white), 2%) !default;
+$dropdown-border-color: darken(map-get($colors, white), 15%) !default;
+$dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
 
 @mixin roolith-dropdown() {
     .dropdown {
+        display: inline-block;
+        position: relative;
 
+        &:hover .dropdown-body {
+            display: block;
+        }
+    }
+
+    .has-dropdown-icon {
+        &:after {
+            @include triangle(down, $dropdown-icons-size);
+            vertical-align: rem(2);
+            margin-left: rem(5);
+        }
+
+        &.button-small:after {
+            @include triangle(down, $dropdown-icons-size-small);
+        }
+
+        &.button-large:after {
+            @include triangle(down, $dropdown-icons-size-large);
+            margin-left: rem(10);
+        }
+    }
+
+    .dropdown-body {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: $dropdown-width;
+        font-size: rem(14);
+        line-height: rem(22);
+        background-color: $dropdown-background;
+        border: rem(1) solid $dropdown-border-color;
+        margin-top: rem(2);
+        border-radius: rem(2);
+        box-shadow: $dropdown-shadow;
+        z-index: 2;
+
+        .active & {
+            display: block;
+        }
+    }
+
+    .dropdown-body-text {
+        padding: rem(15);
+    }
+
+    .dropdown-item {
+        display: block;
+        padding: rem(5) rem(15);
+        color: lighten(map-get($colors, dark), 20%);
+        @include transition('background, color');
+
+        &:hover {
+            background-color: darken(map-get($colors, white), 5%);
+            color: map-get($colors, dark);
+        }
+
+        &:first-child {
+            margin-top: rem(5);
+        }
+
+        &:last-child {
+            margin-bottom: rem(5);
+        }
+    }
+
+    .dropdown-item-sep {
+        height: rem(1);
+        background: darken(map-get($colors, white), 8%);
+        display: block;
     }
 }
