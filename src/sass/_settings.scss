@@ -5,6 +5,10 @@ $global-base-font-size: 100% !default;
 // $global-font-weight: 400 !default;                          // normal
 // $global-font-bold-weight: 700 !default;                     // bold
 
+$global-base-font: Arial, Helvetica, sans-serif !default;
+$global-font-weight: normal !default;
+$global-font-bold-weight: bold !default;
+
 // Breakpoint
 $breakpoints: (
     small: 0,

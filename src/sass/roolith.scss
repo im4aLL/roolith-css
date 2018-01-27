@@ -18,6 +18,13 @@
 @import "./modules/button";
 @import "./modules/nav";
 @import "./modules/form";
+@import "./modules/table";
+@import "./modules/img";
+@import "./modules/message";
+@import "./modules/badge";
+@import "./modules/breadcrumb";
+@import "./modules/card";
+@import "./modules/dropdown";
 
 // @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
 
@@ -29,6 +36,13 @@
 @include roolith-button();
 @include roolith-nav();
 @include roolith-form();
+@include roolith-table();
+@include roolith-img();
+@include roolith-message();
+@include roolith-badge();
+@include roolith-breadcrumb();
+@include roolith-card();
+@include roolith-dropdown();
 
 .box {
     width: 100%;

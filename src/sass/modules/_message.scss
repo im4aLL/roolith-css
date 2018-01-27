@@ -1,0 +1,46 @@
+$message-radius: rem(2) !default;
+
+@mixin roolith-message() {
+    .message {
+        font-size: rem(14);
+        line-height: rem(18);
+        padding: rem(17) rem(20);
+        border-radius: $message-radius;
+        margin-top: rem(10);
+        margin-bottom: rem(10);
+        background: darken(map-get($colors, white), 5%);
+        position: relative;
+    }
+
+    .message-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        border: none;
+        padding: rem(8);
+        line-height: rem(12);
+        z-index: 2;
+        cursor: pointer;
+        @include transition('opacity');
+
+        &:hover {
+            @include opacity(0.7);
+        }
+    }
+
+    @each $name, $value in $colors {
+        @if($name != white)
+        {
+            .message-#{$name} {
+                background: $value;
+                background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
+                color: map-get($colors, white);
+
+                .message-close {
+                    color: map-get($colors, white);
+                }
+            }
+        }
+    }
+}

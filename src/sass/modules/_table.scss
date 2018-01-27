@@ -1,0 +1,98 @@
+$table-header-border-color: lighten(map-get($colors, dark), 75%) !default;
+$table-border-color: lighten(map-get($colors, dark), 80%) !default;
+$table-header-font-weight: $global-font-bold-weight !default;
+$table-spacing: rem(10) !default;
+$table-row-hover-color: lighten(map-get($colors, dark), 85%) !default;
+
+$table-primary-header-color: lighten(map-get($colors, dark), 82%) !default;
+
+$table-row-striped-color: lighten(map-get($colors, dark), 85%) !default;
+$table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
+
+@mixin roolith-table {
+    .table {
+        font-size: rem(14);
+        line-height: rem(18);
+
+        th {
+            text-align: left;
+            font-weight: $table-header-font-weight;
+        }
+
+        th, td {
+            padding: $table-spacing;
+
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+
+        thead tr {
+            border-bottom: rem(1) solid $table-header-border-color;
+        }
+
+        tbody tr {
+            border-bottom: rem(1) solid $table-border-color;
+        }
+    }
+
+    .table-primary {
+        th {
+            background-color: $table-primary-header-color;
+        }
+
+        th, td {
+            &:first-child {
+                padding-left: $table-spacing;
+            }
+        }
+
+        tbody tr {
+            @include transition('background');
+
+            &:hover {
+                background-color: $table-row-hover-color;
+            }
+        }
+    }
+
+    .table-striped {
+        @extend .table-primary;
+
+        tbody tr {
+            &:nth-child(even) {
+                background-color: $table-row-striped-color;
+            }
+
+            &:hover {
+                background-color: $table-row-striped-hover-color;
+            }
+        }
+    }
+
+    .table-bordered {
+        border-top: rem(1) solid $table-border-color;
+        border-left: rem(1) solid $table-border-color;
+
+        th, td {
+            border-bottom: rem(1) solid $table-border-color;
+            border-right: rem(1) solid $table-border-color;
+
+            &:first-child {
+                padding-left: $table-spacing;
+            }
+        }
+
+        thead tr {
+            border-bottom: none;
+        }
+
+        tbody tr {
+            @include transition('background');
+
+            &:hover {
+                background-color: $table-row-hover-color;
+            }
+        }
+    }
+}

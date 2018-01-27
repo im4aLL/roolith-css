@@ -1,5 +1,5 @@
 $form-input-placeholder-color: lighten(map-get($colors, dark), 60%) !default;
-$form-input-border-color: lighten(map-get($colors, dark), 60%) !default;
+$form-input-border-color: lighten(map-get($colors, dark), 70%) !default;
 
 $form-input-hover-border-color: map-get($colors, link) !default;
 $form-input-focus-border-color: map-get($colors, primary) !default;
@@ -9,17 +9,31 @@ $form-input-radius: rem(2) !default;
 
 $form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
 
+$form-disable-input-color: darken(map-get($colors, white), 5%) !default;
+
+$form-primary-color: darken(map-get($colors, white), 6%) !default;
+$form-primary-hover-color: map-get($colors, info) !default;
+$form-primary-focus-color: map-get($colors, white) !default;
+
 @mixin roolith-form() {
 
     ::placeholder {
         color: $form-input-placeholder-color;
     }
 
-    input, textarea {
+    input, textarea, select {
         font-family: $global-base-font;
         font-size: rem(14);
         -webkit-border-radius: 0;
         outline: none;
+
+        .small & {
+            font-size: rem(12);
+        }
+
+        .large & {
+            font-size: rem(16);
+        }
     }
 
     .form {
@@ -33,17 +47,33 @@ $form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
     .form-label {
         font-size: rem(14);
         line-height: rem(18);
-        padding-bottom: rem(10);
+        padding-bottom: rem(8);
         display: block;
+
+        .small & {
+            font-size: rem(12);
+            line-height: rem(16);
+            padding-bottom: rem(5);
+        }
+
+        .large & {
+            font-size: rem(16);
+            line-height: rem(22);
+        }
+
+        &.right {
+            text-align: right;
+            padding-top: rem(8);
+        }
     }
 
     .form-input {
         width: 100%;
         border: rem(1) solid $form-input-border-color;
         border-radius: $form-input-radius;
-        padding: rem(8) rem(10);
+        padding: rem(9) rem(12);
         box-shadow: none;
-        @include transition('border, box-shadow');
+        @include transition('border, box-shadow, background');
 
         &:hover {
             border-color: $form-input-hover-border-color;
@@ -53,12 +83,35 @@ $form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
             border-color: $form-input-focus-border-color;
             box-shadow: 0 0 0 rem(2) rgba($form-input-focus-border-color, 0.3);
         }
+
+        .small & {
+            padding: rem(5) rem(7);
+        }
+
+        .large & {
+            padding: rem(10) rem(12);
+        }
+    }
+
+    .form-primary .form-input {
+        border: rem(1) solid $form-primary-color;
+        background: $form-primary-color;
+        box-shadow: none;
+
+        &:hover {
+            border-color: $form-primary-hover-color;
+        }
+
+        &:focus {
+            border-color: $form-input-focus-border-color;
+            background: $form-primary-focus-color;
+        }
     }
 
     .form-textarea {
         @extend .form-input;
         resize: vertical;
-        height: rem(100);
+        height: rem(137);
     }
 
     .form-text {
@@ -66,6 +119,15 @@ $form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
         color: $form-text-color;
         font-size: rem(11);
         display: block;
+
+        .small & {
+            padding-top: rem(5);
+        }
+
+        .large & {
+            font-size: rem(12);
+            padding-top: rem(10);
+        }
     }
 
     .form-checkbox-label {
@@ -85,11 +147,79 @@ $form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
     .form-check-input {
         position: absolute;
         left: 0;
-        top: rem(2);
+        top: rem(4);
         margin: 0;
 
         .small & {
+            top: rem(3);
+        }
+    }
+
+    .form-select {
+        @extend .form-input;
+    }
+
+    .form-file {
+
+    }
+
+    .form-radio-item {
+        font-size: rem(14);
+        position: relative;
+        padding-left: rem(18);
+        margin-right: rem(10);
+
+        .vertical & {
+            display: block;
+            margin-right: 0;
+        }
+
+        .small & {
+            font-size: rem(12);
+        }
+
+        .large & {
+            font-size: rem(16);
+        }
+    }
+
+    .vertical .form-radio-item {
+        margin-top: 0;
+
+        & + .form-radio-item {
+            margin-top: rem(10);
+        }
+    }
+
+    .form-radio {
+        margin: 0;
+        position: absolute;
+        left: 0;
+        top: rem(2);
+
+        .vertical & {
+            top: rem(1);
+        }
+
+        .small & {
             top: 0;
+        }
+    }
+
+    .form-radio-items {
+        padding: rem(5) 0;
+    }
+
+    [readonly] {
+        background: $form-disable-input-color;
+
+        &:hover {
+            border-color: $form-input-border-color;
+        }
+
+        &:focus {
+            border-color: $form-input-border-color;
+            box-shadow: none;
         }
     }
 

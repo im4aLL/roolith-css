@@ -65,12 +65,20 @@ $grid-large-gutter: map-get($grid-gutter, 'large') / 2 !default;
         .small-#{$i} {
             width: percentage($i / $grid-column-count);
         }
+
+        .small-offset-#{$i} {
+            margin-left: percentage($i / $grid-column-count);
+        }
     }
 
     @include breakpoint(medium-up) {
         @for $i from 1 through $grid-column-count {
             .medium-#{$i} {
                 width: percentage($i / $grid-column-count);
+            }
+
+            .medium-offset-#{$i} {
+                margin-left: percentage($i / $grid-column-count);
             }
         }
     }
@@ -79,6 +87,10 @@ $grid-large-gutter: map-get($grid-gutter, 'large') / 2 !default;
         @for $i from 1 through $grid-column-count {
             .large-#{$i} {
                 width: percentage($i / $grid-column-count);
+            }
+
+            .large-offset-#{$i} {
+                margin-left: percentage($i / $grid-column-count);
             }
         }
     }
@@ -99,5 +111,9 @@ $grid-large-gutter: map-get($grid-gutter, 'large') / 2 !default;
             margin-left: - $grid-large-gutter;
             margin-right: - $grid-large-gutter;
         }
+    }
+
+    .newrow {
+        clear: left;
     }
 }

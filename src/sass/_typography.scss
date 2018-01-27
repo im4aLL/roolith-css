@@ -1,5 +1,7 @@
 $global-font-bold-weight: bold !default;
 
+$text-dimmed-color: darken(map-get($colors, white), 40%) !default;
+
 @mixin roolith-typography() {
 
     h1, h2, h3, h4, h5, h6 {
@@ -51,19 +53,14 @@ $global-font-bold-weight: bold !default;
         line-height: rem(22);
 
         @include breakpoint(large-up) {
-            font-size: rem(26);
-            line-height: rem(32);
+            font-size: rem(22);
+            line-height: rem(28);
         }
     }
 
     h6, .h6 {
         font-size: rem(16);
         line-height: rem(20);
-
-        @include breakpoint(large-up) {
-            font-size: rem(18);
-            line-height: rem(24);
-        }
     }
 
     p {
@@ -80,7 +77,11 @@ $global-font-bold-weight: bold !default;
     }
 
     a {
-        color: map-get($colors, 'link');
+        color: map-get($colors, link);
+
+        &:hover {
+            color: map-get($colors, primary);
+        }
     }
 
     u {
@@ -100,6 +101,67 @@ $global-font-bold-weight: bold !default;
         background: #F1F1F1;
         border: rem(1) solid #E1E1E1;
         border-radius: rem(3);
+    }
+
+    .dimmed {
+        color: $text-dimmed-color;
+    }
+
+    .list {
+        font-size: rem(14);
+        line-height: rem(22);
+        padding: rem(25) 0;
+        margin-left: rem(15);
+
+        li {
+            list-style: disc;
+            padding-bottom: rem(10);
+        }
+
+        ul, ol {
+            margin: rem(10) 0 0 rem(30);
+        }
+    }
+
+    .list-numbered {
+        @extend .list;
+
+        li {
+            list-style: decimal;
+        }
+    }
+
+    pre {
+        code {
+            padding: rem(15);
+            display: block;
+            white-space: pre;
+            line-height: rem(18);
+        }
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .text-left {
+        text-align: left;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .float-right {
+        float: right;
     }
 
 }

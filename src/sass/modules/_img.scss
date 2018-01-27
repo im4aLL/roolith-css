@@ -1,0 +1,27 @@
+$img-radius: rem(2) !default;
+$img-caption-color: lighten(map-get($colors, dark), 40%) !default;
+
+@mixin roolith-img() {
+    .img {
+        max-width: 100%;
+    }
+
+    .img-full-width {
+        width: 100%;
+    }
+
+    .rounded {
+        @include border-radius($img-radius);
+    }
+
+    .fig-center {
+        text-align: center;
+    }
+
+    .fig-caption {
+        font-size: rem(14);
+        line-height: rem(18);
+        color: $img-caption-color;
+        padding-top: rem(3);
+    }
+}

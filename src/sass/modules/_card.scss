@@ -1,0 +1,81 @@
+$card-radius: rem(2) !default;
+$card-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
+
+$card-header-footer-border: rem(1) solid lighten(map-get($colors, dark), 83%) !default;
+$card-header-footer-color: lighten(map-get($colors, dark), 40%) !default;
+
+@mixin roolith-card() {
+    .card {
+        box-shadow: $card-shadow;
+        border-radius: $card-radius;
+        overflow: hidden;
+    }
+
+    .card-img {
+        @extend .img-full-width;
+    }
+
+    .card-body-img {
+        @extend .img-full-width;
+        margin: rem(10) 0;
+    }
+
+    .card-body {
+        padding: rem(25);
+    }
+
+    .card-title {
+        padding-bottom: rem(5);
+    }
+
+    .card-text {
+        font-size: rem(14);
+        line-height: rem(22);
+        padding-bottom: rem(20);
+    }
+
+    .card-information {
+        @extend small, .dimmed;
+        display: block;
+        padding-top: rem(20);
+    }
+
+    .card-subtitle {
+        @extend .dimmed;
+        padding-bottom: rem(10);
+    }
+
+    .card-header {
+        padding: rem(15) rem(25);
+        border-bottom: $card-header-footer-border;
+        font-size: rem(14);
+        color: $card-header-footer-color;
+    }
+
+    .card-footer {
+        padding: rem(15) rem(25);
+        border-top: $card-header-footer-border;
+        color: $card-header-footer-color;
+        font-size: rem(14);
+    }
+
+    @each $name, $value in $colors {
+        @if($name != white)
+        {
+            .card-#{$name} {
+                background: $value;
+                color: map-get($colors, white);
+
+                .card-subtitle, .card-information {
+                    color: map-get($colors, white);
+                    opacity: 0.7;
+                }
+
+                .card-header, .card-footer {
+                    border-color: lighten($value, 10%);
+                    color: map-get($colors, white);
+                }
+            }
+        }
+    }
+}

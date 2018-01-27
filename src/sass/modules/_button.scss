@@ -1,16 +1,14 @@
 $button-radius: rem(2) !default;
 $button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
 $button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
+$button-active-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.1) !default;
+$button-active-dark-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.2) !default;
 $button-base-white: #ffffff !default;
 $button-primary-color: map-get($colors, primary) !default;
 $button-secondary-color: map-get($colors, secondary) !default;
 
 @mixin roolith-button() {
-
-    button,
-    .button,
-    input[type="button"],
-    input[type="submit"] {
+    .button {
         display: inline-block;
         font-family: $global-base-font;
         text-decoration: none;
@@ -23,7 +21,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
         line-height: rem(35);
         min-width: rem(60);
         height: rem(35);
-        padding: 0 rem(15);
+        padding: 0 rem(20);
         color: lighten(map-get($colors, 'dark'), 20%);
 
         &:hover {
@@ -31,6 +29,11 @@ $button-secondary-color: map-get($colors, secondary) !default;
             background: linear-gradient(to bottom, darken($button-base-white, 3%) 0%, darken($button-base-white, 6%) 100%);
             border: rem(1) solid darken($button-base-white, 20%);
             box-shadow: $button-hover-shadow;
+            color: lighten(map-get($colors, 'dark'), 20%);
+        }
+
+        &.active {
+            box-shadow: $button-active-shadow;
         }
     }
 
@@ -55,21 +58,50 @@ $button-secondary-color: map-get($colors, secondary) !default;
         line-height: rem(45);
         min-width: rem(80);
         height: rem(45);
-        padding: 0 rem(20);
+        padding: 0 rem(30);
     }
 
     @each $name, $value in $colors {
-        .button-#{$name} {
-            background: $value;
-            background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
-            color: map-get($colors, white);
-            border: rem(1) solid darken($value, 5%);
+        @if($name != white)
+        {
+            .button-#{$name} {
+                background: $value;
+                background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
+                color: map-get($colors, white);
+                border: rem(1) solid darken($value, 5%);
 
-            &:hover {
-                background: lighten($value, 3%);
-                background: linear-gradient(to bottom, lighten($value, 7%) 0%, lighten($value, 3%) 100%);
-                border: rem(1) solid $value;
-                box-shadow: $button-hover-shadow-dark;
+                &:hover {
+                    background: lighten($value, 3%);
+                    background: linear-gradient(to bottom, lighten($value, 7%) 0%, lighten($value, 3%) 100%);
+                    border: rem(1) solid $value;
+                    box-shadow: $button-hover-shadow-dark;
+                    color: map-get($colors, white);
+                }
+
+                &.active {
+                    box-shadow: $button-active-dark-shadow;
+                }
+            }
+        }
+    }
+
+    .button-group {
+        @include clearfix();
+
+        .button {
+            float: left;
+            border-radius: 0;
+            margin-right: rem(-1);
+            min-width: auto;
+
+            &:first-child {
+                @include border-left-radius($button-radius);
+                @include border-top-radius($button-radius);
+            }
+
+            &:last-child {
+                @include border-right-radius($button-radius);
+                @include border-bottom-radius($button-radius);
             }
         }
     }
