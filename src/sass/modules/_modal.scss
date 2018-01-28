@@ -7,6 +7,8 @@ $modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0,0,0, 0.1) !default;
 
 $modal-border-color: darken(map-get($colors, white), 5%);
 
+$modal-layout: css-grid; // css-grid || traditional || flex
+
 @mixin roolith-modal() {
     .modal {
         width: 100%;
@@ -16,29 +18,53 @@ $modal-border-color: darken(map-get($colors, white), 5%);
         top: 0;
         background: $modal-background;
         z-index: 10;
-        grid-template-rows: minmax(rem(20), 2fr) auto minmax(rem(20), 2fr);
-        grid-template-areas: "header"
-                             "body"
-                             "footer";
+        @if($modal-layout == css-grid) {
+            grid-template-rows: minmax(rem(20), 2fr) auto minmax(rem(20), 2fr);
+            grid-template-areas: "header"
+                                 "body"
+                                 "footer";
+        }
         display: none;
         padding: 0 rem(20);
 
         &.active {
-            display: grid;
+            @if($modal-layout == css-grid) {
+                display: grid;
+            }
+            @else if($modal-layout == traditional) {
+                display: block;
+            }
+            @else if($modal-layout == flex) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
     }
 
     .modal-content {
-        grid-area: body;
         position: relative;
-        margin-left: auto;
-        margin-right: auto;
+        @if($modal-layout == css-grid) {
+            grid-area: body;
+            margin-left: auto;
+            margin-right: auto;
+            @extend .animation, .fadeInUp;
+        }
+        @else if($modal-layout == traditional) {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            @extend .animation, .fadeIn;
+        }
+        @if($modal-layout == flex) {
+            max-height: 90%;
+            @extend .animation, .fadeInUp;
+        }
         max-width: rem(600);
         overflow-y: auto;
         background: $modal-content-background;
         border-radius: $modal-content-radius;
         box-shadow: $modal-content-shadow;
-        @extend .animation, .fadeInUp;
 
         &.small {
             max-width: rem(300);

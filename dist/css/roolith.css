@@ -1726,8 +1726,8 @@ input, textarea, select {
     display: grid; }
 
 .modal-content {
-  grid-area: body;
   position: relative;
+  grid-area: body;
   margin-left: auto;
   margin-right: auto;
   max-width: 37.5rem;

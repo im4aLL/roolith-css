@@ -25,7 +25,7 @@
             <div class="modal-content large">
                 <div class="modal-header">Modal header <button class="modal-close">✖</button></div>
                 <div class="modal-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis voluptatum illo, sunt neque saepe, rem beatae itaque perspiciatis porro cumque qui quos ipsum error rerum in eveniet amet vero officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit delectus quae autem ducimus neque. Pariatur numquam iure aspernatur aliquid sit. Eos eveniet delectus dicta consectetur quaerat molestiae maiores, neque culpa.</p>
                 </div>
                 <div class="modal-footer">
                     <button class="button js-modal-close">Okay</button>
