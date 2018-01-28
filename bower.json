@@ -1,0 +1,14 @@
+{
+  "name": "roolith-css",
+  "description": "a CSS framework",
+  "main": "index.js",
+  "authors": [
+    "Habib Hadi <me@habibhadi.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "css",
+    "framework"
+  ],
+  "homepage": "http://roolith.com"
+}
