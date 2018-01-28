@@ -17,7 +17,42 @@
 
         <br><br>
 
-        <div style="height: 2000px">
+        <!-- <div class="row">
+            <div class="columns large-3">
+                <div class="stat">
+                    <span class="stat-header">Tweets</span>
+                    <span class="stat-body">55654</span>
+                    <span class="stat-footer">Last updated 23 min ago</span>
+                </div>
+            </div>
+            <div class="columns large-3">
+                <div class="stat">
+                    <span class="stat-header">Following</span>
+                    <span class="stat-body">546</span>
+                    <span class="stat-footer">Last updated 23 min ago</span>
+                </div>
+            </div>
+            <div class="columns large-3">
+                <div class="stat">
+                    <span class="stat-header">Follwer</span>
+                    <span class="stat-body">321</span>
+                    <span class="stat-footer">Last updated 23 min ago</span>
+                </div>
+            </div>
+            <div class="columns large-3">
+                <div class="stat">
+                    <span class="stat-header">Likes</span>
+                    <span class="stat-body">1k</span>
+                    <span class="stat-footer">Last updated 23 min ago</span>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- <p class="show-small-only">small only text</p>
+        <p class="show-medium-up">show medium up</p> -->
+
+        <!-- <div style="height: 2000px">
             <button class="button js-open-modal" data-modal="#modal">Open modal</button>
         </div>
 
@@ -32,7 +67,7 @@
                     <button class="button button-primary float-right js-modal-close">Close</button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- <div class="column">
             <div class="dropdown">

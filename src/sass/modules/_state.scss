@@ -1,0 +1,31 @@
+@mixin roolith-state() {
+    @each $breakpoint, $value in $breakpoints {
+        .show-#{$breakpoint}-only {
+            display: none;
+
+            @include breakpoint(#{$breakpoint}-only) {
+                display: block;
+            }
+        }
+
+        .show-#{$breakpoint}-up {
+            display: none;
+
+            @include breakpoint(#{$breakpoint}-up) {
+                display: block;
+            }
+        }
+
+        .hide-#{$breakpoint}-only {
+            @include breakpoint(#{$breakpoint}-only) {
+                display: hide;
+            }
+        }
+
+        .hide-#{$breakpoint}-up {
+            @include breakpoint(#{$breakpoint}-up) {
+                display: hide;
+            }
+        }
+    }
+}

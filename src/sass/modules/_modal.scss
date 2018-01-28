@@ -7,7 +7,7 @@ $modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0,0,0, 0.1) !default;
 
 $modal-border-color: darken(map-get($colors, white), 5%);
 
-$modal-layout: css-grid; // css-grid || traditional || flex
+$modal-layout: css-grid !default; // css-grid || traditional || flex
 
 @mixin roolith-modal() {
     .modal {

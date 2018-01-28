@@ -35,7 +35,8 @@ $card-header-footer-color: lighten(map-get($colors, dark), 40%) !default;
     }
 
     .card-information {
-        @extend small, .dimmed;
+        @extend .dimmed;
+        font-size: 80%;
         display: block;
         padding-top: rem(20);
     }

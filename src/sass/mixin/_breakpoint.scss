@@ -14,23 +14,26 @@ $breakpoints: (
 
     @if $range == 'small-only' {
         @media (max-width: #{$small-upper-boundary - 1}) { @content; }
-    } 
+    }
     @else if $range == 'medium-up' {
         @media (min-width: #{$small-upper-boundary}) { @content; }
-    } 
+    }
     @else if $range == 'medium-only' {
         @media (min-width: #{$small-upper-boundary}) and (max-width: #{$medium-upper-boundary - 1}) { @content; }
     }
     @else if $range == 'large-up' {
         @media (min-width: #{$medium-upper-boundary}) { @content; }
-    } 
+    }
     @else if $range == 'large-only' {
         @media (min-width: #{$medium-upper-boundary}) and (max-width: #{$large-upper-boundary - 1}) { @content; }
     }
     @else if $range == 'xlarge-up' {
         @media (min-width: #{$large-upper-boundary}) { @content; }
-    } 
+    }
     @else if $range == 'xlarge-only' {
         @media (min-width: #{$large-upper-boundary}) and (max-width: #{$xlarge-upper-boundary - 1}) { @content; }
+    }
+    @else if $range == 'xxlarge-up' {
+        @media (min-width: #{$xlarge-upper-boundary}) { @content; }
     }
 }

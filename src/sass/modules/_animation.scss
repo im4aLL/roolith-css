@@ -1,31 +1,12 @@
-
+$animation-easing: cubic-bezier(1.000, 0.000, 0.000, 1.000) !default;
+$animation-duration: 0.25s !default;
 
 @mixin roolith-animation() {
-
-    // [data-animation] {
-    //     visibility: hidden;
-    // }
-
-    // .animated[data-animation] {
-    //     visibility: visible;
-    //     animation-duration: 0.7s;
-    //     animation-fill-mode: both;
-    //     transition-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
-
-    //     @for $i from 1 to 20 {
-    //         &.delay-#{$i} { animation-delay: $i * 0.7s; }
-    //     }
-
-    //     @for $i from 1 to 20 {
-    //         &.delay-stagger-#{$i} { animation-delay: (#{$i*0.2s}); }
-    //     }
-    // }
-
     .animation {
         visibility: visible !important;
-        animation-duration: 0.25s;
+        animation-duration: $animation-duration;
         animation-fill-mode: both;
-        transition-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+        transition-timing-function: $animation-easing;
     }
 
     .fadeInUp {

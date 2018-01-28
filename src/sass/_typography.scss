@@ -88,7 +88,7 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
         text-decoration: underline;
     }
 
-    small {
+    small, .small {
         font-size: 80%;
     }
 

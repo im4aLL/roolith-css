@@ -1,10 +1,5 @@
 // Global
 $global-base-font-size: 100% !default;
-
-// $global-base-font: 'Ubuntu', sans-serif !default;           // Arial, Helvetica, sans-serif
-// $global-font-weight: 400 !default;                          // normal
-// $global-font-bold-weight: 700 !default;                     // bold
-
 $global-base-font: Arial, Helvetica, sans-serif !default;
 $global-font-weight: normal !default;
 $global-font-bold-weight: bold !default;
@@ -28,6 +23,7 @@ $grid-gutter: (
 ) !default;
 
 $grid-column-count: 12 !default;
+$grid-layout: css-grid !default;
 
 // colors
 $colors: (
@@ -43,6 +39,10 @@ $colors: (
     white: #ffffff
 ) !default;
 
+// animation
+$animation-easing: cubic-bezier(1.000, 0.000, 0.000, 1.000) !default;
+$animation-duration: 0.25s !default;
+
 // button
 $button-radius: rem(2) !default;
 $button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
@@ -50,3 +50,75 @@ $button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
 $button-base-white: #ffffff !default;
 $button-primary-color: map-get($colors, primary) !default;
 $button-secondary-color: map-get($colors, secondary) !default;
+
+// nav
+$nav-border-radius: rem(2) !default;
+$nav-link-color: map-get($colors, link) !default;
+$nav-dimmed-link-color: map-get($colors, black) !default;
+$nav-active-link-color: map-get($colors, primary) !default;
+$nav-spacing: rem(13) !default;
+$nav-primary-color: map-get($colors, primary) !default;
+
+// form
+$form-input-placeholder-color: lighten(map-get($colors, dark), 60%) !default;
+$form-input-border-color: lighten(map-get($colors, dark), 70%) !default;
+$form-input-hover-border-color: map-get($colors, link) !default;
+$form-input-focus-border-color: map-get($colors, primary) !default;
+$form-text-color: lighten(map-get($colors, dark), 50%) !default;
+$form-input-radius: rem(2) !default;
+$form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
+$form-disable-input-color: darken(map-get($colors, white), 5%) !default;
+$form-primary-color: darken(map-get($colors, white), 6%) !default;
+$form-primary-hover-color: map-get($colors, info) !default;
+$form-primary-focus-color: map-get($colors, white) !default;
+
+// table
+$table-header-border-color: lighten(map-get($colors, dark), 75%) !default;
+$table-border-color: lighten(map-get($colors, dark), 80%) !default;
+$table-header-font-weight: $global-font-bold-weight !default;
+$table-spacing: rem(10) !default;
+$table-row-hover-color: lighten(map-get($colors, dark), 85%) !default;
+$table-primary-header-color: lighten(map-get($colors, dark), 82%) !default;
+$table-row-striped-color: lighten(map-get($colors, dark), 85%) !default;
+$table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
+
+// img
+$img-radius: rem(2) !default;
+$img-caption-color: lighten(map-get($colors, dark), 40%) !default;
+
+// message
+$message-radius: rem(2) !default;
+
+// badge
+$badge-radius: rem(3) !default;
+
+// breadcrumb
+$breadcrumb-spacing: rem(10) !default;
+$breadcrumb-size: 80% !default;
+$breadcrumb-default-color: lighten(map-get($colors, dark), 40%) !default;
+$breadcrumb-sep-symbol: "/" !default;
+$breadcrumb-sep-color: lighten(map-get($colors, dark), 70%) !default;
+
+// card
+$card-radius: rem(2) !default;
+$card-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
+$card-header-footer-border: rem(1) solid lighten(map-get($colors, dark), 83%) !default;
+$card-header-footer-color: lighten(map-get($colors, dark), 40%) !default;
+
+// dropdown
+$dropdown-icons-size: rem(5) !default;
+$dropdown-icons-size-small: rem(4) !default;
+$dropdown-icons-size-large: rem(7) !default;
+$dropdown-width: rem(220) !default;
+$dropdown-background: darken(map-get($colors, white), 2%) !default;
+$dropdown-border-color: darken(map-get($colors, white), 15%) !default;
+$dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
+
+// modal
+$modal-background: rgba(map-get($colors, dark), 0.5) !default;
+$modal-content-background: map-get($colors, white) !default;
+$modal-content-radius: rem(2) !default;
+$modal-content-spacing: rem(20) !default;
+$modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0,0,0, 0.1) !default;
+$modal-border-color: darken(map-get($colors, white), 5%);
+$modal-layout: css-grid !default; // css-grid || traditional || flex

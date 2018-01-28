@@ -2,7 +2,7 @@
  * ===========================================================
  * roolith CSS framework
  *
- * @version 1.0.0
+ * @version 1.0.0 beta
  * @url http://roolith.com
  * ===========================================================
  */
@@ -10,8 +10,7 @@ html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small,
-.card-information, strike, strong, sub, sup, tt, var,
+small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -135,7 +134,7 @@ a {
 u {
   text-decoration: underline; }
 
-small, .card-information {
+small, .small {
   font-size: 80%; }
 
 code {
@@ -301,248 +300,6 @@ pre code {
 .fadeInRight {
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight; }
-
-.container {
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto; }
-
-.row {
-  padding-left: 0.625rem;
-  padding-right: 0.625rem; }
-  .row:before, .row:after {
-    content: "";
-    display: table; }
-  .row:after {
-    clear: both; }
-  @media (min-width: 640px) {
-    .row {
-      padding-left: 0.625rem;
-      padding-right: 0.625rem; } }
-  @media (min-width: 1024px) {
-    .row {
-      padding-left: 0.625rem;
-      padding-right: 0.625rem; } }
-
-.columns {
-  float: left;
-  padding-left: 0.625rem;
-  padding-right: 0.625rem; }
-  @media (min-width: 640px) {
-    .columns {
-      padding-left: 0.625rem;
-      padding-right: 0.625rem; } }
-  @media (min-width: 1024px) {
-    .columns {
-      padding-left: 0.625rem;
-      padding-right: 0.625rem; } }
-
-.column {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem; }
-  @media (min-width: 640px) {
-    .column {
-      padding-left: 1.25rem;
-      padding-right: 1.25rem; } }
-  @media (min-width: 1024px) {
-    .column {
-      padding-left: 1.25rem;
-      padding-right: 1.25rem; } }
-
-[class*="large-"], [class*="medium-"] {
-  width: 100%; }
-
-.small-1 {
-  width: 8.33333%; }
-
-.small-offset-1 {
-  margin-left: 8.33333%; }
-
-.small-2 {
-  width: 16.66667%; }
-
-.small-offset-2 {
-  margin-left: 16.66667%; }
-
-.small-3 {
-  width: 25%; }
-
-.small-offset-3 {
-  margin-left: 25%; }
-
-.small-4 {
-  width: 33.33333%; }
-
-.small-offset-4 {
-  margin-left: 33.33333%; }
-
-.small-5 {
-  width: 41.66667%; }
-
-.small-offset-5 {
-  margin-left: 41.66667%; }
-
-.small-6 {
-  width: 50%; }
-
-.small-offset-6 {
-  margin-left: 50%; }
-
-.small-7 {
-  width: 58.33333%; }
-
-.small-offset-7 {
-  margin-left: 58.33333%; }
-
-.small-8 {
-  width: 66.66667%; }
-
-.small-offset-8 {
-  margin-left: 66.66667%; }
-
-.small-9 {
-  width: 75%; }
-
-.small-offset-9 {
-  margin-left: 75%; }
-
-.small-10 {
-  width: 83.33333%; }
-
-.small-offset-10 {
-  margin-left: 83.33333%; }
-
-.small-11 {
-  width: 91.66667%; }
-
-.small-offset-11 {
-  margin-left: 91.66667%; }
-
-.small-12 {
-  width: 100%; }
-
-.small-offset-12 {
-  margin-left: 100%; }
-
-@media (min-width: 640px) {
-  .medium-1 {
-    width: 8.33333%; }
-  .medium-offset-1 {
-    margin-left: 8.33333%; }
-  .medium-2 {
-    width: 16.66667%; }
-  .medium-offset-2 {
-    margin-left: 16.66667%; }
-  .medium-3 {
-    width: 25%; }
-  .medium-offset-3 {
-    margin-left: 25%; }
-  .medium-4 {
-    width: 33.33333%; }
-  .medium-offset-4 {
-    margin-left: 33.33333%; }
-  .medium-5 {
-    width: 41.66667%; }
-  .medium-offset-5 {
-    margin-left: 41.66667%; }
-  .medium-6 {
-    width: 50%; }
-  .medium-offset-6 {
-    margin-left: 50%; }
-  .medium-7 {
-    width: 58.33333%; }
-  .medium-offset-7 {
-    margin-left: 58.33333%; }
-  .medium-8 {
-    width: 66.66667%; }
-  .medium-offset-8 {
-    margin-left: 66.66667%; }
-  .medium-9 {
-    width: 75%; }
-  .medium-offset-9 {
-    margin-left: 75%; }
-  .medium-10 {
-    width: 83.33333%; }
-  .medium-offset-10 {
-    margin-left: 83.33333%; }
-  .medium-11 {
-    width: 91.66667%; }
-  .medium-offset-11 {
-    margin-left: 91.66667%; }
-  .medium-12 {
-    width: 100%; }
-  .medium-offset-12 {
-    margin-left: 100%; } }
-
-@media (min-width: 1024px) {
-  .large-1 {
-    width: 8.33333%; }
-  .large-offset-1 {
-    margin-left: 8.33333%; }
-  .large-2 {
-    width: 16.66667%; }
-  .large-offset-2 {
-    margin-left: 16.66667%; }
-  .large-3 {
-    width: 25%; }
-  .large-offset-3 {
-    margin-left: 25%; }
-  .large-4 {
-    width: 33.33333%; }
-  .large-offset-4 {
-    margin-left: 33.33333%; }
-  .large-5 {
-    width: 41.66667%; }
-  .large-offset-5 {
-    margin-left: 41.66667%; }
-  .large-6 {
-    width: 50%; }
-  .large-offset-6 {
-    margin-left: 50%; }
-  .large-7 {
-    width: 58.33333%; }
-  .large-offset-7 {
-    margin-left: 58.33333%; }
-  .large-8 {
-    width: 66.66667%; }
-  .large-offset-8 {
-    margin-left: 66.66667%; }
-  .large-9 {
-    width: 75%; }
-  .large-offset-9 {
-    margin-left: 75%; }
-  .large-10 {
-    width: 83.33333%; }
-  .large-offset-10 {
-    margin-left: 83.33333%; }
-  .large-11 {
-    width: 91.66667%; }
-  .large-offset-11 {
-    margin-left: 91.66667%; }
-  .large-12 {
-    width: 100%; }
-  .large-offset-12 {
-    margin-left: 100%; } }
-
-.column .row,
-.row .row {
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: -0.625rem;
-  margin-right: -0.625rem; }
-  @media (min-width: 640px) {
-    .column .row,
-    .row .row {
-      margin-left: -0.625rem;
-      margin-right: -0.625rem; } }
-  @media (min-width: 1024px) {
-    .column .row,
-    .row .row {
-      margin-left: -0.625rem;
-      margin-right: -0.625rem; } }
-
-.newrow {
-  clear: left; }
 
 .container {
   max-width: 75rem;
@@ -1523,6 +1280,7 @@ input, textarea, select {
   padding-bottom: 1.25rem; }
 
 .card-information {
+  font-size: 80%;
   display: block;
   padding-top: 1.25rem; }
 
@@ -1787,20 +1545,109 @@ input, textarea, select {
     opacity: 0.7;
     filter: alpha(opacity=70); }
 
-.box {
-  width: 100%;
-  background: #ddd;
-  height: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 3px;
-  margin: 0.625rem 0; }
-  .grid .box {
-    margin: 0; }
+.stat {
+  text-align: center;
+  padding: 0.9375rem 0; }
+
+.stat-header {
+  display: block;
+  font-size: 0.75rem;
+  padding-bottom: 0.4375rem;
+  color: #545454; }
+
+.stat-body {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold; }
+
+.stat-footer {
+  display: block;
+  font-size: 0.75rem;
+  padding-top: 0.625rem;
+  color: #878787; }
+
+.show-small-only {
+  display: none; }
+  @media (max-width: 639px) {
+    .show-small-only {
+      display: block; } }
+
+.show-small-up {
+  display: none; }
+
+@media (max-width: 639px) {
+  .hide-small-only {
+    display: hide; } }
+
+.show-medium-only {
+  display: none; }
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .show-medium-only {
+      display: block; } }
+
+.show-medium-up {
+  display: none; }
+  @media (min-width: 640px) {
+    .show-medium-up {
+      display: block; } }
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hide-medium-only {
+    display: hide; } }
+
+@media (min-width: 640px) {
+  .hide-medium-up {
+    display: hide; } }
+
+.show-large-only {
+  display: none; }
+  @media (min-width: 1024px) and (max-width: 1199px) {
+    .show-large-only {
+      display: block; } }
+
+.show-large-up {
+  display: none; }
+  @media (min-width: 1024px) {
+    .show-large-up {
+      display: block; } }
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .hide-large-only {
+    display: hide; } }
+
+@media (min-width: 1024px) {
+  .hide-large-up {
+    display: hide; } }
+
+.show-xlarge-only {
+  display: none; }
+  @media (min-width: 1200px) and (max-width: 1439px) {
+    .show-xlarge-only {
+      display: block; } }
+
+.show-xlarge-up {
+  display: none; }
+  @media (min-width: 1200px) {
+    .show-xlarge-up {
+      display: block; } }
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .hide-xlarge-only {
+    display: hide; } }
+
+@media (min-width: 1200px) {
+  .hide-xlarge-up {
+    display: hide; } }
+
+.show-xxlarge-only {
+  display: none; }
+
+.show-xxlarge-up {
+  display: none; }
+  @media (min-width: 1440px) {
+    .show-xxlarge-up {
+      display: block; } }
+
+@media (min-width: 1440px) {
+  .hide-xxlarge-up {
+    display: hide; } }

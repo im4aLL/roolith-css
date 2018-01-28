@@ -2,63 +2,12 @@
  * ===========================================================
  * roolith CSS framework
  *
- * @version 1.0.0
+ * @version 1.0.0 beta
  * @url http://roolith.com
  * ===========================================================
  */
 
-@import "./function";
-@import "./mixin";
-@import "./settings";
-@import "./reset";
-@import "./base";
-@import "./typography";
-@import "./modules/animation";
-@import "./modules/grid";
-@import "./modules/css-grid";
-@import "./modules/button";
-@import "./modules/nav";
-@import "./modules/form";
-@import "./modules/table";
-@import "./modules/img";
-@import "./modules/message";
-@import "./modules/badge";
-@import "./modules/breadcrumb";
-@import "./modules/card";
-@import "./modules/dropdown";
-@import "./modules/modal";
+@import "./main";
 
-// @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
-
-@include roolith-reset();
-@include roolith-base();
-@include roolith-typography();
-@include roolith-animation();
-@include roolith-grid();
-@include roolith-css-grid();
-@include roolith-button();
-@include roolith-nav();
-@include roolith-form();
-@include roolith-table();
-@include roolith-img();
-@include roolith-message();
-@include roolith-badge();
-@include roolith-breadcrumb();
-@include roolith-card();
-@include roolith-dropdown();
-@include roolith-modal();
-
-.box {
-    width: 100%;
-    background: #ddd;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    margin: rem(10) 0;
-
-    .grid & {
-        margin: 0;
-    }
-}
+@include roolith-everything();
+// @include roolith-grid-only();
