@@ -27,11 +27,11 @@ $form-primary-focus-color: map-get($colors, white) !default;
         -webkit-border-radius: 0;
         outline: none;
 
-        .small & {
+        .form-field.small & {
             font-size: rem(12);
         }
 
-        .large & {
+        .form-field.large & {
             font-size: rem(16);
         }
     }
@@ -50,13 +50,13 @@ $form-primary-focus-color: map-get($colors, white) !default;
         padding-bottom: rem(8);
         display: block;
 
-        .small & {
+        .form-field.small & {
             font-size: rem(12);
             line-height: rem(16);
             padding-bottom: rem(5);
         }
 
-        .large & {
+        .form-field.large & {
             font-size: rem(16);
             line-height: rem(22);
         }
@@ -84,11 +84,11 @@ $form-primary-focus-color: map-get($colors, white) !default;
             box-shadow: 0 0 0 rem(2) rgba($form-input-focus-border-color, 0.3);
         }
 
-        .small & {
+        .form-field.small & {
             padding: rem(5) rem(7);
         }
 
-        .large & {
+        .form-field.large & {
             padding: rem(10) rem(12);
         }
     }
@@ -120,11 +120,11 @@ $form-primary-focus-color: map-get($colors, white) !default;
         font-size: rem(11);
         display: block;
 
-        .small & {
+        .form-field.small & {
             padding-top: rem(5);
         }
 
-        .large & {
+        .form-field.large & {
             font-size: rem(12);
             padding-top: rem(10);
         }
@@ -138,7 +138,7 @@ $form-primary-focus-color: map-get($colors, white) !default;
         display: block;
         color: $form-checkbox-label-color;
 
-        &.small {
+        &.form-field.small {
             font-size: rem(12);
             line-height: rem(18);
         }
@@ -150,7 +150,7 @@ $form-primary-focus-color: map-get($colors, white) !default;
         top: rem(4);
         margin: 0;
 
-        .small & {
+        .form-field.small & {
             top: rem(3);
         }
     }
@@ -174,11 +174,11 @@ $form-primary-focus-color: map-get($colors, white) !default;
             margin-right: 0;
         }
 
-        .small & {
+        .form-field.small & {
             font-size: rem(12);
         }
 
-        .large & {
+        .form-field.large & {
             font-size: rem(16);
         }
     }
@@ -201,7 +201,7 @@ $form-primary-focus-color: map-get($colors, white) !default;
             top: rem(1);
         }
 
-        .small & {
+        .form-field.small & {
             top: 0;
         }
     }

@@ -13,6 +13,7 @@
 @import "./reset";
 @import "./base";
 @import "./typography";
+@import "./modules/animation";
 @import "./modules/grid";
 @import "./modules/css-grid";
 @import "./modules/button";
@@ -25,12 +26,14 @@
 @import "./modules/breadcrumb";
 @import "./modules/card";
 @import "./modules/dropdown";
+@import "./modules/modal";
 
 // @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
 
 @include roolith-reset();
 @include roolith-base();
 @include roolith-typography();
+@include roolith-animation();
 @include roolith-grid();
 @include roolith-css-grid();
 @include roolith-button();
@@ -43,6 +46,7 @@
 @include roolith-breadcrumb();
 @include roolith-card();
 @include roolith-dropdown();
+@include roolith-modal();
 
 .box {
     width: 100%;

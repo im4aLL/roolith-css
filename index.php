@@ -13,7 +13,26 @@
 <body>
     <div class="container">
 
+
+
         <br><br>
+
+        <div style="height: 2000px">
+            <button class="button js-open-modal" data-modal="#modal">Open modal</button>
+        </div>
+
+        <div class="modal" id="modal">
+            <div class="modal-content large">
+                <div class="modal-header">Modal header <button class="modal-close">✖</button></div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis voluptatum illo, sunt neque saepe, rem beatae itaque perspiciatis porro cumque qui quos ipsum error rerum in eveniet amet vero officiis.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="button js-modal-close">Okay</button>
+                    <button class="button button-primary float-right js-modal-close">Close</button>
+                </div>
+            </div>
+        </div>
 
         <!-- <div class="column">
             <div class="dropdown">
@@ -735,5 +754,8 @@
         </div> -->
 
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="test.js"></script>
 </body>
 </html>

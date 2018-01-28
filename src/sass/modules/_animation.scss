@@ -1,0 +1,106 @@
+
+
+@mixin roolith-animation() {
+
+    // [data-animation] {
+    //     visibility: hidden;
+    // }
+
+    // .animated[data-animation] {
+    //     visibility: visible;
+    //     animation-duration: 0.7s;
+    //     animation-fill-mode: both;
+    //     transition-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+
+    //     @for $i from 1 to 20 {
+    //         &.delay-#{$i} { animation-delay: $i * 0.7s; }
+    //     }
+
+    //     @for $i from 1 to 20 {
+    //         &.delay-stagger-#{$i} { animation-delay: (#{$i*0.2s}); }
+    //     }
+    // }
+
+    .animation {
+        visibility: visible !important;
+        animation-duration: 0.25s;
+        animation-fill-mode: both;
+        transition-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+    }
+
+    .fadeInUp {
+        animation-name: fadeInUp;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 15%, 0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .fadeIn {
+        animation-name: fadeIn;
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    .fadeOut {
+        animation-name: fadeOut;
+    }
+
+
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translate3d(-20%, 0, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    .fadeInLeft {
+        animation-name: fadeInLeft;
+    }
+
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translate3d(20%, 0, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    .fadeInRight {
+        animation-name: fadeInRight;
+    }
+
+}

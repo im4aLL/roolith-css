@@ -1,0 +1,91 @@
+$modal-background: rgba(map-get($colors, dark), 0.5) !default;
+
+$modal-content-background: map-get($colors, white) !default;
+$modal-content-radius: rem(2) !default;
+$modal-content-spacing: rem(20) !default;
+$modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0,0,0, 0.1) !default;
+
+$modal-border-color: darken(map-get($colors, white), 5%);
+
+@mixin roolith-modal() {
+    .modal {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background: $modal-background;
+        z-index: 10;
+        grid-template-rows: minmax(rem(20), 2fr) auto minmax(rem(20), 2fr);
+        grid-template-areas: "header"
+                             "body"
+                             "footer";
+        display: none;
+        padding: 0 rem(20);
+
+        &.active {
+            display: grid;
+        }
+    }
+
+    .modal-content {
+        grid-area: body;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: rem(600);
+        overflow-y: auto;
+        background: $modal-content-background;
+        border-radius: $modal-content-radius;
+        box-shadow: $modal-content-shadow;
+        @extend .animation, .fadeInUp;
+
+        &.small {
+            max-width: rem(300);
+        }
+
+        &.large {
+            max-width: rem(800);
+        }
+
+        &.fluid {
+            max-width: 80%;
+        }
+    }
+
+    .modal-header {
+        @include clearfix();
+        padding: $modal-content-spacing;
+        border-bottom: rem(1) solid $modal-border-color;
+        font-size: rem(16);
+        line-height: rem(22);
+        font-weight: $global-font-bold-weight;
+    }
+
+    .modal-body {
+        padding: $modal-content-spacing;
+    }
+
+    .modal-footer {
+        @include clearfix();
+        padding: $modal-content-spacing;
+        border-top: rem(1) solid $modal-border-color;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        border: none;
+        padding: $modal-content-spacing;
+        line-height: rem(12);
+        z-index: 2;
+        cursor: pointer;
+        @include transition('opacity');
+
+        &:hover {
+            @include opacity(0.7);
+        }
+    }
+}

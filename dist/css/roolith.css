@@ -189,6 +189,119 @@ pre code {
 .float-right {
   float: right; }
 
+.animation, .modal-content {
+  visibility: visible !important;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  transition-timing-function: cubic-bezier(1, 0, 0, 1); }
+
+.fadeInUp, .modal-content {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp; }
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 15%, 0);
+    transform: translate3d(0, 15%, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 15%, 0);
+    transform: translate3d(0, 15%, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut; }
+
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-20%, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-20%, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft; }
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(20%, 0, 0);
+    transform: translate3d(20%, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(20%, 0, 0);
+    transform: translate3d(20%, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight; }
+
 .container {
   max-width: 75rem;
   margin-left: auto;
@@ -992,9 +1105,9 @@ input, textarea, select {
   font-size: 0.875rem;
   -webkit-border-radius: 0;
   outline: none; }
-  .small input, .small textarea, .small select {
+  .form-field.small input, .form-field.small textarea, .form-field.small select {
     font-size: 0.75rem; }
-  .large input, .large textarea, .large select {
+  .form-field.large input, .form-field.large textarea, .form-field.large select {
     font-size: 1rem; }
 
 .form-field {
@@ -1005,11 +1118,11 @@ input, textarea, select {
   line-height: 1.125rem;
   padding-bottom: 0.5rem;
   display: block; }
-  .small .form-label {
+  .form-field.small .form-label {
     font-size: 0.75rem;
     line-height: 1rem;
     padding-bottom: 0.3125rem; }
-  .large .form-label {
+  .form-field.large .form-label {
     font-size: 1rem;
     line-height: 1.375rem; }
   .form-label.right {
@@ -1037,9 +1150,9 @@ input, textarea, select {
     border-color: #0099FF;
     -webkit-box-shadow: 0 0 0 0.125rem rgba(0, 153, 255, 0.3);
     box-shadow: 0 0 0 0.125rem rgba(0, 153, 255, 0.3); }
-  .small .form-input, .small .form-textarea, .small .form-select {
+  .form-field.small .form-input, .form-field.small .form-textarea, .form-field.small .form-select {
     padding: 0.3125rem 0.4375rem; }
-  .large .form-input, .large .form-textarea, .large .form-select {
+  .form-field.large .form-input, .form-field.large .form-textarea, .form-field.large .form-select {
     padding: 0.625rem 0.75rem; }
 
 .form-primary .form-input, .form-primary .form-textarea, .form-primary .form-select {
@@ -1062,9 +1175,9 @@ input, textarea, select {
   color: #a1a1a1;
   font-size: 0.6875rem;
   display: block; }
-  .small .form-text {
+  .form-field.small .form-text {
     padding-top: 0.3125rem; }
-  .large .form-text {
+  .form-field.large .form-text {
     font-size: 0.75rem;
     padding-top: 0.625rem; }
 
@@ -1075,7 +1188,7 @@ input, textarea, select {
   padding-left: 1.5625rem;
   display: block;
   color: #545454; }
-  .form-checkbox-label.small {
+  .form-checkbox-label.form-field.small {
     font-size: 0.75rem;
     line-height: 1.125rem; }
 
@@ -1084,7 +1197,7 @@ input, textarea, select {
   left: 0;
   top: 0.25rem;
   margin: 0; }
-  .small .form-check-input {
+  .form-field.small .form-check-input {
     top: 0.1875rem; }
 
 .form-radio-item {
@@ -1095,9 +1208,9 @@ input, textarea, select {
   .vertical .form-radio-item {
     display: block;
     margin-right: 0; }
-  .small .form-radio-item {
+  .form-field.small .form-radio-item {
     font-size: 0.75rem; }
-  .large .form-radio-item {
+  .form-field.large .form-radio-item {
     font-size: 1rem; }
 
 .vertical .form-radio-item {
@@ -1112,7 +1225,7 @@ input, textarea, select {
   top: 0.125rem; }
   .vertical .form-radio {
     top: 0.0625rem; }
-  .small .form-radio {
+  .form-field.small .form-radio {
     top: 0; }
 
 .form-radio-items {
@@ -1596,6 +1709,83 @@ input, textarea, select {
   height: 0.0625rem;
   background: #ebebeb;
   display: block; }
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(33, 33, 33, 0.5);
+  z-index: 10;
+  grid-template-rows: minmax(1.25rem, 2fr) auto minmax(1.25rem, 2fr);
+  grid-template-areas: "header" "body" "footer";
+  display: none;
+  padding: 0 1.25rem; }
+  .modal.active {
+    display: grid; }
+
+.modal-content {
+  grid-area: body;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 37.5rem;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 0.125rem;
+  -webkit-box-shadow: 0 0.3125rem 0.3125rem 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.3125rem 0.3125rem 0 rgba(0, 0, 0, 0.1); }
+  .modal-content.small {
+    max-width: 18.75rem; }
+  .modal-content.large {
+    max-width: 50rem; }
+  .modal-content.fluid {
+    max-width: 80%; }
+
+.modal-header {
+  padding: 1.25rem;
+  border-bottom: 0.0625rem solid #f2f2f2;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  font-weight: bold; }
+  .modal-header:before, .modal-header:after {
+    content: "";
+    display: table; }
+  .modal-header:after {
+    clear: both; }
+
+.modal-body {
+  padding: 1.25rem; }
+
+.modal-footer {
+  padding: 1.25rem;
+  border-top: 0.0625rem solid #f2f2f2; }
+  .modal-footer:before, .modal-footer:after {
+    content: "";
+    display: table; }
+  .modal-footer:after {
+    clear: both; }
+
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  padding: 1.25rem;
+  line-height: 0.75rem;
+  z-index: 2;
+  cursor: pointer;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out; }
+  .modal-close:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70); }
 
 .box {
   width: 100%;
