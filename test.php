@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>">
     <style>
-
+        .box { width: 100%; background-color: #ddd; padding: 10px; margin-bottom: 20px; text-align: center; border-radius: 2px; font-size: 80%; }
     </style>
 </head>
 <body>
@@ -501,11 +501,13 @@
             </div>
         </form> -->
 
-        <br><br>
+        <!-- <br><br>
 
-        <!-- <div class="column">
+        <div class="grid-column">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem qui molestias consequatur inventore. Perspiciatis odio vitae necessitatibus cum sunt, illo voluptas, placeat odit similique repellendus ipsam cumque autem dolorum quia?</p>
         </div>
+
+        <br><br>
 
         <div class="grid">
             <div class="cell"><div class="box">1</div></div>
@@ -529,6 +531,20 @@
             <div class="cell sm-4 md-6 lg-3"><div class="box">box</div></div>
             <div class="cell sm-4 md-6 lg-3"><div class="box">box</div></div>
             <div class="cell sm-12 md-6 lg-3"><div class="box">box</div></div>
+        </div>
+
+        <br><br>
+
+        <div class="grid">
+            <div class="cell lg-6"><div class="box">box</div></div>
+            <div class="cell lg-6">
+                <div class="box">box</div>
+
+                <div class="grid">
+                    <div class="cell lg-6"><div class="box">box</div></div>
+                    <div class="cell lg-12"><div class="box">box</div></div>
+                </div>
+            </div>
         </div> -->
 
         <!-- <div class="row">

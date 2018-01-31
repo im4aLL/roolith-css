@@ -32,6 +32,21 @@ $grid-css-grid-large-gutter: map-get($grid-gutter, 'large') !default;
         margin-right: auto;
     }
 
+    .grid-column {
+        padding-left: map-get($grid-gutter, 'small');
+        padding-right: map-get($grid-gutter, 'small');
+
+        @include breakpoint(medium-up) {
+            padding-left: map-get($grid-gutter, 'medium');
+            padding-right: map-get($grid-gutter, 'medium');
+        }
+
+        @include breakpoint(large-up) {
+            padding-left: map-get($grid-gutter, 'large');
+            padding-right: map-get($grid-gutter, 'large');
+        }
+    }
+
     .grid {
         @include add-css-grid-gutter();
         display: grid;
@@ -73,25 +88,9 @@ $grid-css-grid-large-gutter: map-get($grid-gutter, 'large') !default;
         }
     }
 
-    .column .row,
-    .row .row {
+    .grid-column .grid,
+    .grid .grid {
         padding-left: 0;
         padding-right: 0;
-        margin-left: - $grid-small-gutter;
-        margin-right: - $grid-small-gutter;
-
-        @include breakpoint(medium-up) {
-            margin-left: - $grid-medium-gutter;
-            margin-right: - $grid-medium-gutter;
-        }
-
-        @include breakpoint(large-up) {
-            margin-left: - $grid-large-gutter;
-            margin-right: - $grid-large-gutter;
-        }
-    }
-
-    .newrow {
-        clear: left;
     }
 }

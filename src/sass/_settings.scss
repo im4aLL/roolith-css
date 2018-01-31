@@ -23,7 +23,7 @@ $grid-gutter: (
 ) !default;
 
 $grid-column-count: 12 !default;
-$grid-layout: traditional !default;             // css-grid
+$grid-layout: css-grid !default;             // css-grid || traditional
 
 // colors
 $colors: (
