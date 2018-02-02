@@ -1,0 +1,43 @@
+$accordion-border-color: rgba(map-get($colors, dark), 0.1) !default;
+
+@mixin roolith-accordion() {
+
+    .accordion {
+        border-top: rem(1) solid $accordion-border-color;
+    }
+
+    .accordion-item {
+        padding: rem(10) 0;
+        border-bottom: rem(1) solid $accordion-border-color;
+    }
+
+    .accordion-item-title {
+        font-size: rem(14);
+        line-height: rem(20);
+        font-weight: $global-font-bold-weight;
+        position: relative;
+        padding: rem(5) 0;
+        cursor: pointer;
+
+        &:after {
+            content: "›";
+            position: absolute;
+            right: 0;
+            top: rem(5);
+        }
+    }
+
+    .active .accordion-item-title:after {
+        transform: rotate(-90deg);
+    }
+
+    .accordion-item-body {
+        display: none;
+        padding: rem(10) 0 0;
+
+        .active & {
+            display: block;
+        }
+    }
+
+}

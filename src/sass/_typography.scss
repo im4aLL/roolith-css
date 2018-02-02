@@ -101,6 +101,21 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
         background: #F1F1F1;
         border: rem(1) solid #E1E1E1;
         border-radius: rem(3);
+        overflow: auto;
+
+        &::-webkit-scrollbar-track {
+            background-color: #F5F5F5;
+        }
+
+        &::-webkit-scrollbar {
+            width: rem(4);
+            height: rem(4);
+            background-color: #F5F5F5;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #CCCCCC;
+        }
     }
 
     .dimmed {
@@ -138,6 +153,66 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
             white-space: pre;
             line-height: rem(18);
         }
+    }
+
+    hr {
+        border: 0;
+        height: 0;
+        border-top: rem(1) solid rgba(map-get($colors, dark), 0.1);
+        border-bottom: rem(1) solid rgba(map-get($colors, white), 0.3);
+        margin: rem(15) 0;
+    }
+
+    dl {
+        font-size: rem(14);
+        line-height: rem(22);
+    }
+
+    dt {
+        font-weight: $global-font-bold-weight;
+        padding: 0 0 rem(5);
+    }
+
+    dd {
+        padding: 0 0 rem(15);
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        .indented-list & {
+            padding-left: rem(30);
+        }
+    }
+
+    blockquote {
+        font-size: rem(14);
+        line-height: rem(22);
+        color: lighten(map-get($colors, dark), 30%);
+        border-left: rem(3) solid lighten(map-get($colors, dark), 60%);
+        padding-left: rem(20);
+
+        cite {
+            &:before {
+                content: " — ";
+            }
+
+            font-size: 80%;
+            display: block;
+            padding-top: rem(10);
+        }
+    }
+
+    abbr {
+        border-bottom: rem(1) dotted lighten(map-get($colors, dark), 30%);
+        cursor: help;
+        text-decoration: none;
+    }
+
+    kbd {
+        @extend code;
+        background: lighten(map-get($colors, info), 20%);
+        border: rem(1) solid map-get($colors, info);
     }
 
     .full-width {

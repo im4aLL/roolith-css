@@ -95,4 +95,9 @@ $table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
             }
         }
     }
+
+    .table-responsive {
+        max-width: 100%;
+        overflow-x: auto;
+    }
 }

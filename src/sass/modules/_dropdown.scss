@@ -42,7 +42,7 @@ $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
         line-height: rem(22);
         background-color: $dropdown-background;
         border: rem(1) solid $dropdown-border-color;
-        margin-top: rem(2);
+        margin-top: rem(-1);
         border-radius: rem(2);
         box-shadow: $dropdown-shadow;
         z-index: 2;

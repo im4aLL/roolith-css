@@ -17,4 +17,17 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // tab
+    $('.tab-title').click(function(event) {
+        let tabContent = $(this).attr('data-tab');
+        if($(tabContent).length > 0) {
+            $(tabContent).closest('.tab').find('.tab-content').removeClass('active');
+
+            $(tabContent).addClass('active');
+
+            $(this).closest('.tab-list').find('.tab-title').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
+
 });

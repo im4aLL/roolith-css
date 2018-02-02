@@ -1,0 +1,68 @@
+$tab-active-color: map-get($colors, primary);
+$tab-border-color: lighten(map-get($colors, dark), 80%);
+
+@mixin roolith-tab() {
+
+    .tab {
+
+    }
+
+    .tab-list {
+        @include clearfix();
+        border-bottom: rem(1) solid $tab-border-color;
+    }
+
+    .tab-title {
+        float: left;
+        font-size: rem(14);
+        font-weight: $global-font-bold-weight;
+        padding: rem(10) rem(20);
+        border-bottom: rem(2) solid transparent;
+        margin-bottom: rem(-1);
+        @include transition('color, border, background');
+
+        &:hover {
+            cursor: pointer;
+            color: $tab-active-color;
+            background: $tab-border-color;
+        }
+
+        &.active {
+            border-color: $tab-active-color;
+        }
+    }
+
+    .tab-list-fluid {
+        &:before, &:after {
+            display: none;
+        }
+        
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(rem(100), 1fr));
+
+        .tab-title {
+            float: none;
+            text-align: center;
+        }
+    }
+
+    .tab-list-center {
+        text-align: center;
+
+        .tab-title {
+            display: inline-block;
+            float: none;
+        }
+    }
+
+    .tab-content {
+        padding: rem(15) 0;
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
+}

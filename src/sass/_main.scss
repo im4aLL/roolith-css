@@ -19,6 +19,8 @@
 @import "./modules/dropdown";
 @import "./modules/modal";
 @import "./modules/stat";
+@import "./modules/accordion";
+@import "./modules/tab";
 @import "./modules/state";
 
 @mixin roolith-everything() {
@@ -44,6 +46,8 @@
     @include roolith-dropdown();
     @include roolith-modal();
     @include roolith-stat();
+    @include roolith-accordion();
+    @include roolith-tab();
     @include roolith-state();
 }
 

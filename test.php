@@ -12,7 +12,143 @@
 </head>
 <body>
     <div class="container">
+        
+        <br><br>
 
+        <!-- <div class="column">
+            
+            <div class="tab">
+                <ul class="tab-list tab-list-center">
+                    <li class="tab-title active" data-tab="#tab11">Tab one</li>
+                    <li class="tab-title" data-tab="#tab21">Tab two</li>
+                    <li class="tab-title" data-tab="#tab31">Tab three</li>
+                </ul>
+
+                <div class="tab-content active" id="tab11">
+                    <p>Tab one content with lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsa quibusdam quam quae doloremque optio eius asperiores corrupti consequuntur, sapiente pariatur repellendus aliquid praesentium facilis, vitae nam alias accusantium hic!</p>
+                </div>
+
+                <div class="tab-content" id="tab21">
+                    <p>Tab two content with lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsa quibusdam quam quae doloremque optio eius asperiores corrupti consequuntur, sapiente pariatur repellendus aliquid praesentium facilis, vitae nam alias accusantium hic! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid expedita eum nam veniam magni vel deleniti cupiditate. Quibusdam architecto, dolorem. Dolore dolores consequatur impedit, tempore dolor ducimus libero commodi possimus.</p>
+                </div>
+
+                <div class="tab-content" id="tab31">
+                    <p>Tab three content with lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsa quibusdam quam quae doloremque optio eius asperiores corrupti consequuntur, sapiente pariatur repellendus aliquid praesentium facilis, vitae nam alias accusantium hic!</p>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, aspernatur porro reprehenderit incidunt tempore totam deserunt quia quam, et praesentium amet mollitia facere numquam quaerat hic perspiciatis officia saepe ad.</p>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="tab">
+                <ul class="tab-list tab-list-fluid">
+                    <li class="tab-title active" data-tab="#tab12">Tab one</li>
+                    <li class="tab-title" data-tab="#tab22">Tab two</li>
+                    <li class="tab-title" data-tab="#tab32">Tab three</li>
+                </ul>
+
+                <div class="tab-content active" id="tab12">
+                    <p>Tab one content with lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsa quibusdam quam quae doloremque optio eius asperiores corrupti consequuntur, sapiente pariatur repellendus aliquid praesentium facilis, vitae nam alias accusantium hic!</p>
+                </div>
+
+                <div class="tab-content" id="tab22">
+                    <p>Tab two content with lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsa quibusdam quam quae doloremque optio eius asperiores corrupti consequuntur, sapiente pariatur repellendus aliquid praesentium facilis, vitae nam alias accusantium hic! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid expedita eum nam veniam magni vel deleniti cupiditate. Quibusdam architecto, dolorem. Dolore dolores consequatur impedit, tempore dolor ducimus libero commodi possimus.</p>
+                </div>
+
+                <div class="tab-content" id="tab32">
+                    <p>Tab three content with lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsa quibusdam quam quae doloremque optio eius asperiores corrupti consequuntur, sapiente pariatur repellendus aliquid praesentium facilis, vitae nam alias accusantium hic!</p>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, aspernatur porro reprehenderit incidunt tempore totam deserunt quia quam, et praesentium amet mollitia facere numquam quaerat hic perspiciatis officia saepe ad.</p>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="tab">
+                <ul class="tab-list">
+                    <li class="tab-title active" data-tab="#tab13">Tab one</li>
+                    <li class="tab-title" data-tab="#tab23">Tab two</li>
+                    <li class="tab-title" data-tab="#tab33">Tab three</li>
+                </ul>
+
+                <div class="tab-content active" id="tab13">
+                    <p>Tab one content with lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsa quibusdam quam quae doloremque optio eius asperiores corrupti consequuntur, sapiente pariatur repellendus aliquid praesentium facilis, vitae nam alias accusantium hic!</p>
+                </div>
+
+                <div class="tab-content" id="tab23">
+                    <p>Tab two content with lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsa quibusdam quam quae doloremque optio eius asperiores corrupti consequuntur, sapiente pariatur repellendus aliquid praesentium facilis, vitae nam alias accusantium hic! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid expedita eum nam veniam magni vel deleniti cupiditate. Quibusdam architecto, dolorem. Dolore dolores consequatur impedit, tempore dolor ducimus libero commodi possimus.</p>
+                </div>
+
+                <div class="tab-content" id="tab33">
+                    <p>Tab three content with lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsa quibusdam quam quae doloremque optio eius asperiores corrupti consequuntur, sapiente pariatur repellendus aliquid praesentium facilis, vitae nam alias accusantium hic!</p>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, aspernatur porro reprehenderit incidunt tempore totam deserunt quia quam, et praesentium amet mollitia facere numquam quaerat hic perspiciatis officia saepe ad.</p>
+                </div>
+            </div>
+
+        </div> -->
+
+        <!-- <div class="column">
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-item-title">Accordion title one</div>
+                    <div class="accordion-item-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, consectetur provident officia. Minus perspiciatis iure temporibus facere ratione corporis minima similique iusto aspernatur nemo animi nobis tempora, placeat ducimus totam!</p></div>
+                </div>
+                <div class="accordion-item active">
+                    <div class="accordion-item-title">Accordion title two</div>
+                    <div class="accordion-item-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, consectetur provident officia. Minus perspiciatis iure temporibus facere ratione corporis minima similique iusto aspernatur nemo animi nobis tempora, placeat ducimus totam!</p></div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-item-title">Accordion title three</div>
+                    <div class="accordion-item-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, consectetur provident officia. Minus perspiciatis iure temporibus facere ratione corporis minima similique iusto aspernatur nemo animi nobis tempora, placeat ducimus totam!</p></div>
+                </div>
+            </div>
+
+        </div> -->
+
+        <!-- <div class="column">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus et, quae, doloremque rerum deleniti perspiciatis molestias id inventore fuga cum asperiores laudantium quasi. Quaerat nulla, <abbr title="Some title">totam</abbr> quas ducimus. Modi, odit?</p>
+            <br>
+
+            <p>Press <kbd>Ctrl+R</kbd> for reload</p>
+        </div> -->
+
+        <!-- <div class="column">
+            <blockquote>
+                Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.
+                <cite>H. Rackham</cite>
+            </blockquote>
+        </div> -->
+
+        <!-- <div class="column">
+
+            <dl>
+                <dt>Lorem Ipsum Today</dt>
+                <dd>The passage continues to see frequent usage, with Lorem Ipsum text appearing often in print, graphic and web designs.</dd>
+                <dt>Original Lorem Ipsum Text</dt>
+                <dd>Here are the original Latin passages from which Lorem Ipsum was derived, paired with their 1914 translations by H. Rackham.</dd>
+            </dl>
+
+            <hr>
+
+            <dl class="indented-list">
+                <dt>Lorem Ipsum Today</dt>
+                <dd>The passage continues to see frequent usage, with Lorem Ipsum text appearing often in print, graphic and web designs.</dd>
+                <dt>Original Lorem Ipsum Text</dt>
+                <dd>Here are the original Latin passages from which Lorem Ipsum was derived, paired with their 1914 translations by H. Rackham.</dd>
+            </dl>
+
+        </div> -->
+
+        <!-- <div class="column">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam ratione, consectetur, facilis omnis porro repellendus maiores obcaecati sed illum quasi eveniet illo iusto, fuga? Debitis facilis qui minima accusantium obcaecati.</p>
+
+            <hr>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, nostrum eaque quibusdam blanditiis, beatae aliquam ab ad maxime praesentium. Earum id ullam harum quibusdam maxime iste, iusto laudantium provident nemo velit quae molestiae consectetur. Similique est porro dolor deleniti perspiciatis adipisci repellendus, aut earum explicabo dignissimos temporibus culpa optio, dolorem rem suscipit sint sunt distinctio commodi vitae reprehenderit, magnam, deserunt. Voluptatem repudiandae non quas, quos commodi sapiente ipsum ut harum odit dicta nostrum aliquid provident sed. Quo voluptatibus dolore provident beatae neque reprehenderit minus, veniam at nisi aliquam! Pariatur esse deleniti cupiditate, obcaecati mollitia aliquid laborum voluptatum ipsam explicabo laudantium.</p>
+        </div> -->
 
 
         <br><br>
@@ -79,7 +215,7 @@
 
             <br><br>
 
-            <div class="dropdown active">
+            <div class="dropdown">
                 <button class="button button-primary has-dropdown-icon">Dropdown</button>
                 <div class="dropdown-body">
                     <a class="dropdown-item" href="#">Action</a>
@@ -308,42 +444,64 @@
         </div> -->
 
         <!-- <div class="column">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Sex</th>
-                        <th>Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Dave Gamache</td>
-                        <td>26</td>
-                        <td>Male</td>
-                        <td>San Francisco</td>
-                    </tr>
-                    <tr>
-                        <td>Dwayne Johnson</td>
-                        <td>42</td>
-                        <td>Male</td>
-                        <td>Hayward</td>
-                    </tr>
-                    <tr>
-                        <td>Dave Gamache</td>
-                        <td>26</td>
-                        <td>Male</td>
-                        <td>San Francisco</td>
-                    </tr>
-                    <tr>
-                        <td>Dwayne Johnson</td>
-                        <td>42</td>
-                        <td>Male</td>
-                        <td>Hayward</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-bordered full-width">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Sex</th>
+                            <th>Location</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Sex</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dave Gamache</td>
+                            <td>26</td>
+                            <td>Male</td>
+                            <td>San Francisco</td>
+                            <td>Dave Gamache</td>
+                            <td>26</td>
+                            <td>Male</td>
+                            <td>San Francisco</td>
+                        </tr>
+                        <tr>
+                            <td>Dwayne Johnson</td>
+                            <td>42</td>
+                            <td>Male</td>
+                            <td>Hayward</td>
+                            <td>Dave Gamache</td>
+                            <td>26</td>
+                            <td>Male</td>
+                            <td>San Francisco</td>
+                        </tr>
+                        <tr>
+                            <td>Dave Gamache</td>
+                            <td>26</td>
+                            <td>Male</td>
+                            <td>San Francisco</td>
+                            <td>Dave Gamache</td>
+                            <td>26</td>
+                            <td>Male</td>
+                            <td>San Francisco</td>
+                        </tr>
+                        <tr>
+                            <td>Dwayne Johnson</td>
+                            <td>42</td>
+                            <td>Male</td>
+                            <td>Hayward</td>
+                            <td>Dave Gamache</td>
+                            <td>26</td>
+                            <td>Male</td>
+                            <td>San Francisco</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div> -->
 
         <!-- <div class="column">
@@ -637,20 +795,58 @@
 
         </div> -->
 
-        <!-- <div class="column">
-            <a class="button" href="#">Anchor button</a>
-            <button>Button element</button>
-            <input type="submit" value="Submit input">
-            <input type="button" value="Button input">
+        <div class="column">
+            <!-- <br><br>
+            
+            <button class="button disabled">Default button</button>
+            <button class="button button-outline">Outlined button</button>
+            <button class="button button-rounded">Rounded button</button>
 
-            <br><br>
+            <hr>
 
-            <a class="button button-primary" href="#">Anchor button</a>
-            <button class="button button-primary">Button element</button>
-            <input class="button button-primary" type="submit" value="Submit input">
-            <input class="button button-primary" type="button" value="Button input">
+            <button class="button button-small">Default button</button>
+            <button class="button button-outline button-small">Outlined button</button>
+            <button class="button button-rounded button-small">Rounded button</button>
 
-            <br><br>
+            <hr>
+
+            <button class="button button-medium">Default button</button>
+            <button class="button button-outline button-medium">Outlined button</button>
+            <button class="button button-rounded button-medium">Rounded button</button>
+
+            <hr>
+
+            <button class="button button-large">Default button</button>
+            <button class="button button-outline button-large">Outlined button</button>
+            <button class="button button-rounded button-large">Rounded button</button>
+
+            <hr>
+
+            <button class="button button-primary button-primary">Default button</button>
+            <button class="button button-primary button-outline">Outlined button</button>
+            <button class="button button-primary button-rounded">Rounded button</button>
+
+            <hr>
+
+            <button class="button button-primary button-small">Default button</button>
+            <button class="button button-primary button-outline button-small">Outlined button</button>
+            <button class="button button-primary button-rounded button-small">Rounded button</button>
+
+            <hr>
+
+            <button class="button button-primary button-medium disabled">Default button</button>
+            <button class="button button-primary button-outline button-medium">Outlined button</button>
+            <button class="button button-primary button-rounded button-medium">Rounded button</button>
+
+            <hr>
+
+            <button class="button button-primary button-large">Default button</button>
+            <button class="button button-primary button-outline button-large">Outlined button</button>
+            <button class="button button-primary button-rounded button-large">Rounded button</button>
+
+            <br><br> -->
+
+            <!-- <br><br>
 
             <a class="button button-small" href="#">Small</a>
             <a class="button button-primary button-small" href="#">Primary</a>
@@ -692,8 +888,8 @@
             <a class="button button-info button-large" href="#">Info</a>
             <a class="button button-success button-large" href="#">Success</a>
             <a class="button button-danger button-large" href="#">Danger</a>
-            <a class="button button-link button-large" href="#">Link</a>
-        </div> -->
+            <a class="button button-link button-large" href="#">Link</a> -->
+        </div>
 
         <!-- <div class="column">
             <h1>Heading</h1>

@@ -62,8 +62,10 @@ $form-primary-focus-color: map-get($colors, white) !default;
         }
 
         &.right {
-            text-align: right;
-            padding-top: rem(8);
+            @include breakpoint(large-up) {
+                padding-top: rem(8);
+                text-align: right;
+            }
         }
     }
 
