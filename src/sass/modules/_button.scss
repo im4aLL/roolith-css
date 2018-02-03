@@ -7,6 +7,13 @@ $button-base-white: #ffffff !default;
 $button-primary-color: map-get($colors, primary) !default;
 $button-secondary-color: map-get($colors, secondary) !default;
 
+@mixin button-loader-size($size: 20) {
+    width: rem($size);
+    height: rem($size);
+    margin-top: rem(-($size / 2));
+    margin-left: rem(-($size / 2));
+}
+
 @mixin roolith-button() {
     .button {
         display: inline-block;
@@ -23,6 +30,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
         height: rem(35);
         padding: 0 rem(20);
         color: lighten(map-get($colors, 'dark'), 20%);
+        position: relative;
         @include transition('background, color, box-shadow');
 
         &:hover {
@@ -50,6 +58,44 @@ $button-secondary-color: map-get($colors, secondary) !default;
                 box-shadow: none;
             }
         }
+
+        i {
+            float: left;
+            margin-right: rem(5);
+            position: relative;
+            top: rem(-1);
+            font-size: 120%;
+        }
+
+        &.loading {
+            position: relative;
+            text-indent: -9999px;
+            cursor: wait;
+            pointer-event: none;
+
+            &:after {
+                position: absolute;
+                content: '';
+                box-sizing: border-box;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                border-radius: 50%;
+                border: rem(2) solid darken($button-base-white, 20%);
+                border-top-color: darken($button-base-white, 70%);
+                animation: loading 0.6s linear infinite;
+                @include button-loader-size(20);
+            }
+        }
+    }
+
+    @keyframes loading {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
     .button-small {
@@ -58,6 +104,15 @@ $button-secondary-color: map-get($colors, secondary) !default;
         min-width: rem(50);
         height: rem(25);
         padding: 0 rem(10);
+
+        i {
+            top: 0;
+            font-size: 130%;
+        }
+
+        &.loading:after {
+            @include button-loader-size(12);
+        }
     }
 
     .button-medium {
@@ -66,6 +121,15 @@ $button-secondary-color: map-get($colors, secondary) !default;
         min-width: rem(50);
         height: rem(30);
         padding: 0 rem(12);
+
+        i {
+            top: 0;
+            font-size: 130%;
+        }
+
+        &.loading:after {
+            @include button-loader-size(16);
+        }
     }
 
     .button-large {
@@ -74,6 +138,16 @@ $button-secondary-color: map-get($colors, secondary) !default;
         min-width: rem(80);
         height: rem(45);
         padding: 0 rem(30);
+
+        i {
+            top: 0;
+            font-size: 140%;
+            margin-right: rem(8);
+        }
+
+        &.loading:after {
+            @include button-loader-size(24);
+        }
     }
 
     .button-rounded {
@@ -122,6 +196,11 @@ $button-secondary-color: map-get($colors, secondary) !default;
                         background: lighten($value, 3%);
                         color: map-get($colors, white);
                     }
+                }
+
+                &.loading:after {
+                    border: rem(2) solid rgba($button-base-white, 0.3);
+                    border-top-color: $button-base-white;
                 }
             }
         }

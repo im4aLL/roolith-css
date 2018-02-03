@@ -1,0 +1,85 @@
+
+
+@mixin roolith-article() {
+
+    .article {
+
+        p {
+            padding: 0 0 rem(20);
+        }
+
+        .fig {
+            margin: 0 0 rem(20);
+        }
+
+        .list {
+            padding: 0 0 rem(20);
+        }
+
+        blockquote {
+            margin: 0 0 rem(20);
+        }
+
+        dl {
+            margin: 0 0 rem(20);
+        }
+
+        aside {
+            @extend .small, .dimmed;
+            padding-bottom: rem(20);
+        }
+
+        > *:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    .article-header {
+        padding: 0 0 rem(25);
+    }
+
+    .article-subheader {
+        font-size: 60%;
+        font-weight: $global-font-weight;
+        line-height: 1;
+        @include opacity(0.5);
+
+        &.blocked {
+            display: block;
+        }
+    }
+
+    .article-primary {
+        display: grid;
+        grid-template-columns: rem(10) 1fr rem(10);
+        grid-column-gap: rem(20);
+
+        @include breakpoint(medium-up) {
+            grid-template-columns: rem(100) 1fr rem(100);
+        }
+
+        & > * {
+            grid-column: 2;
+            min-width: 0;
+        }
+
+        & > .fig,
+        & > blockquote {
+            grid-column: 1 / -1;
+
+            @include breakpoint(medium-up) {
+                margin: rem(20) rem(40) rem(40);
+            }
+        }
+
+        & > aside {
+            font-style: italic;
+            @extend .small, .dimmed;
+
+            @include breakpoint(large-up) {
+                grid-column: 3;
+            }
+        }
+    }
+
+}

@@ -6,17 +6,214 @@
     <title>roolith CSS framework</title>
 
     <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>">
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <style>
-        .box { width: 100%; background-color: #ddd; padding: 10px; margin-bottom: 20px; text-align: center; border-radius: 2px; font-size: 80%; }
+        .box-demo { width: 100%; background-color: #ddd; padding: 10px; margin-bottom: 20px; text-align: center; border-radius: 2px; font-size: 80%; }
     </style>
 </head>
 <body>
     <div class="container">
-        
+
         <br><br>
 
-        <!-- <div class="column">
-            
+        <div class="column">
+            <article class="article article-primary">
+                <h3 class="article-header">Article header <span class="article-subheader blocked">This is a subheader</span></h3>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod iusto totam consequatur consequuntur modi libero vel nostrum, molestias ab dolorem officia dignissimos at, sed cumque adipisci. Iure quis facere, a!</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus eos nisi labore soluta velit deleniti, dolor, sequi tenetur ipsa iste cupiditate nemo voluptatum ad repellendus eveniet quod <code>consequuntur</code>, a architecto laborum, provident distinctio autem deserunt illum. Tempora quis quae, laudantium adipisci sapiente ut totam perspiciatis dolorem nemo natus animi error unde <abbr title="mollitia">mollitia</abbr>, ipsum voluptates, qui aspernatur <u>magni</u> debitis non eum aperiam amet neque, quo sint. Deserunt quam porro fugiat, totam ipsa laboriosam id eius explicabo odio, nulla iste nihil suscipit in. Non assumenda expedita placeat libero, neque ex animi, laudantium reprehenderit accusamus rerum est, aperiam minima modi esse vel quisquam.</p>
+
+                <figure class="fig">
+                    <img src="http://placehold.it/1400x500" alt="" class="img-full-width">
+                    <figcaption class="fig-caption">A caption for the above image.</figcaption>
+                </figure>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt non consequatur dolorum, molestias unde placeat minima culpa? Perspiciatis id est illum, quaerat a unde in dignissimos cumque, nisi rem similique atque quis doloribus cum ea eos ut temporibus natus necessitatibus! Maiores nobis nemo, provident, iure vel soluta voluptates facilis dolorum consequatur suscipit eos non eius corporis. Voluptates, incidunt officiis possimus rem magnam labore vero earum quos voluptatibus, doloremque numquam tenetur, ex iure commodi illo molestias ullam adipisci! Consequatur minus voluptate facere sit, doloribus laboriosam quia dolores. Porro aperiam sit repudiandae odit cupiditate soluta nisi debitis, excepturi deleniti dolores, odio voluptas nam laudantium magnam, minima provident vero commodi velit esse numquam recusandae quod alias dolore. Eaque nulla repudiandae, similique, libero ullam dolorum ex? Reiciendis magnam voluptate voluptas quia, quas ab eveniet, dolorum debitis unde, repudiandae similique optio nam atque eius architecto, quae? Odit nesciunt, provident voluptate laborum rerum mollitia tenetur ea.</p>
+
+                <aside>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</aside>
+
+                <ul class="list">
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                    <li>Aliquam tincidunt mauris eu risus.
+                        <ul>
+                            <li>Quae at provident aperiam mollitia?</li>
+                            <li>Ipsum voluptatum quam nulla cumque voluptas nobis et</li>
+                            <li>Sit laudantium error optio laborum quae at provident aperiam mollitia?</li>
+                        </ul>
+                    </li>
+                    <li>Vestibulum auctor dapibus neque.</li>
+                </ul>
+
+                <blockquote>
+                    Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.
+                    <cite>H. Rackham</cite>
+                </blockquote>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum amet quibusdam possimus in, quam delectus veniam commodi ea nemo excepturi est, suscipit impedit ut labore similique dignissimos maiores temporibus voluptatem!</p>
+
+                <p><small class="dimmed">Last updated 23 min ago</small></p>
+            </article>
+
+            <br><br><br><br>
+
+            <article class="article">
+                <h3 class="article-header">Article header <span class="article-subheader blocked">This is a subheader</span></h3>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod iusto totam consequatur consequuntur modi libero vel nostrum, molestias ab dolorem officia dignissimos at, sed cumque adipisci. Iure quis facere, a!</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus eos nisi labore soluta velit deleniti, dolor, sequi tenetur ipsa iste cupiditate nemo voluptatum ad repellendus eveniet quod <code>consequuntur</code>, a architecto laborum, provident distinctio autem deserunt illum. Tempora quis quae, laudantium adipisci sapiente ut totam perspiciatis dolorem nemo natus animi error unde <abbr title="mollitia">mollitia</abbr>, ipsum voluptates, qui aspernatur <u>magni</u> debitis non eum aperiam amet neque, quo sint. Deserunt quam porro fugiat, totam ipsa laboriosam id eius explicabo odio, nulla iste nihil suscipit in. Non assumenda expedita placeat libero, neque ex animi, laudantium reprehenderit accusamus rerum est, aperiam minima modi esse vel quisquam.</p>
+
+                <figure class="fig">
+                    <img src="http://placehold.it/600x200" alt="" class="img">
+                    <figcaption class="fig-caption">A caption for the above image.</figcaption>
+                </figure>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt non consequatur dolorum, molestias unde placeat minima culpa? Perspiciatis id est illum, quaerat a unde in dignissimos cumque, nisi rem similique atque quis doloribus cum ea eos ut temporibus natus necessitatibus! Maiores nobis nemo, provident, iure vel soluta voluptates facilis dolorum consequatur suscipit eos non eius corporis. Voluptates, incidunt officiis possimus rem magnam labore vero earum quos voluptatibus, doloremque numquam tenetur, ex iure commodi illo molestias ullam adipisci! Consequatur minus voluptate facere sit, doloribus laboriosam quia dolores. Porro aperiam sit repudiandae odit cupiditate soluta nisi debitis, excepturi deleniti dolores, odio voluptas nam laudantium magnam, minima provident vero commodi velit esse numquam recusandae quod alias dolore. Eaque nulla repudiandae, similique, libero ullam dolorum ex? Reiciendis magnam voluptate voluptas quia, quas ab eveniet, dolorum debitis unde, repudiandae similique optio nam atque eius architecto, quae? Odit nesciunt, provident voluptate laborum rerum mollitia tenetur ea.</p>
+
+                <pre><code>&lt;figure class=&quot;fig&quot;&gt;
+    &lt;img src=&quot;http://placehold.it/600x200&quot; alt=&quot;&quot; class=&quot;img&quot;&gt;
+    &lt;figcaption class=&quot;fig-caption&quot;&gt;A caption for the above image.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+                <ul class="list">
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                    <li>Aliquam tincidunt mauris eu risus.
+                        <ul>
+                            <li>Quae at provident aperiam mollitia?</li>
+                            <li>Ipsum voluptatum quam nulla cumque voluptas nobis et</li>
+                            <li>Sit laudantium error optio laborum quae at provident aperiam mollitia?</li>
+                        </ul>
+                    </li>
+                    <li>Vestibulum auctor dapibus neque.</li>
+                </ul>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum amet quibusdam possimus in, quam delectus veniam commodi ea nemo excepturi est, suscipit impedit ut labore similique dignissimos maiores temporibus voluptatem!</p>
+
+                <dl>
+                    <dt>Lorem Ipsum Today</dt>
+                    <dd>The passage continues to see frequent usage, with Lorem Ipsum text appearing often in print, graphic and web designs.</dd>
+                    <dt>Original Lorem Ipsum Text</dt>
+                    <dd>Here are the original Latin passages from which Lorem Ipsum was derived, paired with their 1914 translations by H. Rackham.</dd>
+                </dl>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, nesciunt, reiciendis. Ad minus autem, totam aliquam, officiis laborum nihil voluptatem eos quo cum natus nam eum accusamus, asperiores atque tempore mollitia? Perspiciatis laboriosam beatae esse facilis saepe ipsa illum doloremque doloribus natus nihil labore expedita assumenda nemo, alias deleniti eaque, inventore sunt autem animi ex. Debitis quas quasi quisquam illo eos et saepe optio excepturi, autem modi maiores, officia iste, quam cum numquam, nam omnis qui quibusdam aspernatur nihil repellendus? Nulla, magni, labore? Porro ut nemo ipsa, dignissimos, sunt deleniti ipsum nulla eligendi quo explicabo neque cumque excepturi, ad ex!</p>
+
+                <p><small class="dimmed">Last updated 23 min ago</small></p>
+            </article>
+        </div>
+
+        <!-- <div class="box">
+            <p class="box-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+
+        <div class="box">
+            <div class="box-header">Box header</div>
+            <div class="box-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        </div>
+
+        <div class="box">
+            <div class="box-header">Box header</div>
+            <p class="box-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="box-footer">Box footer</div>
+        </div>
+
+        <div class="box box-small">
+            <div class="box-header">Box header</div>
+            <p class="box-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="box-footer">Box footer</div>
+        </div>
+
+        <div class="box box-large">
+            <div class="box-header">Box header</div>
+            <p class="box-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="box-footer">Box footer</div>
+        </div>
+
+        <div class="box box-primary">
+            <div class="box-header">Box header</div>
+            <p class="box-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="box-footer">Box footer</div>
+        </div>
+
+        <div class="box box-secondary">
+            <div class="box-header">Box header</div>
+            <p class="box-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="box-footer">Box footer</div>
+        </div> -->
+
+        <!-- <br><br>
+        <button class="button loading">Download button with loading</button>
+        <button class="button button-medium loading">Download button with loading</button>
+        <button class="button button-small loading">Download button with loading</button>
+        <button class="button button-large loading">Download button with loading</button>
+
+        <br><br>
+        <button class="button button-primary loading">Download button with loading</button>
+        <button class="button button-primary button-medium loading">Download button with loading</button>
+        <button class="button button-primary button-small loading">Download button with loading</button>
+        <button class="button button-primary button-large loading">Download button with loading</button>
+
+        <br><br>
+        <button class="button button-dark loading">Download button with loading</button>
+        <button class="button button-dark button-medium loading">Download button with loading</button>
+        <button class="button button-dark button-small loading">Download button with loading</button>
+        <button class="button button-dark button-large loading">Download button with loading</button> -->
+
+        <!-- <br><br>
+
+        <button class="button button-primary"><i class="ion-android-download"></i> Download button with icon</button>
+
+        <br><br>
+
+        <button class="button button-small"><i class="ion-android-download"></i> Download button with icon</button>
+
+        <br><br>
+
+        <button class="button button-large button-primary"><i class="ion-android-download"></i> Download button with icon</button>
+
+        <br><br>
+
+        <button class="button button-medium"><i class="ion-android-download"></i> Download button with icon</button> -->
+
+        <!--
+        <div class="column">
+
             <div class="tab">
                 <ul class="tab-list tab-list-center">
                     <li class="tab-title active" data-tab="#tab11">Tab one</li>
@@ -87,7 +284,8 @@
                 </div>
             </div>
 
-        </div> -->
+        </div>
+        -->
 
         <!-- <div class="column">
 
@@ -224,7 +422,9 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </div>
-        </div> -->
+        </div>
+
+        <br><br><br><br><br><br><br><br> -->
 
         <!-- <div class="row">
             <div class="columns large-4">
@@ -567,13 +767,13 @@
             <br><br><br><br><br><br>
             <div class="row">
                 <div class="columns large-6">
-                    <div class="form-field">
+                    <div class="form-field error">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" name="name" id="name" class="form-input" placeholder="e.g James smith" readonly>
+                        <input type="text" name="name" id="name" class="form-input" placeholder="e.g James smith">
                         <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
                     </div>
 
-                    <div class="form-field">
+                    <div class="form-field success">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" name="email" id="email" class="form-input" placeholder="e.g james@example.com">
                         <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
@@ -639,13 +839,13 @@
                     </div>
 
                     <div class="form-field">
-                        <label class="form-checkbox-label small"><input type="checkbox" class="form-check-input"> I agree with the <a href="">terms and conditions</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum, libero molestias eaque debitis asperiores, sint ratione.</label>
+                        <label class="form-checkbox-demo-label small"><input type="checkbox-demo" class="form-check-input"> I agree with the <a href="">terms and conditions</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum, libero molestias eaque debitis asperiores, sint ratione.</label>
                     </div>
 
                 </div>
                 <div class="columns large-6">
 
-                    <div class="form-field">
+                    <div class="form-field warning">
                         <label for="message" class="form-label">Message</label>
                         <textarea name="message" id="message" class="form-textarea" placeholder="e.g Write something here!"></textarea>
                         <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
@@ -659,6 +859,8 @@
             </div>
         </form> -->
 
+        <br><br>
+
         <!-- <br><br>
 
         <div class="grid-column">
@@ -668,39 +870,39 @@
         <br><br>
 
         <div class="grid">
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
-            <div class="cell"><div class="box">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
+            <div class="cell"><div class="box-demo">1</div></div>
         </div>
 
         <br><br>
 
         <div class="grid">
-            <div class="cell sm-4 md-6 lg-3"><div class="box">box</div></div>
-            <div class="cell sm-4 md-6 lg-3"><div class="box">box</div></div>
-            <div class="cell sm-4 md-6 lg-3"><div class="box">box</div></div>
-            <div class="cell sm-12 md-6 lg-3"><div class="box">box</div></div>
+            <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+            <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+            <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+            <div class="cell sm-12 md-6 lg-3"><div class="box-demo">box-demo</div></div>
         </div>
 
         <br><br>
 
         <div class="grid">
-            <div class="cell lg-6"><div class="box">box</div></div>
+            <div class="cell lg-6"><div class="box-demo">box-demo</div></div>
             <div class="cell lg-6">
-                <div class="box">box</div>
+                <div class="box-demo">box-demo</div>
 
                 <div class="grid">
-                    <div class="cell lg-6"><div class="box">box</div></div>
-                    <div class="cell lg-12"><div class="box">box</div></div>
+                    <div class="cell lg-6"><div class="box-demo">box-demo</div></div>
+                    <div class="cell lg-12"><div class="box-demo">box-demo</div></div>
                 </div>
             </div>
         </div> -->
@@ -797,7 +999,7 @@
 
         <div class="column">
             <!-- <br><br>
-            
+
             <button class="button disabled">Default button</button>
             <button class="button button-outline">Outlined button</button>
             <button class="button button-rounded">Rounded button</button>
@@ -916,93 +1118,93 @@
         <!--
 
         <div class="row">
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
         </div>
 
         <div class="row">
-            <div class="columns large-2"><div class="box">2</div></div>
-            <div class="columns large-2"><div class="box">2</div></div>
-            <div class="columns large-2"><div class="box">2</div></div>
-            <div class="columns large-2"><div class="box">2</div></div>
-            <div class="columns large-2"><div class="box">2</div></div>
-            <div class="columns large-2"><div class="box">2</div></div>
+            <div class="columns large-2"><div class="box-demo">2</div></div>
+            <div class="columns large-2"><div class="box-demo">2</div></div>
+            <div class="columns large-2"><div class="box-demo">2</div></div>
+            <div class="columns large-2"><div class="box-demo">2</div></div>
+            <div class="columns large-2"><div class="box-demo">2</div></div>
+            <div class="columns large-2"><div class="box-demo">2</div></div>
         </div>
 
         <div class="row">
-            <div class="columns large-3"><div class="box">3</div></div>
-            <div class="columns large-3"><div class="box">3</div></div>
-            <div class="columns large-3"><div class="box">3</div></div>
-            <div class="columns large-3"><div class="box">3</div></div>
+            <div class="columns large-3"><div class="box-demo">3</div></div>
+            <div class="columns large-3"><div class="box-demo">3</div></div>
+            <div class="columns large-3"><div class="box-demo">3</div></div>
+            <div class="columns large-3"><div class="box-demo">3</div></div>
         </div>
 
         <div class="row">
-            <div class="columns large-4"><div class="box">4</div></div>
-            <div class="columns large-4"><div class="box">4</div></div>
-            <div class="columns large-4"><div class="box">4</div></div>
+            <div class="columns large-4"><div class="box-demo">4</div></div>
+            <div class="columns large-4"><div class="box-demo">4</div></div>
+            <div class="columns large-4"><div class="box-demo">4</div></div>
         </div>
 
         <div class="row">
-            <div class="columns large-1"><div class="box">1</div></div>
-            <div class="columns large-5"><div class="box">5</div></div>
-            <div class="columns large-5"><div class="box">5</div></div>
-            <div class="columns large-1"><div class="box">1</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
+            <div class="columns large-5"><div class="box-demo">5</div></div>
+            <div class="columns large-5"><div class="box-demo">5</div></div>
+            <div class="columns large-1"><div class="box-demo">1</div></div>
         </div>
 
         <div class="row">
-            <div class="columns large-6"><div class="box">6</div></div>
-            <div class="columns large-6"><div class="box">6</div></div>
+            <div class="columns large-6"><div class="box-demo">6</div></div>
+            <div class="columns large-6"><div class="box-demo">6</div></div>
         </div>
 
         <div class="row">
-            <div class="columns large-12"><div class="box">12</div></div>
+            <div class="columns large-12"><div class="box-demo">12</div></div>
         </div>
 
         <div class="row">
-            <div class="columns large-4 medium-6 small-12"><div class="box">large-4 medium-6 small-12</div></div>
-            <div class="columns large-4 medium-6 small-12"><div class="box">large-4 medium-6 small-12</div></div>
-            <div class="columns large-4 medium-6 small-12"><div class="box">large-4 medium-6 small-12</div></div>
-            <div class="columns large-4 medium-6 small-12"><div class="box">large-4 medium-6 small-12</div></div>
-            <div class="columns large-4 medium-6 small-12"><div class="box">large-4 medium-6 small-12</div></div>
-            <div class="columns large-4 medium-6 small-12"><div class="box">large-4 medium-6 small-12</div></div>
+            <div class="columns large-4 medium-6 small-12"><div class="box-demo">large-4 medium-6 small-12</div></div>
+            <div class="columns large-4 medium-6 small-12"><div class="box-demo">large-4 medium-6 small-12</div></div>
+            <div class="columns large-4 medium-6 small-12"><div class="box-demo">large-4 medium-6 small-12</div></div>
+            <div class="columns large-4 medium-6 small-12"><div class="box-demo">large-4 medium-6 small-12</div></div>
+            <div class="columns large-4 medium-6 small-12"><div class="box-demo">large-4 medium-6 small-12</div></div>
+            <div class="columns large-4 medium-6 small-12"><div class="box-demo">large-4 medium-6 small-12</div></div>
         </div> -->
 
         <!-- <div class="row">
             <div class="columns large-4 medium-6 small-6">
-                <div class="box">large-4 medium-6 small-6</div>
+                <div class="box-demo">large-4 medium-6 small-6</div>
 
                 <div class="row">
-                    <div class="columns large-6"><div class="box">large-6</div></div>
+                    <div class="columns large-6"><div class="box-demo">large-6</div></div>
                     <div class="columns large-6">
                         <div class="row">
-                            <div class="columns large-4"><div class="box">large-4</div></div>
-                            <div class="columns large-4"><div class="box">large-4</div></div>
-                            <div class="columns large-4"><div class="box">large-4</div></div>
+                            <div class="columns large-4"><div class="box-demo">large-4</div></div>
+                            <div class="columns large-4"><div class="box-demo">large-4</div></div>
+                            <div class="columns large-4"><div class="box-demo">large-4</div></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="columns large-4 medium-3 small-6">
-                <div class="box">large-4 medium-3 small-6</div>
+                <div class="box-demo">large-4 medium-3 small-6</div>
             </div>
             <div class="columns large-4 medium-3 small-12">
-                <div class="box">large-4 medium-3 small-12</div>
+                <div class="box-demo">large-4 medium-3 small-12</div>
             </div>
         </div> -->
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
     <script src="test.js"></script>
 </body>
 </html>

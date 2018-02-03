@@ -15,6 +15,10 @@ $form-primary-color: darken(map-get($colors, white), 6%) !default;
 $form-primary-hover-color: map-get($colors, info) !default;
 $form-primary-focus-color: map-get($colors, white) !default;
 
+$form-error-color: map-get($colors, danger) !default;
+$form-success-color: map-get($colors, success) !default;
+$form-warning-color: map-get($colors, info) !default;
+
 @mixin roolith-form() {
 
     ::placeholder {
@@ -67,6 +71,18 @@ $form-primary-focus-color: map-get($colors, white) !default;
                 text-align: right;
             }
         }
+
+        .error & {
+            color: $form-error-color;
+        }
+
+        .success & {
+            color: $form-success-color;
+        }
+
+        .warning & {
+            color: $form-warning-color;
+        }
     }
 
     .form-input {
@@ -92,6 +108,18 @@ $form-primary-focus-color: map-get($colors, white) !default;
 
         .form-field.large & {
             padding: rem(10) rem(12);
+        }
+
+        .error & {
+            border-color: $form-error-color;
+        }
+
+        .success & {
+            border-color: $form-success-color;
+        }
+
+        .warning & {
+            border-color: $form-warning-color;
         }
     }
 
@@ -130,6 +158,18 @@ $form-primary-focus-color: map-get($colors, white) !default;
             font-size: rem(12);
             padding-top: rem(10);
         }
+
+        .error & {
+            color: $form-error-color;
+        }
+
+        .success & {
+            color: $form-success-color;
+        }
+
+        .warning & {
+            color: $form-warning-color;
+        }
     }
 
     .form-checkbox-label {
@@ -159,6 +199,19 @@ $form-primary-focus-color: map-get($colors, white) !default;
 
     .form-select {
         @extend .form-input;
+        background: transparent;
+
+        &:not([multiple]) {
+            height: rem(36);
+        }
+
+        .form-field.small &:not([multiple]) {
+            height: rem(26);
+        }
+
+        .form-field.large &:not([multiple]) {
+            height: rem(40);
+        }
     }
 
     .form-file {
