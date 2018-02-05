@@ -1,0 +1,53 @@
+$progress-background: darken(map-get($colors, white), 5%) !default;
+$progress-background-shadow: 0 rem(2) rem(5) rgba(0, 0, 0, 0.05) inset !default;
+$progress-bar-color: darken(map-get($colors, white), 30%) !default;
+$progress-bar-radius: rem(2) !default;
+
+@mixin roolith-progress-bar() {
+
+    progress {
+        appearance: none;
+        width: 100%;
+        height: rem(10);
+        background: $progress-background;
+        border-radius: $progress-bar-radius;
+        border: none;
+    }
+
+    progress::-moz-progress-bar {
+        background: $progress-bar-color;
+    }
+
+    progress:not([value])::-moz-progress-bar {
+        background: $progress-background;
+    }
+
+    progress::-webkit-progress-bar {
+        background: $progress-background;
+        border-radius: 2px;
+        box-shadow: $progress-background-shadow;
+    }
+
+    progress::-webkit-progress-value {
+        background: $progress-bar-color;
+        border-radius: $progress-bar-radius;
+    }
+
+    progress:not([value])::-webkit-progress-bar {
+        background: $progress-background;
+    }
+
+    @each $name, $value in $colors {
+        @if($name != white)
+        {
+            .progress-#{$name}::-moz-progress-bar {
+                background: $value;
+            }
+
+            .progress-#{$name}::-webkit-progress-value {
+                background: $value;
+            }
+        }
+    }
+
+}

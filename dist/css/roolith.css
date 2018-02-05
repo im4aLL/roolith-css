@@ -2299,6 +2299,89 @@ input, textarea, select {
       .article-primary > aside {
         grid-column: 3; } }
 
+progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.625rem;
+  background: #f2f2f2;
+  border-radius: 0.125rem;
+  border: none; }
+
+progress::-moz-progress-bar {
+  background: #b3b3b3; }
+
+progress:not([value])::-moz-progress-bar {
+  background: #f2f2f2; }
+
+progress::-webkit-progress-bar {
+  background: #f2f2f2;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.05) inset;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.05) inset; }
+
+progress::-webkit-progress-value {
+  background: #b3b3b3;
+  border-radius: 0.125rem; }
+
+progress:not([value])::-webkit-progress-bar {
+  background: #f2f2f2; }
+
+.progress-primary::-moz-progress-bar {
+  background: #0099FF; }
+
+.progress-primary::-webkit-progress-value {
+  background: #0099FF; }
+
+.progress-secondary::-moz-progress-bar {
+  background: #373459; }
+
+.progress-secondary::-webkit-progress-value {
+  background: #373459; }
+
+.progress-tertiary::-moz-progress-bar {
+  background: #F4751A; }
+
+.progress-tertiary::-webkit-progress-value {
+  background: #F4751A; }
+
+.progress-info::-moz-progress-bar {
+  background: #F8BF16; }
+
+.progress-info::-webkit-progress-value {
+  background: #F8BF16; }
+
+.progress-success::-moz-progress-bar {
+  background: #9ECF91; }
+
+.progress-success::-webkit-progress-value {
+  background: #9ECF91; }
+
+.progress-danger::-moz-progress-bar {
+  background: #C40000; }
+
+.progress-danger::-webkit-progress-value {
+  background: #C40000; }
+
+.progress-link::-moz-progress-bar {
+  background: #67BCEF; }
+
+.progress-link::-webkit-progress-value {
+  background: #67BCEF; }
+
+.progress-dark::-moz-progress-bar {
+  background: #212121; }
+
+.progress-dark::-webkit-progress-value {
+  background: #212121; }
+
+.progress-black::-moz-progress-bar {
+  background: #000000; }
+
+.progress-black::-webkit-progress-value {
+  background: #000000; }
+
 .show-small-only {
   display: none; }
   @media (max-width: 639px) {

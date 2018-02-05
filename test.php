@@ -16,7 +16,11 @@
 
         <br><br>
 
-        <div class="column">
+        <progress value="30" max="100"></progress>
+        <br><br>
+        <progress class="progress-primary" value="30" max="100"></progress>
+
+        <!-- <div class="column">
             <article class="article article-primary">
                 <h3 class="article-header">Article header <span class="article-subheader blocked">This is a subheader</span></h3>
 
@@ -101,7 +105,7 @@
 
                 <p><small class="dimmed">Last updated 23 min ago</small></p>
             </article>
-        </div>
+        </div> -->
 
         <!-- <div class="box">
             <p class="box-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

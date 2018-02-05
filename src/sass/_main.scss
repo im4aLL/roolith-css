@@ -23,6 +23,7 @@
 @import "./modules/tab";
 @import "./modules/box";
 @import "./modules/article";
+@import "./modules/progress";
 @import "./modules/state";
 
 @mixin roolith-everything() {
@@ -52,6 +53,7 @@
     @include roolith-tab();
     @include roolith-box();
     @include roolith-article();
+    @include roolith-progress-bar();
     @include roolith-state();
 }
 
