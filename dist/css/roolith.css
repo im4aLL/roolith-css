@@ -3,7 +3,7 @@
  * ===========================================================
  * roolith CSS framework
  *
- * @version 1.0.2 beta
+ * @version 1.0.3
  * @url http://roolith.com
  * ===========================================================
  */
@@ -1870,7 +1870,9 @@ input, textarea, select {
   background: rgba(33, 33, 33, 0.5);
   z-index: 10;
   grid-template-rows: minmax(1.25rem, 2fr) auto minmax(1.25rem, 2fr);
-  grid-template-areas: "header" "body" "footer";
+  grid-template-areas: "header"
+ "body"
+ "footer";
   display: none;
   padding: 0 1.25rem; }
   .modal.active {

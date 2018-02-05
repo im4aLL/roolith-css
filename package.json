@@ -1,8 +1,8 @@
 {
   "name": "roolith-css",
-  "version": "1.0.2",
-  "description": "a CSS framework ",
-  "main": "index.js",
+  "version": "1.0.3",
+  "description": "A simple responsive CSS boilerplate",
+  "main": "./src/sass/roolith.scss",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,9 +14,9 @@
   "author": "Habib Hadi <me@habibhadi.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/im4aLL/roolith-css/issues"
+    "url": "https://github.com/im4aLL/roolith-css/issues"
   },
-  "homepage": "https://gitlab.com/im4aLL/roolith-css#README",
+  "homepage": "https://github.com/im4aLL/roolith-css/blob/master/readme.md",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
