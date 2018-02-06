@@ -122,3 +122,22 @@ $modal-content-spacing: rem(20) !default;
 $modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0,0,0, 0.1) !default;
 $modal-border-color: darken(map-get($colors, white), 5%);
 $modal-layout: css-grid !default; // css-grid || traditional || flex
+
+// accordion
+$accordion-border-color: rgba(map-get($colors, dark), 0.1) !default;
+
+// tab
+$tab-active-color: map-get($colors, primary) !default;
+$tab-border-color: lighten(map-get($colors, dark), 80%) !default;
+
+// box
+$box-spacing: rem(20) !default;
+$box-spacing-small: rem(15) !default;
+$box-spacing-large: rem(30) !default;
+$box-border-radius: rem(2) !default;
+
+// progress
+$progress-background: darken(map-get($colors, white), 5%) !default;
+$progress-background-shadow: 0 rem(2) rem(5) rgba(0, 0, 0, 0.05) inset !default;
+$progress-bar-color: darken(map-get($colors, white), 30%) !default;
+$progress-bar-radius: rem(2) !default;

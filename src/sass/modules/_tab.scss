@@ -1,5 +1,5 @@
-$tab-active-color: map-get($colors, primary);
-$tab-border-color: lighten(map-get($colors, dark), 80%);
+$tab-active-color: map-get($colors, primary) !default;
+$tab-border-color: lighten(map-get($colors, dark), 80%) !default;
 
 @mixin roolith-tab() {
 
@@ -36,7 +36,7 @@ $tab-border-color: lighten(map-get($colors, dark), 80%);
         &:before, &:after {
             display: none;
         }
-        
+
 
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(rem(100), 1fr));
