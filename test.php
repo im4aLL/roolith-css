@@ -28,12 +28,17 @@
                 <div class="collage-item collage-item-big">
                     <figure class="collage-fig">
                         <img class="fig-fit" src="https://picsum.photos/400/400?image=11" alt="">
-                        <figcaption class="collage-fig-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</figcaption>
+                        <figcaption class="collage-fig-caption visible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</figcaption>
                     </figure>
                 </div>
                 <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=13" alt=""></div>
                 <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=14" alt=""></div>
-                <div class="collage-item collage-item-wide"><img class="fig-fit" src="https://picsum.photos/400/200?image=15" alt=""></div>
+                <div class="collage-item collage-item-wide">
+                    <figure class="collage-fig">
+                        <img class="fig-fit" src="https://picsum.photos/400/400?image=15" alt="">
+                        <figcaption class="collage-fig-caption visible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</figcaption>
+                    </figure>
+                </div>
                 <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=16" alt=""></div>
                 <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=17" alt=""></div>
                 <div class="collage-item collage-item-tall"><img class="fig-fit" src="https://picsum.photos/200/400?image=18" alt=""></div>

@@ -2438,11 +2438,12 @@ progress:not([value])::-webkit-progress-bar {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  text-align: center;
   padding: 1.25rem;
-  background: rgba(33, 33, 33, 0.7);
+  background: rgba(0, 0, 0, 0.7);
   color: #ffffff;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
   opacity: 0;
   -webkit-transition-property: opacity;
   transition-property: opacity;
@@ -2450,6 +2451,13 @@ progress:not([value])::-webkit-progress-bar {
   transition-duration: 150ms;
   -webkit-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out; }
+  .collage-fig-caption.visible {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), to(rgba(0, 0, 0, 0.8)));
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
+    opacity: 1;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end; }
 
 .show-small-only {
   display: none; }
