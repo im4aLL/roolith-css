@@ -1,0 +1,77 @@
+$collage-item-default-width: rem(200) !default;
+$collage-item-default-height: rem(200) !default;
+$collage-item-default-gap: rem(10) !default;
+$collage-item-small-gap: rem(1) !default;
+$collage-item-large-gap: rem(20) !default;
+$collage-caption-background: rgba(map-get($colors, dark), 0.7) !default;
+$collage-caption-color: map-get($colors, white) !default;
+
+@mixin roolith-collage() {
+    
+    .collage {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax($collage-item-default-width, 1fr));
+        grid-auto-rows: $collage-item-default-height;
+        grid-gap: $collage-item-default-gap;
+        grid-auto-flow: dense;
+    }
+
+    .collage-small-gap {
+        grid-gap: $collage-item-small-gap;
+    }
+
+    .collage-large-gap {
+        grid-gap: $collage-item-large-gap;
+    }
+
+    .collage-no-gap {
+        grid-gap: 0;
+    }
+
+    .collage-item {
+        overflow: hidden;
+    }
+
+    .collage-item-big {
+        grid-row: span 2;
+        grid-column: span 2;
+    }
+
+    .collage-item-wide {
+        grid-column: span 2;
+    }
+
+    .collage-item-tall {
+        grid-row: span 2;
+    }
+
+    .collage-fig {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        &:hover .collage-fig-caption {
+            opacity: 1;
+        }
+    }
+
+    .collage-fig-caption {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: rem(20);
+        background: $collage-caption-background;
+        color: $collage-caption-color;
+        font-size: rem(14);
+        line-height: rem(20);
+        opacity: 0;
+        @include transition('opacity');
+    }
+
+}

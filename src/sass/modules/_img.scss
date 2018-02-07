@@ -11,6 +11,7 @@ $img-caption-color: lighten(map-get($colors, dark), 40%) !default;
     }
 
     .rounded {
+        overflow: hidden;
         @include border-radius($img-radius);
     }
 
@@ -23,5 +24,11 @@ $img-caption-color: lighten(map-get($colors, dark), 40%) !default;
         line-height: rem(18);
         color: $img-caption-color;
         padding-top: rem(3);
+    }
+
+    .fig-fit {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }

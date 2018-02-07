@@ -24,6 +24,7 @@
 @import "./modules/box";
 @import "./modules/article";
 @import "./modules/progress";
+@import "./modules/collage";
 @import "./modules/state";
 
 @mixin roolith-everything() {
@@ -54,6 +55,7 @@
     @include roolith-box();
     @include roolith-article();
     @include roolith-progress-bar();
+    @include roolith-collage();
     @include roolith-state();
 }
 

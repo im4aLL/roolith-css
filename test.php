@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <style>
         .box-demo { width: 100%; background-color: #ddd; padding: 10px; margin-bottom: 20px; text-align: center; border-radius: 2px; font-size: 80%; }
+        .box-demo-collage { width: 100%; height: 100%; background-color: #ddd; border-radius: 0; display: flex; justify-content: center; align-items: center; }
     </style>
 </head>
 <body>
@@ -16,9 +17,115 @@
 
         <br><br>
 
-        <progress value="30" max="100"></progress>
+        <div class="column">
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima nihil aliquam dolore voluptatum facere expedita quidem atque neque deserunt consequuntur explicabo, eligendi labore veritatis aperiam dicta, dolorem reiciendis nesciunt quasi!</p>
+
+            <br><br>
+
+            <section class="collage">
+                <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=10" alt=""></div>
+                <div class="collage-item collage-item-big">
+                    <figure class="collage-fig">
+                        <img class="fig-fit" src="https://picsum.photos/400/400?image=11" alt="">
+                        <figcaption class="collage-fig-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</figcaption>
+                    </figure>
+                </div>
+                <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=13" alt=""></div>
+                <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=14" alt=""></div>
+                <div class="collage-item collage-item-wide"><img class="fig-fit" src="https://picsum.photos/400/200?image=15" alt=""></div>
+                <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=16" alt=""></div>
+                <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=17" alt=""></div>
+                <div class="collage-item collage-item-tall"><img class="fig-fit" src="https://picsum.photos/200/400?image=18" alt=""></div>
+                <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=19" alt=""></div>
+                <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=110" alt=""></div>
+                <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=111" alt=""></div>
+                <div class="collage-item"><img class="fig-fit" src="https://picsum.photos/200/200?image=112" alt=""></div>
+                <div class="collage-item">
+                    <figure class="collage-fig">
+                        <img class="fig-fit" src="https://picsum.photos/200/200?image=113" alt="">
+                        <figcaption class="collage-fig-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <br><br>
+            
+            <section class="collage collage-small-gap">
+                <div class="collage-item"><div class="box-demo-collage">1</div></div>
+                <div class="collage-item collage-item-big"><div class="box-demo-collage">2</div></div>
+                <div class="collage-item"><div class="box-demo-collage">3</div></div>
+                <div class="collage-item"><div class="box-demo-collage">4</div></div>
+                <div class="collage-item collage-item-wide"><div class="box-demo-collage">5</div></div>
+                <div class="collage-item"><div class="box-demo-collage">6</div></div>
+                <div class="collage-item"><div class="box-demo-collage">7</div></div>
+                <div class="collage-item collage-item-tall"><div class="box-demo-collage">8</div></div>
+                <div class="collage-item"><div class="box-demo-collage">9</div></div>
+                <div class="collage-item"><div class="box-demo-collage">10</div></div>
+                <div class="collage-item"><div class="box-demo-collage">11</div></div>
+                <div class="collage-item"><div class="box-demo-collage">12</div></div>
+                <div class="collage-item"><div class="box-demo-collage">13</div></div>
+            </section>
+
+            <br><br>
+
+            <section class="collage collage-no-gap">
+                <div class="collage-item"><div class="box-demo-collage">1</div></div>
+                <div class="collage-item collage-item-big"><div class="box-demo-collage">2</div></div>
+                <div class="collage-item"><div class="box-demo-collage">3</div></div>
+                <div class="collage-item"><div class="box-demo-collage">4</div></div>
+                <div class="collage-item collage-item-wide"><div class="box-demo-collage">5</div></div>
+                <div class="collage-item"><div class="box-demo-collage">6</div></div>
+                <div class="collage-item"><div class="box-demo-collage">7</div></div>
+                <div class="collage-item collage-item-tall"><div class="box-demo-collage">8</div></div>
+                <div class="collage-item"><div class="box-demo-collage">9</div></div>
+                <div class="collage-item"><div class="box-demo-collage">10</div></div>
+                <div class="collage-item"><div class="box-demo-collage">11</div></div>
+                <div class="collage-item"><div class="box-demo-collage">12</div></div>
+                <div class="collage-item"><div class="box-demo-collage">13</div></div>
+            </section>
+
+            <br><br>
+
+            <section class="collage collage-large-gap">
+                <div class="collage-item"><div class="box-demo-collage">1</div></div>
+                <div class="collage-item collage-item-big"><div class="box-demo-collage">2</div></div>
+                <div class="collage-item"><div class="box-demo-collage">3</div></div>
+                <div class="collage-item"><div class="box-demo-collage">4</div></div>
+                <div class="collage-item collage-item-wide"><div class="box-demo-collage">5</div></div>
+                <div class="collage-item"><div class="box-demo-collage">6</div></div>
+                <div class="collage-item"><div class="box-demo-collage">7</div></div>
+                <div class="collage-item collage-item-tall"><div class="box-demo-collage">8</div></div>
+                <div class="collage-item"><div class="box-demo-collage">9</div></div>
+                <div class="collage-item"><div class="box-demo-collage">10</div></div>
+                <div class="collage-item"><div class="box-demo-collage">11</div></div>
+                <div class="collage-item"><div class="box-demo-collage">12</div></div>
+                <div class="collage-item"><div class="box-demo-collage">13</div></div>
+            </section>
+
+            <br><br>
+
+            <section class="collage">
+                <div class="collage-item"><div class="box-demo-collage">1</div></div>
+                <div class="collage-item collage-item-big"><div class="box-demo-collage">2</div></div>
+                <div class="collage-item"><div class="box-demo-collage">3</div></div>
+                <div class="collage-item"><div class="box-demo-collage">4</div></div>
+                <div class="collage-item collage-item-wide"><div class="box-demo-collage">5</div></div>
+                <div class="collage-item"><div class="box-demo-collage">6</div></div>
+                <div class="collage-item"><div class="box-demo-collage">7</div></div>
+                <div class="collage-item collage-item-tall"><div class="box-demo-collage">8</div></div>
+                <div class="collage-item"><div class="box-demo-collage">9</div></div>
+                <div class="collage-item"><div class="box-demo-collage">10</div></div>
+                <div class="collage-item"><div class="box-demo-collage">11</div></div>
+                <div class="collage-item"><div class="box-demo-collage">12</div></div>
+                <div class="collage-item"><div class="box-demo-collage">13</div></div>
+            </section>
+
+        </div>
+
+        <!-- <progress value="30" max="100"></progress>
         <br><br>
-        <progress class="progress-primary" value="30" max="100"></progress>
+        <progress class="progress-primary" value="30" max="100"></progress> -->
 
         <!-- <div class="column">
             <article class="article article-primary">
