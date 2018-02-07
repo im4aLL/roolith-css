@@ -33,3 +33,6 @@ Item with left or right image and header with content
 Progress animation with white shade coming from left to right 
 Rating 
 Sticky 
+
+cookie message
+offer popup with local session control
