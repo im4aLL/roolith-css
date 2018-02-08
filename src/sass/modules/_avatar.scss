@@ -1,0 +1,70 @@
+$avatar-default-size: rem(40) !default;
+$avatar-small-size: rem(30) !default;
+$avatar-label-color: map-get($colors, black) !default;
+
+@mixin roolith-avatar() {
+
+    .avatar {
+        position: relative;
+        padding-left: $avatar-default-size + rem(15);
+        min-height: $avatar-default-size;
+    }
+
+    .avatar-small {
+        padding-left: $avatar-small-size + rem(15);
+        min-height: $avatar-small-size;
+    }
+
+    .avatar-fig {
+        @include abs-pos(0, auto, auto, 0);
+        width: $avatar-default-size;
+        height: $avatar-default-size;
+
+        img {
+            @extend .fig-fit;
+        }
+
+        .avatar-small & {
+            width: $avatar-small-size;
+            height: $avatar-small-size;
+        }
+    }
+
+    .avatar-label {
+        font-size: rem(14);
+        line-height: rem(18);
+        font-weight: $global-font-bold-weight;
+        color: $avatar-label-color;
+        display: block;
+        padding: 0 0 rem(3);
+        @include transition('color');
+
+        span {
+            font-weight: $global-font-weight;
+        }
+
+        &:hover {
+            color: lighten($avatar-label-color, 20%);
+        }
+
+        .avatar-small & {
+            position: relative;
+            top: rem(6);
+        }
+    }
+
+    .avatar-primary-block {
+        font-size: rem(14);
+        line-height: rem(18);
+
+        > *:not(:last-child) {
+            margin: 0 rem(5) 0 0;
+        } 
+    }
+
+    .avatar-secondary-block {
+        padding: rem(5) 0 0;
+        @extend .small, .dimmed;
+    }
+
+}

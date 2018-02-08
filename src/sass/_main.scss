@@ -25,6 +25,7 @@
 @import "./modules/article";
 @import "./modules/progress";
 @import "./modules/collage";
+@import "./modules/avatar";
 @import "./modules/state";
 
 @mixin roolith-everything() {
@@ -56,6 +57,31 @@
     @include roolith-article();
     @include roolith-progress-bar();
     @include roolith-collage();
+    @include roolith-avatar();
+    @include roolith-state();
+}
+
+@mixin roolith-basic() {
+    @include roolith-reset();
+    @include roolith-base();
+    @include roolith-typography();
+    @include roolith-animation();
+    @if($grid-layout == css-grid) {
+        @include roolith-css-grid();
+    }
+    @else if($grid-layout == traditional) {
+        @include roolith-grid();
+    }
+    @include roolith-button();
+    @include roolith-nav();
+    @include roolith-form();
+    @include roolith-table();
+    @include roolith-img();
+    @include roolith-message();
+    @include roolith-badge();
+    @include roolith-breadcrumb();
+    @include roolith-dropdown();
+    @include roolith-modal();
     @include roolith-state();
 }
 

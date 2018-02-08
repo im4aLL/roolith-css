@@ -15,6 +15,11 @@ $img-caption-color: lighten(map-get($colors, dark), 40%) !default;
         @include border-radius($img-radius);
     }
 
+    .rounded-circle {
+        overflow: hidden;
+        border-radius: 50%;
+    }
+
     .fig-center {
         text-align: center;
     }

@@ -17,7 +17,52 @@
 
         <br><br>
 
-        <div class="column">
+        <!-- <div class="column">
+
+            <div class="avatar avatar-small">
+                <figure class="avatar-fig rounded">
+                    <img src="https://picsum.photos/40/40?image=500" alt="">
+                </figure>
+                <a href="#" class="avatar-label">Killmonger <span>@killmonger</span></a>
+            </div>
+
+            <hr>
+            
+            <div class="avatar">
+                <figure class="avatar-fig rounded">
+                    <img src="https://picsum.photos/40/40?image=500" alt="">
+                </figure>
+                <a href="#" class="avatar-label">Killmonger <span>@killmonger</span></a>
+                <div class="avatar-primary-block">
+                    <span>Uncollected</span>
+                    <a href="#">22k followers</a>
+                    <a href="#">1k following</a>
+                </div>
+                <div class="avatar-secondary-block">
+                    last seen 43 min ago
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="avatar">
+                <figure class="avatar-fig rounded-circle">
+                    <img src="https://picsum.photos/40/40?image=500" alt="">
+                </figure>
+                <a href="#" class="avatar-label">Killmonger <span>@killmonger</span></a>
+                <div class="avatar-primary-block">
+                    <span>Uncollected</span>
+                    <a href="#">22k followers</a>
+                    <a href="#">1k following</a>
+                </div>
+                <div class="avatar-secondary-block">
+                    last seen 43 min ago
+                </div>
+            </div>
+
+        </div> -->
+
+        <!-- <div class="column">
 
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima nihil aliquam dolore voluptatum facere expedita quidem atque neque deserunt consequuntur explicabo, eligendi labore veritatis aperiam dicta, dolorem reiciendis nesciunt quasi!</p>
 
@@ -126,7 +171,7 @@
                 <div class="collage-item"><div class="box-demo-collage">13</div></div>
             </section>
 
-        </div>
+        </div> -->
 
         <!-- <progress value="30" max="100"></progress>
         <br><br>
