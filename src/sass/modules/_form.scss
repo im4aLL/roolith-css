@@ -19,6 +19,142 @@ $form-error-color: map-get($colors, danger) !default;
 $form-success-color: map-get($colors, success) !default;
 $form-warning-color: map-get($colors, info) !default;
 
+@mixin form-search() {
+
+    .form-field-search {
+        position: relative;
+        padding: 0;
+
+        .form-input {
+            padding: rem(9) rem(12) rem(9) rem(34);
+        }
+
+        &.small .form-input {
+            padding: rem(5) rem(7) rem(5) rem(22);
+        }
+
+        &.large .form-input {
+            padding: rem(10) rem(12) rem(10) rem(34);
+        }
+
+        &.loading .form-input {
+            padding-right: rem(34);
+        }
+
+        &.loading.small .form-input {
+            padding-right: rem(22);
+        }
+
+        &.loading.large .form-input {
+            padding-right: rem(34);
+        }
+    }
+
+    .form-field-search-icon {
+        position: absolute;
+        left: rem(12);
+        top: rem(8);
+        z-index: 1;
+        height: 100%;
+        line-height: 100%;
+        font-size: 120%;
+        color: lighten(map-get($colors, dark), 60%);
+
+        .form-field-search.small & {
+            left: rem(7);
+            top: rem(6);
+        }
+
+        .form-field-search.large & {
+            font-size: 130%;
+            top: rem(10);
+        } 
+    }
+
+    .form-field-search-loading-icon {
+        @include loader(16);
+        @extend .loader;
+        position: absolute;
+        top: 50%;
+        right: rem(12);
+        transform: translateY(-50%);
+        z-index: 2;
+        display: none;
+
+        .form-field-search.loading & {
+            display: block;
+        }
+
+        .form-field-search.small & {
+            @include loader(12);
+            right: rem(7);
+        }
+
+        .form-field-search.large & {
+            
+        }
+    }
+
+    .form-field-search-hint {
+        position: absolute;
+        left: 0;
+        top: rem(40);
+        display: none;
+        z-index: 5;
+        font-size: rem(14);
+        line-height: rem(18);
+        background-color: darken(map-get($colors, white), 2%);
+        border: rem(1) solid darken(map-get($colors, white), 15%);
+        border-radius: rem(2);
+        box-shadow: $dropdown-shadow;
+        width: 100%;
+        max-height: rem(300);
+        overflow-y: auto;
+        @include nice-scroll();
+
+        .form-field-search.hint & {
+            display: block;
+        }
+
+        ul {
+            padding: rem(3) 0;
+        }
+
+        li {
+            border-bottom: rem(1) solid darken(map-get($colors, white), 5%);
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            a {
+                display: block;
+                padding: rem(7) rem(12);
+                @include transition('background, color');
+
+                &:hover {
+                    background-color: darken(map-get($colors, white), 5%)
+                }
+
+                .badge {
+                    float: right;
+                }
+            }
+        }
+
+        .form-field-search.large & {
+            top: rem(44);
+        }
+
+        .form-field-search.small & {
+            top: rem(30);
+            font-size: rem(12);
+            line-height: rem(14);
+        }
+    }
+
+}
+
 @mixin roolith-form() {
 
     ::placeholder {
@@ -277,5 +413,7 @@ $form-warning-color: map-get($colors, info) !default;
             box-shadow: none;
         }
     }
+
+    @include form-search();
 
 }

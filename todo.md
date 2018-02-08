@@ -1,4 +1,3 @@
-Avatar
 Search bar
 Search with autocomplete
 Tag

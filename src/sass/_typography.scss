@@ -103,20 +103,7 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
         border: rem(1) solid #E1E1E1;
         border-radius: rem(3);
         overflow: auto;
-
-        &::-webkit-scrollbar-track {
-            background-color: #F5F5F5;
-        }
-
-        &::-webkit-scrollbar {
-            width: rem(4);
-            height: rem(4);
-            background-color: #F5F5F5;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: #CCCCCC;
-        }
+        @include nice-scroll();
     }
 
     .dimmed {

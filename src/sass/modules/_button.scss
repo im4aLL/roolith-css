@@ -7,13 +7,6 @@ $button-base-white: #ffffff !default;
 $button-primary-color: map-get($colors, primary) !default;
 $button-secondary-color: map-get($colors, secondary) !default;
 
-@mixin button-loader-size($size: 20) {
-    width: rem($size);
-    height: rem($size);
-    margin-top: rem(-($size / 2));
-    margin-left: rem(-($size / 2));
-}
-
 @mixin roolith-button() {
     .button {
         display: inline-block;
@@ -73,27 +66,13 @@ $button-secondary-color: map-get($colors, secondary) !default;
             pointer-event: none;
 
             &:after {
-                position: absolute;
                 content: '';
-                box-sizing: border-box;
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                border-radius: 50%;
-                border: rem(2) solid darken($button-base-white, 20%);
-                border-top-color: darken($button-base-white, 70%);
-                animation: loading 0.6s linear infinite;
-                @include button-loader-size(20);
+                @include loader();
+                @extend .loader;
             }
-        }
-    }
-
-    @keyframes loading {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
         }
     }
 
@@ -110,7 +89,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
         }
 
         &.loading:after {
-            @include button-loader-size(12);
+            @include loader(12);
         }
     }
 
@@ -126,7 +105,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
         }
 
         &.loading:after {
-            @include button-loader-size(16);
+            @include loader(16);
         }
     }
 
@@ -143,7 +122,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
         }
 
         &.loading:after {
-            @include button-loader-size(24);
+            @include loader(24);
         }
     }
 

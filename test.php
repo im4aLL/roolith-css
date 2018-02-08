@@ -17,6 +17,66 @@
 
         <br><br>
 
+        <div class="row">
+            <div class="columns large-6 large-offset-3">
+
+                <form action="./" class="form">
+                    <div class="form-field form-field-search loading hint">
+                        <i class="form-field-search-icon ion-search"></i>
+                        <input type="text" name="" class="form-input" placeholder="Search ...">
+                        <i class="form-field-search-loading-icon"></i>
+
+                        <div class="form-field-search-hint">
+                            <ul>
+                                <li><a href="#">Afganistan</a></li>
+                                <li><a href="#">Srilanka <span class="badge badge-info">new</span></a></li>
+                                <li><a href="#">Bangladesh</a></li>
+                                <li><a href="#">United state</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <br><br><br><br><br><br><br><br><br><br>
+
+                    <div class="form-field form-field-search large loading hint">
+                        <i class="form-field-search-icon ion-search"></i>
+                        <input type="text" name="" class="form-input" placeholder="Search ...">
+                        <i class="form-field-search-loading-icon"></i>
+
+                        <div class="form-field-search-hint">
+                            <ul>
+                                <li><a href="#">Afganistan</a></li>
+                                <li><a href="#">Srilanka <span class="badge badge-info">new</span></a></li>
+                                <li><a href="#">Bangladesh</a></li>
+                                <li><a href="#">United state</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <br><br><br><br><br><br><br><br><br><br>
+
+                    <div class="form-field form-field-search small loading hint">
+                        <i class="form-field-search-icon ion-search"></i>
+                        <input type="text" name="" class="form-input" placeholder="Search ...">
+                        <i class="form-field-search-loading-icon"></i>
+
+                        <div class="form-field-search-hint">
+                            <ul>
+                                <li><a href="#">Afganistan</a></li>
+                                <li><a href="#">Srilanka <span class="badge badge-info">new</span></a></li>
+                                <li><a href="#">Bangladesh</a></li>
+                                <li><a href="#">United state</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                </form>
+
+            </div>
+        </div>
+
         <!-- <div class="column">
 
             <div class="avatar avatar-small">
