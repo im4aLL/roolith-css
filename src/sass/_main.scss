@@ -4,6 +4,7 @@
 @import "./reset";
 @import "./base";
 @import "./typography";
+@import "./modules/color";
 @import "./modules/animation";
 @import "./modules/grid";
 @import "./modules/css-grid";
@@ -27,6 +28,7 @@
 @import "./modules/collage";
 @import "./modules/avatar";
 @import "./modules/tag";
+@import "./modules/page";
 @import "./modules/state";
 
 @mixin roolith-everything() {
@@ -61,6 +63,8 @@
     @include roolith-collage();
     @include roolith-avatar();
     @include roolith-tag();
+    @include roolith-page();
+    @include roolith-color();
 
     @include roolith-state();
 }

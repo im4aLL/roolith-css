@@ -1,6 +1,3 @@
-Tag
-Tag autocomplete
-404 page or simple pages
 Toast notification
 Nav menu update with left icon and something on right
 Pagination

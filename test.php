@@ -6,7 +6,7 @@
     <title>roolith CSS framework</title>
 
     <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>">
-    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <style>
         .box-demo { width: 100%; background-color: #ddd; padding: 10px; margin-bottom: 20px; text-align: center; border-radius: 2px; font-size: 80%; }
         .box-demo-collage { width: 100%; height: 100%; background-color: #ddd; border-radius: 0; display: flex; justify-content: center; align-items: center; }
@@ -15,7 +15,27 @@
 <body>
     <div class="container">
 
-        <br><br>
+        <!-- <div class="column">
+
+            <div class="page page-normal">
+                <div class="page-content">
+                    <div class="page-icon color-success"><i class="ion-ios-checkmark"></i></div>
+                    <h2 class="page-header color-success">Success</h2>
+                    <div class="page-body">Thank you for your time! We shall keep you posted.</div>
+                    <div class="page-footer">Another additional note</div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-icon color-danger"><i class="ion-alert-circled"></i></div>
+                    <h2 class="page-header color-danger">404</h2>
+                    <div class="page-body">Sorry, the page you are looking for, doesn't exist or removed from server!</div>
+                    <div class="page-footer">404 page example</div>
+                </div>
+            </div>
+            
+        </div> -->
 
         <!-- <div class="column">
             <div class="form-field">
