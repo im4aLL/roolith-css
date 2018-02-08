@@ -17,7 +17,24 @@
 
         <br><br>
 
-        <div class="row">
+        <!-- <div class="column">
+            <div class="form-field">
+                <input type="text" name="" class="form-input" placeholder="Add tags">
+                
+                <div class="tags">
+                    <span class="tag">HTML5 <i class="tag-close">✖</i></span> 
+                    <span class="tag">JavaScript <i class="tag-close">✖</i></span> 
+                    <span class="tag">PHP <i class="tag-close">✖</i></span> 
+                    <span class="tag">MySql <i class="tag-close">✖</i></span>
+                </div>
+            </div>
+
+            <hr>
+            
+            <span class="tag">HTML5 <i class="tag-close">✖</i></span> <span class="tag">JavaScript</span> <span class="tag">PHP</span> <span class="tag">MySql</span>
+        </div> -->
+
+        <!-- <div class="row">
             <div class="columns large-6 large-offset-3">
 
                 <form action="./" class="form">
@@ -75,7 +92,7 @@
                 </form>
 
             </div>
-        </div>
+        </div> -->
 
         <!-- <div class="column">
 

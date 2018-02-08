@@ -1,5 +1,3 @@
-Search bar
-Search with autocomplete
 Tag
 Tag autocomplete
 404 page or simple pages

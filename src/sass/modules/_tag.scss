@@ -1,0 +1,33 @@
+$tag-color: map-get($colors, primary) !default;
+
+@mixin roolith-tag() {
+
+    .tag {
+        font-size: rem(12);
+        line-height: 1em;
+        display: inline-block;
+        background: lighten($tag-color, 45%);
+        border: rem(1) solid lighten($tag-color, 30%);
+        color: $tag-color;
+        padding: rem(4) rem(10);
+        border-radius: rem(25);
+    }
+
+    .tag-close {
+        display: inline-block;
+        border-left: rem(1) solid lighten($tag-color, 35%);
+        padding: 0 0 0 rem(5);
+        margin: 0 0 0 rem(5);
+        cursor: pointer;
+        @include transition('opacity');
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .tags {
+        padding: rem(10) 0 0;
+    }
+
+}

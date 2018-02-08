@@ -26,6 +26,7 @@
 @import "./modules/progress";
 @import "./modules/collage";
 @import "./modules/avatar";
+@import "./modules/tag";
 @import "./modules/state";
 
 @mixin roolith-everything() {
@@ -50,6 +51,7 @@
     @include roolith-card();
     @include roolith-dropdown();
     @include roolith-modal();
+    
     @include roolith-stat();
     @include roolith-accordion();
     @include roolith-tab();
@@ -58,6 +60,8 @@
     @include roolith-progress-bar();
     @include roolith-collage();
     @include roolith-avatar();
+    @include roolith-tag();
+
     @include roolith-state();
 }
 

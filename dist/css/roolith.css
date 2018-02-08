@@ -2653,6 +2653,34 @@ progress:not([value])::-webkit-progress-bar {
 .avatar-secondary-block {
   padding: 0.3125rem 0 0; }
 
+.tag {
+  font-size: 0.75rem;
+  line-height: 1em;
+  display: inline-block;
+  background: #e6f5ff;
+  border: 0.0625rem solid #99d6ff;
+  color: #0099FF;
+  padding: 0.25rem 0.625rem;
+  border-radius: 1.5625rem; }
+
+.tag-close {
+  display: inline-block;
+  border-left: 0.0625rem solid #b3e0ff;
+  padding: 0 0 0 0.3125rem;
+  margin: 0 0 0 0.3125rem;
+  cursor: pointer;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out; }
+  .tag-close:hover {
+    opacity: 0.7; }
+
+.tags {
+  padding: 0.625rem 0 0; }
+
 .show-small-only {
   display: none; }
   @media (max-width: 639px) {
