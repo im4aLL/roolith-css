@@ -1,0 +1,72 @@
+$comment-border: rgba(map-get($colors, dark), 0.1) !default;
+$comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
+
+@mixin roolith-comment() {
+
+    .comment-group {
+        border-top: rem(1) solid $comment-border;
+
+        .comment {
+            border-bottom: rem(1) solid $comment-border;
+        }
+    }
+
+    .comment {
+        padding: rem(20) rem(20) 0 rem(20);
+    }
+
+    .comment-body {
+        font-size: rem(14);
+        line-height: rem(22);
+        padding: rem(15) 0;
+
+        .comment-small & {
+            font-size: rem(12);
+            line-height: rem(18);
+            padding: rem(10) 0;
+        }
+    }
+
+    .comment-info {
+        @extend .small, .dimmed;
+        padding-bottom: rem(20);
+    }
+
+    .comment-action {
+        @include clearfix();
+        padding-bottom: rem(20);
+    }
+
+    .comment-action-item {
+        float: left;
+        padding: 0 rem(15) 0 0;
+        font-size: rem(14);
+        color: lighten(map-get($colors, dark), 30%);
+
+        span {
+            margin: 0 rem(5) 0 0;
+        }
+    }
+
+    .comment-action-item-link {
+        display: inline-block;
+        font-size: rem(14);
+        @include transition('color');
+    }
+
+    .comment-blurred {
+        filter: blur(rem(2));
+        opacity: 0.4;
+    }
+
+    .comment-highlight {
+        background: $comment-highlight-color;
+    }
+
+    @for $i from 1 through 10 {
+        .comment-indent-#{$i} {
+            margin-left: percentage($i / 20);
+        }
+    }
+
+}

@@ -15,6 +15,136 @@
 <body>
     <div class="container">
 
+        <br><br>
+
+        <div class="column">
+
+            <div class="comment-group">
+                <div class="comment">
+                    <div class="avatar avatar-small">
+                        <figure class="avatar-fig rounded">
+                            <img src="https://picsum.photos/40/40?image=500" alt="">
+                        </figure>
+                        <a href="#" class="avatar-label">Killmonger
+                            <span>@killmonger</span>
+                        </a>
+                    </div>
+                    <div class="comment-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim asperiores repellat officiis! Labore expedita libero vitae omnis vel ab, blanditiis ea sit delectus tenetur assumenda quo placeat quaerat voluptate id.
+                    </div>
+                    <div class="comment-info">23 min ago</div>
+                    <ul class="comment-action">
+                        <li class="comment-action-item"><span>2 likes</span> <a href="#" class="comment-action-item-link"><i class="ion-thumbsup"></i> Like</a></li>
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link"><i class="ion-reply"></i> Reply</a></li>
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link"><i class="ion-android-share-alt"></i> Share</a></li>
+                    </ul>
+                </div>
+
+                <div class="comment comment-indent-1">
+                    <div class="avatar avatar-small">
+                        <figure class="avatar-fig rounded">
+                            <img src="https://picsum.photos/40/40?image=500" alt="">
+                        </figure>
+                        <a href="#" class="avatar-label">Killmonger
+                            <span>@killmonger</span>
+                        </a>
+                    </div>
+                    <div class="comment-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim asperiores repellat officiis! Labore expedita libero vitae omnis vel ab, blanditiis ea sit delectus tenetur assumenda quo placeat quaerat voluptate id.
+                    </div>
+                    <div class="comment-info">23 min ago</div>
+                    <ul class="comment-action">
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link color-success"><i class="ion-arrow-up-b"></i> 22</a></li>
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link color-danger"><i class="ion-arrow-down-b"></i> 5</a></li>
+                    </ul>
+                </div>
+
+                <div class="comment">
+                    <div class="avatar avatar-small">
+                        <figure class="avatar-fig rounded">
+                            <img src="https://picsum.photos/40/40?image=500" alt="">
+                        </figure>
+                        <a href="#" class="avatar-label">Killmonger
+                            <span>@killmonger</span>
+                        </a>
+                    </div>
+                    <div class="comment-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim asperiores repellat officiis! Labore expedita libero vitae omnis vel ab, blanditiis ea sit delectus tenetur assumenda quo placeat quaerat voluptate id.
+                    </div>
+                    <div class="comment-info">23 min ago</div>
+                    <ul class="comment-action">
+                        <li class="comment-action-item"><span>2 likes</span> <a href="#" class="comment-action-item-link">Like</a></li>
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link">Reply</a></li>
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link">Share</a></li>
+                    </ul>
+                    <div class="comment-info">James, Christina and 3 others likes this</div>
+                </div>
+
+                <div class="comment comment-indent-1">
+                    <div class="avatar avatar-small">
+                        <figure class="avatar-fig rounded">
+                            <img src="https://picsum.photos/40/40?image=500" alt="">
+                        </figure>
+                        <a href="#" class="avatar-label">Killmonger
+                            <span>@killmonger</span>
+                        </a>
+                    </div>
+                    <div class="comment-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim asperiores repellat officiis! Labore expedita libero vitae omnis vel ab, blanditiis ea sit delectus tenetur assumenda quo placeat quaerat voluptate id.
+                    </div>
+                    <div class="comment-info">23 min ago</div>
+                    <ul class="comment-action">
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link color-success"><i class="ion-arrow-up-b"></i> 22</a></li>
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link color-danger"><i class="ion-arrow-down-b"></i> 5</a></li>
+                    </ul>
+                </div>
+
+                <div class="comment comment-indent-2 comment-blurred">
+                    <div class="avatar avatar-small">
+                        <figure class="avatar-fig rounded">
+                            <img src="https://picsum.photos/40/40?image=500" alt="">
+                        </figure>
+                        <a href="#" class="avatar-label">Killmonger
+                            <span>@killmonger</span>
+                        </a>
+                    </div>
+                    <div class="comment-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim asperiores repellat officiis! Labore expedita libero vitae omnis vel ab, blanditiis ea sit delectus tenetur assumenda quo placeat quaerat voluptate id.
+                    </div>
+                    <div class="comment-info">23 min ago</div>
+                    <ul class="comment-action">
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link color-success"><i class="ion-arrow-up-b"></i> 5</a></li>
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link color-danger"><i class="ion-arrow-down-b"></i> 40</a></li>
+                    </ul>
+                </div>
+
+                <div class="comment comment-highlight">
+                    <div class="avatar avatar-small">
+                        <figure class="avatar-fig rounded">
+                            <img src="https://picsum.photos/40/40?image=500" alt="">
+                        </figure>
+                        <a href="#" class="avatar-label">Killmonger
+                            <span>@killmonger</span>
+                        </a>
+                    </div>
+                    <div class="comment-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim asperiores repellat officiis! Labore expedita libero vitae omnis vel ab, blanditiis ea sit delectus tenetur assumenda quo placeat quaerat voluptate id.
+                    </div>
+                    <div class="comment-info">23 min ago</div>
+                    <ul class="comment-action">
+                        <li class="comment-action-item"><span>2 likes</span> <a href="#" class="comment-action-item-link">Like</a></li>
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link">Reply</a></li>
+                        <li class="comment-action-item"><a href="#" class="comment-action-item-link">Share</a></li>
+                    </ul>
+                    <div class="comment-info">James, Christina and 3 others likes this</div>
+                </div>
+
+                <br><br>
+                <a href="" class="button button-small">Show more 20 replies</a>
+            </div>
+
+        </div>
+
         <!-- <div class="column">
 
             <div class="page page-normal">
@@ -34,23 +164,23 @@
                     <div class="page-footer">404 page example</div>
                 </div>
             </div>
-            
+
         </div> -->
 
         <!-- <div class="column">
             <div class="form-field">
                 <input type="text" name="" class="form-input" placeholder="Add tags">
-                
+
                 <div class="tags">
-                    <span class="tag">HTML5 <i class="tag-close">✖</i></span> 
-                    <span class="tag">JavaScript <i class="tag-close">✖</i></span> 
-                    <span class="tag">PHP <i class="tag-close">✖</i></span> 
+                    <span class="tag">HTML5 <i class="tag-close">✖</i></span>
+                    <span class="tag">JavaScript <i class="tag-close">✖</i></span>
+                    <span class="tag">PHP <i class="tag-close">✖</i></span>
                     <span class="tag">MySql <i class="tag-close">✖</i></span>
                 </div>
             </div>
 
             <hr>
-            
+
             <span class="tag">HTML5 <i class="tag-close">✖</i></span> <span class="tag">JavaScript</span> <span class="tag">PHP</span> <span class="tag">MySql</span>
         </div> -->
 
@@ -124,7 +254,7 @@
             </div>
 
             <hr>
-            
+
             <div class="avatar">
                 <figure class="avatar-fig rounded">
                     <img src="https://picsum.photos/40/40?image=500" alt="">
@@ -197,7 +327,7 @@
             </section>
 
             <br><br>
-            
+
             <section class="collage collage-small-gap">
                 <div class="collage-item"><div class="box-demo-collage">1</div></div>
                 <div class="collage-item collage-item-big"><div class="box-demo-collage">2</div></div>
@@ -269,6 +399,8 @@
             </section>
 
         </div> -->
+
+        <!-- ====================================================================== v1.0.3 -->
 
         <!-- <progress value="30" max="100"></progress>
         <br><br>

@@ -29,6 +29,7 @@
 @import "./modules/avatar";
 @import "./modules/tag";
 @import "./modules/page";
+@import "./modules/comment";
 @import "./modules/state";
 
 @mixin roolith-everything() {
@@ -53,7 +54,7 @@
     @include roolith-card();
     @include roolith-dropdown();
     @include roolith-modal();
-    
+
     @include roolith-stat();
     @include roolith-accordion();
     @include roolith-tab();
@@ -65,6 +66,7 @@
     @include roolith-tag();
     @include roolith-page();
     @include roolith-color();
+    @include roolith-comment();
 
     @include roolith-state();
 }

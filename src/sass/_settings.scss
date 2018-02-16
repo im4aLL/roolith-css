@@ -151,10 +151,14 @@ $collage-item-large-gap: rem(20) !default;
 $collage-caption-background: map-get($colors, black) !default;
 $collage-caption-color: map-get($colors, white) !default;
 
-// avatar 
+// avatar
 $avatar-default-size: rem(40) !default;
 $avatar-small-size: rem(30) !default;
 $avatar-label-color: map-get($colors, black) !default;
 
 // tag
 $tag-color: map-get($colors, primary) !default;
+
+// comment
+$comment-border: rgba(map-get($colors, dark), 0.1) !default;
+$comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;

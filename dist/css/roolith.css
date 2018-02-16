@@ -135,7 +135,7 @@ a {
 u {
   text-decoration: underline; }
 
-small, .small, .article aside, .article-primary > aside, .avatar-secondary-block, .page-footer {
+small, .small, .article aside, .article-primary > aside, .avatar-secondary-block, .page-footer, .comment-info {
   font-size: 80%;
   line-height: 1.3em; }
 
@@ -159,7 +159,7 @@ code, kbd {
     background-color: #dddddd;
     border-radius: 0.625rem; }
 
-.dimmed, .card-information, .card-subtitle, .article aside, .article-primary > aside, .avatar-secondary-block, .page-footer {
+.dimmed, .card-information, .card-subtitle, .article aside, .article-primary > aside, .avatar-secondary-block, .page-footer, .comment-info {
   color: #999999; }
 
 .list, .list-numbered {
@@ -1067,7 +1067,7 @@ kbd {
   .nav-link:hover,
   .active .nav-link {
     color: #0099FF; }
-  .nav-link.dimmed, .nav-link.card-information, .nav-link.card-subtitle, .article aside.nav-link, .article-primary > aside.nav-link, .nav-link.avatar-secondary-block, .nav-link.page-footer {
+  .nav-link.dimmed, .nav-link.card-information, .nav-link.card-subtitle, .article aside.nav-link, .article-primary > aside.nav-link, .nav-link.avatar-secondary-block, .nav-link.page-footer, .nav-link.comment-info {
     color: #b3b3b3; }
 
 .nav-center {
@@ -1241,7 +1241,7 @@ input, textarea, select {
   font-size: 0.875rem;
   -webkit-border-radius: 0;
   outline: none; }
-  .form-field.small input, .article aside.form-field input, .article-primary > aside.form-field input, .form-field.avatar-secondary-block input, .form-field.page-footer input, .form-field.small textarea, .article aside.form-field textarea, .article-primary > aside.form-field textarea, .form-field.avatar-secondary-block textarea, .form-field.page-footer textarea, .form-field.small select, .article aside.form-field select, .article-primary > aside.form-field select, .form-field.avatar-secondary-block select, .form-field.page-footer select {
+  .form-field.small input, .article aside.form-field input, .article-primary > aside.form-field input, .form-field.avatar-secondary-block input, .form-field.page-footer input, .form-field.comment-info input, .form-field.small textarea, .article aside.form-field textarea, .article-primary > aside.form-field textarea, .form-field.avatar-secondary-block textarea, .form-field.page-footer textarea, .form-field.comment-info textarea, .form-field.small select, .article aside.form-field select, .article-primary > aside.form-field select, .form-field.avatar-secondary-block select, .form-field.page-footer select, .form-field.comment-info select {
     font-size: 0.75rem; }
   .form-field.large input, .form-field.large textarea, .form-field.large select {
     font-size: 1rem; }
@@ -1254,7 +1254,7 @@ input, textarea, select {
   line-height: 1.125rem;
   padding-bottom: 0.5rem;
   display: block; }
-  .form-field.small .form-label, .article aside.form-field .form-label, .article-primary > aside.form-field .form-label, .form-field.avatar-secondary-block .form-label, .form-field.page-footer .form-label {
+  .form-field.small .form-label, .article aside.form-field .form-label, .article-primary > aside.form-field .form-label, .form-field.avatar-secondary-block .form-label, .form-field.page-footer .form-label, .form-field.comment-info .form-label {
     font-size: 0.75rem;
     line-height: 1rem;
     padding-bottom: 0.3125rem; }
@@ -1293,7 +1293,7 @@ input, textarea, select {
     border-color: #0099FF;
     -webkit-box-shadow: 0 0 0 0.125rem rgba(0, 153, 255, 0.3);
     box-shadow: 0 0 0 0.125rem rgba(0, 153, 255, 0.3); }
-  .form-field.small .form-input, .article aside.form-field .form-input, .article-primary > aside.form-field .form-input, .form-field.avatar-secondary-block .form-input, .form-field.page-footer .form-input, .form-field.small .form-textarea, .article aside.form-field .form-textarea, .article-primary > aside.form-field .form-textarea, .form-field.avatar-secondary-block .form-textarea, .form-field.page-footer .form-textarea, .form-field.small .form-select, .article aside.form-field .form-select, .article-primary > aside.form-field .form-select, .form-field.avatar-secondary-block .form-select, .form-field.page-footer .form-select {
+  .form-field.small .form-input, .article aside.form-field .form-input, .article-primary > aside.form-field .form-input, .form-field.avatar-secondary-block .form-input, .form-field.page-footer .form-input, .form-field.comment-info .form-input, .form-field.small .form-textarea, .article aside.form-field .form-textarea, .article-primary > aside.form-field .form-textarea, .form-field.avatar-secondary-block .form-textarea, .form-field.page-footer .form-textarea, .form-field.comment-info .form-textarea, .form-field.small .form-select, .article aside.form-field .form-select, .article-primary > aside.form-field .form-select, .form-field.avatar-secondary-block .form-select, .form-field.page-footer .form-select, .form-field.comment-info .form-select {
     padding: 0.3125rem 0.4375rem; }
   .form-field.large .form-input, .form-field.large .form-textarea, .form-field.large .form-select {
     padding: 0.625rem 0.75rem; }
@@ -1324,7 +1324,7 @@ input, textarea, select {
   color: #a1a1a1;
   font-size: 0.6875rem;
   display: block; }
-  .form-field.small .form-text, .article aside.form-field .form-text, .article-primary > aside.form-field .form-text, .form-field.avatar-secondary-block .form-text, .form-field.page-footer .form-text {
+  .form-field.small .form-text, .article aside.form-field .form-text, .article-primary > aside.form-field .form-text, .form-field.avatar-secondary-block .form-text, .form-field.page-footer .form-text, .form-field.comment-info .form-text {
     padding-top: 0.3125rem; }
   .form-field.large .form-text {
     font-size: 0.75rem;
@@ -1343,7 +1343,7 @@ input, textarea, select {
   padding-left: 1.5625rem;
   display: block;
   color: #545454; }
-  .form-checkbox-label.form-field.small, .article aside.form-checkbox-label.form-field, .article-primary > aside.form-checkbox-label.form-field, .form-checkbox-label.form-field.avatar-secondary-block, .form-checkbox-label.form-field.page-footer {
+  .form-checkbox-label.form-field.small, .article aside.form-checkbox-label.form-field, .article-primary > aside.form-checkbox-label.form-field, .form-checkbox-label.form-field.avatar-secondary-block, .form-checkbox-label.form-field.page-footer, .form-checkbox-label.form-field.comment-info {
     font-size: 0.75rem;
     line-height: 1.125rem; }
 
@@ -1352,14 +1352,14 @@ input, textarea, select {
   left: 0;
   top: 0.25rem;
   margin: 0; }
-  .form-field.small .form-check-input, .article aside.form-field .form-check-input, .article-primary > aside.form-field .form-check-input, .form-field.avatar-secondary-block .form-check-input, .form-field.page-footer .form-check-input {
+  .form-field.small .form-check-input, .article aside.form-field .form-check-input, .article-primary > aside.form-field .form-check-input, .form-field.avatar-secondary-block .form-check-input, .form-field.page-footer .form-check-input, .form-field.comment-info .form-check-input {
     top: 0.1875rem; }
 
 .form-select {
   background: transparent; }
   .form-select:not([multiple]) {
     height: 2.25rem; }
-  .form-field.small .form-select:not([multiple]), .article aside.form-field .form-select:not([multiple]), .article-primary > aside.form-field .form-select:not([multiple]), .form-field.avatar-secondary-block .form-select:not([multiple]), .form-field.page-footer .form-select:not([multiple]) {
+  .form-field.small .form-select:not([multiple]), .article aside.form-field .form-select:not([multiple]), .article-primary > aside.form-field .form-select:not([multiple]), .form-field.avatar-secondary-block .form-select:not([multiple]), .form-field.page-footer .form-select:not([multiple]), .form-field.comment-info .form-select:not([multiple]) {
     height: 1.625rem; }
   .form-field.large .form-select:not([multiple]) {
     height: 2.5rem; }
@@ -1372,7 +1372,7 @@ input, textarea, select {
   .vertical .form-radio-item {
     display: block;
     margin-right: 0; }
-  .form-field.small .form-radio-item, .article aside.form-field .form-radio-item, .article-primary > aside.form-field .form-radio-item, .form-field.avatar-secondary-block .form-radio-item, .form-field.page-footer .form-radio-item {
+  .form-field.small .form-radio-item, .article aside.form-field .form-radio-item, .article-primary > aside.form-field .form-radio-item, .form-field.avatar-secondary-block .form-radio-item, .form-field.page-footer .form-radio-item, .form-field.comment-info .form-radio-item {
     font-size: 0.75rem; }
   .form-field.large .form-radio-item {
     font-size: 1rem; }
@@ -1389,7 +1389,7 @@ input, textarea, select {
   top: 0.125rem; }
   .vertical .form-radio {
     top: 0.0625rem; }
-  .form-field.small .form-radio, .article aside.form-field .form-radio, .article-primary > aside.form-field .form-radio, .form-field.avatar-secondary-block .form-radio, .form-field.page-footer .form-radio {
+  .form-field.small .form-radio, .article aside.form-field .form-radio, .article-primary > aside.form-field .form-radio, .form-field.avatar-secondary-block .form-radio, .form-field.page-footer .form-radio, .form-field.comment-info .form-radio {
     top: 0; }
 
 .form-radio-items {
@@ -1409,13 +1409,13 @@ input, textarea, select {
   padding: 0; }
   .form-field-search .form-input, .form-field-search .form-textarea, .form-field-search .form-select {
     padding: 0.5625rem 0.75rem 0.5625rem 2.125rem; }
-  .form-field-search.small .form-input, .article aside.form-field-search .form-input, .article-primary > aside.form-field-search .form-input, .form-field-search.avatar-secondary-block .form-input, .form-field-search.page-footer .form-input, .form-field-search.small .form-textarea, .article aside.form-field-search .form-textarea, .article-primary > aside.form-field-search .form-textarea, .form-field-search.avatar-secondary-block .form-textarea, .form-field-search.page-footer .form-textarea, .form-field-search.small .form-select, .article aside.form-field-search .form-select, .article-primary > aside.form-field-search .form-select, .form-field-search.avatar-secondary-block .form-select, .form-field-search.page-footer .form-select {
+  .form-field-search.small .form-input, .article aside.form-field-search .form-input, .article-primary > aside.form-field-search .form-input, .form-field-search.avatar-secondary-block .form-input, .form-field-search.page-footer .form-input, .form-field-search.comment-info .form-input, .form-field-search.small .form-textarea, .article aside.form-field-search .form-textarea, .article-primary > aside.form-field-search .form-textarea, .form-field-search.avatar-secondary-block .form-textarea, .form-field-search.page-footer .form-textarea, .form-field-search.comment-info .form-textarea, .form-field-search.small .form-select, .article aside.form-field-search .form-select, .article-primary > aside.form-field-search .form-select, .form-field-search.avatar-secondary-block .form-select, .form-field-search.page-footer .form-select, .form-field-search.comment-info .form-select {
     padding: 0.3125rem 0.4375rem 0.3125rem 1.375rem; }
   .form-field-search.large .form-input, .form-field-search.large .form-textarea, .form-field-search.large .form-select {
     padding: 0.625rem 0.75rem 0.625rem 2.125rem; }
   .form-field-search.loading .form-input, .form-field-search.loading .form-textarea, .form-field-search.loading .form-select {
     padding-right: 2.125rem; }
-  .form-field-search.loading.small .form-input, .article aside.form-field-search.loading .form-input, .article-primary > aside.form-field-search.loading .form-input, .form-field-search.loading.avatar-secondary-block .form-input, .form-field-search.loading.page-footer .form-input, .form-field-search.loading.small .form-textarea, .article aside.form-field-search.loading .form-textarea, .article-primary > aside.form-field-search.loading .form-textarea, .form-field-search.loading.avatar-secondary-block .form-textarea, .form-field-search.loading.page-footer .form-textarea, .form-field-search.loading.small .form-select, .article aside.form-field-search.loading .form-select, .article-primary > aside.form-field-search.loading .form-select, .form-field-search.loading.avatar-secondary-block .form-select, .form-field-search.loading.page-footer .form-select {
+  .form-field-search.loading.small .form-input, .article aside.form-field-search.loading .form-input, .article-primary > aside.form-field-search.loading .form-input, .form-field-search.loading.avatar-secondary-block .form-input, .form-field-search.loading.page-footer .form-input, .form-field-search.loading.comment-info .form-input, .form-field-search.loading.small .form-textarea, .article aside.form-field-search.loading .form-textarea, .article-primary > aside.form-field-search.loading .form-textarea, .form-field-search.loading.avatar-secondary-block .form-textarea, .form-field-search.loading.page-footer .form-textarea, .form-field-search.loading.comment-info .form-textarea, .form-field-search.loading.small .form-select, .article aside.form-field-search.loading .form-select, .article-primary > aside.form-field-search.loading .form-select, .form-field-search.loading.avatar-secondary-block .form-select, .form-field-search.loading.page-footer .form-select, .form-field-search.loading.comment-info .form-select {
     padding-right: 1.375rem; }
   .form-field-search.loading.large .form-input, .form-field-search.loading.large .form-textarea, .form-field-search.loading.large .form-select {
     padding-right: 2.125rem; }
@@ -1429,7 +1429,7 @@ input, textarea, select {
   line-height: 100%;
   font-size: 120%;
   color: #bababa; }
-  .form-field-search.small .form-field-search-icon, .article aside.form-field-search .form-field-search-icon, .article-primary > aside.form-field-search .form-field-search-icon, .form-field-search.avatar-secondary-block .form-field-search-icon, .form-field-search.page-footer .form-field-search-icon {
+  .form-field-search.small .form-field-search-icon, .article aside.form-field-search .form-field-search-icon, .article-primary > aside.form-field-search .form-field-search-icon, .form-field-search.avatar-secondary-block .form-field-search-icon, .form-field-search.page-footer .form-field-search-icon, .form-field-search.comment-info .form-field-search-icon {
     left: 0.4375rem;
     top: 0.375rem; }
   .form-field-search.large .form-field-search-icon {
@@ -1456,7 +1456,7 @@ input, textarea, select {
   display: none; }
   .form-field-search.loading .form-field-search-loading-icon {
     display: block; }
-  .form-field-search.small .form-field-search-loading-icon, .article aside.form-field-search .form-field-search-loading-icon, .article-primary > aside.form-field-search .form-field-search-loading-icon, .form-field-search.avatar-secondary-block .form-field-search-loading-icon, .form-field-search.page-footer .form-field-search-loading-icon {
+  .form-field-search.small .form-field-search-loading-icon, .article aside.form-field-search .form-field-search-loading-icon, .article-primary > aside.form-field-search .form-field-search-loading-icon, .form-field-search.avatar-secondary-block .form-field-search-loading-icon, .form-field-search.page-footer .form-field-search-loading-icon, .form-field-search.comment-info .form-field-search-loading-icon {
     display: inline-block;
     border-radius: 50%;
     border: 0.125rem solid #cccccc;
@@ -1517,7 +1517,7 @@ input, textarea, select {
         float: right; }
   .form-field-search.large .form-field-search-hint {
     top: 2.75rem; }
-  .form-field-search.small .form-field-search-hint, .article aside.form-field-search .form-field-search-hint, .article-primary > aside.form-field-search .form-field-search-hint, .form-field-search.avatar-secondary-block .form-field-search-hint, .form-field-search.page-footer .form-field-search-hint {
+  .form-field-search.small .form-field-search-hint, .article aside.form-field-search .form-field-search-hint, .article-primary > aside.form-field-search .form-field-search-hint, .form-field-search.avatar-secondary-block .form-field-search-hint, .form-field-search.page-footer .form-field-search-hint, .form-field-search.comment-info .form-field-search-hint {
     top: 1.875rem;
     font-size: 0.75rem;
     line-height: 0.875rem; }
@@ -2017,7 +2017,7 @@ input, textarea, select {
   background: rgba(33, 33, 33, 0.5);
   z-index: 10;
   grid-template-rows: minmax(1.25rem, 2fr) auto minmax(1.25rem, 2fr);
-  grid-template-areas: "header" "body" "footer";
+  grid-template-areas: "header" "body" "footer";
   display: none;
   padding: 0 1.25rem; }
   .modal.active {
@@ -2034,7 +2034,7 @@ input, textarea, select {
   border-radius: 0.125rem;
   -webkit-box-shadow: 0 0.3125rem 0.3125rem 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.3125rem 0.3125rem 0 rgba(0, 0, 0, 0.1); }
-  .modal-content.small, .article aside.modal-content, .article-primary > aside.modal-content, .modal-content.avatar-secondary-block, .modal-content.page-footer {
+  .modal-content.small, .article aside.modal-content, .article-primary > aside.modal-content, .modal-content.avatar-secondary-block, .modal-content.page-footer, .modal-content.comment-info {
     max-width: 18.75rem; }
   .modal-content.large {
     max-width: 50rem; }
@@ -2776,6 +2776,90 @@ progress:not([value])::-webkit-progress-bar {
 
 .bg-color-white {
   background-color: #ffffff; }
+
+.comment-group {
+  border-top: 0.0625rem solid rgba(33, 33, 33, 0.1); }
+  .comment-group .comment {
+    border-bottom: 0.0625rem solid rgba(33, 33, 33, 0.1); }
+
+.comment {
+  padding: 1.25rem 1.25rem 0 1.25rem; }
+
+.comment-body {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  padding: 0.9375rem 0; }
+  .comment-small .comment-body {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    padding: 0.625rem 0; }
+
+.comment-info {
+  padding-bottom: 1.25rem; }
+
+.comment-action {
+  padding-bottom: 1.25rem; }
+  .comment-action:before, .comment-action:after {
+    content: "";
+    display: table; }
+  .comment-action:after {
+    clear: both; }
+
+.comment-action-item {
+  float: left;
+  padding: 0 0.9375rem 0 0;
+  font-size: 0.875rem;
+  color: #6e6e6e; }
+  .comment-action-item span {
+    margin: 0 0.3125rem 0 0; }
+
+.comment-action-item-link {
+  display: inline-block;
+  font-size: 0.875rem;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out; }
+
+.comment-blurred {
+  -webkit-filter: blur(0.125rem);
+  filter: blur(0.125rem);
+  opacity: 0.4; }
+
+.comment-highlight {
+  background: #f0f9ff; }
+
+.comment-indent-1 {
+  margin-left: 5%; }
+
+.comment-indent-2 {
+  margin-left: 10%; }
+
+.comment-indent-3 {
+  margin-left: 15%; }
+
+.comment-indent-4 {
+  margin-left: 20%; }
+
+.comment-indent-5 {
+  margin-left: 25%; }
+
+.comment-indent-6 {
+  margin-left: 30%; }
+
+.comment-indent-7 {
+  margin-left: 35%; }
+
+.comment-indent-8 {
+  margin-left: 40%; }
+
+.comment-indent-9 {
+  margin-left: 45%; }
+
+.comment-indent-10 {
+  margin-left: 50%; }
 
 .show-small-only {
   display: none; }
