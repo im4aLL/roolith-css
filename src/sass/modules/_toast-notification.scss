@@ -1,0 +1,34 @@
+$toast-notification-width: rem(400) !default;
+
+@mixin roolith-toast-notification() {
+
+    .toast-notification {
+        position: fixed;
+        right: rem(30);
+        top: rem(20);
+        z-index: 10;
+        max-width: rem(400);
+
+        &.bottom {
+            top: auto;
+            right: 50%;
+            transform: translateX(50%);
+            bottom: 0;
+            text-align: center;
+            padding: rem(20);
+        }
+
+        &.left {
+            top: auto;
+            right: auto;
+            bottom: rem(20);
+            left: rem(30);
+        }
+
+        &.top {
+            right: auto;
+            left: rem(30);
+        }
+    }
+
+}

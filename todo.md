@@ -1,7 +1,5 @@
-Toast notification
 Nav menu update with left icon and something on right
 Pagination
-Comment
 Tooltips 
 Form step or step 1------2-------3------4
 

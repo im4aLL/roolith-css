@@ -3,7 +3,7 @@
  * ===========================================================
  * roolith CSS framework
  *
- * @version 1.0.3
+ * @version 1.5.0
  * @url http://roolith.com
  * ===========================================================
  */
@@ -1621,7 +1621,8 @@ input, textarea, select {
   margin-top: 0.625rem;
   margin-bottom: 0.625rem;
   background: #f2f2f2;
-  position: relative; }
+  position: relative;
+  text-align: left; }
 
 .message-close {
   position: absolute;
@@ -1642,6 +1643,11 @@ input, textarea, select {
   .message-close:hover {
     opacity: 0.7;
     filter: alpha(opacity=70); }
+  .message-close.center {
+    position: relative;
+    padding: 0.25rem 0 0.25rem 0.625rem;
+    line-height: 0.75rem;
+    float: right; }
 
 .message-primary {
   background: #0099FF;
@@ -2017,7 +2023,7 @@ input, textarea, select {
   background: rgba(33, 33, 33, 0.5);
   z-index: 10;
   grid-template-rows: minmax(1.25rem, 2fr) auto minmax(1.25rem, 2fr);
-  grid-template-areas: "header" "body" "footer";
+  grid-template-areas: "header" "body" "footer";
   display: none;
   padding: 0 1.25rem; }
   .modal.active {
@@ -2860,6 +2866,29 @@ progress:not([value])::-webkit-progress-bar {
 
 .comment-indent-10 {
   margin-left: 50%; }
+
+.toast-notification {
+  position: fixed;
+  right: 1.875rem;
+  top: 1.25rem;
+  z-index: 10;
+  max-width: 25rem; }
+  .toast-notification.bottom {
+    top: auto;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+    bottom: 0;
+    text-align: center;
+    padding: 1.25rem; }
+  .toast-notification.left {
+    top: auto;
+    right: auto;
+    bottom: 1.25rem;
+    left: 1.875rem; }
+  .toast-notification.top {
+    right: auto;
+    left: 1.875rem; }
 
 .show-small-only {
   display: none; }

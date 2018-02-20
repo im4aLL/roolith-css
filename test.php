@@ -17,7 +17,12 @@
 
         <br><br>
 
-        <div class="column">
+        <!-- <aside class="toast-notification bottom">
+            <div class="message"><button class="message-close center">✖</button> Sucessfully updated! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo cupiditate doloribus eum atque iure architecto illum repellendus iste. Voluptate ab ipsa numquam odit ea, debitis ex quas fugiat vel quae!</div>
+            <div class="message message-primary"><button class="message-close center">✖</button> Another notification</div>
+        </aside> -->
+
+        <!-- <div class="column">
 
             <div class="comment-group">
                 <div class="comment">
@@ -143,7 +148,7 @@
                 <a href="" class="button button-small">Show more 20 replies</a>
             </div>
 
-        </div>
+        </div> -->
 
         <!-- <div class="column">
 

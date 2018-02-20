@@ -30,6 +30,7 @@
 @import "./modules/tag";
 @import "./modules/page";
 @import "./modules/comment";
+@import "./modules/toast-notification";
 @import "./modules/state";
 
 @mixin roolith-everything() {
@@ -67,6 +68,7 @@
     @include roolith-page();
     @include roolith-color();
     @include roolith-comment();
+    @include roolith-toast-notification();
 
     @include roolith-state();
 }
