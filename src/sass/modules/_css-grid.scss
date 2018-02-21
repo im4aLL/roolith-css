@@ -62,13 +62,28 @@ $grid-css-grid-large-gutter: map-get($grid-gutter, 'large') !default;
         }
     }
 
-    .cell {
-        width: 100%;
+    [class^='lg-'],
+    [class^='md-'] {
+        grid-column: span $grid-column-count;
     }
 
     @for $i from 1 through $grid-column-count {
         .sm-#{$i} {
             grid-column: span $i;
+        }
+
+        .sm-push-#{$i} {
+            position: relative;
+            left: percentage($i / $grid-column-count);
+            margin-left: $grid-css-grid-small-gutter / 2;
+            margin-right: - $grid-css-grid-small-gutter / 2;
+        }
+
+        .sm-pull-#{$i} {
+            position: relative;
+            left: - percentage($i / $grid-column-count);
+            margin-left: - $grid-css-grid-small-gutter / 2;
+            margin-right: $grid-css-grid-small-gutter / 2;
         }
     }
 
@@ -77,6 +92,20 @@ $grid-css-grid-large-gutter: map-get($grid-gutter, 'large') !default;
             .md-#{$i} {
                 grid-column: span $i;
             }
+
+            .md-push-#{$i} {
+                position: relative;
+                left: percentage($i / $grid-column-count);
+                margin-left: $grid-css-grid-medium-gutter / 2;
+                margin-right: - $grid-css-grid-medium-gutter / 2;
+            }
+
+            .md-pull-#{$i} {
+                position: relative;
+                left: - percentage($i / $grid-column-count);
+                margin-left: - $grid-css-grid-medium-gutter / 2;
+                margin-right: $grid-css-grid-medium-gutter / 2;
+            }
         }
     }
 
@@ -84,6 +113,20 @@ $grid-css-grid-large-gutter: map-get($grid-gutter, 'large') !default;
         @for $i from 1 through $grid-column-count {
             .lg-#{$i} {
                 grid-column: span $i;
+            }
+
+            .lg-push-#{$i} {
+                position: relative;
+                left: percentage($i / $grid-column-count);
+                margin-left: $grid-css-grid-large-gutter / 2;
+                margin-right: - $grid-css-grid-large-gutter / 2;
+            }
+
+            .lg-pull-#{$i} {
+                position: relative;
+                left: - percentage($i / $grid-column-count);
+                margin-left: - $grid-css-grid-large-gutter / 2;
+                margin-right: $grid-css-grid-large-gutter / 2;
             }
         }
     }

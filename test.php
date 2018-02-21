@@ -1510,9 +1510,33 @@
         <!-- <div class="column">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem qui molestias consequatur inventore. Perspiciatis odio vitae necessitatibus cum sunt, illo voluptas, placeat odit similique repellendus ipsam cumque autem dolorum quia?</p>
         </div> -->
-        <!--
 
-        <div class="row">
+
+        <!-- <div class="row">
+            <div class="columns small-6 large-6 large-push-6"><div class="box-demo">small left, large right</div></div>
+            <div class="columns small-6 large-6 large-pull-6"><div class="box-demo">small right, large left</div></div>
+        </div> -->
+
+
+        <!-- <div class="grid">
+            <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+            <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+            <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+            <div class="sm-12 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+        </div>
+
+        <div class="grid">
+            <div class="sm-4 md-8 lg-6"><div class="box-demo">box-demo</div></div>
+            <div class="sm-8 md-4 lg-6"><div class="box-demo">box-demo</div></div>
+        </div>
+
+        <div class="grid">
+            <div class="sm-6 md-6 md-push-6"><div class="box-demo">sm left, lg right</div></div>
+            <div class="sm-6 md-6 md-pull-6"><div class="box-demo">sm right, lg left</div></div>
+        </div> -->
+
+
+        <!-- <div class="row">
             <div class="columns large-1"><div class="box-demo">1</div></div>
             <div class="columns large-1"><div class="box-demo">1</div></div>
             <div class="columns large-1"><div class="box-demo">1</div></div>
@@ -1572,9 +1596,9 @@
             <div class="columns large-4 medium-6 small-12"><div class="box-demo">large-4 medium-6 small-12</div></div>
             <div class="columns large-4 medium-6 small-12"><div class="box-demo">large-4 medium-6 small-12</div></div>
             <div class="columns large-4 medium-6 small-12"><div class="box-demo">large-4 medium-6 small-12</div></div>
-        </div> -->
+        </div>
 
-        <!-- <div class="row">
+        <div class="row">
             <div class="columns large-4 medium-6 small-6">
                 <div class="box-demo">large-4 medium-6 small-6</div>
 
@@ -1582,9 +1606,8 @@
                     <div class="columns large-6"><div class="box-demo">large-6</div></div>
                     <div class="columns large-6">
                         <div class="row">
-                            <div class="columns large-4"><div class="box-demo">large-4</div></div>
-                            <div class="columns large-4"><div class="box-demo">large-4</div></div>
-                            <div class="columns large-4"><div class="box-demo">large-4</div></div>
+                            <div class="columns large-6"><div class="box-demo">large-6</div></div>
+                            <div class="columns large-6"><div class="box-demo">large-6</div></div>
                         </div>
                     </div>
                 </div>

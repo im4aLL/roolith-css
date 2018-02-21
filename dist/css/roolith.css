@@ -3,7 +3,7 @@
  * ===========================================================
  * roolith CSS framework
  *
- * @version 1.5.0
+ * @version 1.0.3
  * @url http://roolith.com
  * ===========================================================
  */
@@ -435,11 +435,27 @@ kbd {
 .small-offset-1 {
   margin-left: 8.33333%; }
 
+.small-pull-1 {
+  position: relative;
+  left: -8.33333%; }
+
+.small-push-1 {
+  position: relative;
+  left: 8.33333%; }
+
 .small-2 {
   width: 16.66667%; }
 
 .small-offset-2 {
   margin-left: 16.66667%; }
+
+.small-pull-2 {
+  position: relative;
+  left: -16.66667%; }
+
+.small-push-2 {
+  position: relative;
+  left: 16.66667%; }
 
 .small-3 {
   width: 25%; }
@@ -447,11 +463,27 @@ kbd {
 .small-offset-3 {
   margin-left: 25%; }
 
+.small-pull-3 {
+  position: relative;
+  left: -25%; }
+
+.small-push-3 {
+  position: relative;
+  left: 25%; }
+
 .small-4 {
   width: 33.33333%; }
 
 .small-offset-4 {
   margin-left: 33.33333%; }
+
+.small-pull-4 {
+  position: relative;
+  left: -33.33333%; }
+
+.small-push-4 {
+  position: relative;
+  left: 33.33333%; }
 
 .small-5 {
   width: 41.66667%; }
@@ -459,11 +491,27 @@ kbd {
 .small-offset-5 {
   margin-left: 41.66667%; }
 
+.small-pull-5 {
+  position: relative;
+  left: -41.66667%; }
+
+.small-push-5 {
+  position: relative;
+  left: 41.66667%; }
+
 .small-6 {
   width: 50%; }
 
 .small-offset-6 {
   margin-left: 50%; }
+
+.small-pull-6 {
+  position: relative;
+  left: -50%; }
+
+.small-push-6 {
+  position: relative;
+  left: 50%; }
 
 .small-7 {
   width: 58.33333%; }
@@ -471,11 +519,27 @@ kbd {
 .small-offset-7 {
   margin-left: 58.33333%; }
 
+.small-pull-7 {
+  position: relative;
+  left: -58.33333%; }
+
+.small-push-7 {
+  position: relative;
+  left: 58.33333%; }
+
 .small-8 {
   width: 66.66667%; }
 
 .small-offset-8 {
   margin-left: 66.66667%; }
+
+.small-pull-8 {
+  position: relative;
+  left: -66.66667%; }
+
+.small-push-8 {
+  position: relative;
+  left: 66.66667%; }
 
 .small-9 {
   width: 75%; }
@@ -483,11 +547,27 @@ kbd {
 .small-offset-9 {
   margin-left: 75%; }
 
+.small-pull-9 {
+  position: relative;
+  left: -75%; }
+
+.small-push-9 {
+  position: relative;
+  left: 75%; }
+
 .small-10 {
   width: 83.33333%; }
 
 .small-offset-10 {
   margin-left: 83.33333%; }
+
+.small-pull-10 {
+  position: relative;
+  left: -83.33333%; }
+
+.small-push-10 {
+  position: relative;
+  left: 83.33333%; }
 
 .small-11 {
   width: 91.66667%; }
@@ -495,111 +575,271 @@ kbd {
 .small-offset-11 {
   margin-left: 91.66667%; }
 
+.small-pull-11 {
+  position: relative;
+  left: -91.66667%; }
+
+.small-push-11 {
+  position: relative;
+  left: 91.66667%; }
+
 .small-12 {
   width: 100%; }
 
 .small-offset-12 {
   margin-left: 100%; }
 
+.small-pull-12 {
+  position: relative;
+  left: -100%; }
+
+.small-push-12 {
+  position: relative;
+  left: 100%; }
+
 @media (min-width: 640px) {
   .medium-1 {
     width: 8.33333%; }
   .medium-offset-1 {
     margin-left: 8.33333%; }
+  .medium-pull-1 {
+    position: relative;
+    left: -8.33333%; }
+  .medium-push-1 {
+    position: relative;
+    left: 8.33333%; }
   .medium-2 {
     width: 16.66667%; }
   .medium-offset-2 {
     margin-left: 16.66667%; }
+  .medium-pull-2 {
+    position: relative;
+    left: -16.66667%; }
+  .medium-push-2 {
+    position: relative;
+    left: 16.66667%; }
   .medium-3 {
     width: 25%; }
   .medium-offset-3 {
     margin-left: 25%; }
+  .medium-pull-3 {
+    position: relative;
+    left: -25%; }
+  .medium-push-3 {
+    position: relative;
+    left: 25%; }
   .medium-4 {
     width: 33.33333%; }
   .medium-offset-4 {
     margin-left: 33.33333%; }
+  .medium-pull-4 {
+    position: relative;
+    left: -33.33333%; }
+  .medium-push-4 {
+    position: relative;
+    left: 33.33333%; }
   .medium-5 {
     width: 41.66667%; }
   .medium-offset-5 {
     margin-left: 41.66667%; }
+  .medium-pull-5 {
+    position: relative;
+    left: -41.66667%; }
+  .medium-push-5 {
+    position: relative;
+    left: 41.66667%; }
   .medium-6 {
     width: 50%; }
   .medium-offset-6 {
     margin-left: 50%; }
+  .medium-pull-6 {
+    position: relative;
+    left: -50%; }
+  .medium-push-6 {
+    position: relative;
+    left: 50%; }
   .medium-7 {
     width: 58.33333%; }
   .medium-offset-7 {
     margin-left: 58.33333%; }
+  .medium-pull-7 {
+    position: relative;
+    left: -58.33333%; }
+  .medium-push-7 {
+    position: relative;
+    left: 58.33333%; }
   .medium-8 {
     width: 66.66667%; }
   .medium-offset-8 {
     margin-left: 66.66667%; }
+  .medium-pull-8 {
+    position: relative;
+    left: -66.66667%; }
+  .medium-push-8 {
+    position: relative;
+    left: 66.66667%; }
   .medium-9 {
     width: 75%; }
   .medium-offset-9 {
     margin-left: 75%; }
+  .medium-pull-9 {
+    position: relative;
+    left: -75%; }
+  .medium-push-9 {
+    position: relative;
+    left: 75%; }
   .medium-10 {
     width: 83.33333%; }
   .medium-offset-10 {
     margin-left: 83.33333%; }
+  .medium-pull-10 {
+    position: relative;
+    left: -83.33333%; }
+  .medium-push-10 {
+    position: relative;
+    left: 83.33333%; }
   .medium-11 {
     width: 91.66667%; }
   .medium-offset-11 {
     margin-left: 91.66667%; }
+  .medium-pull-11 {
+    position: relative;
+    left: -91.66667%; }
+  .medium-push-11 {
+    position: relative;
+    left: 91.66667%; }
   .medium-12 {
     width: 100%; }
   .medium-offset-12 {
-    margin-left: 100%; } }
+    margin-left: 100%; }
+  .medium-pull-12 {
+    position: relative;
+    left: -100%; }
+  .medium-push-12 {
+    position: relative;
+    left: 100%; } }
 
 @media (min-width: 1024px) {
   .large-1 {
     width: 8.33333%; }
   .large-offset-1 {
     margin-left: 8.33333%; }
+  .large-pull-1 {
+    position: relative;
+    left: -8.33333%; }
+  .large-push-1 {
+    position: relative;
+    left: 8.33333%; }
   .large-2 {
     width: 16.66667%; }
   .large-offset-2 {
     margin-left: 16.66667%; }
+  .large-pull-2 {
+    position: relative;
+    left: -16.66667%; }
+  .large-push-2 {
+    position: relative;
+    left: 16.66667%; }
   .large-3 {
     width: 25%; }
   .large-offset-3 {
     margin-left: 25%; }
+  .large-pull-3 {
+    position: relative;
+    left: -25%; }
+  .large-push-3 {
+    position: relative;
+    left: 25%; }
   .large-4 {
     width: 33.33333%; }
   .large-offset-4 {
     margin-left: 33.33333%; }
+  .large-pull-4 {
+    position: relative;
+    left: -33.33333%; }
+  .large-push-4 {
+    position: relative;
+    left: 33.33333%; }
   .large-5 {
     width: 41.66667%; }
   .large-offset-5 {
     margin-left: 41.66667%; }
+  .large-pull-5 {
+    position: relative;
+    left: -41.66667%; }
+  .large-push-5 {
+    position: relative;
+    left: 41.66667%; }
   .large-6 {
     width: 50%; }
   .large-offset-6 {
     margin-left: 50%; }
+  .large-pull-6 {
+    position: relative;
+    left: -50%; }
+  .large-push-6 {
+    position: relative;
+    left: 50%; }
   .large-7 {
     width: 58.33333%; }
   .large-offset-7 {
     margin-left: 58.33333%; }
+  .large-pull-7 {
+    position: relative;
+    left: -58.33333%; }
+  .large-push-7 {
+    position: relative;
+    left: 58.33333%; }
   .large-8 {
     width: 66.66667%; }
   .large-offset-8 {
     margin-left: 66.66667%; }
+  .large-pull-8 {
+    position: relative;
+    left: -66.66667%; }
+  .large-push-8 {
+    position: relative;
+    left: 66.66667%; }
   .large-9 {
     width: 75%; }
   .large-offset-9 {
     margin-left: 75%; }
+  .large-pull-9 {
+    position: relative;
+    left: -75%; }
+  .large-push-9 {
+    position: relative;
+    left: 75%; }
   .large-10 {
     width: 83.33333%; }
   .large-offset-10 {
     margin-left: 83.33333%; }
+  .large-pull-10 {
+    position: relative;
+    left: -83.33333%; }
+  .large-push-10 {
+    position: relative;
+    left: 83.33333%; }
   .large-11 {
     width: 91.66667%; }
   .large-offset-11 {
     margin-left: 91.66667%; }
+  .large-pull-11 {
+    position: relative;
+    left: -91.66667%; }
+  .large-push-11 {
+    position: relative;
+    left: 91.66667%; }
   .large-12 {
     width: 100%; }
   .large-offset-12 {
-    margin-left: 100%; } }
+    margin-left: 100%; }
+  .large-pull-12 {
+    position: relative;
+    left: -100%; }
+  .large-push-12 {
+    position: relative;
+    left: 100%; } }
 
 .column .row,
 .row .row {
@@ -2023,7 +2263,7 @@ input, textarea, select {
   background: rgba(33, 33, 33, 0.5);
   z-index: 10;
   grid-template-rows: minmax(1.25rem, 2fr) auto minmax(1.25rem, 2fr);
-  grid-template-areas: "header" "body" "footer";
+  grid-template-areas: "header" "body" "footer";
   display: none;
   padding: 0 1.25rem; }
   .modal.active {
