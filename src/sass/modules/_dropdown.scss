@@ -46,6 +46,7 @@ $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
         border-radius: rem(2);
         box-shadow: $dropdown-shadow;
         z-index: 2;
+        top: 100%;
 
         .active & {
             display: block;

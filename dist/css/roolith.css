@@ -2224,7 +2224,8 @@ input, textarea, select {
   border-radius: 0.125rem;
   -webkit-box-shadow: 0 0.125rem 0.3125rem 0 rgba(0, 0, 0, 0.08);
   box-shadow: 0 0.125rem 0.3125rem 0 rgba(0, 0, 0, 0.08);
-  z-index: 2; }
+  z-index: 2;
+  top: 100%; }
   .active .dropdown-body {
     display: block; }
 
