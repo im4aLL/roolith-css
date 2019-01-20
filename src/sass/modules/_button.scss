@@ -18,10 +18,10 @@ $button-secondary-color: map-get($colors, secondary) !default;
         border: rem(1) solid darken($button-base-white, 15%);
         border-radius: $button-radius;
         font-size: rem(14);
-        line-height: rem(35);
-        min-width: rem(60);
-        height: rem(35);
-        padding: 0 rem(20);
+        line-height: normal;
+        min-width: rem(100);
+        text-align: center;
+        padding: rem(7) rem(20);
         color: lighten(map-get($colors, 'dark'), 20%);
         position: relative;
         @include transition('background, color, box-shadow');
@@ -53,14 +53,13 @@ $button-secondary-color: map-get($colors, secondary) !default;
         }
 
         i {
-            float: left;
+            display: inline-block;
             margin-right: rem(5);
-            position: relative;
-            font-size: 120%;
+            transform: scale(1.5);
+            line-height: 1;
         }
 
         &.loading {
-            position: relative;
             text-indent: -9999px;
             cursor: wait;
             pointer-event: none;
@@ -76,17 +75,15 @@ $button-secondary-color: map-get($colors, secondary) !default;
         }
     }
 
+    .button-rounded {
+        border-radius: rem(25);
+        min-width: rem(120);
+    }
+
     .button-small {
         font-size: rem(12);
-        line-height: rem(25);
         min-width: rem(50);
-        height: rem(25);
-        padding: 0 rem(10);
-
-        i {
-            top: 0;
-            font-size: 130%;
-        }
+        padding: rem(4) rem(10);
 
         &.loading:after {
             @include loader(12);
@@ -95,14 +92,8 @@ $button-secondary-color: map-get($colors, secondary) !default;
 
     .button-medium {
         font-size: rem(12);
-        line-height: rem(30);
         min-width: rem(50);
-        height: rem(30);
-        padding: 0 rem(12);
-
-        i {
-            font-size: 130%;
-        }
+        padding: rem(6) rem(12);
 
         &.loading:after {
             @include loader(16);
@@ -111,35 +102,15 @@ $button-secondary-color: map-get($colors, secondary) !default;
 
     .button-large {
         font-size: rem(16);
-        line-height: rem(45);
         min-width: rem(80);
-        height: rem(45);
-        padding: 0 rem(30);
+        padding: rem(11) rem(30);
 
         i {
-            font-size: 140%;
-            margin-right: rem(8);
+            margin-right: rem(10);
         }
 
         &.loading:after {
             @include loader(24);
-        }
-    }
-
-    .button-rounded {
-        border-radius: rem(25);
-        padding: 0 rem(25);
-
-        &.button-small {
-            padding: 0 rem(15);
-        }
-
-        &.button-medium {
-            padding: 0 rem(17);
-        }
-
-        &.button-large {
-            padding: 0 rem(35);
         }
     }
 

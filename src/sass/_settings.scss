@@ -36,7 +36,8 @@ $colors: (
     link: #67BCEF,
     dark: #212121,
     black: #000000,
-    white: #ffffff
+    white: #ffffff,
+    light: #fafbfc
 ) !default;
 
 // animation
@@ -60,26 +61,38 @@ $nav-spacing: rem(13) !default;
 $nav-primary-color: map-get($colors, primary) !default;
 
 // form
-$form-input-placeholder-color: lighten(map-get($colors, dark), 60%) !default;
-$form-input-border-color: lighten(map-get($colors, dark), 70%) !default;
+$form-input-placeholder-color: darken(map-get($colors, light), 30%) !default;
+$form-input-border-color: darken(map-get($colors, light), 15%) !default;
+
 $form-input-hover-border-color: map-get($colors, link) !default;
 $form-input-focus-border-color: map-get($colors, primary) !default;
-$form-text-color: lighten(map-get($colors, dark), 50%) !default;
+
+$form-text-color: darken(map-get($colors, light), 30%) !default;
 $form-input-radius: rem(2) !default;
+
 $form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
-$form-disable-input-color: darken(map-get($colors, white), 5%) !default;
-$form-primary-color: darken(map-get($colors, white), 6%) !default;
+
+$form-disable-input-color: darken(map-get($colors, light), 5%) !default;
+
+$form-primary-color: darken(map-get($colors, light), 2%) !default;
+$form-primary-border-color: darken(map-get($colors, light), 5%) !default;
 $form-primary-hover-color: map-get($colors, info) !default;
 $form-primary-focus-color: map-get($colors, white) !default;
 
+$form-error-color: map-get($colors, danger) !default;
+$form-success-color: map-get($colors, success) !default;
+$form-warning-color: map-get($colors, info) !default;
+
 // table
-$table-header-border-color: lighten(map-get($colors, dark), 75%) !default;
-$table-border-color: lighten(map-get($colors, dark), 80%) !default;
+$table-header-border-color: darken(map-get($colors, light), 10%) !default;
+$table-border-color: darken(map-get($colors, light), 5%) !default;
 $table-header-font-weight: $global-font-bold-weight !default;
 $table-spacing: rem(10) !default;
-$table-row-hover-color: lighten(map-get($colors, dark), 85%) !default;
-$table-primary-header-color: lighten(map-get($colors, dark), 82%) !default;
-$table-row-striped-color: lighten(map-get($colors, dark), 85%) !default;
+$table-row-hover-color: darken(map-get($colors, light), 2%) !default;
+
+$table-primary-header-color: darken(map-get($colors, light), 5%) !default;
+
+$table-row-striped-color: darken(map-get($colors, light), 2%) !default;
 $table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
 
 // img
@@ -128,7 +141,7 @@ $accordion-border-color: rgba(map-get($colors, dark), 0.1) !default;
 
 // tab
 $tab-active-color: map-get($colors, primary) !default;
-$tab-border-color: lighten(map-get($colors, dark), 80%) !default;
+$tab-border-color: darken(map-get($colors, light), 5%) !default;
 
 // box
 $box-spacing: rem(20) !default;

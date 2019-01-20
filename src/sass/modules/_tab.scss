@@ -1,5 +1,5 @@
 $tab-active-color: map-get($colors, primary) !default;
-$tab-border-color: lighten(map-get($colors, dark), 80%) !default;
+$tab-border-color: darken(map-get($colors, light), 5%) !default;
 
 @mixin roolith-tab() {
 

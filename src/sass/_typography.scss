@@ -1,16 +1,17 @@
 $global-font-bold-weight: bold !default;
 
-$text-dimmed-color: darken(map-get($colors, white), 40%) !default;
+$text-dimmed-color: darken(map-get($colors, light), 30%) !default;
 
 @mixin roolith-typography() {
 
-    h1, h2, h3, h4, h5, h6 {
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         font-weight: $global-font-bold-weight;
     }
 
     h1, .h1 {
         font-size: rem(32);
         line-height: rem(38);
+        letter-spacing: -0.04em;
 
         @include breakpoint(large-up) {
             font-size: rem(52);
@@ -21,6 +22,7 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
     h2, .h2 {
         font-size: rem(28);
         line-height: rem(34);
+        letter-spacing: -0.04em;
 
         @include breakpoint(large-up) {
             font-size: rem(42);
@@ -31,6 +33,7 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
     h3, .h3 {
         font-size: rem(24);
         line-height: rem(32);
+        letter-spacing: -0.04em;
 
         @include breakpoint(large-up) {
             font-size: rem(36);
@@ -41,6 +44,7 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
     h4, .h4 {
         font-size: rem(22);
         line-height: rem(28);
+        letter-spacing: -0.04em;
 
         @include breakpoint(large-up) {
             font-size: rem(32);
@@ -51,6 +55,7 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
     h5, .h5 {
         font-size: rem(18);
         line-height: rem(22);
+        letter-spacing: -0.02em;
 
         @include breakpoint(large-up) {
             font-size: rem(22);
@@ -61,6 +66,7 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
     h6, .h6 {
         font-size: rem(16);
         line-height: rem(20);
+        letter-spacing: -0.02em;
     }
 
     p {
@@ -99,8 +105,8 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
         margin: 0 rem(2);
         font-size: 90%;
         white-space: nowrap;
-        background: #F1F1F1;
-        border: rem(1) solid #E1E1E1;
+        background: darken(map-get($colors, light), 5%);
+        border: rem(1) solid darken(map-get($colors, light), 10%);
         border-radius: rem(3);
         overflow: auto;
         @include nice-scroll();
@@ -139,16 +145,20 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
             padding: rem(15);
             display: block;
             white-space: pre;
-            font-size: rem(12);
-            line-height: rem(18);
+            font-size: rem(14);
+            background: #fafbfc;
+            box-shadow: rgba(102, 119, 136, 0.2) 0px 1px 2px 0px;
+            border: none;
+            line-height: rem(22);
             margin-bottom: rem(20);
+            color: lighten(map-get($colors, dark), 30%);
         }
     }
 
     hr {
         border: 0;
         height: 0;
-        border-top: rem(1) solid rgba(map-get($colors, dark), 0.1);
+        border-top: rem(1) solid darken(map-get($colors, light), 5%);
         border-bottom: rem(1) solid rgba(map-get($colors, white), 0.3);
         margin: rem(15) 0;
     }
@@ -178,8 +188,8 @@ $text-dimmed-color: darken(map-get($colors, white), 40%) !default;
     blockquote {
         font-size: rem(14);
         line-height: rem(22);
-        color: lighten(map-get($colors, dark), 30%);
-        border-left: rem(3) solid lighten(map-get($colors, dark), 60%);
+        color: darken(map-get($colors, light), 50%);
+        border-left: rem(3) solid darken(map-get($colors, light), 5%);
         padding-left: rem(20);
 
         cite {

@@ -1,12 +1,12 @@
-$table-header-border-color: lighten(map-get($colors, dark), 75%) !default;
-$table-border-color: lighten(map-get($colors, dark), 80%) !default;
+$table-header-border-color: darken(map-get($colors, light), 10%) !default;
+$table-border-color: darken(map-get($colors, light), 5%) !default;
 $table-header-font-weight: $global-font-bold-weight !default;
 $table-spacing: rem(10) !default;
-$table-row-hover-color: lighten(map-get($colors, dark), 85%) !default;
+$table-row-hover-color: darken(map-get($colors, light), 2%) !default;
 
-$table-primary-header-color: lighten(map-get($colors, dark), 82%) !default;
+$table-primary-header-color: darken(map-get($colors, light), 5%) !default;
 
-$table-row-striped-color: lighten(map-get($colors, dark), 85%) !default;
+$table-row-striped-color: darken(map-get($colors, light), 2%) !default;
 $table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
 
 @mixin roolith-table {

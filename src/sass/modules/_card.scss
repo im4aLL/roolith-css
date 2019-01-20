@@ -38,7 +38,7 @@ $card-header-footer-color: lighten(map-get($colors, dark), 40%) !default;
         @extend .dimmed;
         font-size: 80%;
         display: block;
-        padding-top: rem(20);
+        padding: rem(20) 0 0 0;
     }
 
     .card-subtitle {

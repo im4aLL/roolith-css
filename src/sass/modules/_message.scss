@@ -13,16 +13,21 @@ $message-radius: rem(2) !default;
         text-align: left;
     }
 
+    .message-extra-pad {
+        padding: rem(27) rem(30);
+    }
+
     .message-close {
         position: absolute;
         top: 0;
         right: 0;
         background: none;
         border: none;
-        padding: rem(8);
+        padding: rem(15);
         line-height: rem(12);
         z-index: 2;
         cursor: pointer;
+        color: currentColor;
         @include transition('opacity');
 
         &:hover {

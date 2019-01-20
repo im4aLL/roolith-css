@@ -1,17 +1,18 @@
-$form-input-placeholder-color: lighten(map-get($colors, dark), 60%) !default;
-$form-input-border-color: lighten(map-get($colors, dark), 70%) !default;
+$form-input-placeholder-color: darken(map-get($colors, light), 30%) !default;
+$form-input-border-color: darken(map-get($colors, light), 15%) !default;
 
 $form-input-hover-border-color: map-get($colors, link) !default;
 $form-input-focus-border-color: map-get($colors, primary) !default;
 
-$form-text-color: lighten(map-get($colors, dark), 50%) !default;
+$form-text-color: darken(map-get($colors, light), 30%) !default;
 $form-input-radius: rem(2) !default;
 
 $form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
 
-$form-disable-input-color: darken(map-get($colors, white), 5%) !default;
+$form-disable-input-color: darken(map-get($colors, light), 5%) !default;
 
-$form-primary-color: darken(map-get($colors, white), 6%) !default;
+$form-primary-color: darken(map-get($colors, light), 2%) !default;
+$form-primary-border-color: darken(map-get($colors, light), 5%) !default;
 $form-primary-hover-color: map-get($colors, info) !default;
 $form-primary-focus-color: map-get($colors, white) !default;
 
@@ -58,7 +59,7 @@ $form-warning-color: map-get($colors, info) !default;
         height: 100%;
         line-height: 100%;
         font-size: 120%;
-        color: lighten(map-get($colors, dark), 60%);
+        color: darken(map-get($colors, light), 30%);
 
         .form-field-search.small & {
             left: rem(7);
@@ -68,7 +69,7 @@ $form-warning-color: map-get($colors, info) !default;
         .form-field-search.large & {
             font-size: 130%;
             top: rem(10);
-        } 
+        }
     }
 
     .form-field-search-loading-icon {
@@ -91,7 +92,7 @@ $form-warning-color: map-get($colors, info) !default;
         }
 
         .form-field-search.large & {
-            
+
         }
     }
 
@@ -103,8 +104,8 @@ $form-warning-color: map-get($colors, info) !default;
         z-index: 5;
         font-size: rem(14);
         line-height: rem(18);
-        background-color: darken(map-get($colors, white), 2%);
-        border: rem(1) solid darken(map-get($colors, white), 15%);
+        background-color: darken(map-get($colors, light), 1%);
+        border: rem(1) solid darken(map-get($colors, light), 15%);
         border-radius: rem(2);
         box-shadow: $dropdown-shadow;
         width: 100%;
@@ -121,7 +122,7 @@ $form-warning-color: map-get($colors, info) !default;
         }
 
         li {
-            border-bottom: rem(1) solid darken(map-get($colors, white), 5%);
+            border-bottom: rem(1) solid darken(map-get($colors, light), 5%);
 
             &:last-child {
                 border-bottom: none;
@@ -133,7 +134,7 @@ $form-warning-color: map-get($colors, info) !default;
                 @include transition('background, color');
 
                 &:hover {
-                    background-color: darken(map-get($colors, white), 5%)
+                    background-color: darken(map-get($colors, light), 3%);
                 }
 
                 .badge {
@@ -260,7 +261,7 @@ $form-warning-color: map-get($colors, info) !default;
     }
 
     .form-primary .form-input {
-        border: rem(1) solid $form-primary-color;
+        border: rem(1) solid $form-primary-border-color;
         background: $form-primary-color;
         box-shadow: none;
 
@@ -336,17 +337,14 @@ $form-warning-color: map-get($colors, info) !default;
     .form-select {
         @extend .form-input;
         background: transparent;
+        padding: rem(8) rem(12);
 
-        &:not([multiple]) {
-            height: rem(36);
+        .form-field.small & {
+            padding: rem(4) rem(7);
         }
 
-        .form-field.small &:not([multiple]) {
-            height: rem(26);
-        }
-
-        .form-field.large &:not([multiple]) {
-            height: rem(40);
+        .form-field.large & {
+            padding: rem(9) rem(12);
         }
     }
 
@@ -386,7 +384,7 @@ $form-warning-color: map-get($colors, info) !default;
         margin: 0;
         position: absolute;
         left: 0;
-        top: rem(2);
+        top: rem(4);
 
         .vertical & {
             top: rem(1);
