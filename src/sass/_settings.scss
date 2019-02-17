@@ -1,6 +1,6 @@
 // Global
 $global-base-font-size: 100% !default;
-$global-base-font: Arial, Helvetica, sans-serif !default;
+$global-base-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !default;
 $global-font-weight: normal !default;
 $global-font-bold-weight: bold !default;
 
@@ -178,3 +178,8 @@ $comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
 
 // toast
 $toast-notification-width: rem(400) !default;
+
+// Theme dark
+$theme-dark-background-color: #232426 !default;
+$theme-dark-font-color: #919293 !default;
+$theme-dark-font-color-light: #dddede !default;

@@ -2,7 +2,7 @@
  * ===========================================================
  * roolith CSS framework
  *
- * @version 1.6.0
+ * @version 1.7.0
  * @url http://habibhadi.com/lab/roolith
  * ===========================================================
  */
@@ -12,3 +12,5 @@
 @include roolith-everything();
 // @include roolith-grid-only();
 // @include roolith-basic();
+
+@include roolith-theme-dark();

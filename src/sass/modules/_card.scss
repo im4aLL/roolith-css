@@ -9,6 +9,8 @@ $card-header-footer-color: lighten(map-get($colors, dark), 40%) !default;
         box-shadow: $card-shadow;
         border-radius: $card-radius;
         overflow: hidden;
+        margin-bottom: rem(20);
+        background: map-get($colors, white);
     }
 
     .card-img {

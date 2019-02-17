@@ -32,6 +32,7 @@
 @import "./modules/comment";
 @import "./modules/toast-notification";
 @import "./modules/state";
+@import "./theme-dark";
 
 @mixin roolith-everything() {
     @include roolith-reset();
