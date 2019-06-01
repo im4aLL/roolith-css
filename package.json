@@ -1,10 +1,11 @@
 {
   "name": "roolith-css",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "A simple responsive CSS boilerplate",
   "main": "./src/sass/roolith.scss",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp watch",
+    "build": "gulp production"
   },
   "repository": "git+https://github.com/im4aLL/roolith-css.git",
   "keywords": [

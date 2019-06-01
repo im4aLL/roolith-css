@@ -5,17 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>roolith CSS framework</title>
 
-    <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>">
+    <!-- <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>"> -->
+    <link rel="stylesheet" href="dist/css/roolith-dark.css?v=<?= time() ?>">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <style>
         .box-demo { width: 100%; background-color: #ddd; padding: 10px; margin-bottom: 20px; text-align: center; border-radius: 2px; font-size: 80%; }
         .box-demo-collage { width: 100%; height: 100%; background-color: #ddd; border-radius: 0; display: flex; justify-content: center; align-items: center; }
     </style>
 </head>
-<body>
+<body class="theme-dark">
     <div class="container">
 
         <br><br>
+
+        <h1>Heading</h1>
+        <h2>Heading</h2>
+        <h3>Heading</h3>
+        <h4>Heading</h4>
+        <h5>Heading</h5>
+        <h6>Heading</h6>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat maxime velit voluptatibus doloribus
+        ad accusantium necessitatibus eos explicabo inventore eligendi quam beatae,
+        expedita. Impedit quae, amet autem nihil perspiciatis. Impedit.</p>
+
+        <p>
+            <strong>Bolded</strong>
+            <em>Italicized</em>
+            <a>Colored</a>
+            <u>Underlined</u>
+            <code>code</code>
+            <abbr title="Too long; didn't read">TLDR</abbr>
+            <kbd>Ctrl+R</kbd>
+        </p>
+
+        <br><br>
+
 
         <!-- <aside class="toast-notification bottom">
             <div class="message"><button class="message-close center">✖</button> Sucessfully updated! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo cupiditate doloribus eum atque iure architecto illum repellendus iste. Voluptate ab ipsa numquam odit ea, debitis ex quas fugiat vel quae!</div>

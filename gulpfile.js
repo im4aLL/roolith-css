@@ -11,6 +11,8 @@ const babelify     = require('babelify');
 const source       = require('vinyl-source-stream');
 const browserify   = require('browserify');
 
+const darkString = str => str.replace('roolith', 'roolith-dark');
+
 let config = {
     sass: {
         source: './src/sass/roolith.scss',
@@ -91,5 +93,17 @@ gulp.task('production', ['sass'], function(){           //  'js'
     gulp.src(config.sass.dist + '/' + config.sass.fileName)
         .pipe(cssnano())
         .pipe(rename(config.sass.minifiedFileName))
+        .pipe(gulp.dest(config.sass.dist));
+
+    // dark version
+    gulp.src(darkString(config.sass.source))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest(config.sass.dist))
+        .pipe(cssnano())
+        .pipe(rename(darkString(config.sass.minifiedFileName)))
         .pipe(gulp.dest(config.sass.dist));
 });
