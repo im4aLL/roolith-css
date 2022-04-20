@@ -41,20 +41,11 @@ function buildCSSDark() {
 }
 
 function browserSyncTask(done) {
-    // https://browsersync.io/docs/options
     browserSync.init({
-        server: {
-            baseDir: "./"
-        },
+        proxy: 'local.roolith-css.me',
         port: 3000,
         open: false
     });
-
-//     browserSync.init({
-//         proxy: 'local.yourdomain.me',
-//         port: 3000,
-//         open: false
-//     });
 
     done();
 }

@@ -21,7 +21,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
         line-height: normal;
         min-width: rem(100);
         text-align: center;
-        padding: rem(7) rem(20);
+        padding: rem(8) rem(20) rem(10);
         color: lighten(map-get($colors, 'dark'), 20%);
         position: relative;
         @include transition('background, color, box-shadow');
@@ -83,7 +83,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
     .button-small {
         font-size: rem(12);
         min-width: rem(50);
-        padding: rem(4) rem(10);
+        padding: rem(5) rem(10);
 
         &.loading:after {
             @include loader(12);

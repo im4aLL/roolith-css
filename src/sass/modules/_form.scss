@@ -183,6 +183,7 @@ $form-warning-color: map-get($colors, info) !default;
 
     .form-field {
         padding-bottom: rem(20);
+        position: relative;
     }
 
     .form-label {
@@ -226,7 +227,7 @@ $form-warning-color: map-get($colors, info) !default;
         width: 100%;
         border: rem(1) solid $form-input-border-color;
         border-radius: $form-input-radius;
-        padding: rem(9) rem(12);
+        padding: rem(8) rem(12) rem(10);
         box-shadow: none;
         @include transition('border, box-shadow, background');
 
@@ -244,7 +245,7 @@ $form-warning-color: map-get($colors, info) !default;
         }
 
         .form-field.large & {
-            padding: rem(10) rem(12);
+            padding: rem(11) rem(12);
         }
 
         .error & {
@@ -317,34 +318,73 @@ $form-warning-color: map-get($colors, info) !default;
         display: block;
         color: $form-checkbox-label-color;
 
-        &.form-field.small {
+        &::selection {
+            background: transparent;
+        }
+
+        .form-field.small & {
             font-size: rem(12);
-            line-height: rem(18);
+            line-height: rem(16);
         }
     }
 
     .form-check-input {
+        appearance: none;
+        width: rem(15);
+        height: rem(15);
+        background-color: map-get($colors, white);
+        border: rem(1) solid darken($form-input-border-color, 15%);
+        border-radius: $form-input-radius;
         position: absolute;
         left: 0;
         top: rem(4);
         margin: 0;
+        @include transition('border');
+
+        &:hover {
+            border-color: $form-input-hover-border-color;
+        }
+
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            display: block;
+        }
+
+        &:checked:before {
+            width: rem(4);
+            height: rem(8);
+            margin: rem(1) rem(5);
+            border-bottom: rem(1) solid darken($form-input-border-color, 50%);
+            border-right: rem(1) solid darken($form-input-border-color, 50%);
+            transform: rotate(45deg);
+        }
 
         .form-field.small & {
-            top: rem(3);
+            top: rem(2);
         }
     }
 
     .form-select {
         @extend .form-input;
-        background: transparent;
-        padding: rem(8) rem(12);
+        background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23#{str-replace('' + darken($form-input-border-color, 25%), '#', '')}' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>") no-repeat;
+        background-position: calc(100% - rem(12)) center;
+        appearance: none;
+        padding: rem(9) rem(32) rem(9) rem(12);
 
         .form-field.small & {
-            padding: rem(4) rem(7);
+            background-position: calc(100% - rem(6)) center;
+            padding: rem(5) rem(16) rem(5) rem(7);
         }
 
         .form-field.large & {
-            padding: rem(9) rem(12);
+            padding: rem(11) rem(32) rem(11) rem(12);
+        }
+
+        &[multiple] {
+            background: transparent;
         }
     }
 

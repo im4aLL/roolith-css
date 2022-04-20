@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>roolith CSS framework</title>
 
-    <!-- <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>"> -->
-    <link rel="stylesheet" href="dist/css/roolith-dark.css?v=<?= time() ?>">
+    <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>">
+    <!-- <link rel="stylesheet" href="dist/css/roolith-dark.css?v=<?= time() ?>"> -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <style>
         .box-demo { width: 100%; background-color: #ddd; padding: 10px; margin-bottom: 20px; text-align: center; border-radius: 2px; font-size: 80%; }
         .box-demo-collage { width: 100%; height: 100%; background-color: #ddd; border-radius: 0; display: flex; justify-content: center; align-items: center; }
     </style>
 </head>
-<body class="theme-dark">
+<body>
     <div class="container">
 
         <br><br>
 
-        <h1>Heading</h1>
+        <!-- <h1>Heading</h1>
         <h2>Heading</h2>
         <h3>Heading</h3>
         <h4>Heading</h4>
@@ -39,7 +39,7 @@
             <kbd>Ctrl+R</kbd>
         </p>
 
-        <br><br>
+        <br><br> -->
 
 
         <!-- <aside class="toast-notification bottom">
@@ -1158,7 +1158,7 @@
             </ol>
         </div> -->
 
-        <!-- <br><br>
+        <br><br>
         <form class="form" action="./" method="post">
             <div class="row">
                 <div class="columns large-2">
@@ -1199,7 +1199,7 @@
                         <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
                     </div>
 
-                    <div class="form-field">
+                    <div class="form-field large">
                         <label for="country" class="form-label">Select country</label>
                         <select name="country" id="country" class="form-select">
                             <option value="US">United state</option>
@@ -1259,7 +1259,11 @@
                     </div>
 
                     <div class="form-field">
-                        <label class="form-checkbox-demo-label small"><input type="checkbox-demo" class="form-check-input"> I agree with the <a href="">terms and conditions</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum, libero molestias eaque debitis asperiores, sint ratione.</label>
+                        <label class="form-checkbox-label"><input type="checkbox" class="form-check-input"> I agree with the <a href="">terms and conditions</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum, libero molestias eaque debitis asperiores, sint ratione.</label>
+                    </div>
+
+                    <div class="form-field small">
+                        <label class="form-checkbox-label"><input type="checkbox" class="form-check-input"> I agree with the <a href="">terms and conditions</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum, libero molestias eaque debitis asperiores, sint ratione.</label>
                     </div>
 
                 </div>
@@ -1277,7 +1281,7 @@
                     <button type="submit" class="button button-primary">Send message</button>
                 </div>
             </div>
-        </form> -->
+        </form>
 
         <br><br>
 
@@ -1468,7 +1472,7 @@
 
             <br><br> -->
 
-            <!-- <br><br>
+            <br><br>
 
             <a class="button button-small" href="#">Small</a>
             <a class="button button-primary button-small" href="#">Primary</a>
@@ -1510,7 +1514,7 @@
             <a class="button button-info button-large" href="#">Info</a>
             <a class="button button-success button-large" href="#">Success</a>
             <a class="button button-danger button-large" href="#">Danger</a>
-            <a class="button button-link button-large" href="#">Link</a> -->
+            <a class="button button-link button-large" href="#">Link</a>
         </div>
 
         <!-- <div class="column">
