@@ -58,6 +58,7 @@ function browserSyncReload(done) {
 
 function watchFiles() {
     gulp.watch('./src/sass/**/*.scss', sassTask);
+    gulp.watch('./src/sass/**/*.scss', sassDarkTask);
     gulp.watch(['./**/*.html', './**/*.php'], browserSyncReload);
 }
 

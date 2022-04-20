@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>roolith CSS framework</title>
 
-    <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>">
-    <!-- <link rel="stylesheet" href="dist/css/roolith-dark.css?v=<?= time() ?>"> -->
+    <!-- <link rel="stylesheet" href="dist/css/roolith.css?v=<?= time() ?>"> -->
+    <link rel="stylesheet" href="dist/css/roolith-dark.css?v=<?= time() ?>">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <style>
         .box-demo { width: 100%; background-color: #ddd; padding: 10px; margin-bottom: 20px; text-align: center; border-radius: 2px; font-size: 80%; }
         .box-demo-collage { width: 100%; height: 100%; background-color: #ddd; border-radius: 0; display: flex; justify-content: center; align-items: center; }
     </style>
 </head>
-<body>
+<body class="theme-dark">
     <div class="container">
 
         <br><br>
@@ -707,7 +707,7 @@
         </div>
         -->
 
-        <div class="column">
+        <!-- <div class="column">
 
             <div class="accordion">
                 <div class="accordion-item">
@@ -724,7 +724,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
         <!-- <div class="column">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus et, quae, doloremque rerum deleniti perspiciatis molestias id inventore fuga cum asperiores laudantium quasi. Quaerat nulla, <abbr title="Some title">totam</abbr> quas ducimus. Modi, odit?</p>
@@ -1158,7 +1158,7 @@
             </ol>
         </div> -->
 
-        <!-- <br><br>
+        <br><br>
         <form class="form" action="./" method="post">
             <div class="row">
                 <div class="columns large-2">
@@ -1283,7 +1283,7 @@
             </div>
         </form>
 
-        <br><br> -->
+        <br><br>
 
         <!-- <br><br>
 
