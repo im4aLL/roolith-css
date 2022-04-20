@@ -1,3 +1,4 @@
+@use "sass:math";
 $global-base-font-size: 16px !default;
 
 @function rem($pixels, $context: $global-base-font-size) {
@@ -9,5 +10,5 @@ $global-base-font-size: 16px !default;
         $context: $context * 1px;
     }
 
-    @return $pixels / $context * 1rem;
+    @return math.div($pixels, $context) * 1rem;
 }

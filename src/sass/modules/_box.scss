@@ -87,7 +87,7 @@ $box-border-radius: rem(2) !default;
     @each $name, $value in $colors {
         @if($name != white)
         {
-            .box-#{$name} {
+            .box-#{'' + $name} {
                 border: rem(1) solid darken($value, 5%);
 
                 .box-body {

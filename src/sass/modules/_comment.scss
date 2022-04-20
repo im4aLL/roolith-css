@@ -1,3 +1,4 @@
+@use "sass:math";
 $comment-border: rgba(map-get($colors, dark), 0.1) !default;
 $comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
 
@@ -65,7 +66,7 @@ $comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
 
     @for $i from 1 through 10 {
         .comment-indent-#{$i} {
-            margin-left: percentage($i / 20);
+            margin-left: percentage(math.div($i, 20));
         }
     }
 

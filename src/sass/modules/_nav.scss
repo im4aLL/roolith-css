@@ -80,7 +80,7 @@ $nav-primary-color: map-get($colors, primary) !default;
     }
 
     @each $name, $value in $colors {
-        .nav-link-#{$name} {
+        .nav-link-#{'' + $name} {
             background: $value;
             background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
             color: map-get($colors, white);

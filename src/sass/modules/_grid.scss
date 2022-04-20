@@ -1,3 +1,4 @@
+@use "sass:math";
 $global-width: rem(1200) !default;
 $grid-gutter: (
     small: rem(20),
@@ -6,9 +7,9 @@ $grid-gutter: (
 ) !default;
 $grid-column-count: 12 !default;
 
-$grid-small-gutter: map-get($grid-gutter, 'small') / 2 !default;
-$grid-medium-gutter: map-get($grid-gutter, 'medium') / 2 !default;
-$grid-large-gutter: map-get($grid-gutter, 'large') / 2 !default;
+$grid-small-gutter: math.div(map-get($grid-gutter, 'small'), 2) !default;
+$grid-medium-gutter: math.div(map-get($grid-gutter, 'medium'), 2) !default;
+$grid-large-gutter: math.div(map-get($grid-gutter, 'large'), 2) !default;
 
 @mixin add-gutter() {
     padding-left: $grid-small-gutter;
@@ -63,42 +64,42 @@ $grid-large-gutter: map-get($grid-gutter, 'large') / 2 !default;
 
     @for $i from 1 through $grid-column-count {
         .small-#{$i} {
-            width: percentage($i / $grid-column-count);
+            width: percentage(math.div($i, $grid-column-count));
         }
 
         .small-offset-#{$i} {
-            margin-left: percentage($i / $grid-column-count);
+            margin-left: percentage(math.div($i, $grid-column-count));
         }
 
         .small-pull-#{$i} {
             position: relative;
-            left: - percentage($i / $grid-column-count);
+            left: - percentage(math.div($i, $grid-column-count));
         }
 
         .small-push-#{$i} {
             position: relative;
-            left: percentage($i / $grid-column-count);
+            left: percentage(math.div($i, $grid-column-count));
         }
     }
 
     @include breakpoint(medium-up) {
         @for $i from 1 through $grid-column-count {
             .medium-#{$i} {
-                width: percentage($i / $grid-column-count);
+                width: percentage(math.div($i, $grid-column-count));
             }
 
             .medium-offset-#{$i} {
-                margin-left: percentage($i / $grid-column-count);
+                margin-left: percentage(math.div($i, $grid-column-count));
             }
 
             .medium-pull-#{$i} {
                 position: relative;
-                left: - percentage($i / $grid-column-count);
+                left: - percentage(math.div($i, $grid-column-count));
             }
 
             .medium-push-#{$i} {
                 position: relative;
-                left: percentage($i / $grid-column-count);
+                left: percentage(math.div($i, $grid-column-count));
             }
         }
     }
@@ -106,21 +107,21 @@ $grid-large-gutter: map-get($grid-gutter, 'large') / 2 !default;
     @include breakpoint(large-up) {
         @for $i from 1 through $grid-column-count {
             .large-#{$i} {
-                width: percentage($i / $grid-column-count);
+                width: percentage(math.div($i, $grid-column-count));
             }
 
             .large-offset-#{$i} {
-                margin-left: percentage($i / $grid-column-count);
+                margin-left: percentage(math.div($i, $grid-column-count));
             }
 
             .large-pull-#{$i} {
                 position: relative;
-                left: - percentage($i / $grid-column-count);
+                left: - percentage(math.div($i, $grid-column-count));
             }
 
             .large-push-#{$i} {
                 position: relative;
-                left: percentage($i / $grid-column-count);
+                left: percentage(math.div($i, $grid-column-count));
             }
         }
     }

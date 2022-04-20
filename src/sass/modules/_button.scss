@@ -117,7 +117,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
     @each $name, $value in $colors {
         @if($name != white)
         {
-            .button-#{$name} {
+            .button-#{'' + $name} {
                 background: $value;
                 background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
                 color: map-get($colors, white);

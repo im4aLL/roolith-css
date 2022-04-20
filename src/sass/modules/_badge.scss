@@ -14,7 +14,7 @@ $badge-radius: rem(3) !default;
     @each $name, $value in $colors {
         @if($name != white)
         {
-            .badge-#{$name} {
+            .badge-#{'' + $name} {
                 background: $value;
                 background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
                 color: map-get($colors, white);

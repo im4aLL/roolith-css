@@ -65,7 +65,7 @@ $card-header-footer-color: lighten(map-get($colors, dark), 40%) !default;
     @each $name, $value in $colors {
         @if($name != white)
         {
-            .card-#{$name} {
+            .card-#{'' + $name} {
                 background: $value;
                 color: map-get($colors, white);
 

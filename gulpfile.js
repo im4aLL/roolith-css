@@ -1,109 +1,76 @@
-const gulp         = require('gulp');
-const browserSync  = require('browser-sync').create();
-const reload       = browserSync.reload;
-const sass         = require('gulp-sass');
-const uglify       = require('gulp-uglify');
-const rename       = require('gulp-rename');
-const cssnano      = require('gulp-cssnano');
-const watch        = require('gulp-watch');
+const gulp = require('gulp');
+const browserSync = require('browser-sync').create();
+const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
-const babelify     = require('babelify');
-const source       = require('vinyl-source-stream');
-const browserify   = require('browserify');
+const rename = require('gulp-rename');
+const cssnano = require('gulp-cssnano');
+const sourcemaps = require('gulp-sourcemaps');
 
-const darkString = str => str.replace('roolith', 'roolith-dark');
+function sassTask() {
+    return gulp.src('./src/sass/roolith.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('./dist/css'))
+        .pipe(browserSync.stream());
+}
 
-let config = {
-    sass: {
-        source: './src/sass/roolith.scss',
-        dist: './dist/css',
-        fileName: 'roolith.css',
-        minifiedFileName: 'roolith.min.css',
-        watch: './src/sass/**/*.scss'
-    },
-    js: {
-        source: './src/js/roolith.js',
-        dist: './dist/js',
-        fileName: 'roolith.js',
-        minifiedFileName: 'roolith.min.js',
-        watch: './src/js/**/*.js'
-    },
-    image: {
-        source: './src/images/*',
-        dist: './dist/images'
-    },
-    sync: {
-        proxy: 'roolith-css.vhost',
-        online: true,
+function sassDarkTask() {
+    return gulp.src('./src/sass/roolith-dark.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('./dist/css'))
+        .pipe(browserSync.stream());
+}
+
+function buildCSS() {
+    return gulp.src('./dist/css/roolith.css')
+        .pipe(sourcemaps.init())
+        .pipe(cssnano())
+        .pipe(rename('roolith.min.css'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./dist/css'));
+}
+
+function buildCSSDark() {
+    return gulp.src('./dist/css/roolith-dark.css')
+        .pipe(sourcemaps.init())
+        .pipe(cssnano())
+        .pipe(rename('roolith-dark.min.css'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./dist/css'));
+}
+
+function browserSyncTask(done) {
+    // https://browsersync.io/docs/options
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        },
+        port: 3000,
         open: false
-    }
-};
-// https://www.browsersync.io/docs/options/
-
-
-// sass to css
-gulp.task('sass', function () {
-    gulp.src(config.sass.source)
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(gulp.dest(config.sass.dist))
-        .pipe(browserSync.stream());
-});
-
-// browserify
-gulp.task('js', function() {
-    return browserify({ entries: [config.js.source] })
-        .transform(babelify, {presets: ['es2015']}) // "es2015", "react"
-        .bundle()
-        .pipe(source(config.js.fileName))
-        .pipe(gulp.dest(config.js.dist))
-        .pipe(browserSync.stream());
-});
-
-// default task and watch
-gulp.task('watch', ['sass'], function() {       // 'js'
-    browserSync.init(config.sync);
-
-    watch(config.sass.watch, function(){
-        gulp.start('sass');
     });
 
-    // watch(config.js.watch, function(){
-    //     gulp.start('js');
-    // });
+//     browserSync.init({
+//         proxy: 'local.yourdomain.me',
+//         port: 3000,
+//         open: false
+//     });
 
-    watch(['./*.html', './**/*.php'], function(){
-        reload();
-    });
-});
+    done();
+}
 
-// default task
-gulp.task('default', ['watch']);
+function browserSyncReload(done) {
+    browserSync.reload();
 
-// gulp build and minify things
-gulp.task('production', ['sass'], function(){           //  'js'
-    // gulp.src(config.js.dist + '/' + config.js.fileName)
-    //     .pipe(uglify())
-    //     .pipe(rename(config.js.minifiedFileName))
-    //     .pipe(gulp.dest(config.js.dist));
+    done();
+}
 
-    gulp.src(config.sass.dist + '/' + config.sass.fileName)
-        .pipe(cssnano())
-        .pipe(rename(config.sass.minifiedFileName))
-        .pipe(gulp.dest(config.sass.dist));
+function watchFiles() {
+    gulp.watch('./src/sass/**/*.scss', sassTask);
+    gulp.watch(['./**/*.html', './**/*.php'], browserSyncReload);
+}
 
-    // dark version
-    gulp.src(darkString(config.sass.source))
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(gulp.dest(config.sass.dist))
-        .pipe(cssnano())
-        .pipe(rename(darkString(config.sass.minifiedFileName)))
-        .pipe(gulp.dest(config.sass.dist));
-});
+gulp.task('watch', gulp.parallel(watchFiles, browserSyncTask));
+gulp.task('sass', sassTask);
+gulp.task('sassDarkTask', sassDarkTask);
+gulp.task('production', gulp.series('sass', 'sassDarkTask', gulp.parallel(buildCSS, buildCSSDark)));

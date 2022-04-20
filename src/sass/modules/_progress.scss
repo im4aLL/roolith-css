@@ -40,11 +40,11 @@ $progress-bar-radius: rem(2) !default;
     @each $name, $value in $colors {
         @if($name != white)
         {
-            .progress-#{$name}::-moz-progress-bar {
+            .progress-#{'' + $name}::-moz-progress-bar {
                 background: $value;
             }
 
-            .progress-#{$name}::-webkit-progress-value {
+            .progress-#{'' + $name}::-webkit-progress-value {
                 background: $value;
             }
         }

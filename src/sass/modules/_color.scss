@@ -1,11 +1,11 @@
 @mixin roolith-color() {
 
     @each $name, $value in $colors {
-        .color-#{$name} {
+        .color-#{'' + $name} {
             color: $value;
         }
 
-        .bg-color-#{$name} {
+        .bg-color-#{'' + $name} {
             background-color: $value;
         }
     }

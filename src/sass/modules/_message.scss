@@ -41,7 +41,7 @@ $message-color-icon-size: rem(18) !default;
     @each $name, $value in $colors {
         @if($name != white)
         {
-            .message-#{$name} {
+            .message-#{'' + $name} {
                 background: $value;
                 background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
                 color: map-get($colors, white);
@@ -57,7 +57,7 @@ $message-color-icon-size: rem(18) !default;
     @each $name, $value in $colors {
         @if($name != white)
         {
-            .message-#{$name}-outline {
+            .message-#{'' + $name}-outline {
                 background: transparent;
                 color: $value;
                 border: rem(1) solid $value;

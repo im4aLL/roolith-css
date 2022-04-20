@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin loader($size: 20) {
     display: inline-block;
     border-radius: 50%;
@@ -6,6 +8,6 @@
     animation: loading 0.6s linear infinite;
     width: rem($size);
     height: rem($size);
-    margin-top: rem(-($size / 2));
-    margin-left: rem(-($size / 2));
+    margin-top: rem(-(math.div($size, 2)));
+    margin-left: rem(-(math.div($size, 2)));
 }
