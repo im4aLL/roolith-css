@@ -707,7 +707,7 @@
         </div>
         -->
 
-        <!-- <div class="column">
+        <div class="column">
 
             <div class="accordion">
                 <div class="accordion-item">
@@ -724,7 +724,7 @@
                 </div>
             </div>
 
-        </div> -->
+        </div>
 
         <!-- <div class="column">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus et, quae, doloremque rerum deleniti perspiciatis molestias id inventore fuga cum asperiores laudantium quasi. Quaerat nulla, <abbr title="Some title">totam</abbr> quas ducimus. Modi, odit?</p>
@@ -1158,7 +1158,7 @@
             </ol>
         </div> -->
 
-        <br><br>
+        <!-- <br><br>
         <form class="form" action="./" method="post">
             <div class="row">
                 <div class="columns large-2">
@@ -1283,7 +1283,7 @@
             </div>
         </form>
 
-        <br><br>
+        <br><br> -->
 
         <!-- <br><br>
 
@@ -1472,7 +1472,7 @@
 
             <br><br> -->
 
-            <br><br>
+            <!-- <br><br>
 
             <a class="button button-small" href="#">Small</a>
             <a class="button button-primary button-small" href="#">Primary</a>
@@ -1514,7 +1514,7 @@
             <a class="button button-info button-large" href="#">Info</a>
             <a class="button button-success button-large" href="#">Success</a>
             <a class="button button-danger button-large" href="#">Danger</a>
-            <a class="button button-link button-large" href="#">Link</a>
+            <a class="button button-link button-large" href="#">Link</a> -->
         </div>
 
         <!-- <div class="column">

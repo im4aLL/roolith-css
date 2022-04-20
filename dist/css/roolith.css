@@ -3134,22 +3134,29 @@ input, textarea, select {
 }
 
 .accordion-item-title {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.375rem;
   font-weight: bold;
   position: relative;
   padding: 0.3125rem 0;
   cursor: pointer;
 }
 .accordion-item-title:after {
-  content: "›";
   position: absolute;
-  right: 0;
-  top: 0.3125rem;
+  right: 0.3125rem;
+  top: 0.4375rem;
+  border-style: solid;
+  border-width: 0.0625rem 0.0625rem 0 0;
+  content: "";
+  display: inline-block;
+  width: 0.625rem;
+  height: 0.625rem;
+  transform: rotate(135deg);
+  vertical-align: top;
 }
 
 .active .accordion-item-title:after {
-  transform: rotate(-90deg);
+  transform: rotate(-45deg);
 }
 
 .accordion-item-body {
