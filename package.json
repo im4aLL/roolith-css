@@ -20,10 +20,10 @@
   },
   "homepage": "https://github.com/im4aLL/roolith-css/blob/master/readme.md",
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/preset-env": "^7.16.11",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
     "babelify": "^10.0.0",
-    "browser-sync": "^2.27.9",
+    "browser-sync": "^2.27.11",
     "browserify": "^17.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
@@ -34,7 +34,7 @@
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "sass": "^1.50.1",
+    "sass": "^1.58.0",
     "vinyl-source-stream": "^2.0.0"
   }
 }
