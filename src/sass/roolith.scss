@@ -1,13 +1,4 @@
-/**
- * ===========================================================
- * roolith CSS framework
- *
- * @version 1.7.2
- * @url http://habibhadi.com/lab/roolith
- * ===========================================================
- */
-
-@import "./main";
+@import './main';
 
 @include roolith-everything();
 // @include roolith-grid-only();
