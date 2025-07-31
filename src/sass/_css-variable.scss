@@ -1,0 +1,168 @@
+@use 'sass:map';
+@use './settings' as *;
+
+@mixin roolith-css-variable() {
+    :root {
+        /* Global */
+        --r-global-base-font-size: #{$global-base-font-size};
+        --r-global-base-font: #{$global-base-font};
+        --r-global-font-weight: #{$global-font-weight};
+        --r-global-font-bold-weight: #{$global-font-bold-weight};
+
+        /* Grid */
+        --r-global-width: #{$global-width};
+        --r-grid-column-count: #{$grid-column-count};
+        --r-grid-layout: #{$grid-layout};
+
+        /* Colors */
+        @each $name, $value in $colors {
+            --r-color-#{$name}: #{$value};
+        }
+
+        --r-color-light-darken-5: #{$color-light-darken-5};
+        --r-color-light-darken-10: #{$color-light-darken-10};
+        --r-color-light-darken-30: #{$color-light-darken-30};
+        --r-color-light-darken-50: #{$color-light-darken-50};
+
+        --r-color-dark-lighten-5: #{$color-dark-lighten-5};
+        --r-color-dark-lighten-30: #{$color-dark-lighten-30};
+
+        --r-color-info-lighten-20: #{$color-info-lighten-20};
+
+        /* Animation */
+        --r-animation-easing: #{$animation-easing};
+        --r-animation-duration: #{$animation-duration};
+
+        /* Button */
+        --r-button-radius: #{$button-radius};
+        --r-button-hover-shadow: #{$button-hover-shadow};
+        --r-button-hover-shadow-dark: #{$button-hover-shadow-dark};
+        --r-button-base-white: #{$button-base-white};
+        --r-button-primary-color: #{$button-primary-color};
+        --r-button-secondary-color: #{$button-secondary-color};
+
+        /* Nav */
+        --r-nav-border-radius: #{$nav-border-radius};
+        --r-nav-link-color: #{$nav-link-color};
+        --r-nav-dimmed-link-color: #{$nav-dimmed-link-color};
+        --r-nav-active-link-color: #{$nav-active-link-color};
+        --r-nav-spacing: #{$nav-spacing};
+        --r-nav-primary-color: #{$nav-primary-color};
+
+        /* Form */
+        --r-form-input-placeholder-color: #{$form-input-placeholder-color};
+        --r-form-input-border-color: #{$form-input-border-color};
+        --r-form-input-hover-border-color: #{$form-input-hover-border-color};
+        --r-form-input-focus-border-color: #{$form-input-focus-border-color};
+        --r-form-text-color: #{$form-text-color};
+        --r-form-input-radius: #{$form-input-radius};
+        --r-form-checkbox-label-color: #{$form-checkbox-label-color};
+        --r-form-disable-input-color: #{$form-disable-input-color};
+        --r-form-primary-color: #{$form-primary-color};
+        --r-form-primary-border-color: #{$form-primary-border-color};
+        --r-form-primary-hover-color: #{$form-primary-hover-color};
+        --r-form-primary-focus-color: #{$form-primary-focus-color};
+        --r-form-error-color: #{$form-error-color};
+        --r-form-success-color: #{$form-success-color};
+        --r-form-warning-color: #{$form-warning-color};
+
+        /* Table */
+        --r-table-header-border-color: #{$table-header-border-color};
+        --r-table-border-color: #{$table-border-color};
+        --r-table-header-font-weight: #{$table-header-font-weight};
+        --r-table-spacing: #{$table-spacing};
+        --r-table-row-hover-color: #{$table-row-hover-color};
+        --r-table-primary-header-color: #{$table-primary-header-color};
+        --r-table-row-striped-color: #{$table-row-striped-color};
+        --r-table-row-striped-hover-color: #{$table-row-striped-hover-color};
+
+        /* Img */
+        --r-img-radius: #{$img-radius};
+        --r-img-caption-color: #{$img-caption-color};
+
+        /* Message */
+        --r-message-radius: #{$message-radius};
+
+        /* Badge */
+        --r-badge-radius: #{$badge-radius};
+
+        /* Breadcrumb */
+        --r-breadcrumb-spacing: #{$breadcrumb-spacing};
+        --r-breadcrumb-size: #{$breadcrumb-size};
+        --r-breadcrumb-default-color: #{$breadcrumb-default-color};
+        --r-breadcrumb-sep-symbol: #{$breadcrumb-sep-symbol};
+        --r-breadcrumb-sep-color: #{$breadcrumb-sep-color};
+
+        /* Card */
+        --r-card-radius: #{$card-radius};
+        --r-card-shadow: #{$card-shadow};
+        --r-card-header-footer-border: #{$card-header-footer-border};
+        --r-card-header-footer-color: #{$card-header-footer-color};
+
+        /* Dropdown */
+        --r-dropdown-icons-size: #{$dropdown-icons-size};
+        --r-dropdown-icons-size-small: #{$dropdown-icons-size-small};
+        --r-dropdown-icons-size-large: #{$dropdown-icons-size-large};
+        --r-dropdown-width: #{$dropdown-width};
+        --r-dropdown-background: #{$dropdown-background};
+        --r-dropdown-border-color: #{$dropdown-border-color};
+        --r-dropdown-shadow: #{$dropdown-shadow};
+
+        /* Modal */
+        --r-modal-background: #{$modal-background};
+        --r-modal-content-background: #{$modal-content-background};
+        --r-modal-content-radius: #{$modal-content-radius};
+        --r-modal-content-spacing: #{$modal-content-spacing};
+        --r-modal-content-shadow: #{$modal-content-shadow};
+        --r-modal-border-color: #{$modal-border-color};
+        --r-modal-layout: #{$modal-layout};
+
+        /* Accordion */
+        --r-accordion-border-color: #{$accordion-border-color};
+
+        /* Tab */
+        --r-tab-active-color: #{$tab-active-color};
+        --r-tab-border-color: #{$tab-border-color};
+
+        /* Box */
+        --r-box-spacing: #{$box-spacing};
+        --r-box-spacing-small: #{$box-spacing-small};
+        --r-box-spacing-large: #{$box-spacing-large};
+        --r-box-border-radius: #{$box-border-radius};
+
+        /* Progress */
+        --r-progress-background: #{$progress-background};
+        --r-progress-background-shadow: #{$progress-background-shadow};
+        --r-progress-bar-color: #{$progress-bar-color};
+        --r-progress-bar-radius: #{$progress-bar-radius};
+
+        /* Collage */
+        --r-collage-item-default-width: #{$collage-item-default-width};
+        --r-collage-item-default-height: #{$collage-item-default-height};
+        --r-collage-item-default-gap: #{$collage-item-default-gap};
+        --r-collage-item-small-gap: #{$collage-item-small-gap};
+        --r-collage-item-large-gap: #{$collage-item-large-gap};
+        --r-collage-caption-background: #{$collage-caption-background};
+        --r-collage-caption-color: #{$collage-caption-color};
+
+        /* Avatar */
+        --r-avatar-default-size: #{$avatar-default-size};
+        --r-avatar-small-size: #{$avatar-small-size};
+        --r-avatar-label-color: #{$avatar-label-color};
+
+        /* Tag */
+        --r-tag-color: #{$tag-color};
+
+        /* Comment */
+        --r-comment-border: #{$comment-border};
+        --r-comment-highlight-color: #{$comment-highlight-color};
+
+        /* Toast */
+        --r-toast-notification-width: #{$toast-notification-width};
+
+        /* Theme dark */
+        --r-theme-dark-background-color: #{$theme-dark-background-color};
+        --r-theme-dark-font-color: #{$theme-dark-font-color};
+        --r-theme-dark-font-color-light: #{$theme-dark-font-color-light};
+    }
+}
