@@ -29,6 +29,9 @@
 
         --r-color-info-lighten-20: #{$color-info-lighten-20};
 
+        --r-color-white-darken-20: #{$color-white-darken-20};
+        --r-color-white-darken-70: #{$color-white-darken-70};
+
         /* Animation */
         --r-animation-easing: #{$animation-easing};
         --r-animation-duration: #{$animation-duration};
@@ -149,6 +152,7 @@
         --r-avatar-default-size: #{$avatar-default-size};
         --r-avatar-small-size: #{$avatar-small-size};
         --r-avatar-label-color: #{$avatar-label-color};
+        --r-avatar-label-hover-color: #{$avatar-label_hover_color};
 
         /* Tag */
         --r-tag-color: #{$tag-color};

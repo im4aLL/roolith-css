@@ -1,21 +1,19 @@
-$accordion-border-color: rgba(map-get($colors, dark), 0.1) !default;
-$accordion-caret-size: rem(4) !default;
+@use '../function' as *;
 
 @mixin roolith-accordion() {
-
     .accordion {
-        border-top: rem(1) solid $accordion-border-color;
+        border-top: rem(1) solid var(--r-accordion-border-color);
     }
 
     .accordion-item {
         padding: rem(10) 0;
-        border-bottom: rem(1) solid $accordion-border-color;
+        border-bottom: rem(1) solid var(--r-accordion-border-color);
     }
 
     .accordion-item-title {
         font-size: rem(16);
         line-height: rem(22);
-        font-weight: $global-font-bold-weight;
+        font-weight: var(--r-global-font-bold-weight);
         position: relative;
         padding: rem(5) 0;
         cursor: pointer;
@@ -24,7 +22,6 @@ $accordion-caret-size: rem(4) !default;
             position: absolute;
             right: rem(5);
             top: rem(7);
-
             border-style: solid;
             border-width: rem(1) rem(1) 0 0;
             content: '';
@@ -48,5 +45,4 @@ $accordion-caret-size: rem(4) !default;
             display: block;
         }
     }
-
 }

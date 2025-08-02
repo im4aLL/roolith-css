@@ -1,7 +1,3 @@
-@import './main';
+@use './main';
 
-@include roolith-everything();
-// @include roolith-grid-only();
-// @include roolith-basic();
-
-// @include roolith-theme-dark();
+@include main.roolith-everything();

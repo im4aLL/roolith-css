@@ -1,12 +1,9 @@
-$animation-easing: cubic-bezier(1.000, 0.000, 0.000, 1.000) !default;
-$animation-duration: 0.25s !default;
-
 @mixin roolith-animation() {
     .animation {
         visibility: visible !important;
-        animation-duration: $animation-duration;
+        animation-duration: var(--r-animation-duration);
         animation-fill-mode: both;
-        transition-timing-function: $animation-easing;
+        transition-timing-function: var(--r-animation-easing);
     }
 
     .fadeInUp {
@@ -50,7 +47,6 @@ $animation-duration: 0.25s !default;
     .fadeOut {
         animation-name: fadeOut;
     }
-
 
     @keyframes fadeInLeft {
         from {
@@ -96,5 +92,4 @@ $animation-duration: 0.25s !default;
             transform: rotate(360deg);
         }
     }
-
 }

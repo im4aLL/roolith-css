@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use './function' as *;
+@use './mixin' as m;
 
 @mixin roolith-typography() {
     h1,
@@ -90,7 +91,7 @@
     }
 
     strong {
-        font-weight: bold;
+        font-weight: var(--r-global-font-bold-weight);
     }
 
     em {
@@ -125,7 +126,7 @@
         border: rem(1) solid var(--r-color-light-darken-10);
         border-radius: rem(3);
         overflow: auto;
-        @include nice-scroll();
+        @include m.nice-scroll();
     }
 
     .dimmed {

@@ -1,26 +1,25 @@
-$global-base-font: Arial, Helvetica, sans-serif !default;
-$global-font-weight: normal !default;
-$global-font-bold-weight: bold !default;
-
 @mixin roolith-base {
     html {
         box-sizing: border-box;
     }
 
-    *, *:before, *:after {
+    *,
+    *:before,
+    *:after {
         box-sizing: inherit;
     }
 
     html {
-        font-size: $global-base-font-size;
+        font-size: var(--r-global-base-font-size);
     }
 
     body {
-        font-family: $global-base-font;
-        font-weight: $global-font-weight;
+        font-family: var(--r-global-base-font);
+        font-weight: var(--r-global-font-weight);
     }
 
-    a, button {
+    a,
+    button {
         outline: none;
     }
 
