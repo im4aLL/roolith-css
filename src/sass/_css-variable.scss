@@ -18,6 +18,7 @@
         }
 
         --r-color-light-darken-1: #{$color-light-darken-1};
+        --r-color-light-darken-2: #{$color-light-darken-2};
         --r-color-light-darken-3: #{$color-light-darken-3};
         --r-color-light-darken-5: #{$color-light-darken-5};
         --r-color-light-darken-10: #{$color-light-darken-10};
@@ -43,6 +44,8 @@
         --r-color-white-darken-50: #{$color-white-darken-50};
         --r-color-white-darken-60: #{$color-white-darken-60};
         --r-color-white-darken-70: #{$color-white-darken-70};
+
+        --r-color-black-lighten-70: #{$color-black-lighten-70};
 
         /* Animation */
         --r-animation-easing: #{$animation-easing};
@@ -99,6 +102,7 @@
 
         /* Message */
         --r-message-radius: #{$message-radius};
+        --r-message-color-icon-size: #{$message-color-icon-size};
 
         /* Badge */
         --r-badge-radius: #{$badge-radius};
@@ -132,7 +136,6 @@
         --r-modal-content-spacing: #{$modal-content-spacing};
         --r-modal-content-shadow: #{$modal-content-shadow};
         --r-modal-border-color: #{$modal-border-color};
-        --r-modal-layout: #{$modal-layout};
 
         /* Accordion */
         --r-accordion-border-color: #{$accordion-border-color};

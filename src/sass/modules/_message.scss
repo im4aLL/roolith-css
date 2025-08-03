@@ -1,15 +1,15 @@
-$message-radius: rem(2) !default;
-$message-color-icon-size: rem(18) !default;
+@use './function' as *;
+@use './settings';
 
 @mixin roolith-message() {
     .message {
         font-size: rem(14);
         line-height: rem(18);
         padding: rem(17) rem(20);
-        border-radius: $message-radius;
+        border-radius: var(--r-message-radius);
         margin-top: rem(10);
         margin-bottom: rem(10);
-        background: darken(map-get($colors, light), 2%);
+        background: var(--r-color-light-darken-2);
         position: relative;
         text-align: left;
     }
@@ -27,34 +27,34 @@ $message-color-icon-size: rem(18) !default;
         border: none;
         text-align: center;
         font-size: rem(10);
-        line-height: $message-color-icon-size;
-        width: $message-color-icon-size;
-        height: $message-color-icon-size;
+        line-height: var(--r-message-color-icon-size);
+        width: var(--r-message-color-icon-size);
+        height: var(--r-message-color-icon-size);
         padding: 0 0 0 rem(1);
         z-index: 2;
         cursor: pointer;
         border-radius: 50%;
-        background: darken(map-get($colors, light), 10%);
-        color: map-get($colors, dark);
+        background: var(--r-color-light-darken-10);
+        color: var(--r-color-dark);
     }
 
-    @each $name, $value in $colors {
+    @each $name, $value in settings.$colors {
         @if($name != white)
         {
             .message-#{'' + $name} {
                 background: $value;
-                background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
-                color: map-get($colors, white);
+                background: linear-gradient(to bottom, color.adjust($value, $lightness: 5%) 0%, $value 100%);
+                color: var(--r-color-white);
 
                 .message-close {
-                    background: darken($value, 10%);
-                    color: map-get($colors, white);
+                    background: color.adjust($value, $lightness: -10%);
+                    color: var(--r-color-white);
                 }
             }
         }
     }
 
-    @each $name, $value in $colors {
+    @each $name, $value in settings.$colors {
         @if($name != white)
         {
             .message-#{'' + $name}-outline {

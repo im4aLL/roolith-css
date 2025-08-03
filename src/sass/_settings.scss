@@ -45,6 +45,7 @@ $colors: (
 
 /* shades */
 $color-light-darken-1: color.adjust(map-get($colors, light), $lightness: -1%) !default;
+$color-light-darken-2: color.adjust(map-get($colors, light), $lightness: -2%) !default;
 $color-light-darken-3: color.adjust(map-get($colors, light), $lightness: -3%) !default;
 $color-light-darken-5: color.adjust(map-get($colors, light), $lightness: -5%) !default;
 $color-light-darken-10: color.adjust(map-get($colors, light), $lightness: -10%) !default;
@@ -71,6 +72,8 @@ $color-white-darken-50: color.adjust(map-get($colors, white), $lightness: -50%) 
 $color-white-darken-60: color.adjust(map-get($colors, white), $lightness: -60%) !default;
 $color-white-darken-70: color.adjust(map-get($colors, white), $lightness: -70%) !default;
 
+$color-black-lighten-70: color.adjust(map-get($colors, black), $lightness: 70%) !default;
+
 /* Animation */
 $animation-easing: cubic-bezier(1, 0, 0, 1) !default;
 $animation-duration: 0.25s !default;
@@ -88,7 +91,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
 /* nav */
 $nav-border-radius: rem(2) !default;
 $nav-link-color: map-get($colors, link) !default;
-$nav-dimmed-link-color: map-get($colors, black) !default;
+$nav-dimmed-link-color: $color-black-lighten-70 !default;
 $nav-active-link-color: map-get($colors, primary) !default;
 $nav-spacing: rem(13) !default;
 $nav-primary-color: map-get($colors, primary) !default;
@@ -96,22 +99,16 @@ $nav-primary-color: map-get($colors, primary) !default;
 /* form */
 $form-input-placeholder-color: color.adjust(map-get($colors, light), $lightness: -30%) !default;
 $form-input-border-color: color.adjust(map-get($colors, light), $lightness: -15%) !default;
-
 $form-input-hover-border-color: map-get($colors, link) !default;
 $form-input-focus-border-color: map-get($colors, primary) !default;
-
 $form-text-color: color.adjust(map-get($colors, light), $lightness: -30%) !default;
 $form-input-radius: rem(2) !default;
-
 $form-checkbox-label-color: color.adjust(map-get($colors, dark), $lightness: 20%) !default;
-
 $form-disable-input-color: color.adjust(map-get($colors, light), $lightness: -5%) !default;
-
 $form-primary-color: color.adjust(map-get($colors, light), $lightness: -2%) !default;
 $form-primary-border-color: color.adjust(map-get($colors, light), $lightness: -5%) !default;
 $form-primary-hover-color: map-get($colors, info) !default;
 $form-primary-focus-color: map-get($colors, white) !default;
-
 $form-error-color: map-get($colors, danger) !default;
 $form-success-color: map-get($colors, success) !default;
 $form-warning-color: map-get($colors, info) !default;
@@ -122,9 +119,7 @@ $table-border-color: color.adjust(map-get($colors, light), $lightness: -5%) !def
 $table-header-font-weight: $global-font-bold-weight !default;
 $table-spacing: rem(10) !default;
 $table-row-hover-color: color.adjust(map-get($colors, light), $lightness: -2%) !default;
-
 $table-primary-header-color: color.adjust(map-get($colors, light), $lightness: -5%) !default;
-
 $table-row-striped-color: color.adjust(map-get($colors, light), $lightness: -2%) !default;
 $table-row-striped-hover-color: color.adjust(map-get($colors, info), $lightness: 43%) !default;
 
@@ -134,6 +129,7 @@ $img-caption-color: color.adjust(map-get($colors, dark), $lightness: 40%) !defau
 
 /* message */
 $message-radius: rem(2) !default;
+$message-color-icon-size: rem(18) !default;
 
 /* badge */
 $badge-radius: rem(3) !default;
