@@ -1,5 +1,7 @@
+@use '../settings';
+
 @mixin roolith-state() {
-    @each $breakpoint, $value in $breakpoints {
+    @each $breakpoint, $value in settings.$breakpoints {
         .show-#{$breakpoint}-only {
             display: none;
 

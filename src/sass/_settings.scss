@@ -56,6 +56,7 @@ $color-light-darken-50: color.adjust(map-get($colors, light), $lightness: -50%) 
 $color-dark-lighten-5: color.adjust(map-get($colors, dark), $lightness: 5%) !default;
 $color-dark-lighten-20: color.adjust(map-get($colors, dark), $lightness: 20%) !default;
 $color-dark-lighten-30: color.adjust(map-get($colors, dark), $lightness: 30%) !default;
+$color-dark-lighten-40: color.adjust(map-get($colors, dark), $lightness: 40%) !default;
 
 $color-info-lighten-20: color.adjust(map-get($colors, info), $lightness: 20%) !default;
 

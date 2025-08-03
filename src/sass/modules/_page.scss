@@ -1,7 +1,6 @@
-
+@use '../function' as *;
 
 @mixin roolith-page() {
-
     .page {
         height: 100%;
         height: 100vh;
@@ -23,7 +22,7 @@
             text-align: left;
         }
     }
-    
+
     .page-icon {
         font-size: rem(72);
     }
@@ -41,5 +40,4 @@
         padding: rem(100) 0 0;
         @extend .small, .dimmed;
     }
-
 }

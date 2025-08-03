@@ -1,13 +1,12 @@
-$toast-notification-width: rem(400) !default;
+@use '../function' as *;
 
 @mixin roolith-toast-notification() {
-
     .toast-notification {
         position: fixed;
         right: rem(30);
         top: rem(20);
         z-index: 10;
-        max-width: rem(400);
+        max-width: var(--r-toast-notification-width);
 
         &.bottom {
             top: auto;

@@ -1,34 +1,29 @@
-$tab-active-color: map-get($colors, primary) !default;
-$tab-border-color: darken(map-get($colors, light), 5%) !default;
+@use '../function' as *;
+@use '../mixin';
 
 @mixin roolith-tab() {
-
-    .tab {
-
-    }
-
     .tab-list {
-        @include clearfix();
-        border-bottom: rem(1) solid $tab-border-color;
+        @include mixin.clearfix();
+        border-bottom: rem(1) solid var(--r-tab-border-color);
     }
 
     .tab-title {
         float: left;
         font-size: rem(14);
-        font-weight: $global-font-bold-weight;
+        font-weight: var(--r-global-font-bold-weight);
         padding: rem(10) rem(20);
         border-bottom: rem(2) solid transparent;
         margin-bottom: rem(-1);
-        @include transition('color, border, background');
+        @include mixin.transition('color, border, background');
 
         &:hover {
             cursor: pointer;
-            color: $tab-active-color;
-            background: $tab-border-color;
+            color: var(--r-tab-active-color);
+            background: var(--r-tab-border-color);
         }
 
         &.active {
-            border-color: $tab-active-color;
+            border-color: var(--r-tab-active-color);
         }
     }
 
@@ -64,5 +59,4 @@ $tab-border-color: darken(map-get($colors, light), 5%) !default;
             display: block;
         }
     }
-
 }
