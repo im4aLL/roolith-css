@@ -55,7 +55,11 @@ $color-dark-lighten-30: color.adjust(map-get($colors, dark), $lightness: 30%) !d
 
 $color-info-lighten-20: color.adjust(map-get($colors, info), $lightness: 20%) !default;
 
+$color-white-darken-5: color.adjust(map-get($colors, white), $lightness: -5%) !default;
+$color-white-darken-10: color.adjust(map-get($colors, white), $lightness: -10%) !default;
 $color-white-darken-20: color.adjust(map-get($colors, white), $lightness: -20%) !default;
+$color-white-darken-50: color.adjust(map-get($colors, white), $lightness: -50%) !default;
+$color-white-darken-60: color.adjust(map-get($colors, white), $lightness: -60%) !default;
 $color-white-darken-70: color.adjust(map-get($colors, white), $lightness: -70%) !default;
 
 /* Animation */

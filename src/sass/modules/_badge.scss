@@ -1,23 +1,24 @@
-$badge-radius: rem(3) !default;
+@use '../function' as *;
+@use '../mixin';
+@use '../settings';
 
 @mixin roolith-badge() {
     .badge {
         display: inline-block;
         font-size: 75%;
         padding: rem(2) rem(5) rem(3);
-        background: darken(map-get($colors, white), 5%);
-        color: darken(map-get($colors, white), 50%);
-        border-radius: $badge-radius;
+        background: var(--r-color-white-darken-5);
+        color: var(--r-color-white-darken-50);
+        border-radius: var(--r-badge-radius);
         line-height: 1;
     }
 
-    @each $name, $value in $colors {
-        @if($name != white)
-        {
+    @each $name, $value in settings.$colors {
+        @if ($name != white) {
             .badge-#{'' + $name} {
                 background: $value;
                 background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
-                color: map-get($colors, white);
+                color: var(--r-color-white);
             }
         }
     }
