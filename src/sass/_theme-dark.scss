@@ -6,23 +6,12 @@ $theme-dark-font-color: #919293 !default;
 $theme-dark-font-color-light: #dddede !default;
 
 /**
- * Global
- */
-@mixin roolith-theme-dark-global() {
-    body {
-        &.theme-dark {
-            background: $theme-dark-background-color;
-            color: $theme-dark-font-color;
-        }
-    }
-}
-
-/**
  * Typography
  */
 @mixin roolith-theme-dark-typography() {
     .theme-dark {
-        code, kbd {
+        code,
+        kbd {
             background: darken($theme-dark-background-color, 5%);
             border-color: darken($theme-dark-background-color, 7%);
             @include nice-scroll(lighten($theme-dark-background-color, 5%), lighten($theme-dark-background-color, 15%));
@@ -114,7 +103,8 @@ $theme-dark-font-color-light: #dddede !default;
         }
 
         .form-select {
-            background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23#{str-replace('' + $theme-dark-font-color, '#', '')}' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>") no-repeat darken($theme-dark-background-color, 5%);
+            background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23#{str-replace('' + $theme-dark-font-color, '#', '')}' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+                no-repeat darken($theme-dark-background-color, 5%);
             background-position: calc(100% - rem(12)) center;
 
             option {
@@ -146,7 +136,8 @@ $theme-dark-font-color-light: #dddede !default;
         .table-bordered {
             border-color: lighten($theme-dark-background-color, 15%);
 
-            th, td {
+            th,
+            td {
                 border-color: lighten($theme-dark-background-color, 15%);
             }
 
@@ -178,7 +169,7 @@ $theme-dark-font-color-light: #dddede !default;
                 }
 
                 &:hover {
-                    background-color:darken($theme-dark-background-color, 3%);
+                    background-color: darken($theme-dark-background-color, 3%);
                 }
             }
         }
@@ -252,7 +243,8 @@ $theme-dark-font-color-light: #dddede !default;
             background: darken($theme-dark-background-color, 5%);
         }
 
-        .modal-header, .modal-footer {
+        .modal-header,
+        .modal-footer {
             border-color: $theme-dark-background-color;
         }
 
@@ -364,7 +356,6 @@ $theme-dark-font-color-light: #dddede !default;
         }
     }
 }
-
 
 @mixin roolith-theme-dark() {
     @include roolith-theme-dark-global();

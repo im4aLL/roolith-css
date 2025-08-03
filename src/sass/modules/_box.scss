@@ -84,24 +84,24 @@
     @each $name, $value in settings.$colors {
         @if ($name != white) {
             .box-#{'' + $name} {
-                border: rem(1) solid color.adjust($value, $lightness: -5%);
+                border: rem(1) solid color-darken(var(--r-color-#{$name}), 5%);
 
                 .box-body {
-                    color: color.adjust($value, $lightness: -10%);
+                    color: color-darken(var(--r-color-#{$name}), 10%);
                 }
 
                 .box-header {
                     background: $value;
-                    background: linear-gradient(to bottom, color.adjust($value, $lightness: 5%) 0%, $value 100%);
+                    background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
                     color: var(--r-color-white);
-                    border-color: color.adjust($value, $lightness: -5%);
+                    border-color: color-darken(var(--r-color-#{$name}), 5%);
                 }
 
                 .box-footer {
                     border-top: none;
                     padding-top: 0;
                     font-size: 80%;
-                    color: color.adjust($value, $lightness: 25%);
+                    color: color-lighten(var(--r-color-#{$name}), 25%);
                 }
             }
         }

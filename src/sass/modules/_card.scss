@@ -61,19 +61,20 @@
     }
 
     @each $name, $value in settings.$colors {
-        @if($name != white)
-        {
+        @if ($name != white) {
             .card-#{'' + $name} {
                 background: $value;
                 color: var(--r-color-white);
 
-                .card-subtitle, .card-information {
+                .card-subtitle,
+                .card-information {
                     color: var(--r-color-white);
                     opacity: 0.7;
                 }
 
-                .card-header, .card-footer {
-                    border-color: color.adjust($value, $lightness: 10%);
+                .card-header,
+                .card-footer {
+                    border-color: color-lighten(var(--r-color-#{$name}), 10%);
                     color: var(--r-color-white);
                 }
             }

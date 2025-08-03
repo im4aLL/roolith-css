@@ -72,18 +72,21 @@
             background: var(--r-nav-primary-color);
             color: var(--r-color-white);
         }
-
     }
 
     @each $name, $value in settings.$colors {
         .nav-link-#{'' + $name} {
             background: $value;
-            background: linear-gradient(to bottom, color.adjust($value, $lightness: 5%) 0%, $value 100%);
+            background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
             color: var(--r-color-white);
 
             &:hover {
-                background: color.adjust($value, $lightness: 3%);
-                background: linear-gradient(to bottom, color.adjust($value, $lightness: 7%) 0%, color.adjust($value, $lightness: 3%) 100%);
+                background: color-lighten(var(--r-color-#{$name}), 3%);
+                background: linear-gradient(
+                    to bottom,
+                    color-lighten(var(--r-color-#{$name}), 7%) 0%,
+                    color-lighten(var(--r-color-#{$name}), 3%) 100%
+                );
                 box-shadow: var(--r-button-hover-shadow-dark);
                 color: var(--r-color-white);
             }

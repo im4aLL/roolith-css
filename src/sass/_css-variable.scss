@@ -3,50 +3,60 @@
 
 @mixin roolith-css-variable() {
     :root {
+        /* Colors */
+        @each $name, $value in $colors {
+            --r-color-#{'' + $name}: #{$value};
+        }
+
+        --r-color-light-darken-1: color-mix(in srgb, var(--r-color-light), black 1%);
+        --r-color-light-darken-2: color-mix(in srgb, var(--r-color-light), black 2%);
+        --r-color-light-darken-3: color-mix(in srgb, var(--r-color-light), black 3%);
+        --r-color-light-darken-5: color-mix(in srgb, var(--r-color-light), black 5%);
+        --r-color-light-darken-10: color-mix(in srgb, var(--r-color-light), black 10%);
+        --r-color-light-darken-15: color-mix(in srgb, var(--r-color-light), black 15%);
+        --r-color-light-darken-30: color-mix(in srgb, var(--r-color-light), black 30%);
+        --r-color-light-darken-50: color-mix(in srgb, var(--r-color-light), black 50%);
+
+        --r-color-dark-lighten-5: color-mix(in srgb, var(--r-color-dark), white 5%);
+        --r-color-dark-lighten-20: color-mix(in srgb, var(--r-color-dark), white 20%);
+        --r-color-dark-lighten-30: color-mix(in srgb, var(--r-color-dark), white 30%);
+        --r-color-dark-lighten-40: color-mix(in srgb, var(--r-color-dark), white 40%);
+        --r-color-dark-lighten-70: color-mix(in srgb, var(--r-color-dark), white 70%);
+        --r-color-dark-lighten-80: color-mix(in srgb, var(--r-color-dark), white 80%);
+
+        --r-color-info-lighten-20: color-mix(in srgb, var(--r-color-info), white 20%);
+        --r-color-info-lighten-43: color-mix(in srgb, var(--r-color-info), white 43%);
+
+        --r-color-white-darken-2: color-mix(in srgb, var(--r-color-white), black 2%);
+        --r-color-white-darken-3: color-mix(in srgb, var(--r-color-white), black 3%);
+        --r-color-white-darken-4: color-mix(in srgb, var(--r-color-white), black 4%);
+        --r-color-white-darken-5: color-mix(in srgb, var(--r-color-white), black 5%);
+        --r-color-white-darken-6: color-mix(in srgb, var(--r-color-white), black 6%);
+        --r-color-white-darken-7: color-mix(in srgb, var(--r-color-white), black 7%);
+        --r-color-white-darken-8: color-mix(in srgb, var(--r-color-white), black 8%);
+        --r-color-white-darken-10: color-mix(in srgb, var(--r-color-white), black 10%);
+        --r-color-white-darken-15: color-mix(in srgb, var(--r-color-white), black 15%);
+        --r-color-white-darken-20: color-mix(in srgb, var(--r-color-white), black 20%);
+        --r-color-white-darken-50: color-mix(in srgb, var(--r-color-white), black 50%);
+        --r-color-white-darken-60: color-mix(in srgb, var(--r-color-white), black 60%);
+        --r-color-white-darken-70: color-mix(in srgb, var(--r-color-white), black 70%);
+
+        --r-color-black-lighten-70: color-mix(in srgb, var(--r-color-black), white 70%);
+
+        --r-color-primary-lighten-80: color-mix(in srgb, var(--r-color-primary), white 80%);
+
         /* Global */
         --r-global-base-font-size: #{$global-base-font-size};
         --r-global-base-font: #{$global-base-font};
         --r-global-font-weight: #{$global-font-weight};
         --r-global-font-bold-weight: #{$global-font-bold-weight};
 
+        --r-global-background-color: var(--r-color-white);
+        --r-global-font-color: var(--r-color-dark);
+        --r-global-font-color-light: var(--r-color-dark-lighten-20);
+
         /* Grid */
         --r-global-width: #{$global-width};
-
-        /* Colors */
-        @each $name, $value in $colors {
-            --r-color-#{'' + $name}: #{$value};
-        }
-
-        --r-color-light-darken-1: #{$color-light-darken-1};
-        --r-color-light-darken-2: #{$color-light-darken-2};
-        --r-color-light-darken-3: #{$color-light-darken-3};
-        --r-color-light-darken-5: #{$color-light-darken-5};
-        --r-color-light-darken-10: #{$color-light-darken-10};
-        --r-color-light-darken-15: #{$color-light-darken-15};
-        --r-color-light-darken-30: #{$color-light-darken-30};
-        --r-color-light-darken-50: #{$color-light-darken-50};
-
-        --r-color-dark-lighten-5: #{$color-dark-lighten-5};
-        --r-color-dark-lighten-20: #{$color-dark-lighten-20};
-        --r-color-dark-lighten-30: #{$color-dark-lighten-30};
-        --r-color-dark-lighten-40: #{$color-dark-lighten-40};
-
-        --r-color-info-lighten-20: #{$color-info-lighten-20};
-
-        --r-color-white-darken-3: #{$color-white-darken-3};
-        --r-color-white-darken-4: #{$color-white-darken-4};
-        --r-color-white-darken-5: #{$color-white-darken-5};
-        --r-color-white-darken-6: #{$color-white-darken-6};
-        --r-color-white-darken-7: #{$color-white-darken-7};
-        --r-color-white-darken-8: #{$color-white-darken-8};
-        --r-color-white-darken-10: #{$color-white-darken-10};
-        --r-color-white-darken-15: #{$color-white-darken-15};
-        --r-color-white-darken-20: #{$color-white-darken-20};
-        --r-color-white-darken-50: #{$color-white-darken-50};
-        --r-color-white-darken-60: #{$color-white-darken-60};
-        --r-color-white-darken-70: #{$color-white-darken-70};
-
-        --r-color-black-lighten-70: #{$color-black-lighten-70};
 
         /* Animation */
         --r-animation-easing: #{$animation-easing};
@@ -58,48 +68,48 @@
         --r-button-hover-shadow-dark: #{$button-hover-shadow-dark};
         --r-button-active-shadow: #{$button-active-shadow};
         --r-button-active-dark-shadow: #{$button-active-dark-shadow};
-        --r-button-base-white: #{$button-base-white};
-        --r-button-primary-color: #{$button-primary-color};
-        --r-button-secondary-color: #{$button-secondary-color};
+        --r-button-base-white: var(--r-color-white);
+        --r-button-primary-color: var(--r-color-primary);
+        --r-button-secondary-color: var(--r-color-secondary);
 
         /* Nav */
         --r-nav-border-radius: #{$nav-border-radius};
-        --r-nav-link-color: #{$nav-link-color};
-        --r-nav-dimmed-link-color: #{$nav-dimmed-link-color};
-        --r-nav-active-link-color: #{$nav-active-link-color};
+        --r-nav-link-color: var(--r-color-link);
+        --r-nav-dimmed-link-color: var(--r-color-black-lighten-70);
+        --r-nav-active-link-color: var(--r-color-primary);
         --r-nav-spacing: #{$nav-spacing};
-        --r-nav-primary-color: #{$nav-primary-color};
+        --r-nav-primary-color: var(--r-color-primary);
 
         /* Form */
-        --r-form-input-placeholder-color: #{$form-input-placeholder-color};
-        --r-form-input-border-color: #{$form-input-border-color};
-        --r-form-input-hover-border-color: #{$form-input-hover-border-color};
-        --r-form-input-focus-border-color: #{$form-input-focus-border-color};
-        --r-form-text-color: #{$form-text-color};
+        --r-form-input-placeholder-color: var(--r-color-light-darken-30);
+        --r-form-input-border-color: var(--r-color-light-darken-15);
+        --r-form-input-hover-border-color: var(--r-color-link);
+        --r-form-input-focus-border-color: var(--r-color-primary);
+        --r-form-text-color: var(--r-color-light-darken-30);
         --r-form-input-radius: #{$form-input-radius};
-        --r-form-checkbox-label-color: #{$form-checkbox-label-color};
-        --r-form-disable-input-color: #{$form-disable-input-color};
-        --r-form-primary-color: #{$form-primary-color};
-        --r-form-primary-border-color: #{$form-primary-border-color};
-        --r-form-primary-hover-color: #{$form-primary-hover-color};
-        --r-form-primary-focus-color: #{$form-primary-focus-color};
-        --r-form-error-color: #{$form-error-color};
-        --r-form-success-color: #{$form-success-color};
-        --r-form-warning-color: #{$form-warning-color};
+        --r-form-checkbox-label-color: var(--r-color-dark-lighten-20);
+        --r-form-disable-input-color: var(--r-color-light-darken-5);
+        --r-form-primary-color: var(--r-color-light-darken-2);
+        --r-form-primary-border-color: var(--r-color-light-darken-5);
+        --r-form-primary-hover-color: var(--r-color-info);
+        --r-form-primary-focus-color: var(--r-color-white);
+        --r-form-error-color: var(--r-color-danger);
+        --r-form-success-color: var(--r-color-success);
+        --r-form-warning-color: var(--r-color-info);
 
         /* Table */
-        --r-table-header-border-color: #{$table-header-border-color};
-        --r-table-border-color: #{$table-border-color};
-        --r-table-header-font-weight: #{$table-header-font-weight};
+        --r-table-header-border-color: var(--r-color-light-darken-10);
+        --r-table-border-color: var(--r-color-light-darken-5);
+        --r-table-header-font-weight: var(--r-global-font-bold-weight);
         --r-table-spacing: #{$table-spacing};
-        --r-table-row-hover-color: #{$table-row-hover-color};
-        --r-table-primary-header-color: #{$table-primary-header-color};
-        --r-table-row-striped-color: #{$table-row-striped-color};
-        --r-table-row-striped-hover-color: #{$table-row-striped-hover-color};
+        --r-table-row-hover-color: var(--r-color-light-darken-2);
+        --r-table-primary-header-color: var(--r-color-light-darken-5);
+        --r-table-row-striped-color: var(--r-color-light-darken-2);
+        --r-table-row-striped-hover-color: var(--r-color-info-lighten-43);
 
         /* Img */
         --r-img-radius: #{$img-radius};
-        --r-img-caption-color: #{$img-caption-color};
+        --r-img-caption-color: var(--r-color-dark-lighten-40);
 
         /* Message */
         --r-message-radius: #{$message-radius};
@@ -111,39 +121,39 @@
         /* Breadcrumb */
         --r-breadcrumb-spacing: #{$breadcrumb-spacing};
         --r-breadcrumb-size: #{$breadcrumb-size};
-        --r-breadcrumb-default-color: #{$breadcrumb-default-color};
+        --r-breadcrumb-default-color: var(--r-color-dark-lighten-40);
         --r-breadcrumb-sep-symbol: #{$breadcrumb-sep-symbol};
-        --r-breadcrumb-sep-color: #{$breadcrumb-sep-color};
+        --r-breadcrumb-sep-color: var(--r-color-dark-lighten-70);
 
         /* Card */
         --r-card-radius: #{$card-radius};
         --r-card-shadow: #{$card-shadow};
-        --r-card-header-footer-border: #{$card-header-footer-border};
-        --r-card-header-footer-color: #{$card-header-footer-color};
+        --r-card-header-footer-border: var(--r-color-dark-lighten-80);
+        --r-card-header-footer-color: var(--r-color-dark-lighten-40);
 
         /* Dropdown */
         --r-dropdown-icons-size: #{$dropdown-icons-size};
         --r-dropdown-icons-size-small: #{$dropdown-icons-size-small};
         --r-dropdown-icons-size-large: #{$dropdown-icons-size-large};
         --r-dropdown-width: #{$dropdown-width};
-        --r-dropdown-background: #{$dropdown-background};
-        --r-dropdown-border-color: #{$dropdown-border-color};
+        --r-dropdown-background: var(--r-color-white-darken-2);
+        --r-dropdown-border-color: var(--r-color-white-darken-15);
         --r-dropdown-shadow: #{$dropdown-shadow};
 
         /* Modal */
-        --r-modal-background: #{$modal-background};
-        --r-modal-content-background: #{$modal-content-background};
+        --r-modal-background: rgba(var(--r-color-dark), 0.5);
+        --r-modal-content-background: var(--r-color-white);
         --r-modal-content-radius: #{$modal-content-radius};
         --r-modal-content-spacing: #{$modal-content-spacing};
         --r-modal-content-shadow: #{$modal-content-shadow};
-        --r-modal-border-color: #{$modal-border-color};
+        --r-modal-border-color: var(--r-color-white-darken-5);
 
         /* Accordion */
-        --r-accordion-border-color: #{$accordion-border-color};
+        --r-accordion-border-color: rgba(var(--r-color-dark), 0.1);
 
         /* Tab */
-        --r-tab-active-color: #{$tab-active-color};
-        --r-tab-border-color: #{$tab-border-color};
+        --r-tab-active-color: var(--r-color-primary);
+        --r-tab-border-color: var(--r-color-light-darken-5);
 
         /* Box */
         --r-box-spacing: #{$box-spacing};
@@ -152,9 +162,9 @@
         --r-box-border-radius: #{$box-border-radius};
 
         /* Progress */
-        --r-progress-background: #{$progress-background};
+        --r-progress-background: var(--r-color-white-darken-5);
         --r-progress-background-shadow: #{$progress-background-shadow};
-        --r-progress-bar-color: #{$progress-bar-color};
+        --r-progress-bar-color: var(--r-color-white-darken-30);
         --r-progress-bar-radius: #{$progress-bar-radius};
 
         /* Collage */
@@ -163,28 +173,30 @@
         --r-collage-item-default-gap: #{$collage-item-default-gap};
         --r-collage-item-small-gap: #{$collage-item-small-gap};
         --r-collage-item-large-gap: #{$collage-item-large-gap};
-        --r-collage-caption-background: #{$collage-caption-background};
-        --r-collage-caption-color: #{$collage-caption-color};
+        --r-collage-caption-background: var(--r-color-black);
+        --r-collage-caption-color: var(--r-color-white);
 
         /* Avatar */
         --r-avatar-default-size: #{$avatar-default-size};
         --r-avatar-small-size: #{$avatar-small-size};
-        --r-avatar-label-color: #{$avatar-label-color};
-        --r-avatar-label-hover-color: #{$avatar-label_hover_color};
+        --r-avatar-label-color: var(--r-color-black);
+        --r-avatar-label-hover-color: var(--r-color-dark-lighten-20);
 
         /* Tag */
-        --r-tag-color: #{$tag-color};
+        --r-tag-color: var(--r-color-primary);
 
         /* Comment */
-        --r-comment-border: #{$comment-border};
-        --r-comment-highlight-color: #{$comment-highlight-color};
+        --r-comment-border: rgba(var(--r-color-dark), 0.1);
+        --r-comment-highlight-color: var(--r-color-primary-lighten-80);
 
         /* Toast */
         --r-toast-notification-width: #{$toast-notification-width};
+    }
 
-        /* Theme dark */
-        --r-theme-dark-background-color: #{$theme-dark-background-color};
-        --r-theme-dark-font-color: #{$theme-dark-font-color};
-        --r-theme-dark-font-color-light: #{$theme-dark-font-color-light};
+    .theme-dark {
+        --r-theme-color: #{$theme-dark-color};
+        --r-global-background-color: var(--r-theme-color);
+        --r-global-font-color: color-mix(in srgb, var(--r-theme-color), white 50%);
+        --r-global-font-color-light: color-mix(in srgb, var(--r-theme-color), white 70%);
     }
 }

@@ -18,7 +18,7 @@
         @if ($name != white) {
             .badge-#{'' + $name} {
                 background: $value;
-                background: linear-gradient(to bottom, color.adjust($value, $lightness: 5%) 0%, $value 100%);
+                background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
                 color: var(--r-color-white);
             }
         }

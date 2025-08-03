@@ -24,7 +24,11 @@
 
         &:hover {
             background-color: var(--r-color-white-darken-6);
-            background: linear-gradient(to bottom, var(--r-color-white-darken-3) 0%, var(--r-color-white-darken-6) 100%);
+            background: linear-gradient(
+                to bottom,
+                var(--r-color-white-darken-3) 0%,
+                var(--r-color-white-darken-6) 100%
+            );
             border: rem(1) solid var(--r-color-white-darken-20);
             box-shadow: var(--r-button-hover-shadow);
             color: var(--r-color-dark-lighten-20);
@@ -111,17 +115,20 @@
     }
 
     @each $name, $value in settings.$colors {
-        @if($name != white)
-        {
+        @if ($name != white) {
             .button-#{'' + $name} {
                 background: $value;
-                background: linear-gradient(to bottom, color.adjust($value, $lightness: 5%) 0%, $value 100%);
+                background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
                 color: var(--r-color-white);
-                border: rem(1) solid color.adjust($value, $lightness: -5%);
+                border: rem(1) solid color-darken(var(--r-color-#{$name}), 5%);
 
                 &:hover {
-                    background: color.adjust($value, $lightness: 3%);
-                    background: linear-gradient(to bottom, color.adjust($value, $lightness: 7%) 0%, color.adjust($value, $lightness: 3%) 100%);
+                    background: color-lighten(var(--r-color-#{$name}), 3%);
+                    background: linear-gradient(
+                        to bottom,
+                        color-lighten(var(--r-color-#{$name}), 7%) 0%,
+                        color-lighten(var(--r-color-#{$name}), 3%) 100%
+                    );
                     border: rem(1) solid $value;
                     box-shadow: var(--r-button-hover-shadow-dark);
                     color: var(--r-color-white);
@@ -136,7 +143,7 @@
                     color: $value;
 
                     &:hover {
-                        background: color.adjust($value, $lightness: 3%);
+                        background: color-lighten(var(--r-color-#{$name}), 3%);
                         color: var(--r-color-white);
                     }
                 }
@@ -169,5 +176,4 @@
             }
         }
     }
-
 }

@@ -40,15 +40,14 @@
     }
 
     @each $name, $value in settings.$colors {
-        @if($name != white)
-        {
+        @if ($name != white) {
             .message-#{'' + $name} {
                 background: $value;
-                background: linear-gradient(to bottom, color.adjust($value, $lightness: 5%) 0%, $value 100%);
+                background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
                 color: var(--r-color-white);
 
                 .message-close {
-                    background: color.adjust($value, $lightness: -10%);
+                    background: color-darken(var(--r-color-#{$name}), 10%);
                     color: var(--r-color-white);
                 }
             }
@@ -56,12 +55,11 @@
     }
 
     @each $name, $value in settings.$colors {
-        @if($name != white)
-        {
+        @if ($name != white) {
             .message-#{'' + $name}-outline {
                 background: transparent;
-                color: $value;
-                border: rem(1) solid $value;
+                color: var(--r-color-#{$name});
+                border: rem(1) solid var(--r-color-#{$name});
                 padding: rem(14) rem(17);
             }
         }
