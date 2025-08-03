@@ -25,12 +25,18 @@
         --r-color-light-darken-50: #{$color-light-darken-50};
 
         --r-color-dark-lighten-5: #{$color-dark-lighten-5};
+        --r-color-dark-lighten-20: #{$color-dark-lighten-20};
         --r-color-dark-lighten-30: #{$color-dark-lighten-30};
 
         --r-color-info-lighten-20: #{$color-info-lighten-20};
 
+        --r-color-white-darken-3: #{$color-white-darken-3};
+        --r-color-white-darken-4: #{$color-white-darken-4};
         --r-color-white-darken-5: #{$color-white-darken-5};
+        --r-color-white-darken-6: #{$color-white-darken-6};
+        --r-color-white-darken-7: #{$color-white-darken-7};
         --r-color-white-darken-10: #{$color-white-darken-10};
+        --r-color-white-darken-15: #{$color-white-darken-15};
         --r-color-white-darken-20: #{$color-white-darken-20};
         --r-color-white-darken-50: #{$color-white-darken-50};
         --r-color-white-darken-60: #{$color-white-darken-60};
@@ -44,6 +50,8 @@
         --r-button-radius: #{$button-radius};
         --r-button-hover-shadow: #{$button-hover-shadow};
         --r-button-hover-shadow-dark: #{$button-hover-shadow-dark};
+        --r-button-active-shadow: #{$button-active-shadow};
+        --r-button-active-dark-shadow: #{$button-active-dark-shadow};
         --r-button-base-white: #{$button-base-white};
         --r-button-primary-color: #{$button-primary-color};
         --r-button-secondary-color: #{$button-secondary-color};

@@ -1,15 +1,12 @@
-$breadcrumb-spacing: rem(10) !default;
-$breadcrumb-size: 80% !default;
-$breadcrumb-default-color: lighten(map-get($colors, dark), 40%) !default;
-$breadcrumb-sep-symbol: "/" !default;
-$breadcrumb-sep-color: lighten(map-get($colors, dark), 70%) !default;
+@use '../function' as *;
+@use '../mixin';
 
 @mixin roolith-breadcrumb() {
     .breadcrumb {
-        font-size: $breadcrumb-size;
-        color: $breadcrumb-default-color;
+        font-size: var(--r-breadcrumb-size);
+        color: var(--r-breadcrumb-default-color);
         padding: rem(15) 0;
-        @include clearfix();
+        @include mixin.clearfix();
     }
 
     .breadcrumb-item {
@@ -17,9 +14,9 @@ $breadcrumb-sep-color: lighten(map-get($colors, dark), 70%) !default;
 
         &:after {
             display: inline-block;
-            content: $breadcrumb-sep-symbol;
-            margin: 0 $breadcrumb-spacing;
-            color: $breadcrumb-sep-color;
+            content: var(--r-breadcrumb-sep);
+            margin: 0 var(--r-breadcrumb-spacing);
+            color: var(--r-breadcrumb-sep-color);
         }
 
         &:last-child:after {

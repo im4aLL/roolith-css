@@ -55,8 +55,13 @@ $color-dark-lighten-30: color.adjust(map-get($colors, dark), $lightness: 30%) !d
 
 $color-info-lighten-20: color.adjust(map-get($colors, info), $lightness: 20%) !default;
 
+$color-white-darken-3: color.adjust(map-get($colors, white), $lightness: -3%) !default;
+$color-white-darken-4: color.adjust(map-get($colors, white), $lightness: -4%) !default;
 $color-white-darken-5: color.adjust(map-get($colors, white), $lightness: -5%) !default;
+$color-white-darken-6: color.adjust(map-get($colors, white), $lightness: -6%) !default;
+$color-white-darken-7: color.adjust(map-get($colors, white), $lightness: -7%) !default;
 $color-white-darken-10: color.adjust(map-get($colors, white), $lightness: -10%) !default;
+$color-white-darken-15: color.adjust(map-get($colors, white), $lightness: -15%) !default;
 $color-white-darken-20: color.adjust(map-get($colors, white), $lightness: -20%) !default;
 $color-white-darken-50: color.adjust(map-get($colors, white), $lightness: -50%) !default;
 $color-white-darken-60: color.adjust(map-get($colors, white), $lightness: -60%) !default;
@@ -70,6 +75,8 @@ $animation-duration: 0.25s !default;
 $button-radius: rem(2) !default;
 $button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
 $button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
+$button-active-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.1) !default;
+$button-active-dark-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.2) !default;
 $button-base-white: #ffffff !default;
 $button-primary-color: map-get($colors, primary) !default;
 $button-secondary-color: map-get($colors, secondary) !default;
