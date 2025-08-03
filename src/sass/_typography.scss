@@ -1,6 +1,6 @@
 @use 'sass:color';
 @use './function' as *;
-@use './mixin' as m;
+@use './mixin';
 
 @mixin roolith-typography() {
     h1,
@@ -24,7 +24,7 @@
         line-height: rem(38);
         letter-spacing: -0.04em;
 
-        @include breakpoint(large-up) {
+        @include mixin.breakpoint(large-up) {
             font-size: rem(52);
             line-height: rem(56);
         }
@@ -36,7 +36,7 @@
         line-height: rem(34);
         letter-spacing: -0.04em;
 
-        @include breakpoint(large-up) {
+        @include mixin.breakpoint(large-up) {
             font-size: rem(42);
             line-height: rem(48);
         }
@@ -48,7 +48,7 @@
         line-height: rem(32);
         letter-spacing: -0.04em;
 
-        @include breakpoint(large-up) {
+        @include mixin.breakpoint(large-up) {
             font-size: rem(36);
             line-height: rem(42);
         }
@@ -60,7 +60,7 @@
         line-height: rem(28);
         letter-spacing: -0.04em;
 
-        @include breakpoint(large-up) {
+        @include mixin.breakpoint(large-up) {
             font-size: rem(32);
             line-height: rem(38);
         }
@@ -72,7 +72,7 @@
         line-height: rem(22);
         letter-spacing: -0.02em;
 
-        @include breakpoint(large-up) {
+        @include mixin.breakpoint(large-up) {
             font-size: rem(22);
             line-height: rem(28);
         }
@@ -126,7 +126,7 @@
         border: rem(1) solid var(--r-color-light-darken-10);
         border-radius: rem(3);
         overflow: auto;
-        @include m.nice-scroll();
+        @include mixin.nice-scroll();
     }
 
     .dimmed {

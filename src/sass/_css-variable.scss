@@ -14,7 +14,7 @@
 
         /* Colors */
         @each $name, $value in $colors {
-            --r-color-#{$name}: #{$value};
+            --r-color-#{'' + $name}: #{$value};
         }
 
         --r-color-light-darken-1: #{$color-light-darken-1};

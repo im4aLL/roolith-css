@@ -1,6 +1,7 @@
 @use '../function' as *;
 @use '../mixin';
 @use '../settings';
+@use 'sass:color';
 
 @mixin roolith-badge() {
     .badge {

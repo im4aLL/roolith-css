@@ -26,7 +26,7 @@
             background-color: var(--r-color-white-darken-6);
             background: linear-gradient(to bottom, var(--r-color-white-darken-3) 0%, var(--r-color-white-darken-6) 100%);
             border: rem(1) solid var(--r-color-white-darken-20);
-            box-shadow: $button-hover-shadow;
+            box-shadow: var(--r-button-hover-shadow);
             color: var(--r-color-dark-lighten-20);
         }
 

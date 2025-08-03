@@ -13,7 +13,6 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 roolith: resolve(__dirname, 'src/sass/roolith.scss'),
-                'roolith-dark': resolve(__dirname, 'src/sass/roolith-dark.scss'),
             },
             output: {
                 assetFileNames: `[name]-${pkg.version}[extname]`,

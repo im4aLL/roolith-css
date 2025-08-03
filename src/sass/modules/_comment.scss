@@ -65,7 +65,7 @@
 
     @for $i from 1 through 10 {
         .comment-indent-#{$i} {
-            margin-left: percentage(math.div($i, 20));
+            margin-left: math.percentage(math.div($i, 20));
         }
     }
 }

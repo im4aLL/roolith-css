@@ -1,10 +1,10 @@
 @use 'sass:map';
-@use './settings';
-@use './mixin';
+@use '../settings';
+@use '../mixin';
 
-$grid-css-grid-small-gutter: map-get(settings.$grid-gutter, 'small') !default;
-$grid-css-grid-medium-gutter: map-get(settings.$grid-gutter, 'medium') !default;
-$grid-css-grid-large-gutter: map-get(settings.$grid-gutter, 'large') !default;
+$grid-css-grid-small-gutter: map.get(settings.$grid-gutter, 'small') !default;
+$grid-css-grid-medium-gutter: map.get(settings.$grid-gutter, 'medium') !default;
+$grid-css-grid-large-gutter: map.get(settings.$grid-gutter, 'large') !default;
 
 @mixin add-css-grid-gutter() {
     padding-left: $grid-css-grid-small-gutter;
@@ -29,17 +29,17 @@ $grid-css-grid-large-gutter: map-get(settings.$grid-gutter, 'large') !default;
     }
 
     .grid-column {
-        padding-left: map-get(settings.$grid-gutter, 'small');
-        padding-right: map-get(settings.$grid-gutter, 'small');
+        padding-left: map.get(settings.$grid-gutter, 'small');
+        padding-right: map.get(settings.$grid-gutter, 'small');
 
         @include mixin.breakpoint(medium-up) {
-            padding-left: map-get(settings.$grid-gutter, 'medium');
-            padding-right: map-get(settings.$grid-gutter, 'medium');
+            padding-left: map.get(settings.$grid-gutter, 'medium');
+            padding-right: map.get(settings.$grid-gutter, 'medium');
         }
 
         @include mixin.breakpoint(large-up) {
-            padding-left: map-get(settings.$grid-gutter, 'large');
-            padding-right: map-get(settings.$grid-gutter, 'large');
+            padding-left: map.get(settings.$grid-gutter, 'large');
+            padding-right: map.get(settings.$grid-gutter, 'large');
         }
     }
 

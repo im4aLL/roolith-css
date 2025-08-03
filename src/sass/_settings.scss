@@ -1,4 +1,6 @@
 @use 'sass:color';
+@use "sass:map";
+@use './function' as *;
 
 /* Global */
 $global-base-font-size: 100% !default;
@@ -44,36 +46,36 @@ $colors: (
 ) !default;
 
 /* shades */
-$color-light-darken-1: color.adjust(map-get($colors, light), $lightness: -1%) !default;
-$color-light-darken-2: color.adjust(map-get($colors, light), $lightness: -2%) !default;
-$color-light-darken-3: color.adjust(map-get($colors, light), $lightness: -3%) !default;
-$color-light-darken-5: color.adjust(map-get($colors, light), $lightness: -5%) !default;
-$color-light-darken-10: color.adjust(map-get($colors, light), $lightness: -10%) !default;
-$color-light-darken-15: color.adjust(map-get($colors, light), $lightness: -15%) !default;
-$color-light-darken-30: color.adjust(map-get($colors, light), $lightness: -30%) !default;
-$color-light-darken-50: color.adjust(map-get($colors, light), $lightness: -50%) !default;
+$color-light-darken-1: color.adjust(map.get($colors, light), $lightness: -1%) !default;
+$color-light-darken-2: color.adjust(map.get($colors, light), $lightness: -2%) !default;
+$color-light-darken-3: color.adjust(map.get($colors, light), $lightness: -3%) !default;
+$color-light-darken-5: color.adjust(map.get($colors, light), $lightness: -5%) !default;
+$color-light-darken-10: color.adjust(map.get($colors, light), $lightness: -10%) !default;
+$color-light-darken-15: color.adjust(map.get($colors, light), $lightness: -15%) !default;
+$color-light-darken-30: color.adjust(map.get($colors, light), $lightness: -30%) !default;
+$color-light-darken-50: color.adjust(map.get($colors, light), $lightness: -50%) !default;
 
-$color-dark-lighten-5: color.adjust(map-get($colors, dark), $lightness: 5%) !default;
-$color-dark-lighten-20: color.adjust(map-get($colors, dark), $lightness: 20%) !default;
-$color-dark-lighten-30: color.adjust(map-get($colors, dark), $lightness: 30%) !default;
-$color-dark-lighten-40: color.adjust(map-get($colors, dark), $lightness: 40%) !default;
+$color-dark-lighten-5: color.adjust(map.get($colors, dark), $lightness: 5%) !default;
+$color-dark-lighten-20: color.adjust(map.get($colors, dark), $lightness: 20%) !default;
+$color-dark-lighten-30: color.adjust(map.get($colors, dark), $lightness: 30%) !default;
+$color-dark-lighten-40: color.adjust(map.get($colors, dark), $lightness: 40%) !default;
 
-$color-info-lighten-20: color.adjust(map-get($colors, info), $lightness: 20%) !default;
+$color-info-lighten-20: color.adjust(map.get($colors, info), $lightness: 20%) !default;
 
-$color-white-darken-3: color.adjust(map-get($colors, white), $lightness: -3%) !default;
-$color-white-darken-4: color.adjust(map-get($colors, white), $lightness: -4%) !default;
-$color-white-darken-5: color.adjust(map-get($colors, white), $lightness: -5%) !default;
-$color-white-darken-6: color.adjust(map-get($colors, white), $lightness: -6%) !default;
-$color-white-darken-7: color.adjust(map-get($colors, white), $lightness: -7%) !default;
-$color-white-darken-8: color.adjust(map-get($colors, white), $lightness: -8%) !default;
-$color-white-darken-10: color.adjust(map-get($colors, white), $lightness: -10%) !default;
-$color-white-darken-15: color.adjust(map-get($colors, white), $lightness: -15%) !default;
-$color-white-darken-20: color.adjust(map-get($colors, white), $lightness: -20%) !default;
-$color-white-darken-50: color.adjust(map-get($colors, white), $lightness: -50%) !default;
-$color-white-darken-60: color.adjust(map-get($colors, white), $lightness: -60%) !default;
-$color-white-darken-70: color.adjust(map-get($colors, white), $lightness: -70%) !default;
+$color-white-darken-3: color.adjust(map.get($colors, white), $lightness: -3%) !default;
+$color-white-darken-4: color.adjust(map.get($colors, white), $lightness: -4%) !default;
+$color-white-darken-5: color.adjust(map.get($colors, white), $lightness: -5%) !default;
+$color-white-darken-6: color.adjust(map.get($colors, white), $lightness: -6%) !default;
+$color-white-darken-7: color.adjust(map.get($colors, white), $lightness: -7%) !default;
+$color-white-darken-8: color.adjust(map.get($colors, white), $lightness: -8%) !default;
+$color-white-darken-10: color.adjust(map.get($colors, white), $lightness: -10%) !default;
+$color-white-darken-15: color.adjust(map.get($colors, white), $lightness: -15%) !default;
+$color-white-darken-20: color.adjust(map.get($colors, white), $lightness: -20%) !default;
+$color-white-darken-50: color.adjust(map.get($colors, white), $lightness: -50%) !default;
+$color-white-darken-60: color.adjust(map.get($colors, white), $lightness: -60%) !default;
+$color-white-darken-70: color.adjust(map.get($colors, white), $lightness: -70%) !default;
 
-$color-black-lighten-70: color.adjust(map-get($colors, black), $lightness: 70%) !default;
+$color-black-lighten-70: color.adjust(map.get($colors, black), $lightness: 70%) !default;
 
 /* Animation */
 $animation-easing: cubic-bezier(1, 0, 0, 1) !default;
@@ -86,47 +88,47 @@ $button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
 $button-active-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.1) !default;
 $button-active-dark-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.2) !default;
 $button-base-white: #ffffff !default;
-$button-primary-color: map-get($colors, primary) !default;
-$button-secondary-color: map-get($colors, secondary) !default;
+$button-primary-color: map.get($colors, primary) !default;
+$button-secondary-color: map.get($colors, secondary) !default;
 
 /* nav */
 $nav-border-radius: rem(2) !default;
-$nav-link-color: map-get($colors, link) !default;
+$nav-link-color: map.get($colors, link) !default;
 $nav-dimmed-link-color: $color-black-lighten-70 !default;
-$nav-active-link-color: map-get($colors, primary) !default;
+$nav-active-link-color: map.get($colors, primary) !default;
 $nav-spacing: rem(13) !default;
-$nav-primary-color: map-get($colors, primary) !default;
+$nav-primary-color: map.get($colors, primary) !default;
 
 /* form */
-$form-input-placeholder-color: color.adjust(map-get($colors, light), $lightness: -30%) !default;
-$form-input-border-color: color.adjust(map-get($colors, light), $lightness: -15%) !default;
-$form-input-hover-border-color: map-get($colors, link) !default;
-$form-input-focus-border-color: map-get($colors, primary) !default;
-$form-text-color: color.adjust(map-get($colors, light), $lightness: -30%) !default;
+$form-input-placeholder-color: color.adjust(map.get($colors, light), $lightness: -30%) !default;
+$form-input-border-color: color.adjust(map.get($colors, light), $lightness: -15%) !default;
+$form-input-hover-border-color: map.get($colors, link) !default;
+$form-input-focus-border-color: map.get($colors, primary) !default;
+$form-text-color: color.adjust(map.get($colors, light), $lightness: -30%) !default;
 $form-input-radius: rem(2) !default;
-$form-checkbox-label-color: color.adjust(map-get($colors, dark), $lightness: 20%) !default;
-$form-disable-input-color: color.adjust(map-get($colors, light), $lightness: -5%) !default;
-$form-primary-color: color.adjust(map-get($colors, light), $lightness: -2%) !default;
-$form-primary-border-color: color.adjust(map-get($colors, light), $lightness: -5%) !default;
-$form-primary-hover-color: map-get($colors, info) !default;
-$form-primary-focus-color: map-get($colors, white) !default;
-$form-error-color: map-get($colors, danger) !default;
-$form-success-color: map-get($colors, success) !default;
-$form-warning-color: map-get($colors, info) !default;
+$form-checkbox-label-color: color.adjust(map.get($colors, dark), $lightness: 20%) !default;
+$form-disable-input-color: color.adjust(map.get($colors, light), $lightness: -5%) !default;
+$form-primary-color: color.adjust(map.get($colors, light), $lightness: -2%) !default;
+$form-primary-border-color: color.adjust(map.get($colors, light), $lightness: -5%) !default;
+$form-primary-hover-color: map.get($colors, info) !default;
+$form-primary-focus-color: map.get($colors, white) !default;
+$form-error-color: map.get($colors, danger) !default;
+$form-success-color: map.get($colors, success) !default;
+$form-warning-color: map.get($colors, info) !default;
 
 /* table */
-$table-header-border-color: color.adjust(map-get($colors, light), $lightness: -10%) !default;
-$table-border-color: color.adjust(map-get($colors, light), $lightness: -5%) !default;
+$table-header-border-color: color.adjust(map.get($colors, light), $lightness: -10%) !default;
+$table-border-color: color.adjust(map.get($colors, light), $lightness: -5%) !default;
 $table-header-font-weight: $global-font-bold-weight !default;
 $table-spacing: rem(10) !default;
-$table-row-hover-color: color.adjust(map-get($colors, light), $lightness: -2%) !default;
-$table-primary-header-color: color.adjust(map-get($colors, light), $lightness: -5%) !default;
-$table-row-striped-color: color.adjust(map-get($colors, light), $lightness: -2%) !default;
-$table-row-striped-hover-color: color.adjust(map-get($colors, info), $lightness: 43%) !default;
+$table-row-hover-color: color.adjust(map.get($colors, light), $lightness: -2%) !default;
+$table-primary-header-color: color.adjust(map.get($colors, light), $lightness: -5%) !default;
+$table-row-striped-color: color.adjust(map.get($colors, light), $lightness: -2%) !default;
+$table-row-striped-hover-color: color.adjust(map.get($colors, info), $lightness: 43%) !default;
 
 /* img */
 $img-radius: rem(2) !default;
-$img-caption-color: color.adjust(map-get($colors, dark), $lightness: 40%) !default;
+$img-caption-color: color.adjust(map.get($colors, dark), $lightness: 40%) !default;
 
 /* message */
 $message-radius: rem(2) !default;
@@ -138,40 +140,40 @@ $badge-radius: rem(3) !default;
 /* breadcrumb */
 $breadcrumb-spacing: rem(10) !default;
 $breadcrumb-size: 80% !default;
-$breadcrumb-default-color: color.adjust(map-get($colors, dark), $lightness: 40%) !default;
+$breadcrumb-default-color: color.adjust(map.get($colors, dark), $lightness: 40%) !default;
 $breadcrumb-sep-symbol: '/' !default;
-$breadcrumb-sep-color: color.adjust(map-get($colors, dark), $lightness: 70%) !default;
+$breadcrumb-sep-color: color.adjust(map.get($colors, dark), $lightness: 70%) !default;
 
 /* card */
 $card-radius: rem(2) !default;
 $card-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
-$card-header-footer-border: rem(1) solid color.adjust(map-get($colors, dark), $lightness: 83%) !default;
-$card-header-footer-color: color.adjust(map-get($colors, dark), $lightness: 40%) !default;
+$card-header-footer-border: rem(1) solid color.adjust(map.get($colors, dark), $lightness: 83%) !default;
+$card-header-footer-color: color.adjust(map.get($colors, dark), $lightness: 40%) !default;
 
 /* dropdown */
 $dropdown-icons-size: rem(5) !default;
 $dropdown-icons-size-small: rem(4) !default;
 $dropdown-icons-size-large: rem(7) !default;
 $dropdown-width: rem(220) !default;
-$dropdown-background: color.adjust(map-get($colors, white), $lightness: -2%) !default;
-$dropdown-border-color: color.adjust(map-get($colors, white), $lightness: -15%) !default;
+$dropdown-background: color.adjust(map.get($colors, white), $lightness: -2%) !default;
+$dropdown-border-color: color.adjust(map.get($colors, white), $lightness: -15%) !default;
 $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 
 /* modal */
-$modal-background: rgba(map-get($colors, dark), 0.5) !default;
-$modal-content-background: map-get($colors, white) !default;
+$modal-background: rgba(map.get($colors, dark), 0.5) !default;
+$modal-content-background: map.get($colors, white) !default;
 $modal-content-radius: rem(2) !default;
 $modal-content-spacing: rem(20) !default;
 $modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0, 0, 0, 0.1) !default;
-$modal-border-color: color.adjust(map-get($colors, white), $lightness: -5%);
+$modal-border-color: color.adjust(map.get($colors, white), $lightness: -5%);
 $modal-layout: css-grid !default; /* css-grid || traditional || flex */
 
 /* accordion */
-$accordion-border-color: rgba(map-get($colors, dark), 0.1) !default;
+$accordion-border-color: rgba(map.get($colors, dark), 0.1) !default;
 
 /* tab */
-$tab-active-color: map-get($colors, primary) !default;
-$tab-border-color: color.adjust(map-get($colors, light), $lightness: -5%) !default;
+$tab-active-color: map.get($colors, primary) !default;
+$tab-border-color: color.adjust(map.get($colors, light), $lightness: -5%) !default;
 
 /* box */
 $box-spacing: rem(20) !default;
@@ -180,9 +182,9 @@ $box-spacing-large: rem(30) !default;
 $box-border-radius: rem(2) !default;
 
 /* progress */
-$progress-background: color.adjust(map-get($colors, white), $lightness: -5%) !default;
+$progress-background: color.adjust(map.get($colors, white), $lightness: -5%) !default;
 $progress-background-shadow: 0 rem(2) rem(5) rgba(0, 0, 0, 0.05) inset !default;
-$progress-bar-color: color.adjust(map-get($colors, white), $lightness: -30%) !default;
+$progress-bar-color: color.adjust(map.get($colors, white), $lightness: -30%) !default;
 $progress-bar-radius: rem(2) !default;
 
 /* collage */
@@ -191,21 +193,21 @@ $collage-item-default-height: rem(200) !default;
 $collage-item-default-gap: rem(10) !default;
 $collage-item-small-gap: rem(1) !default;
 $collage-item-large-gap: rem(20) !default;
-$collage-caption-background: map-get($colors, black) !default;
-$collage-caption-color: map-get($colors, white) !default;
+$collage-caption-background: map.get($colors, black) !default;
+$collage-caption-color: map.get($colors, white) !default;
 
 /* avatar */
 $avatar-default-size: rem(40) !default;
 $avatar-small-size: rem(30) !default;
-$avatar-label-color: map-get($colors, black) !default;
+$avatar-label-color: map.get($colors, black) !default;
 $avatar-label-hover-color: $color-dark-lighten-20 !default;
 
 /* tag */
-$tag-color: map-get($colors, primary) !default;
+$tag-color: map.get($colors, primary) !default;
 
 /* comment */
-$comment-border: rgba(map-get($colors, dark), 0.1) !default;
-$comment-highlight-color: color.adjust(map-get($colors, primary), $lightness: 47%) !default;
+$comment-border: rgba(map.get($colors, dark), 0.1) !default;
+$comment-highlight-color: color.adjust(map.get($colors, primary), $lightness: 47%) !default;
 
 /* toast */
 $toast-notification-width: rem(400) !default;

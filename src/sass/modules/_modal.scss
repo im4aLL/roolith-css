@@ -73,7 +73,7 @@
     }
 
     .modal-header {
-        @include clearfix();
+        @include mixin.clearfix();
         padding: var(--r-modal-content-spacing);
         border-bottom: rem(1) solid var(--r-modal-border-color);
         font-size: rem(16);

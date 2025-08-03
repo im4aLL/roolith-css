@@ -19,11 +19,11 @@
         }
 
         &.button-small:after {
-            @include mixin.triangle(down, $dropdown-icons-size-small);
+            @include mixin.triangle(down, var(--r-dropdown-icons-size-small));
         }
 
         &.button-large:after {
-            @include mixin.triangle(down, $dropdown-icons-size-large);
+            @include mixin.triangle(down, var(--r-dropdown-icons-size-large));
             margin-left: rem(10);
         }
     }

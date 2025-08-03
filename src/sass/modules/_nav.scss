@@ -5,7 +5,7 @@
 
 @mixin roolith-nav() {
     .nav {
-        @include clearfix();
+        @include mixin.clearfix();
         margin-left: calc(var(--r-nav-spacing) * -1);
         float: left;
     }

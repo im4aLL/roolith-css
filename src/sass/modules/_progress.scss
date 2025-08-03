@@ -7,7 +7,7 @@
         width: 100%;
         height: rem(10);
         background: var(--r-progress-background);
-        border-radius: $progress-bar-radius;
+        border-radius: var(--r-progress-bar-radius);
         border: none;
     }
 
