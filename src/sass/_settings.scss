@@ -44,8 +44,11 @@ $colors: (
 ) !default;
 
 /* shades */
+$color-light-darken-1: color.adjust(map-get($colors, light), $lightness: -1%) !default;
+$color-light-darken-3: color.adjust(map-get($colors, light), $lightness: -3%) !default;
 $color-light-darken-5: color.adjust(map-get($colors, light), $lightness: -5%) !default;
 $color-light-darken-10: color.adjust(map-get($colors, light), $lightness: -10%) !default;
+$color-light-darken-15: color.adjust(map-get($colors, light), $lightness: -15%) !default;
 $color-light-darken-30: color.adjust(map-get($colors, light), $lightness: -30%) !default;
 $color-light-darken-50: color.adjust(map-get($colors, light), $lightness: -50%) !default;
 
@@ -60,6 +63,7 @@ $color-white-darken-4: color.adjust(map-get($colors, white), $lightness: -4%) !d
 $color-white-darken-5: color.adjust(map-get($colors, white), $lightness: -5%) !default;
 $color-white-darken-6: color.adjust(map-get($colors, white), $lightness: -6%) !default;
 $color-white-darken-7: color.adjust(map-get($colors, white), $lightness: -7%) !default;
+$color-white-darken-8: color.adjust(map-get($colors, white), $lightness: -8%) !default;
 $color-white-darken-10: color.adjust(map-get($colors, white), $lightness: -10%) !default;
 $color-white-darken-15: color.adjust(map-get($colors, white), $lightness: -15%) !default;
 $color-white-darken-20: color.adjust(map-get($colors, white), $lightness: -20%) !default;

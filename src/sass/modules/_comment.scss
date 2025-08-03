@@ -1,14 +1,13 @@
 @use "sass:math";
-$comment-border: rgba(map-get($colors, dark), 0.1) !default;
-$comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
+@use '../function' as *;
+@use '../mixin';
 
 @mixin roolith-comment() {
-
     .comment-group {
-        border-top: rem(1) solid $comment-border;
+        border-top: rem(1) solid var(--r-comment-border);
 
         .comment {
-            border-bottom: rem(1) solid $comment-border;
+            border-bottom: rem(1) solid var(--r-comment-border);
         }
     }
 
@@ -34,7 +33,7 @@ $comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
     }
 
     .comment-action {
-        @include clearfix();
+        @include mixin.clearfix();
         padding-bottom: rem(20);
     }
 
@@ -42,7 +41,7 @@ $comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
         float: left;
         padding: 0 rem(15) 0 0;
         font-size: rem(14);
-        color: lighten(map-get($colors, dark), 30%);
+        color: var(--r-color-dark-lighten-30);
 
         span {
             margin: 0 rem(5) 0 0;
@@ -52,7 +51,7 @@ $comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
     .comment-action-item-link {
         display: inline-block;
         font-size: rem(14);
-        @include transition('color');
+        @include mixin.transition('color');
     }
 
     .comment-blurred {
@@ -61,7 +60,7 @@ $comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
     }
 
     .comment-highlight {
-        background: $comment-highlight-color;
+        background: var(--r-comment-highlight-color);
     }
 
     @for $i from 1 through 10 {
@@ -69,5 +68,4 @@ $comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
             margin-left: percentage(math.div($i, 20));
         }
     }
-
 }

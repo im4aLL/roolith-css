@@ -1,6 +1,7 @@
-@mixin roolith-color() {
+@use '../settings';
 
-    @each $name, $value in $colors {
+@mixin roolith-color() {
+    @each $name, $value in settings.$colors {
         .color-#{'' + $name} {
             color: $value;
         }

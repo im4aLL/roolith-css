@@ -11,16 +11,17 @@
 
         /* Grid */
         --r-global-width: #{$global-width};
-        --r-grid-column-count: #{$grid-column-count};
-        --r-grid-layout: #{$grid-layout};
 
         /* Colors */
         @each $name, $value in $colors {
             --r-color-#{$name}: #{$value};
         }
 
+        --r-color-light-darken-1: #{$color-light-darken-1};
+        --r-color-light-darken-3: #{$color-light-darken-3};
         --r-color-light-darken-5: #{$color-light-darken-5};
         --r-color-light-darken-10: #{$color-light-darken-10};
+        --r-color-light-darken-15: #{$color-light-darken-15};
         --r-color-light-darken-30: #{$color-light-darken-30};
         --r-color-light-darken-50: #{$color-light-darken-50};
 
@@ -35,6 +36,7 @@
         --r-color-white-darken-5: #{$color-white-darken-5};
         --r-color-white-darken-6: #{$color-white-darken-6};
         --r-color-white-darken-7: #{$color-white-darken-7};
+        --r-color-white-darken-8: #{$color-white-darken-8};
         --r-color-white-darken-10: #{$color-white-darken-10};
         --r-color-white-darken-15: #{$color-white-darken-15};
         --r-color-white-darken-20: #{$color-white-darken-20};

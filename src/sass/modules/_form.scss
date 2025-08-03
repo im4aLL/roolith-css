@@ -1,27 +1,8 @@
-$form-input-placeholder-color: darken(map-get($colors, light), 30%) !default;
-$form-input-border-color: darken(map-get($colors, light), 15%) !default;
-
-$form-input-hover-border-color: map-get($colors, link) !default;
-$form-input-focus-border-color: map-get($colors, primary) !default;
-
-$form-text-color: darken(map-get($colors, light), 30%) !default;
-$form-input-radius: rem(2) !default;
-
-$form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
-
-$form-disable-input-color: darken(map-get($colors, light), 5%) !default;
-
-$form-primary-color: darken(map-get($colors, light), 2%) !default;
-$form-primary-border-color: darken(map-get($colors, light), 5%) !default;
-$form-primary-hover-color: map-get($colors, info) !default;
-$form-primary-focus-color: map-get($colors, white) !default;
-
-$form-error-color: map-get($colors, danger) !default;
-$form-success-color: map-get($colors, success) !default;
-$form-warning-color: map-get($colors, info) !default;
+@use '../function' as *;
+@use '../mixin';
+@use 'sass:color';
 
 @mixin form-search() {
-
     .form-field-search {
         position: relative;
         padding: 0;
@@ -59,7 +40,7 @@ $form-warning-color: map-get($colors, info) !default;
         height: 100%;
         line-height: 100%;
         font-size: 120%;
-        color: darken(map-get($colors, light), 30%);
+        color: var(--r-color-light-darken-30);
 
         .form-field-search.small & {
             left: rem(7);
@@ -73,7 +54,7 @@ $form-warning-color: map-get($colors, info) !default;
     }
 
     .form-field-search-loading-icon {
-        @include loader(16);
+        @include mixin.loader(16);
         @extend .loader;
         position: absolute;
         top: 50%;
@@ -87,12 +68,8 @@ $form-warning-color: map-get($colors, info) !default;
         }
 
         .form-field-search.small & {
-            @include loader(12);
+            @include mixin.loader(12);
             right: rem(7);
-        }
-
-        .form-field-search.large & {
-
         }
     }
 
@@ -104,14 +81,14 @@ $form-warning-color: map-get($colors, info) !default;
         z-index: 5;
         font-size: rem(14);
         line-height: rem(18);
-        background-color: darken(map-get($colors, light), 1%);
-        border: rem(1) solid darken(map-get($colors, light), 15%);
+        background-color: var(--r-color-light-darken-1);
+        border: rem(1) solid var(--r-color-light-darken-15);
         border-radius: rem(2);
-        box-shadow: $dropdown-shadow;
+        box-shadow: var(--r-dropdown-shadow);
         width: 100%;
         max-height: rem(300);
         overflow-y: auto;
-        @include nice-scroll();
+        @include mixin.nice-scroll();
 
         .form-field-search.hint & {
             display: block;
@@ -122,7 +99,7 @@ $form-warning-color: map-get($colors, info) !default;
         }
 
         li {
-            border-bottom: rem(1) solid darken(map-get($colors, light), 5%);
+            border-bottom: rem(1) solid var(--r-color-light-darken-5);
 
             &:last-child {
                 border-bottom: none;
@@ -131,10 +108,10 @@ $form-warning-color: map-get($colors, info) !default;
             a {
                 display: block;
                 padding: rem(7) rem(12);
-                @include transition('background, color');
+                @include mixin.transition('background, color');
 
                 &:hover {
-                    background-color: darken(map-get($colors, light), 3%);
+                    background-color: var(--r-color-light-darken-3);
                 }
 
                 .badge {
@@ -157,15 +134,13 @@ $form-warning-color: map-get($colors, info) !default;
 }
 
 @mixin roolith-form() {
-
     ::placeholder {
-        color: $form-input-placeholder-color;
+        color: var(--r-form-input-placeholder-color);
     }
 
     input, textarea, select {
-        font-family: $global-base-font;
+        font-family: var(--r-global-base-font);
         font-size: rem(14);
-        -webkit-border-radius: 0;
         outline: none;
 
         .form-field.small & {
@@ -175,10 +150,6 @@ $form-warning-color: map-get($colors, info) !default;
         .form-field.large & {
             font-size: rem(16);
         }
-    }
-
-    .form {
-
     }
 
     .form-field {
@@ -204,40 +175,40 @@ $form-warning-color: map-get($colors, info) !default;
         }
 
         &.right {
-            @include breakpoint(large-up) {
+            @include mixin.breakpoint(large-up) {
                 padding-top: rem(8);
                 text-align: right;
             }
         }
 
         .error & {
-            color: $form-error-color;
+            color: var(--r-form-error-color);
         }
 
         .success & {
-            color: $form-success-color;
+            color: var(--r-form-success-color);
         }
 
         .warning & {
-            color: $form-warning-color;
+            color: var(--r-form-warning-color);
         }
     }
 
     .form-input {
         width: 100%;
-        border: rem(1) solid $form-input-border-color;
-        border-radius: $form-input-radius;
+        border: rem(1) solid var(--r-form-input-border-color);
+        border-radius: var(--r-form-input-radius);
         padding: rem(8) rem(12) rem(10);
         box-shadow: none;
-        @include transition('border, box-shadow, background');
+        @include mixin.transition('border, box-shadow, background');
 
         &:hover {
-            border-color: $form-input-hover-border-color;
+            border-color: var(--r-form-input-hover-border-color);
         }
 
         &:focus {
-            border-color: $form-input-focus-border-color;
-            box-shadow: 0 0 0 rem(2) rgba($form-input-focus-border-color, 0.3);
+            border-color: var(--r-form-input-focus-border-color);
+            box-shadow: 0 0 0 rem(2) rgba(var(--r-form-input-focus-border-color), 0.3);
         }
 
         .form-field.small & {
@@ -249,30 +220,30 @@ $form-warning-color: map-get($colors, info) !default;
         }
 
         .error & {
-            border-color: $form-error-color;
+            border-color: var(--r-form-error-color);
         }
 
         .success & {
-            border-color: $form-success-color;
+            border-color: var(--r-form-success-color);
         }
 
         .warning & {
-            border-color: $form-warning-color;
+            border-color: var(--r-form-warning-color);
         }
     }
 
     .form-primary .form-input {
-        border: rem(1) solid $form-primary-border-color;
-        background: $form-primary-color;
+        border: rem(1) solid var(--r-form-primary-border-color);
+        background: var(--r-form-primary-color);
         box-shadow: none;
 
         &:hover {
-            border-color: $form-primary-hover-color;
+            border-color: var(--r-form-primary-hover-color);
         }
 
         &:focus {
-            border-color: $form-input-focus-border-color;
-            background: $form-primary-focus-color;
+            border-color: var(--r-form-primary-focus-color);
+            background: var(--r-form-primary-focus-color);
         }
     }
 
@@ -284,7 +255,7 @@ $form-warning-color: map-get($colors, info) !default;
 
     .form-text {
         padding-top: rem(8);
-        color: $form-text-color;
+        color: var(--r-form-text-color);
         font-size: rem(11);
         display: block;
 
@@ -298,15 +269,15 @@ $form-warning-color: map-get($colors, info) !default;
         }
 
         .error & {
-            color: $form-error-color;
+            color: var(--r-form-error-color);
         }
 
         .success & {
-            color: $form-success-color;
+            color: var(--r-form-success-color);
         }
 
         .warning & {
-            color: $form-warning-color;
+            color: var(--r-form-warning-color);
         }
     }
 
@@ -316,7 +287,7 @@ $form-warning-color: map-get($colors, info) !default;
         line-height: rem(22);
         padding-left: rem(25);
         display: block;
-        color: $form-checkbox-label-color;
+        color: var(--r-form-checkbox-label-color);
 
         &::selection {
             background: transparent;
@@ -332,17 +303,17 @@ $form-warning-color: map-get($colors, info) !default;
         appearance: none;
         width: rem(15);
         height: rem(15);
-        background-color: map-get($colors, white);
-        border: rem(1) solid darken($form-input-border-color, 15%);
-        border-radius: $form-input-radius;
+        background-color: var(--r-color-white);
+        border: rem(1) solid color.adjust($form-input-border-color, $lightness: -15%);
+        border-radius: var(--r-form-input-radius);
         position: absolute;
         left: 0;
         top: rem(4);
         margin: 0;
-        @include transition('border');
+        @include mixin.transition('border');
 
         &:hover {
-            border-color: $form-input-hover-border-color;
+            border-color: var(--r-form-input-hover-border-color);
         }
 
         &:before {
@@ -357,8 +328,8 @@ $form-warning-color: map-get($colors, info) !default;
             width: rem(4);
             height: rem(8);
             margin: rem(1) rem(5);
-            border-bottom: rem(1) solid darken($form-input-border-color, 50%);
-            border-right: rem(1) solid darken($form-input-border-color, 50%);
+            border-bottom: rem(1) solid color.adjust($form-input-border-color, $lightness: -50%);
+            border-right: rem(1) solid color.adjust($form-input-border-color, $lightness: -50%);
             transform: rotate(45deg);
         }
 
@@ -386,10 +357,6 @@ $form-warning-color: map-get($colors, info) !default;
         &[multiple] {
             background: transparent;
         }
-    }
-
-    .form-file {
-
     }
 
     .form-radio-item {
@@ -440,18 +407,17 @@ $form-warning-color: map-get($colors, info) !default;
     }
 
     [readonly] {
-        background: $form-disable-input-color;
+        background: var(--r-form-disable-input-color);
 
         &:hover {
-            border-color: $form-input-border-color;
+            border-color: var(--r-form-input-border-color);
         }
 
         &:focus {
-            border-color: $form-input-border-color;
+            border-color: var(--r-form-input-border-color);
             box-shadow: none;
         }
     }
 
     @include form-search();
-
 }
