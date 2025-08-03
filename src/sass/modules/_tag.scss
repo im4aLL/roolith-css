@@ -6,7 +6,7 @@
         font-size: rem(12);
         line-height: 1em;
         display: inline-block;
-        background: color-mix(in srgb, var(--r-tag-color), white 45%);
+        background: color-mix(in srgb, var(--r-tag-color), white 90%);
         border: rem(1) solid color-mix(in srgb, var(--r-tag-color), white 30%);
         color: var(--r-tag-color);
         padding: rem(4) rem(10);
@@ -29,5 +29,4 @@
     .tags {
         padding: rem(10) 0 0;
     }
-
 }
