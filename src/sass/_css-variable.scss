@@ -1,6 +1,29 @@
 @use 'sass:map';
 @use './settings' as *;
 
+@mixin color-shades() {
+    $dark-white-lighten-darken: 2, 3, 4, 5, 6, 7, 8, 10, 15, 20, 30, 40, 50, 60, 70, 80;
+    $light-darken: 1, 2, 3, 5, 10, 15, 30, 50;
+    $info-lighten: 20, 40;
+
+    @each $value in $light-darken {
+        --r-color-light-darken-#{$value}: color-mix(in srgb, var(--r-color-light), black #{$value}%);
+        --r-color-light-lighten-#{$value}: color-mix(in srgb, var(--r-color-light), white #{$value}%);
+    }
+
+    @each $value in $info-lighten {
+        --r-color-info-lighten-#{$value}: color-mix(in srgb, var(--r-color-info), white #{$value}%);
+    }
+
+    @each $value in $dark-white-lighten-darken {
+        --r-color-white-darken-#{$value}: color-mix(in srgb, var(--r-color-white), black #{$value}%);
+        --r-color-dark-lighten-#{$value}: color-mix(in srgb, var(--r-color-dark), white #{$value}%);
+    }
+
+    --r-color-black-lighten-70: color-mix(in srgb, var(--r-color-black), white 70%);
+    --r-color-primary-lighten-80: color-mix(in srgb, var(--r-color-primary), white 80%);
+}
+
 @mixin roolith-css-variable() {
     :root {
         /* Colors */
@@ -8,42 +31,7 @@
             --r-color-#{'' + $name}: #{$value};
         }
 
-        --r-color-light-darken-1: color-mix(in srgb, var(--r-color-light), black 1%);
-        --r-color-light-darken-2: color-mix(in srgb, var(--r-color-light), black 2%);
-        --r-color-light-darken-3: color-mix(in srgb, var(--r-color-light), black 3%);
-        --r-color-light-darken-5: color-mix(in srgb, var(--r-color-light), black 5%);
-        --r-color-light-darken-10: color-mix(in srgb, var(--r-color-light), black 10%);
-        --r-color-light-darken-15: color-mix(in srgb, var(--r-color-light), black 15%);
-        --r-color-light-darken-30: color-mix(in srgb, var(--r-color-light), black 30%);
-        --r-color-light-darken-50: color-mix(in srgb, var(--r-color-light), black 50%);
-
-        --r-color-dark-lighten-5: color-mix(in srgb, var(--r-color-dark), white 5%);
-        --r-color-dark-lighten-20: color-mix(in srgb, var(--r-color-dark), white 20%);
-        --r-color-dark-lighten-30: color-mix(in srgb, var(--r-color-dark), white 30%);
-        --r-color-dark-lighten-40: color-mix(in srgb, var(--r-color-dark), white 40%);
-        --r-color-dark-lighten-70: color-mix(in srgb, var(--r-color-dark), white 70%);
-        --r-color-dark-lighten-80: color-mix(in srgb, var(--r-color-dark), white 80%);
-
-        --r-color-info-lighten-20: color-mix(in srgb, var(--r-color-info), white 20%);
-        --r-color-info-lighten-43: color-mix(in srgb, var(--r-color-info), white 43%);
-
-        --r-color-white-darken-2: color-mix(in srgb, var(--r-color-white), black 2%);
-        --r-color-white-darken-3: color-mix(in srgb, var(--r-color-white), black 3%);
-        --r-color-white-darken-4: color-mix(in srgb, var(--r-color-white), black 4%);
-        --r-color-white-darken-5: color-mix(in srgb, var(--r-color-white), black 5%);
-        --r-color-white-darken-6: color-mix(in srgb, var(--r-color-white), black 6%);
-        --r-color-white-darken-7: color-mix(in srgb, var(--r-color-white), black 7%);
-        --r-color-white-darken-8: color-mix(in srgb, var(--r-color-white), black 8%);
-        --r-color-white-darken-10: color-mix(in srgb, var(--r-color-white), black 10%);
-        --r-color-white-darken-15: color-mix(in srgb, var(--r-color-white), black 15%);
-        --r-color-white-darken-20: color-mix(in srgb, var(--r-color-white), black 20%);
-        --r-color-white-darken-50: color-mix(in srgb, var(--r-color-white), black 50%);
-        --r-color-white-darken-60: color-mix(in srgb, var(--r-color-white), black 60%);
-        --r-color-white-darken-70: color-mix(in srgb, var(--r-color-white), black 70%);
-
-        --r-color-black-lighten-70: color-mix(in srgb, var(--r-color-black), white 70%);
-
-        --r-color-primary-lighten-80: color-mix(in srgb, var(--r-color-primary), white 80%);
+        @include color-shades();
 
         /* Global */
         --r-global-base-font-size: #{$global-base-font-size};
@@ -72,6 +60,16 @@
         --r-button-primary-color: var(--r-color-primary);
         --r-button-secondary-color: var(--r-color-secondary);
 
+        /* Button default */
+        --r-button-default-background: var(--r-color-white-darken-4);
+        --r-button-default-background-end: var(--r-color-white-darken-7);
+        --r-button-default-border: var(--r-color-white-darken-15);
+        --r-button-default-color: var(--r-color-dark-lighten-20);
+        --r-button-default-hover-background: var(--r-color-white-darken-3);
+        --r-button-default-hover-background-end: var(--r-color-white-darken-6);
+        --r-button-default-hover-border: var(--r-color-white-darken-20);
+        --r-button-default-hover-color: var(--r-color-dark-lighten-20);
+
         /* Nav */
         --r-nav-border-radius: #{$nav-border-radius};
         --r-nav-link-color: var(--r-color-link);
@@ -82,6 +80,8 @@
 
         /* Form */
         --r-form-input-placeholder-color: var(--r-color-light-darken-30);
+        --r-form-input-background-color: var(--r-color-white);
+        --r-form-input-color: var(--r-color-dark);
         --r-form-input-border-color: var(--r-color-light-darken-15);
         --r-form-input-hover-border-color: var(--r-color-link);
         --r-form-input-focus-border-color: var(--r-color-primary);
@@ -105,7 +105,7 @@
         --r-table-row-hover-color: var(--r-color-light-darken-2);
         --r-table-primary-header-color: var(--r-color-light-darken-5);
         --r-table-row-striped-color: var(--r-color-light-darken-2);
-        --r-table-row-striped-hover-color: var(--r-color-info-lighten-43);
+        --r-table-row-striped-hover-color: var(--r-color-info-lighten-40);
 
         /* Img */
         --r-img-radius: #{$img-radius};
@@ -184,6 +184,9 @@
 
         /* Tag */
         --r-tag-color: var(--r-color-primary);
+        --r-tag-background: color-mix(in srgb, var(--r-tag-color), white 90%);
+        --r-tag-border-color: color-mix(in srgb, var(--r-tag-color), white 30%);
+        --r-tag-text-color: var(--r-tag-color);
 
         /* Comment */
         --r-comment-border: rgba(var(--r-color-dark), 0.1);
@@ -191,6 +194,16 @@
 
         /* Toast */
         --r-toast-notification-width: #{$toast-notification-width};
+
+        /* Loader */
+        --r-loader-border-color: var(--r-color-white-darken-20);
+        --r-loader-border-top-color: var(--r-color-white-darken-70);
+
+        /* Icon */
+        --r-icon-color: var(--r-color-black);
+        --r-icon-size: #{$icon-size};
+        --r-icon-small-size: #{$icon-small-size};
+        --r-icon-large-size: #{$icon-large-size};
     }
 
     .theme-dark {
@@ -198,5 +211,112 @@
         --r-global-background-color: var(--r-theme-color);
         --r-global-font-color: color-mix(in srgb, var(--r-theme-color), white 50%);
         --r-global-font-color-light: color-mix(in srgb, var(--r-theme-color), white 70%);
+
+        --r-color-light: #2f3037;
+
+        @include color-shades();
+
+        /* button */
+        --r-button-base-white: var(--r-color-white);
+        --r-button-primary-color: var(--r-color-primary);
+        --r-button-secondary-color: var(--r-color-secondary);
+
+        /* Button default */
+        --r-button-default-background: var(--r-color-dark-lighten-4);
+        --r-button-default-background-end: var(--r-color-dark-lighten-7);
+        --r-button-default-border: var(--r-color-dark-lighten-15);
+        --r-button-default-color: var(--r-color-white-darken-20);
+        --r-button-default-hover-background: var(--r-color-dark-lighten-3);
+        --r-button-default-hover-background-end: var(--r-color-dark-lighten-6);
+        --r-button-default-hover-border: var(--r-color-dark-lighten-20);
+        --r-button-default-hover-color: var(--r-color-white-darken-20);
+
+        /* Nav */
+        --r-nav-link-color: var(--r-color-link);
+        --r-nav-dimmed-link-color: var(--r-color-black-lighten-70);
+        --r-nav-active-link-color: var(--r-color-primary);
+        --r-nav-primary-color: var(--r-color-primary);
+
+        /* Form */
+        --r-form-input-placeholder-color: var(--r-color-light-lighten-30);
+        --r-form-input-background-color: var(--r-color-dark);
+        --r-form-input-color: var(--r-color-white);
+        --r-form-input-border-color: var(--r-color-light-lighten-15);
+        --r-form-input-hover-border-color: var(--r-color-link);
+        --r-form-input-focus-border-color: var(--r-color-primary);
+        --r-form-text-color: var(--r-color-light-lighten-30);
+        --r-form-checkbox-label-color: var(--r-color-dark-lighten-20);
+        --r-form-disable-input-color: var(--r-color-light-lighten-5);
+        --r-form-primary-color: var(--r-color-light-lighten-2);
+        --r-form-primary-border-color: var(--r-color-light-lighten-5);
+        --r-form-primary-hover-color: var(--r-color-info);
+        --r-form-primary-focus-color: var(--r-color-white);
+        --r-form-error-color: var(--r-color-danger);
+        --r-form-success-color: var(--r-color-success);
+        --r-form-warning-color: var(--r-color-info);
+
+        /* Table */
+        --r-table-header-border-color: var(--r-color-light-darken-10);
+        --r-table-border-color: var(--r-color-light-darken-5);
+        --r-table-row-hover-color: var(--r-color-light-darken-2);
+        --r-table-primary-header-color: var(--r-color-light-darken-5);
+        --r-table-row-striped-color: var(--r-color-light-darken-2);
+        --r-table-row-striped-hover-color: var(--r-color-info-lighten-40);
+
+        /* Img */
+        --r-img-caption-color: var(--r-color-dark-lighten-40);
+
+        /* Breadcrumb */
+        --r-breadcrumb-default-color: var(--r-color-dark-lighten-40);
+        --r-breadcrumb-sep-color: var(--r-color-dark-lighten-70);
+
+        /* Card */
+        --r-card-header-footer-border: var(--r-color-dark-lighten-80);
+        --r-card-header-footer-color: var(--r-color-dark-lighten-40);
+
+        /* Dropdown */
+        --r-dropdown-background: var(--r-color-white-darken-2);
+        --r-dropdown-border-color: var(--r-color-white-darken-15);
+
+        /* Modal */
+        --r-modal-background: rgba(var(--r-color-dark), 0.5);
+        --r-modal-content-background: var(--r-color-white);
+        --r-modal-border-color: var(--r-color-white-darken-5);
+
+        /* Accordion */
+        --r-accordion-border-color: rgba(var(--r-color-dark), 0.1);
+
+        /* Tab */
+        --r-tab-active-color: var(--r-color-primary);
+        --r-tab-border-color: var(--r-color-light-darken-5);
+
+        /* Progress */
+        --r-progress-background: var(--r-color-white-darken-5);
+        --r-progress-bar-color: var(--r-color-white-darken-30);
+
+        /* Collage */
+        --r-collage-caption-background: var(--r-color-black);
+        --r-collage-caption-color: var(--r-color-white);
+
+        /* Avatar */
+        --r-avatar-label-color: var(--r-color-white-darken-10);
+        --r-avatar-label-hover-color: var(--r-color-white-darken-20);
+
+        /* Tag */
+        --r-tag-color: var(--r-color-dark);
+        --r-tag-background: var(--r-color-black);
+        --r-tag-border-color: var(--r-color-light);
+        --r-tag-text-color: var(--r-color-dark-lighten-50);
+
+        /* Comment */
+        --r-comment-border: rgba(var(--r-color-dark), 0.1);
+        --r-comment-highlight-color: color-mix(in srgb, var(--r-theme-color), white 10%);
+
+        /* Loader */
+        --r-loader-border-color: var(--r-color-dark-lighten-20);
+        --r-loader-border-top-color: var(--r-color-dark-lighten-50);
+
+        /* Icon */
+        --r-icon-color: var(--r-global-font-color);
     }
 }

@@ -9,29 +9,33 @@
         font-family: var(--r-global-base-font);
         text-decoration: none;
         cursor: pointer;
-        background-color: var(--r-color-white-darken-4);
-        background: linear-gradient(to bottom, var(--r-color-white-darken-4) 0%, var(--r-color-white-darken-7) 100%);
-        border: rem(1) solid var(--r-color-white-darken-15);
         border-radius: var(--r-button-radius);
         font-size: rem(14);
         line-height: normal;
         min-width: rem(100);
         text-align: center;
         padding: rem(8) rem(20) rem(10);
-        color: var(--r-color-dark-lighten-20);
         position: relative;
+        background-color: var(--r-button-default-background);
+        background: linear-gradient(
+            to bottom,
+            var(--r-button-default-background) 0%,
+            var(--r-button-default-background-end) 100%
+        );
+        border: rem(1) solid var(--r-button-default-border);
+        color: var(--r-button-default-color);
         @include mixin.transition('background, color, box-shadow');
 
         &:hover {
-            background-color: var(--r-color-white-darken-6);
+            background-color: var(--r-button-default-hover-background);
             background: linear-gradient(
                 to bottom,
-                var(--r-color-white-darken-3) 0%,
-                var(--r-color-white-darken-6) 100%
+                var(--r-button-default-hover-background) 0%,
+                var(--r-button-default-hover-background-end) 100%
             );
-            border: rem(1) solid var(--r-color-white-darken-20);
+            border: rem(1) solid var(--r-button-default-hover-border);
             box-shadow: var(--r-button-hover-shadow);
-            color: var(--r-color-dark-lighten-20);
+            color: var(--r-button-default-hover-color);
         }
 
         &.active {

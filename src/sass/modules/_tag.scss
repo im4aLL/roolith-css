@@ -6,16 +6,16 @@
         font-size: rem(12);
         line-height: 1em;
         display: inline-block;
-        background: color-mix(in srgb, var(--r-tag-color), white 90%);
-        border: rem(1) solid color-mix(in srgb, var(--r-tag-color), white 30%);
-        color: var(--r-tag-color);
+        background: var(--r-tag-background);
+        border: rem(1) solid var(--r-tag-border-color);
+        color: var(--r-tag-text-color);
         padding: rem(4) rem(10);
         border-radius: rem(25);
     }
 
     .tag-close {
         display: inline-block;
-        border-left: rem(1) solid color-mix(in srgb, var(--r-tag-color), white 35%);
+        border-left: rem(1) solid var(--r-tag-border-color);
         padding: 0 0 0 rem(5);
         margin: 0 0 0 rem(5);
         cursor: pointer;

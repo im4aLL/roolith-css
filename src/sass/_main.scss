@@ -46,6 +46,7 @@
     @include modules.roolith-color();
     @include modules.roolith-comment();
     @include modules.roolith-toast-notification();
+    @include modules.roolith-icon();
 
     @include modules.roolith-state();
 }

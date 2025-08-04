@@ -130,7 +130,7 @@
     }
 
     .dimmed {
-        color: var(--r-color-light-darken-30);
+        opacity: 0.6;
     }
 
     .list {
@@ -164,7 +164,7 @@
             display: block;
             white-space: pre;
             font-size: rem(14);
-            background: #fafbfc;
+            background: var(--r-color-light);
             box-shadow: rgba(102, 119, 136, 0.2) 0 rem(1) rem(2) 0;
             border: none;
             line-height: rem(22);
@@ -206,7 +206,6 @@
     blockquote {
         font-size: rem(14);
         line-height: rem(22);
-        color: var(--r-color-light-darken-50);
         border-left: rem(3) solid var(--r-color-light-darken-5);
         padding-left: rem(20);
 

@@ -35,7 +35,7 @@
     .form-field-search-icon {
         position: absolute;
         left: rem(12);
-        top: rem(8);
+        top: rem(10);
         z-index: 1;
         height: 100%;
         line-height: 100%;
@@ -44,12 +44,12 @@
 
         .form-field-search.small & {
             left: rem(7);
-            top: rem(6);
+            top: rem(7);
         }
 
         .form-field-search.large & {
             font-size: 130%;
-            top: rem(10);
+            top: rem(12);
         }
     }
 
@@ -201,6 +201,8 @@
         border-radius: var(--r-form-input-radius);
         padding: rem(8) rem(12) rem(10);
         box-shadow: none;
+        background-color: var(--r-form-input-background-color);
+        color: var(--r-form-input-color);
         @include mixin.transition('border, box-shadow, background');
 
         &:hover {

@@ -4,11 +4,6 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>roolith CSS framework</title>
-
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
         <style>
             .box-demo {
                 width: 100%;
@@ -37,40 +32,41 @@
             .module-body {
                 padding: 15px;
             }
+
+            .theme-dark .module {
+                background-color: #333;
+                color: #ddd;
+            }
         </style>
         <script type="module" src="index.js"></script>
     </head>
     <!-- class="theme-dark" -->
-    <body>
+    <body class="theme-dark">
         <div class="module">typography</div>
-        <br />
-        <br />
+        <div class="module-body">
+            <h1>Heading</h1>
+            <h2>Heading</h2>
+            <h3>Heading</h3>
+            <h4>Heading</h4>
+            <h5>Heading</h5>
+            <h6>Heading</h6>
 
-        <h1>Heading</h1>
-        <h2>Heading</h2>
-        <h3>Heading</h3>
-        <h4>Heading</h4>
-        <h5>Heading</h5>
-        <h6>Heading</h6>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat maxime velit voluptatibus doloribus ad
+                accusantium necessitatibus eos explicabo inventore eligendi quam beatae, expedita. Impedit quae, amet
+                autem nihil perspiciatis. Impedit.
+            </p>
 
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat maxime velit voluptatibus doloribus ad
-            accusantium necessitatibus eos explicabo inventore eligendi quam beatae, expedita. Impedit quae, amet autem
-            nihil perspiciatis. Impedit.
-        </p>
-
-        <p>
-            <strong>Bolded</strong>
-            <em>Italicized</em>
-            <a>Colored</a>
-            <u>Underlined</u>
-            <code>code</code>
-            <abbr title="Too long; didn't read">TLDR</abbr>
-            <kbd>Ctrl+R</kbd>
-        </p>
-
-        <br />
-        <br />
+            <p>
+                <strong>Bolded</strong>
+                <em>Italicized</em>
+                <a>Colored</a>
+                <u>Underlined</u>
+                <code>code</code>
+                <abbr title="Too long; didn't read">TLDR</abbr>
+                <kbd>Ctrl+R</kbd>
+            </p>
+        </div>
 
         <!-- <aside class="toast-notification bottom">
                 <div class="message">
@@ -86,7 +82,7 @@
             </aside> -->
 
         <div class="module">comment</div>
-        <div class="column">
+        <div class="module-body">
             <div class="comment-group">
                 <div class="comment">
                     <div class="avatar avatar-small">
@@ -284,7 +280,7 @@
         </div>
 
         <div class="module">page</div>
-        <div class="column">
+        <div class="module-body">
             <div class="page page-normal">
                 <div class="page-content">
                     <div class="page-icon color-success"><i class="ion-ios-checkmark"></i></div>
@@ -307,7 +303,7 @@
         </div>
 
         <div class="module">tags</div>
-        <div class="column">
+        <div class="module-body">
             <div class="form-field">
                 <input type="text" name="" class="form-input" placeholder="Add tags" />
 
@@ -342,107 +338,114 @@
             <span class="tag">MySql</span>
         </div>
 
+        <div class="module">icon</div>
+        <div class="module-body">
+            <span class="icon icon-search"></span>
+        </div>
+
         <div class="module">form</div>
-        <div class="row">
-            <div class="columns large-6 large-offset-3">
-                <form action="./" class="form">
-                    <div class="form-field form-field-search loading hint">
-                        <i class="form-field-search-icon ion-search"></i>
-                        <input type="text" name="" class="form-input" placeholder="Search ..." />
-                        <i class="form-field-search-loading-icon"></i>
+        <div class="module-body">
+            <div class="row">
+                <div class="columns large-6 large-offset-3">
+                    <form action="./" class="form">
+                        <div class="form-field form-field-search loading hint">
+                            <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
+                            <input type="text" name="" class="form-input" placeholder="Search ..." />
+                            <i class="form-field-search-loading-icon"></i>
 
-                        <div class="form-field-search-hint">
-                            <ul>
-                                <li><a href="#">Afganistan</a></li>
-                                <li>
-                                    <a href="#">
-                                        Srilanka
-                                        <span class="badge badge-info">new</span>
-                                    </a>
-                                </li>
-                                <li><a href="#">Bangladesh</a></li>
-                                <li><a href="#">United state</a></li>
-                            </ul>
+                            <div class="form-field-search-hint">
+                                <ul>
+                                    <li><a href="#">Afganistan</a></li>
+                                    <li>
+                                        <a href="#">
+                                            Srilanka
+                                            <span class="badge badge-info">new</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#">Bangladesh</a></li>
+                                    <li><a href="#">United state</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
 
-                    <div class="form-field form-field-search large loading hint">
-                        <i class="form-field-search-icon ion-search"></i>
-                        <input type="text" name="" class="form-input" placeholder="Search ..." />
-                        <i class="form-field-search-loading-icon"></i>
+                        <div class="form-field form-field-search large loading hint">
+                            <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
+                            <input type="text" name="" class="form-input" placeholder="Search ..." />
+                            <i class="form-field-search-loading-icon"></i>
 
-                        <div class="form-field-search-hint">
-                            <ul>
-                                <li><a href="#">Afganistan</a></li>
-                                <li>
-                                    <a href="#">
-                                        Srilanka
-                                        <span class="badge badge-info">new</span>
-                                    </a>
-                                </li>
-                                <li><a href="#">Bangladesh</a></li>
-                                <li><a href="#">United state</a></li>
-                            </ul>
+                            <div class="form-field-search-hint">
+                                <ul>
+                                    <li><a href="#">Afganistan</a></li>
+                                    <li>
+                                        <a href="#">
+                                            Srilanka
+                                            <span class="badge badge-info">new</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#">Bangladesh</a></li>
+                                    <li><a href="#">United state</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
 
-                    <div class="form-field form-field-search small loading hint">
-                        <i class="form-field-search-icon ion-search"></i>
-                        <input type="text" name="" class="form-input" placeholder="Search ..." />
-                        <i class="form-field-search-loading-icon"></i>
+                        <div class="form-field form-field-search small loading hint">
+                            <span class="form-field-search-icon"><i class="icon icon-search icon-small"></i></span>
+                            <input type="text" name="" class="form-input" placeholder="Search ..." />
+                            <i class="form-field-search-loading-icon"></i>
 
-                        <div class="form-field-search-hint">
-                            <ul>
-                                <li><a href="#">Afganistan</a></li>
-                                <li>
-                                    <a href="#">
-                                        Srilanka
-                                        <span class="badge badge-info">new</span>
-                                    </a>
-                                </li>
-                                <li><a href="#">Bangladesh</a></li>
-                                <li><a href="#">United state</a></li>
-                            </ul>
+                            <div class="form-field-search-hint">
+                                <ul>
+                                    <li><a href="#">Afganistan</a></li>
+                                    <li>
+                                        <a href="#">
+                                            Srilanka
+                                            <span class="badge badge-info">new</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#">Bangladesh</a></li>
+                                    <li><a href="#">United state</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                </form>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </form>
+                </div>
             </div>
         </div>
 

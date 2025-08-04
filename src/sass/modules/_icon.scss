@@ -1,0 +1,36 @@
+@use '../function' as *;
+@use '../settings';
+
+@mixin roolith-icon() {
+    .icon {
+        display: inline-block;
+        width: var(--r-icon-size);
+        height: var(--r-icon-size);
+        background-color: var(--r-icon-color);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+    }
+
+    .icon-small {
+        width: var(--r-icon-small-size);
+        height: var(--r-icon-small-size);
+    }
+
+    .icon-large {
+        width: var(--r-icon-large-size);
+        height: var(--r-icon-large-size);
+    }
+
+    @each $name, $value in settings.$colors {
+        .icon-color-#{'' + $name} {
+            background-color: var(--r-color-#{$name});
+        }
+    }
+
+    .icon-search {
+        mask-image: inline-svg(
+            '<svg viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000"><path d="m17 17 4 4M3 11a8 8 0 1 0 16 0 8 8 0 0 0-16 0Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        );
+    }
+}

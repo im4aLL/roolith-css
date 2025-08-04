@@ -17,7 +17,7 @@
     }
 
     .box-header {
-        background: #f9f9f9;
+        background: var(--r-color-light);
         border-bottom: rem(1) solid var(--r-color-white-darken-10);
         font-size: rem(14);
         line-height: rem(18);
