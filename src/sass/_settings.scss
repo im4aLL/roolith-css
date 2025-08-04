@@ -8,6 +8,7 @@ $global-base-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxy
     'Droid Sans', 'Helvetica Neue', sans-serif !default;
 $global-font-weight: normal !default;
 $global-font-bold-weight: bold !default;
+$global-border-radius: rem(3) !default;
 
 /* Breakpoints */
 $breakpoints: (
@@ -50,38 +51,38 @@ $animation-easing: cubic-bezier(1, 0, 0, 1) !default;
 $animation-duration: 0.25s !default;
 
 /* button */
-$button-radius: rem(2) !default;
+$button-radius: $global-border-radius !default;
 $button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
 $button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
 $button-active-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.1) !default;
 $button-active-dark-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.2) !default;
 
 /* nav */
-$nav-border-radius: rem(2) !default;
+$nav-border-radius: $global-border-radius !default;
 $nav-spacing: rem(13) !default;
 
 /* form */
-$form-input-radius: rem(2) !default;
+$form-input-radius: $global-border-radius !default;
 
 /* table */
 $table-spacing: rem(10) !default;
 
 /* img */
-$img-radius: rem(2) !default;
+$img-radius: $global-border-radius !default;
 
 /* message */
-$message-radius: rem(2) !default;
+$message-radius: $global-border-radius !default;
 $message-color-icon-size: rem(18) !default;
 
 /* badge */
-$badge-radius: rem(3) !default;
+$badge-radius: $global-border-radius !default;
 
 /* breadcrumb */
 $breadcrumb-spacing: rem(10) !default;
 $breadcrumb-size: 80% !default;
 
 /* card */
-$card-radius: rem(2) !default;
+$card-radius: $global-border-radius !default;
 $card-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 
 /* dropdown */
@@ -101,11 +102,11 @@ $modal-layout: css-grid !default; /* css-grid || traditional || flex */
 $box-spacing: rem(20) !default;
 $box-spacing-small: rem(15) !default;
 $box-spacing-large: rem(30) !default;
-$box-border-radius: rem(2) !default;
+$box-border-radius: $global-border-radius !default;
 
 /* progress */
 $progress-background-shadow: 0 rem(2) rem(5) rgba(0, 0, 0, 0.05) inset !default;
-$progress-bar-radius: rem(2) !default;
+$progress-bar-radius: $global-border-radius !default;
 
 /* collage */
 $collage-item-default-width: rem(200) !default;

@@ -15,7 +15,7 @@ export default defineConfig({
                 roolith: resolve(__dirname, 'src/sass/roolith.scss'),
             },
             output: {
-                assetFileNames: `[name]-${pkg.version}[extname]`,
+                assetFileNames: `[name]-${pkg.version}.min[extname]`,
             },
         },
         outDir: 'dist',
