@@ -35,8 +35,8 @@
         z-index: 2;
         cursor: pointer;
         border-radius: 50%;
-        background: var(--r-color-light-darken-10);
-        color: var(--r-color-dark);
+        background: var(--r-message-close-background);
+        color: var(--r-message-close-color);
     }
 
     @each $name, $value in settings.$colors {

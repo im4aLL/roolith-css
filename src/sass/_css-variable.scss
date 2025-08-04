@@ -120,22 +120,27 @@
         /* Message */
         --r-message-radius: #{$message-radius};
         --r-message-color-icon-size: #{$message-color-icon-size};
+        --r-message-close-background: var(--r-color-light-darken-10);
+        --r-message-close-color: var(--r-color-dark);
 
         /* Badge */
         --r-badge-radius: #{$badge-radius};
+        --r-badge-background: var(--r-color-white-darken-5);
+        --r-badge-color: var(--r-color-white-darken-50);
 
         /* Breadcrumb */
         --r-breadcrumb-spacing: #{$breadcrumb-spacing};
         --r-breadcrumb-size: #{$breadcrumb-size};
         --r-breadcrumb-default-color: var(--r-color-dark-lighten-40);
-        --r-breadcrumb-sep-symbol: #{$breadcrumb-sep-symbol};
+        --r-breadcrumb-sep-symbol: '/';
         --r-breadcrumb-sep-color: var(--r-color-dark-lighten-70);
 
         /* Card */
         --r-card-radius: #{$card-radius};
         --r-card-shadow: #{$card-shadow};
-        --r-card-header-footer-border: var(--r-color-dark-lighten-80);
+        --r-card-header-footer-border: var(--r-color-white-darken-5);
         --r-card-header-footer-color: var(--r-color-dark-lighten-40);
+        --r-card-background: var(--r-color-white);
 
         /* Dropdown */
         --r-dropdown-icons-size: #{$dropdown-icons-size};
@@ -145,17 +150,22 @@
         --r-dropdown-background: var(--r-color-white-darken-2);
         --r-dropdown-border-color: var(--r-color-white-darken-15);
         --r-dropdown-shadow: #{$dropdown-shadow};
+        --r-dropdown-item-color: var(--r-color-dark-lighten-20);
+        --r-dropdown-item-hover-background-color: var(--r-color-white-darken-5);
+        --r-dropdown-item-hover-color: var(--r-color-dark);
+        --r-dropdown-item-sep: var(--r-color-white-darken-8);
 
         /* Modal */
-        --r-modal-background: rgba(var(--r-color-dark), 0.5);
+        --r-modal-background: rgba(0, 0, 0, 0.5);
         --r-modal-content-background: var(--r-color-white);
+        --r-modal-close-color: var(--r-color-white-darken-50);
         --r-modal-content-radius: #{$modal-content-radius};
         --r-modal-content-spacing: #{$modal-content-spacing};
         --r-modal-content-shadow: #{$modal-content-shadow};
         --r-modal-border-color: var(--r-color-white-darken-5);
 
         /* Accordion */
-        --r-accordion-border-color: rgba(var(--r-color-dark), 0.1);
+        --r-accordion-border-color: rgba(0, 0, 0, 0.1);
 
         /* Tab */
         --r-tab-active-color: var(--r-color-primary);
@@ -234,6 +244,7 @@
         --r-button-base-white: var(--r-color-white);
         --r-button-primary-color: var(--r-color-primary);
         --r-button-secondary-color: var(--r-color-secondary);
+        --r-button-active-shadow: #{inset 0 0 0.1875rem rgba(0, 0, 0, 0.5)};
 
         /* Button default */
         --r-button-default-background: var(--r-color-dark-lighten-4);
@@ -255,10 +266,10 @@
         --r-form-input-placeholder-color: var(--r-color-light-lighten-30);
         --r-form-input-background-color: var(--r-color-dark);
         --r-form-input-color: var(--r-color-white);
-        --r-form-input-border-color: var(--r-color-light-lighten-15);
+        --r-form-input-border-color: var(--r-color-dark-lighten-5);
         --r-form-input-hover-border-color: var(--r-color-link);
         --r-form-input-focus-border-color: var(--r-color-primary);
-        --r-form-text-color: var(--r-color-light-lighten-30);
+        --r-form-text-color: var(--r-color-light-lighten-15);
         --r-form-checkbox-label-color: var(--r-color-dark-lighten-20);
         --r-form-disable-input-color: var(--r-color-light-lighten-5);
         --r-form-primary-color: var(--r-color-light-lighten-2);
@@ -286,25 +297,35 @@
         /* Img */
         --r-img-caption-color: var(--r-color-dark-lighten-40);
 
+        /* Badge */
+        --r-badge-background: var(--r-color-dark-lighten-5);
+        --r-badge-color: var(--r-color-dark-lighten-50);
+
         /* Breadcrumb */
         --r-breadcrumb-default-color: var(--r-color-dark-lighten-40);
         --r-breadcrumb-sep-color: var(--r-color-dark-lighten-70);
 
         /* Card */
-        --r-card-header-footer-border: var(--r-color-dark-lighten-80);
-        --r-card-header-footer-color: var(--r-color-dark-lighten-40);
+        --r-card-header-footer-border: var(--r-color-light-lighten-5);
+        --r-card-header-footer-color: var(--r-color-light-lighten-15);
+        --r-card-background: var(--r-color-light);
 
         /* Dropdown */
-        --r-dropdown-background: var(--r-color-white-darken-2);
-        --r-dropdown-border-color: var(--r-color-white-darken-15);
+        --r-dropdown-background: var(--r-color-dark-lighten-2);
+        --r-dropdown-border-color: var(--r-color-dark-lighten-15);
+        --r-dropdown-item-color: var(--r-color-white-darken-20);
+        --r-dropdown-item-hover-background-color: var(--r-color-dark-lighten-5);
+        --r-dropdown-item-hover-color: var(--r-color-white);
+        --r-dropdown-item-sep: var(--r-color-dark-lighten-8);
 
         /* Modal */
-        --r-modal-background: rgba(var(--r-color-dark), 0.5);
-        --r-modal-content-background: var(--r-color-white);
-        --r-modal-border-color: var(--r-color-white-darken-5);
+        --r-modal-background: rgba(0, 0, 0, 0.5);
+        --r-modal-content-background: var(--r-color-light);
+        --r-modal-border-color: var(--r-color-light-darken-10);
+        --r-modal-close-color: var(--r-color-white-darken-50);
 
         /* Accordion */
-        --r-accordion-border-color: rgba(var(--r-color-dark), 0.1);
+        --r-accordion-border-color: var(--r-color-light);
 
         /* Tab */
         --r-tab-active-color: var(--r-color-primary);
@@ -348,5 +369,9 @@
         --r-box-border-color: var(--r-color-dark-lighten-10);
         --r-box-header-background: var(--r-color-light);
         --r-box-footer-color: var(--r-color-dark-lighten-60);
+
+        /* Message */
+        --r-message-close-background: var(--r-color-light-darken-10);
+        --r-message-close-color: var(--r-color-light-lighten-30);
     }
 }

@@ -37,11 +37,16 @@
                 background-color: #333;
                 color: #ddd;
             }
+
+            .theme-dark .box-demo {
+                background-color: #333;
+                color: #ddd;
+            }
         </style>
         <script type="module" src="index.js"></script>
     </head>
     <!-- class="theme-dark" -->
-    <body class="theme-dark">
+    <body>
         <div class="module">typography</div>
         <div class="module-body">
             <h1>Heading</h1>
@@ -65,6 +70,73 @@
                 <code>code</code>
                 <abbr title="Too long; didn't read">TLDR</abbr>
                 <kbd>Ctrl+R</kbd>
+            </p>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus et, quae, doloremque rerum deleniti
+                perspiciatis molestias id inventore fuga cum asperiores laudantium quasi. Quaerat nulla,
+                <abbr title="Some title">totam</abbr>
+                quas ducimus. Modi, odit?
+            </p>
+            <br />
+
+            <p>
+                Press
+                <kbd>Ctrl+R</kbd>
+                for reload
+            </p>
+
+            <blockquote>
+                Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.
+                <cite>H. Rackham</cite>
+            </blockquote>
+
+            <dl>
+                <dt>Lorem Ipsum Today</dt>
+                <dd>
+                    The passage continues to see frequent usage, with Lorem Ipsum text appearing often in print, graphic
+                    and web designs.
+                </dd>
+                <dt>Original Lorem Ipsum Text</dt>
+                <dd>
+                    Here are the original Latin passages from which Lorem Ipsum was derived, paired with their 1914
+                    translations by H. Rackham.
+                </dd>
+            </dl>
+
+            <hr />
+
+            <dl class="indented-list">
+                <dt>Lorem Ipsum Today</dt>
+                <dd>
+                    The passage continues to see frequent usage, with Lorem Ipsum text appearing often in print, graphic
+                    and web designs.
+                </dd>
+                <dt>Original Lorem Ipsum Text</dt>
+                <dd>
+                    Here are the original Latin passages from which Lorem Ipsum was derived, paired with their 1914
+                    translations by H. Rackham.
+                </dd>
+            </dl>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam ratione, consectetur, facilis omnis
+                porro repellendus maiores obcaecati sed illum quasi eveniet illo iusto, fuga? Debitis facilis qui minima
+                accusantium obcaecati.
+            </p>
+
+            <hr />
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, nostrum eaque quibusdam blanditiis,
+                beatae aliquam ab ad maxime praesentium. Earum id ullam harum quibusdam maxime iste, iusto laudantium
+                provident nemo velit quae molestiae consectetur. Similique est porro dolor deleniti perspiciatis
+                adipisci repellendus, aut earum explicabo dignissimos temporibus culpa optio, dolorem rem suscipit sint
+                sunt distinctio commodi vitae reprehenderit, magnam, deserunt. Voluptatem repudiandae non quas, quos
+                commodi sapiente ipsum ut harum odit dicta nostrum aliquid provident sed. Quo voluptatibus dolore
+                provident beatae neque reprehenderit minus, veniam at nisi aliquam! Pariatur esse deleniti cupiditate,
+                obcaecati mollitia aliquid laborum voluptatum ipsam explicabo laudantium.
             </p>
         </div>
 
@@ -671,7 +743,7 @@
                 </p>
 
                 <figure class="fig">
-                    <img src="http://placehold.it/1400x500" alt="" class="img-full-width" />
+                    <img src="http://placehold.co/1400x500" alt="" class="img-full-width" />
                     <figcaption class="fig-caption">A caption for the above image.</figcaption>
                 </figure>
 
@@ -753,7 +825,7 @@
                 </p>
 
                 <figure class="fig">
-                    <img src="http://placehold.it/600x200" alt="" class="img" />
+                    <img src="http://placehold.co/600x200" alt="" class="img" />
                     <figcaption class="fig-caption">A caption for the above image.</figcaption>
                 </figure>
 
@@ -773,7 +845,7 @@
                 </p>
 
                 <pre><code>&lt;figure class=&quot;fig&quot;&gt;
-    &lt;img src=&quot;http://placehold.it/600x200&quot; alt=&quot;&quot; class=&quot;img&quot;&gt;
+    &lt;img src=&quot;http://placehold.co/600x200&quot; alt=&quot;&quot; class=&quot;img&quot;&gt;
     &lt;figcaption class=&quot;fig-caption&quot;&gt;A caption for the above image.&lt;/figcaption&gt;
 &lt;/figure&gt;</code></pre>
 
@@ -960,10 +1032,164 @@
                 <i class="icon icon-download"></i>
                 Download button with icon
             </button>
+
+            <br />
+            <br />
+
+            <div class="button-group">
+                <a class="button button-primary" href="#">First</a>
+                <a class="button button-primary active" href="#">Second</a>
+                <a class="button button-primary" href="#">Third</a>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="button-group">
+                <a class="button" href="#">First</a>
+                <a class="button active" href="#">Second</a>
+                <a class="button" href="#">Third</a>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="button-group">
+                <a class="button" href="#">1</a>
+                <a class="button active" href="#">2</a>
+                <a class="button" href="#">3</a>
+            </div>
+
+            <br />
+            <br />
+
+            <button class="button disabled">Default button</button>
+            <button class="button button-outline">Outlined button</button>
+            <button class="button button-rounded">Rounded button</button>
+
+            <hr />
+
+            <button class="button button-small">Default button</button>
+            <button class="button button-outline button-small">Outlined button</button>
+            <button class="button button-rounded button-small">Rounded button</button>
+
+            <hr />
+
+            <button class="button button-medium">Default button</button>
+            <button class="button button-outline button-medium">Outlined button</button>
+            <button class="button button-rounded button-medium">Rounded button</button>
+
+            <hr />
+
+            <button class="button button-large">Default button</button>
+            <button class="button button-outline button-large">Outlined button</button>
+            <button class="button button-rounded button-large">Rounded button</button>
+
+            <hr />
+
+            <button class="button button-primary button-primary">Default button</button>
+            <button class="button button-primary button-outline">Outlined button</button>
+            <button class="button button-primary button-rounded">Rounded button</button>
+
+            <hr />
+
+            <button class="button button-primary button-small">Default button</button>
+            <button class="button button-primary button-outline button-small">Outlined button</button>
+            <button class="button button-primary button-rounded button-small">Rounded button</button>
+
+            <hr />
+
+            <button class="button button-primary button-medium disabled">Default button</button>
+            <button class="button button-primary button-outline button-medium">Outlined button</button>
+            <button class="button button-primary button-rounded button-medium">Rounded button</button>
+
+            <hr />
+
+            <button class="button button-primary button-large">Default button</button>
+            <button class="button button-primary button-outline button-large">Outlined button</button>
+            <button class="button button-primary button-rounded button-large">Rounded button</button>
+
+            <br />
+            <br />
+
+            <br />
+            <br />
+
+            <a class="button button-small" href="#">Small</a>
+            <a class="button button-primary button-small" href="#">Primary</a>
+            <a class="button button-secondary button-small" href="#">Secondary</a>
+            <a class="button button-tertiary button-small" href="#">Tertiary</a>
+            <a class="button button-info button-small" href="#">Info</a>
+            <a class="button button-success button-small" href="#">Success</a>
+            <a class="button button-danger button-small" href="#">Danger</a>
+            <a class="button button-link button-small" href="#">Link</a>
+
+            <br />
+            <br />
+
+            <a class="button button-medium" href="#">Medium</a>
+            <a class="button button-primary button-medium" href="#">Primary</a>
+            <a class="button button-secondary button-medium" href="#">Secondary</a>
+            <a class="button button-tertiary button-medium" href="#">Tertiary</a>
+            <a class="button button-info button-medium" href="#">Info</a>
+            <a class="button button-success button-medium" href="#">Success</a>
+            <a class="button button-danger button-medium" href="#">Danger</a>
+            <a class="button button-link button-medium" href="#">Link</a>
+
+            <br />
+            <br />
+
+            <a class="button" href="#">Normal</a>
+            <a class="button button-primary" href="#">Primary</a>
+            <a class="button button-secondary" href="#">Secondary</a>
+            <a class="button button-tertiary" href="#">Tertiary</a>
+            <a class="button button-info" href="#">Info</a>
+            <a class="button button-success" href="#">Success</a>
+            <a class="button button-danger" href="#">Danger</a>
+            <a class="button button-link" href="#">Link</a>
+
+            <br />
+            <br />
+
+            <a class="button button-large" href="#">Large</a>
+            <a class="button button-primary button-large" href="#">Primary</a>
+            <a class="button button-secondary button-large" href="#">Secondary</a>
+            <a class="button button-tertiary button-large" href="#">Tertiary</a>
+            <a class="button button-info button-large" href="#">Info</a>
+            <a class="button button-success button-large" href="#">Success</a>
+            <a class="button button-danger button-large" href="#">Danger</a>
+            <a class="button button-link button-large" href="#">Link</a>
+        </div>
+
+        <div class="module">Dropdown button</div>
+        <div class="module-body">
+            <div class="dropdown">
+                <button class="button has-dropdown-icon">Dropdown</button>
+                <div class="dropdown-body">
+                    <div class="dropdown-body-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt eveniet dolore maxime ducimus
+                        commodi impedit est nulla deleniti voluptatibus similique labore, repellat alias totam mollitia
+                        veniam nostrum repellendus debitis quisquam.
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="dropdown">
+                <button class="button button-primary has-dropdown-icon">Dropdown</button>
+                <div class="dropdown-body">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <span class="dropdown-item-sep"></span>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
         </div>
 
         <div class="module">tab</div>
-        <div class="column">
+        <div class="module-body">
             <div class="tab">
                 <ul class="tab-list tab-list-center">
                     <li class="tab-title active" data-tab="#tab11">Tab one</li>
@@ -1095,7 +1321,7 @@
         </div>
 
         <div class="module">accordion</div>
-        <div class="column">
+        <div class="module-body">
             <div class="accordion">
                 <div class="accordion-item">
                     <div class="accordion-item-title">Accordion title one</div>
@@ -1130,85 +1356,6 @@
             </div>
         </div>
 
-        <div class="module">typography</div>
-        <div class="column">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus et, quae, doloremque rerum deleniti
-                perspiciatis molestias id inventore fuga cum asperiores laudantium quasi. Quaerat nulla,
-                <abbr title="Some title">totam</abbr>
-                quas ducimus. Modi, odit?
-            </p>
-            <br />
-
-            <p>
-                Press
-                <kbd>Ctrl+R</kbd>
-                for reload
-            </p>
-        </div>
-
-        <div class="column">
-            <blockquote>
-                Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.
-                <cite>H. Rackham</cite>
-            </blockquote>
-        </div>
-
-        <div class="column">
-            <dl>
-                <dt>Lorem Ipsum Today</dt>
-                <dd>
-                    The passage continues to see frequent usage, with Lorem Ipsum text appearing often in print, graphic
-                    and web designs.
-                </dd>
-                <dt>Original Lorem Ipsum Text</dt>
-                <dd>
-                    Here are the original Latin passages from which Lorem Ipsum was derived, paired with their 1914
-                    translations by H. Rackham.
-                </dd>
-            </dl>
-
-            <hr />
-
-            <dl class="indented-list">
-                <dt>Lorem Ipsum Today</dt>
-                <dd>
-                    The passage continues to see frequent usage, with Lorem Ipsum text appearing often in print, graphic
-                    and web designs.
-                </dd>
-                <dt>Original Lorem Ipsum Text</dt>
-                <dd>
-                    Here are the original Latin passages from which Lorem Ipsum was derived, paired with their 1914
-                    translations by H. Rackham.
-                </dd>
-            </dl>
-        </div>
-
-        <div class="column">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam ratione, consectetur, facilis omnis
-                porro repellendus maiores obcaecati sed illum quasi eveniet illo iusto, fuga? Debitis facilis qui minima
-                accusantium obcaecati.
-            </p>
-
-            <hr />
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, nostrum eaque quibusdam blanditiis,
-                beatae aliquam ab ad maxime praesentium. Earum id ullam harum quibusdam maxime iste, iusto laudantium
-                provident nemo velit quae molestiae consectetur. Similique est porro dolor deleniti perspiciatis
-                adipisci repellendus, aut earum explicabo dignissimos temporibus culpa optio, dolorem rem suscipit sint
-                sunt distinctio commodi vitae reprehenderit, magnam, deserunt. Voluptatem repudiandae non quas, quos
-                commodi sapiente ipsum ut harum odit dicta nostrum aliquid provident sed. Quo voluptatibus dolore
-                provident beatae neque reprehenderit minus, veniam at nisi aliquam! Pariatur esse deleniti cupiditate,
-                obcaecati mollitia aliquid laborum voluptatum ipsam explicabo laudantium.
-            </p>
-        </div>
-
-        <br />
-        <br />
-
         <div class="module">stat</div>
         <div class="row">
             <div class="columns large-3">
@@ -1242,11 +1389,13 @@
         </div>
 
         <div class="module">custom breakpoint</div>
-        <p class="show-small-only">small only text</p>
-        <p class="show-medium-up">show medium up</p>
+        <div class="module-body">
+            <p class="show-small-only">small only text</p>
+            <p class="show-medium-up">show medium up</p>
+        </div>
 
         <div class="module">modal</div>
-        <div style="height: 2000px">
+        <div class="module-body">
             <button class="button js-open-modal" data-modal="#modal">Open modal</button>
         </div>
 
@@ -1270,186 +1419,122 @@
             </div>
         </div>
 
-        <div class="column">
-            <div class="dropdown">
-                <button class="button has-dropdown-icon">Dropdown</button>
-                <div class="dropdown-body">
-                    <div class="dropdown-body-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt eveniet dolore maxime ducimus
-                        commodi impedit est nulla deleniti voluptatibus similique labore, repellat alias totam mollitia
-                        veniam nostrum repellendus debitis quisquam.
-                    </div>
-                </div>
-            </div>
-
-            <br />
-            <br />
-
-            <div class="dropdown">
-                <button class="button button-primary has-dropdown-icon">Dropdown</button>
-                <div class="dropdown-body">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <span class="dropdown-item-sep"></span>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </div>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
         <div class="module">card</div>
-        <div class="row">
-            <div class="columns large-4">
-                <div class="card">
-                    <img class="card-img" src="https://picsum.photos/300/150?random" />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
-                            dolorem quasi!
-                        </p>
-                        <a href="#" class="button button-primary">Button</a>
-                        <p class="card-information">27th Jan, 2018</p>
+        <div class="module-body">
+            <div class="row">
+                <div class="columns large-4">
+                    <div class="card">
+                        <img class="card-img" src="https://picsum.photos/300/150?random" />
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
+                                dolorem quasi!
+                            </p>
+                            <a href="#" class="button button-primary">Button</a>
+                            <p class="card-information">27th Jan, 2018</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns large-4">
+                    <div class="card card-primary">
+                        <img class="card-img" src="https://picsum.photos/300/150?random" />
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
+                                dolorem quasi!
+                            </p>
+                            <a href="#" class="button button-dark">Button</a>
+                            <p class="card-information">27th Jan, 2018</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns large-4">
+                    <div class="card card-dark">
+                        <img class="card-img" src="https://picsum.photos/300/150?random" />
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
+                                dolorem quasi!
+                            </p>
+                            <a href="#" class="button button-primary">Button</a>
+                            <p class="card-information">27th Jan, 2018</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="columns large-4">
-                <div class="card card-primary">
-                    <img class="card-img" src="https://picsum.photos/300/150?random" />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
-                            dolorem quasi!
-                        </p>
-                        <a href="#" class="button button-dark">Button</a>
-                        <p class="card-information">27th Jan, 2018</p>
+
+            <div class="row">
+                <div class="columns large-4">
+                    <div class="card">
+                        <div class="card-header">Card header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
+                            <img class="card-body-img rounded" src="https://picsum.photos/300/150?random" alt="" />
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
+                                dolorem quasi!
+                            </p>
+                            <a href="#" class="button button-primary">Button</a>
+                            <p class="card-information">27th Jan, 2018</p>
+                        </div>
+                        <div class="card-footer">Card footer</div>
+                    </div>
+                </div>
+                <div class="columns large-4">
+                    <div class="card card-primary">
+                        <div class="card-header">Card header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
+                            <img class="card-body-img rounded" src="https://picsum.photos/300/150?random" alt="" />
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
+                                dolorem quasi!
+                            </p>
+                            <a href="#" class="button button-dark">Button</a>
+                            <p class="card-information">27th Jan, 2018</p>
+                        </div>
+                        <div class="card-footer">Card footer</div>
+                    </div>
+                </div>
+                <div class="columns large-4">
+                    <div class="card card-tertiary">
+                        <div class="card-header">Card header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
+                            <img class="card-body-img rounded" src="https://picsum.photos/300/150?random" alt="" />
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
+                                dolorem quasi!
+                            </p>
+                            <a href="#" class="button button-dark">Button</a>
+                            <p class="card-information">27th Jan, 2018</p>
+                        </div>
+                        <div class="card-footer">Card footer</div>
                     </div>
                 </div>
             </div>
-            <div class="columns large-4">
-                <div class="card card-dark">
-                    <img class="card-img" src="https://picsum.photos/300/150?random" />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
-                            dolorem quasi!
-                        </p>
-                        <a href="#" class="button button-primary">Button</a>
-                        <p class="card-information">27th Jan, 2018</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <br />
-        <br />
-
-        <div class="row">
-            <div class="columns large-4">
-                <div class="card">
-                    <div class="card-header">Card header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
-                        <img class="card-body-img rounded" src="https://picsum.photos/300/150?random" alt="" />
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
-                            dolorem quasi!
-                        </p>
-                        <a href="#" class="button button-primary">Button</a>
-                        <p class="card-information">27th Jan, 2018</p>
-                    </div>
-                    <div class="card-footer">Card footer</div>
-                </div>
-            </div>
-            <div class="columns large-4">
-                <div class="card card-primary">
-                    <div class="card-header">Card header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
-                        <img class="card-body-img rounded" src="https://picsum.photos/300/150?random" alt="" />
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
-                            dolorem quasi!
-                        </p>
-                        <a href="#" class="button button-dark">Button</a>
-                        <p class="card-information">27th Jan, 2018</p>
-                    </div>
-                    <div class="card-footer">Card footer</div>
-                </div>
-            </div>
-            <div class="columns large-4">
-                <div class="card card-tertiary">
-                    <div class="card-header">Card header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle">Commodi veniam non perferendis</h6>
-                        <img class="card-body-img rounded" src="https://picsum.photos/300/150?random" alt="" />
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi veniam non perferendis
-                            dolorem quasi!
-                        </p>
-                        <a href="#" class="button button-dark">Button</a>
-                        <p class="card-information">27th Jan, 2018</p>
-                    </div>
-                    <div class="card-footer">Card footer</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="module">button group</div>
-        <div class="column">
-            <div class="button-group">
-                <a class="button button-primary" href="#">First</a>
-                <a class="button button-primary active" href="#">Second</a>
-                <a class="button button-primary" href="#">Third</a>
-            </div>
-
-            <br />
-            <br />
-
-            <div class="button-group">
-                <a class="button" href="#">First</a>
-                <a class="button active" href="#">Second</a>
-                <a class="button" href="#">Third</a>
-            </div>
-
-            <br />
-            <br />
-
-            <div class="button-group">
-                <a class="button" href="#">1</a>
-                <a class="button active" href="#">2</a>
-                <a class="button" href="#">3</a>
-            </div>
-
-            <br />
-            <br />
         </div>
 
         <div class="module">breadcrumb</div>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="#">Report</a></li>
-            <li class="breadcrumb-item active">Data</li>
-        </ol>
+        <div class="module-body">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Report</a></li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </div>
 
         <div class="module">badge</div>
-        <div class="column">
+        <div class="module-body">
             <span class="badge">Default</span>
             <span class="badge badge-primary">Primary</span>
             <span class="badge badge-secondary">Secondary</span>
@@ -1463,7 +1548,7 @@
         </div>
 
         <div class="module">message</div>
-        <div class="column">
+        <div class="module-body">
             <div class="message">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum nostrum itaque ex in nihil ea ipsa dolorum
                 quam expedita molestias, nesciunt, qui maxime doloribus facilis, culpa laborum animi obcaecati
@@ -1520,35 +1605,37 @@
         </div>
 
         <div class="module">img</div>
-        <div class="row">
-            <div class="columns large-6">
-                <img src="http://placehold.it/1000x500" alt="" class="img" />
-            </div>
-            <div class="columns large-6">
-                <img src="http://placehold.it/1000x500" alt="" class="img" />
-            </div>
-            <div class="columns large-6">
-                <img src="http://placehold.it/1000x500" alt="" class="img rounded" />
-            </div>
-            <div class="columns large-6">
-                <img src="http://placehold.it/1000x500" alt="" class="img-full-width" />
-            </div>
-            <div class="columns large-6">
-                <figure class="fig-center">
-                    <img src="http://placehold.it/200x150" alt="" class="img" />
-                    <figcaption class="fig-caption">A caption for the above image.</figcaption>
-                </figure>
-            </div>
-            <div class="columns large-6">
-                <figure class="fig">
-                    <img src="http://placehold.it/1000x500" alt="" class="img" />
-                    <figcaption class="fig-caption">A caption for the above image.</figcaption>
-                </figure>
+        <div class="module-body">
+            <div class="row">
+                <div class="columns large-6">
+                    <img src="http://placehold.co/1000x500" alt="" class="img" />
+                </div>
+                <div class="columns large-6">
+                    <img src="http://placehold.co/1000x500" alt="" class="img" />
+                </div>
+                <div class="columns large-6">
+                    <img src="http://placehold.co/1000x500" alt="" class="img rounded" />
+                </div>
+                <div class="columns large-6">
+                    <img src="http://placehold.co/1000x500" alt="" class="img-full-width" />
+                </div>
+                <div class="columns large-6">
+                    <figure class="fig-center">
+                        <img src="http://placehold.co/200x150" alt="" class="img" />
+                        <figcaption class="fig-caption">A caption for the above image.</figcaption>
+                    </figure>
+                </div>
+                <div class="columns large-6">
+                    <figure class="fig">
+                        <img src="http://placehold.co/1000x500" alt="" class="img" />
+                        <figcaption class="fig-caption">A caption for the above image.</figcaption>
+                    </figure>
+                </div>
             </div>
         </div>
 
         <div class="module">table</div>
-        <div class="column">
+        <div class="module-body">
             <div class="table-responsive">
                 <table class="table table-bordered full-width">
                     <thead>
@@ -1610,14 +1697,14 @@
         </div>
 
         <div class="module">code</div>
-        <div class="column">
+        <div class="module-body">
             <pre><code>.some-class {
     background-color: red;
 }</code></pre>
         </div>
 
         <div class="module">list</div>
-        <div class="column">
+        <div class="module-body">
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe autem repellat architecto fuga, mollitia
                 est ab eos expedita excepturi distinctio impedit velit quisquam necessitatibus? Porro sunt odio,
@@ -1673,280 +1760,277 @@
             </ol>
         </div>
 
-        <br />
-        <br />
         <div class="module">form</div>
-        <form class="form" action="./" method="post">
-            <div class="row">
-                <div class="columns large-2">
-                    <label for="name1" class="form-label right">Name</label>
-                </div>
-                <div class="columns large-4">
-                    <div class="form-field">
-                        <input type="text" name="name1" id="name1" class="form-input" placeholder="e.g James smith" />
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+        <div class="module-body">
+            <form class="form" action="./" method="post">
+                <div class="row">
+                    <div class="columns large-2">
+                        <label for="name1" class="form-label right">Name</label>
+                    </div>
+                    <div class="columns large-4">
+                        <div class="form-field">
+                            <input
+                                type="text"
+                                name="name1"
+                                id="name1"
+                                class="form-input"
+                                placeholder="e.g James smith" />
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
+                    </div>
+                    <div class="columns large-2 newrow">
+                        <label for="email1" class="form-label right">Email address</label>
+                    </div>
+                    <div class="columns large-4">
+                        <div class="form-field">
+                            <input
+                                type="email"
+                                name="email1"
+                                id="email1"
+                                class="form-input"
+                                placeholder="e.g james@example.com" />
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
+                    </div>
+                    <div class="columns large-4 large-offset-2 newrow">
+                        <button type="submit" class="button button-primary">Send message</button>
                     </div>
                 </div>
-                <div class="columns large-2 newrow">
-                    <label for="email1" class="form-label right">Email address</label>
-                </div>
-                <div class="columns large-4">
-                    <div class="form-field">
-                        <input
-                            type="email"
-                            name="email1"
-                            id="email1"
-                            class="form-input"
-                            placeholder="e.g james@example.com" />
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
-                </div>
-                <div class="columns large-4 large-offset-2 newrow">
-                    <button type="submit" class="button button-primary">Send message</button>
-                </div>
-            </div>
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div class="row">
-                <div class="columns large-6">
-                    <div class="form-field error">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" name="name" id="name" class="form-input" placeholder="e.g James smith" />
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="row">
+                    <div class="columns large-6">
+                        <div class="form-field error">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" name="name" id="name" class="form-input" placeholder="e.g James smith" />
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
 
-                    <div class="form-field success">
-                        <label for="email" class="form-label">Email address</label>
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            class="form-input"
-                            placeholder="e.g james@example.com" />
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
+                        <div class="form-field success">
+                            <label for="email" class="form-label">Email address</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                class="form-input"
+                                placeholder="e.g james@example.com" />
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
 
-                    <div class="form-field large">
-                        <label for="country" class="form-label">Select country</label>
-                        <select name="country" id="country" class="form-select">
-                            <option value="US">United state</option>
-                            <option value="UK">United Kingdom</option>
-                        </select>
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
+                        <div class="form-field large">
+                            <label for="country" class="form-label">Select country</label>
+                            <select name="country" id="country" class="form-select">
+                                <option value="US">United state</option>
+                                <option value="UK">United Kingdom</option>
+                            </select>
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
 
-                    <div class="form-field">
-                        <label for="country_multiple" class="form-label">Select multiple</label>
-                        <select name="country_multiple" id="country_multiple" class="form-select" multiple>
-                            <option value="US">United state</option>
-                            <option value="UK">United Kingdom</option>
-                            <option value="CA">Canada</option>
-                            <option value="BD">Bangladesh</option>
-                            <option value="">None</option>
-                        </select>
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
+                        <div class="form-field">
+                            <label for="country_multiple" class="form-label">Select multiple</label>
+                            <select name="country_multiple" id="country_multiple" class="form-select" multiple>
+                                <option value="US">United state</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="CA">Canada</option>
+                                <option value="BD">Bangladesh</option>
+                                <option value="">None</option>
+                            </select>
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
 
-                    <div class="form-field">
-                        <label for="photo" class="form-label">Upload photo</label>
-                        <input type="file" name="photo" id="photo" class="form-file" />
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
+                        <div class="form-field">
+                            <label for="photo" class="form-label">Upload photo</label>
+                            <input type="file" name="photo" id="photo" class="form-file" />
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
 
-                    <div class="form-field small">
-                        <label for="small_field" class="form-label">Small field</label>
-                        <input
-                            type="text"
-                            name="small_field"
-                            id="small_field"
-                            class="form-input"
-                            placeholder="e.g Small field" />
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
+                        <div class="form-field small">
+                            <label for="small_field" class="form-label">Small field</label>
+                            <input
+                                type="text"
+                                name="small_field"
+                                id="small_field"
+                                class="form-input"
+                                placeholder="e.g Small field" />
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
 
-                    <div class="form-field large">
-                        <label for="large_field" class="form-label">Large field</label>
-                        <input
-                            type="text"
-                            name="large_field"
-                            id="large_field"
-                            class="form-input"
-                            placeholder="e.g Large field" />
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
+                        <div class="form-field large">
+                            <label for="large_field" class="form-label">Large field</label>
+                            <input
+                                type="text"
+                                name="large_field"
+                                id="large_field"
+                                class="form-input"
+                                placeholder="e.g Large field" />
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
 
-                    <div class="form-field">
-                        <label class="form-label">Select gender</label>
-                        <div class="form-radio-items">
-                            <label class="form-radio-item">
-                                <input type="radio" name="gender" id="male" class="form-radio" />
-                                Male
-                            </label>
-                            <label class="form-radio-item">
-                                <input type="radio" name="gender" id="female" class="form-radio" />
-                                Male
-                            </label>
-                            <label class="form-radio-item">
-                                <input type="radio" name="gender" id="nogender" class="form-radio" disabled />
-                                <span class="dimmed">No gender</span>
+                        <div class="form-field">
+                            <label class="form-label">Select gender</label>
+                            <div class="form-radio-items">
+                                <label class="form-radio-item">
+                                    <input type="radio" name="gender" id="male" class="form-radio" />
+                                    Male
+                                </label>
+                                <label class="form-radio-item">
+                                    <input type="radio" name="gender" id="female" class="form-radio" />
+                                    Male
+                                </label>
+                                <label class="form-radio-item">
+                                    <input type="radio" name="gender" id="nogender" class="form-radio" disabled />
+                                    <span class="dimmed">No gender</span>
+                                </label>
+                            </div>
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
+
+                        <div class="form-field vertical">
+                            <label class="form-label">Select gender</label>
+                            <div class="form-radio-items">
+                                <label class="form-radio-item">
+                                    <input type="radio" name="gender" id="male" class="form-radio" />
+                                    Male
+                                </label>
+                                <label class="form-radio-item">
+                                    <input type="radio" name="gender" id="female" class="form-radio" />
+                                    Male
+                                </label>
+                                <label class="form-radio-item">
+                                    <input type="radio" name="gender" id="nogender" class="form-radio" />
+                                    No gender
+                                </label>
+                            </div>
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-checkbox-label">
+                                <input type="checkbox" class="form-check-input" />
+                                I agree with the
+                                <a href="">terms and conditions</a>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam
+                                nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum,
+                                libero molestias eaque debitis asperiores, sint ratione.
                             </label>
                         </div>
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
 
-                    <div class="form-field vertical">
-                        <label class="form-label">Select gender</label>
-                        <div class="form-radio-items">
-                            <label class="form-radio-item">
-                                <input type="radio" name="gender" id="male" class="form-radio" />
-                                Male
-                            </label>
-                            <label class="form-radio-item">
-                                <input type="radio" name="gender" id="female" class="form-radio" />
-                                Male
-                            </label>
-                            <label class="form-radio-item">
-                                <input type="radio" name="gender" id="nogender" class="form-radio" />
-                                No gender
+                        <div class="form-field small">
+                            <label class="form-checkbox-label">
+                                <input type="checkbox" class="form-check-input" />
+                                I agree with the
+                                <a href="">terms and conditions</a>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam
+                                nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum,
+                                libero molestias eaque debitis asperiores, sint ratione.
                             </label>
                         </div>
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                    </div>
+                    <div class="columns large-6">
+                        <div class="form-field warning">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea
+                                name="message"
+                                id="message"
+                                class="form-textarea"
+                                placeholder="e.g Write something here!"></textarea>
+                            <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        </div>
                     </div>
 
-                    <div class="form-field">
-                        <label class="form-checkbox-label">
-                            <input type="checkbox" class="form-check-input" />
-                            I agree with the
-                            <a href="">terms and conditions</a>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam
-                            nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum, libero
-                            molestias eaque debitis asperiores, sint ratione.
-                        </label>
-                    </div>
-
-                    <div class="form-field small">
-                        <label class="form-checkbox-label">
-                            <input type="checkbox" class="form-check-input" />
-                            I agree with the
-                            <a href="">terms and conditions</a>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium commodi ea aliquam
-                            nisi illo eligendi facere, iure voluptates recusandae, dolorum harum. Explicabo cum, libero
-                            molestias eaque debitis asperiores, sint ratione.
-                        </label>
+                    <div class="columns large-12">
+                        <button type="submit" class="button button-primary">Send message</button>
                     </div>
                 </div>
-                <div class="columns large-6">
-                    <div class="form-field warning">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea
-                            name="message"
-                            id="message"
-                            class="form-textarea"
-                            placeholder="e.g Write something here!"></textarea>
-                        <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
-                    </div>
-                </div>
+            </form>
+        </div>
 
-                <div class="columns large-12">
-                    <button type="submit" class="button button-primary">Send message</button>
-                </div>
-            </div>
-        </form>
-
-        <br />
-        <br />
-
-        <br />
-        <br />
-
-        <div class="module">grid column</div>
+        <!-- <div class="module">grid column</div>
         <div class="grid-column">
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem qui molestias consequatur inventore.
                 Perspiciatis odio vitae necessitatibus cum sunt, illo voluptas, placeat odit similique repellendus ipsam
                 cumque autem dolorum quia?
             </p>
-        </div>
+        </div> -->
 
-        <br />
-        <br />
+        <!-- <div class="module">grid-cell</div>
+        <div class="module-body">
+            <div class="grid">
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+                <div class="cell"><div class="box-demo">1</div></div>
+            </div>
 
-        <div class="module">grid-cell</div>
-        <div class="grid">
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-            <div class="cell"><div class="box-demo">1</div></div>
-        </div>
+            <br />
+            <br />
 
-        <br />
-        <br />
+            <div class="grid">
+                <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+                <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+                <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+                <div class="cell sm-12 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+            </div>
 
-        <div class="grid">
-            <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-            <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-            <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-            <div class="cell sm-12 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-        </div>
+            <br />
+            <br />
 
-        <br />
-        <br />
+            <div class="grid">
+                <div class="cell lg-6"><div class="box-demo">box-demo</div></div>
+                <div class="cell lg-6">
+                    <div class="box-demo">box-demo</div>
 
-        <div class="grid">
-            <div class="cell lg-6"><div class="box-demo">box-demo</div></div>
-            <div class="cell lg-6">
-                <div class="box-demo">box-demo</div>
-
-                <div class="grid">
-                    <div class="cell lg-6"><div class="box-demo">box-demo</div></div>
-                    <div class="cell lg-12"><div class="box-demo">box-demo</div></div>
+                    <div class="grid">
+                        <div class="cell lg-6"><div class="box-demo">box-demo</div></div>
+                        <div class="cell lg-12"><div class="box-demo">box-demo</div></div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="module">regular grid</div>
-        <div class="row">
-            <div class="columns large-4">
-                <ul class="nav">
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </div>
-            <div class="columns large-4">
-                <a href="./"><h3>roolith</h3></a>
-            </div>
-            <div class="columns large-4">
-                <ul class="nav">
-                    <li><a href="#">Github</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="column">
+        <!-- <div class="module">regular grid</div>
+        <div class="module-body">
             <div class="row">
-                <div class="columns large-6">a</div>
-                <div class="columns large-6">b</div>
+                <div class="columns large-4">
+                    <ul class="nav">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+                <div class="columns large-4">
+                    <a href="./"><h3>roolith</h3></a>
+                </div>
+                <div class="columns large-4">
+                    <ul class="nav">
+                        <li><a href="#">Github</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
+
+            <div class="column">
+                <div class="row">
+                    <div class="columns large-6">a</div>
+                    <div class="columns large-6">b</div>
+                </div>
+            </div>
+        </div> -->
 
         <div class="module">nav</div>
-        <div class="column">
-            <br />
-            <br />
-
+        <div class="module-body">
             <ul class="nav">
                 <li class="nav-item"><a href="#" class="nav-link">Documentation</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Modules</a></li>
@@ -2013,269 +2097,126 @@
                 <li class="nav-item"><a href="#" class="nav-link">Menu item</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Create new account</a></li>
             </ul>
-
-            <br />
-            <br />
-            <br />
-            <br />
         </div>
 
-        <div class="module">button</div>
-        <div class="column">
-            <br />
-            <br />
-
-            <button class="button disabled">Default button</button>
-            <button class="button button-outline">Outlined button</button>
-            <button class="button button-rounded">Rounded button</button>
-
-            <hr />
-
-            <button class="button button-small">Default button</button>
-            <button class="button button-outline button-small">Outlined button</button>
-            <button class="button button-rounded button-small">Rounded button</button>
-
-            <hr />
-
-            <button class="button button-medium">Default button</button>
-            <button class="button button-outline button-medium">Outlined button</button>
-            <button class="button button-rounded button-medium">Rounded button</button>
-
-            <hr />
-
-            <button class="button button-large">Default button</button>
-            <button class="button button-outline button-large">Outlined button</button>
-            <button class="button button-rounded button-large">Rounded button</button>
-
-            <hr />
-
-            <button class="button button-primary button-primary">Default button</button>
-            <button class="button button-primary button-outline">Outlined button</button>
-            <button class="button button-primary button-rounded">Rounded button</button>
-
-            <hr />
-
-            <button class="button button-primary button-small">Default button</button>
-            <button class="button button-primary button-outline button-small">Outlined button</button>
-            <button class="button button-primary button-rounded button-small">Rounded button</button>
-
-            <hr />
-
-            <button class="button button-primary button-medium disabled">Default button</button>
-            <button class="button button-primary button-outline button-medium">Outlined button</button>
-            <button class="button button-primary button-rounded button-medium">Rounded button</button>
-
-            <hr />
-
-            <button class="button button-primary button-large">Default button</button>
-            <button class="button button-primary button-outline button-large">Outlined button</button>
-            <button class="button button-primary button-rounded button-large">Rounded button</button>
-
-            <br />
-            <br />
-
-            <br />
-            <br />
-
-            <a class="button button-small" href="#">Small</a>
-            <a class="button button-primary button-small" href="#">Primary</a>
-            <a class="button button-secondary button-small" href="#">Secondary</a>
-            <a class="button button-tertiary button-small" href="#">Tertiary</a>
-            <a class="button button-info button-small" href="#">Info</a>
-            <a class="button button-success button-small" href="#">Success</a>
-            <a class="button button-danger button-small" href="#">Danger</a>
-            <a class="button button-link button-small" href="#">Link</a>
-
-            <br />
-            <br />
-
-            <a class="button button-medium" href="#">Medium</a>
-            <a class="button button-primary button-medium" href="#">Primary</a>
-            <a class="button button-secondary button-medium" href="#">Secondary</a>
-            <a class="button button-tertiary button-medium" href="#">Tertiary</a>
-            <a class="button button-info button-medium" href="#">Info</a>
-            <a class="button button-success button-medium" href="#">Success</a>
-            <a class="button button-danger button-medium" href="#">Danger</a>
-            <a class="button button-link button-medium" href="#">Link</a>
-
-            <br />
-            <br />
-
-            <a class="button" href="#">Normal</a>
-            <a class="button button-primary" href="#">Primary</a>
-            <a class="button button-secondary" href="#">Secondary</a>
-            <a class="button button-tertiary" href="#">Tertiary</a>
-            <a class="button button-info" href="#">Info</a>
-            <a class="button button-success" href="#">Success</a>
-            <a class="button button-danger" href="#">Danger</a>
-            <a class="button button-link" href="#">Link</a>
-
-            <br />
-            <br />
-
-            <a class="button button-large" href="#">Large</a>
-            <a class="button button-primary button-large" href="#">Primary</a>
-            <a class="button button-secondary button-large" href="#">Secondary</a>
-            <a class="button button-tertiary button-large" href="#">Tertiary</a>
-            <a class="button button-info button-large" href="#">Info</a>
-            <a class="button button-success button-large" href="#">Success</a>
-            <a class="button button-danger button-large" href="#">Danger</a>
-            <a class="button button-link button-large" href="#">Link</a>
-        </div>
-
-        <div class="module">typography</div>
-        <div class="column">
-            <h1>Heading</h1>
-            <h2>Heading</h2>
-            <h3>Heading</h3>
-            <h4>Heading</h4>
-            <h5>Heading</h5>
-            <h6>Heading</h6>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat maxime velit voluptatibus doloribus ad
-                accusantium necessitatibus eos explicabo inventore eligendi quam beatae, expedita. Impedit quae, amet
-                autem nihil perspiciatis. Impedit.
-            </p>
-
-            <p>
-                <strong>Bolded</strong>
-                <em>Italicized</em>
-                <a>Colored</a>
-                <u>Underlined</u>
-                <code>code</code>
-            </p>
-        </div>
-
-        <div class="column">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem qui molestias consequatur inventore.
-                Perspiciatis odio vitae necessitatibus cum sunt, illo voluptas, placeat odit similique repellendus ipsam
-                cumque autem dolorum quia?
-            </p>
-        </div>
-
-        <div class="row">
-            <div class="columns small-6 large-6 large-push-6">
-                <div class="box-demo">small left, large right</div>
+        <!-- <div class="module">css-grid</div>
+        <div class="module-body">
+            <div class="grid">
+                <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+                <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+                <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
+                <div class="sm-12 md-6 lg-3"><div class="box-demo">box-demo</div></div>
             </div>
-            <div class="columns small-6 large-6 large-pull-6">
-                <div class="box-demo">small right, large left</div>
+
+            <div class="grid">
+                <div class="sm-4 md-8 lg-6"><div class="box-demo">box-demo</div></div>
+                <div class="sm-8 md-4 lg-6"><div class="box-demo">box-demo</div></div>
             </div>
-        </div>
 
-        <div class="module">css-grid</div>
-        <div class="grid">
-            <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-            <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-            <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-            <div class="sm-12 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-        </div>
-
-        <div class="grid">
-            <div class="sm-4 md-8 lg-6"><div class="box-demo">box-demo</div></div>
-            <div class="sm-8 md-4 lg-6"><div class="box-demo">box-demo</div></div>
-        </div>
-
-        <div class="grid">
-            <div class="sm-6 md-6 md-push-6"><div class="box-demo">sm left, lg right</div></div>
-            <div class="sm-6 md-6 md-pull-6"><div class="box-demo">sm right, lg left</div></div>
-        </div>
+            <div class="grid">
+                <div class="sm-6 md-6 md-push-6"><div class="box-demo">sm left, lg right</div></div>
+                <div class="sm-6 md-6 md-pull-6"><div class="box-demo">sm right, lg left</div></div>
+            </div>
+        </div> -->
 
         <div class="module">regular grid</div>
-        <div class="row">
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-        </div>
-
-        <div class="row">
-            <div class="columns large-2"><div class="box-demo">2</div></div>
-            <div class="columns large-2"><div class="box-demo">2</div></div>
-            <div class="columns large-2"><div class="box-demo">2</div></div>
-            <div class="columns large-2"><div class="box-demo">2</div></div>
-            <div class="columns large-2"><div class="box-demo">2</div></div>
-            <div class="columns large-2"><div class="box-demo">2</div></div>
-        </div>
-
-        <div class="row">
-            <div class="columns large-3"><div class="box-demo">3</div></div>
-            <div class="columns large-3"><div class="box-demo">3</div></div>
-            <div class="columns large-3"><div class="box-demo">3</div></div>
-            <div class="columns large-3"><div class="box-demo">3</div></div>
-        </div>
-
-        <div class="row">
-            <div class="columns large-4"><div class="box-demo">4</div></div>
-            <div class="columns large-4"><div class="box-demo">4</div></div>
-            <div class="columns large-4"><div class="box-demo">4</div></div>
-        </div>
-
-        <div class="row">
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-            <div class="columns large-5"><div class="box-demo">5</div></div>
-            <div class="columns large-5"><div class="box-demo">5</div></div>
-            <div class="columns large-1"><div class="box-demo">1</div></div>
-        </div>
-
-        <div class="row">
-            <div class="columns large-6"><div class="box-demo">6</div></div>
-            <div class="columns large-6"><div class="box-demo">6</div></div>
-        </div>
-
-        <div class="row">
-            <div class="columns large-12"><div class="box-demo">12</div></div>
-        </div>
-
-        <div class="row">
-            <div class="columns large-4 medium-6 small-12">
-                <div class="box-demo">large-4 medium-6 small-12</div>
+        <div class="container">
+            <br />
+            <br />
+            <div class="row">
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
             </div>
-            <div class="columns large-4 medium-6 small-12">
-                <div class="box-demo">large-4 medium-6 small-12</div>
-            </div>
-            <div class="columns large-4 medium-6 small-12">
-                <div class="box-demo">large-4 medium-6 small-12</div>
-            </div>
-            <div class="columns large-4 medium-6 small-12">
-                <div class="box-demo">large-4 medium-6 small-12</div>
-            </div>
-            <div class="columns large-4 medium-6 small-12">
-                <div class="box-demo">large-4 medium-6 small-12</div>
-            </div>
-            <div class="columns large-4 medium-6 small-12">
-                <div class="box-demo">large-4 medium-6 small-12</div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="columns large-4 medium-6 small-6">
-                <div class="box-demo">large-4 medium-6 small-6</div>
+            <div class="row">
+                <div class="columns large-2"><div class="box-demo">2</div></div>
+                <div class="columns large-2"><div class="box-demo">2</div></div>
+                <div class="columns large-2"><div class="box-demo">2</div></div>
+                <div class="columns large-2"><div class="box-demo">2</div></div>
+                <div class="columns large-2"><div class="box-demo">2</div></div>
+                <div class="columns large-2"><div class="box-demo">2</div></div>
+            </div>
 
-                <div class="row">
-                    <div class="columns large-6"><div class="box-demo">large-6</div></div>
-                    <div class="columns large-6">
-                        <div class="row">
-                            <div class="columns large-6"><div class="box-demo">large-6</div></div>
-                            <div class="columns large-6"><div class="box-demo">large-6</div></div>
+            <div class="row">
+                <div class="columns large-3"><div class="box-demo">3</div></div>
+                <div class="columns large-3"><div class="box-demo">3</div></div>
+                <div class="columns large-3"><div class="box-demo">3</div></div>
+                <div class="columns large-3"><div class="box-demo">3</div></div>
+            </div>
+
+            <div class="row">
+                <div class="columns large-4"><div class="box-demo">4</div></div>
+                <div class="columns large-4"><div class="box-demo">4</div></div>
+                <div class="columns large-4"><div class="box-demo">4</div></div>
+            </div>
+
+            <div class="row">
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+                <div class="columns large-5"><div class="box-demo">5</div></div>
+                <div class="columns large-5"><div class="box-demo">5</div></div>
+                <div class="columns large-1"><div class="box-demo">1</div></div>
+            </div>
+
+            <div class="row">
+                <div class="columns large-6"><div class="box-demo">6</div></div>
+                <div class="columns large-6"><div class="box-demo">6</div></div>
+            </div>
+
+            <div class="row">
+                <div class="columns large-12"><div class="box-demo">12</div></div>
+            </div>
+
+            <div class="row">
+                <div class="columns large-4 medium-6 small-12">
+                    <div class="box-demo">large-4 medium-6 small-12</div>
+                </div>
+                <div class="columns large-4 medium-6 small-12">
+                    <div class="box-demo">large-4 medium-6 small-12</div>
+                </div>
+                <div class="columns large-4 medium-6 small-12">
+                    <div class="box-demo">large-4 medium-6 small-12</div>
+                </div>
+                <div class="columns large-4 medium-6 small-12">
+                    <div class="box-demo">large-4 medium-6 small-12</div>
+                </div>
+                <div class="columns large-4 medium-6 small-12">
+                    <div class="box-demo">large-4 medium-6 small-12</div>
+                </div>
+                <div class="columns large-4 medium-6 small-12">
+                    <div class="box-demo">large-4 medium-6 small-12</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns large-4 medium-6 small-6">
+                    <div class="box-demo">large-4 medium-6 small-6</div>
+
+                    <div class="row">
+                        <div class="columns large-6"><div class="box-demo">large-6</div></div>
+                        <div class="columns large-6">
+                            <div class="row">
+                                <div class="columns large-6"><div class="box-demo">large-6</div></div>
+                                <div class="columns large-6"><div class="box-demo">large-6</div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="columns large-4 medium-3 small-6">
-                <div class="box-demo">large-4 medium-3 small-6</div>
-            </div>
-            <div class="columns large-4 medium-3 small-12">
-                <div class="box-demo">large-4 medium-3 small-12</div>
+                <div class="columns large-4 medium-3 small-6">
+                    <div class="box-demo">large-4 medium-3 small-6</div>
+                </div>
+                <div class="columns large-4 medium-3 small-12">
+                    <div class="box-demo">large-4 medium-3 small-12</div>
+                </div>
             </div>
         </div>
 

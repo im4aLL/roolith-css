@@ -11,23 +11,22 @@
         top: 0;
         background: var(--r-modal-background);
         z-index: 10;
-        @if(settings.$modal-layout == css-grid) {
+        @if (settings.$modal-layout == css-grid) {
             grid-template-rows: minmax(rem(20), 2fr) auto minmax(rem(20), 2fr);
-            grid-template-areas: "header"
-                                 "body"
-                                 "footer";
+            grid-template-areas:
+                'header'
+                'body'
+                'footer';
         }
         display: none;
         padding: 0 rem(20);
 
         &.active {
-            @if(settings.$modal-layout == css-grid) {
+            @if (settings.$modal-layout == css-grid) {
                 display: grid;
-            }
-            @else if(settings.$modal-layout == traditional) {
+            } @else if(settings.$modal-layout == traditional) {
                 display: block;
-            }
-            @else if(settings.$modal-layout == flex) {
+            } @else if(settings.$modal-layout == flex) {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -37,19 +36,18 @@
 
     .modal-content {
         position: relative;
-        @if(settings.$modal-layout == css-grid) {
+        @if (settings.$modal-layout == css-grid) {
             grid-area: body;
             margin-left: auto;
             margin-right: auto;
             @extend .animation, .fadeInUp;
-        }
-        @else if(settings.$modal-layout == traditional) {
+        } @else if(settings.$modal-layout == traditional) {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             @extend .animation, .fadeIn;
         }
-        @if(settings.$modal-layout == flex) {
+        @if (settings.$modal-layout == flex) {
             max-height: 90%;
             @extend .animation, .fadeInUp;
         }
@@ -101,6 +99,7 @@
         line-height: rem(12);
         z-index: 2;
         cursor: pointer;
+        color: var(--r-modal-close-color);
         @include mixin.transition('opacity');
 
         &:hover {

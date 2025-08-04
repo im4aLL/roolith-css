@@ -14,7 +14,7 @@
 
         &:after {
             display: inline-block;
-            content: var(--r-breadcrumb-sep);
+            content: var(--r-breadcrumb-sep-symbol);
             margin: 0 var(--r-breadcrumb-spacing);
             color: var(--r-breadcrumb-sep-color);
         }

@@ -5,13 +5,16 @@
 
 @mixin roolith-badge() {
     .badge {
-        display: inline-block;
-        font-size: 75%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         padding: rem(2) rem(5) rem(3);
-        background: var(--r-color-white-darken-5);
-        color: var(--r-color-white-darken-50);
+        background: var(--r-badge-background);
+        color: var(--r-badge-color);
         border-radius: var(--r-badge-radius);
-        line-height: 1;
+        font-size: rem(11);
+        line-height: rem(11);
+        text-transform: uppercase;
     }
 
     @each $name, $value in settings.$colors {

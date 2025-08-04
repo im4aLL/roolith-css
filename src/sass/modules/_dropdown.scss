@@ -55,12 +55,12 @@
     .dropdown-item {
         display: block;
         padding: rem(5) rem(15);
-        color: var(--r-color-dark-lighten-20);
+        color: var(--r-dropdown-item-color);
         @include mixin.transition('background, color');
 
         &:hover {
-            background-color: var(--r-color-white-darken-5);
-            color: var(--r-color-dark);
+            background-color: var(--r-dropdown-item-hover-background-color);
+            color: var(--r-dropdown-item-hover-color);
         }
 
         &:first-child {
@@ -74,7 +74,7 @@
 
     .dropdown-item-sep {
         height: rem(1);
-        background: var(--r-color-white-darken-8);
+        background: var(--r-dropdown-item-sep);
         display: block;
     }
 }

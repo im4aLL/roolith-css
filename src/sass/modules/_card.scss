@@ -8,7 +8,7 @@
         border-radius: var(--r-card-radius);
         overflow: hidden;
         margin-bottom: rem(20);
-        background: var(--r-color-white);
+        background: var(--r-card-background);
     }
 
     .card-img {
@@ -48,14 +48,14 @@
 
     .card-header {
         padding: rem(15) rem(25);
-        border-bottom: var(--r-card-header-footer-border);
+        border-bottom: rem(1) solid var(--r-card-header-footer-border);
         font-size: rem(14);
         color: var(--r-card-header-footer-color);
     }
 
     .card-footer {
         padding: rem(15) rem(25);
-        border-top: var(--r-card-header-footer-border);
+        border-top: rem(1) solid var(--r-card-header-footer-border);
         color: var(--r-card-header-footer-color);
         font-size: rem(14);
     }
