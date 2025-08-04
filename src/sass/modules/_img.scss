@@ -1,5 +1,5 @@
-$img-radius: rem(2) !default;
-$img-caption-color: lighten(map-get($colors, dark), 40%) !default;
+@use '../function' as *;
+@use '../mixin';
 
 @mixin roolith-img() {
     .img {
@@ -12,7 +12,7 @@ $img-caption-color: lighten(map-get($colors, dark), 40%) !default;
 
     .rounded {
         overflow: hidden;
-        @include border-radius($img-radius);
+        @include mixin.border-radius(var(--r-img-radius));
     }
 
     .rounded-circle {
@@ -27,7 +27,7 @@ $img-caption-color: lighten(map-get($colors, dark), 40%) !default;
     .fig-caption {
         font-size: rem(14);
         line-height: rem(18);
-        color: $img-caption-color;
+        color: var(--r-img-caption-color);
         padding-top: rem(3);
     }
 

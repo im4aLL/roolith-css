@@ -1,50 +1,48 @@
-$avatar-default-size: rem(40) !default;
-$avatar-small-size: rem(30) !default;
-$avatar-label-color: map-get($colors, black) !default;
+@use '../function' as *;
+@use '../mixin';
 
 @mixin roolith-avatar() {
-
     .avatar {
         position: relative;
-        padding-left: $avatar-default-size + rem(15);
-        min-height: $avatar-default-size;
+        padding-left: calc(var(--r-avatar-default-size) + #{rem(15)});
+        min-height: var(--r-avatar-default-size);
     }
 
     .avatar-small {
-        padding-left: $avatar-small-size + rem(15);
-        min-height: $avatar-small-size;
+        padding-left: calc(var(--r-avatar-small-size) + #{rem(15)});
+        min-height: var(--r-avatar-small-size);
     }
 
     .avatar-fig {
-        @include abs-pos(0, auto, auto, 0);
-        width: $avatar-default-size;
-        height: $avatar-default-size;
+        @include mixin.abs-pos(0, auto, auto, 0);
+        width: var(--r-avatar-default-size);
+        height: var(--r-avatar-default-size);
 
         img {
             @extend .fig-fit;
         }
 
         .avatar-small & {
-            width: $avatar-small-size;
-            height: $avatar-small-size;
+            width: var(--r-avatar-small-size);
+            height: var(--r-avatar-small-size);
         }
     }
 
     .avatar-label {
         font-size: rem(14);
         line-height: rem(18);
-        font-weight: $global-font-bold-weight;
-        color: $avatar-label-color;
+        font-weight: var(--r-global-font-bold-weight);
+        color: var(--r-avatar-label-color);
         display: block;
         padding: 0 0 rem(3);
-        @include transition('color');
+        @include mixin.transition('color');
 
         span {
-            font-weight: $global-font-weight;
+            font-weight: var(--r-global-font-weight);
         }
 
         &:hover {
-            color: lighten($avatar-label-color, 20%);
+            color: var(--r-avatar-label-hover-color);
         }
 
         .avatar-small & {
@@ -59,12 +57,11 @@ $avatar-label-color: map-get($colors, black) !default;
 
         > *:not(:last-child) {
             margin: 0 rem(5) 0 0;
-        } 
+        }
     }
 
     .avatar-secondary-block {
         padding: rem(5) 0 0;
         @extend .small, .dimmed;
     }
-
 }

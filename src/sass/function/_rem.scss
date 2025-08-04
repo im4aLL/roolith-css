@@ -1,12 +1,11 @@
-@use "sass:math";
-$global-base-font-size: 16px !default;
+@use 'sass:math';
 
-@function rem($pixels, $context: $global-base-font-size) {
-    @if (unitless($pixels)) {
+@function rem($pixels, $context: 16px) {
+    @if (math.is-unitless($pixels)) {
         $pixels: $pixels * 1px;
     }
 
-    @if (unitless($context)) {
+    @if (math.is-unitless($context)) {
         $context: $context * 1px;
     }
 

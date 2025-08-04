@@ -1,16 +1,14 @@
-$card-radius: rem(2) !default;
-$card-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
-
-$card-header-footer-border: rem(1) solid lighten(map-get($colors, dark), 83%) !default;
-$card-header-footer-color: lighten(map-get($colors, dark), 40%) !default;
+@use '../function' as *;
+@use '../settings';
+@use 'sass:color';
 
 @mixin roolith-card() {
     .card {
-        box-shadow: $card-shadow;
-        border-radius: $card-radius;
+        box-shadow: var(--r-card-shadow);
+        border-radius: var(--r-card-radius);
         overflow: hidden;
         margin-bottom: rem(20);
-        background: map-get($colors, white);
+        background: var(--r-card-background);
     }
 
     .card-img {
@@ -50,33 +48,34 @@ $card-header-footer-color: lighten(map-get($colors, dark), 40%) !default;
 
     .card-header {
         padding: rem(15) rem(25);
-        border-bottom: $card-header-footer-border;
+        border-bottom: rem(1) solid var(--r-card-header-footer-border);
         font-size: rem(14);
-        color: $card-header-footer-color;
+        color: var(--r-card-header-footer-color);
     }
 
     .card-footer {
         padding: rem(15) rem(25);
-        border-top: $card-header-footer-border;
-        color: $card-header-footer-color;
+        border-top: rem(1) solid var(--r-card-header-footer-border);
+        color: var(--r-card-header-footer-color);
         font-size: rem(14);
     }
 
-    @each $name, $value in $colors {
-        @if($name != white)
-        {
+    @each $name, $value in settings.$colors {
+        @if ($name != white) {
             .card-#{'' + $name} {
                 background: $value;
-                color: map-get($colors, white);
+                color: var(--r-color-white);
 
-                .card-subtitle, .card-information {
-                    color: map-get($colors, white);
+                .card-subtitle,
+                .card-information {
+                    color: var(--r-color-white);
                     opacity: 0.7;
                 }
 
-                .card-header, .card-footer {
-                    border-color: lighten($value, 10%);
-                    color: map-get($colors, white);
+                .card-header,
+                .card-footer {
+                    border-color: color-lighten(var(--r-color-#{$name}), 10%);
+                    color: var(--r-color-white);
                 }
             }
         }

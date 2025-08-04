@@ -1,3 +1,5 @@
+@use '../function' as *;
+
 @mixin roolith-stat() {
     .stat {
         text-align: center;
@@ -8,19 +10,19 @@
         display: block;
         font-size: rem(12);
         padding-bottom: rem(7);
-        color: lighten(map-get($colors, dark), 20%);
+        color: var(--r-color-dark-lighten-20);
     }
 
     .stat-body {
         display: block;
         font-size: rem(32);
-        font-weight: $global-font-bold-weight;
+        font-weight: var(--r-global-font-bold-weight);
     }
 
     .stat-footer {
         display: block;
         font-size: rem(12);
         padding-top: rem(10);
-        color: lighten(map-get($colors, dark), 40%);
+        color: var(--r-color-dark-lighten-40);
     }
 }

@@ -1,110 +1,57 @@
-@import "./function";
-@import "./mixin";
-@import "./settings";
-@import "./reset";
-@import "./base";
-@import "./typography";
-@import "./modules/color";
-@import "./modules/animation";
-@import "./modules/grid";
-@import "./modules/css-grid";
-@import "./modules/button";
-@import "./modules/nav";
-@import "./modules/form";
-@import "./modules/table";
-@import "./modules/img";
-@import "./modules/message";
-@import "./modules/badge";
-@import "./modules/breadcrumb";
-@import "./modules/card";
-@import "./modules/dropdown";
-@import "./modules/modal";
-@import "./modules/stat";
-@import "./modules/accordion";
-@import "./modules/tab";
-@import "./modules/box";
-@import "./modules/article";
-@import "./modules/progress";
-@import "./modules/collage";
-@import "./modules/avatar";
-@import "./modules/tag";
-@import "./modules/page";
-@import "./modules/comment";
-@import "./modules/toast-notification";
-@import "./modules/state";
-@import "./theme-dark";
+@use './reset';
+@use './css-variable';
+@use './base';
+@use './typography';
+@use './modules';
+@use './settings';
+// @import "./theme-dark";
+
+@mixin roolith-base() {
+    @include css-variable.roolith-css-variable();
+    @include reset.roolith-reset();
+    @include base.roolith-base();
+    @include typography.roolith-typography();
+}
+
+@mixin roolith-modules() {
+    @if (settings.$grid-layout == css-grid) {
+        @include modules.roolith-css-grid();
+    } @else if(settings.$grid-layout == traditional) {
+        @include modules.roolith-grid();
+    }
+
+    @include modules.roolith-animation();
+    @include modules.roolith-button();
+    @include modules.roolith-nav();
+    @include modules.roolith-form();
+    @include modules.roolith-table();
+    @include modules.roolith-img();
+    @include modules.roolith-message();
+    @include modules.roolith-badge();
+    @include modules.roolith-breadcrumb();
+    @include modules.roolith-card();
+    @include modules.roolith-dropdown();
+    @include modules.roolith-modal();
+
+    @include modules.roolith-stat();
+    @include modules.roolith-accordion();
+    @include modules.roolith-tab();
+    @include modules.roolith-box();
+    @include modules.roolith-article();
+    @include modules.roolith-progress-bar();
+    @include modules.roolith-collage();
+    @include modules.roolith-avatar();
+    @include modules.roolith-tag();
+    @include modules.roolith-page();
+    @include modules.roolith-color();
+    @include modules.roolith-comment();
+    @include modules.roolith-toast-notification();
+    @include modules.roolith-icon();
+
+    @include modules.roolith-state();
+}
 
 @mixin roolith-everything() {
-    @include roolith-reset();
     @include roolith-base();
-    @include roolith-typography();
-    @include roolith-animation();
-    @if($grid-layout == css-grid) {
-        @include roolith-css-grid();
-    }
-    @else if($grid-layout == traditional) {
-        @include roolith-grid();
-    }
-    @include roolith-button();
-    @include roolith-nav();
-    @include roolith-form();
-    @include roolith-table();
-    @include roolith-img();
-    @include roolith-message();
-    @include roolith-badge();
-    @include roolith-breadcrumb();
-    @include roolith-card();
-    @include roolith-dropdown();
-    @include roolith-modal();
-
-    @include roolith-stat();
-    @include roolith-accordion();
-    @include roolith-tab();
-    @include roolith-box();
-    @include roolith-article();
-    @include roolith-progress-bar();
-    @include roolith-collage();
-    @include roolith-avatar();
-    @include roolith-tag();
-    @include roolith-page();
-    @include roolith-color();
-    @include roolith-comment();
-    @include roolith-toast-notification();
-
-    @include roolith-state();
-}
-
-@mixin roolith-basic() {
-    @include roolith-reset();
-    @include roolith-base();
-    @include roolith-typography();
-    @include roolith-animation();
-    @if($grid-layout == css-grid) {
-        @include roolith-css-grid();
-    }
-    @else if($grid-layout == traditional) {
-        @include roolith-grid();
-    }
-    @include roolith-button();
-    @include roolith-nav();
-    @include roolith-form();
-    @include roolith-table();
-    @include roolith-img();
-    @include roolith-message();
-    @include roolith-badge();
-    @include roolith-breadcrumb();
-    @include roolith-dropdown();
-    @include roolith-modal();
-    @include roolith-state();
-}
-
-@mixin roolith-grid-only() {
-    @include roolith-reset();
-    @include roolith-base();
-    @if($grid-layout == css-grid) {
-        @include roolith-css-grid();
-    }
-    @else if($grid-layout == traditional) {
-        @include roolith-grid();
-    }
+    @include roolith-modules();
 }

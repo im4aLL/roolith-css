@@ -1,29 +1,27 @@
-$box-spacing: rem(20) !default;
-$box-spacing-small: rem(15) !default;
-$box-spacing-large: rem(30) !default;
-$box-border-radius: rem(2) !default;
+@use '../function' as *;
+@use '../settings';
+@use 'sass:color';
 
 @mixin roolith-box() {
-
     .box {
         margin: rem(20) 0;
-        border: rem(1) solid darken(map-get($colors, white), 10%);
-        border-radius: $box-border-radius;
-        background: map-get($colors, white);
+        border: rem(1) solid var(--r-box-border-color);
+        border-radius: var(--r-box-border-radius);
+        background: var(--r-box-background-color);
     }
 
     .box-header,
     .box-body,
     .box-footer {
-        padding: ($box-spacing - rem(5)) $box-spacing;
+        padding: calc(var(--r-box-spacing) - #{rem(5)}) var(--r-box-spacing);
     }
 
     .box-header {
-        background: #f9f9f9;
-        border-bottom: rem(1) solid darken(map-get($colors, white), 10%);
+        background: var(--r-box-header-background);
+        border-bottom: rem(1) solid var(--r-box-border-color);
         font-size: rem(14);
         line-height: rem(18);
-        font-weight: $global-font-bold-weight;
+        font-weight: var(--r-global-font-bold-weight);
     }
 
     .box-body {
@@ -32,7 +30,7 @@ $box-border-radius: rem(2) !default;
     }
 
     .box-footer {
-        color: darken(map-get($colors, white), 60%);
+        color: var(--r-box-footer-color);
         padding-top: 0;
         font-size: 80%;
     }
@@ -41,7 +39,7 @@ $box-border-radius: rem(2) !default;
         .box-header,
         .box-body,
         .box-footer {
-            padding: ($box-spacing-small - rem(6)) $box-spacing-small;
+            padding: calc(var(--r-box-spacing-small) - #{rem(6)}) var(--r-box-spacing-small);
         }
 
         .box-header,
@@ -64,7 +62,7 @@ $box-border-radius: rem(2) !default;
         .box-header,
         .box-body,
         .box-footer {
-            padding: ($box-spacing-large - rem(10)) $box-spacing-large;
+            padding: calc(var(--r-box-spacing-large) - #{rem(10)}) var(--r-box-spacing-large);
         }
 
         .box-header,
@@ -83,32 +81,29 @@ $box-border-radius: rem(2) !default;
         }
     }
 
-
-    @each $name, $value in $colors {
-        @if($name != white)
-        {
+    @each $name, $value in settings.$colors {
+        @if ($name != white) {
             .box-#{'' + $name} {
-                border: rem(1) solid darken($value, 5%);
+                border: rem(1) solid color-darken(var(--r-color-#{$name}), 5%);
 
                 .box-body {
-                    color: darken($value, 10%);
+                    color: color-darken(var(--r-color-#{$name}), 10%);
                 }
 
                 .box-header {
                     background: $value;
-                    background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
-                    color: map-get($colors, white);
-                    border-color: darken($value, 5%);
+                    background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
+                    color: var(--r-color-white);
+                    border-color: color-darken(var(--r-color-#{$name}), 5%);
                 }
 
                 .box-footer {
                     border-top: none;
                     padding-top: 0;
                     font-size: 80%;
-                    color: lighten($value, 25%);
+                    color: color-lighten(var(--r-color-#{$name}), 25%);
                 }
             }
         }
     }
-
 }

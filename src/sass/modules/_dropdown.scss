@@ -1,10 +1,5 @@
-$dropdown-icons-size: rem(5) !default;
-$dropdown-icons-size-small: rem(4) !default;
-$dropdown-icons-size-large: rem(7) !default;
-$dropdown-width: rem(220) !default;
-$dropdown-background: darken(map-get($colors, white), 2%) !default;
-$dropdown-border-color: darken(map-get($colors, white), 15%) !default;
-$dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
+@use '../function' as *;
+@use '../mixin';
 
 @mixin roolith-dropdown() {
     .dropdown {
@@ -18,17 +13,17 @@ $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
 
     .has-dropdown-icon {
         &:after {
-            @include triangle(down, $dropdown-icons-size);
+            @include mixin.triangle(down, var(--r-dropdown-icons-size));
             vertical-align: rem(2);
             margin-left: rem(5);
         }
 
         &.button-small:after {
-            @include triangle(down, $dropdown-icons-size-small);
+            @include mixin.triangle(down, var(--r-dropdown-icons-size-small));
         }
 
         &.button-large:after {
-            @include triangle(down, $dropdown-icons-size-large);
+            @include mixin.triangle(down, var(--r-dropdown-icons-size-large));
             margin-left: rem(10);
         }
     }
@@ -37,14 +32,14 @@ $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
         display: none;
         position: absolute;
         left: 0;
-        width: $dropdown-width;
+        width: var(--r-dropdown-width);
         font-size: rem(14);
         line-height: rem(22);
-        background-color: $dropdown-background;
-        border: rem(1) solid $dropdown-border-color;
+        background-color: var(--r-dropdown-background);
+        border: rem(1) solid var(--r-dropdown-border-color);
         margin-top: rem(-1);
         border-radius: rem(2);
-        box-shadow: $dropdown-shadow;
+        box-shadow: var(--r-dropdown-shadow);
         z-index: 2;
         top: 100%;
 
@@ -60,12 +55,12 @@ $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
     .dropdown-item {
         display: block;
         padding: rem(5) rem(15);
-        color: lighten(map-get($colors, dark), 20%);
-        @include transition('background, color');
+        color: var(--r-dropdown-item-color);
+        @include mixin.transition('background, color');
 
         &:hover {
-            background-color: darken(map-get($colors, white), 5%);
-            color: map-get($colors, dark);
+            background-color: var(--r-dropdown-item-hover-background-color);
+            color: var(--r-dropdown-item-hover-color);
         }
 
         &:first-child {
@@ -79,7 +74,7 @@ $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
 
     .dropdown-item-sep {
         height: rem(1);
-        background: darken(map-get($colors, white), 8%);
+        background: var(--r-dropdown-item-sep);
         display: block;
     }
 }

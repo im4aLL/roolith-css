@@ -1,13 +1,5 @@
-$table-header-border-color: darken(map-get($colors, light), 10%) !default;
-$table-border-color: darken(map-get($colors, light), 5%) !default;
-$table-header-font-weight: $global-font-bold-weight !default;
-$table-spacing: rem(10) !default;
-$table-row-hover-color: darken(map-get($colors, light), 2%) !default;
-
-$table-primary-header-color: darken(map-get($colors, light), 5%) !default;
-
-$table-row-striped-color: darken(map-get($colors, light), 2%) !default;
-$table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
+@use '../function' as *;
+@use '../mixin';
 
 @mixin roolith-table {
     .table {
@@ -16,11 +8,11 @@ $table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
 
         th {
             text-align: left;
-            font-weight: $table-header-font-weight;
+            font-weight: var(--r-table-header-font-weight);
         }
 
         th, td {
-            padding: $table-spacing;
+            padding: var(--r-table-spacing);
 
             &:first-child {
                 padding-left: 0;
@@ -28,30 +20,30 @@ $table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
         }
 
         thead tr {
-            border-bottom: rem(1) solid $table-header-border-color;
+            border-bottom: rem(1) solid var(--r-table-header-border-color);
         }
 
         tbody tr {
-            border-bottom: rem(1) solid $table-border-color;
+            border-bottom: rem(1) solid var(--r-table-border-color);
         }
     }
 
     .table-primary {
         th {
-            background-color: $table-primary-header-color;
+            background-color: var(--r-table-primary-header-color);
         }
 
         th, td {
             &:first-child {
-                padding-left: $table-spacing;
+                padding-left: var(--r-table-spacing);
             }
         }
 
         tbody tr {
-            @include transition('background');
+            @include mixin.transition('background');
 
             &:hover {
-                background-color: $table-row-hover-color;
+                background-color: var(--r-table-row-hover-color);
             }
         }
     }
@@ -61,25 +53,25 @@ $table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
 
         tbody tr {
             &:nth-child(even) {
-                background-color: $table-row-striped-color;
+                background-color: var(--r-table-row-striped-color);
             }
 
             &:hover {
-                background-color: $table-row-striped-hover-color;
+                background-color: var(--r-table-row-striped-hover-color);
             }
         }
     }
 
     .table-bordered {
-        border-top: rem(1) solid $table-border-color;
-        border-left: rem(1) solid $table-border-color;
+        border-top: rem(1) solid var(--r-table-border-color);
+        border-left: rem(1) solid var(--r-table-border-color);
 
         th, td {
-            border-bottom: rem(1) solid $table-border-color;
-            border-right: rem(1) solid $table-border-color;
+            border-bottom: rem(1) solid var(--r-table-border-color);
+            border-right: rem(1) solid var(--r-table-border-color);
 
             &:first-child {
-                padding-left: $table-spacing;
+                padding-left: var(--r-table-spacing);
             }
         }
 
@@ -88,10 +80,10 @@ $table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
         }
 
         tbody tr {
-            @include transition('background');
+            @include mixin.transition('background');
 
             &:hover {
-                background-color: $table-row-hover-color;
+                background-color: var(--r-table-row-hover-color);
             }
         }
     }
@@ -99,6 +91,6 @@ $table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
     .table-responsive {
         max-width: 100%;
         overflow-x: auto;
-        @include nice-scroll();
+        @include mixin.nice-scroll();
     }
 }

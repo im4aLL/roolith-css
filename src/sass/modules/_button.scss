@@ -1,41 +1,47 @@
-$button-radius: rem(2) !default;
-$button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
-$button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
-$button-active-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.1) !default;
-$button-active-dark-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.2) !default;
-$button-base-white: #ffffff !default;
-$button-primary-color: map-get($colors, primary) !default;
-$button-secondary-color: map-get($colors, secondary) !default;
+@use '../function' as *;
+@use '../mixin';
+@use '../settings';
+@use 'sass:color';
 
 @mixin roolith-button() {
     .button {
-        display: inline-block;
-        font-family: $global-base-font;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--r-global-base-font);
         text-decoration: none;
         cursor: pointer;
-        background-color: darken($button-base-white, 4%);
-        background: linear-gradient(to bottom, darken($button-base-white, 4%) 0%, darken($button-base-white, 7%) 100%);
-        border: rem(1) solid darken($button-base-white, 15%);
-        border-radius: $button-radius;
+        border-radius: var(--r-button-radius);
         font-size: rem(14);
         line-height: normal;
         min-width: rem(100);
         text-align: center;
         padding: rem(8) rem(20) rem(10);
-        color: lighten(map-get($colors, 'dark'), 20%);
         position: relative;
-        @include transition('background, color, box-shadow');
+        background-color: var(--r-button-default-background);
+        background: linear-gradient(
+            to bottom,
+            var(--r-button-default-background) 0%,
+            var(--r-button-default-background-end) 100%
+        );
+        border: rem(1) solid var(--r-button-default-border);
+        color: var(--r-button-default-color);
+        @include mixin.transition('background, color, box-shadow');
 
         &:hover {
-            background-color: darken($button-base-white, 6%);
-            background: linear-gradient(to bottom, darken($button-base-white, 3%) 0%, darken($button-base-white, 6%) 100%);
-            border: rem(1) solid darken($button-base-white, 20%);
-            box-shadow: $button-hover-shadow;
-            color: lighten(map-get($colors, 'dark'), 20%);
+            background-color: var(--r-button-default-hover-background);
+            background: linear-gradient(
+                to bottom,
+                var(--r-button-default-hover-background) 0%,
+                var(--r-button-default-hover-background-end) 100%
+            );
+            border: rem(1) solid var(--r-button-default-hover-border);
+            box-shadow: var(--r-button-hover-shadow);
+            color: var(--r-button-default-hover-color);
         }
 
         &.active {
-            box-shadow: $button-active-shadow;
+            box-shadow: var(--r-button-active-shadow);
         }
 
         &.button-outline {
@@ -43,33 +49,32 @@ $button-secondary-color: map-get($colors, secondary) !default;
         }
 
         &.disabled {
-            @include opacity(0.6);
+            @include mixin.opacity(0.6);
             cursor: not-allowed;
-            pointer-event: none;
+            pointer-events: none;
 
             &:hover {
                 box-shadow: none;
             }
         }
 
-        i {
+        .icon {
             display: inline-block;
             margin-right: rem(5);
-            transform: scale(1.5);
             line-height: 1;
         }
 
         &.loading {
             text-indent: -9999px;
             cursor: wait;
-            pointer-event: none;
+            pointer-events: none;
 
             &:after {
                 content: '';
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                @include loader();
+                @include mixin.loader();
                 @extend .loader;
             }
         }
@@ -86,7 +91,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
         padding: rem(5) rem(10);
 
         &.loading:after {
-            @include loader(12);
+            @include mixin.loader(12);
         }
     }
 
@@ -96,7 +101,7 @@ $button-secondary-color: map-get($colors, secondary) !default;
         padding: rem(6) rem(12);
 
         &.loading:after {
-            @include loader(16);
+            @include mixin.loader(16);
         }
     }
 
@@ -105,34 +110,37 @@ $button-secondary-color: map-get($colors, secondary) !default;
         min-width: rem(80);
         padding: rem(11) rem(30);
 
-        i {
+        .icon {
             margin-right: rem(10);
         }
 
         &.loading:after {
-            @include loader(24);
+            @include mixin.loader(24);
         }
     }
 
-    @each $name, $value in $colors {
-        @if($name != white)
-        {
+    @each $name, $value in settings.$colors {
+        @if ($name != white) {
             .button-#{'' + $name} {
                 background: $value;
-                background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
-                color: map-get($colors, white);
-                border: rem(1) solid darken($value, 5%);
+                background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
+                color: var(--r-color-white);
+                border: rem(1) solid color-darken(var(--r-color-#{$name}), 5%);
 
                 &:hover {
-                    background: lighten($value, 3%);
-                    background: linear-gradient(to bottom, lighten($value, 7%) 0%, lighten($value, 3%) 100%);
+                    background: color-lighten(var(--r-color-#{$name}), 3%);
+                    background: linear-gradient(
+                        to bottom,
+                        color-lighten(var(--r-color-#{$name}), 7%) 0%,
+                        color-lighten(var(--r-color-#{$name}), 3%) 100%
+                    );
                     border: rem(1) solid $value;
-                    box-shadow: $button-hover-shadow-dark;
-                    color: map-get($colors, white);
+                    box-shadow: var(--r-button-hover-shadow-dark);
+                    color: var(--r-color-white);
                 }
 
                 &.active {
-                    box-shadow: $button-active-dark-shadow;
+                    box-shadow: var(--r-button-active-dark-shadow);
                 }
 
                 &.button-outline {
@@ -140,21 +148,25 @@ $button-secondary-color: map-get($colors, secondary) !default;
                     color: $value;
 
                     &:hover {
-                        background: lighten($value, 3%);
-                        color: map-get($colors, white);
+                        background: color-lighten(var(--r-color-#{$name}), 3%);
+                        color: var(--r-color-white);
                     }
                 }
 
                 &.loading:after {
-                    border: rem(2) solid rgba($button-base-white, 0.3);
-                    border-top-color: $button-base-white;
+                    border: rem(2) solid rgba(255, 255, 255, 0.3);
+                    border-top-color: rgb(255, 255, 255);
+                }
+
+                .icon {
+                    background-color: var(--r-color-white);
                 }
             }
         }
     }
 
     .button-group {
-        @include clearfix();
+        @include mixin.clearfix();
 
         .button {
             float: left;
@@ -163,15 +175,14 @@ $button-secondary-color: map-get($colors, secondary) !default;
             min-width: auto;
 
             &:first-child {
-                @include border-left-radius($button-radius);
-                @include border-top-radius($button-radius);
+                @include mixin.border-left-radius(var(--r-button-radius));
+                @include mixin.border-top-radius(var(--r-button-radius));
             }
 
             &:last-child {
-                @include border-right-radius($button-radius);
-                @include border-bottom-radius($button-radius);
+                @include mixin.border-right-radius(var(--r-button-radius));
+                @include mixin.border-bottom-radius(var(--r-button-radius));
             }
         }
     }
-
 }

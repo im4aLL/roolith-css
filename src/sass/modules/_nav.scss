@@ -1,22 +1,19 @@
-$nav-border-radius: rem(2) !default;
-$nav-link-color: map-get($colors, link) !default;
-$nav-dimmed-link-color: map-get($colors, black) !default;
-$nav-active-link-color: map-get($colors, primary) !default;
-$nav-spacing: rem(13) !default;
-
-$nav-primary-color: map-get($colors, primary) !default;
+@use '../function' as *;
+@use '../mixin';
+@use '../settings';
+@use 'sass:color';
 
 @mixin roolith-nav() {
     .nav {
-        @include clearfix();
-        margin-left: - $nav-spacing;
+        @include mixin.clearfix();
+        margin-left: calc(var(--r-nav-spacing) * -1);
         float: left;
     }
 
     .nav-right {
         float: right;
         margin-left: 0;
-        margin-right: - $nav-spacing;
+        margin-right: calc(var(--r-nav-spacing) * -1);
     }
 
     .nav-item {
@@ -25,19 +22,19 @@ $nav-primary-color: map-get($colors, primary) !default;
 
     .nav-link {
         display: block;
-        padding: rem(7) $nav-spacing;
+        padding: rem(7) var(--r-nav-spacing);
         font-size: rem(14);
-        color: $nav-link-color;
+        color: var(--r-nav-link-color);
         position: relative;
-        @include transition('color');
+        @include mixin.transition('color');
 
         &:hover,
         .active & {
-            color: $nav-active-link-color;
+            color: var(--r-nav-active-link-color);
         }
 
         &.dimmed {
-            color: lighten($nav-dimmed-link-color, 70%);
+            color: var(--r-nav-dimmed-link-color);
         }
     }
 
@@ -67,29 +64,31 @@ $nav-primary-color: map-get($colors, primary) !default;
     }
 
     .nav-primary {
-
         .nav-link {
-            border-radius: $nav-border-radius;
+            border-radius: var(--r-nav-border-radius);
         }
 
         .active .nav-link {
-            background: $nav-primary-color;
-            color: map-get($colors, white);
+            background: var(--r-nav-primary-color);
+            color: var(--r-color-white);
         }
-
     }
 
-    @each $name, $value in $colors {
+    @each $name, $value in settings.$colors {
         .nav-link-#{'' + $name} {
             background: $value;
-            background: linear-gradient(to bottom, lighten($value, 5%) 0%, $value 100%);
-            color: map-get($colors, white);
+            background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
+            color: var(--r-color-white);
 
             &:hover {
-                background: lighten($value, 3%);
-                background: linear-gradient(to bottom, lighten($value, 7%) 0%, lighten($value, 3%) 100%);
-                box-shadow: $button-hover-shadow-dark;
-                color: map-get($colors, white);
+                background: color-lighten(var(--r-color-#{$name}), 3%);
+                background: linear-gradient(
+                    to bottom,
+                    color-lighten(var(--r-color-#{$name}), 7%) 0%,
+                    color-lighten(var(--r-color-#{$name}), 3%) 100%
+                );
+                box-shadow: var(--r-button-hover-shadow-dark);
+                color: var(--r-color-white);
             }
         }
     }

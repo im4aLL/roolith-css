@@ -1,10 +1,16 @@
-// Global
+@use 'sass:color';
+@use 'sass:map';
+@use './function' as *;
+
+/* Global */
 $global-base-font-size: 100% !default;
-$global-base-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !default;
+$global-base-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif !default;
 $global-font-weight: normal !default;
 $global-font-bold-weight: bold !default;
+$global-border-radius: rem(3) !default;
 
-// Breakpoint
+/* Breakpoints */
 $breakpoints: (
     small: 0,
     medium: 640px,
@@ -13,173 +19,113 @@ $breakpoints: (
     xxlarge: 1440px,
 ) !default;
 
-// Grid settings
+/* Grid settings */
 $global-width: rem(1200) !default;
 
 $grid-gutter: (
     small: rem(20),
     medium: rem(20),
-    large: rem(20)
+    large: rem(20),
 ) !default;
 
 $grid-column-count: 12 !default;
-$grid-layout: traditional !default;             // css-grid || traditional
+$grid-layout: traditional !default; /* css-grid || traditional */
 
-// colors
+/* Colors */
 $colors: (
-    primary: #0099FF,
+    primary: #0099ff,
     secondary: #373459,
-    tertiary: #F4751A,
-    info: #F8BF16,
-    success: #9ECF91,
-    danger: #C40000,
-    link: #67BCEF,
+    tertiary: #f4751a,
+    info: #f8bf16,
+    success: #9ecf91,
+    danger: #c40000,
+    link: #67bcef,
     dark: #212121,
     black: #000000,
     white: #ffffff,
-    light: #fafbfc
+    light: #fafbfc,
 ) !default;
 
-// animation
-$animation-easing: cubic-bezier(1.000, 0.000, 0.000, 1.000) !default;
+/* Animation */
+$animation-easing: cubic-bezier(1, 0, 0, 1) !default;
 $animation-duration: 0.25s !default;
 
-// button
-$button-radius: rem(2) !default;
+/* button */
+$button-radius: $global-border-radius !default;
 $button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
 $button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
-$button-base-white: #ffffff !default;
-$button-primary-color: map-get($colors, primary) !default;
-$button-secondary-color: map-get($colors, secondary) !default;
+$button-active-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.1) !default;
+$button-active-dark-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.2) !default;
 
-// nav
-$nav-border-radius: rem(2) !default;
-$nav-link-color: map-get($colors, link) !default;
-$nav-dimmed-link-color: map-get($colors, black) !default;
-$nav-active-link-color: map-get($colors, primary) !default;
+/* nav */
+$nav-border-radius: $global-border-radius !default;
 $nav-spacing: rem(13) !default;
-$nav-primary-color: map-get($colors, primary) !default;
 
-// form
-$form-input-placeholder-color: darken(map-get($colors, light), 30%) !default;
-$form-input-border-color: darken(map-get($colors, light), 15%) !default;
+/* form */
+$form-input-radius: $global-border-radius !default;
 
-$form-input-hover-border-color: map-get($colors, link) !default;
-$form-input-focus-border-color: map-get($colors, primary) !default;
-
-$form-text-color: darken(map-get($colors, light), 30%) !default;
-$form-input-radius: rem(2) !default;
-
-$form-checkbox-label-color: lighten(map-get($colors, dark), 20%) !default;
-
-$form-disable-input-color: darken(map-get($colors, light), 5%) !default;
-
-$form-primary-color: darken(map-get($colors, light), 2%) !default;
-$form-primary-border-color: darken(map-get($colors, light), 5%) !default;
-$form-primary-hover-color: map-get($colors, info) !default;
-$form-primary-focus-color: map-get($colors, white) !default;
-
-$form-error-color: map-get($colors, danger) !default;
-$form-success-color: map-get($colors, success) !default;
-$form-warning-color: map-get($colors, info) !default;
-
-// table
-$table-header-border-color: darken(map-get($colors, light), 10%) !default;
-$table-border-color: darken(map-get($colors, light), 5%) !default;
-$table-header-font-weight: $global-font-bold-weight !default;
+/* table */
 $table-spacing: rem(10) !default;
-$table-row-hover-color: darken(map-get($colors, light), 2%) !default;
 
-$table-primary-header-color: darken(map-get($colors, light), 5%) !default;
+/* img */
+$img-radius: $global-border-radius !default;
 
-$table-row-striped-color: darken(map-get($colors, light), 2%) !default;
-$table-row-striped-hover-color: lighten(map-get($colors, info), 43%) !default;
+/* message */
+$message-radius: $global-border-radius !default;
+$message-color-icon-size: rem(18) !default;
 
-// img
-$img-radius: rem(2) !default;
-$img-caption-color: lighten(map-get($colors, dark), 40%) !default;
+/* badge */
+$badge-radius: $global-border-radius !default;
 
-// message
-$message-radius: rem(2) !default;
-
-// badge
-$badge-radius: rem(3) !default;
-
-// breadcrumb
+/* breadcrumb */
 $breadcrumb-spacing: rem(10) !default;
 $breadcrumb-size: 80% !default;
-$breadcrumb-default-color: lighten(map-get($colors, dark), 40%) !default;
-$breadcrumb-sep-symbol: "/" !default;
-$breadcrumb-sep-color: lighten(map-get($colors, dark), 70%) !default;
 
-// card
-$card-radius: rem(2) !default;
-$card-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
-$card-header-footer-border: rem(1) solid lighten(map-get($colors, dark), 83%) !default;
-$card-header-footer-color: lighten(map-get($colors, dark), 40%) !default;
+/* card */
+$card-radius: $global-border-radius !default;
+$card-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 
-// dropdown
+/* dropdown */
 $dropdown-icons-size: rem(5) !default;
 $dropdown-icons-size-small: rem(4) !default;
 $dropdown-icons-size-large: rem(7) !default;
 $dropdown-width: rem(220) !default;
-$dropdown-background: darken(map-get($colors, white), 2%) !default;
-$dropdown-border-color: darken(map-get($colors, white), 15%) !default;
-$dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0,0,0, 0.08) !default;
+$dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 
-// modal
-$modal-background: rgba(map-get($colors, dark), 0.5) !default;
-$modal-content-background: map-get($colors, white) !default;
+/* modal */
 $modal-content-radius: rem(2) !default;
 $modal-content-spacing: rem(20) !default;
-$modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0,0,0, 0.1) !default;
-$modal-border-color: darken(map-get($colors, white), 5%);
-$modal-layout: css-grid !default; // css-grid || traditional || flex
+$modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0, 0, 0, 0.1) !default;
+$modal-layout: css-grid !default; /* css-grid || traditional || flex */
 
-// accordion
-$accordion-border-color: rgba(map-get($colors, dark), 0.1) !default;
-
-// tab
-$tab-active-color: map-get($colors, primary) !default;
-$tab-border-color: darken(map-get($colors, light), 5%) !default;
-
-// box
+/* box */
 $box-spacing: rem(20) !default;
 $box-spacing-small: rem(15) !default;
 $box-spacing-large: rem(30) !default;
-$box-border-radius: rem(2) !default;
+$box-border-radius: $global-border-radius !default;
 
-// progress
-$progress-background: darken(map-get($colors, white), 5%) !default;
+/* progress */
 $progress-background-shadow: 0 rem(2) rem(5) rgba(0, 0, 0, 0.05) inset !default;
-$progress-bar-color: darken(map-get($colors, white), 30%) !default;
-$progress-bar-radius: rem(2) !default;
+$progress-bar-radius: $global-border-radius !default;
 
-// collage
+/* collage */
 $collage-item-default-width: rem(200) !default;
 $collage-item-default-height: rem(200) !default;
 $collage-item-default-gap: rem(10) !default;
 $collage-item-small-gap: rem(1) !default;
 $collage-item-large-gap: rem(20) !default;
-$collage-caption-background: map-get($colors, black) !default;
-$collage-caption-color: map-get($colors, white) !default;
 
-// avatar
+/* avatar */
 $avatar-default-size: rem(40) !default;
 $avatar-small-size: rem(30) !default;
-$avatar-label-color: map-get($colors, black) !default;
 
-// tag
-$tag-color: map-get($colors, primary) !default;
-
-// comment
-$comment-border: rgba(map-get($colors, dark), 0.1) !default;
-$comment-highlight-color: lighten(map-get($colors, primary), 47%) !default;
-
-// toast
+/* toast */
 $toast-notification-width: rem(400) !default;
 
-// Theme dark
-$theme-dark-background-color: #232426 !default;
-$theme-dark-font-color: #919293 !default;
-$theme-dark-font-color-light: #dddede !default;
+/* icon */
+$icon-size: rem(16) !default;
+$icon-small-size: rem(14) !default;
+$icon-large-size: rem(32) !default;
+
+/* theme dark */
+$theme-dark-color: #0d1117 !default;

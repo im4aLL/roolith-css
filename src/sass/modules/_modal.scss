@@ -1,13 +1,6 @@
-$modal-background: rgba(map-get($colors, dark), 0.5) !default;
-
-$modal-content-background: map-get($colors, white) !default;
-$modal-content-radius: rem(2) !default;
-$modal-content-spacing: rem(20) !default;
-$modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0,0,0, 0.1) !default;
-
-$modal-border-color: darken(map-get($colors, white), 5%);
-
-$modal-layout: css-grid !default; // css-grid || traditional || flex
+@use '../settings';
+@use '../function' as *;
+@use '../mixin';
 
 @mixin roolith-modal() {
     .modal {
@@ -16,25 +9,24 @@ $modal-layout: css-grid !default; // css-grid || traditional || flex
         position: fixed;
         left: 0;
         top: 0;
-        background: $modal-background;
+        background: var(--r-modal-background);
         z-index: 10;
-        @if($modal-layout == css-grid) {
+        @if (settings.$modal-layout == css-grid) {
             grid-template-rows: minmax(rem(20), 2fr) auto minmax(rem(20), 2fr);
-            grid-template-areas: "header"
-                                 "body"
-                                 "footer";
+            grid-template-areas:
+                'header'
+                'body'
+                'footer';
         }
         display: none;
         padding: 0 rem(20);
 
         &.active {
-            @if($modal-layout == css-grid) {
+            @if (settings.$modal-layout == css-grid) {
                 display: grid;
-            }
-            @else if($modal-layout == traditional) {
+            } @else if(settings.$modal-layout == traditional) {
                 display: block;
-            }
-            @else if($modal-layout == flex) {
+            } @else if(settings.$modal-layout == flex) {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -44,27 +36,26 @@ $modal-layout: css-grid !default; // css-grid || traditional || flex
 
     .modal-content {
         position: relative;
-        @if($modal-layout == css-grid) {
+        @if (settings.$modal-layout == css-grid) {
             grid-area: body;
             margin-left: auto;
             margin-right: auto;
             @extend .animation, .fadeInUp;
-        }
-        @else if($modal-layout == traditional) {
+        } @else if(settings.$modal-layout == traditional) {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             @extend .animation, .fadeIn;
         }
-        @if($modal-layout == flex) {
+        @if (settings.$modal-layout == flex) {
             max-height: 90%;
             @extend .animation, .fadeInUp;
         }
         max-width: rem(600);
         overflow-y: auto;
-        background: $modal-content-background;
-        border-radius: $modal-content-radius;
-        box-shadow: $modal-content-shadow;
+        background: var(--r-modal-content-background);
+        border-radius: var(--r-modal-content-radius);
+        box-shadow: var(--r-modal-content-shadow);
 
         &.small {
             max-width: rem(300);
@@ -80,22 +71,22 @@ $modal-layout: css-grid !default; // css-grid || traditional || flex
     }
 
     .modal-header {
-        @include clearfix();
-        padding: $modal-content-spacing;
-        border-bottom: rem(1) solid $modal-border-color;
+        @include mixin.clearfix();
+        padding: var(--r-modal-content-spacing);
+        border-bottom: rem(1) solid var(--r-modal-border-color);
         font-size: rem(16);
         line-height: rem(22);
-        font-weight: $global-font-bold-weight;
+        font-weight: var(--r-global-font-bold-weight);
     }
 
     .modal-body {
-        padding: $modal-content-spacing;
+        padding: var(--r-modal-content-spacing);
     }
 
     .modal-footer {
-        @include clearfix();
-        padding: $modal-content-spacing;
-        border-top: rem(1) solid $modal-border-color;
+        @include mixin.clearfix();
+        padding: var(--r-modal-content-spacing);
+        border-top: rem(1) solid var(--r-modal-border-color);
     }
 
     .modal-close {
@@ -104,14 +95,15 @@ $modal-layout: css-grid !default; // css-grid || traditional || flex
         right: 0;
         background: none;
         border: none;
-        padding: $modal-content-spacing;
+        padding: var(--r-modal-content-spacing);
         line-height: rem(12);
         z-index: 2;
         cursor: pointer;
-        @include transition('opacity');
+        color: var(--r-modal-close-color);
+        @include mixin.transition('opacity');
 
         &:hover {
-            @include opacity(0.7);
+            @include mixin.opacity(0.7);
         }
     }
 }

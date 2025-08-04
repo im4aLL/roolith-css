@@ -1,10 +1,11 @@
-@use "sass:math";
+@use 'sass:math';
+@use '../function' as *;
 
 @mixin loader($size: 20) {
     display: inline-block;
     border-radius: 50%;
-    border: rem(2) solid darken(map-get($colors, white), 20%);
-    border-top-color: darken(map-get($colors, white), 70%);
+    border: rem(2) solid var(--r-loader-border-color);
+    border-top-color: var(--r-loader-border-top-color);
     animation: loading 0.6s linear infinite;
     width: rem($size);
     height: rem($size);
