@@ -81,8 +81,8 @@
         z-index: 5;
         font-size: rem(14);
         line-height: rem(18);
-        background-color: var(--r-color-light-darken-1);
-        border: rem(1) solid var(--r-color-light-darken-15);
+        background-color: var(--r-form-field-search-hint-background);
+        border: rem(1) solid var(--r-form-field-search-border-color);
         border-radius: rem(2);
         box-shadow: var(--r-dropdown-shadow);
         width: 100%;
@@ -99,7 +99,7 @@
         }
 
         li {
-            border-bottom: rem(1) solid var(--r-color-light-darken-5);
+            border-bottom: rem(1) solid var(--r-form-field-search-divider-color);
 
             &:last-child {
                 border-bottom: none;
@@ -111,7 +111,7 @@
                 @include mixin.transition('background, color');
 
                 &:hover {
-                    background-color: var(--r-color-light-darken-3);
+                    background-color: var(--r-form-field-search-item-hover-background);
                 }
 
                 .badge {

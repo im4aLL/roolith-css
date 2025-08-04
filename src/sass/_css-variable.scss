@@ -97,6 +97,12 @@
         --r-form-success-color: var(--r-color-success);
         --r-form-warning-color: var(--r-color-info);
 
+        /* Form search */
+        --r-form-field-search-hint-background: var(--r-color-light-darken-1);
+        --r-form-field-search-hint-border-color: var(--r-color-light-darken-15);
+        --r-form-field-search-divider-color: var(--r-color-light-darken-5);
+        --r-form-field-search-item-hover-background: var(--r-color-light-darken-3);
+
         /* Table */
         --r-table-header-border-color: var(--r-color-light-darken-10);
         --r-table-border-color: var(--r-color-light-darken-5);
@@ -160,6 +166,10 @@
         --r-box-spacing-small: #{$box-spacing-small};
         --r-box-spacing-large: #{$box-spacing-large};
         --r-box-border-radius: #{$box-border-radius};
+        --r-box-background-color: var(--r-color-white);
+        --r-box-border-color: var(--r-color-white-darken-10);
+        --r-box-header-background: var(--r-color-light);
+        --r-box-footer-color: var(--r-color-white-darken-60);
 
         /* Progress */
         --r-progress-background: var(--r-color-white-darken-5);
@@ -173,7 +183,7 @@
         --r-collage-item-default-gap: #{$collage-item-default-gap};
         --r-collage-item-small-gap: #{$collage-item-small-gap};
         --r-collage-item-large-gap: #{$collage-item-large-gap};
-        --r-collage-caption-background: var(--r-color-black);
+        --r-collage-caption-background: 0, 0, 0;
         --r-collage-caption-color: var(--r-color-white);
 
         /* Avatar */
@@ -204,6 +214,10 @@
         --r-icon-size: #{$icon-size};
         --r-icon-small-size: #{$icon-small-size};
         --r-icon-large-size: #{$icon-large-size};
+
+        /* Code */
+        --r-code-background: var(--r-color-light);
+        --r-code-color: var(--r-color-dark-lighten-30);
     }
 
     .theme-dark {
@@ -255,6 +269,12 @@
         --r-form-success-color: var(--r-color-success);
         --r-form-warning-color: var(--r-color-info);
 
+        /* Form search */
+        --r-form-field-search-hint-background: var(--r-color-dark);
+        --r-form-field-search-hint-border-color: var(--r-color-dark-lighten-15);
+        --r-form-field-search-divider-color: var(--r-color-dark-lighten-2);
+        --r-form-field-search-item-hover-background: var(--r-color-dark-lighten-2);
+
         /* Table */
         --r-table-header-border-color: var(--r-color-light-darken-10);
         --r-table-border-color: var(--r-color-light-darken-5);
@@ -295,7 +315,7 @@
         --r-progress-bar-color: var(--r-color-white-darken-30);
 
         /* Collage */
-        --r-collage-caption-background: var(--r-color-black);
+        --r-collage-caption-background: 0, 0, 0;
         --r-collage-caption-color: var(--r-color-white);
 
         /* Avatar */
@@ -318,5 +338,15 @@
 
         /* Icon */
         --r-icon-color: var(--r-global-font-color);
+
+        /* Code */
+        --r-code-background: var(--r-color-light);
+        --r-code-color: var(--r-color-white-darken-30);
+
+        /* Box */
+        --r-box-background-color: var(--r-color-dark);
+        --r-box-border-color: var(--r-color-dark-lighten-10);
+        --r-box-header-background: var(--r-color-light);
+        --r-box-footer-color: var(--r-color-dark-lighten-60);
     }
 }

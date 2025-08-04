@@ -5,7 +5,8 @@
 
 @mixin roolith-button() {
     .button {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         font-family: var(--r-global-base-font);
         text-decoration: none;
         cursor: pointer;
@@ -56,10 +57,9 @@
             }
         }
 
-        i {
+        .icon {
             display: inline-block;
             margin-right: rem(5);
-            transform: scale(1.5);
             line-height: 1;
         }
 
@@ -109,7 +109,7 @@
         min-width: rem(80);
         padding: rem(11) rem(30);
 
-        i {
+        .icon {
             margin-right: rem(10);
         }
 
@@ -153,8 +153,12 @@
                 }
 
                 &.loading:after {
-                    border: rem(2) solid rgba(var(--r-button-base-white), 0.3);
-                    border-top-color: var(--r-button-base-white);
+                    border: rem(2) solid rgba(255, 255, 255, 0.3);
+                    border-top-color: rgb(255, 255, 255);
+                }
+
+                .icon {
+                    background-color: var(--r-color-white);
                 }
             }
         }

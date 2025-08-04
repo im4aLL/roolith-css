@@ -164,12 +164,12 @@
             display: block;
             white-space: pre;
             font-size: rem(14);
-            background: var(--r-color-light);
+            background: var(--r-code-background);
             box-shadow: rgba(102, 119, 136, 0.2) 0 rem(1) rem(2) 0;
             border: none;
             line-height: rem(22);
             margin-bottom: rem(20);
-            color: var(--r-color-dark-lighten-30);
+            color: var(--r-code-color);
         }
     }
 

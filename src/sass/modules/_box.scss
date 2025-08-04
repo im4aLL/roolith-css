@@ -5,9 +5,9 @@
 @mixin roolith-box() {
     .box {
         margin: rem(20) 0;
-        border: rem(1) solid var(--r-color-white-darken-10);
+        border: rem(1) solid var(--r-box-border-color);
         border-radius: var(--r-box-border-radius);
-        background: var(--r-color-white);
+        background: var(--r-box-background-color);
     }
 
     .box-header,
@@ -17,8 +17,8 @@
     }
 
     .box-header {
-        background: var(--r-color-light);
-        border-bottom: rem(1) solid var(--r-color-white-darken-10);
+        background: var(--r-box-header-background);
+        border-bottom: rem(1) solid var(--r-box-border-color);
         font-size: rem(14);
         line-height: rem(18);
         font-weight: var(--r-global-font-bold-weight);
@@ -30,7 +30,7 @@
     }
 
     .box-footer {
-        color: var(--r-color-white-darken-60);
+        color: var(--r-box-footer-color);
         padding-top: 0;
         font-size: 80%;
     }
