@@ -112,7 +112,7 @@
         --r-table-row-hover-color: var(--r-color-light-darken-2);
         --r-table-primary-header-color: var(--r-color-light-darken-5);
         --r-table-row-striped-color: var(--r-color-light-darken-2);
-        --r-table-row-striped-hover-color: var(--r-color-info-lighten-40);
+        --r-table-row-striped-hover-color: var(--r-color-light-darken-3);
 
         /* Img */
         --r-img-radius: #{$img-radius};
@@ -221,7 +221,7 @@
         --r-loader-border-top-color: var(--r-color-white-darken-70);
 
         /* Icon */
-        --r-icon-color: var(--r-color-black);
+        --r-icon-color: var(--r-form-input-placeholder-color);
         --r-icon-size: #{$icon-size};
         --r-icon-small-size: #{$icon-small-size};
         --r-icon-large-size: #{$icon-large-size};
@@ -360,7 +360,7 @@
         --r-loader-border-top-color: var(--r-color-dark-lighten-50);
 
         /* Icon */
-        --r-icon-color: var(--r-global-font-color);
+        --r-icon-color: var(--r-form-input-placeholder-color);
 
         /* Code */
         --r-code-background: var(--r-color-light);
