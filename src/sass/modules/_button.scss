@@ -122,8 +122,12 @@
     @each $name, $value in settings.$colors {
         @if ($name != white) {
             .button-#{'' + $name} {
-                background: $value;
-                background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
+                background: var(--r-color-#{$name});
+                background: linear-gradient(
+                    to bottom,
+                    color-lighten(var(--r-color-#{$name}), 5%) 0%,
+                    var(--r-color-#{$name}) 100%
+                );
                 color: var(--r-color-white);
                 border: rem(1) solid color-darken(var(--r-color-#{$name}), 5%);
 
@@ -134,7 +138,7 @@
                         color-lighten(var(--r-color-#{$name}), 7%) 0%,
                         color-lighten(var(--r-color-#{$name}), 3%) 100%
                     );
-                    border: rem(1) solid $value;
+                    border: rem(1) solid var(--r-color-#{$name});
                     box-shadow: var(--r-button-hover-shadow-dark);
                     color: var(--r-color-white);
                 }
@@ -145,7 +149,7 @@
 
                 &.button-outline {
                     background: transparent;
-                    color: $value;
+                    color: var(--r-color-#{$name});
 
                     &:hover {
                         background: color-lighten(var(--r-color-#{$name}), 3%);

@@ -63,7 +63,7 @@
     @each $name, $value in settings.$colors {
         @if ($name != white) {
             .card-#{'' + $name} {
-                background: $value;
+                background: var(--r-color-#{$name});
                 color: var(--r-color-white);
 
                 .card-subtitle,

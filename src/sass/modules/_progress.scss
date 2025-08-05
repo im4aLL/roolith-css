@@ -35,16 +35,14 @@
     }
 
     @each $name, $value in settings.$colors {
-        @if($name != white)
-        {
+        @if ($name != white) {
             .progress-#{'' + $name}::-moz-progress-bar {
-                background: $value;
+                background: var(--r-color-#{$name});
             }
 
             .progress-#{'' + $name}::-webkit-progress-value {
-                background: $value;
+                background: var(--r-color-#{$name});
             }
         }
     }
-
 }

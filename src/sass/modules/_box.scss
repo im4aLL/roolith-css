@@ -91,8 +91,12 @@
                 }
 
                 .box-header {
-                    background: $value;
-                    background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
+                    background: var(--r-color-#{$name});
+                    background: linear-gradient(
+                        to bottom,
+                        color-lighten(var(--r-color-#{$name}), 5%) 0%,
+                        var(--r-color-#{$name}) 100%
+                    );
                     color: var(--r-color-white);
                     border-color: color-darken(var(--r-color-#{$name}), 5%);
                 }

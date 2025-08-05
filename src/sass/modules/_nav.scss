@@ -76,7 +76,7 @@
 
     @each $name, $value in settings.$colors {
         .nav-link-#{'' + $name} {
-            background: $value;
+            background: var(--r-color-#{$name});
             background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
             color: var(--r-color-white);
 

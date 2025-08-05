@@ -42,8 +42,12 @@
     @each $name, $value in settings.$colors {
         @if ($name != white) {
             .message-#{'' + $name} {
-                background: $value;
-                background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
+                background: var(--r-color-#{$name});
+                background: linear-gradient(
+                    to bottom,
+                    color-lighten(var(--r-color-#{$name}), 5%) 0%,
+                    var(--r-color-#{$name}) 100%
+                );
                 color: var(--r-color-white);
 
                 .message-close {
