@@ -42,6 +42,7 @@
         --r-global-background-color: var(--r-color-white);
         --r-global-font-color: var(--r-color-dark);
         --r-global-font-color-light: var(--r-color-dark-lighten-20);
+        --r-global-border-radius: #{$global-border-radius};
 
         /* Grid */
         --r-global-width: #{$global-width};
@@ -127,7 +128,7 @@
         /* Badge */
         --r-badge-radius: #{$badge-radius};
         --r-badge-background: var(--r-color-white-darken-5);
-        --r-badge-color: var(--r-color-white-darken-50);
+        --r-badge-color: var(--r-color-dark);
 
         /* Breadcrumb */
         --r-breadcrumb-spacing: #{$breadcrumb-spacing};
@@ -248,12 +249,12 @@
         --r-button-active-shadow: #{inset 0 0 0.1875rem rgba(0, 0, 0, 0.5)};
 
         /* Button default */
-        --r-button-default-background: var(--r-color-dark-lighten-4);
-        --r-button-default-background-end: var(--r-color-dark-lighten-7);
+        --r-button-default-background: var(--r-color-dark-lighten-7);
+        --r-button-default-background-end: var(--r-color-dark-lighten-4);
         --r-button-default-border: var(--r-color-dark-lighten-15);
         --r-button-default-color: var(--r-color-white-darken-20);
-        --r-button-default-hover-background: var(--r-color-dark-lighten-3);
-        --r-button-default-hover-background-end: var(--r-color-dark-lighten-6);
+        --r-button-default-hover-background: var(--r-color-dark-lighten-6);
+        --r-button-default-hover-background-end: var(--r-color-dark-lighten-3);
         --r-button-default-hover-border: var(--r-color-dark-lighten-20);
         --r-button-default-hover-color: var(--r-color-white-darken-20);
 

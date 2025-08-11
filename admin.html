@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin layout</title>
+        <style>
+            .module {
+                padding: 15px;
+                background-color: #f0f0f0;
+            }
+
+            .module-body {
+                padding: 15px;
+            }
+
+            .theme-dark .module {
+                background-color: #333;
+                color: #ddd;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+        <script type="module" src="index.js"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet" />
+    </head>
+    <body>
+        <!-- main -->
+        <main class="layout">
+            <!-- header -->
+            <!-- is-sticky -->
+            <header class="layout-header">
+                <!-- logo -->
+                <div class="layout-header-primary">
+                    <a href="./" class="layout-header-logo">
+                        <img src="./demo-assets/roolith.svg" alt="roolith logo" />
+                    </a>
+
+                    <button class="layout-header-sidebar-toggle">
+                        <i class="iconoir-transition-left-solid"></i>
+                    </button>
+                </div>
+                <!-- logo -->
+
+                <!-- header cta -->
+                <div class="layout-header-secondary">
+                    <!-- search -->
+                    <form action="" class="form layout-header-search">
+                        <div class="form-field form-field-search">
+                            <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
+                            <input type="text" name="" class="form-input" placeholder="Search ..." />
+                        </div>
+                    </form>
+                    <!-- search -->
+
+                    <!-- nav -->
+                    <ul class="nav layout-header-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="iconoir-cube"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="iconoir-app-notification-solid"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="iconoir-settings"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="iconoir-graph-up"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- nav -->
+
+                    <!-- avatar -->
+                    <div class="avatar layout-header-avatar">
+                        <figure class="avatar-fig rounded-circle">
+                            <img
+                                src="https://gravatar.com/avatar/000000000000000000000000000000000000000000000000000000"
+                                alt="" />
+                        </figure>
+                        <a href="#" class="avatar-label">
+                            Killmonger
+                            <span>@killmonger</span>
+                        </a>
+                        <div class="avatar-primary-block">
+                            <span>Administrator</span>
+                            <a href="#">Sign out</a>
+                        </div>
+                    </div>
+                    <!-- avatar -->
+                </div>
+                <!-- header cta -->
+            </header>
+            <!-- header -->
+
+            <!-- left -->
+            <div class="layout-primary">
+                <aside class="layout-sidebar">
+                    <!-- sidebar nav -->
+                    <nav class="sidebar-nav">
+                        <!-- group -->
+                        <div class="sidebar-nav-group">
+                            <div class="sidebar-nav-header">General</div>
+
+                            <ul class="sidebar-nav-list">
+                                <li class="sidebar-nav-list-item is-active">
+                                    <a href="#" class="sidebar-nav-list-link">
+                                        <i class="iconoir-home"></i>
+                                        <span class="sidebar-nav-list-label">Dashboard</span>
+                                        <span class="sidebar-nav-list-badge badge">3</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-nav-list-item">
+                                    <a href="#" class="sidebar-nav-list-link">
+                                        <i class="iconoir-reports-solid"></i>
+                                        <span class="sidebar-nav-list-label">Reports</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-nav-list-item">
+                                    <a href="#" class="sidebar-nav-list-link">
+                                        <i class="iconoir-group"></i>
+                                        <span class="sidebar-nav-list-label">Users</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-nav-list-item">
+                                    <a href="#" class="sidebar-nav-list-link">
+                                        <i class="iconoir-message-text"></i>
+                                        <span class="sidebar-nav-list-label">Messages</span>
+                                        <span class="sidebar-nav-list-badge badge">99</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- group -->
+
+                        <!-- group -->
+                        <div class="sidebar-nav-group">
+                            <div class="sidebar-nav-header">Others</div>
+
+                            <ul class="sidebar-nav-list">
+                                <li class="sidebar-nav-list-item">
+                                    <a href="#" class="sidebar-nav-list-link">
+                                        <i class="iconoir-settings"></i>
+                                        <span class="sidebar-nav-list-label">Settings</span>
+                                        <span class="sidebar-nav-list-badge badge">3</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-nav-list-item">
+                                    <a href="#" class="sidebar-nav-list-link">
+                                        <i class="iconoir-headset-help"></i>
+                                        <span class="sidebar-nav-list-label">Support</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-nav-list-item">
+                                    <a href="#" class="sidebar-nav-list-link">
+                                        <i class="iconoir-help-circle"></i>
+                                        <span class="sidebar-nav-list-label">Help</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- group -->
+                    </nav>
+                    <!-- sidebar nav -->
+                </aside>
+            </div>
+            <!-- left -->
+
+            <!-- right -->
+            <div class="layout-secondary">
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum porro earum non quos suscipit omnis
+                    libero ipsum saepe animi et modi consequuntur, facere ex quidem repudiandae quod eaque officia
+                    harum?
+                </p>
+
+                <div style="height: 2000px"></div>
+            </div>
+            <!-- right -->
+        </main>
+        <!-- main -->
+    </body>
+</html>

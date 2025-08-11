@@ -1,0 +1,72 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-sidebar-nav() {
+    .sidebar-nav {
+        --r-sidebar-nav-header-color: var(--r-color-dark-lighten-50);
+        --r-sidebar-group-sep-color: #{color-darken(var(--r-color-white), 10%)};
+        --r-sidebar-nav-padding: #{rem(15)};
+        --r-sidebar-nav-link-color: var(--r-color-dark);
+        --r-sidebar-nav-link-hover-color: var(--r-color-primary);
+        --r-sidebar-nav-active-background-color: var(--r-color-light-darken-5);
+        --r-sidebar-nav-active-color: var(--r-color-dark);
+        --r-sidebar-nav-item-border-radius: var(--r-global-border-radius);
+        --r-sidebar-nav-list-label-font-weight: 500;
+    }
+
+    .sidebar-nav-group {
+        padding: var(--r-sidebar-nav-padding) calc(var(--r-sidebar-nav-padding) / 2);
+        border-bottom: rem(1) solid var(--r-sidebar-group-sep-color);
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    }
+
+    .sidebar-nav-header {
+        color: var(--r-sidebar-nav-header-color);
+        font-size: rem(11);
+        text-transform: uppercase;
+        padding: 0 calc(var(--r-sidebar-nav-padding) / 2) rem(5);
+    }
+
+    .sidebar-nav-list {
+    }
+
+    .sidebar-nav-list-item {
+        padding: 0 calc(var(--r-sidebar-nav-padding) / 2);
+        border-radius: var(--r-sidebar-nav-item-border-radius);
+        margin: rem(3) 0;
+
+        &.is-active {
+            background-color: var(--r-sidebar-nav-active-background-color);
+
+            .sidebar-nav-list-link {
+                color: var(--r-sidebar-nav-active-color);
+            }
+        }
+    }
+
+    .sidebar-nav-list-link {
+        font-size: rem(14);
+        color: var(--r-sidebar-nav-link-color);
+        display: flex;
+        align-items: center;
+        gap: rem(7);
+        padding: rem(6) 0;
+        @include mixin.transition('color');
+
+        &:hover {
+            color: var(--r-sidebar-nav-link-hover-color);
+        }
+    }
+
+    .sidebar-nav-list-label {
+        font-weight: var(--r-sidebar-nav-list-label-font-weight, 500);
+    }
+
+    .sidebar-nav-list-badge {
+        margin-left: auto;
+    }
+}

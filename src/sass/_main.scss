@@ -50,7 +50,13 @@
     @include modules.roolith-state();
 }
 
+@mixin roolith-extended-modules() {
+    @include modules.roolith-layout();
+    @include modules.roolith-sidebar-nav();
+}
+
 @mixin roolith-everything() {
     @include roolith-base();
     @include roolith-modules();
+    @include roolith-extended-modules();
 }

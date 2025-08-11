@@ -31,4 +31,8 @@
             }
         }
     }
+
+    .clearfix {
+        @include mixin.clearfix();
+    }
 }
