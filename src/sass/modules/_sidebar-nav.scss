@@ -2,18 +2,6 @@
 @use '../mixin';
 
 @mixin roolith-sidebar-nav() {
-    .sidebar-nav {
-        --r-sidebar-nav-header-color: var(--r-color-dark-lighten-50);
-        --r-sidebar-group-sep-color: #{color-darken(var(--r-color-white), 10%)};
-        --r-sidebar-nav-padding: #{rem(15)};
-        --r-sidebar-nav-link-color: var(--r-color-dark);
-        --r-sidebar-nav-link-hover-color: var(--r-color-primary);
-        --r-sidebar-nav-active-background-color: var(--r-color-light-darken-5);
-        --r-sidebar-nav-active-color: var(--r-color-dark);
-        --r-sidebar-nav-item-border-radius: var(--r-global-border-radius);
-        --r-sidebar-nav-list-label-font-weight: 500;
-    }
-
     .sidebar-nav-group {
         padding: var(--r-sidebar-nav-padding) calc(var(--r-sidebar-nav-padding) / 2);
         border-bottom: rem(1) solid var(--r-sidebar-group-sep-color);
@@ -32,6 +20,14 @@
     }
 
     .sidebar-nav-list {
+        .sidebar-nav-list {
+            margin: 0 calc((var(--r-sidebar-nav-padding) / 2) * -1) 0 rem(12);
+            display: none;
+
+            &.is-open {
+                display: block;
+            }
+        }
     }
 
     .sidebar-nav-list-item {
@@ -46,6 +42,10 @@
                 color: var(--r-sidebar-nav-active-color);
             }
         }
+
+        .sidebar-nav-list-item {
+            margin: 0;
+        }
     }
 
     .sidebar-nav-list-link {
@@ -54,7 +54,7 @@
         display: flex;
         align-items: center;
         gap: rem(7);
-        padding: rem(6) 0;
+        padding: rem(8) 0;
         @include mixin.transition('color');
 
         &:hover {
@@ -63,10 +63,34 @@
     }
 
     .sidebar-nav-list-label {
-        font-weight: var(--r-sidebar-nav-list-label-font-weight, 500);
+        font-weight: var(--r-sidebar-nav-list-label-font-weight, 600);
     }
 
     .sidebar-nav-list-badge {
         margin-left: auto;
+    }
+
+    .sidebar-nav-list-dropdown {
+        @include mixin.triangle(down, var(--r-sidebar-nav-item-caret-size));
+        margin-left: auto;
+
+        + .sidebar-nav-list-badge {
+            margin-left: 0;
+        }
+    }
+
+    // compact mode
+    .sidebar-nav-compact {
+        .sidebar-nav-header,
+        .sidebar-nav-list-label,
+        .sidebar-nav-list-dropdown,
+        .sidebar-nav-list-badge,
+        .sidebar-nav-list .sidebar-nav-list {
+            display: none;
+        }
+
+        .sidebar-nav-list {
+            display: inline-block;
+        }
     }
 }

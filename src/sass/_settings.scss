@@ -4,10 +4,9 @@
 
 /* Global */
 $global-base-font-size: 100% !default;
-// $global-base-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !default;
 $global-base-font: 'Inter', sans-serif !default;
 $global-font-weight: normal !default;
-$global-font-bold-weight: bold !default;
+$global-font-bold-weight: 600 !default;
 $global-border-radius: rem(3) !default;
 
 /* Breakpoints */
@@ -33,17 +32,17 @@ $grid-layout: traditional !default; /* css-grid || traditional */
 
 /* Colors */
 $colors: (
-    primary: #0099ff,
-    secondary: #373459,
-    tertiary: #f4751a,
-    info: #f8bf16,
-    success: #9ecf91,
-    danger: #c40000,
-    link: #67bcef,
-    dark: #212121,
-    black: #000000,
+    primary: #3b82f6,
+    secondary: #8b5cf6,
+    tertiary: #0ea5e9,
+    info: #f87315,
+    success: #10b47f,
+    danger: #ef4444,
+    link: #3b82f6,
+    dark: #222733,
+    black: #030712,
     white: #ffffff,
-    light: #fafbfc,
+    light: #f5f8fb,
 ) !default;
 
 /* Animation */
@@ -128,4 +127,19 @@ $icon-small-size: rem(14) !default;
 $icon-large-size: rem(32) !default;
 
 /* theme dark */
-$theme-dark-color: #0d1117 !default;
+$theme-dark-color: #050814 !default;
+
+/* extended modules */
+
+// layout
+$layout-sidebar-width: rem(230) !default;
+$layout-sidebar-width-compact: rem(46) !default;
+$layout-header-logo-width: rem(80) !default;
+$layout-header-padding: rem(10) rem(15) !default;
+$layout-border-width: rem(1) !default;
+$layout-header-search-width: rem(300) !default;
+
+// sidebar-nav
+$sidebar-nav-padding: rem(15) !default;
+$sidebar-nav-list-label-font-weight: 400 !default;
+$sidebar-nav-item-caret-size: rem(5) !default;

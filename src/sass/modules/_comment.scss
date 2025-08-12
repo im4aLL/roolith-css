@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 @use '../function' as *;
 @use '../mixin';
 
@@ -49,8 +49,11 @@
     }
 
     .comment-action-item-link {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: rem(5);
         font-size: rem(14);
+        line-height: 1.5;
         @include mixin.transition('color');
     }
 

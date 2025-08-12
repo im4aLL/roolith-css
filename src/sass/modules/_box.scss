@@ -6,7 +6,7 @@
     .box {
         margin: rem(20) 0;
         border: rem(1) solid var(--r-box-border-color);
-        border-radius: var(--r-box-border-radius);
+        border-radius: calc(var(--r-box-border-radius) * 2);
         background: var(--r-box-background-color);
     }
 
@@ -17,11 +17,11 @@
     }
 
     .box-header {
-        background: var(--r-box-header-background);
-        border-bottom: rem(1) solid var(--r-box-border-color);
         font-size: rem(14);
         line-height: rem(18);
         font-weight: var(--r-global-font-bold-weight);
+        padding-bottom: 0;
+        color: var(--r-box-header-text-color);
     }
 
     .box-body {
@@ -52,6 +52,10 @@
             padding-top: 0;
         }
 
+        .box-header {
+            padding-bottom: 0;
+        }
+
         .box-body {
             font-size: rem(12);
             line-height: rem(18);
@@ -75,6 +79,10 @@
             padding-top: 0;
         }
 
+        .box-header {
+            padding-bottom: 0;
+        }
+
         .box-body {
             font-size: rem(16);
             line-height: rem(26);
@@ -91,13 +99,7 @@
                 }
 
                 .box-header {
-                    background: var(--r-color-#{$name});
-                    background: linear-gradient(
-                        to bottom,
-                        color-lighten(var(--r-color-#{$name}), 5%) 0%,
-                        var(--r-color-#{$name}) 100%
-                    );
-                    color: var(--r-color-white);
+                    color: var(--r-color-#{$name});
                     border-color: color-darken(var(--r-color-#{$name}), 5%);
                 }
 

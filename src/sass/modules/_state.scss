@@ -35,4 +35,12 @@
     .clearfix {
         @include mixin.clearfix();
     }
+
+    .is-hidden {
+        display: none !important;
+    }
+
+    .is-visible {
+        display: block !important;
+    }
 }

@@ -81,8 +81,7 @@
         line-height: rem(18);
         background-color: var(--r-form-field-search-hint-background);
         border: rem(1) solid var(--r-form-field-search-border-color);
-        border-radius: rem(2);
-        box-shadow: var(--r-dropdown-shadow);
+        border-radius: var(--r-form-input-radius);
         width: 100%;
         max-height: rem(300);
         overflow-y: auto;
@@ -93,12 +92,10 @@
         }
 
         ul {
-            padding: rem(3) 0;
+            padding: 0;
         }
 
         li {
-            border-bottom: rem(1) solid var(--r-form-field-search-divider-color);
-
             &:last-child {
                 border-bottom: none;
             }
@@ -106,6 +103,7 @@
             a {
                 display: block;
                 padding: rem(7) rem(12);
+                color: var(--r-form-field-search-hint-color);
                 @include mixin.transition('background, color');
 
                 &:hover {
@@ -197,7 +195,7 @@
         width: 100%;
         border: rem(1) solid var(--r-form-input-border-color);
         border-radius: var(--r-form-input-radius);
-        padding: rem(8) rem(12) rem(10);
+        padding: rem(10) rem(12);
         box-shadow: none;
         background-color: var(--r-form-input-background-color);
         color: var(--r-form-input-color);
@@ -392,10 +390,10 @@
         margin: 0;
         position: absolute;
         left: 0;
-        top: rem(4);
+        top: rem(2);
 
         .vertical & {
-            top: rem(1);
+            top: 0;
         }
 
         .form-field.small & {

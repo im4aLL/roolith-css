@@ -1,29 +1,8 @@
 @use '../function' as *;
 @use '../mixin';
 
-$layout-sidebar-width: rem(230) !default;
-$layout-header-logo-width: rem(80) !default;
-$layout-header-padding: rem(10) rem(15) !default;
-$layout-border-width: rem(1) !default;
-$layout-header-search-width: rem(300) !default;
-
 @mixin roolith-layout() {
     .layout {
-        --r-layout-sidebar-width: #{$layout-sidebar-width};
-
-        --r-layout-border-color: #{color-darken(var(--r-color-white), 10%)};
-        --r-layout-border-width: #{$layout-border-width};
-
-        --r-layout-header-background-color: var(--r-color-white);
-        --r-layout-header-border-color: var(--r-layout-border-color);
-        --r-layout-header-logo-width: #{$layout-header-logo-width};
-        --r-layout-header-padding: #{$layout-header-padding};
-        --r-layout-header-height: auto;
-
-        --r-layout-header-toggle-color: var(--r-color-dark);
-        --r-layout-header-nav-color: var(--r-color-dark);
-        --r-layout-header-search-width: #{$layout-header-search-width};
-
         display: grid;
         grid-template-columns: var(--r-layout-sidebar-width) auto;
         grid-template-rows: var(--r-layout-header-height) auto;
@@ -36,7 +15,7 @@ $layout-header-search-width: rem(300) !default;
     }
 
     .layout-secondary {
-        background-color: var(--r-color-light);
+        background-color: var(--r-layout-secondary-background-color);
         padding: rem(20);
     }
 
@@ -107,5 +86,14 @@ $layout-header-search-width: rem(300) !default;
 
     .layout-header-search {
         width: var(--r-layout-header-search-width, auto);
+    }
+
+    // compact
+    .layout-compact {
+        --r-layout-sidebar-width: var(--r-layout-compact-sidebar-width);
+
+        .layout-header-logo {
+            display: none;
+        }
     }
 }

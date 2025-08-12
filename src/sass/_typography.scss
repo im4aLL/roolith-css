@@ -228,8 +228,8 @@
 
     kbd {
         @extend code;
-        background: var(--r-color-info-lighten-20);
-        border: rem(1) solid var(--r-color-info);
+        background: var(--r-color-light);
+        border: rem(1) solid var(--r-color-light);
     }
 
     .full-width {
