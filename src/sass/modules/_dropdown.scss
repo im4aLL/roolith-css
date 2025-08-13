@@ -15,7 +15,7 @@
         &:after {
             @include mixin.triangle(down, var(--r-dropdown-icons-size));
             vertical-align: rem(2);
-            margin-left: rem(5);
+            margin-left: rem(25);
         }
 
         &.button-small:after {
@@ -24,7 +24,7 @@
 
         &.button-large:after {
             @include mixin.triangle(down, var(--r-dropdown-icons-size-large));
-            margin-left: rem(10);
+            margin-left: rem(35);
         }
     }
 

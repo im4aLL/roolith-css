@@ -8,12 +8,12 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: rem(3) rem(5) rem(2);
+        padding: rem(4) rem(5) rem(2);
         background: var(--r-badge-background);
         color: var(--r-badge-color);
         border-radius: var(--r-badge-radius);
         font-size: rem(11);
-        line-height: rem(11);
+        line-height: 1;
         text-transform: uppercase;
     }
 

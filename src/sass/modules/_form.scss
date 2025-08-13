@@ -338,7 +338,9 @@
 
     .form-select {
         @extend .form-input;
-        background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='gray' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+        background: inline-svg(
+                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#000" viewBox="0 0 24 24"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
+            )
             no-repeat;
         background-position: calc(100% - rem(12)) center;
         appearance: none;
@@ -355,6 +357,11 @@
 
         &[multiple] {
             background: transparent;
+        }
+
+        .theme-dark &:not([multiple]) option {
+            background-color: var(--r-form-input-background-color);
+            color: var(--r-form-input-color);
         }
     }
 
@@ -415,6 +422,12 @@
         &:focus {
             border-color: var(--r-form-input-border-color);
             box-shadow: none;
+        }
+    }
+
+    .form-file {
+        &::file-selector-button {
+            @extend .button, .button-small;
         }
     }
 

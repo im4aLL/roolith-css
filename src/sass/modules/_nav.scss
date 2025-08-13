@@ -36,6 +36,10 @@
         &.dimmed {
             color: var(--r-nav-dimmed-link-color);
         }
+
+        .nav-icon-only & {
+            font-size: rem(16);
+        }
     }
 
     .nav-center {
