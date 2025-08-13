@@ -1,0 +1,165 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-tooltip() {
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        border-bottom: rem(1) dotted var(--r-tooltip-border-color);
+
+        &:hover .tooltip-content {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    [data-tooltip] {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+
+        &::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + #{rem(5)});
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--r-tooltip-bg-color);
+            color: var(--r-tooltip-text-color);
+            padding: var(--r-tooltip-padding);
+            border-radius: var(--r-tooltip-border-radius);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            font-size: rem(12);
+            line-height: rem(18);
+            z-index: 1;
+
+            @include mixin.transition(
+                'opacity, visibility',
+                var(--r-tooltip-transition-duration),
+                var(--r-tooltip-transition-delay)
+            );
+        }
+
+        &:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    .tooltip-content {
+        position: absolute;
+        bottom: calc(100% + #{rem(5)});
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--r-tooltip-bg-color);
+        color: var(--r-tooltip-text-color);
+        display: inline-block;
+        padding: var(--r-tooltip-padding);
+        border-radius: var(--r-tooltip-border-radius);
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        font-size: rem(12);
+        line-height: rem(18);
+        z-index: 1;
+
+        @include mixin.transition(
+            'opacity, visibility',
+            var(--r-tooltip-transition-duration),
+            var(--r-tooltip-transition-delay)
+        );
+
+        &::before {
+            position: absolute;
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+    }
+
+    .tooltip-up {
+        .tooltip-content::before {
+            @include mixin.triangle('down', rem(5), var(--r-tooltip-bg-color));
+            position: absolute;
+            bottom: rem(-5);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .tooltip-bottom {
+        .tooltip-content {
+            top: calc(100% + #{rem(6)});
+            bottom: auto;
+        }
+
+        .tooltip-content::before {
+            @include mixin.triangle('up', rem(5), var(--r-tooltip-bg-color));
+            transform: translateX(-50%);
+            top: rem(-5);
+            left: 50%;
+        }
+    }
+
+    .tooltip-left {
+        .tooltip-content {
+            left: rem(-7);
+            right: auto;
+            top: 50%;
+            bottom: auto;
+            transform: translate(-100%, -50%);
+        }
+
+        .tooltip-content::before {
+            @include mixin.triangle('right', rem(5), var(--r-tooltip-bg-color));
+            right: rem(-5);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    .tooltip-right {
+        .tooltip-content {
+            left: auto;
+            right: rem(-6);
+            top: 50%;
+            bottom: auto;
+            transform: translate(100%, -50%);
+        }
+
+        .tooltip-content::before {
+            @include mixin.triangle('left', rem(5), var(--r-tooltip-bg-color));
+            left: rem(-5);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    .tooltip-large {
+        .tooltip-content {
+            white-space: normal;
+            width: rem(250);
+            padding: var(--r-tooltip-padding-large);
+        }
+    }
+
+    .tooltip-content-hl {
+        font-size: rem(14);
+        font-weight: var(--r-global-font-bold-weight);
+        padding-bottom: rem(5);
+    }
+
+    .tooltip-content-button {
+        width: 100%;
+        margin-top: rem(10);
+    }
+
+    .tooltip-active {
+        .tooltip-content {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

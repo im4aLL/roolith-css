@@ -7,7 +7,7 @@ $global-base-font-size: 100% !default;
 $global-base-font: 'Inter', sans-serif !default;
 $global-font-weight: normal !default;
 $global-font-bold-weight: 600 !default;
-$global-border-radius: rem(3) !default;
+$global-border-radius: rem(4) !default;
 
 /* Breakpoints */
 $breakpoints: (
@@ -71,7 +71,7 @@ $img-radius: $global-border-radius !default;
 
 /* message */
 $message-radius: $global-border-radius !default;
-$message-color-icon-size: rem(18) !default;
+$message-icon-size: rem(12) !default;
 
 /* badge */
 $badge-radius: $global-border-radius !default;
@@ -82,7 +82,7 @@ $breadcrumb-size: 80% !default;
 
 /* card */
 $card-radius: $global-border-radius !default;
-$card-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
+$card-shadow: 0 0 0 rem(1) rgba(0, 0, 0, 0.04) !default;
 
 /* dropdown */
 $dropdown-icons-size: rem(5) !default;
@@ -92,7 +92,7 @@ $dropdown-width: rem(220) !default;
 $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 
 /* modal */
-$modal-content-radius: rem(2) !default;
+$modal-content-radius: $global-border-radius !default;
 $modal-content-spacing: rem(20) !default;
 $modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0, 0, 0, 0.1) !default;
 $modal-layout: css-grid !default; /* css-grid || traditional || flex */
@@ -143,3 +143,9 @@ $layout-header-search-width: rem(300) !default;
 $sidebar-nav-padding: rem(15) !default;
 $sidebar-nav-list-label-font-weight: 400 !default;
 $sidebar-nav-item-caret-size: rem(5) !default;
+
+// tooltip
+$tooltip-padding: rem(5) rem(10) !default;
+$tooltip-padding-large: rem(15) !default;
+$tooltip-transition-duration: 150ms !default;
+$tooltip-transition-delay: 250ms !default;

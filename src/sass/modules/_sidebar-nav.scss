@@ -17,6 +17,11 @@
         font-size: rem(11);
         text-transform: uppercase;
         padding: 0 calc(var(--r-sidebar-nav-padding) / 2) rem(5);
+        display: none;
+
+        @include mixin.breakpoint(large-up) {
+            display: block;
+        }
     }
 
     .sidebar-nav-list {
@@ -25,7 +30,11 @@
             display: none;
 
             &.is-open {
-                display: block;
+                display: none;
+
+                @include mixin.breakpoint(large-up) {
+                    display: block;
+                }
             }
         }
     }
@@ -64,15 +73,30 @@
 
     .sidebar-nav-list-label {
         font-weight: var(--r-sidebar-nav-list-label-font-weight, 600);
+        display: none;
+
+        @include mixin.breakpoint(large-up) {
+            display: block;
+        }
     }
 
     .sidebar-nav-list-badge {
         margin-left: auto;
+        display: none;
+
+        @include mixin.breakpoint(large-up) {
+            display: block;
+        }
     }
 
     .sidebar-nav-list-dropdown {
         @include mixin.triangle(down, var(--r-sidebar-nav-item-caret-size));
         margin-left: auto;
+        display: none;
+
+        @include mixin.breakpoint(large-up) {
+            display: block;
+        }
 
         + .sidebar-nav-list-badge {
             margin-left: 0;

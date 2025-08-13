@@ -53,6 +53,7 @@
 @mixin roolith-extended-modules() {
     @include modules.roolith-layout();
     @include modules.roolith-sidebar-nav();
+    @include modules.roolith-tooltip();
 }
 
 @mixin roolith-everything() {

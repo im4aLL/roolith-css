@@ -23,20 +23,19 @@
         position: absolute;
         right: 0;
         top: 0;
-        transform: translate(30%, -30%);
-        display: inline-block;
+        display: block;
         border: none;
         text-align: center;
-        font-size: rem(10);
+        font-size: var(--r-message-color-icon-size);
         line-height: var(--r-message-color-icon-size);
         width: var(--r-message-color-icon-size);
         height: var(--r-message-color-icon-size);
-        padding: 0 0 0 rem(1);
+        padding: rem(8) rem(10);
         z-index: 2;
         cursor: pointer;
-        border-radius: 50%;
-        background: var(--r-message-close-background);
         color: var(--r-message-close-color);
+        background: transparent;
+        border: none;
     }
 
     @each $name, $value in settings.$colors {
@@ -51,7 +50,6 @@
                 color: var(--r-color-white);
 
                 .message-close {
-                    background: color-darken(var(--r-color-#{$name}), 10%);
                     color: var(--r-color-white);
                 }
             }

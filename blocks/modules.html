@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin layout</title>
+        <style>
+            .module {
+                padding: 15px;
+                background-color: #f0f0f0;
+            }
+
+            .module-body {
+                padding: 15px;
+            }
+
+            .theme-dark .module {
+                background-color: #333;
+                color: #ddd;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+        <script type="module" src="../index.js"></script>
+    </head>
+    <body>
+        <div class="module-body">
+            <button class="button button-icon" id="js-toggle-mode">
+                <i class="iconoir-half-moon"></i>
+                Toggle Dark / Light Mode
+            </button>
+        </div>
+
+        <div class="module">tooltip</div>
+        <div class="module-body">
+            <div style="text-align: center">
+                <button class="button" data-tooltip="Hello! I am a tooltip text">Hover me</button>
+            </div>
+            <br />
+            <br />
+
+            <p>
+                Lorem ipsum
+                <span class="tooltip">
+                    default tooltip
+                    <span class="tooltip-content">Here is the tooltip text</span>
+                </span>
+
+                odor amet, consectetuer adipiscing elit.
+                <span class="tooltip tooltip-up">
+                    Up tooltip
+                    <span class="tooltip-content">Here is the tooltip text</span>
+                </span>
+
+                elementum interdum mi
+                <span class="tooltip tooltip-bottom">
+                    Bottom tooltip
+                    <span class="tooltip-content">Here is the tooltip text</span>
+                </span>
+            </p>
+            <hr />
+            <p>
+                smus tincidunt. Sodales massa nulla faucibus leo diam pulvinar? Nec hac feugiat sociosqu magna duis
+                blandit urna
+                <span class="tooltip tooltip-left">
+                    left tooltip
+                    <span class="tooltip-content">Here is the tooltip text</span>
+                </span>
+                enim. Tortor lobortis aptent nisl a ultricies donec.
+                <span class="tooltip tooltip-right">
+                    right tooltip
+                    <span class="tooltip-content">Here is the tooltip text</span>
+                </span>
+                Dignissim velit nisi leo fusce eleifend auct
+            </p>
+
+            <hr />
+
+            <div>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                <div class="tooltip tooltip-large">
+                    Large tooltip
+                    <div class="tooltip-content">
+                        <div class="tooltip-content-hl">Tooltip header</div>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia nam autem ullam ab sit
+                        consequuntur aliquid placeat veniam quo, provident quidem exercitationem eius id magni
+                        praesentium minus neque explicabo quaerat?
+                        <a href="#" class="button button-small button-primary tooltip-content-button">Action Button</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            /**
+             * Toggle dark mode for the layout.
+             * This function checks for a saved theme preference in localStorage,
+             * applies the corresponding class to the body, and updates the icon
+             * based on the current theme. It also adds an event listener to toggle
+             * the dark mode when the button is clicked.
+             */
+            function toggleDarkMode() {
+                // settings
+                const lightModeIcon = 'iconoir-half-moon';
+                const darkModeIcon = 'iconoir-sun-light';
+                const darkModeClass = 'theme-dark';
+                const storageKey = 'theme';
+
+                // Check for saved theme preference in localStorage
+                const savedTheme = localStorage.getItem(storageKey);
+                if (savedTheme) {
+                    document.body.classList.add(savedTheme);
+                    const icon = document.getElementById('js-toggle-mode').querySelector('i');
+                    icon.className = savedTheme === darkModeClass ? lightModeIcon : darkModeIcon;
+                }
+
+                // Add event listener for dark mode toggle
+                const toggleDarkModeEl = document.getElementById('js-toggle-mode');
+
+                toggleDarkModeEl.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    document.body.classList.toggle(darkModeClass);
+
+                    // Update the icon based on the current theme
+                    const icon = toggleDarkModeEl.querySelector('i');
+                    if (document.body.classList.contains(darkModeClass)) {
+                        icon.className = darkModeIcon;
+                    } else {
+                        icon.className = lightModeIcon;
+                    }
+
+                    // store the theme preference in localStorage
+                    localStorage.setItem(
+                        storageKey,
+                        document.body.classList.contains(darkModeClass) ? darkModeClass : '',
+                    );
+                });
+            }
+
+            // Initialize compact mode toggle on DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', () => {
+                toggleDarkMode();
+            });
+        </script>
+    </body>
+</html>

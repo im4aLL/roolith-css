@@ -121,8 +121,7 @@
 
         /* Message */
         --r-message-radius: #{$message-radius};
-        --r-message-color-icon-size: #{$message-color-icon-size};
-        --r-message-close-background: var(--r-color-light-darken-10);
+        --r-message-icon-size: #{$message-icon-size};
         --r-message-close-color: var(--r-color-dark);
 
         /* Badge */
@@ -261,6 +260,17 @@
         --r-sidebar-nav-item-border-radius: var(--r-global-border-radius);
         --r-sidebar-nav-list-label-font-weight: #{$sidebar-nav-list-label-font-weight};
         --r-sidebar-nav-item-caret-size: #{$sidebar-nav-item-caret-size};
+
+        // tooltip
+        --r-tooltip-bg-color: var(--r-color-dark);
+        --r-tooltip-text-color: var(--r-color-white);
+        --r-tooltip-padding: #{$tooltip-padding};
+        --r-tooltip-padding-large: #{$tooltip-padding-large};
+        --r-tooltip-border-radius: var(--r-global-border-radius);
+        --r-tooltip-transition-duration: #{$tooltip-transition-duration};
+        --r-tooltip-transition-delay: #{$tooltip-transition-delay};
+        --r-tooltip-border-color: var(--r-color-tertiary);
+        --r-tooltip-content-btn-bg-color: var(--r-color-tertiary);
     }
 
     .theme-dark {
@@ -406,7 +416,6 @@
         --r-box-footer-color: var(--r-color-dark-lighten-60);
 
         /* Message */
-        --r-message-close-background: var(--r-color-light-darken-10);
         --r-message-close-color: var(--r-color-light-lighten-30);
 
         /* Extended modules */
@@ -426,5 +435,11 @@
         --r-sidebar-nav-link-hover-color: var(--r-color-white);
         --r-sidebar-nav-active-background-color: var(--r-color-light);
         --r-sidebar-nav-active-color: var(--r-color-white);
+
+        // tooltip
+        --r-tooltip-bg-color: var(--r-color-dark);
+        --r-tooltip-text-color: var(--r-color-white);
+        --r-tooltip-border-color: var(--r-color-tertiary);
+        --r-tooltip-content-btn-bg-color: var(--r-color-tertiary);
     }
 }

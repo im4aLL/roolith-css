@@ -84,9 +84,14 @@
     }
 
     .modal-footer {
-        @include mixin.clearfix();
         padding: var(--r-modal-content-spacing);
         border-top: rem(1) solid var(--r-modal-border-color);
+        display: flex;
+        gap: rem(10);
+    }
+
+    .modal-footer-right {
+        justify-content: flex-end;
     }
 
     .modal-close {
