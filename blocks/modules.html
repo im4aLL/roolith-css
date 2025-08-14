@@ -107,6 +107,31 @@
             </div>
         </div>
 
+        <div class="module">drawer</div>
+        <div class="module-body">
+            <button class="button" id="js-open-drawer">Open drawer</button>
+        </div>
+        <div class="drawer-container" id="js-drawer">
+            <div class="drawer">
+                <div class="drawer-header">
+                    Drawer header
+                    <span class="drawer-sub-header">Sub header text here if needed</span>
+                    <button class="drawer-close js-drawer-close">✖</button>
+                </div>
+                <div class="drawer-body">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit delectus quae autem ducimus
+                        neque. Pariatur numquam iure aspernatur aliquid sit. Eos eveniet delectus dicta consectetur
+                        quaerat molestiae maiores, neque culpa.
+                    </p>
+                </div>
+                <div class="drawer-footer drawer-footer-right">
+                    <button class="button button-outline js-drawer-close">Close</button>
+                    <button class="button button-primary js-drawer-close">Okay</button>
+                </div>
+            </div>
+        </div>
+
         <script>
             /**
              * Toggle dark mode for the layout.
@@ -167,10 +192,26 @@
                 });
             }
 
+            function drawer() {
+                const drawerTriggerElement = document.getElementById('js-open-drawer');
+                const drawerElement = document.getElementById('js-drawer');
+
+                drawerTriggerElement.addEventListener('click', () => {
+                    drawerElement.classList.toggle('open');
+                });
+
+                drawerElement.addEventListener('click', (event) => {
+                    if (event.target.classList.contains('js-drawer-close')) {
+                        drawerElement.classList.remove('open');
+                    }
+                });
+            }
+
             // Initialize compact mode toggle on DOMContentLoaded
             document.addEventListener('DOMContentLoaded', () => {
                 toggleDarkMode();
                 popover();
+                drawer();
             });
         </script>
     </body>

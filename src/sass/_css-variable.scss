@@ -278,6 +278,14 @@
         --r-popover-border-radius: #{$popover-border-radius};
         --r-popover-width: #{$popover-width};
         --r-popover-border-color: var(--r-color-white-darken-10);
+
+        // drawer
+        --r-drawer-container-background: var(--r-modal-background);
+        --r-drawer-background: var(--r-modal-content-background);
+        --r-drawer-close-button-color: var(--r-modal-close-color);
+        --r-drawer-border-radius: var(--r-modal-content-radius);
+        --r-drawer-content-spacing: var(--r-modal-content-spacing);
+        --r-drawer-border-color: var(--r-modal-border-color);
     }
 
     .theme-dark {
@@ -373,7 +381,7 @@
         /* Modal */
         --r-modal-background: rgba(0, 0, 0, 0.5);
         --r-modal-content-background: var(--r-color-light);
-        --r-modal-border-color: var(--r-color-light-darken-10);
+        --r-modal-border-color: var(--r-color-dark-lighten-2);
         --r-modal-close-color: var(--r-color-white-darken-50);
 
         /* Accordion */
@@ -453,5 +461,13 @@
         --r-popover-background: var(--r-color-dark);
         --r-popover-color: var(--r-global-font-color);
         --r-popover-border-color: var(--r-color-dark-lighten-10);
+
+        // drawer
+        --r-drawer-container-background: var(--r-modal-background);
+        --r-drawer-background: var(--r-modal-content-background);
+        --r-drawer-close-button-color: var(--r-modal-close-color);
+        --r-drawer-border-radius: var(--r-modal-content-radius);
+        --r-drawer-content-spacing: var(--r-modal-content-spacing);
+        --r-drawer-border-color: var(--r-modal-border-color);
     }
 }

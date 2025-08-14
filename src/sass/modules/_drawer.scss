@@ -1,0 +1,81 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-drawer() {
+    .drawer {
+        position: absolute;
+        right: calc(var(--r-drawer-content-spacing) / 2);
+        top: calc(var(--r-drawer-content-spacing) / 2);
+        width: 100%;
+        height: calc(100% - var(--r-drawer-content-spacing));
+        max-width: rem(600);
+        overflow-y: auto;
+        background: var(--r-drawer-background);
+        border-radius: var(--r-drawer-border-radius);
+        box-shadow: var(--r-modal-content-shadow);
+        padding: var(--r-drawer-content-spacing);
+        @include mixin.nice-scroll();
+        @extend .animation, .fadeInRight;
+    }
+
+    .drawer-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--r-drawer-container-background);
+        z-index: 9999;
+        padding: var(--r-drawer-content-spacing);
+        display: none;
+
+        &.open {
+            display: block;
+        }
+    }
+
+    .drawer-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        border: none;
+        padding: var(--r-drawer-content-spacing);
+        line-height: rem(12);
+        z-index: 2;
+        cursor: pointer;
+        color: var(--r-drawer-close-button-color);
+        @include mixin.transition('opacity');
+
+        &:hover {
+            @include mixin.opacity(0.7);
+        }
+    }
+
+    .drawer-header {
+        font-size: rem(18);
+        margin: 0 0 rem(15);
+    }
+
+    .drawer-footer {
+        padding: var(--r-drawer-content-spacing) 0 0;
+        border-top: rem(1) solid var(--r-drawer-border-color);
+        display: flex;
+        gap: rem(10);
+        justify-content: flex-end;
+        margin-top: var(--r-drawer-content-spacing);
+    }
+
+    .drawer-sub-header {
+        display: block;
+        font-size: rem(14);
+        margin-top: rem(8);
+        @extend .dimmed;
+    }
+
+    .drawer-body {
+        height: calc(100% - var(--r-drawer-content-spacing) * 2 - #{rem(95)});
+        overflow-y: auto;
+        @include mixin.nice-scroll();
+    }
+}
