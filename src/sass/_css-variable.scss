@@ -271,6 +271,13 @@
         --r-tooltip-transition-delay: #{$tooltip-transition-delay};
         --r-tooltip-border-color: var(--r-color-tertiary);
         --r-tooltip-content-btn-bg-color: var(--r-color-tertiary);
+
+        // popup
+        --r-popover-background: var(--r-color-light);
+        --r-popover-color: var(--r-color-dark);
+        --r-popover-border-radius: #{$popover-border-radius};
+        --r-popover-width: #{$popover-width};
+        --r-popover-border-color: var(--r-color-white-darken-10);
     }
 
     .theme-dark {
@@ -441,5 +448,10 @@
         --r-tooltip-text-color: var(--r-color-white);
         --r-tooltip-border-color: var(--r-color-tertiary);
         --r-tooltip-content-btn-bg-color: var(--r-color-tertiary);
+
+        // popup
+        --r-popover-background: var(--r-color-dark);
+        --r-popover-color: var(--r-global-font-color);
+        --r-popover-border-color: var(--r-color-dark-lighten-10);
     }
 }

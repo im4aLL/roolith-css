@@ -322,12 +322,17 @@
             display: block;
         }
 
+        &:checked {
+            background-color: var(--r-color-primary);
+            border-color: var(--r-color-primary);
+        }
+
         &:checked:before {
             width: rem(4);
             height: rem(8);
             margin: rem(1) rem(5);
-            border-bottom: rem(1) solid color-mix(in srgb, var(--r-form-input-border-color), black 50%);
-            border-right: rem(1) solid color-mix(in srgb, var(--r-form-input-border-color), black 50%);
+            border-bottom: rem(1) solid color-mix(in srgb, var(--r-color-white), var(--r-color-white) 50%);
+            border-right: rem(1) solid color-mix(in srgb, var(--r-color-white), var(--r-color-white) 50%);
             transform: rotate(45deg);
         }
 

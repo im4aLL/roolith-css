@@ -149,3 +149,7 @@ $tooltip-padding: rem(5) rem(10) !default;
 $tooltip-padding-large: rem(15) !default;
 $tooltip-transition-duration: 150ms !default;
 $tooltip-transition-delay: 250ms !default;
+
+// popover
+$popover-border-radius: $global-border-radius !default;
+$popover-width: rem(275) !default;

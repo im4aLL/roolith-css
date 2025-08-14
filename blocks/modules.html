@@ -92,6 +92,21 @@
             </div>
         </div>
 
+        <div class="module">popover</div>
+        <div class="module-body">
+            <button class="button" data-popover="popover1" id="js-popover">Popover</button>
+            <div class="popover" id="popover1">
+                <div class="popover-header">Popover Title</div>
+                <div class="popover-body">And here's some amazing content. It's very engaging. Right?</div>
+
+                <div class="popover-header">Another title</div>
+                <div class="popover-body">
+                    And here's some more amazing content. It's very engaging. Right?
+                    <a href="#" class="button button-small button-primary">Action Button</a>
+                </div>
+            </div>
+        </div>
+
         <script>
             /**
              * Toggle dark mode for the layout.
@@ -138,9 +153,24 @@
                 });
             }
 
+            function popover() {
+                const popoverTriggerElement = document.getElementById('js-popover');
+
+                popoverTriggerElement.addEventListener('click', () => {
+                    const popoverElement = document.getElementById(popoverTriggerElement.dataset.popover);
+                    const position = popoverTriggerElement.getBoundingClientRect();
+                    const popoverHeight = popoverElement.offsetHeight;
+
+                    popoverElement.style.left = `${position.left}px`;
+                    popoverElement.style.top = `${position.top + position.height + 10}px`;
+                    popoverElement.classList.toggle('active');
+                });
+            }
+
             // Initialize compact mode toggle on DOMContentLoaded
             document.addEventListener('DOMContentLoaded', () => {
                 toggleDarkMode();
+                popover();
             });
         </script>
     </body>

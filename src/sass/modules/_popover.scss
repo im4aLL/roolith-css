@@ -1,0 +1,38 @@
+@use '../function' as *;
+
+@mixin roolith-popover() {
+    .popover {
+        position: absolute;
+        z-index: 1000;
+        display: none;
+        max-width: var(--r-popover-width);
+        padding: rem(15);
+        color: var(--r-popover-color);
+        background-color: var(--r-popover-background);
+        border-radius: var(--r-popover-border-radius);
+        border: rem(1) solid var(--r-popover-border-color);
+
+        &.active {
+            display: block;
+        }
+
+        &-header {
+            font-weight: var(--r-global-font-weight-bold);
+            margin-bottom: rem(8);
+            margin-top: rem(16);
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        &-body {
+            font-size: rem(14);
+            line-height: 1.5;
+
+            .button {
+                margin-top: rem(8);
+            }
+        }
+    }
+}
