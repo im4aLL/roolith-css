@@ -286,6 +286,13 @@
         --r-drawer-border-radius: var(--r-modal-content-radius);
         --r-drawer-content-spacing: var(--r-modal-content-spacing);
         --r-drawer-border-color: var(--r-modal-border-color);
+
+        // switch
+        --r-form-switch-background-color: var(--r-color-light-darken-10);
+        --r-form-switch-checked-background-color: var(--r-color-primary);
+        --r-form-switch-handler-color: var(--r-color-white);
+        --r-form-switch-size: #{$switch-size};
+        --r-form-switch-size-large: #{$switch-size-large};
     }
 
     .theme-dark {
@@ -469,5 +476,10 @@
         --r-drawer-border-radius: var(--r-modal-content-radius);
         --r-drawer-content-spacing: var(--r-modal-content-spacing);
         --r-drawer-border-color: var(--r-modal-border-color);
+
+        // switch
+        --r-form-switch-background-color: var(--r-color-light-lighten-10);
+        --r-form-switch-checked-background-color: var(--r-color-primary);
+        --r-form-switch-handler-color: var(--r-color-white);
     }
 }

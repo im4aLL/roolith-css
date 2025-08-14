@@ -128,6 +128,79 @@
     }
 }
 
+@mixin form-switch() {
+    .form-switch {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        gap: rem(8);
+        font-size: rem(14);
+    }
+
+    .form-switch-large {
+        --r-form-switch-size: var(--r-form-switch-size-large);
+    }
+
+    .form-switch-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .form-switch-slider {
+        position: relative;
+        display: inline-block;
+        flex-shrink: 0;
+        width: var(--r-form-switch-size);
+        height: calc(var(--r-form-switch-size) / 2);
+        background-color: var(--r-form-switch-background-color);
+        border-radius: rem(25);
+        box-shadow: inset 0 0 rem(2) rem(3) rgba(0, 0, 0, 0.03);
+        @include mixin.transition('background-color');
+
+        .form-switch-input:checked + & {
+            background-color: var(--r-form-switch-checked-background-color);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: rem(2);
+            left: rem(2);
+            width: calc(var(--r-form-switch-size) / 2 - #{rem(4)});
+            height: calc(var(--r-form-switch-size) / 2 - #{rem(4)});
+            background-color: var(--r-form-switch-handler-color);
+            border-radius: 50%;
+            @include mixin.transition('left');
+            will-change: left;
+
+            .form-switch-input:checked + & {
+                left: calc(var(--r-form-switch-size) / 2 + #{rem(2)});
+            }
+        }
+    }
+
+    .form-switch-large .form-switch-input:checked + .form-switch-slider::after {
+        left: calc(var(--r-form-switch-size-large) / 2 + #{rem(1)});
+    }
+
+    .form-switch-label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        font-size: rem(14);
+    }
+
+    .form-switch-slider-text {
+        margin-left: rem(8);
+        display: inline-block;
+    }
+}
+
 @mixin roolith-form() {
     ::placeholder {
         color: var(--r-form-input-placeholder-color);
@@ -437,4 +510,5 @@
     }
 
     @include form-search();
+    @include form-switch();
 }
