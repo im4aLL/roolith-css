@@ -153,6 +153,15 @@
             </div>
         </div>
 
+        <div class="module">range</div>
+        <div class="module-body">
+            <div class="form-field">
+                <input type="range" name="range" min="0" max="10" value="5" class="form-range" id="js-range-input" />
+            </div>
+        </div>
+
+        <div style="height: 500px"></div>
+
         <script>
             /**
              * Toggle dark mode for the layout.
@@ -228,11 +237,21 @@
                 });
             }
 
+            function rangeInput() {
+                const rangeEl = document.getElementById('js-range-input');
+                rangeEl.addEventListener('input', () => {
+                    const value = ((rangeEl.value - rangeEl.min) / (rangeEl.max - rangeEl.min)) * 100;
+
+                    rangeEl.style.setProperty('--r-form-range-value', `${value}%`);
+                });
+            }
+
             // Initialize compact mode toggle on DOMContentLoaded
             document.addEventListener('DOMContentLoaded', () => {
                 toggleDarkMode();
                 popover();
                 drawer();
+                rangeInput();
             });
         </script>
     </body>

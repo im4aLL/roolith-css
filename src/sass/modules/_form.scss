@@ -201,6 +201,44 @@
     }
 }
 
+@mixin form-range() {
+    .form-range {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: var(--r-form-range-height);
+        background: var(--r-form-range-track-color);
+        background: linear-gradient(
+            to right,
+            var(--r-form-range-thumb-color) 0%,
+            var(--r-form-range-thumb-color) var(--r-form-range-value, 0%),
+            var(--r-form-range-track-color) var(--r-form-range-value, 0%),
+            var(--r-form-range-track-color) 100%
+        );
+        border-radius: var(--r-form-range-border-radius);
+
+        &::-webkit-slider-runnable-track {
+            height: var(--r-form-range-height);
+        }
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: var(--r-form-range-thumb-size);
+            height: var(--r-form-range-thumb-size);
+            background: var(--r-form-range-thumb-color);
+            border-radius: 50%;
+            cursor: pointer;
+            margin-top: calc(var(--r-form-range-height) / 2 - var(--r-form-range-thumb-size) / 2);
+            @include mixin.transition('background');
+        }
+
+        &::-webkit-slider-thumb:hover {
+            background: var(--r-form-range-thumb-hover-color);
+        }
+    }
+}
+
 @mixin roolith-form() {
     ::placeholder {
         color: var(--r-form-input-placeholder-color);
@@ -511,4 +549,5 @@
 
     @include form-search();
     @include form-switch();
+    @include form-range();
 }

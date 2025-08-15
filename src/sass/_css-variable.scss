@@ -293,6 +293,15 @@
         --r-form-switch-handler-color: var(--r-color-white);
         --r-form-switch-size: #{$switch-size};
         --r-form-switch-size-large: #{$switch-size-large};
+
+        // range
+        --r-form-range-height: #{$range-size};
+        --r-form-range-track-color: var(--r-color-light-darken-5);
+        --r-form-range-thumb-color: var(--r-color-primary);
+        --r-form-range-thumb-hover-color: color-mix(in srgb, var(--r-color-primary), black 10%);
+        --r-form-range-border-radius: var(--r-global-border-radius);
+        --r-form-range-thumb-size: calc(var(--r-form-range-height) * 3);
+        --r-form-range-value: 50%;
     }
 
     .theme-dark {
@@ -481,5 +490,8 @@
         --r-form-switch-background-color: var(--r-color-light-lighten-10);
         --r-form-switch-checked-background-color: var(--r-color-primary);
         --r-form-switch-handler-color: var(--r-color-white);
+
+        // range
+        --r-form-range-track-color: var(--r-color-light-lighten-10);
     }
 }
