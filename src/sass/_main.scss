@@ -56,6 +56,7 @@
     @include modules.roolith-tooltip();
     @include modules.roolith-popover();
     @include modules.roolith-drawer();
+    @include modules.roolith-form-extended();
 }
 
 @mixin roolith-everything() {

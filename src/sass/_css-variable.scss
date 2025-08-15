@@ -105,6 +105,14 @@
         --r-form-field-search-border-color: var(--r-form-input-border-color);
         --r-form-field-search-hint-color: var(--r-color-dark);
 
+        /* Form radio group */
+        --r-form-radio-group-gap: #{$form-radio-group-gap};
+        --r-form-radio-group-item-padding: #{$form-radio-group-item-padding};
+        --r-form-radio-group-width: #{$form-radio-group-width};
+        --r-form-radio-selected-border-color: var(--r-color-primary);
+        --r-form-radio-selected-background-color: color-mix(in srgb, var(--r-color-primary), white 97%);
+        --r-form-radio-text-color: color-mix(in srgb, var(--r-form-text-color), black 40%);
+
         /* Table */
         --r-table-header-border-color: var(--r-color-light-darken-10);
         --r-table-border-color: var(--r-color-light-darken-5);
@@ -278,6 +286,7 @@
         --r-popover-border-radius: #{$popover-border-radius};
         --r-popover-width: #{$popover-width};
         --r-popover-border-color: var(--r-color-white-darken-10);
+        --r-popover-offset: #{$popover-offset};
 
         // drawer
         --r-drawer-container-background: var(--r-modal-background);
@@ -353,6 +362,11 @@
         --r-form-error-color: var(--r-color-danger);
         --r-form-success-color: var(--r-color-success);
         --r-form-warning-color: var(--r-color-info);
+
+        /* Form radio group */
+        --r-form-radio-selected-color: var(--r-color-primary);
+        --r-form-radio-text-color: color-mix(in srgb, var(--r-form-text-color), white 20%);
+        --r-form-radio-selected-background-color: var(--r-color-light);
 
         /* Form search */
         --r-form-field-search-hint-background: var(--r-color-dark);

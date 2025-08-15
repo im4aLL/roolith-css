@@ -3,6 +3,9 @@
 @mixin roolith-popover() {
     .popover {
         position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translateY(calc(100% + var(--r-popover-offset)));
         z-index: 1000;
         display: none;
         max-width: var(--r-popover-width);
@@ -33,6 +36,10 @@
             .button {
                 margin-top: rem(8);
             }
+        }
+
+        &-container {
+            position: relative;
         }
     }
 }

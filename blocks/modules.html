@@ -94,15 +94,17 @@
 
         <div class="module">popover</div>
         <div class="module-body">
-            <button class="button" data-popover="popover1" id="js-popover">Popover</button>
-            <div class="popover" id="popover1">
-                <div class="popover-header">Popover Title</div>
-                <div class="popover-body">And here's some amazing content. It's very engaging. Right?</div>
+            <div class="popover-container">
+                <button class="button" data-popover="popover1" id="js-popover">Popover</button>
+                <div class="popover" id="popover1">
+                    <div class="popover-header">Popover Title</div>
+                    <div class="popover-body">And here's some amazing content. It's very engaging. Right?</div>
 
-                <div class="popover-header">Another title</div>
-                <div class="popover-body">
-                    And here's some more amazing content. It's very engaging. Right?
-                    <a href="#" class="button button-small button-primary">Action Button</a>
+                    <div class="popover-header">Another title</div>
+                    <div class="popover-body">
+                        And here's some more amazing content. It's very engaging. Right?
+                        <a href="#" class="button button-small button-primary">Action Button</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -160,6 +162,67 @@
             </div>
         </div>
 
+        <div class="module">radio-group</div>
+        <div class="module-body">
+            <div class="form-field">
+                <label class="form-label">Select option</label>
+                <div class="form-radio-group">
+                    <label class="form-radio-item">
+                        <input type="radio" name="option" class="form-radio" />
+                        <div class="form-radio-body">
+                            <div class="form-radio-hl">Option A</div>
+                            <div class="form-radio-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                        </div>
+                    </label>
+                    <label class="form-radio-item">
+                        <input type="radio" name="option" class="form-radio" />
+                        <div class="form-radio-body">
+                            <div class="form-radio-hl">Option B</div>
+                            <div class="form-radio-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                        </div>
+                    </label>
+                    <label class="form-radio-item">
+                        <input type="radio" name="option" class="form-radio" />
+                        <div class="form-radio-body">
+                            <div class="form-radio-hl">Option C</div>
+                            <div class="form-radio-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                        </div>
+                    </label>
+                </div>
+                <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+            </div>
+
+            <hr />
+
+            <div class="form-field">
+                <label class="form-label">Select option (vertical)</label>
+                <div class="form-radio-group form-radio-group-vertical">
+                    <label class="form-radio-item">
+                        <input type="radio" name="option" class="form-radio" />
+                        <div class="form-radio-body">
+                            <div class="form-radio-hl">Option A</div>
+                            <div class="form-radio-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                        </div>
+                    </label>
+                    <label class="form-radio-item">
+                        <input type="radio" name="option" class="form-radio" />
+                        <div class="form-radio-body">
+                            <div class="form-radio-hl">Option B</div>
+                            <div class="form-radio-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                        </div>
+                    </label>
+                    <label class="form-radio-item">
+                        <input type="radio" name="option" class="form-radio" />
+                        <div class="form-radio-body">
+                            <div class="form-radio-hl">Option C</div>
+                            <div class="form-radio-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                        </div>
+                    </label>
+                </div>
+                <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+            </div>
+        </div>
+
         <div style="height: 500px"></div>
 
         <script>
@@ -213,11 +276,6 @@
 
                 popoverTriggerElement.addEventListener('click', () => {
                     const popoverElement = document.getElementById(popoverTriggerElement.dataset.popover);
-                    const position = popoverTriggerElement.getBoundingClientRect();
-                    const popoverHeight = popoverElement.offsetHeight;
-
-                    popoverElement.style.left = `${position.left}px`;
-                    popoverElement.style.top = `${position.top + position.height + 10}px`;
                     popoverElement.classList.toggle('active');
                 });
             }
