@@ -158,8 +158,54 @@
     }
 }
 
+@mixin form-datepicker() {
+    .form-datepicker {
+        appearance: none;
+        @extend .form-input;
+
+        &::-webkit-calendar-picker-indicator {
+            background: inline-svg(
+                    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" color="#222733" width="18" height="18" viewBox="0 0 24 24"><path stroke="#222733" stroke-linecap="round" stroke-linejoin="round" d="M15 4V2m0 2v2m0-2h-4.5M3 10v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9H3ZM3 10V6a2 2 0 0 1 2-2h2M7 2v4M21 10V6a2 2 0 0 0-2-2h-.5"/></svg>'
+                )
+                no-repeat center;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .theme-dark &::-webkit-calendar-picker-indicator {
+            background-image: inline-svg(
+                '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" color="#9ca3af" width="18" height="18" viewBox="0 0 24 24"><path stroke="#9ca3af" stroke-linecap="round" stroke-linejoin="round" d="M15 4V2m0 2v2m0-2h-4.5M3 10v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9H3ZM3 10V6a2 2 0 0 1 2-2h2M7 2v4M21 10V6a2 2 0 0 0-2-2h-.5"/></svg>'
+            );
+        }
+    }
+}
+
+@mixin form-timepicker() {
+    .form-timepicker {
+        appearance: none;
+        @extend .form-input;
+
+        &::-webkit-calendar-picker-indicator {
+            background: inline-svg(
+                    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" color="#222733" width="18" height="18" viewBox="0 0 24 24"><path stroke="#222733" stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h6"/><path stroke="#222733" stroke-linecap="round" stroke-linejoin="round" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/></svg>'
+                )
+                no-repeat center;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .theme-dark &::-webkit-calendar-picker-indicator {
+            background-image: inline-svg(
+                '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" color="#9ca3af" width="18" height="18" viewBox="0 0 24 24"><path stroke="#9ca3af" stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h6"/><path stroke="#9ca3af" stroke-linecap="round" stroke-linejoin="round" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/></svg>'
+            );
+        }
+    }
+}
+
 @mixin roolith-form-extended() {
     @include form-switch();
     @include form-range();
     @include form-radio-group();
+    @include form-datepicker();
+    @include form-timepicker();
 }
