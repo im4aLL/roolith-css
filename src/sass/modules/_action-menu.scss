@@ -58,4 +58,8 @@
             background-color: var(--r-color-primary);
         }
     }
+
+    .action-menu-label {
+        user-select: none;
+    }
 }

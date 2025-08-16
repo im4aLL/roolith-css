@@ -1,0 +1,60 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-filter() {
+    .block-filter {
+        --r-block-filter-gap: #{rem(10)};
+
+        padding: rem(10) 0;
+
+        .form-label {
+            opacity: 0.5;
+            text-transform: uppercase;
+            font-size: rem(11);
+            padding-bottom: rem(2);
+        }
+    }
+
+    .block-filter-form {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: var(--r-block-filter-gap);
+
+        @include mixin.breakpoint(medium-up) {
+            flex-direction: row;
+            align-items: flex-end;
+        }
+
+        .form-field {
+            padding-bottom: 0;
+        }
+    }
+
+    .block-filter-button-group {
+        display: flex;
+        flex-direction: row;
+        gap: var(--r-block-filter-gap);
+    }
+
+    .block-filter-v-center {
+        @include mixin.breakpoint(medium-up) {
+            min-height: rem(37);
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .block-filter-alt-section {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: var(--r-block-filter-gap);
+
+        @include mixin.breakpoint(medium-up) {
+            margin-left: auto;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+    }
+}
