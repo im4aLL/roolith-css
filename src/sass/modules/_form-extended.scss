@@ -1,6 +1,5 @@
 @use '../function' as *;
 @use '../mixin';
-@use 'sass:color';
 
 @mixin form-switch() {
     .form-switch {

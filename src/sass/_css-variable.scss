@@ -311,6 +311,14 @@
         --r-form-range-border-radius: var(--r-global-border-radius);
         --r-form-range-thumb-size: calc(var(--r-form-range-height) * 3);
         --r-form-range-value: 50%;
+
+        // action menu
+        --r-action-menu-list-gap: #{$action-menu-list-gap};
+        --r-action-menu-item-color: var(--r-color-gray-darken-60);
+        --r-action-menu-item-hover-color: var(--r-color-primary);
+        --r-action-menu-item-background: var(--r-color-white);
+        --r-action-menu-item-hover-background: var(--r-color-light);
+        --r-action-menu-item-border-radius: var(--r-global-border-radius);
     }
 
     .theme-dark {
@@ -507,5 +515,11 @@
 
         // range
         --r-form-range-track-color: var(--r-color-light-lighten-10);
+
+        // action menu
+        --r-action-menu-item-color: var(--r-global-font-color);
+        --r-action-menu-item-hover-color: var(--r-color-primary);
+        --r-action-menu-item-background: transparent;
+        --r-action-menu-item-hover-background: var(--r-color-light);
     }
 }

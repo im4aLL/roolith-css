@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Blocks</title>
+        <style>
+            .module {
+                padding: 15px;
+                background-color: #f0f0f0;
+            }
+
+            .module-body {
+                padding: 15px;
+            }
+
+            .theme-dark .module {
+                background-color: #333;
+                color: #ddd;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+        <script type="module" src="../index.js"></script>
+    </head>
+    <body>
+        <div class="module-body">
+            <button class="button button-icon" id="js-toggle-mode">
+                <i class="iconoir-half-moon"></i>
+                Toggle Dark / Light Mode
+            </button>
+        </div>
+
+        <div class="module">block-header</div>
+        <div class="module-body">
+            <!-- block header -->
+            <div class="block-header">
+                <!-- breadcrumb -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="#">Report</a></li>
+                    <li class="breadcrumb-item active">Data</li>
+                </ol>
+                <!-- breadcrumb -->
+
+                <!-- block header container -->
+                <div class="block-header-container">
+                    <div class="block-header-primary">
+                        <h5 class="block-header-title">Block header</h5>
+                        <p class="block-header-subtitle">Commodi veniam non perferendis</p>
+                    </div>
+                    <div class="block-header-secondary">
+                        <!-- action menu -->
+                        <nav class="action-menu">
+                            <ul class="action-menu-list">
+                                <li class="action-menu-item">
+                                    <a href="#" class="action-menu-link">
+                                        <i class="iconoir-settings action-menu-icon"></i>
+                                        <span class="action-menu-label">Settings</span>
+                                    </a>
+                                </li>
+                                <li class="action-menu-item">
+                                    <a href="#" class="action-menu-link">
+                                        <i class="iconoir-plus-square action-menu-icon"></i>
+                                        <span class="action-menu-label">Add new</span>
+                                    </a>
+                                </li>
+                                <li class="action-menu-item action-menu-item-highlight">
+                                    <a href="#" class="action-menu-link">
+                                        <i class="iconoir-trash action-menu-icon"></i>
+                                        <span class="action-menu-label">Delete</span>
+                                    </a>
+                                </li>
+                                <li class="action-menu-item">
+                                    <a href="#" class="action-menu-link">
+                                        <i class="iconoir-download action-menu-icon"></i>
+                                        <span class="action-menu-label">Download Long Text Long Text</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- action menu -->
+                    </div>
+                </div>
+                <!-- block header container -->
+            </div>
+            <!-- block header -->
+        </div>
+
+        <div class="module">block-header</div>
+        <div class="module-body">
+            <!-- block header -->
+            <div class="block-header">
+                <!-- breadcrumb -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="#">Report</a></li>
+                    <li class="breadcrumb-item active">Data</li>
+                </ol>
+                <!-- breadcrumb -->
+
+                <!-- block header container -->
+                <div class="block-header-container">
+                    <div class="block-header-primary">
+                        <h5 class="block-header-title">Block header</h5>
+                        <p class="block-header-subtitle">Commodi veniam non perferendis</p>
+                    </div>
+                    <div class="block-header-secondary">
+                        <!-- action menu -->
+                        <nav class="action-menu action-menu-primary">
+                            <ul class="action-menu-list">
+                                <li class="action-menu-item">
+                                    <a href="#" class="action-menu-link">
+                                        <i class="iconoir-settings action-menu-icon"></i>
+                                        <span class="action-menu-label">Settings</span>
+                                    </a>
+                                </li>
+                                <li class="action-menu-item">
+                                    <a href="#" class="action-menu-link">
+                                        <i class="iconoir-plus-square action-menu-icon"></i>
+                                        <span class="action-menu-label">Add new</span>
+                                    </a>
+                                </li>
+                                <li class="action-menu-item action-menu-item-highlight">
+                                    <a href="#" class="action-menu-link">
+                                        <i class="iconoir-trash action-menu-icon"></i>
+                                        <span class="action-menu-label">Delete</span>
+                                    </a>
+                                </li>
+                                <li class="action-menu-item">
+                                    <a href="#" class="action-menu-link">
+                                        <i class="iconoir-download action-menu-icon"></i>
+                                        <span class="action-menu-label">Download Long Text Long Text</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- action menu -->
+                    </div>
+                </div>
+                <!-- block header container -->
+            </div>
+            <!-- block header -->
+        </div>
+
+        <div class="module">block-filter</div>
+        <div class="module-body">
+            <div class="block-filter"></div>
+        </div>
+
+        <div style="height: 500px"></div>
+
+        <script>
+            /**
+             * Toggle dark mode for the layout.
+             * This function checks for a saved theme preference in localStorage,
+             * applies the corresponding class to the body, and updates the icon
+             * based on the current theme. It also adds an event listener to toggle
+             * the dark mode when the button is clicked.
+             */
+            function toggleDarkMode() {
+                // settings
+                const lightModeIcon = 'iconoir-half-moon';
+                const darkModeIcon = 'iconoir-sun-light';
+                const darkModeClass = 'theme-dark';
+                const storageKey = 'theme';
+
+                // Check for saved theme preference in localStorage
+                const savedTheme = localStorage.getItem(storageKey);
+                if (savedTheme) {
+                    document.body.classList.add(savedTheme);
+                    const icon = document.getElementById('js-toggle-mode').querySelector('i');
+                    icon.className = savedTheme === darkModeClass ? lightModeIcon : darkModeIcon;
+                }
+
+                // Add event listener for dark mode toggle
+                const toggleDarkModeEl = document.getElementById('js-toggle-mode');
+
+                toggleDarkModeEl.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    document.body.classList.toggle(darkModeClass);
+
+                    // Update the icon based on the current theme
+                    const icon = toggleDarkModeEl.querySelector('i');
+                    if (document.body.classList.contains(darkModeClass)) {
+                        icon.className = darkModeIcon;
+                    } else {
+                        icon.className = lightModeIcon;
+                    }
+
+                    // store the theme preference in localStorage
+                    localStorage.setItem(
+                        storageKey,
+                        document.body.classList.contains(darkModeClass) ? darkModeClass : '',
+                    );
+                });
+            }
+
+            // Initialize compact mode toggle on DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', () => {
+                toggleDarkMode();
+            });
+        </script>
+    </body>
+</html>

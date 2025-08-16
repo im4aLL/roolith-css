@@ -1,0 +1,61 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-action-menu() {
+    .action-menu-list {
+        display: flex;
+        gap: var(--r-action-menu-list-gap);
+        flex-direction: column;
+
+        @include mixin.breakpoint(medium-up) {
+            flex-direction: row;
+        }
+    }
+
+    .action-menu-link {
+        display: flex;
+        gap: rem(8);
+        align-items: center;
+        font-size: rem(14);
+        line-height: 1.3;
+        color: var(--r-action-menu-item-color);
+        padding: rem(8) rem(10);
+        border-radius: var(--r-action-menu-item-border-radius);
+        background: var(--r-action-menu-item-background);
+        @include mixin.transition('color, background');
+
+        &:hover {
+            color: var(--r-action-menu-item-hover-color);
+            background: var(--r-action-menu-item-hover-background);
+        }
+
+        .action-menu-primary & {
+            flex-direction: column;
+            max-width: rem(150);
+            text-align: center;
+        }
+    }
+
+    .action-menu-icon {
+        .action-menu-primary & {
+            font-size: rem(18);
+        }
+    }
+
+    .action-menu-item {
+        position: relative;
+    }
+
+    .action-menu-item-highlight {
+        &::before {
+            content: '';
+            position: absolute;
+            top: rem(-2);
+            right: rem(-2);
+            width: rem(5);
+            height: rem(5);
+            border-radius: 50%;
+            background-color: var(--r-color-primary);
+        }
+    }
+}

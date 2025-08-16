@@ -3,6 +3,7 @@
 @use './base';
 @use './typography';
 @use './modules';
+@use './blocks';
 @use './settings';
 
 @mixin roolith-base() {
@@ -58,6 +59,11 @@
     @include modules.roolith-drawer();
     @include modules.roolith-form-extended();
     @include modules.roolith-combo-box();
+    @include modules.roolith-action-menu();
+}
+
+@mixin roolith-blocks() {
+    @include blocks.roolith-block-header();
 }
 
 @mixin roolith-everything() {
