@@ -51,6 +51,7 @@
         &.button-text {
             background: transparent;
             border-color: transparent;
+            font-weight: var(--r-global-font-bold-weight);
 
             &:hover {
                 background-color: var(--r-button-default-hover-background);
@@ -173,8 +174,8 @@
                     color: var(--r-color-#{$name});
 
                     &:hover {
-                        background: color-lighten(var(--r-color-#{$name}), 3%);
-                        color: var(--r-color-white);
+                        background-color: var(--r-button-default-hover-background);
+                        color: var(--r-color-#{$name});
                     }
                 }
 
@@ -217,5 +218,10 @@
 
     .button-icon {
         gap: rem(5);
+    }
+
+    .button-bundle {
+        display: flex;
+        gap: rem(10);
     }
 }

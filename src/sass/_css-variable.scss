@@ -136,7 +136,7 @@
         /* Badge */
         --r-badge-radius: #{$badge-radius};
         --r-badge-background: var(--r-color-white-darken-5);
-        --r-badge-color: var(--r-color-dark);
+        --r-badge-color: var(--r-global-font-color-light);
 
         /* Breadcrumb */
         --r-breadcrumb-spacing: #{$breadcrumb-spacing};

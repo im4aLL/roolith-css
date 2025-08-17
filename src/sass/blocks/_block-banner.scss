@@ -1,0 +1,46 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-banner() {
+    .block-banner {
+        --r-block-banner-text-color: var(--r-color-dark-lighten-40);
+
+        margin-bottom: rem(40);
+    }
+
+    .block-banner-title {
+        padding-bottom: rem(10);
+    }
+
+    .block-banner-text {
+        padding-bottom: rem(30);
+        color: var(--r-block-banner-text-color);
+    }
+
+    .block-banner-steps {
+        display: flex;
+        gap: rem(20);
+        flex-direction: column;
+
+        @include mixin.breakpoint(medium-up) {
+            flex-direction: row;
+        }
+    }
+
+    .block-banner-step {
+        flex: 1;
+    }
+
+    .block-banner-step-title {
+        padding-top: rem(10);
+        padding-bottom: rem(5);
+    }
+
+    .block-banner-step-text {
+        color: var(--r-block-banner-text-color);
+    }
+
+    .block-banner-step-button {
+        margin-top: rem(20);
+    }
+}
