@@ -48,6 +48,16 @@
             background: transparent;
         }
 
+        &.button-text {
+            background: transparent;
+            border-color: transparent;
+
+            &:hover {
+                background-color: var(--r-button-default-hover-background);
+                box-shadow: none;
+            }
+        }
+
         &.disabled {
             @include mixin.opacity(0.6);
             cursor: not-allowed;
@@ -149,6 +159,17 @@
 
                 &.button-outline {
                     background: transparent;
+                    color: var(--r-color-#{$name});
+
+                    &:hover {
+                        background: color-lighten(var(--r-color-#{$name}), 3%);
+                        color: var(--r-color-white);
+                    }
+                }
+
+                &.button-text {
+                    background: transparent;
+                    border-color: transparent;
                     color: var(--r-color-#{$name});
 
                     &:hover {
