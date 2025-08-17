@@ -66,6 +66,7 @@
 @mixin roolith-blocks() {
     @include blocks.roolith-block-header();
     @include blocks.roolith-block-filter();
+    @include blocks.roolith-block-repeater();
 }
 
 @mixin roolith-everything() {

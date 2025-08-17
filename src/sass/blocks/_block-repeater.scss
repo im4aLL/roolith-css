@@ -1,0 +1,54 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-repeater() {
+    .block-repeater {
+        .form-field {
+            padding: 0;
+        }
+    }
+
+    .block-repeater-item {
+        margin-bottom: rem(15);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:first-child {
+            .block-repeater-secondary {
+                display: none;
+            }
+        }
+    }
+
+    .block-repeater-item,
+    .block-repeater-primary {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: row;
+        gap: rem(10);
+    }
+
+    .block-repeater-secondary,
+    .block-repeater-sort {
+        min-height: rem(40);
+        display: flex;
+        align-items: center;
+    }
+
+    .block-repeater-list {
+        padding: rem(5) 0 rem(15) 0;
+    }
+
+    .block-repeater-sort {
+        background: transparent;
+        border: none;
+        cursor: grab;
+        font-size: rem(16);
+
+        &:hover {
+            color: var(--r-color-primary);
+        }
+    }
+}
