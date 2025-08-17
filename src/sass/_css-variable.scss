@@ -330,6 +330,15 @@
         --r-pagination-item-border-radius: var(--r-global-border-radius);
         --r-pagination-item-border-color: var(--r-color-light-darken-15);
         --r-pagination-item-font-size: #{$pagination-item-font-size};
+
+        // block-box
+        --r-block-box-spacing: var(--r-box-spacing);
+        --r-block-box-size: #{$block-box-size};
+        --r-block-box-color: var(--r-global-font-color);
+        --r-block-box-hover-color: var(--r-color-white);
+        --r-block-box-hover-background: var(--r-color-primary);
+        --r-block-box-icon-color: var(--r-color-dark-lighten-30);
+        --r-block-box-hl-color: var(--r-color-dark-lighten-30);
     }
 
     .theme-dark {
@@ -542,5 +551,12 @@
         --r-pagination-item-hover-background: var(--r-color-light);
         --r-pagination-item-border-radius: var(--r-global-border-radius);
         --r-pagination-item-border-color: var(--r-color-light);
+
+        // block-box
+        --r-block-box-color: var(--r-global-font-color);
+        --r-block-box-hover-color: var(--r-color-white);
+        --r-block-box-hover-background: var(--r-color-primary);
+        --r-block-box-icon-color: var(--r-color-dark-lighten-30);
+        --r-block-box-hl-color: var(--r-color-dark-lighten-30);
     }
 }

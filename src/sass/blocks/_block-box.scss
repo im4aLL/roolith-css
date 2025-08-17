@@ -1,0 +1,54 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-box() {
+    .block-boxes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(15);
+    }
+
+    .block-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: rem(10);
+        padding: var(--r-block-box-spacing);
+        width: var(--r-block-box-size);
+        color: var(--r-block-box-color);
+        margin: 0;
+        @include mixin.transition('color, background, border');
+
+        &:hover {
+            color: var(--r-block-box-hover-color);
+            background-color: var(--r-block-box-hover-background);
+            border-color: var(--r-block-box-hover-background);
+
+            .block-box-icon {
+                color: var(--r-block-box-hover-color);
+            }
+
+            .block-box-hl {
+                color: var(--r-block-box-hover-color);
+            }
+        }
+    }
+
+    .block-box-title {
+        grid-column: span 2;
+        font-size: rem(14);
+    }
+
+    .block-box-icon {
+        justify-self: end;
+        font-size: rem(24);
+        color: var(--r-block-box-icon-color);
+        @include mixin.transition('color');
+    }
+
+    .block-box-hl {
+        font-size: rem(32);
+        font-weight: var(--r-global-font-bold-weight);
+        color: var(--r-block-box-hl-color);
+        @include mixin.transition('color');
+    }
+}
