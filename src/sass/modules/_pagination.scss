@@ -1,0 +1,90 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-pagination() {
+    .pagination {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(10);
+        padding: rem(20) 0;
+
+        @include mixin.breakpoint(medium-up) {
+            justify-content: space-between;
+            flex-direction: row;
+        }
+    }
+
+    .pagination-list {
+        display: flex;
+        align-items: center;
+        gap: rem(5);
+        flex-wrap: wrap;
+    }
+
+    .pagination-item {
+        &.is-number {
+            display: none;
+
+            @include mixin.breakpoint(medium-up) {
+                display: block;
+            }
+        }
+    }
+
+    .pagination-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(5);
+        font-size: var(--r-pagination-item-font-size);
+        line-height: 1.3;
+        color: var(--r-pagination-item-color);
+        padding: rem(6) rem(10);
+        border-radius: var(--r-pagination-item-border-radius);
+        background: var(--r-pagination-item-background);
+        border: rem(1) solid var(--r-pagination-item-border-color);
+        height: rem(32);
+        @include mixin.transition('color, background');
+
+        &:hover {
+            color: var(--r-pagination-item-hover-color);
+            background: var(--r-pagination-item-hover-background);
+        }
+
+        .pagination-item-active & {
+            background: var(--r-pagination-item-active-background-color);
+            border-color: var(--r-pagination-item-active-background-color);
+            color: var(--r-color-white);
+        }
+    }
+
+    .pagination-meta {
+        display: none;
+        align-items: center;
+        gap: rem(10);
+
+        @include mixin.breakpoint(medium-up) {
+            display: flex;
+        }
+    }
+
+    .pagination-meta-selection {
+        .form-field {
+            display: flex;
+            align-items: center;
+            gap: rem(10);
+            padding: 0;
+        }
+
+        .form-label {
+            white-space: nowrap;
+            padding: 0;
+        }
+    }
+
+    .pagination-meta-label {
+        font-size: var(--r-pagination-item-font-size);
+        line-height: 1.3;
+    }
+}

@@ -43,4 +43,9 @@
     .is-visible {
         display: block !important;
     }
+
+    .is-disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
 }
