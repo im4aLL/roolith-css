@@ -339,6 +339,20 @@
         .form-field.small & {
             top: rem(2);
         }
+
+        &.is-indeterminate {
+            background-color: var(--r-color-light);
+            border-color: var(--r-color-primary);
+
+            &:after {
+                content: '-';
+                position: absolute;
+                left: rem(3);
+                top: rem(-5);
+                color: var(--r-color-primary);
+                font-size: rem(18);
+            }
+        }
     }
 
     .form-select {

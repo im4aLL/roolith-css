@@ -122,6 +122,7 @@
         --r-table-primary-header-color: var(--r-color-light-darken-5);
         --r-table-row-striped-color: var(--r-color-light-darken-2);
         --r-table-row-striped-hover-color: var(--r-color-light-darken-3);
+        --r-table-row-highlight-color: color-mix(in srgb, var(--r-color-primary), white 95%);
 
         /* Img */
         --r-img-radius: #{$img-radius};
@@ -391,6 +392,7 @@
         --r-table-primary-header-color: var(--r-color-light-darken-5);
         --r-table-row-striped-color: var(--r-color-light-darken-2);
         --r-table-row-striped-hover-color: var(--r-color-info-lighten-40);
+        --r-table-row-highlight-color: color-mix(in srgb, var(--r-color-primary), black 80%);
 
         /* Img */
         --r-img-caption-color: var(--r-color-dark-lighten-40);

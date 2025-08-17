@@ -11,20 +11,52 @@
             font-weight: var(--r-table-header-font-weight);
         }
 
-        th, td {
+        th,
+        td {
             padding: var(--r-table-spacing);
+            position: relative;
+            min-width: rem(30);
 
             &:first-child {
                 padding-left: 0;
             }
+
+            .form-check-input {
+                margin: rem(7) rem(12);
+            }
         }
 
-        thead tr {
-            border-bottom: rem(1) solid var(--r-table-header-border-color);
+        thead {
+            tr {
+                border-bottom: rem(1) solid var(--r-table-header-border-color);
+            }
         }
 
         tbody tr {
             border-bottom: rem(1) solid var(--r-table-border-color);
+        }
+
+        .is-checked {
+            background-color: var(--r-table-row-hover-color);
+        }
+
+        .is-highlight {
+            background-color: var(--r-table-row-highlight-color);
+        }
+
+        .table-thead-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: inherit;
+            line-height: inherit;
+            font-weight: inherit;
+            color: inherit;
+            width: 100%;
         }
     }
 
@@ -33,7 +65,8 @@
             background-color: var(--r-table-primary-header-color);
         }
 
-        th, td {
+        th,
+        td {
             &:first-child {
                 padding-left: var(--r-table-spacing);
             }
@@ -66,7 +99,8 @@
         border-top: rem(1) solid var(--r-table-border-color);
         border-left: rem(1) solid var(--r-table-border-color);
 
-        th, td {
+        th,
+        td {
             border-bottom: rem(1) solid var(--r-table-border-color);
             border-right: rem(1) solid var(--r-table-border-color);
 
