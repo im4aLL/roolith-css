@@ -61,6 +61,7 @@
     @include modules.roolith-combo-box();
     @include modules.roolith-action-menu();
     @include modules.roolith-pagination();
+    @include modules.roolith-spacer();
 }
 
 @mixin roolith-blocks() {

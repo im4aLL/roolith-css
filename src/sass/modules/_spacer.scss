@@ -1,0 +1,11 @@
+@use '../function' as *;
+@use '../settings';
+
+@mixin roolith-spacer() {
+    @each $size in settings.$spacer {
+        .spacer-#{'' + $size} {
+            height: rem($size);
+            clear: both;
+        }
+    }
+}
