@@ -70,6 +70,7 @@
     @include blocks.roolith-block-repeater();
     @include blocks.roolith-block-box();
     @include blocks.roolith-block-banner();
+    @include blocks.roolith-block-login();
 }
 
 @mixin roolith-everything() {

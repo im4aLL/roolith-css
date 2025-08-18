@@ -1,0 +1,25 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-login() {
+    .block-login {
+        padding: rem(20) 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .block-login-container {
+        width: rem(400);
+        margin: 0 auto;
+    }
+
+    .block-login-header {
+        padding-bottom: rem(30);
+    }
+
+    .block-login-footer {
+        padding-top: rem(10);
+    }
+}

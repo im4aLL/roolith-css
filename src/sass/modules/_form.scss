@@ -456,5 +456,40 @@
         }
     }
 
+    .form-field-password {
+        position: relative;
+
+        .form-input {
+            padding-right: rem(40);
+        }
+    }
+
+    .form-password-toggle {
+        position: absolute;
+        right: rem(12);
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        border: none;
+        color: var(--r-form-input-color);
+        font-size: rem(18);
+        line-height: rem(18);
+        width: rem(18);
+        height: rem(18);
+        margin-top: rem(2);
+
+        .small & {
+            right: rem(8);
+            margin-top: 0;
+        }
+
+        .large & {
+            margin-top: rem(4);
+        }
+    }
+
     @include form-search();
 }
