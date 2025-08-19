@@ -339,6 +339,13 @@
         --r-block-box-hover-background: var(--r-color-primary);
         --r-block-box-icon-color: var(--r-color-dark-lighten-30);
         --r-block-box-hl-color: var(--r-color-dark-lighten-30);
+
+        // block form
+        --r-block-form-group-border-color: var(--r-color-light-darken-15);
+        --r-block-form-group-border-radius: calc(var(--r-global-border-radius) * 2);
+        --r-block-form-group-padding: #{$block-form-group-padding};
+        --r-block-form-border-color: var(--r-block-form-group-border-color);
+        --r-block-form-text-color: var(--r-color-dark-lighten-30);
     }
 
     .theme-dark {
@@ -469,7 +476,7 @@
         --r-tag-text-color: var(--r-color-dark-lighten-50);
 
         /* Comment */
-        --r-comment-border: rgba(var(--r-color-dark), 0.1);
+        --r-comment-border: var(--r-color-dark-lighten-10);
         --r-comment-highlight-color: color-mix(in srgb, var(--r-theme-color), white 10%);
 
         /* Loader */
@@ -558,5 +565,10 @@
         --r-block-box-hover-background: var(--r-color-primary);
         --r-block-box-icon-color: var(--r-color-dark-lighten-30);
         --r-block-box-hl-color: var(--r-color-dark-lighten-30);
+
+        // block form
+        --r-block-form-group-border-color: var(--r-color-dark);
+        --r-block-form-border-color: var(--r-block-form-group-border-color);
+        --r-block-form-text-color: var(--r-color-dark-lighten-30);
     }
 }

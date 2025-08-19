@@ -71,6 +71,8 @@
     @include blocks.roolith-block-box();
     @include blocks.roolith-block-banner();
     @include blocks.roolith-block-login();
+    @include blocks.roolith-block-form();
+    @include blocks.roolith-block-grid();
 }
 
 @mixin roolith-everything() {

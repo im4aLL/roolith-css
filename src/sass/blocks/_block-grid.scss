@@ -1,0 +1,14 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-grid() {
+    .block-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 1fr);
+
+        @include mixin.breakpoint(medium-up) {
+            grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+            gap: rem(20);
+        }
+    }
+}

@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 @use 'sass:map';
 @use '../settings';
 @use '../mixin';
@@ -54,7 +54,8 @@ $grid-large-gutter: math.div(map.get(settings.$grid-gutter, 'large'), 2) !defaul
         }
     }
 
-    [class*="large-"], [class*="medium-"] {
+    [class*='large-'],
+    [class*='medium-'] {
         width: 100%;
     }
 
@@ -69,7 +70,7 @@ $grid-large-gutter: math.div(map.get(settings.$grid-gutter, 'large'), 2) !defaul
 
         .small-pull-#{$i} {
             position: relative;
-            left: - math.percentage(math.div($i, settings.$grid-column-count));
+            left: math.percentage(math.div($i, settings.$grid-column-count)) * -1;
         }
 
         .small-push-#{$i} {
@@ -90,7 +91,7 @@ $grid-large-gutter: math.div(map.get(settings.$grid-gutter, 'large'), 2) !defaul
 
             .medium-pull-#{$i} {
                 position: relative;
-                left: - math.percentage(math.div($i, settings.$grid-column-count));
+                left: math.percentage(math.div($i, settings.$grid-column-count)) * -1;
             }
 
             .medium-push-#{$i} {
@@ -112,7 +113,7 @@ $grid-large-gutter: math.div(map.get(settings.$grid-gutter, 'large'), 2) !defaul
 
             .large-pull-#{$i} {
                 position: relative;
-                left: - math.percentage(math.div($i, settings.$grid-column-count));
+                left: math.percentage(math.div($i, settings.$grid-column-count)) * -1;
             }
 
             .large-push-#{$i} {
@@ -126,17 +127,17 @@ $grid-large-gutter: math.div(map.get(settings.$grid-gutter, 'large'), 2) !defaul
     .row .row {
         padding-left: 0;
         padding-right: 0;
-        margin-left: - $grid-small-gutter;
-        margin-right: - $grid-small-gutter;
+        margin-left: -$grid-small-gutter;
+        margin-right: -$grid-small-gutter;
 
         @include mixin.breakpoint(medium-up) {
-            margin-left: - $grid-medium-gutter;
-            margin-right: - $grid-medium-gutter;
+            margin-left: -$grid-medium-gutter;
+            margin-right: -$grid-medium-gutter;
         }
 
         @include mixin.breakpoint(large-up) {
-            margin-left: - $grid-large-gutter;
-            margin-right: - $grid-large-gutter;
+            margin-left: -$grid-large-gutter;
+            margin-right: -$grid-large-gutter;
         }
     }
 

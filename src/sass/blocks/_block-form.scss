@@ -1,0 +1,37 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-form() {
+    .block-form-group {
+        border: rem(1) solid var(--r-block-form-group-border-color);
+        border-radius: var(--r-block-form-group-border-radius);
+        padding: var(--r-block-form-group-padding);
+    }
+
+    .block-form-title {
+        padding-bottom: rem(7);
+    }
+
+    .block-form-text {
+        color: var(--r-block-form-text-color);
+    }
+
+    .block-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--r-block-form-group-padding);
+        border-bottom: rem(1) solid var(--r-block-form-border-color);
+        margin-bottom: var(--r-block-form-group-padding);
+        padding-bottom: var(--r-block-form-group-padding);
+
+        &:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        @include mixin.breakpoint(medium-up) {
+            grid-template-columns: 2fr 3fr;
+        }
+    }
+}
