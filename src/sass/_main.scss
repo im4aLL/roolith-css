@@ -73,6 +73,8 @@
     @include blocks.roolith-block-auth();
     @include blocks.roolith-block-form();
     @include blocks.roolith-block-grid();
+    @include blocks.roolith-block-list();
+    @include blocks.roolith-block-enable();
 }
 
 @mixin roolith-everything() {

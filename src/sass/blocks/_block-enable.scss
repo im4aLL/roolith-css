@@ -1,0 +1,15 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-enable() {
+    .block-enable {
+        .box {
+            padding: var(--r-block-enable-box-spacing);
+        }
+
+        .box-footer {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

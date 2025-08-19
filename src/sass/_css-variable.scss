@@ -346,6 +346,12 @@
         --r-block-form-group-padding: #{$block-form-group-padding};
         --r-block-form-border-color: var(--r-block-form-group-border-color);
         --r-block-form-text-color: var(--r-color-dark-lighten-30);
+
+        // block list
+        --r-block-list-item-border-color: var(--r-color-light-darken-5);
+
+        // block enable
+        --r-block-enable-box-spacing: #{$block-enable-box-spacing};
     }
 
     .theme-dark {
@@ -570,5 +576,8 @@
         --r-block-form-group-border-color: var(--r-color-dark);
         --r-block-form-border-color: var(--r-block-form-group-border-color);
         --r-block-form-text-color: var(--r-color-dark-lighten-30);
+
+        // block list
+        --r-block-list-item-border-color: var(--r-color-light);
     }
 }

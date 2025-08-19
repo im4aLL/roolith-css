@@ -1,0 +1,25 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-list() {
+    .block-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .block-list-item {
+        padding: rem(10) 0;
+
+        .block-list-bordered & {
+            border-bottom: rem(1) solid var(--r-block-list-item-border-color);
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+    .block-list-label {
+        font-size: rem(14);
+    }
+}
