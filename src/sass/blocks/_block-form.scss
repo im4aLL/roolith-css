@@ -6,6 +6,8 @@
         border: rem(1) solid var(--r-block-form-group-border-color);
         border-radius: var(--r-block-form-group-border-radius);
         padding: var(--r-block-form-group-padding);
+        display: flex;
+        flex-direction: column;
     }
 
     .block-form-title {
@@ -33,5 +35,15 @@
         @include mixin.breakpoint(medium-up) {
             grid-template-columns: 2fr 3fr;
         }
+    }
+
+    .block-form-action {
+        align-self: flex-end;
+    }
+
+    .block-form-group-alt {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
