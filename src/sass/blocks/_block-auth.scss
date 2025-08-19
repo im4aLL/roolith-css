@@ -1,8 +1,8 @@
 @use '../function' as *;
 @use '../mixin';
 
-@mixin roolith-block-login() {
-    .block-login {
+@mixin roolith-block-auth() {
+    .block-auth {
         padding: rem(20) 0;
         display: flex;
         align-items: center;
@@ -10,16 +10,16 @@
         min-height: 100vh;
     }
 
-    .block-login-container {
+    .block-auth-container {
         width: rem(400);
         margin: 0 auto;
     }
 
-    .block-login-header {
+    .block-auth-header {
         padding-bottom: rem(30);
     }
 
-    .block-login-footer {
+    .block-auth-footer {
         padding-top: rem(10);
     }
 }
