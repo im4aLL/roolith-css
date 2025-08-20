@@ -14,6 +14,13 @@
             --r-quick-menu-font-size: var(--r-quick-menu-font-size-small);
             --r-quick-menu-spacing: var(--r-quick-menu-spacing-small);
         }
+
+        &.x-small {
+            --r-quick-menu-font-size: var(--r-quick-menu-font-size-x-small);
+            --r-quick-menu-spacing: var(--r-quick-menu-spacing-x-small);
+            background-color: transparent;
+            padding: 0;
+        }
     }
 
     .quick-menu-link {
@@ -25,6 +32,10 @@
         &:hover,
         .active & {
             background: var(--r-quick-menu-link-hover-background);
+        }
+
+        .x-small .active & {
+            background: var(--r-quick-menu-background);
         }
     }
 }
