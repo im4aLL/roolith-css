@@ -1,0 +1,18 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-analytics() {
+    .block-analytics-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .block-analytics-body {
+        padding: rem(10) 0;
+    }
+
+    .block-analytics-footer {
+        padding-top: rem(10);
+    }
+}

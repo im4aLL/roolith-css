@@ -79,6 +79,7 @@
     @include blocks.roolith-block-enable();
     @include blocks.roolith-block-stat();
     @include blocks.roolith-block-stat-table();
+    @include blocks.roolith-block-analytics();
 }
 
 @mixin roolith-everything() {
