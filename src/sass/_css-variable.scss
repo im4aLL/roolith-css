@@ -358,12 +358,21 @@
         --r-indicator-normal-color: var(--r-color-secondary);
         --r-indicator-upward-color: var(--r-color-success);
         --r-indicator-downward-color: var(--r-color-danger);
+        --r-indicator-online-color: var(--r-color-success);
 
         // block stat
         --r-block-stat-item-gap: #{$block-stat-item-gap};
         --r-block-stat-item-background-color: transparent;
         --r-block-stat-item-hover-background-color: var(--r-color-light);
         --r-block-stat-item-border-radius: var(--r-global-border-radius);
+
+        // quick menu
+        --r-quick-menu-background: var(--r-color-light);
+        --r-quick-menu-link-hover-background: var(--r-color-white);
+        --r-quick-menu-spacing: #{$quick-menu-spacing};
+        --r-quick-menu-font-size: #{$quick-menu-font-size};
+        --r-quick-menu-spacing-small: #{$quick-menu-spacing-small};
+        --r-quick-menu-font-size-small: #{$quick-menu-font-size-small};
     }
 
     .theme-dark {
@@ -594,5 +603,9 @@
 
         // block stat
         --r-block-stat-item-hover-background-color: var(--r-color-light);
+
+        // quick menu
+        --r-quick-menu-background: var(--r-color-light);
+        --r-quick-menu-link-hover-background: var(--r-color-light-darken-30);
     }
 }

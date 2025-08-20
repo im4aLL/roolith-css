@@ -63,6 +63,7 @@
     @include modules.roolith-pagination();
     @include modules.roolith-spacer();
     @include modules.roolith-indicator();
+    @include modules.roolith-quick-menu();
 }
 
 @mixin roolith-blocks() {

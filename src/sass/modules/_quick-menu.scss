@@ -1,0 +1,30 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-quick-menu() {
+    .quick-menu {
+        display: inline-flex;
+        border-radius: var(--r-global-border-radius);
+        gap: calc(var(--r-quick-menu-spacing) / 2);
+        font-size: var(--r-quick-menu-font-size);
+        background-color: var(--r-quick-menu-background);
+        padding: calc(var(--r-quick-menu-spacing) / 2);
+
+        &.small {
+            --r-quick-menu-font-size: var(--r-quick-menu-font-size-small);
+            --r-quick-menu-spacing: var(--r-quick-menu-spacing-small);
+        }
+    }
+
+    .quick-menu-link {
+        display: inline-flex;
+        padding: var(--r-quick-menu-spacing) calc(var(--r-quick-menu-spacing) * 1.5);
+        border-radius: var(--r-global-border-radius);
+        @include mixin.transition('background, color');
+
+        &:hover,
+        .active & {
+            background: var(--r-quick-menu-link-hover-background);
+        }
+    }
+}
