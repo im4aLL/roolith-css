@@ -1,0 +1,49 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-indicator() {
+    .indicator {
+        position: relative;
+        padding-left: calc(var(--r-indicator-icon-size) + #{rem(3)});
+        font-size: rem(14);
+        color: var(--r-indicator-normal-color);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: var(--r-indicator-icon-size);
+            height: var(--r-indicator-icon-size);
+            mask-repeat: no-repeat;
+            mask-position: center center;
+            mask-size: contain;
+            mask-image: inline-svg(
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 14c2-4 6 4 9 0s7-4 9 0"/></svg>'
+            );
+            background-color: var(--r-indicator-normal-color);
+        }
+
+        &.is-upward {
+            color: var(--r-indicator-upward-color);
+
+            &::before {
+                mask-image: inline-svg(
+                    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" color="#000" viewBox="0 0 24 24"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M6 19 19 6m0 0v12.48M19 6H6.52"/></svg>'
+                );
+                background-color: var(--r-indicator-upward-color);
+            }
+        }
+
+        &.is-downward {
+            color: var(--r-indicator-downward-color);
+
+            &::before {
+                mask-image: inline-svg(
+                    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" color="#000" viewBox="0 0 24 24"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="m6 6 13 13m0 0V6.52M19 19H6.52"/></svg>'
+                );
+                background-color: var(--r-indicator-downward-color);
+            }
+        }
+    }
+}

@@ -62,6 +62,7 @@
     @include modules.roolith-action-menu();
     @include modules.roolith-pagination();
     @include modules.roolith-spacer();
+    @include modules.roolith-indicator();
 }
 
 @mixin roolith-blocks() {
@@ -75,6 +76,7 @@
     @include blocks.roolith-block-grid();
     @include blocks.roolith-block-list();
     @include blocks.roolith-block-enable();
+    @include blocks.roolith-block-stat();
 }
 
 @mixin roolith-everything() {

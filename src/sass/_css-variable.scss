@@ -352,6 +352,18 @@
 
         // block enable
         --r-block-enable-box-spacing: #{$block-enable-box-spacing};
+
+        // indicator
+        --r-indicator-icon-size: #{$indicator-icon-size};
+        --r-indicator-normal-color: var(--r-color-secondary);
+        --r-indicator-upward-color: var(--r-color-success);
+        --r-indicator-downward-color: var(--r-color-danger);
+
+        // block stat
+        --r-block-stat-item-gap: #{$block-stat-item-gap};
+        --r-block-stat-item-background-color: transparent;
+        --r-block-stat-item-hover-background-color: var(--r-color-light);
+        --r-block-stat-item-border-radius: var(--r-global-border-radius);
     }
 
     .theme-dark {
@@ -579,5 +591,8 @@
 
         // block list
         --r-block-list-item-border-color: var(--r-color-light);
+
+        // block stat
+        --r-block-stat-item-hover-background-color: var(--r-color-light);
     }
 }

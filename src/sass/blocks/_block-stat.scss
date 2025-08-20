@@ -1,0 +1,45 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-block-stat() {
+    .block-stat {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--r-block-stat-item-gap) / 2);
+
+        @include mixin.breakpoint(medium-up) {
+            flex-direction: row;
+        }
+    }
+
+    .block-stat-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: calc(var(--r-block-stat-item-gap) / 2);
+        background-color: var(--r-block-stat-item-background-color);
+        padding: calc(var(--r-block-stat-item-gap) / 2);
+        border-radius: var(--r-block-stat-item-border-radius);
+        @include mixin.transition('background-color');
+
+        &:hover,
+        &.active {
+            background-color: var(--r-block-stat-item-hover-background-color);
+            cursor: pointer;
+        }
+    }
+
+    .block-stat-label {
+        grid-column: span 2;
+        font-size: rem(14);
+    }
+
+    .block-stat-value {
+        font-weight: var(--r-global-font-bold-weight);
+        font-size: rem(22);
+        letter-spacing: -0.02em;
+    }
+
+    .block-stat-indicator {
+        align-self: end;
+    }
+}
