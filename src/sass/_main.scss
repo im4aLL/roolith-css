@@ -83,4 +83,6 @@
 @mixin roolith-everything() {
     @include roolith-base();
     @include roolith-modules();
+    @include roolith-extended-modules();
+    @include roolith-blocks();
 }
