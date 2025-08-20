@@ -253,9 +253,7 @@
         --r-layout-header-toggle-color: var(--r-color-dark);
         --r-layout-header-nav-color: var(--r-color-dark);
         --r-layout-header-search-width: #{$layout-header-search-width};
-
         --r-layout-compact-sidebar-width: #{$layout-sidebar-width-compact};
-
         --r-layout-secondary-background-color: var(--r-color-light);
 
         // sidebar-nav
@@ -315,7 +313,7 @@
 
         // action menu
         --r-action-menu-list-gap: #{$action-menu-list-gap};
-        --r-action-menu-item-color: var(--r-color-gray-darken-60);
+        --r-action-menu-item-color: var(--r-global-font-color-light);
         --r-action-menu-item-hover-color: var(--r-color-primary);
         --r-action-menu-item-background: var(--r-color-white);
         --r-action-menu-item-hover-background: var(--r-color-light);
@@ -375,6 +373,10 @@
         --r-quick-menu-font-size-small: #{$quick-menu-font-size-small};
         --r-quick-menu-spacing-x-small: #{$quick-menu-spacing-x-small};
         --r-quick-menu-font-size-x-small: #{$quick-menu-font-size-x-small};
+
+        // block stat table
+        --r-block-stat-table-header-color: var(--r-color-dark-lighten-50);
+        --r-block-stat-table-indicator-color: var(--r-color-light);
     }
 
     .theme-dark {
@@ -609,5 +611,9 @@
         // quick menu
         --r-quick-menu-background: var(--r-color-light);
         --r-quick-menu-link-hover-background: var(--r-color-light-darken-30);
+
+        // block stat table
+        --r-block-stat-table-header-color: var(--r-global-font-color-light);
+        --r-block-stat-table-indicator-color: var(--r-color-light);
     }
 }

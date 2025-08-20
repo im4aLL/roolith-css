@@ -1,0 +1,72 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin row-style() {
+    display: flex;
+    flex-direction: column;
+    gap: rem(5);
+}
+
+@mixin column-style() {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+@mixin normal-cell-style() {
+    padding: rem(6);
+    text-align: right;
+
+    &.is-left {
+        text-align: left;
+    }
+
+    &.is-primary {
+        grid-column: span 3;
+    }
+
+    &.is-secondary {
+        grid-column: span 2;
+    }
+}
+
+@mixin roolith-block-stat-table() {
+    .block-stat-table {
+        @include row-style();
+        font-size: rem(14);
+    }
+
+    .block-stat-table-head {
+        @include column-style();
+        font-weight: var(--r-global-font-bold-weight);
+        font-size: rem(12);
+        text-transform: uppercase;
+        color: var(--r-block-stat-table-header-color);
+    }
+
+    .block-stat-table-header {
+        @include normal-cell-style();
+    }
+
+    .block-stat-table-body {
+        @include row-style();
+    }
+
+    .block-stat-table-row {
+        @include column-style();
+    }
+
+    .block-stat-table-cell {
+        @include normal-cell-style();
+        position: relative;
+    }
+
+    .block-stat-table-indicator {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: var(--r-block-stat-table-indicator-color);
+        border-radius: var(--r-global-border-radius);
+    }
+}
