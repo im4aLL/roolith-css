@@ -1,45 +1,7 @@
 @use '../function' as *;
 @use '../mixin';
 
-$combo-box-icon-size: rem(5) !default;
-$combo-box-icon-size-small: rem(4) !default;
-$combo-box-icon-size-large: rem(7) !default;
-$combo-box-width: rem(220) !default;
-$combo-box-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
-$combo-box-show-animation-duration: 50ms !default;
-$combo-box-item-y-padding: rem(7) !default;
-$combo-box-item-x-padding: rem(15) !default;
-
 @mixin roolith-combo-box() {
-    :root {
-        --r-combo-box-icon-size: #{$combo-box-icon-size};
-        --r-combo-box-width: #{$combo-box-width};
-        --r-combo-box-background: var(--r-color-white-darken-2);
-        --r-combo-box-border-color: var(--r-color-white-darken-15);
-        --r-combo-box-shadow: #{$combo-box-shadow};
-        --r-combo-box-item-color: var(--r-color-dark-lighten-20);
-        --r-combo-box-item-hover-background-color: var(--r-color-white-darken-5);
-        --r-combo-box-item-hover-color: var(--r-color-dark);
-        --r-combo-box-item-sep: var(--r-color-white-darken-8);
-        --r-combo-box-border-radius: var(--r-global-border-radius);
-        --r-combo-box-secondary-color: var(--r-color-dark-lighten-50);
-        --r-combo-box-item-header-color: var(--r-color-dark-lighten-60);
-        --r-combo-box-show-animation-duration: #{$combo-box-show-animation-duration};
-        --r-combo-box-item-x-padding: #{$combo-box-item-x-padding};
-        --r-combo-box-item-y-padding: #{$combo-box-item-y-padding};
-    }
-
-    .theme-dark {
-        --r-combo-box-background: var(--r-color-dark-lighten-2);
-        --r-combo-box-border-color: var(--r-color-dark-lighten-15);
-        --r-combo-box-item-color: var(--r-color-white-darken-20);
-        --r-combo-box-item-hover-background-color: var(--r-color-dark-lighten-5);
-        --r-combo-box-item-hover-color: var(--r-color-white);
-        --r-combo-box-item-sep: var(--r-color-dark-lighten-8);
-        --r-combo-box-secondary-color: var(--r-color-white-darken-50);
-        --r-combo-box-item-header-color: var(--r-color-white-darken-60);
-    }
-
     .combo-box {
         display: inline-block;
         position: relative;
