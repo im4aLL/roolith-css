@@ -1,10 +1,11 @@
 {
     "name": "roolith-css",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "description": "A simple responsive CSS boilerplate",
     "main": "./src/sass/roolith.scss",
     "scripts": {
         "dev": "vite",
+        "dev:host": "vite --host",
         "build": "vite build",
         "preview": "vite preview"
     },

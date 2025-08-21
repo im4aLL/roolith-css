@@ -391,16 +391,25 @@
         }
     }
 
-    .form-radio-item {
-        font-size: rem(14);
-        position: relative;
-        padding-left: rem(18);
-        margin-right: rem(10);
+    .form-radio-items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: rem(10);
 
         .vertical & {
-            display: block;
-            margin-right: 0;
+            flex-direction: column;
+            gap: rem(5);
         }
+    }
+
+    .form-radio-item {
+        font-size: rem(14);
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: rem(5);
+        cursor: pointer;
 
         .form-field.small & {
             font-size: rem(12);
@@ -409,33 +418,19 @@
         .form-field.large & {
             font-size: rem(16);
         }
-    }
 
-    .vertical .form-radio-item {
-        margin-top: 0;
+        &.is-multiline {
+            align-items: flex-start;
 
-        & + .form-radio-item {
-            margin-top: rem(10);
+            .form-radio {
+                position: relative;
+                top: rem(3);
+            }
         }
     }
 
     .form-radio {
         margin: 0;
-        position: absolute;
-        left: 0;
-        top: rem(2);
-
-        .vertical & {
-            top: 0;
-        }
-
-        .form-field.small & {
-            top: 0;
-        }
-    }
-
-    .form-radio-items {
-        padding: rem(5) 0;
     }
 
     [readonly] {

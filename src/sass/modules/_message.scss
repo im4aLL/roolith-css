@@ -36,6 +36,7 @@
         color: var(--r-message-close-color);
         background: transparent;
         border: none;
+        font-size: rem(18);
     }
 
     @each $name, $value in settings.$colors {
