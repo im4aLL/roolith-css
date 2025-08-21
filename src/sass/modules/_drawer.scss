@@ -13,7 +13,7 @@
         background: var(--r-drawer-background);
         border-radius: var(--r-drawer-border-radius);
         box-shadow: var(--r-modal-content-shadow);
-        padding: var(--r-drawer-content-spacing);
+        padding: calc(var(--r-drawer-content-spacing) * 1.5);
         @include mixin.nice-scroll();
         @extend .animation, .fadeInRight;
     }
