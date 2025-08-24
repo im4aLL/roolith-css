@@ -90,6 +90,10 @@
         align-items: center;
         justify-content: space-between;
         gap: rem(20);
+
+        .form .form-field {
+            padding-bottom: 0;
+        }
     }
 
     .layout-header-nav {
