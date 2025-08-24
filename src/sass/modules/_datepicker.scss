@@ -1,0 +1,59 @@
+@use '../function' as *;
+@use '../mixin';
+
+@mixin roolith-datepicker() {
+    // following are css overrides for https://www.npmjs.com/package/js-datepicker
+    .form-datepicker-js {
+        .qs-datepicker-container {
+            font-family: var(--r-global-base-font);
+            font-size: rem(12);
+            color: var(--r-form-datepicker-color);
+            width: rem(260);
+            border: rem(1) solid var(--r-form-datepicker-border-color);
+            border-radius: var(--r-form-datepicker-border-radius);
+            margin-top: var(--r-form-datepicker-margin-top);
+            background-color: var(--r-form-datepicker-background-color);
+        }
+
+        .qs-current,
+        .qs-day,
+        .qs-month-year {
+            font-weight: var(--r-form-datepicker-strong-weight);
+        }
+
+        .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {
+            background-color: var(--r-form-datepicker-accent-color);
+            color: var(--r-form-datepicker-accent-text-color);
+            text-decoration: none;
+        }
+
+        .qs-squares {
+            row-gap: var(--r-form-datepicker-row-gap);
+        }
+
+        .qs-square {
+            height: var(--r-form-datepicker-tile-height);
+        }
+
+        .qs-controls {
+            background-color: var(--r-form-datepicker-controls-background-color);
+        }
+
+        .qs-arrow {
+            width: rem(25);
+            height: rem(30);
+
+            &:hover {
+                background-color: var(--r-form-datepicker-controls-hover-color);
+            }
+        }
+
+        .qs-arrow:hover.qs-right:after {
+            border-left-color: var(--r-form-datepicker-controls-hover-text-color);
+        }
+
+        .qs-arrow:hover.qs-left:after {
+            border-right-color: var(--r-form-datepicker-controls-hover-text-color);
+        }
+    }
+}

@@ -410,9 +410,15 @@
                 <input type="date" name="datepicker" class="form-input" />
             </div>
 
+            <br />
+            <br />
+
             <div class="form-field small form-datepicker">
                 <input type="date" name="datepicker" class="form-input" />
             </div>
+
+            <br />
+            <br />
 
             <div class="form-field large form-datepicker">
                 <input type="date" name="datepicker" class="form-input" />
@@ -425,16 +431,33 @@
                 <input type="datetime-local" name="datepicker" class="form-input" />
             </div>
 
+            <br />
+            <br />
+
             <div class="form-field form-datepicker">
                 <input type="month" class="form-input" />
             </div>
+
+            <br />
+            <br />
 
             <div class="form-field form-datepicker">
                 <input type="week" class="form-input" />
             </div>
 
+            <br />
+            <br />
+
             <div class="form-field form-timepicker">
                 <input type="time" class="form-input" min="09:00" max="17:00" step="900" />
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-field form-datepicker form-datepicker-js">
+                <label for="datepicker-js" class="form-label">JavaScript solution</label>
+                <input type="text" class="form-input" id="datepicker-js" />
             </div>
         </div>
 
@@ -599,6 +622,15 @@
                 drawer();
                 rangeInput();
                 comboxBox();
+            });
+        </script>
+
+        <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css" />
+        <script src="https://unpkg.com/js-datepicker"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // https://www.npmjs.com/package/js-datepicker
+                datepicker('.form-datepicker-js .form-input');
             });
         </script>
     </body>

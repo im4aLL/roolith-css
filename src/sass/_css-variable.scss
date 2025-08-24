@@ -394,6 +394,27 @@
         --r-combo-box-show-animation-duration: #{$combo-box-show-animation-duration};
         --r-combo-box-item-x-padding: #{$combo-box-item-x-padding};
         --r-combo-box-item-y-padding: #{$combo-box-item-y-padding};
+
+        // block inline
+        --r-block-inline-gap: #{$block-inline-gap};
+
+        // block banner
+        --r-block-banner-text-color: var(--r-color-dark-lighten-40);
+
+        // datepicker
+        --r-form-datepicker-background-color: var(--r-form-input-background-color);
+        --r-form-datepicker-color: var(--r-global-font-color);
+        --r-form-datepicker-border-color: var(--r-form-input-border-color);
+        --r-form-datepicker-border-radius: var(--r-global-border-radius);
+        --r-form-datepicker-margin-top: #{$form-datepicker-margin-top};
+        --r-form-datepicker-strong-weight: var(--r-global-font-weight);
+        --r-form-datepicker-accent-color: var(--r-color-primary);
+        --r-form-datepicker-accent-text-color: var(--r-color-white);
+        --r-form-datepicker-row-gap: #{$form-datepicker-row-gap};
+        --r-form-datepicker-tile-height: #{$form-datepicker-tile-height};
+        --r-form-datepicker-controls-background-color: var(--r-form-input-background-color);
+        --r-form-datepicker-controls-hover-color: var(--r-color-light-darken-5);
+        --r-form-datepicker-controls-hover-text-color: var(--r-global-font-color);
     }
 
     .theme-dark {
@@ -463,7 +484,7 @@
         --r-table-header-border-color: var(--r-color-light-darken-10);
         --r-table-border-color: var(--r-color-light-darken-5);
         --r-table-row-hover-color: var(--r-color-light-darken-2);
-        --r-table-primary-header-color: var(--r-color-light-darken-5);
+        --r-table-primary-header-color: var(--r-color-light-darken-15);
         --r-table-row-striped-color: var(--r-color-light-darken-2);
         --r-table-row-striped-hover-color: var(--r-color-dark-lighten-10);
         --r-table-row-highlight-color: color-mix(in srgb, var(--r-color-primary), black 80%);
@@ -642,5 +663,20 @@
         --r-combo-box-item-sep: var(--r-color-dark-lighten-8);
         --r-combo-box-secondary-color: var(--r-color-white-darken-50);
         --r-combo-box-item-header-color: var(--r-color-white-darken-60);
+
+        // block banner
+        --r-block-banner-text-color: var(--r-color-dark-lighten-40);
+
+        // datepicker
+        --r-form-datepicker-background-color: var(--r-form-input-background-color);
+        --r-form-datepicker-color: var(--r-global-font-color);
+        --r-form-datepicker-border-color: var(--r-form-input-border-color);
+        --r-form-datepicker-border-radius: var(--r-global-border-radius);
+        --r-form-datepicker-strong-weight: var(--r-global-font-weight);
+        --r-form-datepicker-accent-color: var(--r-color-primary);
+        --r-form-datepicker-accent-text-color: var(--r-color-white);
+        --r-form-datepicker-controls-background-color: var(--r-form-input-background-color);
+        --r-form-datepicker-controls-hover-color: var(--r-color-light-darken-5);
+        --r-form-datepicker-controls-hover-text-color: var(--r-global-font-color);
     }
 }

@@ -3,7 +3,11 @@
 
 @mixin roolith-block-header() {
     .block-header {
-        padding-bottom: rem(20);
+        padding: 0 0 rem(20);
+
+        .breadcrumb {
+            padding-bottom: rem(10);
+        }
     }
 
     .block-header-container {

@@ -4,7 +4,6 @@
 
 @mixin roolith-box() {
     .box {
-        margin: rem(20) 0;
         border: rem(1) solid var(--r-box-border-color);
         border-radius: calc(var(--r-box-border-radius) * 2);
         background: var(--r-box-background-color);

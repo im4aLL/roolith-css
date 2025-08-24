@@ -7,7 +7,6 @@
         flex-direction: column;
         align-items: center;
         gap: rem(10);
-        padding: rem(20) 0;
 
         @include mixin.breakpoint(medium-up) {
             justify-content: space-between;

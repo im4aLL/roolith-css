@@ -2,12 +2,6 @@
 @use '../mixin';
 
 @mixin roolith-block-banner() {
-    .block-banner {
-        --r-block-banner-text-color: var(--r-color-dark-lighten-40);
-
-        margin-bottom: rem(40);
-    }
-
     .block-banner-title {
         padding-bottom: rem(10);
     }

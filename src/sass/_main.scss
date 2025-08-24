@@ -62,11 +62,12 @@
     @include modules.roolith-spacer();
     @include modules.roolith-indicator();
     @include modules.roolith-quick-menu();
+    @include modules.roolith-datepicker();
 }
 
 @mixin roolith-blocks() {
     @include blocks.roolith-block-header();
-    @include blocks.roolith-block-filter();
+    @include blocks.roolith-block-inline();
     @include blocks.roolith-block-repeater();
     @include blocks.roolith-block-box();
     @include blocks.roolith-block-banner();

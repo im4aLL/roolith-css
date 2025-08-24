@@ -5,7 +5,6 @@
     .breadcrumb {
         font-size: var(--r-breadcrumb-size);
         color: var(--r-breadcrumb-default-color);
-        padding: rem(15) 0;
         @include mixin.clearfix();
     }
 

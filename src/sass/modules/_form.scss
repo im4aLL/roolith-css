@@ -150,8 +150,11 @@
     }
 
     .form-field {
-        padding-bottom: rem(20);
         position: relative;
+
+        .form & {
+            padding-bottom: rem(20);
+        }
     }
 
     .form-label {
@@ -358,11 +361,11 @@
 
     .form-select {
         @extend .form-input;
-        background: inline-svg(
-                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#222733" viewBox="0 0 24 24"><path stroke="#222733" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
-            )
-            no-repeat;
-        background-position: calc(100% - rem(12)) center;
+        background-image: inline-svg(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#222733" viewBox="0 0 24 24"><path stroke="#222733" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
+        );
+        background-position: calc(100% - rem(10)) center;
+        background-repeat: no-repeat;
         appearance: none;
         padding: rem(9) rem(32) rem(9) rem(12);
 
@@ -382,7 +385,7 @@
         }
 
         &[multiple] {
-            background: transparent;
+            background-image: none;
         }
 
         .theme-dark &:not([multiple]) option {

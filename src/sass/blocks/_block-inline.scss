@@ -1,12 +1,8 @@
 @use '../function' as *;
 @use '../mixin';
 
-@mixin roolith-block-filter() {
-    .block-filter {
-        --r-block-filter-gap: #{rem(10)};
-
-        padding: rem(10) 0;
-
+@mixin roolith-block-inline() {
+    .block-inline {
         .form-label {
             opacity: 0.5;
             text-transform: uppercase;
@@ -15,11 +11,11 @@
         }
     }
 
-    .block-filter-form {
+    .block-inline-form {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-        gap: var(--r-block-filter-gap);
+        gap: var(--r-block-inline-gap);
 
         @include mixin.breakpoint(medium-up) {
             flex-direction: row;
@@ -31,13 +27,13 @@
         }
     }
 
-    .block-filter-button-group {
+    .block-inline-button-group {
         display: flex;
         flex-direction: row;
-        gap: var(--r-block-filter-gap);
+        gap: var(--r-block-inline-gap);
     }
 
-    .block-filter-v-center {
+    .block-inline-v-center {
         @include mixin.breakpoint(medium-up) {
             min-height: rem(37);
             display: flex;
@@ -45,11 +41,11 @@
         }
     }
 
-    .block-filter-alt-section {
+    .block-inline-alt-section {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-        gap: var(--r-block-filter-gap);
+        gap: var(--r-block-inline-gap);
 
         @include mixin.breakpoint(medium-up) {
             margin-left: auto;
