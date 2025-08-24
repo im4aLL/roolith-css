@@ -1,6 +1,6 @@
 {
     "name": "roolith-css",
-    "version": "3.2.0",
+    "version": "3.5.0",
     "description": "A simple responsive CSS boilerplate",
     "main": "./src/sass/roolith.scss",
     "scripts": {
