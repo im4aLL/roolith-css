@@ -42,16 +42,15 @@
     @each $name, $value in settings.$colors {
         @if ($name != white) {
             .message-#{'' + $name} {
-                background: var(--r-color-#{$name});
-                background: linear-gradient(
-                    to bottom,
-                    color-lighten(var(--r-color-#{$name}), 5%) 0%,
-                    var(--r-color-#{$name}) 100%
-                );
-                color: var(--r-color-white);
+                background: color-mix(in srgb, var(--r-color-#{$name}), white 90%);
+                color: var(--r-color-#{$name});
+
+                .theme-dark & {
+                    background: color-mix(in srgb, var(--r-color-#{$name}), black 90%);
+                }
 
                 .message-close {
-                    color: var(--r-color-white);
+                    color: var(--r-color-#{$name});
                 }
             }
         }

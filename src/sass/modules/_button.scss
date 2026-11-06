@@ -196,18 +196,20 @@
 
         .button {
             float: left;
-            border-radius: 0;
-            margin-right: rem(-1);
             min-width: auto;
 
-            &:first-child {
-                @include mixin.border-left-radius(var(--r-button-radius));
-                @include mixin.border-top-radius(var(--r-button-radius));
+            & + .button {
+                margin-left: rem(-1);
             }
 
-            &:last-child {
-                @include mixin.border-right-radius(var(--r-button-radius));
-                @include mixin.border-bottom-radius(var(--r-button-radius));
+            &:not(:first-child) {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            &:not(:last-child) {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
             }
         }
     }
