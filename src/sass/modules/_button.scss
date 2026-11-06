@@ -83,8 +83,8 @@
             &:after {
                 content: '';
                 position: absolute;
-                top: 50%;
-                left: 50%;
+                inset: 0;
+                margin: auto;
                 @include mixin.loader();
                 @extend .loader;
             }

@@ -55,9 +55,10 @@
         @include mixin.loader(16);
         @extend .loader;
         position: absolute;
-        top: 50%;
+        top: 0;
+        bottom: 0;
+        margin-block: auto;
         right: rem(12);
-        transform: translateY(-50%);
         z-index: 2;
         display: none;
 
@@ -153,7 +154,7 @@
         position: relative;
 
         .form & {
-            padding-bottom: rem(20);
+            margin-bottom: rem(20);
         }
     }
 
