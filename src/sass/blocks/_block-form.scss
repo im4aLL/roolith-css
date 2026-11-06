@@ -46,4 +46,9 @@
         padding-left: 0;
         padding-right: 0;
     }
+
+    .block-form-secondary {
+        display: grid;
+        gap: rem(20);
+    }
 }
