@@ -1,8 +1,56 @@
+@use 'sass:map';
 @use './settings' as *;
+
+$-theme-component-tokens: (
+    light: (
+        nav-link-color: var(--r-text),
+        nav-dimmed-link-color: var(--r-text-faint),
+        nav-active-link-color: color-mix(in srgb, var(--r-text), var(--r-surface-page) 30%),
+        dropdown-item-hover-color: var(--r-text),
+        combo-box-item-hover-color: var(--r-text),
+        action-menu-item-background: var(--r-surface),
+        quick-menu-link-hover-background: var(--r-surface),
+        tag-background: color-mix(in srgb, var(--r-tag-color), white 90%),
+        tag-border-color: color-mix(in srgb, var(--r-tag-color), white 20%),
+        tag-text-color: var(--r-tag-color),
+        comment-border: color-mix(in srgb, var(--r-color-dark) 10%, transparent),
+        sidebar-nav-link-hover-color: var(--r-color-primary),
+        sidebar-nav-active-color: var(--r-text),
+        layout-secondary-background-color: var(--r-surface-muted),
+        popover-background: var(--r-surface-muted),
+        form-datepicker-controls-hover-color: var(--r-surface-muted-step-5),
+        button-active-shadow: $button-active-shadow,
+    ),
+    dark: (
+        nav-link-color: var(--r-link),
+        nav-dimmed-link-color: var(--r-text-muted),
+        nav-active-link-color: var(--r-color-primary),
+        dropdown-item-hover-color: var(--r-text-strong),
+        combo-box-item-hover-color: var(--r-text-strong),
+        action-menu-item-background: transparent,
+        quick-menu-link-hover-background: var(--r-surface-page),
+        tag-background: var(--r-color-black),
+        tag-border-color: var(--r-border-control),
+        tag-text-color: var(--r-text-subtle),
+        comment-border: var(--r-surface-raised-step-5),
+        sidebar-nav-link-hover-color: var(--r-text-strong),
+        sidebar-nav-active-color: var(--r-text-strong),
+        layout-secondary-background-color: var(--r-surface-page),
+        popover-background: var(--r-surface-raised),
+        form-datepicker-controls-hover-color: var(--r-surface-raised-step-5),
+        button-active-shadow: $button-active-dark-shadow,
+    ),
+);
 
 @mixin theme-primitives($theme) {
     @each $name, $value in $theme {
         --r-theme-#{'' + $name}: #{$value};
+    }
+}
+
+@mixin theme-component-tokens($tokens) {
+    @each $name, $value in $tokens {
+        --r-#{$name}: #{$value};
     }
 }
 
@@ -19,13 +67,32 @@
         }
 
         @include theme-primitives($theme-light);
+        @include theme-component-tokens(map.get($-theme-component-tokens, light));
+        color-scheme: light;
+    }
+
+    .theme-light {
+        @include theme-primitives($theme-light);
+        @include theme-component-tokens(map.get($-theme-component-tokens, light));
+        color-scheme: light;
     }
 
     .theme-dark {
         @include theme-primitives($theme-dark);
+        @include theme-component-tokens(map.get($-theme-component-tokens, dark));
+        color-scheme: dark;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root:not(.theme-light) {
+            @include theme-primitives($theme-dark);
+            @include theme-component-tokens(map.get($-theme-component-tokens, dark));
+            color-scheme: dark;
+        }
     }
 
     :root,
+    .theme-light,
     .theme-dark {
         --r-surface-page: var(--r-theme-page);
         --r-surface: var(--r-theme-surface);
@@ -84,7 +151,6 @@
         --r-button-radius: #{$button-radius};
         --r-button-hover-shadow: #{$button-hover-shadow};
         --r-button-hover-shadow-dark: #{$button-hover-shadow-dark};
-        --r-button-active-shadow: #{$button-active-shadow};
         --r-button-active-dark-shadow: #{$button-active-dark-shadow};
         --r-button-base-white: var(--r-text-inverse);
         --r-button-primary-color: var(--r-color-primary);
@@ -100,9 +166,6 @@
         --r-button-default-hover-color: var(--r-text-muted);
 
         --r-nav-border-radius: #{$nav-border-radius};
-        --r-nav-link-color: var(--r-text);
-        --r-nav-dimmed-link-color: var(--r-text-faint);
-        --r-nav-active-link-color: color-mix(in srgb, var(--r-text), var(--r-surface-page) 30%);
         --r-nav-spacing: #{$nav-spacing};
         --r-nav-primary-color: var(--r-color-primary);
 
@@ -180,7 +243,6 @@
         --r-dropdown-shadow: #{$dropdown-shadow};
         --r-dropdown-item-color: var(--r-text-muted);
         --r-dropdown-item-hover-background-color: var(--r-surface-hover);
-        --r-dropdown-item-hover-color: var(--r-text);
         --r-dropdown-item-sep: var(--r-surface-raised-step-8);
 
         --r-modal-background: rgba(0, 0, 0, 0.5);
@@ -224,11 +286,7 @@
         --r-avatar-label-hover-color: var(--r-text-muted);
 
         --r-tag-color: var(--r-color-primary);
-        --r-tag-background: color-mix(in srgb, var(--r-tag-color), white 90%);
-        --r-tag-border-color: color-mix(in srgb, var(--r-tag-color), white 20%);
-        --r-tag-text-color: var(--r-tag-color);
 
-        --r-comment-border: color-mix(in srgb, var(--r-color-dark) 10%, transparent);
         --r-comment-highlight-color: var(--r-theme-comment-highlight);
 
         --r-toast-notification-width: #{$toast-notification-width};
@@ -256,15 +314,12 @@
         --r-layout-header-nav-color: var(--r-text);
         --r-layout-header-search-width: #{$layout-header-search-width};
         --r-layout-compact-sidebar-width: #{$layout-sidebar-width-compact};
-        --r-layout-secondary-background-color: var(--r-surface-muted);
 
         --r-sidebar-nav-header-color: var(--r-text-faint);
         --r-sidebar-group-sep-color: var(--r-surface-raised-step-10);
         --r-sidebar-nav-padding: #{$sidebar-nav-padding};
         --r-sidebar-nav-link-color: var(--r-text);
-        --r-sidebar-nav-link-hover-color: var(--r-color-primary);
         --r-sidebar-nav-active-background-color: var(--r-surface-muted);
-        --r-sidebar-nav-active-color: var(--r-text);
         --r-sidebar-nav-item-border-radius: var(--r-global-border-radius);
         --r-sidebar-nav-list-label-font-weight: #{$sidebar-nav-list-label-font-weight};
         --r-sidebar-nav-item-caret-size: #{$sidebar-nav-item-caret-size};
@@ -279,7 +334,6 @@
         --r-tooltip-border-color: var(--r-color-tertiary);
         --r-tooltip-content-btn-bg-color: var(--r-color-tertiary);
 
-        --r-popover-background: var(--r-surface-muted);
         --r-popover-color: var(--r-text);
         --r-popover-border-radius: #{$popover-border-radius};
         --r-popover-width: #{$popover-width};
@@ -310,7 +364,6 @@
         --r-action-menu-list-gap: #{$action-menu-list-gap};
         --r-action-menu-item-color: var(--r-text-muted);
         --r-action-menu-item-hover-color: var(--r-color-primary);
-        --r-action-menu-item-background: var(--r-surface);
         --r-action-menu-item-hover-background: var(--r-surface-muted);
         --r-action-menu-item-border-radius: var(--r-global-border-radius);
 
@@ -353,7 +406,6 @@
         --r-block-stat-item-border-radius: var(--r-global-border-radius);
 
         --r-quick-menu-background: var(--r-surface-muted);
-        --r-quick-menu-link-hover-background: var(--r-surface);
         --r-quick-menu-spacing: #{$quick-menu-spacing};
         --r-quick-menu-font-size: #{$quick-menu-font-size};
         --r-quick-menu-spacing-small: #{$quick-menu-spacing-small};
@@ -371,7 +423,6 @@
         --r-combo-box-shadow: #{$combo-box-shadow};
         --r-combo-box-item-color: var(--r-text-muted);
         --r-combo-box-item-hover-background-color: var(--r-surface-hover);
-        --r-combo-box-item-hover-color: var(--r-text);
         --r-combo-box-item-sep: var(--r-surface-raised-step-8);
         --r-combo-box-border-radius: var(--r-global-border-radius);
         --r-combo-box-secondary-color: var(--r-text-faint);
@@ -395,27 +446,6 @@
         --r-form-datepicker-row-gap: #{$form-datepicker-row-gap};
         --r-form-datepicker-tile-height: #{$form-datepicker-tile-height};
         --r-form-datepicker-controls-background-color: var(--r-form-input-background-color);
-        --r-form-datepicker-controls-hover-color: var(--r-surface-muted-step-5);
         --r-form-datepicker-controls-hover-text-color: var(--r-text);
-    }
-
-    .theme-dark {
-        --r-nav-link-color: var(--r-link);
-        --r-nav-dimmed-link-color: var(--r-text-muted);
-        --r-nav-active-link-color: var(--r-color-primary);
-        --r-dropdown-item-hover-color: var(--r-text-strong);
-        --r-combo-box-item-hover-color: var(--r-text-strong);
-        --r-action-menu-item-background: transparent;
-        --r-quick-menu-link-hover-background: var(--r-surface-page);
-        --r-tag-background: var(--r-color-black);
-        --r-tag-border-color: var(--r-border-control);
-        --r-tag-text-color: var(--r-text-subtle);
-        --r-comment-border: var(--r-surface-raised-step-5);
-        --r-sidebar-nav-link-hover-color: var(--r-text-strong);
-        --r-sidebar-nav-active-color: var(--r-text-strong);
-        --r-layout-secondary-background-color: var(--r-surface-page);
-        --r-popover-background: var(--r-surface-raised);
-        --r-form-datepicker-controls-hover-color: var(--r-surface-raised-step-5);
-        --r-button-active-shadow: #{$button-active-dark-shadow};
     }
 }

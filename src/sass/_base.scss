@@ -22,16 +22,11 @@
         color: var(--r-global-font-color);
     }
 
-    .theme-dark {
-        color-scheme: dark;
-    }
-
     a,
     button {
         outline: none;
     }
 
-    // Mouse and touch keep the clean look; keyboard focus always shows a ring.
     a:focus-visible,
     button:focus-visible,
     input:focus-visible,
@@ -47,8 +42,6 @@
         text-decoration: none;
     }
 
-    // Keep state changes and events, drop the movement. Durations stay above
-    // zero so transitionend and animationend listeners still fire.
     @media (prefers-reduced-motion: reduce) {
         *,
         *::before,

@@ -47,7 +47,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
         <script type="module" src="index.js"></script>
     </head>
-    <!-- class="theme-dark" -->
+    <!-- add class="theme-dark" or class="theme-light" to <html> to pin the theme -->
     <body>
         <div class="module-body">
             <button class="button button-icon" id="js-toggle-mode">
@@ -2234,36 +2234,44 @@
                 const lightModeIcon = 'iconoir-half-moon';
                 const darkModeIcon = 'iconoir-sun-light';
                 const darkModeClass = 'theme-dark';
+                const lightModeClass = 'theme-light';
                 const storageKey = 'theme';
 
-                // Check for saved theme preference in localStorage
+                // A saved class wins. Without one, materialize the OS preference
+                // as a class on <html> so the demo-only styles follow it too.
                 const savedTheme = localStorage.getItem(storageKey);
-                if (savedTheme) {
-                    document.body.classList.add(savedTheme);
-                    const icon = document.getElementById('js-toggle-mode').querySelector('i');
-                    icon.className = savedTheme === darkModeClass ? lightModeIcon : darkModeIcon;
+                if (savedTheme === darkModeClass || savedTheme === lightModeClass) {
+                    document.documentElement.classList.add(savedTheme);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add(darkModeClass);
                 }
 
-                // Add event listener for dark mode toggle
                 const toggleDarkModeEl = document.getElementById('js-toggle-mode');
+                const icon = toggleDarkModeEl.querySelector('i');
+                const isDark = () => document.documentElement.classList.contains(darkModeClass);
+                const updateIcon = () => {
+                    icon.className = isDark() ? darkModeIcon : lightModeIcon;
+                };
+
+                updateIcon();
 
                 toggleDarkModeEl.addEventListener('click', (event) => {
                     event.preventDefault();
-                    document.body.classList.toggle(darkModeClass);
 
-                    // Update the icon based on the current theme
-                    const icon = toggleDarkModeEl.querySelector('i');
-                    if (document.body.classList.contains(darkModeClass)) {
-                        icon.className = darkModeIcon;
+                    if (isDark()) {
+                        document.documentElement.classList.remove(darkModeClass);
+                        document.documentElement.classList.add(lightModeClass);
                     } else {
-                        icon.className = lightModeIcon;
+                        document.documentElement.classList.remove(lightModeClass);
+                        document.documentElement.classList.add(darkModeClass);
                     }
 
-                    // store the theme preference in localStorage
+                    // store the explicit choice in localStorage
                     localStorage.setItem(
                         storageKey,
-                        document.body.classList.contains(darkModeClass) ? darkModeClass : '',
+                        document.documentElement.classList.contains(darkModeClass) ? darkModeClass : lightModeClass,
                     );
+                    updateIcon();
                 });
             }
 
