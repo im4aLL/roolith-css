@@ -11,23 +11,27 @@
             }
         }
 
-        .show-#{$breakpoint}-up {
-            display: none;
+        @if $breakpoint != small {
+            .show-#{$breakpoint}-up {
+                display: none;
 
-            @include mixin.breakpoint(#{$breakpoint}-up) {
-                display: block;
+                @include mixin.breakpoint(#{$breakpoint}-up) {
+                    display: block;
+                }
             }
         }
 
         .hide-#{$breakpoint}-only {
             @include mixin.breakpoint(#{$breakpoint}-only) {
-                display: hide;
+                display: none;
             }
         }
 
-        .hide-#{$breakpoint}-up {
-            @include mixin.breakpoint(#{$breakpoint}-up) {
-                display: hide;
+        @if $breakpoint != small {
+            .hide-#{$breakpoint}-up {
+                @include mixin.breakpoint(#{$breakpoint}-up) {
+                    display: none;
+                }
             }
         }
     }
