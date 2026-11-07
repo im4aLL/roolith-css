@@ -424,6 +424,7 @@
         --r-global-font-color-light: color-mix(in srgb, var(--r-theme-color), white 70%);
 
         --r-color-light: #111827;
+        --r-color-link: color-mix(in srgb, var(--r-color-primary), white 40%);
 
         @include color-shades();
 
