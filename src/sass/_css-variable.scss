@@ -219,7 +219,7 @@
         --r-tag-text-color: var(--r-tag-color);
 
         /* Comment */
-        --r-comment-border: rgba(var(--r-color-dark), 0.1);
+        --r-comment-border: color-mix(in srgb, var(--r-color-dark) 10%, transparent);
         --r-comment-highlight-color: var(--r-color-primary-lighten-80);
 
         /* Toast */

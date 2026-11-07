@@ -177,7 +177,7 @@
         border: 0;
         height: 0;
         border-top: rem(1) solid var(--r-color-light-darken-5);
-        border-bottom: rem(1) solid rgba(var(--r-color-white), 0.3);
+        border-bottom: rem(1) solid color-mix(in srgb, var(--r-color-white) 30%, transparent);
         margin: rem(15) 0;
     }
 
