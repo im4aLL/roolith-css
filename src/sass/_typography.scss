@@ -106,6 +106,17 @@
         }
     }
 
+    // Body copy needs an affordance besides colour (WCAG 1.4.1). :where keeps the
+    // rule at element specificity, so a control-like anchor such as .button still
+    // opts out through its own component declaration. Prose containers are listed
+    // instead of whole components so chips, avatars and nav links inside an
+    // article keep their own styling.
+    :where(p, blockquote, dl, .list, .list-numbered, .comment-body, label, .message) a {
+        text-decoration: underline;
+        text-underline-offset: rem(2);
+        text-decoration-thickness: rem(1);
+    }
+
     u {
         text-decoration: underline;
     }
