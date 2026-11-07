@@ -46,4 +46,19 @@
     a {
         text-decoration: none;
     }
+
+    // Keep state changes and events, drop the movement. Durations stay above
+    // zero so transitionend and animationend listeners still fire.
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-delay: 0s !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            transition-delay: 0s !important;
+            scroll-behavior: auto !important;
+        }
+    }
 }
