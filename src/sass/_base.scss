@@ -1,15 +1,5 @@
 @mixin roolith-base {
     html {
-        box-sizing: border-box;
-    }
-
-    *,
-    *:before,
-    *:after {
-        box-sizing: inherit;
-    }
-
-    html {
         font-size: var(--r-global-base-font-size);
     }
 
