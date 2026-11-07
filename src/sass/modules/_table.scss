@@ -42,6 +42,10 @@
 
         .is-highlight {
             background-color: var(--r-table-row-highlight-color);
+
+            td:first-child {
+                box-shadow: inset rem(3) 0 0 var(--r-color-primary);
+            }
         }
 
         .table-thead-label {

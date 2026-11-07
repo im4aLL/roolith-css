@@ -225,7 +225,7 @@
 
         --r-tag-color: var(--r-color-primary);
         --r-tag-background: color-mix(in srgb, var(--r-tag-color), white 90%);
-        --r-tag-border-color: color-mix(in srgb, var(--r-tag-color), white 30%);
+        --r-tag-border-color: color-mix(in srgb, var(--r-tag-color), white 20%);
         --r-tag-text-color: var(--r-tag-color);
 
         --r-comment-border: color-mix(in srgb, var(--r-color-dark) 10%, transparent);
@@ -293,7 +293,7 @@
         --r-drawer-content-spacing: var(--r-modal-content-spacing);
         --r-drawer-border-color: var(--r-modal-border-color);
 
-        --r-form-switch-background-color: var(--r-surface-muted-step-10);
+        --r-form-switch-background-color: var(--r-border-control);
         --r-form-switch-checked-background-color: var(--r-color-primary);
         --r-form-switch-handler-color: var(--r-text-inverse);
         --r-form-switch-size: #{$switch-size};
@@ -408,7 +408,7 @@
         --r-action-menu-item-background: transparent;
         --r-quick-menu-link-hover-background: var(--r-surface-page);
         --r-tag-background: var(--r-color-black);
-        --r-tag-border-color: var(--r-surface-raised);
+        --r-tag-border-color: var(--r-border-control);
         --r-tag-text-color: var(--r-text-subtle);
         --r-comment-border: var(--r-surface-raised-step-5);
         --r-sidebar-nav-link-hover-color: var(--r-text-strong);
