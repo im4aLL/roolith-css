@@ -1,6 +1,7 @@
 @use 'sass:color';
 @use './function' as *;
 @use './mixin';
+@use './pattern' as pattern;
 
 @mixin roolith-typography() {
     h1,
@@ -112,11 +113,10 @@
 
     small,
     .small {
-        font-size: 80%;
-        line-height: 1.3em;
+        @include pattern.text-small();
     }
 
-    code {
+    %roolith-code {
         font-family: Consolas, monaco, monospace;
         padding: rem(2) rem(5);
         margin: 0 rem(2);
@@ -129,11 +129,15 @@
         @include mixin.nice-scroll();
     }
 
-    .dimmed {
-        opacity: 0.6;
+    code {
+        @extend %roolith-code;
     }
 
-    .list {
+    .dimmed {
+        @include pattern.text-dimmed();
+    }
+
+    %roolith-list {
         font-size: rem(14);
         line-height: rem(22);
         padding: rem(25) 0;
@@ -150,8 +154,12 @@
         }
     }
 
+    .list {
+        @extend %roolith-list;
+    }
+
     .list-numbered {
-        @extend .list;
+        @extend %roolith-list;
 
         li {
             list-style: decimal;
@@ -227,7 +235,7 @@
     }
 
     kbd {
-        @extend code;
+        @extend %roolith-code;
         background: var(--r-color-light);
         border: rem(1) solid var(--r-color-light);
     }

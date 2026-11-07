@@ -62,7 +62,7 @@
         }
     }
 
-    .table-primary {
+    %roolith-table-primary {
         th {
             background-color: var(--r-table-primary-header-color);
         }
@@ -83,8 +83,12 @@
         }
     }
 
+    .table-primary {
+        @extend %roolith-table-primary;
+    }
+
     .table-striped {
-        @extend .table-primary;
+        @extend %roolith-table-primary;
 
         tbody tr {
             &:nth-child(even) {

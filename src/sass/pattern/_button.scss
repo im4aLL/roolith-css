@@ -1,0 +1,51 @@
+@use '../function' as *;
+@use '../mixin';
+
+/*
+ * Base button surface, shared by `.button` and `.form-file` selector buttons.
+ */
+@mixin button-base() {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--r-global-base-font);
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: var(--r-button-radius);
+    font-size: rem(14);
+    line-height: normal;
+    min-width: rem(60);
+    text-align: center;
+    padding: rem(9) rem(20);
+    position: relative;
+    background-color: var(--r-button-default-background);
+    background: linear-gradient(
+        to bottom,
+        var(--r-button-default-background) 0%,
+        var(--r-button-default-background-end) 100%
+    );
+    border: rem(1) solid var(--r-button-default-border);
+    color: var(--r-button-default-color);
+    @include mixin.transition('background, color, box-shadow');
+
+    &:hover {
+        background-color: var(--r-button-default-hover-background);
+        background: linear-gradient(
+            to bottom,
+            var(--r-button-default-hover-background) 0%,
+            var(--r-button-default-hover-background-end) 100%
+        );
+        border: rem(1) solid var(--r-button-default-hover-border);
+        box-shadow: var(--r-button-hover-shadow);
+        color: var(--r-button-default-hover-color);
+    }
+}
+
+/*
+ * Compact button sizing, shared by `.button-small` and `.form-file` selector buttons.
+ */
+@mixin button-small() {
+    font-size: rem(12);
+    min-width: rem(50);
+    padding: rem(5) rem(10);
+}

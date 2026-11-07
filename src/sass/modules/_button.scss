@@ -1,44 +1,12 @@
 @use '../function' as *;
 @use '../mixin';
 @use '../settings';
+@use '../pattern' as pattern;
 @use 'sass:color';
 
 @mixin roolith-button() {
     .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--r-global-base-font);
-        text-decoration: none;
-        cursor: pointer;
-        border-radius: var(--r-button-radius);
-        font-size: rem(14);
-        line-height: normal;
-        min-width: rem(60);
-        text-align: center;
-        padding: rem(9) rem(20);
-        position: relative;
-        background-color: var(--r-button-default-background);
-        background: linear-gradient(
-            to bottom,
-            var(--r-button-default-background) 0%,
-            var(--r-button-default-background-end) 100%
-        );
-        border: rem(1) solid var(--r-button-default-border);
-        color: var(--r-button-default-color);
-        @include mixin.transition('background, color, box-shadow');
-
-        &:hover {
-            background-color: var(--r-button-default-hover-background);
-            background: linear-gradient(
-                to bottom,
-                var(--r-button-default-hover-background) 0%,
-                var(--r-button-default-hover-background-end) 100%
-            );
-            border: rem(1) solid var(--r-button-default-hover-border);
-            box-shadow: var(--r-button-hover-shadow);
-            color: var(--r-button-default-hover-color);
-        }
+        @include pattern.button-base();
 
         &.active {
             box-shadow: var(--r-button-active-shadow);
@@ -86,7 +54,6 @@
                 inset: 0;
                 margin: auto;
                 @include mixin.loader();
-                @extend .loader;
             }
         }
     }
@@ -97,9 +64,7 @@
     }
 
     .button-small {
-        font-size: rem(12);
-        min-width: rem(50);
-        padding: rem(5) rem(10);
+        @include pattern.button-small();
 
         &.loading:after {
             @include mixin.loader(12);

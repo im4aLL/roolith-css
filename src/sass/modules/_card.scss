@@ -1,5 +1,6 @@
 @use '../function' as *;
 @use '../settings';
+@use '../pattern' as pattern;
 @use 'sass:color';
 
 @mixin roolith-card() {
@@ -12,11 +13,11 @@
     }
 
     .card-img {
-        @extend .img-full-width;
+        @include pattern.img-full-width();
     }
 
     .card-body-img {
-        @extend .img-full-width;
+        @include pattern.img-full-width();
         margin: rem(10) 0;
     }
 
@@ -35,14 +36,14 @@
     }
 
     .card-information {
-        @extend .dimmed;
+        @include pattern.text-dimmed();
         font-size: 80%;
         display: block;
         padding: rem(20) 0 0 0;
     }
 
     .card-subtitle {
-        @extend .dimmed;
+        @include pattern.text-dimmed();
         padding-bottom: rem(10);
     }
 

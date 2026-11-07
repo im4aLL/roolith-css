@@ -1,6 +1,7 @@
 @use '../settings';
 @use '../function' as *;
 @use '../mixin';
+@use '../pattern' as pattern;
 
 @mixin roolith-modal() {
     .modal {
@@ -40,16 +41,16 @@
             grid-area: body;
             margin-left: auto;
             margin-right: auto;
-            @extend .animation, .fadeInUp;
+            @include pattern.animation(fadeInUp);
         } @else if(settings.$modal-layout == traditional) {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            @extend .animation, .fadeIn;
+            @include pattern.animation(fadeIn);
         }
         @if (settings.$modal-layout == flex) {
             max-height: 90%;
-            @extend .animation, .fadeInUp;
+            @include pattern.animation(fadeInUp);
         }
         max-width: rem(600);
         overflow-y: auto;

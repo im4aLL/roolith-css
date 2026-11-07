@@ -1,9 +1,8 @@
+@use '../pattern' as pattern;
+
 @mixin roolith-animation() {
     .animation {
-        visibility: visible !important;
-        animation-duration: var(--r-animation-duration);
-        animation-fill-mode: both;
-        transition-timing-function: var(--r-animation-easing);
+        @include pattern.animation();
     }
 
     .fadeInUp {

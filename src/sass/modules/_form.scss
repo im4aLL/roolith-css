@@ -1,5 +1,6 @@
 @use '../function' as *;
 @use '../mixin';
+@use '../pattern' as pattern;
 @use 'sass:color';
 
 @mixin form-search() {
@@ -53,7 +54,6 @@
 
     .form-field-search-loading-icon {
         @include mixin.loader(16);
-        @extend .loader;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -195,7 +195,7 @@
         }
     }
 
-    .form-input {
+    %roolith-form-input {
         width: 100%;
         border: rem(1) solid var(--r-form-input-border-color);
         border-radius: var(--r-form-input-radius);
@@ -234,23 +234,31 @@
         }
     }
 
-    .form-primary .form-input {
-        border: rem(1) solid var(--r-form-primary-border-color);
-        background: var(--r-form-primary-color);
-        box-shadow: none;
+    .form-input {
+        @extend %roolith-form-input;
+    }
 
-        &:hover {
-            border-color: var(--r-form-primary-hover-color);
-        }
+    .form-primary {
+        .form-input,
+        .form-textarea,
+        .form-select {
+            border: rem(1) solid var(--r-form-primary-border-color);
+            background: var(--r-form-primary-color);
+            box-shadow: none;
 
-        &:focus {
-            border-color: var(--r-form-primary-focus-color);
-            background: var(--r-form-primary-focus-color);
+            &:hover {
+                border-color: var(--r-form-primary-hover-color);
+            }
+
+            &:focus {
+                border-color: var(--r-form-primary-focus-color);
+                background: var(--r-form-primary-focus-color);
+            }
         }
     }
 
     .form-textarea {
-        @extend .form-input;
+        @extend %roolith-form-input;
         resize: vertical;
         height: rem(137);
     }
@@ -361,7 +369,7 @@
     }
 
     .form-select {
-        @extend .form-input;
+        @extend %roolith-form-input;
         background-image: inline-svg(
             '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#222733" viewBox="0 0 24 24"><path stroke="#222733" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
         );
@@ -452,7 +460,8 @@
 
     .form-file {
         &::file-selector-button {
-            @extend .button, .button-small;
+            @include pattern.button-base();
+            @include pattern.button-small();
         }
     }
 
