@@ -25,7 +25,8 @@ $grid-gutter: (
 ) !default;
 
 $grid-column-count: 12 !default;
-$grid-layout: traditional !default;
+// css-grid is the default layout. traditional keeps the legacy float grid and is deprecated.
+$grid-layout: css-grid !default;
 
 $colors: (
     primary: #4a5cd0,
