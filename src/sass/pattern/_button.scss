@@ -36,6 +36,10 @@
         box-shadow: var(--r-button-hover-shadow);
         color: var(--r-button-default-hover-color);
     }
+
+    &:active {
+        transform: translateY(rem(1));
+    }
 }
 
 @mixin button-small() {

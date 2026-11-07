@@ -74,8 +74,9 @@
         --r-global-font-color: var(--r-text);
         --r-global-font-color-light: var(--r-text-muted);
         --r-global-border-radius: #{$global-border-radius};
-
         --r-global-width: #{$global-width};
+
+        --r-focus-ring-color: var(--r-link);
 
         --r-animation-easing: #{$animation-easing};
         --r-animation-duration: #{$animation-duration};

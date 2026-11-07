@@ -1,3 +1,5 @@
+@use './function' as *;
+
 @mixin roolith-base {
     html {
         box-sizing: border-box;
@@ -27,6 +29,18 @@
     a,
     button {
         outline: none;
+    }
+
+    // Mouse and touch keep the clean look; keyboard focus always shows a ring.
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+        outline: rem(2) solid var(--r-focus-ring-color);
+        outline-offset: rem(2);
     }
 
     a {
