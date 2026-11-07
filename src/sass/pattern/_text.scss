@@ -1,14 +1,8 @@
-/*
- * Small secondary text, shared by the `.small` utility and component metadata.
- */
 @mixin text-small() {
     font-size: 80%;
     line-height: 1.3em;
 }
 
-/*
- * Muted text, shared by the `.dimmed` utility and component metadata.
- */
 @mixin text-dimmed() {
     opacity: 0.6;
 }

@@ -1,4 +1,3 @@
-@use 'sass:color';
 @use './function' as *;
 @use './mixin';
 @use './pattern' as pattern;
@@ -100,7 +99,7 @@
     }
 
     a {
-        color: var(--r-color-link);
+        color: var(--r-link);
 
         &:hover {
             color: var(--r-color-primary);
@@ -122,8 +121,8 @@
         margin: 0 rem(2);
         font-size: 90%;
         white-space: nowrap;
-        background: var(--r-color-light-darken-5);
-        border: rem(1) solid var(--r-color-light-darken-10);
+        background: var(--r-surface-muted-step-5);
+        border: rem(1) solid var(--r-surface-muted-step-10);
         border-radius: rem(3);
         overflow: auto;
         @include mixin.nice-scroll();
@@ -184,8 +183,8 @@
     hr {
         border: 0;
         height: 0;
-        border-top: rem(1) solid var(--r-color-light-darken-5);
-        border-bottom: rem(1) solid color-mix(in srgb, var(--r-color-white) 30%, transparent);
+        border-top: rem(1) solid var(--r-surface-muted-step-5);
+        border-bottom: rem(1) solid color-mix(in srgb, var(--r-text-inverse) 30%, transparent);
         margin: rem(15) 0;
     }
 
@@ -214,7 +213,7 @@
     blockquote {
         font-size: rem(14);
         line-height: rem(22);
-        border-left: rem(3) solid var(--r-color-light-darken-5);
+        border-left: rem(3) solid var(--r-surface-muted-step-5);
         padding-left: rem(20);
 
         cite {
@@ -229,15 +228,15 @@
     }
 
     abbr {
-        border-bottom: rem(1) dotted var(--r-color-dark-lighten-30);
+        border-bottom: rem(1) dotted var(--r-text-quiet);
         cursor: help;
         text-decoration: none;
     }
 
     kbd {
         @extend %roolith-code;
-        background: var(--r-color-light);
-        border: rem(1) solid var(--r-color-light);
+        background: var(--r-surface-muted);
+        border: rem(1) solid var(--r-surface-muted);
     }
 
     .full-width {

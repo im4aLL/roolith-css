@@ -1,9 +1,3 @@
-/*
- * Entrance animation shared by the `.animation` utility and animated components.
- *
- * $name: keyframe name to apply, for example `fadeIn`. When omitted only the shared
- * animation settings are emitted, which matches the `.animation` utility on its own.
- */
 @mixin animation($name: null) {
     visibility: visible !important;
     animation-duration: var(--r-animation-duration);

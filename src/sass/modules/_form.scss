@@ -1,7 +1,6 @@
 @use '../function' as *;
 @use '../mixin';
 @use '../pattern' as pattern;
-@use 'sass:color';
 
 @mixin form-search() {
     .form-field-search {
@@ -39,7 +38,7 @@
         top: rem(10);
         z-index: 1;
         font-size: 120%;
-        color: var(--r-color-light-darken-30);
+        color: var(--r-text-placeholder);
 
         .form-field-search.small & {
             left: rem(7);
@@ -354,7 +353,7 @@
         }
 
         &.is-indeterminate {
-            background-color: var(--r-color-light);
+            background-color: var(--r-surface-muted);
             border-color: var(--r-color-primary);
 
             &:after {
@@ -370,6 +369,7 @@
 
     .form-select {
         @extend %roolith-form-input;
+
         background-image: inline-svg(
             '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#222733" viewBox="0 0 24 24"><path stroke="#222733" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
         );
@@ -380,7 +380,7 @@
 
         .theme-dark & {
             background-image: inline-svg(
-                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#9ca3af" viewBox="0 0 24 24"><path stroke="#9ca3af" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
+                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#a3a3a3" viewBox="0 0 24 24"><path stroke="#a3a3a3" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
             );
         }
 

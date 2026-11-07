@@ -1,9 +1,6 @@
 @use '../function' as *;
 @use '../mixin';
 
-/*
- * Base button surface, shared by `.button` and `.form-file` selector buttons.
- */
 @mixin button-base() {
     display: inline-flex;
     align-items: center;
@@ -41,9 +38,6 @@
     }
 }
 
-/*
- * Compact button sizing, shared by `.button-small` and `.form-file` selector buttons.
- */
 @mixin button-small() {
     font-size: rem(12);
     min-width: rem(50);

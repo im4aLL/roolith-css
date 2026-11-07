@@ -52,7 +52,7 @@
         }
 
         &:hover {
-            background-color: var(--r-dropdown-item-hover-background-color);
+            background-color: var(--r-combo-box-item-hover-background-color);
 
             > .combo-box-submenu {
                 display: block;
@@ -84,8 +84,8 @@
         @include mixin.transition('background, color');
 
         &:hover {
-            background-color: var(--r-dropdown-item-hover-background-color);
-            color: var(--r-dropdown-item-hover-color);
+            background-color: var(--r-combo-box-item-hover-background-color);
+            color: var(--r-combo-box-item-hover-color);
             cursor: pointer;
         }
     }

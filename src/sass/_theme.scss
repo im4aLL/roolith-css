@@ -1,0 +1,78 @@
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:math';
+
+@function quantize($color) {
+    @return color.change(
+        $color,
+        $red: math.round(color.channel($color, 'red', $space: rgb)),
+        $green: math.round(color.channel($color, 'green', $space: rgb)),
+        $blue: math.round(color.channel($color, 'blue', $space: rgb))
+    );
+}
+
+@function blend($base, $target, $amount) {
+    @return quantize(color.mix($target, $base, $amount));
+}
+
+@function tone($base, $amount) {
+    @if $amount < 0 {
+        @return blend($base, black, -$amount);
+    }
+
+    @return blend($base, white, $amount);
+}
+
+@function theme-roles($seeds, $steps, $accent) {
+    $page: map.get($seeds, page);
+    $surface: map.get($seeds, surface);
+    $raised: map.get($seeds, raised);
+    $muted: map.get($seeds, muted);
+    $text: map.get($seeds, text);
+    $ink: map.get($seeds, ink);
+    $on-surface: map.get($seeds, on-surface);
+
+    $control: blend($raised, $on-surface, map.get($steps, control));
+    $table-base: blend($page, $accent, map.get($steps, table-highlight));
+    $comment-base: blend($page, $accent, map.get($steps, comment-highlight));
+
+    @return (
+        page: $page,
+        surface: $surface,
+        surface-raised: $raised,
+        surface-overlay: blend($raised, $on-surface, map.get($steps, overlay)),
+        surface-muted: $muted,
+        surface-inverse: map.get($seeds, inverse),
+        surface-hover: blend($page, $on-surface, map.get($steps, hover)),
+        control: $control,
+        control-end: tone($control, -1 * map.get($steps, control-end)),
+        control-hover: tone($control, map.get($steps, control-hover)),
+        control-hover-end: tone($control, -1 * map.get($steps, control-hover-end)),
+        text: $text,
+        text-muted: blend($text, white, map.get($steps, text-muted)),
+        text-subtle: blend($text, $page, map.get($steps, text-subtle)),
+        text-faint: blend($text, white, map.get($steps, text-faint)),
+        text-quiet: blend($text, white, map.get($steps, text-quiet)),
+        text-tertiary: blend($text, $page, map.get($steps, text-tertiary)),
+        text-separator: blend($text, white, map.get($steps, text-separator)),
+        text-strong: $ink,
+        text-inverse: white,
+        text-control: blend($text, $ink, map.get($steps, text-control)),
+        text-placeholder: blend($text, $page, map.get($steps, text-placeholder)),
+        text-helper: blend($text, $page, map.get($steps, text-helper)),
+        text-label: blend($text, white, map.get($steps, text-label)),
+        text-disabled: blend($muted, $on-surface, map.get($steps, text-disabled)),
+        border-subtle: blend($raised, $on-surface, map.get($steps, border-subtle)),
+        border-layout: blend($muted, $on-surface, map.get($steps, border-layout)),
+        border: blend($page, $on-surface, map.get($steps, border)),
+        border-control: blend($muted, $on-surface, map.get($steps, border-control)),
+        border-emphasis: blend($page, $on-surface, map.get($steps, border-emphasis)),
+        border-hairline: map.get($seeds, hairline),
+        table-highlight: blend($table-base, $on-surface, map.get($steps, table-lift)),
+        comment-highlight: blend($comment-base, $on-surface, map.get($steps, comment-lift)),
+        radio-selected: blend($surface, $accent, map.get($steps, radio-selected)),
+        loader-head: blend($page, $on-surface, map.get($steps, loader-head)),
+        on-surface: $on-surface,
+        link: map.get($seeds, link),
+    );
+}

@@ -10,7 +10,7 @@
         display: block;
         font-size: rem(12);
         padding-bottom: rem(7);
-        color: var(--r-color-dark-lighten-20);
+        color: var(--r-text-muted);
     }
 
     .stat-body {
@@ -23,6 +23,6 @@
         display: block;
         font-size: rem(12);
         padding-top: rem(10);
-        color: var(--r-color-dark-lighten-40);
+        color: var(--r-text-subtle);
     }
 }

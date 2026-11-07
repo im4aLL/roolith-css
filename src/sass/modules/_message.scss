@@ -1,6 +1,6 @@
+@use 'sass:list';
 @use '../function' as *;
 @use '../settings';
-@use 'sass:color';
 
 @mixin roolith-message() {
     .message {
@@ -10,9 +10,13 @@
         border-radius: var(--r-message-radius);
         margin-top: rem(10);
         margin-bottom: rem(10);
-        background: var(--r-color-light-darken-2);
+        background: var(--r-surface-muted-step-2);
         position: relative;
         text-align: left;
+
+        .theme-dark & {
+            background: var(--r-surface-raised-step-5);
+        }
     }
 
     .message-extra-pad {
@@ -24,12 +28,7 @@
         right: 0;
         top: 0;
         display: block;
-        border: none;
         text-align: center;
-        font-size: var(--r-message-color-icon-size);
-        line-height: var(--r-message-color-icon-size);
-        width: var(--r-message-color-icon-size);
-        height: var(--r-message-color-icon-size);
         padding: rem(8) rem(10);
         z-index: 2;
         cursor: pointer;
@@ -39,30 +38,47 @@
         font-size: rem(18);
     }
 
+    $inverted-message-variants: dark, black;
+
     @each $name, $value in settings.$colors {
         @if ($name != white) {
+            $inverted: list.index($inverted-message-variants, $name) != null;
+            $dark-foreground: var(--r-text);
+
+            @if not $inverted {
+                $dark-foreground: color-mix(in srgb, var(--r-color-#{$name}), white 55%);
+            }
+
             .message-#{'' + $name} {
                 background: color-mix(in srgb, var(--r-color-#{$name}), white 90%);
                 color: var(--r-color-#{$name});
 
                 .theme-dark & {
-                    background: color-mix(in srgb, var(--r-color-#{$name}), black 90%);
+                    background: color-mix(in srgb, var(--r-color-#{$name}) 14%, var(--r-surface-raised-step-5));
+                    color: $dark-foreground;
                 }
 
                 .message-close {
                     color: var(--r-color-#{$name});
+
+                    .theme-dark & {
+                        color: $dark-foreground;
+                    }
                 }
             }
-        }
-    }
 
-    @each $name, $value in settings.$colors {
-        @if ($name != white) {
             .message-#{'' + $name}-outline {
                 background: transparent;
                 color: var(--r-color-#{$name});
                 border: rem(1) solid var(--r-color-#{$name});
                 padding: rem(14) rem(17);
+
+                @if $inverted {
+                    .theme-dark & {
+                        color: var(--r-text);
+                        border-color: var(--r-text);
+                    }
+                }
             }
         }
     }

@@ -41,8 +41,8 @@
         right: 0;
         background: none;
         border: none;
-        padding: var(--r-drawer-content-spacing);
-        line-height: rem(12);
+        padding: rem(15) rem(17);
+        font-size: rem(18);
         z-index: 2;
         cursor: pointer;
         color: var(--r-drawer-close-button-color);

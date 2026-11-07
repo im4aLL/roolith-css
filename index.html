@@ -49,6 +49,13 @@
     </head>
     <!-- class="theme-dark" -->
     <body>
+        <div class="module-body">
+            <button class="button button-icon" id="js-toggle-mode">
+                <i class="iconoir-half-moon"></i>
+                Toggle Dark / Light Mode
+            </button>
+        </div>
+
         <div class="module">typography</div>
         <div class="module-body">
             <h1>Heading</h1>
@@ -2256,5 +2263,56 @@
 
         <script src="jquery-3.3.1.min.js"></script>
         <script src="test.js"></script>
+        <script>
+            /**
+             * Toggle dark mode for the layout.
+             * This function checks for a saved theme preference in localStorage,
+             * applies the corresponding class to the body, and updates the icon
+             * based on the current theme. It also adds an event listener to toggle
+             * the dark mode when the button is clicked.
+             */
+            function toggleDarkMode() {
+                // settings
+                const lightModeIcon = 'iconoir-half-moon';
+                const darkModeIcon = 'iconoir-sun-light';
+                const darkModeClass = 'theme-dark';
+                const storageKey = 'theme';
+
+                // Check for saved theme preference in localStorage
+                const savedTheme = localStorage.getItem(storageKey);
+                if (savedTheme) {
+                    document.body.classList.add(savedTheme);
+                    const icon = document.getElementById('js-toggle-mode').querySelector('i');
+                    icon.className = savedTheme === darkModeClass ? lightModeIcon : darkModeIcon;
+                }
+
+                // Add event listener for dark mode toggle
+                const toggleDarkModeEl = document.getElementById('js-toggle-mode');
+
+                toggleDarkModeEl.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    document.body.classList.toggle(darkModeClass);
+
+                    // Update the icon based on the current theme
+                    const icon = toggleDarkModeEl.querySelector('i');
+                    if (document.body.classList.contains(darkModeClass)) {
+                        icon.className = darkModeIcon;
+                    } else {
+                        icon.className = lightModeIcon;
+                    }
+
+                    // store the theme preference in localStorage
+                    localStorage.setItem(
+                        storageKey,
+                        document.body.classList.contains(darkModeClass) ? darkModeClass : '',
+                    );
+                });
+            }
+
+            // Initialize dark mode toggle on DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', () => {
+                toggleDarkMode();
+            });
+        </script>
     </body>
 </html>

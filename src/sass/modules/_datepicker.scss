@@ -2,7 +2,6 @@
 @use '../mixin';
 
 @mixin roolith-datepicker() {
-    // following are css overrides for https://www.npmjs.com/package/js-datepicker
     .form-datepicker-js {
         .qs-datepicker-container {
             font-family: var(--r-global-base-font);
