@@ -65,9 +65,6 @@ $-theme-component-tokens: (
     }
 }
 
-/* Emits the per-theme palette text pairs. Unlike the fill and -on pairs these
-   are derived per theme, so they are declared in every theme scope rather than
-   once in :root. */
 @mixin theme-palette-text($text-colors) {
     @each $name, $value in $text-colors {
         --r-color-#{'' + $name}-text: #{$value};
