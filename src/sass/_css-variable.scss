@@ -218,7 +218,7 @@ $-theme-component-tokens: (
         --r-form-primary-color: var(--r-surface-muted-step-2);
         --r-form-primary-border-color: var(--r-surface-muted-step-5);
         --r-form-primary-hover-color: var(--r-info);
-        --r-form-primary-focus-color: var(--r-text-inverse);
+        --r-form-primary-focus-color: var(--r-form-input-background-color);
         --r-form-error-color: var(--r-danger);
         --r-form-success-color: var(--r-success);
         --r-form-warning-color: var(--r-warning);

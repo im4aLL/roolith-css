@@ -273,10 +273,10 @@ Coloured button variants read `--r-accent`, `--r-danger`, `--r-success`, `--r-wa
 | `--r-form-input-radius` | Input radius |
 | `--r-form-checkbox-label-color` | Checkbox and radio label |
 | `--r-form-disable-input-color` | Disabled input text |
-| `--r-form-primary-color` | Checked control fill |
-| `--r-form-primary-border-color` | Checked control border |
-| `--r-form-primary-hover-color` | Checked control border on hover |
-| `--r-form-primary-focus-color` | Checked control focus fill |
+| `--r-form-primary-color` | Primary field fill |
+| `--r-form-primary-border-color` | Primary field border |
+| `--r-form-primary-hover-color` | Primary field border on hover |
+| `--r-form-primary-focus-color` | Primary field focus fill, paired with `--r-form-input-color` |
 | `--r-form-error-color` | Error state |
 | `--r-form-success-color` | Success state |
 | `--r-form-warning-color` | Warning state |
