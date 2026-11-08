@@ -1,7 +1,6 @@
 @use 'sass:math';
 @use '../function' as *;
 @use '../mixin';
-@use '../pattern' as pattern;
 
 @mixin roolith-comment() {
     .comment-group {
@@ -29,8 +28,8 @@
     }
 
     .comment-info {
-        @include pattern.text-small();
-        @include pattern.text-dimmed();
+        @include mixin.text-small();
+        @include mixin.text-dimmed();
         padding-bottom: rem(20);
     }
 

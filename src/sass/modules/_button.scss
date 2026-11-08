@@ -1,12 +1,11 @@
 @use '../function' as *;
 @use '../mixin';
 @use '../settings';
-@use '../pattern' as pattern;
-@use 'sass:color';
+@use '../resolved';
 
 @mixin roolith-button() {
     .button {
-        @include pattern.button-base();
+        @include mixin.button-base();
 
         &.active {
             box-shadow: var(--r-button-active-shadow);
@@ -64,7 +63,7 @@
     }
 
     .button-small {
-        @include pattern.button-small();
+        @include mixin.button-small();
 
         &.loading:after {
             @include mixin.loader(12);
@@ -97,26 +96,21 @@
 
     @each $name, $value in settings.$colors {
         @if ($name != white) {
+            $fill: palette-fill(resolved.$slot-roles, $name);
+            $on: palette-on(resolved.$slot-roles, $name);
+
             .button-#{'' + $name} {
-                background: var(--r-color-#{$name});
-                background: linear-gradient(
-                    to bottom,
-                    color-lighten(var(--r-color-#{$name}), 5%) 0%,
-                    var(--r-color-#{$name}) 100%
-                );
-                color: var(--r-color-white);
-                border: rem(1) solid color-darken(var(--r-color-#{$name}), 5%);
+                background: $fill;
+                background: linear-gradient(to bottom, color-lighten($fill, 5%) 0%, $fill 100%);
+                color: $on;
+                border: rem(1) solid color-darken($fill, 5%);
 
                 &:hover {
-                    background: color-lighten(var(--r-color-#{$name}), 3%);
-                    background: linear-gradient(
-                        to bottom,
-                        color-lighten(var(--r-color-#{$name}), 7%) 0%,
-                        color-lighten(var(--r-color-#{$name}), 3%) 100%
-                    );
-                    border: rem(1) solid var(--r-color-#{$name});
+                    background: color-lighten($fill, 3%);
+                    background: linear-gradient(to bottom, color-lighten($fill, 7%) 0%, color-lighten($fill, 3%) 100%);
+                    border: rem(1) solid $fill;
                     box-shadow: var(--r-button-hover-shadow-dark);
-                    color: var(--r-color-white);
+                    color: $on;
                 }
 
                 &.active {
@@ -125,32 +119,32 @@
 
                 &.button-outline {
                     background: transparent;
-                    color: var(--r-color-#{$name});
+                    color: $fill;
 
                     &:hover {
-                        background: color-lighten(var(--r-color-#{$name}), 3%);
-                        color: var(--r-color-white);
+                        background: color-lighten($fill, 3%);
+                        color: $on;
                     }
                 }
 
                 &.button-text {
                     background: transparent;
                     border-color: transparent;
-                    color: var(--r-color-#{$name});
+                    color: $fill;
 
                     &:hover {
                         background-color: var(--r-button-default-hover-background);
-                        color: var(--r-color-#{$name});
+                        color: $fill;
                     }
                 }
 
                 &.loading:after {
-                    border: rem(2) solid rgba(255, 255, 255, 0.3);
-                    border-top-color: rgb(255, 255, 255);
+                    border: rem(2) solid color-mix(in srgb, currentColor 30%, transparent);
+                    border-top-color: currentColor;
                 }
 
                 .icon {
-                    background-color: var(--r-color-white);
+                    background-color: currentColor;
                 }
             }
         }

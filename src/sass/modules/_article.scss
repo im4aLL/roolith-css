@@ -1,6 +1,5 @@
 @use '../function' as *;
 @use '../mixin';
-@use '../pattern' as pattern;
 
 @mixin roolith-article() {
     %roolith-article-font-style {
@@ -35,8 +34,8 @@
         }
 
         aside {
-            @include pattern.text-small();
-            @include pattern.text-dimmed();
+            @include mixin.text-small();
+            @include mixin.text-dimmed();
             padding-bottom: rem(20);
         }
 
@@ -86,8 +85,8 @@
 
         & > aside {
             font-style: italic;
-            @include pattern.text-small();
-            @include pattern.text-dimmed();
+            @include mixin.text-small();
+            @include mixin.text-dimmed();
 
             @include mixin.breakpoint(large-up) {
                 grid-column: 3;

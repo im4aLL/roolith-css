@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use '../function' as *;
 @use '../settings';
+@use '../resolved';
 
 @mixin roolith-message() {
     .message {
@@ -42,24 +43,25 @@
 
     @each $name, $value in settings.$colors {
         @if ($name != white) {
+            $fill: palette-fill(resolved.$slot-roles, $name);
             $inverted: list.index($inverted-message-variants, $name) != null;
             $dark-foreground: var(--r-text);
 
             @if not $inverted {
-                $dark-foreground: color-mix(in srgb, var(--r-color-#{$name}), white 55%);
+                $dark-foreground: color-mix(in srgb, $fill, white 55%);
             }
 
             .message-#{'' + $name} {
-                background: color-mix(in srgb, var(--r-color-#{$name}), white 90%);
-                color: var(--r-color-#{$name});
+                background: color-mix(in srgb, $fill, white 90%);
+                color: $fill;
 
                 .theme-dark & {
-                    background: color-mix(in srgb, var(--r-color-#{$name}) 14%, var(--r-surface-raised-step-5));
+                    background: color-mix(in srgb, $fill 14%, var(--r-surface-raised-step-5));
                     color: $dark-foreground;
                 }
 
                 .message-close {
-                    color: var(--r-color-#{$name});
+                    color: $fill;
 
                     .theme-dark & {
                         color: $dark-foreground;
@@ -69,8 +71,8 @@
 
             .message-#{'' + $name}-outline {
                 background: transparent;
-                color: var(--r-color-#{$name});
-                border: rem(1) solid var(--r-color-#{$name});
+                color: $fill;
+                border: rem(1) solid $fill;
                 padding: rem(14) rem(17);
 
                 @if $inverted {

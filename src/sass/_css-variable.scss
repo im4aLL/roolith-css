@@ -1,6 +1,8 @@
 @use 'sass:map';
 @use './settings' as *;
+@use './resolved';
 
+// Component tokens
 $-theme-component-tokens: (
     light: (
         nav-link-color: var(--r-text),
@@ -13,8 +15,8 @@ $-theme-component-tokens: (
         tag-background: color-mix(in srgb, var(--r-tag-color), white 90%),
         tag-border-color: color-mix(in srgb, var(--r-tag-color), white 20%),
         tag-text-color: var(--r-tag-color),
-        comment-border: color-mix(in srgb, var(--r-color-dark) 10%, transparent),
-        sidebar-nav-link-hover-color: var(--r-color-primary),
+        comment-border: color-mix(in srgb, var(--r-text) 10%, transparent),
+        sidebar-nav-link-hover-color: var(--r-accent),
         sidebar-nav-active-color: var(--r-text),
         layout-secondary-background-color: var(--r-surface-muted),
         popover-background: var(--r-surface-muted),
@@ -24,12 +26,12 @@ $-theme-component-tokens: (
     dark: (
         nav-link-color: var(--r-link),
         nav-dimmed-link-color: var(--r-text-muted),
-        nav-active-link-color: var(--r-color-primary),
+        nav-active-link-color: var(--r-accent),
         dropdown-item-hover-color: var(--r-text-strong),
         combo-box-item-hover-color: var(--r-text-strong),
         action-menu-item-background: transparent,
         quick-menu-link-hover-background: var(--r-surface-page),
-        tag-background: var(--r-color-black),
+        tag-background: var(--r-surface-page),
         tag-border-color: var(--r-border-control),
         tag-text-color: var(--r-text-subtle),
         comment-border: var(--r-surface-raised-step-5),
@@ -42,6 +44,7 @@ $-theme-component-tokens: (
     ),
 );
 
+// Mixins
 @mixin theme-primitives($theme) {
     @each $name, $value in $theme {
         --r-theme-#{'' + $name}: #{$value};
@@ -61,39 +64,52 @@ $-theme-component-tokens: (
 }
 
 @mixin roolith-css-variable() {
+    // Root
     :root {
         @each $name, $value in $colors {
             --r-color-#{'' + $name}: #{$value};
+            --r-color-#{'' + $name}-on: #{map.get(resolved.$colors-on, $name)};
         }
 
-        @include theme-primitives($theme-light);
+        @include theme-primitives(resolved.$theme-light);
         @include theme-component-tokens(map.get($-theme-component-tokens, light));
         color-scheme: light;
     }
 
+    // Light theme
     .theme-light {
-        @include theme-primitives($theme-light);
+        @include theme-primitives(resolved.$theme-light);
         @include theme-component-tokens(map.get($-theme-component-tokens, light));
         color-scheme: light;
     }
 
+    // Dark theme
     .theme-dark {
-        @include theme-primitives($theme-dark);
+        @include theme-primitives(resolved.$theme-dark);
         @include theme-component-tokens(map.get($-theme-component-tokens, dark));
         color-scheme: dark;
     }
 
+    // OS dark preference
     @media (prefers-color-scheme: dark) {
         :root:not(.theme-light) {
-            @include theme-primitives($theme-dark);
+            @include theme-primitives(resolved.$theme-dark);
             @include theme-component-tokens(map.get($-theme-component-tokens, dark));
             color-scheme: dark;
         }
     }
 
+    // Shared roles
     :root,
     .theme-light,
     .theme-dark {
+        // Accent roles
+        @each $role, $name in resolved.$accent-roles {
+            --r-#{$role}: var(--r-color-#{$name});
+            --r-#{$role}-on: var(--r-color-#{$name}-on);
+        }
+
+        // Surface
         --r-surface-page: var(--r-theme-page);
         --r-surface: var(--r-theme-surface);
         --r-surface-raised: var(--r-theme-surface-raised);
@@ -106,9 +122,11 @@ $-theme-component-tokens: (
         --r-surface-control-hover: var(--r-theme-control-hover);
         --r-surface-control-hover-end: var(--r-theme-control-hover-end);
 
+        // Surface scales
         @include surface-scale('surface-raised-step', 'surface-raised', 5, 8, 10, 20, 30, 50, 60);
         @include surface-scale('surface-muted-step', 'surface-muted', 2, 3, 5, 10);
 
+        // Text
         --r-text: var(--r-theme-text);
         --r-text-muted: var(--r-theme-text-muted);
         --r-text-subtle: var(--r-theme-text-subtle);
@@ -125,6 +143,7 @@ $-theme-component-tokens: (
         --r-text-disabled: var(--r-theme-text-disabled);
         --r-link: var(--r-theme-link);
 
+        // Border
         --r-border-subtle: var(--r-theme-border-subtle);
         --r-border-layout: var(--r-theme-border-layout);
         --r-border: var(--r-theme-border);
@@ -132,6 +151,7 @@ $-theme-component-tokens: (
         --r-border-emphasis: var(--r-theme-border-emphasis);
         --r-border-hairline: var(--r-theme-border-hairline);
 
+        // Global
         --r-global-base-font-size: #{$global-base-font-size};
         --r-global-base-font: #{$global-base-font};
         --r-global-font-weight: #{$global-font-weight};
@@ -143,18 +163,18 @@ $-theme-component-tokens: (
         --r-global-border-radius: #{$global-border-radius};
         --r-global-width: #{$global-width};
 
+        // Focus
         --r-focus-ring-color: var(--r-link);
 
+        // Animation
         --r-animation-easing: #{$animation-easing};
         --r-animation-duration: #{$animation-duration};
 
+        // Button
         --r-button-radius: #{$button-radius};
         --r-button-hover-shadow: #{$button-hover-shadow};
         --r-button-hover-shadow-dark: #{$button-hover-shadow-dark};
         --r-button-active-dark-shadow: #{$button-active-dark-shadow};
-        --r-button-base-white: var(--r-text-inverse);
-        --r-button-primary-color: var(--r-color-primary);
-        --r-button-secondary-color: var(--r-color-secondary);
 
         --r-button-default-background: var(--r-surface-control);
         --r-button-default-background-end: var(--r-surface-control-end);
@@ -165,27 +185,29 @@ $-theme-component-tokens: (
         --r-button-default-hover-border: var(--r-border-emphasis);
         --r-button-default-hover-color: var(--r-text-muted);
 
+        // Nav
         --r-nav-border-radius: #{$nav-border-radius};
         --r-nav-spacing: #{$nav-spacing};
-        --r-nav-primary-color: var(--r-color-primary);
+        --r-nav-primary-color: var(--r-accent);
 
+        // Form
         --r-form-input-placeholder-color: var(--r-text-placeholder);
         --r-form-input-background-color: var(--r-surface-raised);
         --r-form-input-color: var(--r-text-control);
         --r-form-input-border-color: var(--r-border-control);
         --r-form-input-hover-border-color: var(--r-link);
-        --r-form-input-focus-border-color: var(--r-color-primary);
+        --r-form-input-focus-border-color: var(--r-accent);
         --r-form-text-color: var(--r-text-helper);
         --r-form-input-radius: #{$form-input-radius};
         --r-form-checkbox-label-color: var(--r-text-label);
         --r-form-disable-input-color: var(--r-text-disabled);
         --r-form-primary-color: var(--r-surface-muted-step-2);
         --r-form-primary-border-color: var(--r-surface-muted-step-5);
-        --r-form-primary-hover-color: var(--r-color-info);
+        --r-form-primary-hover-color: var(--r-info);
         --r-form-primary-focus-color: var(--r-text-inverse);
-        --r-form-error-color: var(--r-color-danger);
-        --r-form-success-color: var(--r-color-success);
-        --r-form-warning-color: var(--r-color-info);
+        --r-form-error-color: var(--r-danger);
+        --r-form-success-color: var(--r-success);
+        --r-form-warning-color: var(--r-warning);
 
         --r-form-field-search-hint-background: var(--r-surface-raised);
         --r-form-field-search-hint-border-color: var(--r-border-subtle);
@@ -197,11 +219,12 @@ $-theme-component-tokens: (
         --r-form-radio-group-gap: #{$form-radio-group-gap};
         --r-form-radio-group-item-padding: #{$form-radio-group-item-padding};
         --r-form-radio-group-width: #{$form-radio-group-width};
-        --r-form-radio-selected-border-color: var(--r-color-primary);
+        --r-form-radio-selected-border-color: var(--r-accent);
         --r-form-radio-selected-background-color: var(--r-theme-radio-selected);
-        --r-form-radio-selected-color: var(--r-color-primary);
+        --r-form-radio-selected-color: var(--r-accent);
         --r-form-radio-text-color: color-mix(in srgb, var(--r-text-helper), var(--r-theme-on-surface) 40%);
 
+        // Table
         --r-table-header-border-color: var(--r-surface-muted-step-10);
         --r-table-border-color: var(--r-surface-muted-step-5);
         --r-table-header-font-weight: var(--r-global-font-bold-weight);
@@ -212,28 +235,34 @@ $-theme-component-tokens: (
         --r-table-row-striped-hover-color: var(--r-surface-muted-step-3);
         --r-table-row-highlight-color: var(--r-theme-table-highlight);
 
+        // Image
         --r-img-radius: #{$img-radius};
         --r-img-caption-color: var(--r-text-subtle);
 
+        // Message
         --r-message-radius: #{$message-radius};
         --r-message-close-color: var(--r-text);
 
+        // Badge
         --r-badge-radius: #{$badge-radius};
         --r-badge-background: var(--r-surface-hover);
         --r-badge-color: var(--r-text-muted);
 
+        // Breadcrumb
         --r-breadcrumb-spacing: #{$breadcrumb-spacing};
         --r-breadcrumb-size: #{$breadcrumb-size};
         --r-breadcrumb-default-color: var(--r-text-subtle);
         --r-breadcrumb-sep-symbol: '/';
         --r-breadcrumb-sep-color: var(--r-text-separator);
 
+        // Card
         --r-card-radius: #{$card-radius};
         --r-card-shadow: #{$card-shadow};
         --r-card-header-footer-border: var(--r-border-subtle);
         --r-card-header-footer-color: var(--r-text-subtle);
         --r-card-background: var(--r-surface);
 
+        // Dropdown
         --r-dropdown-icons-size: #{$dropdown-icons-size};
         --r-dropdown-icons-size-small: #{$dropdown-icons-size-small};
         --r-dropdown-icons-size-large: #{$dropdown-icons-size-large};
@@ -245,6 +274,7 @@ $-theme-component-tokens: (
         --r-dropdown-item-hover-background-color: var(--r-surface-hover);
         --r-dropdown-item-sep: var(--r-surface-raised-step-8);
 
+        // Modal
         --r-modal-background: rgba(0, 0, 0, 0.5);
         --r-modal-content-background: var(--r-surface-raised);
         --r-modal-close-color: var(--r-surface-raised-step-50);
@@ -253,11 +283,14 @@ $-theme-component-tokens: (
         --r-modal-content-shadow: #{$modal-content-shadow};
         --r-modal-border-color: var(--r-border-subtle);
 
+        // Accordion
         --r-accordion-border-color: var(--r-border-hairline);
 
-        --r-tab-active-color: var(--r-color-primary);
+        // Tab
+        --r-tab-active-color: var(--r-accent);
         --r-tab-border-color: var(--r-surface-muted-step-5);
 
+        // Box
         --r-box-spacing: #{$box-spacing};
         --r-box-spacing-small: #{$box-spacing-small};
         --r-box-spacing-large: #{$box-spacing-large};
@@ -267,11 +300,13 @@ $-theme-component-tokens: (
         --r-box-header-text-color: var(--r-text);
         --r-box-footer-color: var(--r-surface-raised-step-60);
 
+        // Progress
         --r-progress-background: var(--r-surface-raised-step-5);
         --r-progress-background-shadow: #{$progress-background-shadow};
         --r-progress-bar-color: var(--r-surface-raised-step-30);
         --r-progress-bar-radius: #{$progress-bar-radius};
 
+        // Collage
         --r-collage-item-default-width: #{$collage-item-default-width};
         --r-collage-item-default-height: #{$collage-item-default-height};
         --r-collage-item-default-gap: #{$collage-item-default-gap};
@@ -280,28 +315,36 @@ $-theme-component-tokens: (
         --r-collage-caption-background: 0, 0, 0;
         --r-collage-caption-color: var(--r-text-inverse);
 
+        // Avatar
         --r-avatar-default-size: #{$avatar-default-size};
         --r-avatar-small-size: #{$avatar-small-size};
         --r-avatar-label-color: var(--r-text-strong);
         --r-avatar-label-hover-color: var(--r-text-muted);
 
-        --r-tag-color: var(--r-color-primary);
+        // Tag
+        --r-tag-color: var(--r-accent);
 
+        // Comment
         --r-comment-highlight-color: var(--r-theme-comment-highlight);
 
+        // Toast notification
         --r-toast-notification-width: #{$toast-notification-width};
 
+        // Loader
         --r-loader-border-color: var(--r-surface-raised-step-20);
         --r-loader-border-top-color: var(--r-theme-loader-head);
 
+        // Icon
         --r-icon-color: var(--r-text-placeholder);
         --r-icon-size: #{$icon-size};
         --r-icon-small-size: #{$icon-small-size};
         --r-icon-large-size: #{$icon-large-size};
 
+        // Code
         --r-code-background: var(--r-surface-muted);
         --r-code-color: var(--r-text-quiet);
 
+        // Layout
         --r-layout-sidebar-width: #{$layout-sidebar-width};
         --r-layout-border-color: var(--r-border-layout);
         --r-layout-border-width: #{$layout-border-width};
@@ -315,6 +358,7 @@ $-theme-component-tokens: (
         --r-layout-header-search-width: #{$layout-header-search-width};
         --r-layout-compact-sidebar-width: #{$layout-sidebar-width-compact};
 
+        // Sidebar nav
         --r-sidebar-nav-header-color: var(--r-text-faint);
         --r-sidebar-group-sep-color: var(--r-surface-raised-step-10);
         --r-sidebar-nav-padding: #{$sidebar-nav-padding};
@@ -324,6 +368,7 @@ $-theme-component-tokens: (
         --r-sidebar-nav-list-label-font-weight: #{$sidebar-nav-list-label-font-weight};
         --r-sidebar-nav-item-caret-size: #{$sidebar-nav-item-caret-size};
 
+        // Tooltip
         --r-tooltip-bg-color: var(--r-surface-inverse);
         --r-tooltip-text-color: var(--r-text-inverse);
         --r-tooltip-padding: #{$tooltip-padding};
@@ -334,12 +379,14 @@ $-theme-component-tokens: (
         --r-tooltip-border-color: var(--r-color-tertiary);
         --r-tooltip-content-btn-bg-color: var(--r-color-tertiary);
 
+        // Popover
         --r-popover-color: var(--r-text);
         --r-popover-border-radius: #{$popover-border-radius};
         --r-popover-width: #{$popover-width};
         --r-popover-border-color: var(--r-surface-raised-step-10);
         --r-popover-offset: #{$popover-offset};
 
+        // Drawer
         --r-drawer-container-background: var(--r-modal-background);
         --r-drawer-background: var(--r-modal-content-background);
         --r-drawer-close-button-color: var(--r-modal-close-color);
@@ -347,27 +394,32 @@ $-theme-component-tokens: (
         --r-drawer-content-spacing: var(--r-modal-content-spacing);
         --r-drawer-border-color: var(--r-modal-border-color);
 
+        // Switch
         --r-form-switch-background-color: var(--r-border-control);
-        --r-form-switch-checked-background-color: var(--r-color-primary);
-        --r-form-switch-handler-color: var(--r-text-inverse);
+        --r-form-switch-checked-background-color: var(--r-accent);
+        --r-form-switch-handler-color: var(--r-accent-on);
         --r-form-switch-size: #{$switch-size};
         --r-form-switch-size-large: #{$switch-size-large};
 
+        // Range
         --r-form-range-height: #{$range-size};
         --r-form-range-track-color: var(--r-surface-muted-step-5);
-        --r-form-range-thumb-color: var(--r-color-primary);
-        --r-form-range-thumb-hover-color: color-mix(in srgb, var(--r-color-primary), black 10%);
+        --r-form-range-thumb-color: var(--r-accent);
+        --r-form-range-thumb-hover-color: color-mix(in srgb, var(--r-accent), black 10%);
         --r-form-range-border-radius: var(--r-global-border-radius);
         --r-form-range-thumb-size: calc(var(--r-form-range-height) * 3);
         --r-form-range-value: 50%;
 
+        // Action menu
         --r-action-menu-list-gap: #{$action-menu-list-gap};
         --r-action-menu-item-color: var(--r-text-muted);
-        --r-action-menu-item-hover-color: var(--r-color-primary);
+        --r-action-menu-item-hover-color: var(--r-accent);
         --r-action-menu-item-hover-background: var(--r-surface-muted);
         --r-action-menu-item-border-radius: var(--r-global-border-radius);
 
-        --r-pagination-item-active-background-color: var(--r-color-primary);
+        // Pagination
+        --r-pagination-item-active-background-color: var(--r-accent);
+        --r-pagination-item-active-color: var(--r-accent-on);
         --r-pagination-item-color: var(--r-global-font-color);
         --r-pagination-item-hover-color: var(--r-global-font-color);
         --r-pagination-item-background: transparent;
@@ -376,35 +428,42 @@ $-theme-component-tokens: (
         --r-pagination-item-border-color: var(--r-border-control);
         --r-pagination-item-font-size: #{$pagination-item-font-size};
 
+        // Block box
         --r-block-box-spacing: var(--r-box-spacing);
         --r-block-box-size: #{$block-box-size};
         --r-block-box-color: var(--r-global-font-color);
-        --r-block-box-hover-color: var(--r-text-inverse);
-        --r-block-box-hover-background: var(--r-color-primary);
+        --r-block-box-hover-color: var(--r-accent-on);
+        --r-block-box-hover-background: var(--r-accent);
         --r-block-box-icon-color: var(--r-text-quiet);
         --r-block-box-hl-color: var(--r-text-quiet);
 
+        // Block form
         --r-block-form-group-border-color: var(--r-border-control);
         --r-block-form-group-border-radius: calc(var(--r-global-border-radius) * 2);
         --r-block-form-group-padding: #{$block-form-group-padding};
         --r-block-form-border-color: var(--r-block-form-group-border-color);
         --r-block-form-text-color: var(--r-text-quiet);
 
+        // Block list
         --r-block-list-item-border-color: var(--r-surface-muted-step-5);
 
+        // Block enable
         --r-block-enable-box-spacing: #{$block-enable-box-spacing};
 
+        // Indicator
         --r-indicator-icon-size: #{$indicator-icon-size};
         --r-indicator-normal-color: var(--r-color-secondary);
-        --r-indicator-upward-color: var(--r-color-success);
-        --r-indicator-downward-color: var(--r-color-danger);
-        --r-indicator-online-color: var(--r-color-success);
+        --r-indicator-upward-color: var(--r-success);
+        --r-indicator-downward-color: var(--r-danger);
+        --r-indicator-online-color: var(--r-success);
 
+        // Block stat
         --r-block-stat-item-gap: #{$block-stat-item-gap};
         --r-block-stat-item-background-color: transparent;
         --r-block-stat-item-hover-background-color: var(--r-surface-muted);
         --r-block-stat-item-border-radius: var(--r-global-border-radius);
 
+        // Quick menu
         --r-quick-menu-background: var(--r-surface-muted);
         --r-quick-menu-spacing: #{$quick-menu-spacing};
         --r-quick-menu-font-size: #{$quick-menu-font-size};
@@ -413,9 +472,11 @@ $-theme-component-tokens: (
         --r-quick-menu-spacing-x-small: #{$quick-menu-spacing-x-small};
         --r-quick-menu-font-size-x-small: #{$quick-menu-font-size-x-small};
 
+        // Block stat table
         --r-block-stat-table-header-color: var(--r-text-faint);
         --r-block-stat-table-indicator-color: var(--r-surface-muted);
 
+        // Combo box
         --r-combo-box-icon-size: #{$combo-box-icon-size};
         --r-combo-box-width: #{$combo-box-width};
         --r-combo-box-background: var(--r-surface-overlay);
@@ -431,18 +492,21 @@ $-theme-component-tokens: (
         --r-combo-box-item-x-padding: #{$combo-box-item-x-padding};
         --r-combo-box-item-y-padding: #{$combo-box-item-y-padding};
 
+        // Block inline
         --r-block-inline-gap: #{$block-inline-gap};
 
+        // Block banner
         --r-block-banner-text-color: var(--r-text-subtle);
 
+        // Form datepicker
         --r-form-datepicker-background-color: var(--r-form-input-background-color);
         --r-form-datepicker-color: var(--r-text);
         --r-form-datepicker-border-color: var(--r-border-control);
         --r-form-datepicker-border-radius: var(--r-global-border-radius);
         --r-form-datepicker-margin-top: #{$form-datepicker-margin-top};
         --r-form-datepicker-strong-weight: var(--r-global-font-weight);
-        --r-form-datepicker-accent-color: var(--r-color-primary);
-        --r-form-datepicker-accent-text-color: var(--r-text-inverse);
+        --r-form-datepicker-accent-color: var(--r-accent);
+        --r-form-datepicker-accent-text-color: var(--r-accent-on);
         --r-form-datepicker-row-gap: #{$form-datepicker-row-gap};
         --r-form-datepicker-tile-height: #{$form-datepicker-tile-height};
         --r-form-datepicker-controls-background-color: var(--r-form-input-background-color);

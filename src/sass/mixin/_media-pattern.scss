@@ -1,0 +1,11 @@
+/* Full-width media inside a container. */
+@mixin img-full-width() {
+    width: 100%;
+}
+
+/* Fill a fixed-ratio figure box by cropping the image. Backs .fig-fit. */
+@mixin fig-fit() {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

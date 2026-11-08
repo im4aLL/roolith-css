@@ -1,6 +1,5 @@
 @use '../function' as *;
 @use '../mixin';
-@use '../pattern' as pattern;
 
 @mixin roolith-drawer() {
     .drawer {
@@ -16,7 +15,7 @@
         box-shadow: var(--r-modal-content-shadow);
         padding: calc(var(--r-drawer-content-spacing) * 1.5);
         @include mixin.nice-scroll();
-        @include pattern.animation(fadeInRight);
+        @include mixin.animation(fadeInRight);
     }
 
     .drawer-container {
@@ -71,7 +70,7 @@
         display: block;
         font-size: rem(14);
         margin-top: rem(8);
-        @include pattern.text-dimmed();
+        @include mixin.text-dimmed();
     }
 
     .drawer-body {

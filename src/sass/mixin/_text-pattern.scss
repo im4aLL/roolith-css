@@ -1,8 +1,10 @@
+/* Small-text sizing for secondary copy. */
 @mixin text-small() {
     font-size: 80%;
     line-height: 1.3em;
 }
 
+/* Reduced-emphasis opacity for secondary copy. */
 @mixin text-dimmed() {
     opacity: 0.6;
 }

@@ -1,6 +1,5 @@
 @use '../function' as *;
 @use '../mixin';
-@use '../pattern' as pattern;
 
 @mixin roolith-avatar() {
     .avatar {
@@ -20,7 +19,7 @@
         height: var(--r-avatar-default-size);
 
         img {
-            @include pattern.img-fit();
+            @include mixin.fig-fit();
         }
 
         .avatar-small & {
@@ -63,7 +62,7 @@
 
     .avatar-secondary-block {
         padding: rem(5) 0 0;
-        @include pattern.text-small();
-        @include pattern.text-dimmed();
+        @include mixin.text-small();
+        @include mixin.text-dimmed();
     }
 }

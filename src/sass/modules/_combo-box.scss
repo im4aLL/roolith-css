@@ -1,6 +1,5 @@
 @use '../function' as *;
 @use '../mixin';
-@use '../pattern' as pattern;
 
 @mixin roolith-combo-box() {
     .combo-box {
@@ -31,7 +30,7 @@
         border: rem(1) solid var(--r-combo-box-border-color);
         border-radius: var(--r-combo-box-border-radius);
         box-shadow: var(--r-combo-box-shadow);
-        @include pattern.animation(fadeIn);
+        @include mixin.animation(fadeIn);
 
         .combo-box-right & {
             left: auto;

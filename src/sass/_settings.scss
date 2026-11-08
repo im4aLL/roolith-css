@@ -1,13 +1,13 @@
-@use 'sass:map';
 @use './function' as *;
-@use './theme' as theme;
 
+// Global
 $global-base-font-size: 100% !default;
 $global-base-font: 'Inter', sans-serif !default;
 $global-font-weight: normal !default;
 $global-font-bold-weight: 600 !default;
 $global-border-radius: rem(8) !default;
 
+// Breakpoints
 $breakpoints: (
     small: 0,
     medium: 640px,
@@ -16,6 +16,7 @@ $breakpoints: (
     xxlarge: 1440px,
 ) !default;
 
+// Grid
 $global-width: rem(1200) !default;
 
 $grid-gutter: (
@@ -25,9 +26,9 @@ $grid-gutter: (
 ) !default;
 
 $grid-column-count: 12 !default;
-// css-grid is the default layout. traditional keeps the legacy float grid and is deprecated.
 $grid-layout: css-grid !default;
 
+// Palette
 $colors: (
     primary: #4a5cd0,
     secondary: #7b6aa6,
@@ -42,185 +43,108 @@ $colors: (
     light: #f4f5f8,
 ) !default;
 
+// Palette foreground pairs
+$colors-on: () !default;
+
+// Accent roles
+$accent-roles: () !default;
+
+// Theme
 $theme-dark-color: #0c0c0c !default;
 
 $theme-light-seeds: () !default;
-$theme-light-seeds: map.merge((
-    page: #ffffff,
-    surface: #ffffff,
-    raised: #ffffff,
-    muted: #f4f5f8,
-    inverse: #1e2128,
-    text: #1e2128,
-    ink: #0b0d12,
-    link: map.get($colors, link),
-    hairline: rgba(0, 0, 0, 0.1),
-    on-surface: black,
-), $theme-light-seeds);
+$theme-dark-seeds: () !default;
 
 $theme-light-steps: () !default;
-$theme-light-steps: map.merge((
-    overlay: 2%,
-    hover: 5%,
-    control: 4%,
-    control-end: 3%,
-    control-hover: 20%,
-    control-hover-end: 2%,
-    border-subtle: 5%,
-    border-layout: 5.7%,
-    border: 15%,
-    // 43% is the first step that clears 3:1 on both the page and the muted
-    // layout surface, so a control boundary is identifiable without a ring.
-    border-control: 43%,
-    border-emphasis: 20%,
-    text-muted: 20%,
-    // 33-35% clear 4.5:1 on the muted layout surface, the darkest one secondary
-    // text sits on. The old 40-70% steps could not be read as text at all.
-    text-subtle: 33%,
-    text-faint: 35%,
-    text-quiet: 30%,
-    text-tertiary: 35%,
-    text-separator: 35%,
-    text-placeholder: 35%,
-    text-helper: 35%,
-    text-label: 20%,
-    text-control: 0%,
-    text-disabled: 5%,
-    // A row tint cannot reach 3:1 without swallowing the row content; the
-    // highlight bar on the first cell carries the state contrast instead.
-    table-highlight: 12%,
-    table-lift: 0%,
-    comment-highlight: 20%,
-    comment-lift: 0%,
-    radio-selected: 2.75%,
-    loader-head: 70%,
-), $theme-light-steps);
-
-$theme-dark-seeds: () !default;
-$theme-dark-seeds: map.merge((
-    page: $theme-dark-color,
-    surface: #181818,
-    raised: #222222,
-    muted: #181818,
-    inverse: #222222,
-    text: #a3a3a3,
-    ink: #ffffff,
-    link: theme.blend(map.get($colors, primary), white, 40%),
-    hairline: #181818,
-    on-surface: white,
-), $theme-dark-seeds);
-
 $theme-dark-steps: () !default;
-$theme-dark-steps: map.merge((
-    overlay: 2%,
-    hover: 13%,
-    control: 6.4%,
-    control-end: 15%,
-    control-hover: -6%,
-    control-hover-end: 21%,
-    border-subtle: 4%,
-    border-layout: 8%,
-    border: 21.8%,
-    // 37% is the first step that clears 3:1 on the raised input surface.
-    border-control: 37%,
-    border-emphasis: 27%,
-    // Secondary text fades toward the page. 5% keeps the button label above
-    // 4.5:1 on the control surface; 12-17% covers the rest of the ladder on the
-    // raised surface, which is the lightest one they sit on in dark.
-    text-muted: 5%,
-    text-subtle: 15%,
-    text-faint: 17%,
-    text-quiet: 12%,
-    text-tertiary: 17%,
-    text-separator: 17%,
-    text-placeholder: 17%,
-    text-helper: 17%,
-    text-label: 0%,
-    text-control: 100%,
-    text-disabled: 5%,
-    table-highlight: 0%,
-    table-lift: 3.7%,
-    comment-highlight: 0%,
-    comment-lift: 10%,
-    radio-selected: 0%,
-    loader-head: 56%,
-), $theme-dark-steps);
-
-$theme-light-defaults: theme.theme-roles($theme-light-seeds, $theme-light-steps, map.get($colors, primary));
-
-$theme-dark-defaults: theme.theme-roles($theme-dark-seeds, $theme-dark-steps, map.get($colors, primary));
 
 $theme-light: () !default;
-$theme-light: map.merge($theme-light-defaults, $theme-light);
-
 $theme-dark: () !default;
-$theme-dark: map.merge($theme-dark-defaults, $theme-dark);
 
+// Animation
 $animation-easing: cubic-bezier(1, 0, 0, 1) !default;
 $animation-duration: 0.25s !default;
 
+// Button
 $button-radius: $global-border-radius !default;
 $button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
 $button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
 $button-active-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.1) !default;
 $button-active-dark-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.2) !default;
 
+// Nav
 $nav-border-radius: $global-border-radius !default;
 $nav-spacing: rem(13) !default;
 
+// Form
 $form-input-radius: $global-border-radius !default;
 $form-radio-group-gap: rem(10);
 $form-radio-group-item-padding: rem(20);
 $form-radio-group-width: rem(300);
 
+// Table
 $table-spacing: rem(10) !default;
 
+// Image
 $img-radius: $global-border-radius !default;
 
+// Message
 $message-radius: $global-border-radius !default;
 
+// Badge
 $badge-radius: $global-border-radius !default;
 
+// Breadcrumb
 $breadcrumb-spacing: rem(10) !default;
 $breadcrumb-size: 80% !default;
 
+// Card
 $card-radius: $global-border-radius !default;
 $card-shadow: 0 0 0 rem(1) rgba(0, 0, 0, 0.04) !default;
 
+// Dropdown
 $dropdown-icons-size: rem(5) !default;
 $dropdown-icons-size-small: rem(4) !default;
 $dropdown-icons-size-large: rem(7) !default;
 $dropdown-width: rem(220) !default;
 $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 
+// Modal
 $modal-content-radius: $global-border-radius !default;
 $modal-content-spacing: rem(20) !default;
 $modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0, 0, 0, 0.1) !default;
 $modal-layout: css-grid !default;
 
+// Box
 $box-spacing: rem(20) !default;
 $box-spacing-small: rem(15) !default;
 $box-spacing-large: rem(40) !default;
 $box-border-radius: $global-border-radius !default;
 
+// Progress
 $progress-background-shadow: 0 rem(2) rem(5) rgba(0, 0, 0, 0.05) inset !default;
 $progress-bar-radius: $global-border-radius !default;
 
+// Collage
 $collage-item-default-width: rem(200) !default;
 $collage-item-default-height: rem(200) !default;
 $collage-item-default-gap: rem(10) !default;
 $collage-item-small-gap: rem(1) !default;
 $collage-item-large-gap: rem(20) !default;
 
+// Avatar
 $avatar-default-size: rem(40) !default;
 $avatar-small-size: rem(30) !default;
 
+// Toast notification
 $toast-notification-width: rem(400) !default;
 
+// Icon
 $icon-size: rem(16) !default;
 $icon-small-size: rem(14) !default;
 $icon-large-size: rem(32) !default;
 
+// Layout
 $layout-sidebar-width: rem(230) !default;
 $layout-sidebar-width-compact: rem(46) !default;
 $layout-header-logo-width: rem(80) !default;
@@ -228,40 +152,54 @@ $layout-header-padding: rem(10) rem(15) !default;
 $layout-border-width: rem(1) !default;
 $layout-header-search-width: rem(300) !default;
 
+// Sidebar nav
 $sidebar-nav-padding: rem(15) !default;
 $sidebar-nav-list-label-font-weight: 400 !default;
 $sidebar-nav-item-caret-size: rem(5) !default;
 
+// Tooltip
 $tooltip-padding: rem(5) rem(10) !default;
 $tooltip-padding-large: rem(15) !default;
 $tooltip-transition-duration: 150ms !default;
 $tooltip-transition-delay: 250ms !default;
 
+// Popover
 $popover-border-radius: $global-border-radius !default;
 $popover-width: rem(275) !default;
 $popover-offset: rem(10) !default;
 
+// Switch
 $switch-size: rem(36) !default;
 $switch-size-large: rem(44) !default;
 
+// Range
 $range-size: rem(6) !default;
 
+// Action menu
 $action-menu-list-gap: rem(2) !default;
 
+// Pagination
 $pagination-item-font-size: rem(14) !default;
 
+// Block box
 $block-box-size: rem(250) !default;
 
+// Spacer
 $spacer: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 150, 200, 250 !default;
 
+// Block form
 $block-form-group-padding: $box-spacing-large !default;
 
+// Block enable
 $block-enable-box-spacing: rem(10) !default;
 
+// Indicator
 $indicator-icon-size: rem(14) !default;
 
+// Block stat
 $block-stat-item-gap: rem(20) !default;
 
+// Quick menu
 $quick-menu-spacing: rem(8) !default;
 $quick-menu-font-size: rem(14) !default;
 $quick-menu-spacing-small: rem(5) !default;
@@ -269,6 +207,7 @@ $quick-menu-font-size-small: rem(12) !default;
 $quick-menu-spacing-x-small: rem(4) !default;
 $quick-menu-font-size-x-small: rem(10) !default;
 
+// Combo box
 $combo-box-icon-size: rem(5) !default;
 $combo-box-icon-size-small: rem(4) !default;
 $combo-box-icon-size-large: rem(7) !default;
@@ -278,8 +217,10 @@ $combo-box-show-animation-duration: 50ms !default;
 $combo-box-item-y-padding: rem(7) !default;
 $combo-box-item-x-padding: rem(15) !default;
 
+// Block inline
 $block-inline-gap: rem(10) !default;
 
+// Form datepicker
 $form-datepicker-margin-top: rem(5) !default;
 $form-datepicker-row-gap: rem(5) !default;
 $form-datepicker-tile-height: rem(22) !default;

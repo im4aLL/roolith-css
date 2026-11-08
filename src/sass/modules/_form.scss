@@ -1,6 +1,5 @@
 @use '../function' as *;
 @use '../mixin';
-@use '../pattern' as pattern;
 
 @mixin form-search() {
     .form-field-search {
@@ -312,8 +311,8 @@
         appearance: none;
         width: rem(15);
         height: rem(15);
-        background-color: var(--r-color-white);
-        border: rem(1) solid color-mix(in srgb, var(--r-form-input-border-color), black 15%);
+        background-color: var(--r-form-input-background-color);
+        border: rem(1) solid color-mix(in srgb, var(--r-form-input-border-color), var(--r-theme-on-surface) 15%);
         border-radius: rem(4);
         position: absolute;
         left: 0;
@@ -334,16 +333,17 @@
         }
 
         &:checked {
-            background-color: var(--r-color-primary);
-            border-color: var(--r-color-primary);
+            background-color: var(--r-accent);
+            border-color: var(--r-accent);
         }
 
         &:checked:before {
-            background-image: inline-svg(
+            background-color: var(--r-accent-on);
+            mask-image: inline-svg(
                 '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" color="#ffffff" width="14" height="14" viewBox="0 0 24 24"><path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>'
             );
-            background-repeat: no-repeat;
-            background-position: center;
+            mask-repeat: no-repeat;
+            mask-position: center;
             width: rem(14);
             height: rem(14);
         }
@@ -354,14 +354,14 @@
 
         &.is-indeterminate {
             background-color: var(--r-surface-muted);
-            border-color: var(--r-color-primary);
+            border-color: var(--r-accent);
 
             &:after {
                 content: '-';
                 position: absolute;
                 left: rem(3);
                 top: rem(-5);
-                color: var(--r-color-primary);
+                color: var(--r-accent);
                 font-size: rem(18);
             }
         }
@@ -460,8 +460,8 @@
 
     .form-file {
         &::file-selector-button {
-            @include pattern.button-base();
-            @include pattern.button-small();
+            @include mixin.button-base();
+            @include mixin.button-small();
         }
     }
 

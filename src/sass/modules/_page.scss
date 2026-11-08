@@ -1,5 +1,5 @@
+@use '../mixin';
 @use '../function' as *;
-@use '../pattern' as pattern;
 
 @mixin roolith-page() {
     .page {
@@ -39,7 +39,7 @@
 
     .page-footer {
         padding: rem(100) 0 0;
-        @include pattern.text-small();
-        @include pattern.text-dimmed();
+        @include mixin.text-small();
+        @include mixin.text-dimmed();
     }
 }

@@ -1,6 +1,8 @@
 @use '../function' as *;
-@use '../mixin';
+@use './transition' as *;
 
+/* Resting, hover and active appearance shared by .button and every variant;
+   variants override background, border and colour on top of it. */
 @mixin button-base() {
     display: inline-flex;
     align-items: center;
@@ -23,7 +25,7 @@
     );
     border: rem(1) solid var(--r-button-default-border);
     color: var(--r-button-default-color);
-    @include mixin.transition('background, color, box-shadow');
+    @include transition('background, color, box-shadow');
 
     &:hover {
         background-color: var(--r-button-default-hover-background);
@@ -42,6 +44,7 @@
     }
 }
 
+/* Padding and label scale for .button-small. */
 @mixin button-small() {
     font-size: rem(12);
     min-width: rem(50);

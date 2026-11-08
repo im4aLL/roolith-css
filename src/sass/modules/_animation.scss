@@ -1,8 +1,8 @@
-@use '../pattern' as pattern;
+@use '../mixin';
 
 @mixin roolith-animation() {
     .animation {
-        @include pattern.animation();
+        @include mixin.animation();
     }
 
     .fadeInUp {
