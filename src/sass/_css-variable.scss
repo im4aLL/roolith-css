@@ -23,6 +23,7 @@ $-theme-component-tokens: (
         form-datepicker-controls-hover-color: var(--r-surface-muted-step-5),
         button-active-shadow: $button-active-shadow,
         button-default-hover-color: var(--r-text-muted),
+        block-enable-active-border-color: var(--r-accent),
     ),
     dark: (
         nav-link-color: var(--r-link),
@@ -43,6 +44,7 @@ $-theme-component-tokens: (
         form-datepicker-controls-hover-color: var(--r-surface-raised-step-5),
         button-active-shadow: $button-active-dark-shadow,
         button-default-hover-color: var(--r-text-strong),
+        block-enable-active-border-color: color-mix(in srgb, var(--r-accent), white 15%),
     ),
 );
 
@@ -446,6 +448,11 @@ $-theme-component-tokens: (
 
         // Block enable
         --r-block-enable-box-spacing: #{$block-enable-box-spacing};
+        --r-block-enable-active-background-color: color-mix(
+            in srgb,
+            var(--r-accent) 5%,
+            var(--r-box-background-color)
+        );
 
         // Indicator
         --r-indicator-icon-size: #{$indicator-icon-size};

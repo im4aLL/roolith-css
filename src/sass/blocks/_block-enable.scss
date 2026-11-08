@@ -11,5 +11,10 @@
             display: flex;
             justify-content: space-between;
         }
+
+        &.is-active .box {
+            background-color: var(--r-block-enable-active-background-color);
+            border-color: var(--r-block-enable-active-border-color);
+        }
     }
 }

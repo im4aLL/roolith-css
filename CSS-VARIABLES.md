@@ -600,6 +600,7 @@ Coloured button variants read `--r-accent`, `--r-danger`, `--r-success`, `--r-wa
 | Variable | Use for |
 | --- | --- |
 | `--r-block-enable-box-spacing` | Box padding |
+| `--r-block-enable-active-background-color` | Active card surface |
 
 ### Indicator
 
@@ -710,6 +711,7 @@ These are not in the shared rule. Each theme scope declares its own value, so a 
 | `--r-popover-background` | Popover background |
 | `--r-form-datepicker-controls-hover-color` | Datepicker controls hover background |
 | `--r-button-active-shadow` | Default button active shadow |
+| `--r-block-enable-active-border-color` | Active card border |
 
 ## Local overrides
 
