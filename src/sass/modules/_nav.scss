@@ -84,12 +84,10 @@
 
         .nav-link-#{'' + $name} {
             background: $fill;
-            background: linear-gradient(to bottom, color-lighten($fill, 5%) 0%, $fill 100%);
             color: $on;
 
             &:hover {
-                background: color-lighten($fill, 3%);
-                background: linear-gradient(to bottom, color-lighten($fill, 7%) 0%, color-lighten($fill, 3%) 100%);
+                background: color-darken($fill, 5%);
                 box-shadow: var(--r-button-hover-shadow-dark);
                 color: $on;
             }

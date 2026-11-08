@@ -22,6 +22,7 @@ $-theme-component-tokens: (
         popover-background: var(--r-surface-muted),
         form-datepicker-controls-hover-color: var(--r-surface-muted-step-5),
         button-active-shadow: $button-active-shadow,
+        button-default-hover-color: var(--r-text-muted),
     ),
     dark: (
         nav-link-color: var(--r-link),
@@ -41,6 +42,7 @@ $-theme-component-tokens: (
         popover-background: var(--r-surface-raised),
         form-datepicker-controls-hover-color: var(--r-surface-raised-step-5),
         button-active-shadow: $button-active-dark-shadow,
+        button-default-hover-color: var(--r-text-strong),
     ),
 );
 
@@ -118,9 +120,7 @@ $-theme-component-tokens: (
         --r-surface-inverse: var(--r-theme-surface-inverse);
         --r-surface-hover: var(--r-theme-surface-hover);
         --r-surface-control: var(--r-theme-control);
-        --r-surface-control-end: var(--r-theme-control-end);
         --r-surface-control-hover: var(--r-theme-control-hover);
-        --r-surface-control-hover-end: var(--r-theme-control-hover-end);
 
         // Surface scales
         @include surface-scale('surface-raised-step', 'surface-raised', 5, 8, 10, 20, 30, 50, 60);
@@ -177,13 +177,10 @@ $-theme-component-tokens: (
         --r-button-active-dark-shadow: #{$button-active-dark-shadow};
 
         --r-button-default-background: var(--r-surface-control);
-        --r-button-default-background-end: var(--r-surface-control-end);
         --r-button-default-border: var(--r-border);
         --r-button-default-color: var(--r-text-muted);
         --r-button-default-hover-background: var(--r-surface-control-hover);
-        --r-button-default-hover-background-end: var(--r-surface-control-hover-end);
         --r-button-default-hover-border: var(--r-border-emphasis);
-        --r-button-default-hover-color: var(--r-text-muted);
 
         // Nav
         --r-nav-border-radius: #{$nav-border-radius};

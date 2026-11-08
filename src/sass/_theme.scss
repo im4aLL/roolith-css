@@ -45,9 +45,7 @@
         surface-inverse: map.get($seeds, inverse),
         surface-hover: blend($page, $on-surface, map.get($steps, hover)),
         control: $control,
-        control-end: tone($control, -1 * map.get($steps, control-end)),
         control-hover: tone($control, map.get($steps, control-hover)),
-        control-hover-end: tone($control, -1 * map.get($steps, control-hover-end)),
         text: $text,
         // Secondary text fades toward the page in every theme. Blending toward
         // white inverted the ladder in dark, where a "faint" tier came out

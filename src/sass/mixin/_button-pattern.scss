@@ -2,7 +2,9 @@
 @use './transition' as *;
 
 /* Resting, hover and active appearance shared by .button and every variant;
-   variants override background, border and colour on top of it. */
+   variants override background, border and colour on top of it. Fills are
+   flat: the hover state carries the change in the fill and the shadow, so a
+   gradient end token is not needed. */
 @mixin button-base() {
     display: inline-flex;
     align-items: center;
@@ -18,22 +20,12 @@
     padding: rem(9) rem(20);
     position: relative;
     background-color: var(--r-button-default-background);
-    background: linear-gradient(
-        to bottom,
-        var(--r-button-default-background) 0%,
-        var(--r-button-default-background-end) 100%
-    );
     border: rem(1) solid var(--r-button-default-border);
     color: var(--r-button-default-color);
     @include transition('background, color, box-shadow');
 
     &:hover {
         background-color: var(--r-button-default-hover-background);
-        background: linear-gradient(
-            to bottom,
-            var(--r-button-default-hover-background) 0%,
-            var(--r-button-default-hover-background-end) 100%
-        );
         border: rem(1) solid var(--r-button-default-hover-border);
         box-shadow: var(--r-button-hover-shadow);
         color: var(--r-button-default-hover-color);

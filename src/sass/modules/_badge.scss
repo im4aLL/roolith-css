@@ -44,7 +44,6 @@
 
             .badge-#{'' + $name} {
                 background: $fill;
-                background: linear-gradient(to bottom, color-lighten($fill, 5%) 0%, $fill 100%);
                 color: $on;
                 border-color: $fill;
             }

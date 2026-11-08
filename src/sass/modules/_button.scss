@@ -21,7 +21,7 @@
             font-weight: var(--r-global-font-bold-weight);
 
             &:hover {
-                background-color: var(--r-button-default-hover-background);
+                background-color: var(--r-surface-hover);
                 box-shadow: none;
             }
         }
@@ -101,14 +101,12 @@
 
             .button-#{'' + $name} {
                 background: $fill;
-                background: linear-gradient(to bottom, color-lighten($fill, 5%) 0%, $fill 100%);
                 color: $on;
                 border: rem(1) solid color-darken($fill, 5%);
 
                 &:hover {
-                    background: color-lighten($fill, 3%);
-                    background: linear-gradient(to bottom, color-lighten($fill, 7%) 0%, color-lighten($fill, 3%) 100%);
-                    border: rem(1) solid $fill;
+                    background: color-darken($fill, 5%);
+                    border: rem(1) solid color-darken($fill, 10%);
                     box-shadow: var(--r-button-hover-shadow-dark);
                     color: $on;
                 }
@@ -122,7 +120,7 @@
                     color: $fill;
 
                     &:hover {
-                        background: color-lighten($fill, 3%);
+                        background: color-darken($fill, 5%);
                         color: $on;
                     }
                 }
@@ -133,7 +131,7 @@
                     color: $fill;
 
                     &:hover {
-                        background-color: var(--r-button-default-hover-background);
+                        background-color: var(--r-surface-hover);
                         color: $fill;
                     }
                 }
