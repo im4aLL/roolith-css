@@ -8,7 +8,7 @@
     }
 
     .block-list-item {
-        padding: rem(10) 0;
+        padding: calc(var(--r-block-padding) / 2) 0;
 
         .block-list-bordered & {
             border-bottom: rem(1) solid var(--r-block-list-item-border-color);

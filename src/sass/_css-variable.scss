@@ -427,8 +427,11 @@ $-theme-component-tokens: (
         --r-pagination-item-border-color: var(--r-border-control);
         --r-pagination-item-font-size: #{$pagination-item-font-size};
 
+        // Block
+        --r-block-padding: #{$block-padding};
+
         // Block box
-        --r-block-box-spacing: var(--r-box-spacing);
+        --r-block-box-spacing: var(--r-block-padding);
         --r-block-box-size: #{$block-box-size};
         --r-block-box-color: var(--r-global-font-color);
         --r-block-box-hover-color: var(--r-accent-on);
@@ -439,7 +442,7 @@ $-theme-component-tokens: (
         // Block form
         --r-block-form-group-border-color: var(--r-border-control);
         --r-block-form-group-border-radius: calc(var(--r-global-border-radius) * 2);
-        --r-block-form-group-padding: #{$block-form-group-padding};
+        --r-block-form-group-padding: calc(var(--r-block-padding) * 2);
         --r-block-form-border-color: var(--r-block-form-group-border-color);
         --r-block-form-text-color: var(--r-text-quiet);
 
@@ -447,7 +450,7 @@ $-theme-component-tokens: (
         --r-block-list-item-border-color: var(--r-surface-muted-step-5);
 
         // Block enable
-        --r-block-enable-box-spacing: #{$block-enable-box-spacing};
+        --r-block-enable-box-spacing: calc(var(--r-block-padding) / 2);
         --r-block-enable-active-background-color: color-mix(
             in srgb,
             var(--r-accent) 5%,
@@ -462,7 +465,7 @@ $-theme-component-tokens: (
         --r-indicator-online-color: var(--r-success);
 
         // Block stat
-        --r-block-stat-item-gap: #{$block-stat-item-gap};
+        --r-block-stat-item-gap: var(--r-block-padding);
         --r-block-stat-item-background-color: transparent;
         --r-block-stat-item-hover-background-color: var(--r-surface-muted);
         --r-block-stat-item-border-radius: var(--r-global-border-radius);
@@ -497,7 +500,7 @@ $-theme-component-tokens: (
         --r-combo-box-item-y-padding: #{$combo-box-item-y-padding};
 
         // Block inline
-        --r-block-inline-gap: #{$block-inline-gap};
+        --r-block-inline-gap: calc(var(--r-block-padding) / 2);
 
         // Block banner
         --r-block-banner-text-color: var(--r-text-subtle);

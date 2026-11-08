@@ -567,6 +567,14 @@ Coloured button variants read `--r-accent`, `--r-danger`, `--r-success`, `--r-wa
 | `--r-pagination-item-border-color` | Page border |
 | `--r-pagination-item-font-size` | Page font size |
 
+### Block
+
+Every block rhythm value derives from the base token: the per-component block spacing tokens below are fixed multiples of it, so retuning `--r-block-padding` retunes block spacing together.
+
+| Variable | Use for |
+| --- | --- |
+| `--r-block-padding` | Block content rhythm |
+
 ### Block box
 
 | Variable | Use for |

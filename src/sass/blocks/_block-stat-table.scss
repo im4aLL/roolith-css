@@ -4,7 +4,7 @@
 @mixin row-style() {
     display: flex;
     flex-direction: column;
-    gap: rem(5);
+    gap: calc(var(--r-block-padding) / 4);
 }
 
 @mixin column-style() {

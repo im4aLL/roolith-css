@@ -187,17 +187,11 @@ $block-box-size: rem(250) !default;
 // Spacer
 $spacer: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 150, 200, 250 !default;
 
-// Block form
-$block-form-group-padding: $box-spacing-large !default;
-
-// Block enable
-$block-enable-box-spacing: rem(10) !default;
+// Block
+$block-padding: rem(20) !default;
 
 // Indicator
 $indicator-icon-size: rem(14) !default;
-
-// Block stat
-$block-stat-item-gap: rem(20) !default;
 
 // Quick menu
 $quick-menu-spacing: rem(8) !default;
@@ -216,9 +210,6 @@ $combo-box-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 $combo-box-show-animation-duration: 50ms !default;
 $combo-box-item-y-padding: rem(7) !default;
 $combo-box-item-x-padding: rem(15) !default;
-
-// Block inline
-$block-inline-gap: rem(10) !default;
 
 // Form datepicker
 $form-datepicker-margin-top: rem(5) !default;

@@ -3,10 +3,10 @@
 
 @mixin roolith-block-header() {
     .block-header {
-        padding: 0 0 rem(20);
+        padding: 0 0 var(--r-block-padding);
 
         .breadcrumb {
-            padding-bottom: rem(10);
+            padding-bottom: calc(var(--r-block-padding) / 2);
         }
     }
 
@@ -15,8 +15,8 @@
         flex-direction: column;
         align-items: flex-start;
         flex-wrap: wrap;
-        gap: rem(20);
-        padding-top: rem(10);
+        gap: var(--r-block-padding);
+        padding-top: calc(var(--r-block-padding) / 2);
 
         @include mixin.breakpoint(medium-up) {
             justify-content: space-between;

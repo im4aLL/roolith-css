@@ -3,7 +3,7 @@
 
 @mixin roolith-block-auth() {
     .block-auth {
-        padding: rem(20) 0;
+        padding: var(--r-block-padding) 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -16,10 +16,10 @@
     }
 
     .block-auth-header {
-        padding-bottom: rem(30);
+        padding-bottom: calc(var(--r-block-padding) * 1.5);
     }
 
     .block-auth-footer {
-        padding-top: rem(10);
+        padding-top: calc(var(--r-block-padding) / 2);
     }
 }
