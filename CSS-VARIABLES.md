@@ -20,50 +20,63 @@ components                     read var(--r-*)
 ```
 
 - `_settings.scss` holds plain `!default` values. Override any of them with `@use 'roolith' with (...)`; nothing in it runs logic.
-- `_resolved.scss` merges those inputs over built-in defaults and derives the light and dark role maps with `color.mix()`. A slot without a foreground pair, a missing required slot, or an ambiguous accent role fails the build here.
+- `_resolved.scss` merges those inputs over built-in defaults and derives the light and dark role maps with `color.mix()`. It also derives each slot's text-safe colour: the lightest blend toward black (light) or white (dark) that clears 4.5:1 on every surface the variant can be painted on, measured with the WCAG contrast formula at build time. A slot without a foreground pair, a missing required slot, or an ambiguous accent role fails the build here.
 - `_css-variable.scss` turns the resolved values into custom properties. Palette primitives are emitted once in `:root`. Theme roles, and the component tokens that differ per theme, are emitted in `:root`, `.theme-light`, `.theme-dark` and the `prefers-color-scheme: dark` block, so switching a class or the OS setting switches the values at runtime.
 - Components never import theme values directly; they read `var(--r-*)`. A component that needs a different value in a narrow scope overrides the custom property locally instead of branching on `.theme-dark`.
-- Palette variant loops inside SCSS (`.button-primary`, `.badge-danger`) call `palette-fill()` and `palette-on()` with `resolved.$slot-roles` to decide between a role token and a primitive, and always pair a fill with its `-on` foreground.
+- Palette variant loops inside SCSS (`.button-primary`, `.badge-danger`) call `palette-fill()`, `palette-on()` and `palette-text()` with `resolved.$slot-roles` to decide between a role token and a primitive. A fill always pairs with its `-on` foreground; a slot used as text, such as an outline variant, reads its `-text` pair instead.
 
 ## Choosing a variable
 
 1. For colour, use the semantic token for the meaning: `--r-text`, `--r-surface`, `--r-border`, or one of their tiers. Do not reach for a palette primitive unless the value is genuinely a palette colour.
 2. Use a component token when the value belongs to that component and must stay tunable without touching SCSS logic.
-3. Use `--r-color-{slot}` and `--r-color-{slot}-on` for palette variants, and always paint text or icons on a filled surface with the `-on` pair.
+3. Use `--r-color-{slot}` and `--r-color-{slot}-on` for palette variants, and always paint text or icons on a filled surface with the `-on` pair. When the slot is the text colour rather than the fill (outline, text and tinted variants), use `--r-color-{slot}-text`; it is derived per theme to stay readable on the page and on the slot's own tint.
 4. Never use `--r-theme-*` in a component. Those are the per-theme primitives; the semantic aliases already point at them.
 5. Never hardcode a colour, radius, or spacing that a token already covers, and never add a `.theme-dark` colour rule in a component.
 6. Add spacing, radius, sizes, and shadows as `$` settings plus one `--r-*` declaration. Add per-theme differences to the `$-theme-component-tokens` map instead of a shared declaration.
 
 ## Palette primitives
 
-`$colors` in `_settings.scss` defines the slots. Each slot gets a fill and a foreground pair.
+`$colors` in `_settings.scss` defines the slots. Each slot gets a fill, a foreground pair for content on that fill, and a derived text pair for the slot used as text on a surface.
 
 | Variable | Use for |
 | --- | --- |
 | `--r-color-primary` | Primary brand fill |
 | `--r-color-primary-on` | Text and icons on a primary fill |
+| `--r-color-primary-text` | The primary slot used as text on a surface |
 | `--r-color-secondary` | Secondary fill |
 | `--r-color-secondary-on` | Text and icons on a secondary fill |
+| `--r-color-secondary-text` | The secondary slot used as text on a surface |
 | `--r-color-tertiary` | Tertiary fill |
 | `--r-color-tertiary-on` | Text and icons on a tertiary fill |
+| `--r-color-tertiary-text` | The tertiary slot used as text on a surface |
 | `--r-color-info` | Informational fill |
 | `--r-color-info-on` | Text and icons on an info fill |
+| `--r-color-info-text` | The info slot used as text on a surface |
 | `--r-color-success` | Success fill |
 | `--r-color-success-on` | Text and icons on a success fill |
+| `--r-color-success-text` | The success slot used as text on a surface |
 | `--r-color-danger` | Danger fill |
 | `--r-color-danger-on` | Text and icons on a danger fill |
+| `--r-color-danger-text` | The danger slot used as text on a surface |
 | `--r-color-link` | Link fill |
 | `--r-color-link-on` | Text and icons on a link fill |
+| `--r-color-link-text` | The link slot used as text on a surface |
 | `--r-color-dark` | Dark fill |
 | `--r-color-dark-on` | Text and icons on a dark fill |
+| `--r-color-dark-text` | The dark slot used as text on a surface |
 | `--r-color-black` | Black fill |
 | `--r-color-black-on` | Text and icons on a black fill |
+| `--r-color-black-text` | The black slot used as text on a surface |
 | `--r-color-white` | White fill |
 | `--r-color-white-on` | Text and icons on a white fill |
+| `--r-color-white-text` | The white slot used as text on a surface |
 | `--r-color-light` | Light fill |
 | `--r-color-light-on` | Text and icons on a light fill |
+| `--r-color-light-text` | The light slot used as text on a surface |
 
-A new slot inherits the same pattern: add it to `$colors`, add a pair to `$colors-on`, and `--r-color-{slot}` and `--r-color-{slot}-on` are emitted automatically.
+`--r-color-{slot}` and `--r-color-{slot}-on` are theme-independent. `--r-color-{slot}-text` is not: it is the same slot derived once per theme, because a light-side value such as `light` is invisible on a light page while a dark-side value such as `black` is invisible on a dark one. It is declared in every theme scope, so it follows `.theme-light`, `.theme-dark` and the OS setting.
+
+A new slot inherits the same pattern: add it to `$colors`, add a pair to `$colors-on`, and `--r-color-{slot}`, `--r-color-{slot}-on` and `--r-color-{slot}-text` are emitted automatically. The text pair is derived, so a new palette does not need a third hand-picked colour per slot.
 
 ## Accent roles
 
@@ -73,14 +86,19 @@ A new slot inherits the same pattern: add it to `$colors`, add a pair to `$color
 | --- | --- | --- |
 | `--r-accent` | primary | Primary accent for interactive elements |
 | `--r-accent-on` | primary | Text and icons on an accent fill |
+| `--r-accent-text` | primary | The primary slot used as text on a surface |
 | `--r-danger` | danger | Destructive actions and errors |
 | `--r-danger-on` | danger | Text and icons on a danger fill |
+| `--r-danger-text` | danger | The danger slot used as text on a surface |
 | `--r-success` | success | Success states |
 | `--r-success-on` | success | Text and icons on a success fill |
+| `--r-success-text` | success | The success slot used as text on a surface |
 | `--r-warning` | info | Warning states |
 | `--r-warning-on` | info | Text and icons on a warning fill |
+| `--r-warning-text` | info | The info slot used as text on a surface |
 | `--r-info` | info | Informational states |
 | `--r-info-on` | info | Text and icons on an info fill |
+| `--r-info-text` | info | The info slot used as text on a surface |
 
 ## Theme primitives
 
@@ -720,6 +738,8 @@ These are not in the shared rule. Each theme scope declares its own value, so a 
 | `--r-form-datepicker-controls-hover-color` | Datepicker controls hover background |
 | `--r-button-active-shadow` | Default button active shadow |
 | `--r-block-enable-active-border-color` | Active card border |
+| `--r-message-background` | Neutral message surface |
+| `--r-badge-surface` | Neutral badge surface |
 
 ## Local overrides
 
@@ -782,6 +802,7 @@ Case 3, a new semantic colour used by several components:
 Case 4, a new palette variant:
 
 1. Add the slot to `$colors` and its pair to `$colors-on`.
-2. The primitive `--r-color-{slot}`, the pair `--r-color-{slot}-on`, and any variant loop that iterates `$colors` pick it up automatically.
+2. The primitive `--r-color-{slot}`, the pair `--r-color-{slot}-on`, the derived text pair `--r-color-{slot}-text`, and any variant loop that iterates `$colors` pick it up automatically.
+3. Use the fill for a filled variant, the `-on` pair for content on that fill, and the `-text` pair wherever the slot is the text colour.
 
 Run `npm run build` after any token change. The build fails on a palette slot without a foreground pair, a missing `primary`, `link`, `secondary` or `tertiary` slot, or two roles claiming one slot without a role named after it.

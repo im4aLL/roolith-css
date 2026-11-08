@@ -66,3 +66,11 @@
 @function palette-on($slot-roles, $name) {
     @return palette-var($slot-roles, $name, '-on');
 }
+
+/* Text-safe pair of a palette slot, as an unquoted var() expression. Use it
+   where the slot is the text colour rather than the fill, such as an outline or
+   text variant. The value is derived per theme against every surface the
+   variant can be painted on, so it stays readable in light and dark alike. */
+@function palette-text($slot-roles, $name) {
+    @return palette-var($slot-roles, $name, '-text');
+}

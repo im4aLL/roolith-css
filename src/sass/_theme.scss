@@ -23,6 +23,90 @@
     @return blend($base, white, $amount);
 }
 
+/* Linearised value of one sRGB channel, the first half of the WCAG relative
+   luminance formula. */
+@function luminance-channel($channel) {
+    $value: math.div($channel, 255);
+
+    @if $value <= 0.04045 {
+        @return math.div($value, 12.92);
+    }
+
+    @return math.pow(math.div($value + 0.055, 1.055), 2.4);
+}
+
+/* WCAG relative luminance of a colour, so the build can assert a contrast
+   ratio instead of relying on a hand-picked mix percentage. */
+@function luminance($color) {
+    @return 0.2126 * luminance-channel(color.channel($color, 'red', $space: rgb)) + 0.7152 *
+        luminance-channel(color.channel($color, 'green', $space: rgb)) + 0.0722 *
+        luminance-channel(color.channel($color, 'blue', $space: rgb));
+}
+
+/* WCAG contrast ratio between two opaque colours, from 1 to 21. */
+@function contrast($a, $b) {
+    $luminance-a: luminance($a);
+    $luminance-b: luminance($b);
+
+    @if $luminance-a < $luminance-b {
+        $swap: $luminance-a;
+        $luminance-a: $luminance-b;
+        $luminance-b: $swap;
+    }
+
+    @return math.div($luminance-a + 0.05, $luminance-b + 0.05);
+}
+
+/* True when $color clears $target against every surface in $surfaces. */
+@function meets-contrast($color, $surfaces, $target) {
+    @each $surface in $surfaces {
+        @if contrast($color, $surface) < $target {
+            @return false;
+        }
+    }
+
+    @return true;
+}
+
+/* Smallest blend of $color toward $direction that clears $target against every
+   surface in $surfaces, so one token can be painted on any of them. Returns
+   $color unchanged when it already passes. */
+@function text-safe($color, $surfaces, $direction, $target: 4.5) {
+    @if meets-contrast($color, $surfaces, $target) {
+        @return $color;
+    }
+
+    $step: 2;
+
+    @while $step <= 100 {
+        $candidate: blend($color, $direction, $step * 1%);
+
+        @if meets-contrast($candidate, $surfaces, $target) {
+            @return $candidate;
+        }
+
+        $step: $step + 1;
+    }
+
+    @return $direction;
+}
+
+/* Surfaces a palette slot used as text can be painted on in one theme: the page
+   and surface family plus that slot's own tinted chip, which is the lightest
+   surface in dark and the darkest in light. $tint matches the per-slot chip mix
+   in the message, badge and box variants. */
+@function text-surfaces($theme, $fill, $tint: 10%) {
+    @return (
+        map.get($theme, page),
+        map.get($theme, surface),
+        map.get($theme, surface-raised),
+        map.get($theme, surface-muted),
+        map.get($theme, surface-hover),
+        map.get($theme, control),
+        color.mix($fill, map.get($theme, surface-raised), $tint)
+    );
+}
+
 @function theme-roles($seeds, $steps, $accent) {
     $page: map.get($seeds, page);
     $surface: map.get($seeds, surface);

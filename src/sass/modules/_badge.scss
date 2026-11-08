@@ -9,7 +9,7 @@
         align-items: center;
         justify-content: center;
         padding: rem(3) rem(4);
-        background: color-mix(in srgb, var(--r-badge-background), white 70%);
+        background: var(--r-badge-surface);
         border: rem(1) solid var(--r-badge-background);
         color: var(--r-badge-color);
         border-radius: rem(5);
@@ -18,26 +18,23 @@
         text-transform: uppercase;
         text-box-trim: trim-both;
         text-box-edge: cap alphabetic;
-
-        .theme-dark & {
-            background: color-mix(in srgb, var(--r-badge-background), black 70%);
-            border: rem(1) solid var(--r-badge-background);
-        }
     }
 
     @each $name, $value in settings.$colors {
         $fill: palette-fill(resolved.$slot-roles, $name);
 
         @if ($name != white and $name != black and $name != dark) {
-            .badge-#{'' + $name} {
-                background-color: color-mix(in srgb, $fill, white 90%);
-                border-color: color-mix(in srgb, $fill, white 50%);
-                color: $fill;
+            $text: palette-text(resolved.$slot-roles, $name);
 
-                .theme-dark & {
-                    background-color: color-mix(in srgb, $fill, black 90%);
-                    border-color: color-mix(in srgb, $fill, black 50%);
-                }
+            // Tinted chip: a 10% slot tint over the raised surface, and the
+            // text-safe slot as the label. Reading the surface keeps the same
+            // declaration correct in both themes. The border uses the same value
+            // as the label so the chip keeps a visible edge in both themes; a
+            // 50% mix of the slot washed out under 2:1.
+            .badge-#{'' + $name} {
+                background-color: color-mix(in srgb, $fill 10%, var(--r-surface-raised));
+                border-color: $text;
+                color: $text;
             }
         } @else {
             $on: palette-on(resolved.$slot-roles, $name);

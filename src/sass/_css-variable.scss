@@ -24,6 +24,8 @@ $-theme-component-tokens: (
         button-active-shadow: $button-active-shadow,
         button-default-hover-color: var(--r-text-muted),
         block-enable-active-border-color: var(--r-accent),
+        message-background: var(--r-surface-muted-step-2),
+        badge-surface: color-mix(in srgb, var(--r-badge-background), white 70%),
     ),
     dark: (
         nav-link-color: var(--r-link),
@@ -45,6 +47,8 @@ $-theme-component-tokens: (
         button-active-shadow: $button-active-dark-shadow,
         button-default-hover-color: var(--r-text-strong),
         block-enable-active-border-color: color-mix(in srgb, var(--r-accent), white 15%),
+        message-background: var(--r-surface-raised-step-5),
+        badge-surface: color-mix(in srgb, var(--r-badge-background), black 70%),
     ),
 );
 
@@ -58,6 +62,15 @@ $-theme-component-tokens: (
 @mixin theme-component-tokens($tokens) {
     @each $name, $value in $tokens {
         --r-#{$name}: #{$value};
+    }
+}
+
+/* Emits the per-theme palette text pairs. Unlike the fill and -on pairs these
+   are derived per theme, so they are declared in every theme scope rather than
+   once in :root. */
+@mixin theme-palette-text($text-colors) {
+    @each $name, $value in $text-colors {
+        --r-color-#{'' + $name}-text: #{$value};
     }
 }
 
@@ -77,6 +90,7 @@ $-theme-component-tokens: (
 
         @include theme-primitives(resolved.$theme-light);
         @include theme-component-tokens(map.get($-theme-component-tokens, light));
+        @include theme-palette-text(resolved.$colors-text-light);
         color-scheme: light;
     }
 
@@ -84,6 +98,7 @@ $-theme-component-tokens: (
     .theme-light {
         @include theme-primitives(resolved.$theme-light);
         @include theme-component-tokens(map.get($-theme-component-tokens, light));
+        @include theme-palette-text(resolved.$colors-text-light);
         color-scheme: light;
     }
 
@@ -91,6 +106,7 @@ $-theme-component-tokens: (
     .theme-dark {
         @include theme-primitives(resolved.$theme-dark);
         @include theme-component-tokens(map.get($-theme-component-tokens, dark));
+        @include theme-palette-text(resolved.$colors-text-dark);
         color-scheme: dark;
     }
 
@@ -99,6 +115,7 @@ $-theme-component-tokens: (
         :root:not(.theme-light) {
             @include theme-primitives(resolved.$theme-dark);
             @include theme-component-tokens(map.get($-theme-component-tokens, dark));
+            @include theme-palette-text(resolved.$colors-text-dark);
             color-scheme: dark;
         }
     }
@@ -111,6 +128,7 @@ $-theme-component-tokens: (
         @each $role, $name in resolved.$accent-roles {
             --r-#{$role}: var(--r-color-#{$name});
             --r-#{$role}-on: var(--r-color-#{$name}-on);
+            --r-#{$role}-text: var(--r-color-#{$name}-text);
         }
 
         // Surface

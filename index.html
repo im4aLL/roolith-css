@@ -1008,6 +1008,15 @@
                 </p>
                 <div class="box-footer">Box footer</div>
             </div>
+
+            <div class="box box-light">
+                <div class="box-header">Box header</div>
+                <p class="box-body">
+                    The light slot used as text: the border and the copy read a text-safe value, so the variant stays
+                    readable in light and dark instead of painting near-white on white.
+                </p>
+                <div class="box-footer">Box footer</div>
+            </div>
         </div>
 
         <div class="module">button</div>
@@ -1189,6 +1198,20 @@
             <a class="button button-text button-success" href="#">Success</a>
             <a class="button button-text button-danger" href="#">Danger</a>
             <a class="button button-text button-link" href="#">Link</a>
+
+            <br />
+            <br />
+
+            <!-- Outline and text variants paint the slot as text, so they read the derived -text pair. -->
+            <a class="button button-light" href="#">Light</a>
+            <a class="button button-light button-outline" href="#">Light outline</a>
+            <a class="button button-light button-text" href="#">Light text</a>
+            <a class="button button-dark button-outline" href="#">Dark outline</a>
+            <a class="button button-black button-outline" href="#">Black outline</a>
+            <a class="button button-light button-outline button-icon" href="#">
+                <i class="icon icon-download"></i>
+                Light outline with icon
+            </a>
 
             <br />
             <br />
@@ -1598,6 +1621,7 @@
             <span class="badge badge-link">Link</span>
             <span class="badge badge-dark">Dark</span>
             <span class="badge badge-black">Black</span>
+            <span class="badge badge-light">Light</span>
         </div>
 
         <div class="module">message</div>
@@ -1654,6 +1678,13 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum nostrum itaque ex in nihil ea ipsa dolorum
                 quam expedita molestias, nesciunt, qui maxime doloribus facilis, culpa laborum animi obcaecati
                 distinctio.
+            </div>
+            <div class="message message-light">
+                The light slot as a tinted message: the tint and the label both derive from the slot, so the label is a
+                text-safe colour instead of near-white on near-white.
+            </div>
+            <div class="message message-light-outline">
+                The same slot as an outline message, which leaves the surface transparent and keeps a visible border.
             </div>
         </div>
 

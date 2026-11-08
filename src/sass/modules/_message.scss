@@ -1,4 +1,3 @@
-@use 'sass:list';
 @use '../function' as *;
 @use '../settings';
 @use '../resolved';
@@ -11,13 +10,9 @@
         border-radius: var(--r-message-radius);
         margin-top: rem(10);
         margin-bottom: rem(10);
-        background: var(--r-surface-muted-step-2);
+        background: var(--r-message-background);
         position: relative;
         text-align: left;
-
-        .theme-dark & {
-            background: var(--r-surface-raised-step-5);
-        }
     }
 
     .message-extra-pad {
@@ -39,48 +34,29 @@
         font-size: rem(18);
     }
 
-    $inverted-message-variants: dark, black;
-
     @each $name, $value in settings.$colors {
         @if ($name != white) {
             $fill: palette-fill(resolved.$slot-roles, $name);
-            $inverted: list.index($inverted-message-variants, $name) != null;
-            $dark-foreground: var(--r-text);
+            $text: palette-text(resolved.$slot-roles, $name);
 
-            @if not $inverted {
-                $dark-foreground: color-mix(in srgb, $fill, white 55%);
-            }
-
+            // The chip is a 10% tint of the slot over the raised surface, which
+            // is white in light and #222222 in dark. Reading the surface instead
+            // of a literal keeps one declaration valid in both themes, so this
+            // variant no longer needs a .theme-dark branch.
             .message-#{'' + $name} {
-                background: color-mix(in srgb, $fill, white 90%);
-                color: $fill;
-
-                .theme-dark & {
-                    background: color-mix(in srgb, $fill 14%, var(--r-surface-raised-step-5));
-                    color: $dark-foreground;
-                }
+                background: color-mix(in srgb, $fill 10%, var(--r-surface-raised));
+                color: $text;
 
                 .message-close {
-                    color: $fill;
-
-                    .theme-dark & {
-                        color: $dark-foreground;
-                    }
+                    color: $text;
                 }
             }
 
             .message-#{'' + $name}-outline {
                 background: transparent;
-                color: $fill;
-                border: rem(1) solid $fill;
+                color: $text;
+                border: rem(1) solid $text;
                 padding: rem(14) rem(17);
-
-                @if $inverted {
-                    .theme-dark & {
-                        color: var(--r-text);
-                        border-color: var(--r-text);
-                    }
-                }
             }
         }
     }

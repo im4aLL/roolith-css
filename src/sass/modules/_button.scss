@@ -98,6 +98,7 @@
         @if ($name != white) {
             $fill: palette-fill(resolved.$slot-roles, $name);
             $on: palette-on(resolved.$slot-roles, $name);
+            $text: palette-text(resolved.$slot-roles, $name);
 
             .button-#{'' + $name} {
                 background: $fill;
@@ -117,7 +118,8 @@
 
                 &.button-outline {
                     background: transparent;
-                    color: $fill;
+                    border-color: $text;
+                    color: $text;
 
                     &:hover {
                         background: color-darken($fill, 5%);
@@ -128,11 +130,11 @@
                 &.button-text {
                     background: transparent;
                     border-color: transparent;
-                    color: $fill;
+                    color: $text;
 
                     &:hover {
                         background-color: var(--r-surface-hover);
-                        color: $fill;
+                        color: $text;
                     }
                 }
 
