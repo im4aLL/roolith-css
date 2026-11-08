@@ -149,12 +149,6 @@ $theme-dark: map.merge(
     settings.$theme-dark
 );
 
-// Palette slots used as text instead of as a fill. Each slot needs a value that
-// clears 4.5:1 on every surface it can be painted on, in both themes, because
-// the palette primitives are theme-independent: the light-side value of a slot
-// such as `light` is invisible on a light page and the dark-side value of
-// `black` is invisible on a dark one. The build derives the value rather than
-// asking the palette author for a third hand-picked colour.
 $colors-text-light: ();
 $colors-text-dark: ();
 
