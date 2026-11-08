@@ -607,7 +607,7 @@ Coloured button variants read `--r-accent`, `--r-danger`, `--r-success`, `--r-wa
 | Variable | Use for |
 | --- | --- |
 | `--r-indicator-icon-size` | Arrow size |
-| `--r-indicator-normal-color` | Neutral state |
+| `--r-indicator-flat-color` | Flat state |
 | `--r-indicator-upward-color` | Upward state |
 | `--r-indicator-downward-color` | Downward state |
 | `--r-indicator-online-color` | Online state |

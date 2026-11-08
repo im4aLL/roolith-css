@@ -456,7 +456,7 @@ $-theme-component-tokens: (
 
         // Indicator
         --r-indicator-icon-size: #{$indicator-icon-size};
-        --r-indicator-normal-color: var(--r-color-secondary);
+        --r-indicator-flat-color: var(--r-text-subtle);
         --r-indicator-upward-color: var(--r-success);
         --r-indicator-downward-color: var(--r-danger);
         --r-indicator-online-color: var(--r-success);
