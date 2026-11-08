@@ -92,9 +92,6 @@
         @if ($name != white) {
             $text: palette-text(resolved.$slot-roles, $name);
 
-            // A coloured box tints its border and copy instead of its surface.
-            // Every text tier is the same derived value: a lighter or darker mix
-            // for the header or footer would drop below the contrast floor.
             .box-#{'' + $name} {
                 border: rem(1) solid $text;
 

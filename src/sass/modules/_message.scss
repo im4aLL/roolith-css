@@ -39,10 +39,6 @@
             $fill: palette-fill(resolved.$slot-roles, $name);
             $text: palette-text(resolved.$slot-roles, $name);
 
-            // The chip is a 10% tint of the slot over the raised surface, which
-            // is white in light and #222222 in dark. Reading the surface instead
-            // of a literal keeps one declaration valid in both themes, so this
-            // variant no longer needs a .theme-dark branch.
             .message-#{'' + $name} {
                 background: color-mix(in srgb, $fill 10%, var(--r-surface-raised));
                 color: $text;

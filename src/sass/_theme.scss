@@ -158,6 +158,6 @@
         radio-selected: blend($surface, $accent, map.get($steps, radio-selected)),
         loader-head: blend($page, $on-surface, map.get($steps, loader-head)),
         on-surface: $on-surface,
-        link: map.get($seeds, link),
+        link: map.get($seeds, link)
     );
 }

@@ -26,11 +26,6 @@
         @if ($name != white and $name != black and $name != dark) {
             $text: palette-text(resolved.$slot-roles, $name);
 
-            // Tinted chip: a 10% slot tint over the raised surface, and the
-            // text-safe slot as the label. Reading the surface keeps the same
-            // declaration correct in both themes. The border uses the same value
-            // as the label so the chip keeps a visible edge in both themes; a
-            // 50% mix of the slot washed out under 2:1.
             .badge-#{'' + $name} {
                 background-color: color-mix(in srgb, $fill 10%, var(--r-surface-raised));
                 border-color: $text;
