@@ -19,69 +19,56 @@
 
     h1,
     .h1 {
-        font-size: rem(32);
-        line-height: rem(38);
-        letter-spacing: -0.04em;
+        @include mixin.heading-step(36, 42);
 
         @include mixin.breakpoint(large-up) {
-            font-size: rem(52);
-            line-height: rem(56);
+            @include mixin.heading-step(48, 56);
         }
     }
 
     h2,
     .h2 {
-        font-size: rem(28);
-        line-height: rem(34);
-        letter-spacing: -0.04em;
+        @include mixin.heading-step(30, 36);
 
         @include mixin.breakpoint(large-up) {
-            font-size: rem(42);
-            line-height: rem(48);
+            @include mixin.heading-step(40, 46);
         }
     }
 
     h3,
     .h3 {
-        font-size: rem(24);
-        line-height: rem(32);
-        letter-spacing: -0.04em;
+        @include mixin.heading-step(26, 34);
 
         @include mixin.breakpoint(large-up) {
-            font-size: rem(36);
-            line-height: rem(42);
+            @include mixin.heading-step(32, 40);
         }
     }
 
     h4,
     .h4 {
-        font-size: rem(22);
-        line-height: rem(28);
-        letter-spacing: -0.04em;
+        @include mixin.heading-step(22, 28);
 
         @include mixin.breakpoint(large-up) {
-            font-size: rem(32);
-            line-height: rem(38);
+            @include mixin.heading-step(28, 34);
         }
     }
 
     h5,
     .h5 {
-        font-size: rem(18);
-        line-height: rem(22);
-        letter-spacing: -0.02em;
+        @include mixin.heading-step(18, 22);
 
         @include mixin.breakpoint(large-up) {
-            font-size: rem(22);
-            line-height: rem(28);
+            @include mixin.heading-step(22, 28);
         }
     }
 
     h6,
     .h6 {
-        font-size: rem(16);
-        line-height: rem(20);
-        letter-spacing: -0.02em;
+        @include mixin.heading-step(16, 20);
+
+        @include mixin.breakpoint(large-up) {
+            @include mixin.heading-step(18, 24);
+        }
     }
 
     p {
