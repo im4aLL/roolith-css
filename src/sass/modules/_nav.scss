@@ -1,9 +1,11 @@
 @use '../function' as *;
 @use '../mixin';
-@use '../settings';
-@use '../resolved';
 
-@mixin roolith-nav() {
+/* Emits the nav module. $colors supplies only the slot names, so changing a
+   palette value does not change this output. $slot-roles is the slot to role
+   map used to pick the token name and must be derived from the same $colors,
+   or a missing role silently falls back to the slot's own token. */
+@mixin roolith-nav($colors, $slot-roles) {
     .nav {
         @include mixin.clearfix();
         margin-left: calc(var(--r-nav-spacing) * -1);
@@ -78,9 +80,9 @@
         }
     }
 
-    @each $name, $value in settings.$colors {
-        $fill: palette-fill(resolved.$slot-roles, $name);
-        $on: palette-on(resolved.$slot-roles, $name);
+    @each $name, $value in $colors {
+        $fill: palette-fill($slot-roles, $name);
+        $on: palette-on($slot-roles, $name);
 
         .nav-link-#{'' + $name} {
             background: $fill;

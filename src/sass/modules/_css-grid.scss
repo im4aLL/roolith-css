@@ -1,74 +1,73 @@
 @use 'sass:map';
-@use '../settings';
 @use '../mixin';
 
-$grid-css-grid-small-gutter: map.get(settings.$grid-gutter, 'small') !default;
-$grid-css-grid-medium-gutter: map.get(settings.$grid-gutter, 'medium') !default;
-$grid-css-grid-large-gutter: map.get(settings.$grid-gutter, 'large') !default;
-
-// Applies horizontal padding at a multiple of the gutter for each breakpoint.
-@mixin grid-gutter-padding($factor) {
-    padding-left: $grid-css-grid-small-gutter * $factor;
-    padding-right: $grid-css-grid-small-gutter * $factor;
+/* Applies horizontal padding at a multiple of the gutter for each breakpoint.
+   $factor multiplies the gutter and $gutter is the grid gutter map. */
+@mixin grid-gutter-padding($factor, $gutter) {
+    padding-left: map.get($gutter, 'small') * $factor;
+    padding-right: map.get($gutter, 'small') * $factor;
 
     @include mixin.breakpoint(medium-up) {
-        padding-left: $grid-css-grid-medium-gutter * $factor;
-        padding-right: $grid-css-grid-medium-gutter * $factor;
+        padding-left: map.get($gutter, 'medium') * $factor;
+        padding-right: map.get($gutter, 'medium') * $factor;
     }
 
     @include mixin.breakpoint(large-up) {
-        padding-left: $grid-css-grid-large-gutter * $factor;
-        padding-right: $grid-css-grid-large-gutter * $factor;
+        padding-left: map.get($gutter, 'large') * $factor;
+        padding-right: map.get($gutter, 'large') * $factor;
     }
 }
 
-// Applies horizontal margins at a multiple of the gutter for each breakpoint.
-@mixin grid-gutter-margin($factor) {
-    margin-left: $grid-css-grid-small-gutter * $factor;
-    margin-right: $grid-css-grid-small-gutter * $factor;
+/* Applies horizontal margins at a multiple of the gutter for each breakpoint.
+   $factor multiplies the gutter and $gutter is the grid gutter map. */
+@mixin grid-gutter-margin($factor, $gutter) {
+    margin-left: map.get($gutter, 'small') * $factor;
+    margin-right: map.get($gutter, 'small') * $factor;
 
     @include mixin.breakpoint(medium-up) {
-        margin-left: $grid-css-grid-medium-gutter * $factor;
-        margin-right: $grid-css-grid-medium-gutter * $factor;
+        margin-left: map.get($gutter, 'medium') * $factor;
+        margin-right: map.get($gutter, 'medium') * $factor;
     }
 
     @include mixin.breakpoint(large-up) {
-        margin-left: $grid-css-grid-large-gutter * $factor;
-        margin-right: $grid-css-grid-large-gutter * $factor;
+        margin-left: map.get($gutter, 'large') * $factor;
+        margin-right: map.get($gutter, 'large') * $factor;
     }
 }
 
-// Emits the span, offset, push and pull classes for one breakpoint. Every span
-// class records its column count so push and pull can shift by whole columns
-// without knowing the rendered track width.
-@mixin grid-column-classes($prefix) {
-    @for $i from 1 through settings.$grid-column-count {
+/* Emits the span, offset, push and pull classes for one breakpoint. Every span
+   class records its column count so push and pull can shift by whole columns
+   without knowing the rendered track width. $columns is the column count. */
+@mixin grid-column-classes($prefix, $columns) {
+    @for $i from 1 through $columns {
         .#{$prefix}-#{$i} {
             grid-column-end: span $i;
             --grid-span: #{$i};
         }
     }
 
-    @for $i from 1 through settings.$grid-column-count - 1 {
+    @for $i from 1 through $columns - 1 {
         .#{$prefix}-offset-#{$i} {
             grid-column-start: $i + 1;
         }
     }
 
-    @for $i from 1 through settings.$grid-column-count {
+    @for $i from 1 through $columns {
         .#{$prefix}-push-#{$i} {
             position: relative;
-            left: calc(100% * #{$i} / var(--grid-span, #{settings.$grid-column-count}));
+            left: calc(100% * #{$i} / var(--grid-span, #{$columns}));
         }
 
         .#{$prefix}-pull-#{$i} {
             position: relative;
-            left: calc(-100% * #{$i} / var(--grid-span, #{settings.$grid-column-count}));
+            left: calc(-100% * #{$i} / var(--grid-span, #{$columns}));
         }
     }
 }
 
-@mixin roolith-css-grid() {
+/* Emits the css-grid implementation. $columns is the column count and $gutter
+   the grid gutter map. */
+@mixin roolith-css-grid($columns, $gutter) {
     .container {
         max-width: var(--r-global-width);
         margin-left: auto;
@@ -76,22 +75,22 @@ $grid-css-grid-large-gutter: map.get(settings.$grid-gutter, 'large') !default;
     }
 
     .column {
-        @include grid-gutter-padding(1);
+        @include grid-gutter-padding(1, $gutter);
     }
 
     .row {
         display: grid;
-        grid-template-columns: repeat(settings.$grid-column-count, minmax(0, 1fr));
+        grid-template-columns: repeat($columns, minmax(0, 1fr));
         // Float columns kept their own height; start alignment keeps grid items
         // from stretching to the tallest item in the row.
         align-items: start;
-        @include grid-gutter-padding(0.5);
+        @include grid-gutter-padding(0.5, $gutter);
     }
 
     // Grid items carry half a gutter per side, so neighbours sit a full gutter
     // apart and the outer content lines up with the container edge.
     .row > * {
-        @include grid-gutter-padding(0.5);
+        @include grid-gutter-padding(0.5, $gutter);
     }
 
     // A nested row pulls out to the parent item's border box and lets its own
@@ -100,7 +99,7 @@ $grid-css-grid-large-gutter: map.get(settings.$grid-gutter, 'large') !default;
     .column .row {
         padding-left: 0;
         padding-right: 0;
-        @include grid-gutter-margin(-0.5);
+        @include grid-gutter-margin(-0.5, $gutter);
     }
 
     // Breakpoint classes fall back to full width until their breakpoint applies.
@@ -110,8 +109,8 @@ $grid-css-grid-large-gutter: map.get(settings.$grid-gutter, 'large') !default;
     [class*=' large-'],
     [class^='medium-'],
     [class*=' medium-'] {
-        grid-column-end: span settings.$grid-column-count;
-        --grid-span: #{settings.$grid-column-count};
+        grid-column-end: span $columns;
+        --grid-span: #{$columns};
     }
 
     // Pinning an item back to column line 1 starts it on a new row.
@@ -119,13 +118,13 @@ $grid-css-grid-large-gutter: map.get(settings.$grid-gutter, 'large') !default;
         grid-column-start: 1;
     }
 
-    @include grid-column-classes('small');
+    @include grid-column-classes('small', $columns);
 
     @include mixin.breakpoint(medium-up) {
-        @include grid-column-classes('medium');
+        @include grid-column-classes('medium', $columns);
     }
 
     @include mixin.breakpoint(large-up) {
-        @include grid-column-classes('large');
+        @include grid-column-classes('large', $columns);
     }
 }

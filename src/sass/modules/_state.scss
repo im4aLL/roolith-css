@@ -1,8 +1,11 @@
-@use '../settings';
 @use '../mixin';
 
-@mixin roolith-state() {
-    @each $breakpoint, $value in settings.$breakpoints {
+/* Emits the responsive state utilities. $breakpoints must be the same map that
+   breakpoint() resolves: only its range names build the class names, while the
+   media queries come from breakpoint() and its own settings, so a different map
+   would make the class names and the queries silently disagree. */
+@mixin roolith-state($breakpoints) {
+    @each $breakpoint, $value in $breakpoints {
         .show-#{$breakpoint}-only {
             display: none;
 

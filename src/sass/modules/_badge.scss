@@ -1,9 +1,11 @@
 @use '../function' as *;
 @use '../mixin';
-@use '../settings';
-@use '../resolved';
 
-@mixin roolith-badge() {
+/* Emits the badge module. $colors supplies only the slot names, so changing a
+   palette value does not change this output. $slot-roles is the slot to role
+   map used to pick the token name and must be derived from the same $colors,
+   or a missing role silently falls back to the slot's own token. */
+@mixin roolith-badge($colors, $slot-roles) {
     .badge {
         display: inline-flex;
         align-items: center;
@@ -20,11 +22,11 @@
         text-box-edge: cap alphabetic;
     }
 
-    @each $name, $value in settings.$colors {
-        $fill: palette-fill(resolved.$slot-roles, $name);
+    @each $name, $value in $colors {
+        $fill: palette-fill($slot-roles, $name);
 
         @if ($name != white and $name != black and $name != dark) {
-            $text: palette-text(resolved.$slot-roles, $name);
+            $text: palette-text($slot-roles, $name);
 
             .badge-#{'' + $name} {
                 background-color: color-mix(in srgb, $fill 10%, var(--r-surface-raised));
@@ -32,7 +34,7 @@
                 color: $text;
             }
         } @else {
-            $on: palette-on(resolved.$slot-roles, $name);
+            $on: palette-on($slot-roles, $name);
 
             .badge-#{'' + $name} {
                 background: $fill;

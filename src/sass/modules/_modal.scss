@@ -1,8 +1,9 @@
-@use '../settings';
 @use '../function' as *;
 @use '../mixin';
 
-@mixin roolith-modal() {
+/* Emits the modal module. $layout selects the css-grid, traditional or flex
+   layout. */
+@mixin roolith-modal($layout) {
     .modal {
         width: 100%;
         height: 100%;
@@ -11,7 +12,7 @@
         top: 0;
         background: var(--r-modal-background);
         z-index: 10;
-        @if (settings.$modal-layout == css-grid) {
+        @if ($layout == css-grid) {
             grid-template-rows: minmax(rem(20), 2fr) auto minmax(rem(20), 2fr);
             grid-template-areas:
                 'header'
@@ -22,11 +23,11 @@
         padding: 0 rem(20);
 
         &.active {
-            @if (settings.$modal-layout == css-grid) {
+            @if ($layout == css-grid) {
                 display: grid;
-            } @else if(settings.$modal-layout == traditional) {
+            } @else if($layout == traditional) {
                 display: block;
-            } @else if(settings.$modal-layout == flex) {
+            } @else if($layout == flex) {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -36,18 +37,18 @@
 
     .modal-content {
         position: relative;
-        @if (settings.$modal-layout == css-grid) {
+        @if ($layout == css-grid) {
             grid-area: body;
             margin-left: auto;
             margin-right: auto;
             @include mixin.animation(fadeInUp);
-        } @else if(settings.$modal-layout == traditional) {
+        } @else if($layout == traditional) {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             @include mixin.animation(fadeIn);
         }
-        @if (settings.$modal-layout == flex) {
+        @if ($layout == flex) {
             max-height: 90%;
             @include mixin.animation(fadeInUp);
         }

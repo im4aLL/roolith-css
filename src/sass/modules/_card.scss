@@ -1,9 +1,11 @@
 @use '../function' as *;
-@use '../settings';
-@use '../resolved';
 @use '../mixin';
 
-@mixin roolith-card() {
+/* Emits the card module. $colors supplies only the slot names, so changing a
+   palette value does not change this output. $slot-roles is the slot to role
+   map used to pick the token name and must be derived from the same $colors,
+   or a missing role silently falls back to the slot's own token. */
+@mixin roolith-card($colors, $slot-roles) {
     .card {
         box-shadow: var(--r-card-shadow);
         border-radius: var(--r-card-radius);
@@ -61,10 +63,10 @@
         font-size: rem(14);
     }
 
-    @each $name, $value in settings.$colors {
+    @each $name, $value in $colors {
         @if ($name != white) {
-            $fill: palette-fill(resolved.$slot-roles, $name);
-            $on: palette-on(resolved.$slot-roles, $name);
+            $fill: palette-fill($slot-roles, $name);
+            $on: palette-on($slot-roles, $name);
 
             .card-#{'' + $name} {
                 background: $fill;
