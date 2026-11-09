@@ -34,19 +34,19 @@
     .form-field-search-icon {
         position: absolute;
         left: rem(12);
-        top: rem(10);
+        top: rem(8);
         z-index: 1;
         font-size: 120%;
         color: var(--r-text-placeholder);
 
         .form-field-search.small & {
             left: rem(7);
-            top: rem(7);
+            top: rem(6);
         }
 
         .form-field-search.large & {
             font-size: 130%;
-            top: rem(12);
+            top: rem(10);
         }
     }
 

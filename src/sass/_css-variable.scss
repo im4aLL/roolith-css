@@ -471,11 +471,7 @@ $-theme-component-tokens: (
 
         // Block enable
         --r-block-enable-box-spacing: calc(var(--r-block-padding) / 2);
-        --r-block-enable-active-background-color: color-mix(
-            in srgb,
-            var(--r-accent) 5%,
-            var(--r-box-background-color)
-        );
+        --r-block-enable-active-background-color: color-mix(in srgb, var(--r-accent) 5%, var(--r-box-background-color));
 
         // Indicator
         --r-indicator-icon-size: #{$indicator-icon-size};
