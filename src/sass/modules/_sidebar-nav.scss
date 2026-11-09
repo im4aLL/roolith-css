@@ -107,7 +107,6 @@
         .sidebar-nav-header,
         .sidebar-nav-list-label,
         .sidebar-nav-list-dropdown,
-        .sidebar-nav-list-badge,
         .sidebar-nav-list .sidebar-nav-list {
             display: none;
         }
@@ -118,6 +117,23 @@
 
         .sidebar-nav-list-link {
             font-size: rem(16);
+            position: relative;
+        }
+
+        .sidebar-nav-list-badge {
+            display: block;
+            position: absolute;
+            top: rem(4);
+            right: rem(-5);
+            width: var(--r-sidebar-nav-badge-dot-size);
+            height: var(--r-sidebar-nav-badge-dot-size);
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background-color: var(--r-sidebar-nav-badge-dot-color);
+            font-size: 0;
+            line-height: 0;
+            overflow: hidden;
         }
     }
 }

@@ -24,6 +24,19 @@
         }
     }
 
+    .block-header-secondary {
+        max-width: 100%;
+
+        @include mixin.breakpoint(small-only) {
+            width: 100%;
+
+            .action-menu-list {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    }
+
     .action-menu-label {
         user-select: none;
     }

@@ -41,6 +41,22 @@
         padding: calc(var(--r-block-padding) / 4) 0 calc(var(--r-block-padding) / 2) 0;
     }
 
+    @include mixin.breakpoint(small-only) {
+        .block-repeater-item {
+            flex-wrap: wrap;
+        }
+
+        .block-repeater-primary {
+            flex: 1 1 rem(200);
+            min-width: 0;
+        }
+
+        .block-repeater-secondary {
+            flex: 1 1 100%;
+            justify-content: flex-end;
+        }
+    }
+
     .block-repeater-sort {
         background: transparent;
         border: none;

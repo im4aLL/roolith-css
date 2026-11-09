@@ -307,6 +307,9 @@ Coloured button variants read `--r-accent`, `--r-danger`, `--r-success`, `--r-wa
 | `--r-table-row-striped-color` | Striped row background |
 | `--r-table-row-striped-hover-color` | Striped row hover |
 | `--r-table-row-highlight-color` | Highlighted row background |
+| `--r-table-min-width` | Minimum table width inside `.table-responsive` |
+| `--r-table-scroll-scrim-color` | Surface that the responsive scroll shadows fade into |
+| `--r-table-scroll-shadow-color` | Edge shadow of a horizontally scrolling `.table-responsive` |
 
 ### Image
 
@@ -503,6 +506,8 @@ Coloured button variants read `--r-accent`, `--r-danger`, `--r-success`, `--r-wa
 | `--r-sidebar-nav-item-border-radius` | Item radius |
 | `--r-sidebar-nav-list-label-font-weight` | Group label weight |
 | `--r-sidebar-nav-item-caret-size` | Caret size |
+| `--r-sidebar-nav-badge-dot-size` | Collapsed badge dot size |
+| `--r-sidebar-nav-badge-dot-color` | Collapsed badge dot colour |
 
 ### Tooltip
 

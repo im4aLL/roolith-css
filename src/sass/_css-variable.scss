@@ -248,6 +248,9 @@ $-theme-component-tokens: (
         --r-table-row-striped-color: var(--r-surface-muted-step-2);
         --r-table-row-striped-hover-color: var(--r-surface-muted-step-3);
         --r-table-row-highlight-color: var(--r-theme-table-highlight);
+        --r-table-min-width: #{$table-min-width};
+        --r-table-scroll-scrim-color: var(--r-surface-raised);
+        --r-table-scroll-shadow-color: color-mix(in srgb, var(--r-text) 25%, transparent);
 
         // Image
         --r-img-radius: #{$img-radius};
@@ -381,6 +384,8 @@ $-theme-component-tokens: (
         --r-sidebar-nav-item-border-radius: var(--r-global-border-radius);
         --r-sidebar-nav-list-label-font-weight: #{$sidebar-nav-list-label-font-weight};
         --r-sidebar-nav-item-caret-size: #{$sidebar-nav-item-caret-size};
+        --r-sidebar-nav-badge-dot-size: #{$sidebar-nav-badge-dot-size};
+        --r-sidebar-nav-badge-dot-color: var(--r-accent);
 
         // Tooltip
         --r-tooltip-bg-color: var(--r-surface-inverse);
