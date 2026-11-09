@@ -286,6 +286,10 @@
     --r-quick-menu-spacing-x-small: 0.25rem;
     --r-quick-menu-font-size-x-small: 0.625rem;
 
+    // Scrollbar
+    --r-scrollbar-track: var(--r-surface-muted);
+    --r-scrollbar-thumb: var(--r-border-emphasis);
+
     // Sidebar Nav
     --r-sidebar-nav-header-color: var(--r-text-faint);
     --r-sidebar-group-sep-color: var(--_r-surface-raised-step-10);

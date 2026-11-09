@@ -2,7 +2,6 @@
 @use '../mixins';
 
 @mixin drawer() {
-
     .drawer {
         position: absolute;
         right: calc(var(--r-drawer-content-spacing) / 2);
@@ -10,7 +9,6 @@
         width: 100%;
         height: calc(100% - var(--r-drawer-content-spacing));
         max-width: rem(600);
-        overflow-y: auto;
         background: var(--r-drawer-background);
         border-radius: var(--r-drawer-border-radius);
         box-shadow: var(--r-drawer-content-shadow);
