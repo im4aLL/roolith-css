@@ -118,8 +118,8 @@
         margin: 0 rem(2);
         font-size: 90%;
         white-space: nowrap;
-        background: var(--r-surface-muted-step-5);
-        border: rem(1) solid var(--r-surface-muted-step-10);
+        background: var(--r-code-inline-background);
+        border: rem(1) solid var(--r-code-inline-border-color);
         border-radius: rem(3);
         overflow: auto;
         @include mixin.nice-scroll();
@@ -180,7 +180,7 @@
     hr {
         border: 0;
         height: 0;
-        border-top: rem(1) solid var(--r-surface-muted-step-5);
+        border-top: rem(1) solid var(--r-border-muted);
         border-bottom: rem(1) solid color-mix(in srgb, var(--r-text-inverse) 30%, transparent);
         margin: rem(15) 0;
     }
@@ -210,7 +210,7 @@
     blockquote {
         font-size: rem(14);
         line-height: rem(22);
-        border-left: rem(3) solid var(--r-surface-muted-step-5);
+        border-left: rem(3) solid var(--r-border-muted);
         padding-left: rem(20);
 
         cite {

@@ -312,7 +312,7 @@
         width: rem(15);
         height: rem(15);
         background-color: var(--r-form-input-background-color);
-        border: rem(1) solid color-mix(in srgb, var(--r-form-input-border-color), var(--r-theme-on-surface) 15%);
+        border: rem(1) solid var(--r-form-check-border-color);
         border-radius: rem(4);
         position: absolute;
         left: 0;

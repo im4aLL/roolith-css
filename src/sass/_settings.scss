@@ -78,9 +78,9 @@ $nav-spacing: rem(13) !default;
 
 // Form
 $form-input-radius: $global-border-radius !default;
-$form-radio-group-gap: rem(10);
-$form-radio-group-item-padding: rem(20);
-$form-radio-group-width: rem(300);
+$form-radio-group-gap: rem(10) !default;
+$form-radio-group-item-padding: rem(20) !default;
+$form-radio-group-width: rem(300) !default;
 
 // Table
 $table-spacing: rem(10) !default;
@@ -98,6 +98,7 @@ $badge-radius: $global-border-radius !default;
 // Breadcrumb
 $breadcrumb-spacing: rem(10) !default;
 $breadcrumb-size: 80% !default;
+$breadcrumb-sep-symbol: '/' !default;
 
 // Card
 $card-radius: $global-border-radius !default;
@@ -111,6 +112,7 @@ $dropdown-width: rem(220) !default;
 $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 
 // Modal
+$modal-background: rgba(0, 0, 0, 0.5) !default;
 $modal-content-radius: $global-border-radius !default;
 $modal-content-spacing: rem(20) !default;
 $modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0, 0, 0, 0.1) !default;
@@ -132,6 +134,7 @@ $collage-item-default-height: rem(200) !default;
 $collage-item-default-gap: rem(10) !default;
 $collage-item-small-gap: rem(1) !default;
 $collage-item-large-gap: rem(20) !default;
+$collage-caption-background: 0, 0, 0 !default;
 
 // Avatar
 $avatar-default-size: rem(40) !default;
@@ -150,6 +153,7 @@ $layout-sidebar-width: rem(230) !default;
 $layout-sidebar-width-compact: rem(46) !default;
 $layout-header-logo-width: rem(80) !default;
 $layout-header-padding: rem(10) rem(15) !default;
+$layout-header-height: 3.8125rem !default;
 $layout-border-width: rem(1) !default;
 $layout-header-search-width: rem(300) !default;
 
@@ -176,6 +180,7 @@ $switch-size-large: rem(44) !default;
 
 // Range
 $range-size: rem(6) !default;
+$form-range-value: 50% !default;
 
 // Action menu
 $action-menu-list-gap: rem(2) !default;
@@ -205,8 +210,6 @@ $quick-menu-font-size-x-small: rem(10) !default;
 
 // Combo box
 $combo-box-icon-size: rem(5) !default;
-$combo-box-icon-size-small: rem(4) !default;
-$combo-box-icon-size-large: rem(7) !default;
 $combo-box-width: rem(220) !default;
 $combo-box-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 $combo-box-show-animation-duration: 50ms !default;

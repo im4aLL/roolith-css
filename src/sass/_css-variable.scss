@@ -2,6 +2,50 @@
 @use './settings' as *;
 @use './resolved';
 
+$-theme-tokens: (
+    page: '--r-surface-page',
+    surface: '--r-surface',
+    surface-raised: '--r-surface-raised',
+    surface-overlay: '--r-surface-overlay',
+    surface-muted: '--r-surface-muted',
+    surface-inverse: '--r-surface-inverse',
+    surface-hover: '--r-surface-hover',
+    control: '--r-surface-control',
+    control-hover: '--r-surface-control-hover',
+    text: '--r-text',
+    text-muted: '--r-text-muted',
+    text-subtle: '--r-text-subtle',
+    text-faint: '--r-text-faint',
+    text-quiet: '--r-text-quiet',
+    text-tertiary: '--r-text-tertiary',
+    text-separator: '--r-text-separator',
+    text-strong: '--r-text-strong',
+    text-inverse: '--r-text-inverse',
+    text-control: '--r-text-control',
+    text-placeholder: '--r-text-placeholder',
+    text-helper: '--r-text-helper',
+    text-label: '--r-text-label',
+    text-disabled: '--r-text-disabled',
+    border: '--r-border',
+    border-subtle: '--r-border-subtle',
+    border-layout: '--r-border-layout',
+    border-muted: '--r-border-muted',
+    border-control: '--r-border-control',
+    border-emphasis: '--r-border-emphasis',
+    border-hairline: '--r-border-hairline',
+    link: '--r-link',
+);
+
+$-theme-private-tokens: (
+    on-surface: '--_r-on-surface',
+    table-highlight: '--_r-table-highlight',
+    comment-highlight: '--_r-comment-highlight',
+    radio-selected: '--_r-radio-selected',
+    loader-head: '--_r-loader-head',
+);
+
+$-registered-roles: map.merge($-theme-tokens, $-theme-private-tokens);
+
 // Component tokens
 $-theme-component-tokens: (
     light: (
@@ -20,11 +64,11 @@ $-theme-component-tokens: (
         sidebar-nav-active-color: var(--r-text),
         layout-secondary-background-color: var(--r-surface-muted),
         popover-background: var(--r-surface-muted),
-        form-datepicker-controls-hover-color: var(--r-surface-muted-step-5),
+        form-datepicker-controls-hover-color: var(--_r-surface-muted-step-5),
         button-active-shadow: $button-active-shadow,
         button-default-hover-color: var(--r-text-muted),
         block-enable-active-border-color: var(--r-accent),
-        message-background: var(--r-surface-muted-step-2),
+        message-background: var(--_r-surface-muted-step-2),
         badge-surface: color-mix(in srgb, var(--r-badge-background), white 70%),
     ),
     dark: (
@@ -38,27 +82,47 @@ $-theme-component-tokens: (
         tag-background: var(--r-surface-page),
         tag-border-color: var(--r-border-control),
         tag-text-color: var(--r-text-subtle),
-        comment-border: var(--r-surface-raised-step-5),
+        comment-border: var(--_r-surface-raised-step-5),
         sidebar-nav-link-hover-color: var(--r-text-strong),
         sidebar-nav-active-color: var(--r-text-strong),
         layout-secondary-background-color: var(--r-surface-page),
         popover-background: var(--r-surface-raised),
-        form-datepicker-controls-hover-color: var(--r-surface-raised-step-5),
+        form-datepicker-controls-hover-color: var(--_r-surface-raised-step-5),
         button-active-shadow: $button-active-dark-shadow,
         button-default-hover-color: var(--r-text-strong),
         block-enable-active-border-color: color-mix(in srgb, var(--r-accent), white 15%),
-        message-background: var(--r-surface-raised-step-5),
+        message-background: var(--_r-surface-raised-step-5),
         badge-surface: color-mix(in srgb, var(--r-badge-background), black 70%),
     ),
 );
 
-// Mixins
-@mixin theme-primitives($theme) {
-    @each $name, $value in $theme {
-        --r-theme-#{'' + $name}: #{$value};
+@each $name in map.keys(map.get($-theme-component-tokens, light)) {
+    @if not map.has-key(map.get($-theme-component-tokens, dark), $name) {
+        @error 'Component token "#{$name}" is defined for light but missing from dark.';
     }
 }
 
+@each $name in map.keys(map.get($-theme-component-tokens, dark)) {
+    @if not map.has-key(map.get($-theme-component-tokens, light), $name) {
+        @error 'Component token "#{$name}" is defined for dark but missing from light.';
+    }
+}
+
+@each $name, $roles in (light: resolved.$theme-light, dark: resolved.$theme-dark) {
+    @each $role in map.keys($roles) {
+        @if not map.has-key($-registered-roles, $role) {
+            @error 'Theme role "#{$role}" from the #{$name} theme is not classified by a token registry.';
+        }
+    }
+}
+
+@each $role, $token in $-registered-roles {
+    @if not map.has-key(resolved.$theme-light, $role) {
+        @error 'Token registry entry "#{$role}" (#{$token}) has no derived value.';
+    }
+}
+
+// Mixins
 @mixin theme-component-tokens($tokens) {
     @each $name, $value in $tokens {
         --r-#{$name}: #{$value};
@@ -73,8 +137,23 @@ $-theme-component-tokens: (
 
 @mixin surface-scale($name, $base, $steps...) {
     @each $step in $steps {
-        --r-#{$name}-#{$step}: color-mix(in srgb, var(--r-#{$base}), var(--r-theme-on-surface) #{$step}%);
+        --_r-#{$name}-#{$step}: color-mix(in srgb, var(--r-#{$base}), var(--_r-on-surface) #{$step}%);
     }
+}
+
+@mixin theme-scope($theme, $text-colors, $component-tokens, $scheme) {
+    @each $role, $token in $-theme-tokens {
+        #{$token}: #{map.get($theme, $role)};
+    }
+
+    @each $role, $token in $-theme-private-tokens {
+        #{$token}: #{map.get($theme, $role)};
+    }
+
+    @include theme-palette-text($text-colors);
+    @include theme-component-tokens($component-tokens);
+
+    color-scheme: $scheme;
 }
 
 @mixin roolith-css-variable() {
@@ -84,36 +163,38 @@ $-theme-component-tokens: (
             --r-color-#{'' + $name}: #{$value};
             --r-color-#{'' + $name}-on: #{map.get(resolved.$colors-on, $name)};
         }
-
-        @include theme-primitives(resolved.$theme-light);
-        @include theme-component-tokens(map.get($-theme-component-tokens, light));
-        @include theme-palette-text(resolved.$colors-text-light);
-        color-scheme: light;
     }
 
     // Light theme
+    :root,
     .theme-light {
-        @include theme-primitives(resolved.$theme-light);
-        @include theme-component-tokens(map.get($-theme-component-tokens, light));
-        @include theme-palette-text(resolved.$colors-text-light);
-        color-scheme: light;
+        @include theme-scope(
+            resolved.$theme-light,
+            resolved.$colors-text-light,
+            map.get($-theme-component-tokens, light),
+            light
+        );
     }
 
     // Dark theme
     .theme-dark {
-        @include theme-primitives(resolved.$theme-dark);
-        @include theme-component-tokens(map.get($-theme-component-tokens, dark));
-        @include theme-palette-text(resolved.$colors-text-dark);
-        color-scheme: dark;
+        @include theme-scope(
+            resolved.$theme-dark,
+            resolved.$colors-text-dark,
+            map.get($-theme-component-tokens, dark),
+            dark
+        );
     }
 
     // OS dark preference
     @media (prefers-color-scheme: dark) {
         :root:not(.theme-light) {
-            @include theme-primitives(resolved.$theme-dark);
-            @include theme-component-tokens(map.get($-theme-component-tokens, dark));
-            @include theme-palette-text(resolved.$colors-text-dark);
-            color-scheme: dark;
+            @include theme-scope(
+                resolved.$theme-dark,
+                resolved.$colors-text-dark,
+                map.get($-theme-component-tokens, dark),
+                dark
+            );
         }
     }
 
@@ -128,45 +209,9 @@ $-theme-component-tokens: (
             --r-#{$role}-text: var(--r-color-#{$name}-text);
         }
 
-        // Surface
-        --r-surface-page: var(--r-theme-page);
-        --r-surface: var(--r-theme-surface);
-        --r-surface-raised: var(--r-theme-surface-raised);
-        --r-surface-overlay: var(--r-theme-surface-overlay);
-        --r-surface-muted: var(--r-theme-surface-muted);
-        --r-surface-inverse: var(--r-theme-surface-inverse);
-        --r-surface-hover: var(--r-theme-surface-hover);
-        --r-surface-control: var(--r-theme-control);
-        --r-surface-control-hover: var(--r-theme-control-hover);
-
         // Surface scales
         @include surface-scale('surface-raised-step', 'surface-raised', 5, 8, 10, 20, 30, 50, 60);
         @include surface-scale('surface-muted-step', 'surface-muted', 2, 3, 5, 10);
-
-        // Text
-        --r-text: var(--r-theme-text);
-        --r-text-muted: var(--r-theme-text-muted);
-        --r-text-subtle: var(--r-theme-text-subtle);
-        --r-text-faint: var(--r-theme-text-faint);
-        --r-text-quiet: var(--r-theme-text-quiet);
-        --r-text-tertiary: var(--r-theme-text-tertiary);
-        --r-text-separator: var(--r-theme-text-separator);
-        --r-text-strong: var(--r-theme-text-strong);
-        --r-text-inverse: var(--r-theme-text-inverse);
-        --r-text-control: var(--r-theme-text-control);
-        --r-text-placeholder: var(--r-theme-text-placeholder);
-        --r-text-helper: var(--r-theme-text-helper);
-        --r-text-label: var(--r-theme-text-label);
-        --r-text-disabled: var(--r-theme-text-disabled);
-        --r-link: var(--r-theme-link);
-
-        // Border
-        --r-border-subtle: var(--r-theme-border-subtle);
-        --r-border-layout: var(--r-theme-border-layout);
-        --r-border: var(--r-theme-border);
-        --r-border-control: var(--r-theme-border-control);
-        --r-border-emphasis: var(--r-theme-border-emphasis);
-        --r-border-hairline: var(--r-theme-border-hairline);
 
         // Global
         --r-global-base-font-size: #{$global-base-font-size};
@@ -209,14 +254,15 @@ $-theme-component-tokens: (
         --r-form-input-background-color: var(--r-surface-raised);
         --r-form-input-color: var(--r-text-control);
         --r-form-input-border-color: var(--r-border-control);
+        --r-form-check-border-color: color-mix(in srgb, var(--r-form-input-border-color), var(--_r-on-surface) 15%);
         --r-form-input-hover-border-color: var(--r-link);
         --r-form-input-focus-border-color: var(--r-accent);
         --r-form-text-color: var(--r-text-helper);
         --r-form-input-radius: #{$form-input-radius};
         --r-form-checkbox-label-color: var(--r-text-label);
         --r-form-disable-input-color: var(--r-text-disabled);
-        --r-form-primary-color: var(--r-surface-muted-step-2);
-        --r-form-primary-border-color: var(--r-surface-muted-step-5);
+        --r-form-primary-color: var(--_r-surface-muted-step-2);
+        --r-form-primary-border-color: var(--_r-surface-muted-step-5);
         --r-form-primary-hover-color: var(--r-info);
         --r-form-primary-focus-color: var(--r-form-input-background-color);
         --r-form-error-color: var(--r-danger);
@@ -234,20 +280,20 @@ $-theme-component-tokens: (
         --r-form-radio-group-item-padding: #{$form-radio-group-item-padding};
         --r-form-radio-group-width: #{$form-radio-group-width};
         --r-form-radio-selected-border-color: var(--r-accent);
-        --r-form-radio-selected-background-color: var(--r-theme-radio-selected);
+        --r-form-radio-selected-background-color: var(--_r-radio-selected);
         --r-form-radio-selected-color: var(--r-accent);
-        --r-form-radio-text-color: color-mix(in srgb, var(--r-text-helper), var(--r-theme-on-surface) 40%);
+        --r-form-radio-text-color: color-mix(in srgb, var(--r-text-helper), var(--_r-on-surface) 40%);
 
         // Table
-        --r-table-header-border-color: var(--r-surface-muted-step-10);
-        --r-table-border-color: var(--r-surface-muted-step-5);
+        --r-table-header-border-color: var(--_r-surface-muted-step-10);
+        --r-table-border-color: var(--_r-surface-muted-step-5);
         --r-table-header-font-weight: var(--r-global-font-bold-weight);
         --r-table-spacing: #{$table-spacing};
-        --r-table-row-hover-color: var(--r-surface-muted-step-2);
-        --r-table-primary-header-color: var(--r-surface-muted-step-5);
-        --r-table-row-striped-color: var(--r-surface-muted-step-2);
-        --r-table-row-striped-hover-color: var(--r-surface-muted-step-3);
-        --r-table-row-highlight-color: var(--r-theme-table-highlight);
+        --r-table-row-hover-color: var(--_r-surface-muted-step-2);
+        --r-table-primary-header-color: var(--_r-surface-muted-step-5);
+        --r-table-row-striped-color: var(--_r-surface-muted-step-2);
+        --r-table-row-striped-hover-color: var(--_r-surface-muted-step-3);
+        --r-table-row-highlight-color: var(--_r-table-highlight);
         --r-table-min-width: #{$table-min-width};
         --r-table-scroll-scrim-color: var(--r-surface-raised);
         --r-table-scroll-shadow-color: color-mix(in srgb, var(--r-text) 25%, transparent);
@@ -269,7 +315,7 @@ $-theme-component-tokens: (
         --r-breadcrumb-spacing: #{$breadcrumb-spacing};
         --r-breadcrumb-size: #{$breadcrumb-size};
         --r-breadcrumb-default-color: var(--r-text-subtle);
-        --r-breadcrumb-sep-symbol: '/';
+        --r-breadcrumb-sep-symbol: '#{$breadcrumb-sep-symbol}';
         --r-breadcrumb-sep-color: var(--r-text-separator);
 
         // Card
@@ -289,12 +335,12 @@ $-theme-component-tokens: (
         --r-dropdown-shadow: #{$dropdown-shadow};
         --r-dropdown-item-color: var(--r-text-muted);
         --r-dropdown-item-hover-background-color: var(--r-surface-hover);
-        --r-dropdown-item-sep: var(--r-surface-raised-step-8);
+        --r-dropdown-item-sep: var(--_r-surface-raised-step-8);
 
         // Modal
-        --r-modal-background: rgba(0, 0, 0, 0.5);
+        --r-modal-background: #{$modal-background};
         --r-modal-content-background: var(--r-surface-raised);
-        --r-modal-close-color: var(--r-surface-raised-step-50);
+        --r-modal-close-color: var(--_r-surface-raised-step-50);
         --r-modal-content-radius: #{$modal-content-radius};
         --r-modal-content-spacing: #{$modal-content-spacing};
         --r-modal-content-shadow: #{$modal-content-shadow};
@@ -305,7 +351,7 @@ $-theme-component-tokens: (
 
         // Tab
         --r-tab-active-color: var(--r-accent);
-        --r-tab-border-color: var(--r-surface-muted-step-5);
+        --r-tab-border-color: var(--_r-surface-muted-step-5);
 
         // Box
         --r-box-spacing: #{$box-spacing};
@@ -313,14 +359,14 @@ $-theme-component-tokens: (
         --r-box-spacing-large: #{$box-spacing-large};
         --r-box-border-radius: #{$box-border-radius};
         --r-box-background-color: var(--r-surface-raised);
-        --r-box-border-color: var(--r-surface-raised-step-10);
+        --r-box-border-color: var(--_r-surface-raised-step-10);
         --r-box-header-text-color: var(--r-text);
-        --r-box-footer-color: var(--r-surface-raised-step-60);
+        --r-box-footer-color: var(--_r-surface-raised-step-60);
 
         // Progress
-        --r-progress-background: var(--r-surface-raised-step-5);
+        --r-progress-background: var(--_r-surface-raised-step-5);
         --r-progress-background-shadow: #{$progress-background-shadow};
-        --r-progress-bar-color: var(--r-surface-raised-step-30);
+        --r-progress-bar-color: var(--_r-surface-raised-step-30);
         --r-progress-bar-radius: #{$progress-bar-radius};
 
         // Collage
@@ -329,7 +375,7 @@ $-theme-component-tokens: (
         --r-collage-item-default-gap: #{$collage-item-default-gap};
         --r-collage-item-small-gap: #{$collage-item-small-gap};
         --r-collage-item-large-gap: #{$collage-item-large-gap};
-        --r-collage-caption-background: 0, 0, 0;
+        --r-collage-caption-background: #{$collage-caption-background};
         --r-collage-caption-color: var(--r-text-inverse);
 
         // Avatar
@@ -342,14 +388,14 @@ $-theme-component-tokens: (
         --r-tag-color: var(--r-accent);
 
         // Comment
-        --r-comment-highlight-color: var(--r-theme-comment-highlight);
+        --r-comment-highlight-color: var(--_r-comment-highlight);
 
         // Toast notification
         --r-toast-notification-width: #{$toast-notification-width};
 
         // Loader
-        --r-loader-border-color: var(--r-surface-raised-step-20);
-        --r-loader-border-top-color: var(--r-theme-loader-head);
+        --r-loader-border-color: var(--_r-surface-raised-step-20);
+        --r-loader-border-top-color: var(--_r-loader-head);
 
         // Icon
         --r-icon-color: var(--r-text-placeholder);
@@ -359,6 +405,8 @@ $-theme-component-tokens: (
 
         // Code
         --r-code-background: var(--r-surface-muted);
+        --r-code-inline-background: var(--_r-surface-muted-step-5);
+        --r-code-inline-border-color: var(--_r-surface-muted-step-10);
         --r-code-color: var(--r-text-quiet);
 
         // Layout
@@ -369,7 +417,7 @@ $-theme-component-tokens: (
         --r-layout-header-border-color: var(--r-border-layout);
         --r-layout-header-logo-width: #{$layout-header-logo-width};
         --r-layout-header-padding: #{$layout-header-padding};
-        --r-layout-header-height: 3.8125rem;
+        --r-layout-header-height: #{$layout-header-height};
         --r-layout-header-toggle-color: var(--r-text);
         --r-layout-header-nav-color: var(--r-text);
         --r-layout-header-search-width: #{$layout-header-search-width};
@@ -377,7 +425,7 @@ $-theme-component-tokens: (
 
         // Sidebar nav
         --r-sidebar-nav-header-color: var(--r-text-faint);
-        --r-sidebar-group-sep-color: var(--r-surface-raised-step-10);
+        --r-sidebar-group-sep-color: var(--_r-surface-raised-step-10);
         --r-sidebar-nav-padding: #{$sidebar-nav-padding};
         --r-sidebar-nav-link-color: var(--r-text);
         --r-sidebar-nav-active-background-color: var(--r-surface-muted);
@@ -402,7 +450,7 @@ $-theme-component-tokens: (
         --r-popover-color: var(--r-text);
         --r-popover-border-radius: #{$popover-border-radius};
         --r-popover-width: #{$popover-width};
-        --r-popover-border-color: var(--r-surface-raised-step-10);
+        --r-popover-border-color: var(--_r-surface-raised-step-10);
         --r-popover-offset: #{$popover-offset};
 
         // Drawer
@@ -422,12 +470,12 @@ $-theme-component-tokens: (
 
         // Range
         --r-form-range-height: #{$range-size};
-        --r-form-range-track-color: var(--r-surface-muted-step-5);
+        --r-form-range-track-color: var(--_r-surface-muted-step-5);
         --r-form-range-thumb-color: var(--r-accent);
         --r-form-range-thumb-hover-color: color-mix(in srgb, var(--r-accent), black 10%);
         --r-form-range-border-radius: var(--r-global-border-radius);
         --r-form-range-thumb-size: calc(var(--r-form-range-height) * 3);
-        --r-form-range-value: 50%;
+        --r-form-range-value: #{$form-range-value};
 
         // Action menu
         --r-action-menu-list-gap: #{$action-menu-list-gap};
@@ -467,7 +515,7 @@ $-theme-component-tokens: (
         --r-block-form-text-color: var(--r-text-quiet);
 
         // Block list
-        --r-block-list-item-border-color: var(--r-surface-muted-step-5);
+        --r-block-list-item-border-color: var(--_r-surface-muted-step-5);
 
         // Block enable
         --r-block-enable-box-spacing: calc(var(--r-block-padding) / 2);
@@ -507,7 +555,7 @@ $-theme-component-tokens: (
         --r-combo-box-shadow: #{$combo-box-shadow};
         --r-combo-box-item-color: var(--r-text-muted);
         --r-combo-box-item-hover-background-color: var(--r-surface-hover);
-        --r-combo-box-item-sep: var(--r-surface-raised-step-8);
+        --r-combo-box-item-sep: var(--_r-surface-raised-step-8);
         --r-combo-box-border-radius: var(--r-global-border-radius);
         --r-combo-box-secondary-color: var(--r-text-faint);
         --r-combo-box-item-header-color: var(--r-text-tertiary);
