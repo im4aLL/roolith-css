@@ -74,7 +74,7 @@ function dropComponentToken(theme, name) {
     };
 }
 
-test('fails when a component token is missing from the dark map', () => {
+test('fails when a component token is missing from the light map', () => {
     const result = compileMutated([
         { file: REGISTRY_FILE, mutate: dropComponentToken('light', 'badge-surface') },
     ]);
@@ -83,7 +83,7 @@ test('fails when a component token is missing from the dark map', () => {
     assert.match(result.message, /Component token "badge-surface" is defined for dark but missing from light/);
 });
 
-test('fails when a component token is missing from the light map', () => {
+test('fails when a component token is missing from the dark map', () => {
     const result = compileMutated([
         { file: REGISTRY_FILE, mutate: dropComponentToken('dark', 'badge-surface') },
     ]);
@@ -126,5 +126,9 @@ test('runs the token checks because the token layer imports them', () => {
         { file: CSS_VARIABLE_FILE, mutate: (scss) => scss.replace("@use './token-check';\n", '') },
     ]);
 
-    assert.equal(result.compiled, true, 'The check module must be the only reason the guards run.');
+    assert.equal(
+        result.compiled,
+        true,
+        `The check module must be the only reason the guards run: ${result.message}`,
+    );
 });
