@@ -3,7 +3,6 @@
 @use '../mixins';
 
 @mixin badge() {
-
     .badge {
         display: inline-flex;
         align-items: center;

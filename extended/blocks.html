@@ -26,7 +26,7 @@
     </head>
     <body>
         <div class="module-body">
-            <button class="button button-icon" id="js-toggle-mode">
+            <button class="button button-icon" id="js-toggle-mode" title="Toggle theme (Shift + D)">
                 <i class="iconoir-half-moon"></i>
                 Toggle Dark / Light Mode
             </button>
@@ -1332,8 +1332,8 @@
              * Toggle dark mode for the layout.
              * This function checks for a saved theme preference in localStorage,
              * applies the corresponding class to the body, and updates the icon
-             * based on the current theme. It also adds an event listener to toggle
-             * the dark mode when the button is clicked.
+             * based on the current theme. It also adds event listeners to toggle
+             * the dark mode from the button click or the Shift + D shortcut.
              */
             function toggleDarkMode() {
                 // settings
@@ -1359,25 +1359,35 @@
                     icon.className = isDark() ? darkModeIcon : lightModeIcon;
                 };
 
+                // applyTheme materializes the choice as classes and stores it,
+                // so the button and the keyboard shortcut share one code path.
+                const applyTheme = (isDarkMode) => {
+                    document.documentElement.classList.toggle(darkModeClass, isDarkMode);
+                    document.documentElement.classList.toggle(lightModeClass, !isDarkMode);
+                    localStorage.setItem(storageKey, isDarkMode ? darkModeClass : lightModeClass);
+                    updateIcon();
+                };
+
+                const isTypingTarget = (target) =>
+                    target instanceof HTMLElement &&
+                    (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName));
+
                 updateIcon();
 
                 toggleDarkModeEl.addEventListener('click', (event) => {
                     event.preventDefault();
+                    applyTheme(!isDark());
+                });
 
-                    if (isDark()) {
-                        document.documentElement.classList.remove(darkModeClass);
-                        document.documentElement.classList.add(lightModeClass);
-                    } else {
-                        document.documentElement.classList.remove(lightModeClass);
-                        document.documentElement.classList.add(darkModeClass);
-                    }
+                // Shift + D toggles the theme without stealing the key from text
+                // fields or browser-level shortcuts.
+                document.addEventListener('keydown', (event) => {
+                    if (!event.shiftKey || event.ctrlKey || event.metaKey || event.altKey) return;
+                    if (event.key.toLowerCase() !== 'd') return;
+                    if (isTypingTarget(event.target)) return;
 
-                    // store the explicit choice in localStorage
-                    localStorage.setItem(
-                        storageKey,
-                        document.documentElement.classList.contains(darkModeClass) ? darkModeClass : lightModeClass,
-                    );
-                    updateIcon();
+                    event.preventDefault();
+                    applyTheme(!isDark());
                 });
             }
 
