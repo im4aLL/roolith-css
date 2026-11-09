@@ -144,12 +144,12 @@ $neutral-steps-dark: (50: 2.5%, 100: 5%, 150: 9%, 200: 11%, 300: 15%, 400: 22%, 
     --r-success: var(--r-color-success);
     --r-success-on: var(--r-color-success-on);
     --r-success-text: var(--r-color-success-text);
-    --r-warning: var(--r-color-info);
-    --r-warning-on: var(--r-color-info-on);
-    --r-warning-text: var(--r-color-info-text);
     --r-info: var(--r-color-info);
     --r-info-on: var(--r-color-info-on);
     --r-info-text: var(--r-color-info-text);
+    --r-warning: var(--r-color-warning);
+    --r-warning-on: var(--r-color-warning-on);
+    --r-warning-text: var(--r-color-warning-text);
 }
 
 @mixin surface-scale($name, $base, $steps...) {

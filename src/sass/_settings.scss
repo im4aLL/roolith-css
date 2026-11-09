@@ -34,8 +34,9 @@ $grid-layout: css-grid !default;
 $primary-color: #4a5cd0 !default;
 $secondary-color: #7b6aa6 !default;
 $tertiary-color: #4c7d8f !default;
-$info-color: #94702f !default;
+$info-color: #2c6196 !default;
 $success-color: #38805f !default;
+$warning-color: #94702f !default;
 $danger-color: #bf4a50 !default;
 $link-color: #5568de !default;
 $dark-color: #1e2128 !default;
@@ -50,6 +51,7 @@ $colors: (
     'tertiary': $tertiary-color,
     'info': $info-color,
     'success': $success-color,
+    'warning': $warning-color,
     'danger': $danger-color,
     'link': $link-color,
     'dark': $dark-color,
@@ -64,6 +66,7 @@ $colors-on: (
     'tertiary': $white-color,
     'info': $white-color,
     'success': $white-color,
+    'warning': $white-color,
     'danger': $white-color,
     'link': $white-color,
     'dark': $white-color,
@@ -78,6 +81,7 @@ $colors-text: (
     'tertiary': 10%,
     'info': 10%,
     'success': 6%,
+    'warning': 10%,
     'danger': 6%,
     'link': 8%,
     'dark': var(--r-color-dark),
@@ -88,7 +92,8 @@ $colors-text: (
 
 $colors-dark: (
     'secondary': color.scale($secondary-color, $lightness: 25%),
-    'info': color.scale($info-color, $lightness: 20%),
+    'info': color.scale($info-color, $lightness: 35%),
+    'warning': color.scale($warning-color, $lightness: 20%),
     'link': color.scale($link-color, $lightness: 30%),
 ) !default;
 
@@ -98,6 +103,7 @@ $colors-text-dark: (
     'tertiary': 26%,
     'info': 0%,
     'success': 28%,
+    'warning': 0%,
     'danger': 32%,
     'link': 0%,
     'dark': var(--r-color-neutral-700),
