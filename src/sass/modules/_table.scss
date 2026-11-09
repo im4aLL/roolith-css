@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-table {
+@mixin table {
+
     .table {
         font-size: rem(14);
         line-height: rem(18);
@@ -79,7 +80,7 @@
         }
 
         tbody tr {
-            @include mixin.transition('background');
+            @include mixins.transition('background');
 
             &:hover {
                 background-color: var(--r-table-row-hover-color);
@@ -124,7 +125,7 @@
         }
 
         tbody tr {
-            @include mixin.transition('background');
+            @include mixins.transition('background');
 
             &:hover {
                 background-color: var(--r-table-row-hover-color);
@@ -145,7 +146,7 @@
         background-repeat: no-repeat;
         background-size: rem(40) 100%, rem(40) 100%, rem(14) 100%, rem(14) 100%;
         background-attachment: local, local, scroll, scroll;
-        @include mixin.nice-scroll();
+        @include mixins.nice-scroll();
 
         .table {
             min-width: var(--r-table-min-width);

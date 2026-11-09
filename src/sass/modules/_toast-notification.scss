@@ -1,6 +1,7 @@
-@use '../function' as *;
+@use '../functions' as *;
 
-@mixin roolith-toast-notification() {
+@mixin toast-notification() {
+
     .toast-notification {
         position: fixed;
         right: rem(30);

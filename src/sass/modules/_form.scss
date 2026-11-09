@@ -1,5 +1,5 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
 @mixin form-search() {
     .form-field-search {
@@ -51,7 +51,7 @@
     }
 
     .form-field-search-loading-icon {
-        @include mixin.loader(16);
+        @include mixins.loader(16);
         position: absolute;
         top: 0;
         bottom: 0;
@@ -65,7 +65,7 @@
         }
 
         .form-field-search.small & {
-            @include mixin.loader(12);
+            @include mixins.loader(12);
             right: rem(7);
         }
     }
@@ -84,7 +84,7 @@
         width: 100%;
         max-height: rem(300);
         overflow-y: auto;
-        @include mixin.nice-scroll();
+        @include mixins.nice-scroll();
 
         .form-field-search.hint & {
             display: block;
@@ -103,7 +103,7 @@
                 display: block;
                 padding: rem(7) rem(12);
                 color: var(--r-form-field-search-hint-color);
-                @include mixin.transition('background, color');
+                @include mixins.transition('background, color');
 
                 &:hover {
                     background-color: var(--r-form-field-search-item-hover-background);
@@ -127,7 +127,8 @@
     }
 }
 
-@mixin roolith-form() {
+@mixin form() {
+
     ::placeholder {
         color: var(--r-form-input-placeholder-color);
     }
@@ -174,7 +175,7 @@
         }
 
         &.right {
-            @include mixin.breakpoint(large-up) {
+            @include mixins.breakpoint(large-up) {
                 padding-top: rem(8);
                 text-align: right;
             }
@@ -201,7 +202,7 @@
         box-shadow: none;
         background-color: var(--r-form-input-background-color);
         color: var(--r-form-input-color);
-        @include mixin.transition('border, background');
+        @include mixins.transition('border, background');
 
         &:hover {
             border-color: var(--r-form-input-hover-border-color);
@@ -312,13 +313,13 @@
         width: rem(15);
         height: rem(15);
         background-color: var(--r-form-input-background-color);
-        border: rem(1) solid color-mix(in srgb, var(--r-form-input-border-color), var(--r-theme-on-surface) 15%);
+        border: rem(1) solid var(--r-form-check-border-color);
         border-radius: rem(4);
         position: absolute;
         left: 0;
         top: rem(4);
         margin: 0;
-        @include mixin.transition('border');
+        @include mixins.transition('border');
 
         &:hover {
             border-color: var(--r-form-input-hover-border-color);
@@ -459,9 +460,10 @@
     }
 
     .form-file {
+
         &::file-selector-button {
-            @include mixin.button-base();
-            @include mixin.button-small();
+            @include mixins.button-base();
+            @include mixins.button-small();
         }
     }
 

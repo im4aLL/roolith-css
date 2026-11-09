@@ -1,11 +1,11 @@
 @use 'sass:map';
-@use '../settings' as *;
+@use '../settings' as s;
 
 @mixin breakpoint($range) {
-    $small-upper-boundary: map.get($breakpoints, medium);
-    $medium-upper-boundary: map.get($breakpoints, large);
-    $large-upper-boundary: map.get($breakpoints, xlarge);
-    $xlarge-upper-boundary: map.get($breakpoints, xxlarge);
+    $small-upper-boundary: map.get(s.$breakpoints, medium);
+    $medium-upper-boundary: map.get(s.$breakpoints, large);
+    $large-upper-boundary: map.get(s.$breakpoints, xlarge);
+    $xlarge-upper-boundary: map.get(s.$breakpoints, xxlarge);
 
     @if $range == 'small-only' {
         @media (max-width: #{$small-upper-boundary - 1}) {

@@ -1,8 +1,9 @@
-@use '../function' as *;
-@use '../settings';
+@use '../functions' as *;
+@use '../settings' as s;
 
-@mixin roolith-spacer() {
-    @each $size in settings.$spacer {
+@mixin spacer() {
+    $sizes: s.$spacer;
+    @each $size in $sizes {
         .spacer-#{'' + $size} {
             height: rem($size);
             clear: both;

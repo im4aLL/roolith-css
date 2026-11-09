@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-avatar() {
+@mixin avatar() {
+
     .avatar {
         position: relative;
         padding-left: calc(var(--r-avatar-default-size) + #{rem(15)});
@@ -14,12 +15,12 @@
     }
 
     .avatar-fig {
-        @include mixin.abs-pos(0, auto, auto, 0);
+        @include mixins.abs-pos(0, auto, auto, 0);
         width: var(--r-avatar-default-size);
         height: var(--r-avatar-default-size);
 
         img {
-            @include mixin.fig-fit();
+            @include mixins.fig-fit();
         }
 
         .avatar-small & {
@@ -35,7 +36,7 @@
         color: var(--r-avatar-label-color);
         display: block;
         padding: 0 0 rem(3);
-        @include mixin.transition('color');
+        @include mixins.transition('color');
 
         span {
             font-weight: var(--r-global-font-weight);
@@ -62,7 +63,7 @@
 
     .avatar-secondary-block {
         padding: rem(5) 0 0;
-        @include mixin.text-small();
-        @include mixin.text-dimmed();
+        @include mixins.text-small();
+        @include mixins.text-dimmed();
     }
 }

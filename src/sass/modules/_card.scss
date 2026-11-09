@@ -1,9 +1,9 @@
-@use '../function' as *;
-@use '../settings';
-@use '../resolved';
-@use '../mixin';
+@use '../functions' as *;
+@use '../settings' as s;
+@use '../mixins';
 
-@mixin roolith-card() {
+@mixin card() {
+
     .card {
         box-shadow: var(--r-card-shadow);
         border-radius: var(--r-card-radius);
@@ -13,11 +13,11 @@
     }
 
     .card-img {
-        @include mixin.img-full-width();
+        @include mixins.img-full-width();
     }
 
     .card-body-img {
-        @include mixin.img-full-width();
+        @include mixins.img-full-width();
         margin: rem(10) 0;
     }
 
@@ -36,14 +36,14 @@
     }
 
     .card-information {
-        @include mixin.text-dimmed();
+        @include mixins.text-dimmed();
         font-size: 80%;
         display: block;
         padding: rem(20) 0 0 0;
     }
 
     .card-subtitle {
-        @include mixin.text-dimmed();
+        @include mixins.text-dimmed();
         padding-bottom: rem(10);
     }
 
@@ -61,10 +61,10 @@
         font-size: rem(14);
     }
 
-    @each $name, $value in settings.$colors {
+    @each $name, $value in s.$colors {
         @if ($name != white) {
-            $fill: palette-fill(resolved.$slot-roles, $name);
-            $on: palette-on(resolved.$slot-roles, $name);
+            $fill: palette-fill($name);
+            $on: palette-on($name);
 
             .card-#{'' + $name} {
                 background: $fill;

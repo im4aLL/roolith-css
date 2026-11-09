@@ -1,8 +1,8 @@
-@use '../function' as *;
-@use '../settings';
-@use '../resolved';
+@use '../functions' as *;
+@use '../settings' as s;
 
-@mixin roolith-box() {
+@mixin box() {
+
     .box {
         border: rem(1) solid var(--r-box-border-color);
         border-radius: calc(var(--r-box-border-radius) * 2);
@@ -88,9 +88,9 @@
         }
     }
 
-    @each $name, $value in settings.$colors {
+    @each $name, $value in s.$colors {
         @if ($name != white) {
-            $text: palette-text(resolved.$slot-roles, $name);
+            $text: palette-text($name);
 
             .box-#{'' + $name} {
                 border: rem(1) solid $text;

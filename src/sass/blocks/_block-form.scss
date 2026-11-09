@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-form() {
+@mixin block-form() {
+
     .block-form-group {
         border: rem(1) solid var(--r-block-form-group-border-color);
         border-radius: var(--r-block-form-group-border-radius);
@@ -32,7 +33,7 @@
             padding-bottom: 0;
         }
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             grid-template-columns: 2fr 3fr;
         }
     }

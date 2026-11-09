@@ -1,28 +1,32 @@
 @use 'sass:math';
 @use 'sass:map';
-@use '../settings';
-@use '../mixin';
+@use '../mixins';
+@use '../settings' as s;
 
-$grid-small-gutter: math.div(map.get(settings.$grid-gutter, 'small'), 2) !default;
-$grid-medium-gutter: math.div(map.get(settings.$grid-gutter, 'medium'), 2) !default;
-$grid-large-gutter: math.div(map.get(settings.$grid-gutter, 'large'), 2) !default;
+/* Emits half-gutter horizontal padding on both sides at each breakpoint.
+   $gutter is the grid gutter map. */
+@mixin add-gutter($gutter) {
+    padding-left: math.div(map.get($gutter, 'small'), 2);
+    padding-right: math.div(map.get($gutter, 'small'), 2);
 
-@mixin add-gutter() {
-    padding-left: $grid-small-gutter;
-    padding-right: $grid-small-gutter;
-
-    @include mixin.breakpoint(medium-up) {
-        padding-left: $grid-medium-gutter;
-        padding-right: $grid-medium-gutter;
+    @include mixins.breakpoint(medium-up) {
+        padding-left: math.div(map.get($gutter, 'medium'), 2);
+        padding-right: math.div(map.get($gutter, 'medium'), 2);
     }
 
-    @include mixin.breakpoint(large-up) {
-        padding-left: $grid-large-gutter;
-        padding-right: $grid-large-gutter;
+    @include mixins.breakpoint(large-up) {
+        padding-left: math.div(map.get($gutter, 'large'), 2);
+        padding-right: math.div(map.get($gutter, 'large'), 2);
     }
 }
 
-@mixin roolith-grid() {
+@mixin grid() {
+    $columns: s.$grid-column-count;
+    $gutter: s.$grid-gutter;
+    $small-gutter: math.div(map.get($gutter, 'small'), 2);
+    $medium-gutter: math.div(map.get($gutter, 'medium'), 2);
+    $large-gutter: math.div(map.get($gutter, 'large'), 2);
+
     .container {
         max-width: var(--r-global-width);
         margin-left: auto;
@@ -30,27 +34,27 @@ $grid-large-gutter: math.div(map.get(settings.$grid-gutter, 'large'), 2) !defaul
     }
 
     .row {
-        @include mixin.clearfix();
-        @include add-gutter();
+        @include mixins.clearfix();
+        @include add-gutter($gutter);
     }
 
     .columns {
         float: left;
-        @include add-gutter();
+        @include add-gutter($gutter);
     }
 
     .column {
-        padding-left: map.get(settings.$grid-gutter, 'small');
-        padding-right: map.get(settings.$grid-gutter, 'small');
+        padding-left: map.get($gutter, 'small');
+        padding-right: map.get($gutter, 'small');
 
-        @include mixin.breakpoint(medium-up) {
-            padding-left: map.get(settings.$grid-gutter, 'medium');
-            padding-right: map.get(settings.$grid-gutter, 'medium');
+        @include mixins.breakpoint(medium-up) {
+            padding-left: map.get($gutter, 'medium');
+            padding-right: map.get($gutter, 'medium');
         }
 
-        @include mixin.breakpoint(large-up) {
-            padding-left: map.get(settings.$grid-gutter, 'large');
-            padding-right: map.get(settings.$grid-gutter, 'large');
+        @include mixins.breakpoint(large-up) {
+            padding-left: map.get($gutter, 'large');
+            padding-right: map.get($gutter, 'large');
         }
     }
 
@@ -59,66 +63,66 @@ $grid-large-gutter: math.div(map.get(settings.$grid-gutter, 'large'), 2) !defaul
         width: 100%;
     }
 
-    @for $i from 1 through settings.$grid-column-count {
+    @for $i from 1 through $columns {
         .small-#{$i} {
-            width: math.percentage(math.div($i, settings.$grid-column-count));
+            width: math.percentage(math.div($i, $columns));
         }
 
         .small-offset-#{$i} {
-            margin-left: math.percentage(math.div($i, settings.$grid-column-count));
+            margin-left: math.percentage(math.div($i, $columns));
         }
 
         .small-pull-#{$i} {
             position: relative;
-            left: math.percentage(math.div($i, settings.$grid-column-count)) * -1;
+            left: math.percentage(math.div($i, $columns)) * -1;
         }
 
         .small-push-#{$i} {
             position: relative;
-            left: math.percentage(math.div($i, settings.$grid-column-count));
+            left: math.percentage(math.div($i, $columns));
         }
     }
 
-    @include mixin.breakpoint(medium-up) {
-        @for $i from 1 through settings.$grid-column-count {
+    @include mixins.breakpoint(medium-up) {
+        @for $i from 1 through $columns {
             .medium-#{$i} {
-                width: math.percentage(math.div($i, settings.$grid-column-count));
+                width: math.percentage(math.div($i, $columns));
             }
 
             .medium-offset-#{$i} {
-                margin-left: math.percentage(math.div($i, settings.$grid-column-count));
+                margin-left: math.percentage(math.div($i, $columns));
             }
 
             .medium-pull-#{$i} {
                 position: relative;
-                left: math.percentage(math.div($i, settings.$grid-column-count)) * -1;
+                left: math.percentage(math.div($i, $columns)) * -1;
             }
 
             .medium-push-#{$i} {
                 position: relative;
-                left: math.percentage(math.div($i, settings.$grid-column-count));
+                left: math.percentage(math.div($i, $columns));
             }
         }
     }
 
-    @include mixin.breakpoint(large-up) {
-        @for $i from 1 through settings.$grid-column-count {
+    @include mixins.breakpoint(large-up) {
+        @for $i from 1 through $columns {
             .large-#{$i} {
-                width: math.percentage(math.div($i, settings.$grid-column-count));
+                width: math.percentage(math.div($i, $columns));
             }
 
             .large-offset-#{$i} {
-                margin-left: math.percentage(math.div($i, settings.$grid-column-count));
+                margin-left: math.percentage(math.div($i, $columns));
             }
 
             .large-pull-#{$i} {
                 position: relative;
-                left: math.percentage(math.div($i, settings.$grid-column-count)) * -1;
+                left: math.percentage(math.div($i, $columns)) * -1;
             }
 
             .large-push-#{$i} {
                 position: relative;
-                left: math.percentage(math.div($i, settings.$grid-column-count));
+                left: math.percentage(math.div($i, $columns));
             }
         }
     }
@@ -127,17 +131,17 @@ $grid-large-gutter: math.div(map.get(settings.$grid-gutter, 'large'), 2) !defaul
     .row .row {
         padding-left: 0;
         padding-right: 0;
-        margin-left: -$grid-small-gutter;
-        margin-right: -$grid-small-gutter;
+        margin-left: -$small-gutter;
+        margin-right: -$small-gutter;
 
-        @include mixin.breakpoint(medium-up) {
-            margin-left: -$grid-medium-gutter;
-            margin-right: -$grid-medium-gutter;
+        @include mixins.breakpoint(medium-up) {
+            margin-left: -$medium-gutter;
+            margin-right: -$medium-gutter;
         }
 
-        @include mixin.breakpoint(large-up) {
-            margin-left: -$grid-large-gutter;
-            margin-right: -$grid-large-gutter;
+        @include mixins.breakpoint(large-up) {
+            margin-left: -$large-gutter;
+            margin-right: -$large-gutter;
         }
     }
 

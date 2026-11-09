@@ -1,13 +1,14 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-action-menu() {
+@mixin action-menu() {
+
     .action-menu-list {
         display: flex;
         gap: var(--r-action-menu-list-gap);
         flex-direction: column;
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             flex-direction: row;
         }
     }
@@ -22,7 +23,7 @@
         padding: rem(8) rem(10);
         border-radius: var(--r-action-menu-item-border-radius);
         background: var(--r-action-menu-item-background);
-        @include mixin.transition('color, background');
+        @include mixins.transition('color, background');
 
         &:hover {
             color: var(--r-action-menu-item-hover-color);

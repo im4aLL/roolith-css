@@ -1,11 +1,12 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-breadcrumb() {
+@mixin breadcrumb() {
+
     .breadcrumb {
         font-size: var(--r-breadcrumb-size);
         color: var(--r-breadcrumb-default-color);
-        @include mixin.clearfix();
+        @include mixins.clearfix();
     }
 
     .breadcrumb-item {

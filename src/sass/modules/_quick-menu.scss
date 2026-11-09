@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-quick-menu() {
+@mixin quick-menu() {
+
     .quick-menu {
         display: inline-flex;
         border-radius: var(--r-global-border-radius);
@@ -27,7 +28,7 @@
         display: inline-flex;
         padding: var(--r-quick-menu-spacing) calc(var(--r-quick-menu-spacing) * 1.5);
         border-radius: var(--r-global-border-radius);
-        @include mixin.transition('background, color');
+        @include mixins.transition('background, color');
 
         &:hover,
         .active & {

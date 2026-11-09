@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-enable() {
+@mixin block-enable() {
+
     .block-enable {
         .box {
             padding: var(--r-block-enable-box-spacing);

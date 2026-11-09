@@ -1,0 +1,219 @@
+@use 'sass:map';
+@use './settings' as s;
+@use './component-var';
+
+@mixin palette-primitives() {
+    @each $name, $value in s.$colors {
+        --r-color-#{'' + $name}: #{$value};
+        --r-color-#{'' + $name}-on: #{map.get(s.$colors-on, $name)};
+        --r-color-#{'' + $name}-text: var(--r-color-#{'' + $name});
+    }
+
+    @each $name, $value in s.$neutrals {
+        --r-color-#{'' + $name}: #{$value};
+    }
+}
+
+@mixin palette-dark-primitives() {
+    @each $name, $value in s.$colors-dark {
+        --r-color-#{'' + $name}: #{$value};
+        --r-color-#{'' + $name}-on: #{map.get(s.$colors-on, $name)};
+        --r-color-#{'' + $name}-text: var(--r-color-#{'' + $name});
+    }
+
+    @each $name, $value in s.$neutrals-dark {
+        --r-color-#{'' + $name}: #{$value};
+    }
+}
+
+@mixin semantic-tokens() {
+    --r-surface-page: var(--r-color-neutral);
+    --r-surface: var(--r-color-neutral);
+    --r-surface-raised: var(--r-color-neutral);
+    --r-surface-overlay: var(--r-color-neutral-50);
+    --r-surface-muted: var(--r-color-neutral-100);
+    --r-surface-inverse: var(--r-color-dark);
+    --r-surface-hover: var(--r-color-neutral-100);
+    --r-surface-control: var(--r-color-neutral-100);
+    --r-surface-control-hover: var(--r-color-neutral-150);
+
+    --r-text: var(--r-color-neutral-900);
+    --r-text-muted: var(--r-color-neutral-800);
+    --r-text-subtle: var(--r-color-neutral-600);
+    --r-text-faint: var(--r-color-neutral-600);
+    --r-text-quiet: var(--r-color-neutral-700);
+    --r-text-tertiary: var(--r-color-neutral-600);
+    --r-text-separator: var(--r-color-neutral-600);
+    --r-text-strong: var(--r-color-black);
+    --r-text-inverse: var(--r-color-white);
+    --r-text-control: var(--r-color-neutral-900);
+    --r-text-placeholder: var(--r-color-neutral-600);
+    --r-text-helper: var(--r-color-neutral-600);
+    --r-text-label: var(--r-color-neutral-800);
+    --r-text-disabled: var(--r-color-neutral-200);
+
+    --r-border: var(--r-color-neutral-300);
+    --r-border-subtle: var(--r-color-neutral-100);
+    --r-border-layout: var(--r-color-neutral-200);
+    --r-border-muted: var(--r-color-neutral-200);
+    --r-border-control: var(--r-color-neutral-500);
+    --r-border-emphasis: var(--r-color-neutral-400);
+    --r-border-hairline: var(--r-color-neutral-200);
+    --r-link: var(--r-color-link);
+
+    --r-color-dark-text: var(--r-color-dark);
+    --r-color-black-text: var(--r-color-black);
+    --r-color-light-text: var(--r-color-neutral-700);
+    --r-color-white-text: var(--r-color-neutral-700);
+}
+
+@mixin semantic-dark-tokens() {
+    --r-surface-page: var(--r-color-neutral);
+    --r-surface: var(--r-color-neutral-100);
+    --r-surface-raised: var(--r-color-neutral-150);
+    --r-surface-overlay: var(--r-color-neutral-200);
+    --r-surface-muted: var(--r-color-neutral-100);
+    --r-surface-inverse: var(--r-color-neutral-150);
+    --r-surface-hover: var(--r-color-neutral-200);
+    --r-surface-control: var(--r-color-neutral-300);
+    --r-surface-control-hover: var(--r-color-neutral-400);
+
+    --r-text: var(--r-color-neutral-800);
+    --r-text-muted: var(--r-color-neutral-700);
+    --r-text-subtle: var(--r-color-neutral-600);
+    --r-text-faint: var(--r-color-neutral-600);
+    --r-text-quiet: var(--r-color-neutral-600);
+    --r-text-tertiary: var(--r-color-neutral-600);
+    --r-text-separator: var(--r-color-neutral-600);
+    --r-text-strong: var(--r-color-neutral-900);
+    --r-text-inverse: var(--r-color-white);
+    --r-text-control: var(--r-color-neutral-900);
+    --r-text-placeholder: var(--r-color-neutral-600);
+    --r-text-helper: var(--r-color-neutral-600);
+    --r-text-label: var(--r-color-neutral-800);
+    --r-text-disabled: var(--r-color-neutral-200);
+
+    --r-border: var(--r-color-neutral-400);
+    --r-border-subtle: var(--r-color-neutral-200);
+    --r-border-layout: var(--r-color-neutral-200);
+    --r-border-muted: var(--r-color-neutral-150);
+    --r-border-control: var(--r-color-neutral-500);
+    --r-border-emphasis: var(--r-color-neutral-400);
+    --r-border-hairline: var(--r-color-neutral-100);
+    --r-link: var(--r-color-link);
+
+    --r-color-dark-text: var(--r-color-neutral-700);
+    --r-color-black-text: var(--r-color-neutral-700);
+    --r-color-light-text: var(--r-color-light);
+    --r-color-white-text: var(--r-color-white);
+}
+
+@mixin private-tokens() {
+    --_r-on-surface: #000000;
+    --_r-table-highlight: color-mix(in srgb, var(--r-color-primary) 12%, var(--r-surface-page));
+    --_r-comment-highlight: color-mix(in srgb, var(--r-color-primary) 20%, var(--r-surface-page));
+    --_r-radio-selected: color-mix(in srgb, var(--r-color-primary) 3%, var(--r-surface));
+    --_r-loader-head: color-mix(in srgb, var(--r-surface-page), black 70%);
+}
+
+@mixin private-dark-tokens() {
+    --_r-on-surface: #ffffff;
+    --_r-table-highlight: var(--r-color-neutral-200);
+    --_r-comment-highlight: var(--r-color-neutral-300);
+    --_r-radio-selected: var(--r-color-neutral-150);
+    --_r-loader-head: color-mix(in srgb, var(--r-color-neutral), white 56%);
+}
+
+@mixin accent-roles() {
+    --r-accent: var(--r-color-primary);
+    --r-accent-on: var(--r-color-primary-on);
+    --r-accent-text: var(--r-color-primary-text);
+    --r-danger: var(--r-color-danger);
+    --r-danger-on: var(--r-color-danger-on);
+    --r-danger-text: var(--r-color-danger-text);
+    --r-success: var(--r-color-success);
+    --r-success-on: var(--r-color-success-on);
+    --r-success-text: var(--r-color-success-text);
+    --r-warning: var(--r-color-info);
+    --r-warning-on: var(--r-color-info-on);
+    --r-warning-text: var(--r-color-info-text);
+    --r-info: var(--r-color-info);
+    --r-info-on: var(--r-color-info-on);
+    --r-info-text: var(--r-color-info-text);
+}
+
+@mixin surface-scale($name, $base, $steps...) {
+    @each $step in $steps {
+        --_r-#{$name}-#{$step}: color-mix(in srgb, var(--r-#{$base}), var(--_r-on-surface) #{$step}%);
+    }
+}
+
+@mixin surface-scales() {
+    @include surface-scale('surface-raised-step', 'surface-raised', 5, 8, 10, 20, 30, 50, 60);
+    @include surface-scale('surface-muted-step', 'surface-muted', 2, 3, 5, 10);
+}
+
+@mixin theme-default() {
+    @include palette-primitives();
+    @include semantic-tokens();
+    @include private-tokens();
+
+    @include component-var.component-tokens-light();
+
+    color-scheme: light;
+}
+
+@mixin theme-dark() {
+    @include palette-dark-primitives();
+    @include semantic-dark-tokens();
+    @include private-dark-tokens();
+
+    @include component-var.component-tokens-dark();
+
+    color-scheme: dark;
+}
+
+@mixin css-variable() {
+    :root,
+    .theme-light {
+        @include theme-default();
+    }
+
+    .theme-dark {
+        @include theme-dark();
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root:not(.theme-light) {
+            @include theme-dark();
+        }
+    }
+
+    :root,
+    .theme-light,
+    .theme-dark {
+        @include accent-roles();
+        @include surface-scales();
+        @include component-var.component-tokens();
+
+        --r-global-base-font-size: #{s.$base-font-size};
+        --r-global-base-font: #{s.$base-font-family};
+        --r-global-font-weight: #{s.$global-font-weight};
+        --r-global-font-bold-weight: #{s.$global-font-bold-weight};
+        --r-global-background-color: var(--r-surface-page);
+        --r-global-font-color: var(--r-text);
+        --r-global-font-color-light: var(--r-text-muted);
+        --r-global-border-radius: #{s.$border-radius};
+        --r-global-width: #{s.$container-width};
+        --r-focus-ring-color: var(--r-link);
+        --r-animation-easing: #{s.$animation-easing};
+        --r-animation-duration: #{s.$animation-duration};
+        --r-loader-border-color: var(--_r-surface-raised-step-20);
+        --r-loader-border-top-color: var(--_r-loader-head);
+        --r-code-background: var(--r-surface-muted);
+        --r-code-inline-background: var(--_r-surface-muted-step-5);
+        --r-code-inline-border-color: var(--_r-surface-muted-step-10);
+        --r-code-color: var(--r-text-quiet);
+        --r-block-padding: #{s.$block-padding};
+    }
+}

@@ -1,18 +1,19 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-img() {
+@mixin img() {
+
     .img {
         max-width: 100%;
     }
 
     .img-full-width {
-        @include mixin.img-full-width();
+        @include mixins.img-full-width();
     }
 
     .rounded {
         overflow: hidden;
-        @include mixin.border-radius(var(--r-img-radius));
+        @include mixins.border-radius(var(--r-img-radius));
     }
 
     .rounded-circle {
@@ -32,6 +33,6 @@
     }
 
     .fig-fit {
-        @include mixin.fig-fit();
+        @include mixins.fig-fit();
     }
 }

@@ -1,6 +1,6 @@
-@use '../function' as *;
+@use '../functions' as *;
 
-@mixin roolith-stat() {
+@mixin stat() {
     .stat {
         text-align: center;
         padding: rem(15) 0;

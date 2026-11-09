@@ -1,11 +1,11 @@
-@use '../function' as *;
-@use '../mixin';
-@use '../settings';
-@use '../resolved';
+@use '../functions' as *;
+@use '../settings' as s;
+@use '../mixins';
 
-@mixin roolith-nav() {
+@mixin nav() {
+
     .nav {
-        @include mixin.clearfix();
+        @include mixins.clearfix();
         margin-left: calc(var(--r-nav-spacing) * -1);
         float: left;
     }
@@ -26,7 +26,7 @@
         font-size: rem(14);
         color: var(--r-nav-link-color);
         position: relative;
-        @include mixin.transition('color');
+        @include mixins.transition('color');
 
         &:hover,
         .active & {
@@ -78,9 +78,9 @@
         }
     }
 
-    @each $name, $value in settings.$colors {
-        $fill: palette-fill(resolved.$slot-roles, $name);
-        $on: palette-on(resolved.$slot-roles, $name);
+    @each $name, $value in s.$colors {
+        $fill: palette-fill($name);
+        $on: palette-on($name);
 
         .nav-link-#{'' + $name} {
             background: $fill;

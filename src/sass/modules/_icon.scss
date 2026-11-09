@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../settings';
+@use '../functions' as *;
+@use '../settings' as s;
 
-@mixin roolith-icon() {
+@mixin icon() {
+
     .icon {
         display: inline-block;
         width: var(--r-icon-size);
@@ -22,7 +23,7 @@
         height: var(--r-icon-large-size);
     }
 
-    @each $name, $value in settings.$colors {
+    @each $name, $value in s.$colors {
         .icon-color-#{'' + $name} {
             background-color: var(--r-color-#{$name});
         }

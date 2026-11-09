@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-inline() {
+@mixin block-inline() {
+
     .block-inline {
         .form-label {
             opacity: 0.5;
@@ -17,7 +18,7 @@
         flex-direction: column;
         gap: var(--r-block-inline-gap);
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             flex-direction: row;
             align-items: flex-end;
         }
@@ -34,7 +35,7 @@
     }
 
     .block-inline-v-center {
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             min-height: rem(37);
             display: flex;
             align-items: center;
@@ -47,7 +48,7 @@
         flex-direction: column;
         gap: var(--r-block-inline-gap);
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             margin-left: auto;
             flex-direction: row;
             align-items: flex-end;

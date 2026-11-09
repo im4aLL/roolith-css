@@ -1,8 +1,8 @@
-@use '../function' as *;
-@use '../settings';
-@use '../resolved';
+@use '../functions' as *;
+@use '../settings' as s;
 
-@mixin roolith-progress-bar() {
+@mixin progress() {
+
     progress {
         appearance: none;
         width: 100%;
@@ -35,9 +35,9 @@
         background: var(--r-progress-background);
     }
 
-    @each $name, $value in settings.$colors {
+    @each $name, $value in s.$colors {
         @if ($name != white) {
-            $fill: palette-fill(resolved.$slot-roles, $name);
+            $fill: palette-fill($name);
 
             .progress-#{'' + $name}::-moz-progress-bar {
                 background: $fill;

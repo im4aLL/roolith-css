@@ -1,13 +1,14 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-stat() {
+@mixin block-stat() {
+
     .block-stat {
         display: flex;
         flex-direction: column;
         gap: calc(var(--r-block-stat-item-gap) / 2);
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             flex-direction: row;
         }
     }
@@ -19,7 +20,7 @@
         background-color: var(--r-block-stat-item-background-color);
         padding: calc(var(--r-block-stat-item-gap) / 2);
         border-radius: var(--r-block-stat-item-border-radius);
-        @include mixin.transition('background-color');
+        @include mixins.transition('background-color');
 
         &:hover,
         &.active {

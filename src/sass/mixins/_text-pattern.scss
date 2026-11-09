@@ -1,4 +1,4 @@
-@use '../function' as *;
+@use '../functions' as *;
 
 /* Heading tracking tightens as the rendered size grows: -0.02em below 24px,
    -0.03em from 24px and -0.04em from 40px. It is a function of the size rather

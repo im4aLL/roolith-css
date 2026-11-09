@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-tooltip() {
+@mixin tooltip() {
+
     .tooltip {
         position: relative;
         display: inline-block;
@@ -36,7 +37,7 @@
             line-height: rem(18);
             z-index: 1;
 
-            @include mixin.transition(
+            @include mixins.transition(
                 'opacity, visibility',
                 var(--r-tooltip-transition-duration),
                 var(--r-tooltip-transition-delay)
@@ -66,7 +67,7 @@
         line-height: rem(18);
         z-index: 1;
 
-        @include mixin.transition(
+        @include mixins.transition(
             'opacity, visibility',
             var(--r-tooltip-transition-duration),
             var(--r-tooltip-transition-delay)
@@ -81,7 +82,7 @@
 
     .tooltip-up {
         .tooltip-content::before {
-            @include mixin.triangle('down', rem(5), var(--r-tooltip-bg-color));
+            @include mixins.triangle('down', rem(5), var(--r-tooltip-bg-color));
             position: absolute;
             bottom: rem(-5);
             left: 50%;
@@ -96,7 +97,7 @@
         }
 
         .tooltip-content::before {
-            @include mixin.triangle('up', rem(5), var(--r-tooltip-bg-color));
+            @include mixins.triangle('up', rem(5), var(--r-tooltip-bg-color));
             transform: translateX(-50%);
             top: rem(-5);
             left: 50%;
@@ -113,7 +114,7 @@
         }
 
         .tooltip-content::before {
-            @include mixin.triangle('right', rem(5), var(--r-tooltip-bg-color));
+            @include mixins.triangle('right', rem(5), var(--r-tooltip-bg-color));
             right: rem(-5);
             top: 50%;
             transform: translateY(-50%);
@@ -130,7 +131,7 @@
         }
 
         .tooltip-content::before {
-            @include mixin.triangle('left', rem(5), var(--r-tooltip-bg-color));
+            @include mixins.triangle('left', rem(5), var(--r-tooltip-bg-color));
             left: rem(-5);
             top: 50%;
             transform: translateY(-50%);

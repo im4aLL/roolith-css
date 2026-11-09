@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-list() {
+@mixin block-list() {
+
     .block-list {
         display: flex;
         flex-direction: column;

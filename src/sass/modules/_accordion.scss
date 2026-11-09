@@ -1,6 +1,7 @@
-@use '../function' as *;
+@use '../functions' as *;
 
-@mixin roolith-accordion() {
+@mixin accordion() {
+
     .accordion {
         border-top: rem(1) solid var(--r-accordion-border-color);
     }

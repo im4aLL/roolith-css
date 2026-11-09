@@ -1,8 +1,10 @@
-@use '../settings';
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../settings' as s;
+@use '../mixins';
 
-@mixin roolith-modal() {
+@mixin modal() {
+
+    $layout: s.$modal-layout;
     .modal {
         width: 100%;
         height: 100%;
@@ -11,7 +13,7 @@
         top: 0;
         background: var(--r-modal-background);
         z-index: 10;
-        @if (settings.$modal-layout == css-grid) {
+        @if ($layout == css-grid) {
             grid-template-rows: minmax(rem(20), 2fr) auto minmax(rem(20), 2fr);
             grid-template-areas:
                 'header'
@@ -22,11 +24,11 @@
         padding: 0 rem(20);
 
         &.active {
-            @if (settings.$modal-layout == css-grid) {
+            @if ($layout == css-grid) {
                 display: grid;
-            } @else if(settings.$modal-layout == traditional) {
+            } @else if($layout == traditional) {
                 display: block;
-            } @else if(settings.$modal-layout == flex) {
+            } @else if($layout == flex) {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -36,20 +38,20 @@
 
     .modal-content {
         position: relative;
-        @if (settings.$modal-layout == css-grid) {
+        @if ($layout == css-grid) {
             grid-area: body;
             margin-left: auto;
             margin-right: auto;
-            @include mixin.animation(fadeInUp);
-        } @else if(settings.$modal-layout == traditional) {
+            @include mixins.animation(fadeInUp);
+        } @else if($layout == traditional) {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            @include mixin.animation(fadeIn);
+            @include mixins.animation(fadeIn);
         }
-        @if (settings.$modal-layout == flex) {
+        @if ($layout == flex) {
             max-height: 90%;
-            @include mixin.animation(fadeInUp);
+            @include mixins.animation(fadeInUp);
         }
         max-width: rem(600);
         overflow-y: auto;
@@ -71,7 +73,7 @@
     }
 
     .modal-header {
-        @include mixin.clearfix();
+        @include mixins.clearfix();
         padding: var(--r-modal-content-spacing);
         border-bottom: rem(1) solid var(--r-modal-border-color);
         font-size: rem(16);
@@ -105,10 +107,10 @@
         z-index: 2;
         cursor: pointer;
         color: var(--r-modal-close-color);
-        @include mixin.transition('opacity');
+        @include mixins.transition('opacity');
 
         &:hover {
-            @include mixin.opacity(0.7);
+            @include mixins.opacity(0.7);
         }
     }
 }

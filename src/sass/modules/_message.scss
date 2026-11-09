@@ -1,8 +1,8 @@
-@use '../function' as *;
-@use '../settings';
-@use '../resolved';
+@use '../functions' as *;
+@use '../settings' as s;
 
-@mixin roolith-message() {
+@mixin message() {
+
     .message {
         font-size: rem(14);
         line-height: 1.5;
@@ -34,10 +34,10 @@
         font-size: rem(18);
     }
 
-    @each $name, $value in settings.$colors {
+    @each $name, $value in s.$colors {
         @if ($name != white) {
-            $fill: palette-fill(resolved.$slot-roles, $name);
-            $text: palette-text(resolved.$slot-roles, $name);
+            $fill: palette-fill($name);
+            $text: palette-text($name);
 
             .message-#{'' + $name} {
                 background: color-mix(in srgb, $fill 10%, var(--r-surface-raised));

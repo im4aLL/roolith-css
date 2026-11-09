@@ -1,8 +1,8 @@
-@use '../function' as *;
-@use '../settings';
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-collage() {
+@mixin collage() {
+
     .collage {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(var(--r-collage-item-default-width), 1fr));
@@ -67,7 +67,7 @@
         font-size: rem(12);
         line-height: rem(18);
         opacity: 0;
-        @include mixin.transition('opacity');
+        @include mixins.transition('opacity');
 
         &.visible {
             background: linear-gradient(

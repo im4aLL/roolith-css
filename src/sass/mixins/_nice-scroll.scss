@@ -1,4 +1,4 @@
-@use '../function' as *;
+@use '../functions' as *;
 
 @mixin nice-scroll($trackColor: #f1f1f1, $scrollbarColor: #dddddd) {
     &::-webkit-scrollbar-track {

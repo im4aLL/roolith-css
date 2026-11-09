@@ -1,11 +1,11 @@
-@use '../function' as *;
-@use '../mixin';
-@use '../settings';
-@use '../resolved';
+@use '../functions' as *;
+@use '../settings' as s;
+@use '../mixins';
 
-@mixin roolith-button() {
+@mixin button() {
+
     .button {
-        @include mixin.button-base();
+        @include mixins.button-base();
 
         &.active {
             box-shadow: var(--r-button-active-shadow);
@@ -27,7 +27,7 @@
         }
 
         &.disabled {
-            @include mixin.opacity(0.6);
+            @include mixins.opacity(0.6);
             cursor: not-allowed;
             pointer-events: none;
 
@@ -52,7 +52,7 @@
                 position: absolute;
                 inset: 0;
                 margin: auto;
-                @include mixin.loader();
+                @include mixins.loader();
             }
         }
     }
@@ -63,10 +63,10 @@
     }
 
     .button-small {
-        @include mixin.button-small();
+        @include mixins.button-small();
 
         &.loading:after {
-            @include mixin.loader(12);
+            @include mixins.loader(12);
         }
     }
 
@@ -76,7 +76,7 @@
         padding: rem(6) rem(12);
 
         &.loading:after {
-            @include mixin.loader(16);
+            @include mixins.loader(16);
         }
     }
 
@@ -90,15 +90,15 @@
         }
 
         &.loading:after {
-            @include mixin.loader(24);
+            @include mixins.loader(24);
         }
     }
 
-    @each $name, $value in settings.$colors {
+    @each $name, $value in s.$colors {
         @if ($name != white) {
-            $fill: palette-fill(resolved.$slot-roles, $name);
-            $on: palette-on(resolved.$slot-roles, $name);
-            $text: palette-text(resolved.$slot-roles, $name);
+            $fill: palette-fill($name);
+            $on: palette-on($name);
+            $text: palette-text($name);
 
             .button-#{'' + $name} {
                 background: $fill;
@@ -151,7 +151,7 @@
     }
 
     .button-group {
-        @include mixin.clearfix();
+        @include mixins.clearfix();
 
         .button {
             float: left;

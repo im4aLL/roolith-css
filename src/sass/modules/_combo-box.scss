@@ -1,7 +1,8 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-combo-box() {
+@mixin combo-box() {
+
     .combo-box {
         display: inline-block;
         position: relative;
@@ -30,7 +31,7 @@
         border: rem(1) solid var(--r-combo-box-border-color);
         border-radius: var(--r-combo-box-border-radius);
         box-shadow: var(--r-combo-box-shadow);
-        @include mixin.animation(fadeIn);
+        @include mixins.animation(fadeIn);
 
         .combo-box-right & {
             left: auto;
@@ -64,7 +65,7 @@
                 top: 50%;
                 right: var(--r-combo-box-item-x-padding);
                 transform: translateY(-50%);
-                @include mixin.triangle(right, var(--r-combo-box-icon-size));
+                @include mixins.triangle(right, var(--r-combo-box-icon-size));
             }
         }
     }
@@ -80,7 +81,7 @@
         color: var(--r-combo-box-item-color);
         font-size: rem(14);
         line-height: 1.3;
-        @include mixin.transition('background, color');
+        @include mixins.transition('background, color');
 
         &:hover {
             background-color: var(--r-combo-box-item-hover-background-color);

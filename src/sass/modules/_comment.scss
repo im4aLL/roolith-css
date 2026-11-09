@@ -1,8 +1,9 @@
 @use 'sass:math';
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-comment() {
+@mixin comment() {
+
     .comment-group {
         border-top: rem(1) solid var(--r-comment-border);
 
@@ -28,13 +29,13 @@
     }
 
     .comment-info {
-        @include mixin.text-small();
-        @include mixin.text-dimmed();
+        @include mixins.text-small();
+        @include mixins.text-dimmed();
         padding-bottom: rem(20);
     }
 
     .comment-action {
-        @include mixin.clearfix();
+        @include mixins.clearfix();
         padding-bottom: rem(20);
     }
 
@@ -55,7 +56,7 @@
         gap: rem(5);
         font-size: rem(14);
         line-height: 1.5;
-        @include mixin.transition('color');
+        @include mixins.transition('color');
     }
 
     .comment-blurred {

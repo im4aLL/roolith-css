@@ -1,6 +1,7 @@
-@use '../function' as *;
+@use '../functions' as *;
 
-@mixin roolith-popover() {
+@mixin popover() {
+
     .popover {
         position: absolute;
         bottom: 0;
