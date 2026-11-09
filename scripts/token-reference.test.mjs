@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
+import { findDanglingReferences } from './css-dangling-references.mjs';
 import { loadTokens } from './css-custom-properties.mjs';
 import { parseCssVariableSource, readCssVariableSource } from './css-variable-source.mjs';
 import { renderTokenReference } from './token-reference.mjs';
@@ -178,4 +179,8 @@ test('keeps the generated token reference in sync with the framework', () => {
     const { markdown } = renderTokenReference({ light, dark, sources: readCssVariableSource() });
 
     assert.equal(readFileSync(new URL('../TOKENS.md', import.meta.url), 'utf8'), markdown);
+});
+
+test('declares every custom property the framework references', () => {
+    assert.deepEqual(findDanglingReferences(loadTokens().css), []);
 });

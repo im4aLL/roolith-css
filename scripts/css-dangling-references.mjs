@@ -7,6 +7,14 @@
  * at runtime, where the browser drops the declaration and the component renders
  * with an inherited or initial value instead of the intended one.
  *
+ * A reference that supplies a fallback, `var(--x, 1px)`, is still reported,
+ * because the intent is to notice any token the stylesheet no longer declares
+ * rather than to rely on the browser fallback.
+ *
+ * The declared set is collected across the whole stylesheet regardless of theme
+ * scope, which is sufficient here because the theme scopes are validated to emit
+ * identical key sets, but it would not catch a token declared in only one theme.
+ *
  * @module css-dangling-references
  */
 
@@ -68,8 +76,9 @@ function collectReferences(root) {
 /**
  * Name the scope a declaration belongs to.
  *
- * A declaration inside a rule reports the rule selector, one inside an at-rule
- * reports the at-rule name, and a detached declaration falls back to `:root`.
+ * A declaration inside a rule reports the rule selector, one inside any other
+ * at-rule reports the at-rule name prefixed with `@`, and a declaration directly
+ * inside the stylesheet root falls back to `:root`.
  *
  * @param {import('postcss').Declaration} decl Declaration to inspect.
  * @returns {string} Selector, at-rule name, or the root fallback.
@@ -77,11 +86,15 @@ function collectReferences(root) {
 function referenceSelector(decl) {
     const { parent } = decl;
 
-    if (parent === undefined) {
-        return ':root';
+    if (parent?.type === 'rule') {
+        return parent.selector;
     }
 
-    return parent.type === 'rule' ? parent.selector : '@' + parent.name;
+    if (parent?.type === 'atrule') {
+        return '@' + parent.name;
+    }
+
+    return ':root';
 }
 
 /**

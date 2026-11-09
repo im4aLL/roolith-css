@@ -70,6 +70,12 @@ test('finds a reference in a declaration nested in an at-rule', () => {
     );
 });
 
+test('falls back to the root selector for a top-level declaration', () => {
+    assert.deepEqual(findDanglingReferences('color: var(--r-gone);'), [
+        { selector: ':root', property: 'color', reference: '--r-gone' },
+    ]);
+});
+
 test('reports a duplicate reference once', () => {
     const dangling = findDanglingReferences(`
         .test {
