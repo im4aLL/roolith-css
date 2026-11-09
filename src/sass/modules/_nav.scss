@@ -1,7 +1,7 @@
 @use '../function' as *;
 @use '../mixin';
 @use '../settings';
-@use 'sass:color';
+@use '../resolved';
 
 @mixin roolith-nav() {
     .nav {
@@ -74,25 +74,22 @@
 
         .active .nav-link {
             background: var(--r-nav-primary-color);
-            color: var(--r-color-white);
+            color: var(--r-accent-on);
         }
     }
 
     @each $name, $value in settings.$colors {
+        $fill: palette-fill(resolved.$slot-roles, $name);
+        $on: palette-on(resolved.$slot-roles, $name);
+
         .nav-link-#{'' + $name} {
-            background: var(--r-color-#{$name});
-            background: linear-gradient(to bottom, color-lighten(var(--r-color-#{$name}), 5%) 0%, $value 100%);
-            color: var(--r-color-white);
+            background: $fill;
+            color: $on;
 
             &:hover {
-                background: color-lighten(var(--r-color-#{$name}), 3%);
-                background: linear-gradient(
-                    to bottom,
-                    color-lighten(var(--r-color-#{$name}), 7%) 0%,
-                    color-lighten(var(--r-color-#{$name}), 3%) 100%
-                );
+                background: color-darken($fill, 5%);
                 box-shadow: var(--r-button-hover-shadow-dark);
-                color: var(--r-color-white);
+                color: $on;
             }
         }
     }

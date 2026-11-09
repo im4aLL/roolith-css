@@ -6,7 +6,7 @@
         position: relative;
         padding-left: calc(var(--r-indicator-icon-size) + #{rem(3)});
         font-size: rem(14);
-        color: var(--r-indicator-normal-color);
+        color: var(--r-indicator-flat-color);
 
         &::before {
             content: '';
@@ -21,7 +21,15 @@
             mask-image: inline-svg(
                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 14c2-4 6 4 9 0s7-4 9 0"/></svg>'
             );
-            background-color: var(--r-indicator-normal-color);
+            background-color: var(--r-indicator-flat-color);
+        }
+
+        &.is-flat {
+            color: var(--r-indicator-flat-color);
+
+            &::before {
+                background-color: var(--r-indicator-flat-color);
+            }
         }
 
         &.is-upward {

@@ -1,0 +1,168 @@
+@use 'sass:map';
+@use './function' as *;
+@use './settings';
+@use './theme';
+
+$-palette-inverse: map.get(settings.$colors, dark);
+
+@if $-palette-inverse == null {
+    $-palette-inverse: #1e2128;
+}
+
+$-colors-on-defaults: (
+    primary: #ffffff,
+    secondary: #ffffff,
+    tertiary: #ffffff,
+    info: #ffffff,
+    success: #ffffff,
+    danger: #ffffff,
+    link: #ffffff,
+    dark: #ffffff,
+    black: #ffffff,
+    white: $-palette-inverse,
+    light: $-palette-inverse,
+);
+
+$colors-on: map.merge($-colors-on-defaults, settings.$colors-on);
+
+@each $name, $value in settings.$colors {
+    @if map.get($colors-on, $name) == null {
+        @error 'Palette slot "#{$name}" has no foreground pair. Add it to $colors-on.';
+    }
+}
+
+@each $name in (primary, link, secondary, tertiary) {
+    @if not map.has-key(settings.$colors, $name) {
+        @error 'Palette has no "#{$name}" slot. The theme and token layers read it directly; add it to $colors.';
+    }
+}
+
+$accent-roles: map.merge(
+    (
+        accent: primary,
+        danger: danger,
+        success: success,
+        warning: info,
+        info: info,
+    ),
+    settings.$accent-roles
+);
+
+$slot-roles: palette-slot-roles(settings.$colors, $accent-roles);
+
+$-theme-light-seed-defaults: (
+    page: #ffffff,
+    surface: #ffffff,
+    raised: #ffffff,
+    muted: #f4f5f8,
+    inverse: #1e2128,
+    text: #1e2128,
+    ink: #0b0d12,
+    link: map.get(settings.$colors, link),
+    hairline: rgba(0, 0, 0, 0.1),
+    on-surface: black,
+);
+
+$-theme-light-step-defaults: (
+    overlay: 2%,
+    hover: 5%,
+    control: 4%,
+    control-hover: -4%,
+    border-subtle: 5%,
+    border-layout: 5.7%,
+    border: 15%,
+    border-control: 43%,
+    border-emphasis: 20%,
+    text-muted: 20%,
+    text-subtle: 33%,
+    text-faint: 35%,
+    text-quiet: 30%,
+    text-tertiary: 35%,
+    text-separator: 35%,
+    text-placeholder: 35%,
+    text-helper: 35%,
+    text-label: 20%,
+    text-control: 0%,
+    text-disabled: 5%,
+    table-highlight: 12%,
+    table-lift: 0%,
+    comment-highlight: 20%,
+    comment-lift: 0%,
+    radio-selected: 2.75%,
+    loader-head: 70%,
+);
+
+$-theme-dark-seed-defaults: (
+    page: settings.$theme-dark-color,
+    surface: #181818,
+    raised: #222222,
+    muted: #181818,
+    inverse: #222222,
+    text: #a3a3a3,
+    ink: #ffffff,
+    link: theme.blend(map.get(settings.$colors, primary), white, 40%),
+    hairline: #181818,
+    on-surface: white,
+);
+
+$-theme-dark-step-defaults: (
+    overlay: 2%,
+    hover: 13%,
+    control: 6.4%,
+    control-hover: 10%,
+    border-subtle: 4%,
+    border-layout: 8%,
+    border: 21.8%,
+    border-control: 37%,
+    border-emphasis: 27%,
+    text-muted: 5%,
+    text-subtle: 15%,
+    text-faint: 17%,
+    text-quiet: 12%,
+    text-tertiary: 17%,
+    text-separator: 17%,
+    text-placeholder: 17%,
+    text-helper: 17%,
+    text-label: 0%,
+    text-control: 100%,
+    text-disabled: 5%,
+    table-highlight: 0%,
+    table-lift: 3.7%,
+    comment-highlight: 0%,
+    comment-lift: 10%,
+    radio-selected: 0%,
+    loader-head: 56%,
+);
+
+$-theme-light-seeds: map.merge($-theme-light-seed-defaults, settings.$theme-light-seeds);
+$-theme-light-steps: map.merge($-theme-light-step-defaults, settings.$theme-light-steps);
+$-theme-dark-seeds: map.merge($-theme-dark-seed-defaults, settings.$theme-dark-seeds);
+$-theme-dark-steps: map.merge($-theme-dark-step-defaults, settings.$theme-dark-steps);
+
+$theme-light: map.merge(
+    theme.theme-roles($-theme-light-seeds, $-theme-light-steps, map.get(settings.$colors, primary)),
+    settings.$theme-light
+);
+
+$theme-dark: map.merge(
+    theme.theme-roles($-theme-dark-seeds, $-theme-dark-steps, map.get(settings.$colors, primary)),
+    settings.$theme-dark
+);
+
+$colors-text-light: ();
+$colors-text-dark: ();
+
+@each $name, $value in settings.$colors {
+    $colors-text-light: map.merge(
+        $colors-text-light,
+        (
+            $name: theme.text-safe($value, theme.text-surfaces($theme-light, $value), black),
+        )
+    );
+    $colors-text-dark: map.merge(
+        $colors-text-dark,
+        (
+            $name: theme.text-safe($value, theme.text-surfaces($theme-dark, $value), white),
+        )
+    );
+}

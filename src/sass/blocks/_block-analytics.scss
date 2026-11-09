@@ -9,10 +9,10 @@
     }
 
     .block-analytics-body {
-        padding: rem(10) 0;
+        padding: calc(var(--r-block-padding) / 2) 0;
     }
 
     .block-analytics-footer {
-        padding-top: rem(10);
+        padding-top: calc(var(--r-block-padding) / 2);
     }
 }

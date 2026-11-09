@@ -19,7 +19,7 @@
         height: var(--r-avatar-default-size);
 
         img {
-            @extend .fig-fit;
+            @include mixin.fig-fit();
         }
 
         .avatar-small & {
@@ -62,6 +62,7 @@
 
     .avatar-secondary-block {
         padding: rem(5) 0 0;
-        @extend .small, .dimmed;
+        @include mixin.text-small();
+        @include mixin.text-dimmed();
     }
 }

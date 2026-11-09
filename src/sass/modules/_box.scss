@@ -1,6 +1,6 @@
 @use '../function' as *;
 @use '../settings';
-@use 'sass:color';
+@use '../resolved';
 
 @mixin roolith-box() {
     .box {
@@ -90,23 +90,25 @@
 
     @each $name, $value in settings.$colors {
         @if ($name != white) {
+            $text: palette-text(resolved.$slot-roles, $name);
+
             .box-#{'' + $name} {
-                border: rem(1) solid color-darken(var(--r-color-#{$name}), 5%);
+                border: rem(1) solid $text;
 
                 .box-body {
-                    color: color-darken(var(--r-color-#{$name}), 10%);
+                    color: $text;
                 }
 
                 .box-header {
-                    color: var(--r-color-#{$name});
-                    border-color: color-darken(var(--r-color-#{$name}), 5%);
+                    color: $text;
+                    border-color: color-mix(in srgb, $text, var(--r-surface-raised) 80%);
                 }
 
                 .box-footer {
                     border-top: none;
                     padding-top: 0;
                     font-size: 80%;
-                    color: color-lighten(var(--r-color-#{$name}), 25%);
+                    color: $text;
                 }
             }
         }

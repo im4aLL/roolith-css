@@ -1,50 +1,43 @@
 @use '../function' as *;
 @use '../mixin';
 @use '../settings';
-@use 'sass:color';
+@use '../resolved';
 
 @mixin roolith-badge() {
     .badge {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: rem(4) rem(5) rem(2);
-        background: color-mix(in srgb, var(--r-badge-background), white 70%);
+        padding: rem(3) rem(4);
+        background: var(--r-badge-surface);
         border: rem(1) solid var(--r-badge-background);
         color: var(--r-badge-color);
-        border-radius: var(--r-badge-radius);
+        border-radius: rem(5);
         font-size: rem(11);
         line-height: 1;
         text-transform: uppercase;
-
-        .theme-dark & {
-            background: color-mix(in srgb, var(--r-badge-background), black 70%);
-            border: rem(1) solid var(--r-badge-background);
-        }
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
     }
 
     @each $name, $value in settings.$colors {
-        @if ($name != white and $name != black and $name != dark) {
-            .badge-#{'' + $name} {
-                background-color: color-mix(in srgb, var(--r-color-#{$name}), white 90%);
-                border-color: color-mix(in srgb, var(--r-color-#{$name}), white 50%);
-                color: var(--r-color-#{$name});
+        $fill: palette-fill(resolved.$slot-roles, $name);
 
-                .theme-dark & {
-                    background-color: color-mix(in srgb, var(--r-color-#{$name}), black 90%);
-                    border-color: color-mix(in srgb, var(--r-color-#{$name}), black 50%);
-                }
+        @if ($name != white and $name != black and $name != dark) {
+            $text: palette-text(resolved.$slot-roles, $name);
+
+            .badge-#{'' + $name} {
+                background-color: color-mix(in srgb, $fill 10%, var(--r-surface-raised));
+                border-color: $text;
+                color: $text;
             }
         } @else {
+            $on: palette-on(resolved.$slot-roles, $name);
+
             .badge-#{'' + $name} {
-                background: var(--r-color-#{$name});
-                background: linear-gradient(
-                    to bottom,
-                    color-lighten(var(--r-color-#{$name}), 5%) 0%,
-                    var(--r-color-#{$name}) 100%
-                );
-                color: var(--r-color-white);
-                border-color: var(--r-color-#{$name});
+                background: $fill;
+                color: $on;
+                border-color: $fill;
             }
         }
     }

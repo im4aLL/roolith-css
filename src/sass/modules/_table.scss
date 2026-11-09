@@ -42,6 +42,10 @@
 
         .is-highlight {
             background-color: var(--r-table-row-highlight-color);
+
+            td:first-child {
+                box-shadow: inset rem(3) 0 0 var(--r-accent);
+            }
         }
 
         .table-thead-label {
@@ -62,7 +66,7 @@
         }
     }
 
-    .table-primary {
+    %roolith-table-primary {
         th {
             background-color: var(--r-table-primary-header-color);
         }
@@ -83,8 +87,12 @@
         }
     }
 
+    .table-primary {
+        @extend %roolith-table-primary;
+    }
+
     .table-striped {
-        @extend .table-primary;
+        @extend %roolith-table-primary;
 
         tbody tr {
             &:nth-child(even) {
@@ -127,6 +135,20 @@
     .table-responsive {
         max-width: 100%;
         overflow-x: auto;
+        background-color: var(--r-table-scroll-scrim-color);
+        background-image:
+            linear-gradient(to right, var(--r-table-scroll-scrim-color) 30%, transparent),
+            linear-gradient(to left, var(--r-table-scroll-scrim-color) 30%, transparent),
+            radial-gradient(farthest-side at 0 50%, var(--r-table-scroll-shadow-color), transparent),
+            radial-gradient(farthest-side at 100% 50%, var(--r-table-scroll-shadow-color), transparent);
+        background-position: left center, right center, left center, right center;
+        background-repeat: no-repeat;
+        background-size: rem(40) 100%, rem(40) 100%, rem(14) 100%, rem(14) 100%;
+        background-attachment: local, local, scroll, scroll;
         @include mixin.nice-scroll();
+
+        .table {
+            min-width: var(--r-table-min-width);
+        }
     }
 }

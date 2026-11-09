@@ -4,12 +4,12 @@
 @mixin roolith-block-repeater() {
     .block-repeater {
         .form-field {
-            padding: 0;
+            margin-bottom: 0;
         }
     }
 
     .block-repeater-item {
-        margin-bottom: rem(15);
+        margin-bottom: calc(var(--r-block-padding) / 2);
 
         &:last-child {
             margin-bottom: 0;
@@ -38,7 +38,23 @@
     }
 
     .block-repeater-list {
-        padding: rem(5) 0 rem(15) 0;
+        padding: calc(var(--r-block-padding) / 4) 0 calc(var(--r-block-padding) / 2) 0;
+    }
+
+    @include mixin.breakpoint(small-only) {
+        .block-repeater-item {
+            flex-wrap: wrap;
+        }
+
+        .block-repeater-primary {
+            flex: 1 1 rem(200);
+            min-width: 0;
+        }
+
+        .block-repeater-secondary {
+            flex: 1 1 100%;
+            justify-content: flex-end;
+        }
     }
 
     .block-repeater-sort {
@@ -48,7 +64,7 @@
         font-size: rem(16);
 
         &:hover {
-            color: var(--r-color-primary);
+            color: var(--r-accent);
         }
     }
 }

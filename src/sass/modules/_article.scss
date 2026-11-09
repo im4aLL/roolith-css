@@ -17,7 +17,8 @@
             margin: 0 0 rem(20);
         }
 
-        .list {
+        .list,
+        .list-numbered {
             @extend %roolith-article-font-style;
             padding: 0 0 rem(20);
         }
@@ -33,7 +34,8 @@
         }
 
         aside {
-            @extend .small, .dimmed;
+            @include mixin.text-small();
+            @include mixin.text-dimmed();
             padding-bottom: rem(20);
         }
 
@@ -83,7 +85,8 @@
 
         & > aside {
             font-style: italic;
-            @extend .small, .dimmed;
+            @include mixin.text-small();
+            @include mixin.text-dimmed();
 
             @include mixin.breakpoint(large-up) {
                 grid-column: 3;

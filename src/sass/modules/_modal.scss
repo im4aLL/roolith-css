@@ -40,16 +40,16 @@
             grid-area: body;
             margin-left: auto;
             margin-right: auto;
-            @extend .animation, .fadeInUp;
+            @include mixin.animation(fadeInUp);
         } @else if(settings.$modal-layout == traditional) {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            @extend .animation, .fadeIn;
+            @include mixin.animation(fadeIn);
         }
         @if (settings.$modal-layout == flex) {
             max-height: 90%;
-            @extend .animation, .fadeInUp;
+            @include mixin.animation(fadeInUp);
         }
         max-width: rem(600);
         overflow-y: auto;

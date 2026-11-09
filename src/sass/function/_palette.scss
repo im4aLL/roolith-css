@@ -1,0 +1,76 @@
+@use 'sass:map';
+@use 'sass:string';
+
+/* Maps each palette slot claimed by a role to that role; unclaimed slots are
+   absent, so callers fall back to the primitive. $accent-roles runs role -> slot;
+   the reverse is derived here so a variant loop can ask for the role token of a
+   slot. A role named after its own slot wins regardless of map order and takes
+   that slot's variants, so any other role claiming the same slot is discarded.
+   Two roles that are neither named after the slot they share are a build error
+   rather than an order-dependent result. */
+@function palette-slot-roles($colors, $accent-roles) {
+    $slot-roles: ();
+
+    @each $role, $slot in $accent-roles {
+        @if not map.has-key($colors, $slot) {
+            @error 'Accent role "#{$role}" points at palette slot "#{$slot}", which is not in $colors. Add the slot to $colors or point the role at an existing slot in $accent-roles.';
+        }
+
+        @if $role != $slot and map.has-key($colors, $role) {
+            @error 'Accent role "#{$role}" is named after the "#{$role}" palette slot but points at "#{$slot}", so the slot variants and the role token would disagree. Set "#{$role}: #{$role}" in $accent-roles or rename the role.';
+        }
+
+        @if $role == $slot {
+            $slot-roles: map.merge($slot-roles, ($slot: $role));
+        }
+    }
+
+    @each $role, $slot in $accent-roles {
+        @if $role != $slot {
+            $current: map.get($slot-roles, $slot);
+
+            @if $current == null {
+                $slot-roles: map.merge($slot-roles, ($slot: $role));
+            } @else if $current != $slot {
+                @error 'Palette slot "#{$slot}" is claimed by roles "#{$current}" and "#{$role}". Add a role named "#{$slot}" to decide which one wins, or point one role at a different slot.';
+            }
+        }
+    }
+
+    @return $slot-roles;
+}
+
+/* Unquoted var() expression for one palette slot, ready to use as a declaration
+   value or as a color-mix() argument. A slot present in $slot-roles resolves
+   through the role token, so a scoped role override recolours it; every other
+   slot resolves through its primitive. $suffix is appended inside var(), which
+   is how the -on foreground pair is read. */
+@function palette-var($slot-roles, $name, $suffix: '') {
+    $role: map.get($slot-roles, $name);
+
+    @if $role != null {
+        @return string.unquote('var(--r-#{$role}#{$suffix})');
+    }
+
+    @return string.unquote('var(--r-color-#{$name}#{$suffix})');
+}
+
+/* Fill value of a palette slot variant, as an unquoted var() expression. It
+   forwards to palette-var() so it reads symmetrically with palette-on(); a
+   variant that calls both pairs one slot's fill with that same slot's pair. */
+@function palette-fill($slot-roles, $name) {
+    @return palette-var($slot-roles, $name);
+}
+
+/* Foreground pair of palette-fill(), as an unquoted var() expression. */
+@function palette-on($slot-roles, $name) {
+    @return palette-var($slot-roles, $name, '-on');
+}
+
+/* Text-safe pair of a palette slot, as an unquoted var() expression. Use it
+   where the slot is the text colour rather than the fill, such as an outline or
+   text variant. The value is derived per theme against every surface the
+   variant can be painted on, so it stays readable in light and dark alike. */
+@function palette-text($slot-roles, $name) {
+    @return palette-var($slot-roles, $name, '-text');
+}

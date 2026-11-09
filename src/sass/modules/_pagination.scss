@@ -28,6 +28,10 @@
             @include mixin.breakpoint(medium-up) {
                 display: block;
             }
+
+            &.pagination-item-active {
+                display: block;
+            }
         }
     }
 
@@ -54,17 +58,18 @@
         .pagination-item-active & {
             background: var(--r-pagination-item-active-background-color);
             border-color: var(--r-pagination-item-active-background-color);
-            color: var(--r-color-white);
+            color: var(--r-pagination-item-active-color);
         }
     }
 
     .pagination-meta {
-        display: none;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         gap: rem(10);
 
         @include mixin.breakpoint(medium-up) {
-            display: flex;
+            flex-direction: row;
         }
     }
 
@@ -73,7 +78,7 @@
             display: flex;
             align-items: center;
             gap: rem(10);
-            padding: 0;
+            margin-bottom: 0;
         }
 
         .form-label {
@@ -85,5 +90,10 @@
     .pagination-meta-label {
         font-size: var(--r-pagination-item-font-size);
         line-height: 1.3;
+        text-align: center;
+
+        @include mixin.breakpoint(medium-up) {
+            text-align: left;
+        }
     }
 }

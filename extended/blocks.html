@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -296,7 +296,7 @@
                 <div class="pagination-meta">
                     <div class="pagination-meta-label">
                         Total row(s) 1000. Showing page
-                        <strong>1</strong>
+                        <strong>2</strong>
                         out of
                         <strong>100</strong>
                     </div>
@@ -569,31 +569,31 @@
                         <!-- Steps -->
                         <div class="block-banner-steps">
                             <div class="block-banner-step">
-                                <span class="badge badge-secondary">Step 1</span>
+                                <span class="badge">Step 1</span>
                                 <h6 class="block-banner-step-title">Create a module settings</h6>
                                 <p class="block-banner-step-text">Create a module settings for your module</p>
 
-                                <a href="" class="button button-secondary block-banner-step-button">
+                                <a href="" class="button button-primary block-banner-step-button">
                                     Add Module Settings
                                 </a>
                             </div>
 
                             <div class="block-banner-step">
-                                <span class="badge badge-success">Step 2</span>
+                                <span class="badge">Step 2</span>
                                 <h6 class="block-banner-step-title">Create one or multiple module</h6>
                                 <p class="block-banner-step-text">Create modules based on your module settings</p>
 
-                                <a href="" class="button button-success block-banner-step-button">Add Module</a>
+                                <a href="" class="button block-banner-step-button">Add Module</a>
                             </div>
 
                             <div class="block-banner-step">
-                                <span class="badge badge-primary">Step 3</span>
+                                <span class="badge">Step 3</span>
                                 <h6 class="block-banner-step-title">Create a page</h6>
                                 <p class="block-banner-step-text">
                                     Create a page based on your module and order your modules
                                 </p>
 
-                                <a href="" class="button button-primary block-banner-step-button">Create Page</a>
+                                <a href="" class="button block-banner-step-button">Create Page</a>
                             </div>
                         </div>
                         <!-- Steps -->
@@ -1126,8 +1126,8 @@
                     </div>
                 </div>
 
-                <div class="block-enable">
-                    <div class="box box-primary">
+                <div class="block-enable is-active">
+                    <div class="box">
                         <div class="box-header">Enable Server Settings</div>
                         <div class="box-body">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi eius magnam, possimus
@@ -1137,14 +1137,20 @@
                         <div class="box-footer">
                             <div class="form-switch">
                                 <label for="enable2" class="form-switch-label">
-                                    <input type="checkbox" name="switch" id="enable2" class="form-switch-input" />
+                                    <input
+                                        type="checkbox"
+                                        name="switch"
+                                        id="enable2"
+                                        class="form-switch-input"
+                                        checked
+                                    />
                                     <span class="form-switch-slider"></span>
 
-                                    <span class="form-switch-slider-text">Enable</span>
+                                    <span class="form-switch-slider-text">Enabled</span>
                                 </label>
                             </div>
 
-                            <a href="#" class="button button-text button-icon is-dimmed">
+                            <a href="#" class="button button-text button-link button-icon">
                                 Learn more
                                 <i class="iconoir-open-new-window"></i>
                             </a>
@@ -1172,7 +1178,7 @@
                 <div class="block-stat-item">
                     <div class="block-stat-label">Bounce Rate</div>
                     <div class="block-stat-value">40%</div>
-                    <div class="block-stat-indicator"><span class="indicator">0%</span></div>
+                    <div class="block-stat-indicator"><span class="indicator is-flat">0%</span></div>
                 </div>
 
                 <div class="block-stat-item">
@@ -1334,36 +1340,44 @@
                 const lightModeIcon = 'iconoir-half-moon';
                 const darkModeIcon = 'iconoir-sun-light';
                 const darkModeClass = 'theme-dark';
+                const lightModeClass = 'theme-light';
                 const storageKey = 'theme';
 
-                // Check for saved theme preference in localStorage
+                // A saved class wins. Without one, materialize the OS preference
+                // as a class on <html> so the demo-only styles follow it too.
                 const savedTheme = localStorage.getItem(storageKey);
-                if (savedTheme) {
-                    document.body.classList.add(savedTheme);
-                    const icon = document.getElementById('js-toggle-mode').querySelector('i');
-                    icon.className = savedTheme === darkModeClass ? lightModeIcon : darkModeIcon;
+                if (savedTheme === darkModeClass || savedTheme === lightModeClass) {
+                    document.documentElement.classList.add(savedTheme);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add(darkModeClass);
                 }
 
-                // Add event listener for dark mode toggle
                 const toggleDarkModeEl = document.getElementById('js-toggle-mode');
+                const icon = toggleDarkModeEl.querySelector('i');
+                const isDark = () => document.documentElement.classList.contains(darkModeClass);
+                const updateIcon = () => {
+                    icon.className = isDark() ? darkModeIcon : lightModeIcon;
+                };
+
+                updateIcon();
 
                 toggleDarkModeEl.addEventListener('click', (event) => {
                     event.preventDefault();
-                    document.body.classList.toggle(darkModeClass);
 
-                    // Update the icon based on the current theme
-                    const icon = toggleDarkModeEl.querySelector('i');
-                    if (document.body.classList.contains(darkModeClass)) {
-                        icon.className = darkModeIcon;
+                    if (isDark()) {
+                        document.documentElement.classList.remove(darkModeClass);
+                        document.documentElement.classList.add(lightModeClass);
                     } else {
-                        icon.className = lightModeIcon;
+                        document.documentElement.classList.remove(lightModeClass);
+                        document.documentElement.classList.add(darkModeClass);
                     }
 
-                    // store the theme preference in localStorage
+                    // store the explicit choice in localStorage
                     localStorage.setItem(
                         storageKey,
-                        document.body.classList.contains(darkModeClass) ? darkModeClass : '',
+                        document.documentElement.classList.contains(darkModeClass) ? darkModeClass : lightModeClass,
                     );
+                    updateIcon();
                 });
             }
 

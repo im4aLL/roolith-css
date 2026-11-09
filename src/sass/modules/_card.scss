@@ -1,6 +1,7 @@
 @use '../function' as *;
 @use '../settings';
-@use 'sass:color';
+@use '../resolved';
+@use '../mixin';
 
 @mixin roolith-card() {
     .card {
@@ -12,11 +13,11 @@
     }
 
     .card-img {
-        @extend .img-full-width;
+        @include mixin.img-full-width();
     }
 
     .card-body-img {
-        @extend .img-full-width;
+        @include mixin.img-full-width();
         margin: rem(10) 0;
     }
 
@@ -35,14 +36,14 @@
     }
 
     .card-information {
-        @extend .dimmed;
+        @include mixin.text-dimmed();
         font-size: 80%;
         display: block;
         padding: rem(20) 0 0 0;
     }
 
     .card-subtitle {
-        @extend .dimmed;
+        @include mixin.text-dimmed();
         padding-bottom: rem(10);
     }
 
@@ -62,20 +63,23 @@
 
     @each $name, $value in settings.$colors {
         @if ($name != white) {
+            $fill: palette-fill(resolved.$slot-roles, $name);
+            $on: palette-on(resolved.$slot-roles, $name);
+
             .card-#{'' + $name} {
-                background: var(--r-color-#{$name});
-                color: var(--r-color-white);
+                background: $fill;
+                color: $on;
 
                 .card-subtitle,
                 .card-information {
-                    color: var(--r-color-white);
+                    color: $on;
                     opacity: 0.7;
                 }
 
                 .card-header,
                 .card-footer {
-                    border-color: color-lighten(var(--r-color-#{$name}), 10%);
-                    color: var(--r-color-white);
+                    border-color: color-lighten($fill, 10%);
+                    color: $on;
                 }
             }
         }

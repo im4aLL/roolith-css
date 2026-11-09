@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -47,8 +47,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
         <script type="module" src="index.js"></script>
     </head>
-    <!-- class="theme-dark" -->
-    <body class="theme-dark">
+    <!-- add class="theme-dark" or class="theme-light" to <html> to pin the theme -->
+    <body>
+        <div class="module-body">
+            <button class="button button-icon" id="js-toggle-mode">
+                <i class="iconoir-half-moon"></i>
+                Toggle Dark / Light Mode
+            </button>
+        </div>
+
         <div class="module">typography</div>
         <div class="module-body">
             <h1>Heading</h1>
@@ -67,7 +74,7 @@
             <p>
                 <strong>Bolded</strong>
                 <em>Italicized</em>
-                <a>Colored</a>
+                <a href="#">Colored</a>
                 <u>Underlined</u>
                 <code>code</code>
                 <abbr title="Too long; didn't read">TLDR</abbr>
@@ -140,6 +147,27 @@
                 provident beatae neque reprehenderit minus, veniam at nisi aliquam! Pariatur esse deleniti cupiditate,
                 obcaecati mollitia aliquid laborum voluptatum ipsam explicabo laudantium.
             </p>
+        </div>
+
+        <div class="module">focus</div>
+        <div class="module-body">
+            <p>Use <kbd>Tab</kbd> to move through these controls. A ring marks the keyboard focus position.</p>
+
+            <p>
+                <a href="#">Text link</a>
+                <a class="button button-primary" href="#">Link button</a>
+                <button class="button">Default button</button>
+                <button class="button button-primary">Primary button</button>
+            </p>
+
+            <div class="form-field">
+                <label for="focus-demo-input" class="form-label">Input</label>
+                <input type="text" id="focus-demo-input" class="form-input" placeholder="Focus me with Tab" />
+            </div>
+
+            <div class="card" tabindex="0">
+                <div class="card-body">A card with <code>tabindex="0"</code>.</div>
+            </div>
         </div>
 
         <!-- <aside class="toast-notification bottom">
@@ -980,6 +1008,15 @@
                 </p>
                 <div class="box-footer">Box footer</div>
             </div>
+
+            <div class="box box-light">
+                <div class="box-header">Box header</div>
+                <p class="box-body">
+                    The light slot used as text: the border and the copy read a text-safe value, so the variant stays
+                    readable in light and dark instead of painting near-white on white.
+                </p>
+                <div class="box-footer">Box footer</div>
+            </div>
         </div>
 
         <div class="module">button</div>
@@ -1161,6 +1198,20 @@
             <a class="button button-text button-success" href="#">Success</a>
             <a class="button button-text button-danger" href="#">Danger</a>
             <a class="button button-text button-link" href="#">Link</a>
+
+            <br />
+            <br />
+
+            <!-- Outline and text variants paint the slot as text, so they read the derived -text pair. -->
+            <a class="button button-light" href="#">Light</a>
+            <a class="button button-light button-outline" href="#">Light outline</a>
+            <a class="button button-light button-text" href="#">Light text</a>
+            <a class="button button-dark button-outline" href="#">Dark outline</a>
+            <a class="button button-black button-outline" href="#">Black outline</a>
+            <a class="button button-light button-outline button-icon" href="#">
+                <i class="icon icon-download"></i>
+                Light outline with icon
+            </a>
 
             <br />
             <br />
@@ -1570,6 +1621,7 @@
             <span class="badge badge-link">Link</span>
             <span class="badge badge-dark">Dark</span>
             <span class="badge badge-black">Black</span>
+            <span class="badge badge-light">Light</span>
         </div>
 
         <div class="module">message</div>
@@ -1626,6 +1678,13 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum nostrum itaque ex in nihil ea ipsa dolorum
                 quam expedita molestias, nesciunt, qui maxime doloribus facilis, culpa laborum animi obcaecati
                 distinctio.
+            </div>
+            <div class="message message-light">
+                The light slot as a tinted message: the tint and the label both derive from the slot, so the label is a
+                text-safe colour instead of near-white on near-white.
+            </div>
+            <div class="message message-light-outline">
+                The same slot as an outline message, which leaves the surface transparent and keeps a visible border.
             </div>
         </div>
 
@@ -1896,6 +1955,19 @@
                             <small class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
                         </div>
 
+                        <div class="form-primary">
+                            <div class="form-field">
+                                <label for="primary_field" class="form-label">Primary field</label>
+                                <input
+                                    type="text"
+                                    name="primary_field"
+                                    id="primary_field"
+                                    class="form-input"
+                                    placeholder="e.g Primary field" />
+                                <small class="form-text">The fill becomes the input surface on focus.</small>
+                            </div>
+                        </div>
+
                         <div class="form-field">
                             <label class="form-label">Select gender</label>
                             <div class="form-radio-items">
@@ -1983,58 +2055,6 @@
                 </div>
             </form>
         </div>
-
-        <!-- <div class="module">grid column</div>
-        <div class="grid-column">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem qui molestias consequatur inventore.
-                Perspiciatis odio vitae necessitatibus cum sunt, illo voluptas, placeat odit similique repellendus ipsam
-                cumque autem dolorum quia?
-            </p>
-        </div> -->
-
-        <!-- <div class="module">grid-cell</div>
-        <div class="module-body">
-            <div class="grid">
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-                <div class="cell"><div class="box-demo">1</div></div>
-            </div>
-
-            <br />
-            <br />
-
-            <div class="grid">
-                <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-                <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-                <div class="cell sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-                <div class="cell sm-12 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-            </div>
-
-            <br />
-            <br />
-
-            <div class="grid">
-                <div class="cell lg-6"><div class="box-demo">box-demo</div></div>
-                <div class="cell lg-6">
-                    <div class="box-demo">box-demo</div>
-
-                    <div class="grid">
-                        <div class="cell lg-6"><div class="box-demo">box-demo</div></div>
-                        <div class="cell lg-12"><div class="box-demo">box-demo</div></div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
         <!-- <div class="module">regular grid</div>
         <div class="module-body">
@@ -2132,26 +2152,6 @@
                 <li class="nav-item"><a href="#" class="nav-link">Create new account</a></li>
             </ul>
         </div>
-
-        <!-- <div class="module">css-grid</div>
-        <div class="module-body">
-            <div class="grid">
-                <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-                <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-                <div class="sm-4 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-                <div class="sm-12 md-6 lg-3"><div class="box-demo">box-demo</div></div>
-            </div>
-
-            <div class="grid">
-                <div class="sm-4 md-8 lg-6"><div class="box-demo">box-demo</div></div>
-                <div class="sm-8 md-4 lg-6"><div class="box-demo">box-demo</div></div>
-            </div>
-
-            <div class="grid">
-                <div class="sm-6 md-6 md-push-6"><div class="box-demo">sm left, lg right</div></div>
-                <div class="sm-6 md-6 md-pull-6"><div class="box-demo">sm right, lg left</div></div>
-            </div>
-        </div> -->
 
         <div class="module">regular grid</div>
         <div class="container">
@@ -2252,9 +2252,77 @@
                     <div class="box-demo">large-4 medium-3 small-12</div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="columns large-6 large-push-6">
+                    <div class="box-demo">large-6 large-push-6</div>
+                </div>
+                <div class="columns large-6 large-pull-6">
+                    <div class="box-demo">large-6 large-pull-6</div>
+                </div>
+            </div>
         </div>
 
         <script src="jquery-3.3.1.min.js"></script>
         <script src="test.js"></script>
+        <script>
+            /**
+             * Toggle dark mode for the layout.
+             * This function checks for a saved theme preference in localStorage,
+             * applies the corresponding class to the body, and updates the icon
+             * based on the current theme. It also adds an event listener to toggle
+             * the dark mode when the button is clicked.
+             */
+            function toggleDarkMode() {
+                // settings
+                const lightModeIcon = 'iconoir-half-moon';
+                const darkModeIcon = 'iconoir-sun-light';
+                const darkModeClass = 'theme-dark';
+                const lightModeClass = 'theme-light';
+                const storageKey = 'theme';
+
+                // A saved class wins. Without one, materialize the OS preference
+                // as a class on <html> so the demo-only styles follow it too.
+                const savedTheme = localStorage.getItem(storageKey);
+                if (savedTheme === darkModeClass || savedTheme === lightModeClass) {
+                    document.documentElement.classList.add(savedTheme);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add(darkModeClass);
+                }
+
+                const toggleDarkModeEl = document.getElementById('js-toggle-mode');
+                const icon = toggleDarkModeEl.querySelector('i');
+                const isDark = () => document.documentElement.classList.contains(darkModeClass);
+                const updateIcon = () => {
+                    icon.className = isDark() ? darkModeIcon : lightModeIcon;
+                };
+
+                updateIcon();
+
+                toggleDarkModeEl.addEventListener('click', (event) => {
+                    event.preventDefault();
+
+                    if (isDark()) {
+                        document.documentElement.classList.remove(darkModeClass);
+                        document.documentElement.classList.add(lightModeClass);
+                    } else {
+                        document.documentElement.classList.remove(lightModeClass);
+                        document.documentElement.classList.add(darkModeClass);
+                    }
+
+                    // store the explicit choice in localStorage
+                    localStorage.setItem(
+                        storageKey,
+                        document.documentElement.classList.contains(darkModeClass) ? darkModeClass : lightModeClass,
+                    );
+                    updateIcon();
+                });
+            }
+
+            // Initialize dark mode toggle on DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', () => {
+                toggleDarkMode();
+            });
+        </script>
     </body>
 </html>

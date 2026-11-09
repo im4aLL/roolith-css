@@ -1,9 +1,8 @@
+@use '../mixin';
+
 @mixin roolith-animation() {
     .animation {
-        visibility: visible !important;
-        animation-duration: var(--r-animation-duration);
-        animation-fill-mode: both;
-        transition-timing-function: var(--r-animation-easing);
+        @include mixin.animation();
     }
 
     .fadeInUp {

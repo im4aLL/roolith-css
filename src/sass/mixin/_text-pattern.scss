@@ -1,0 +1,35 @@
+@use '../function' as *;
+
+/* Heading tracking tightens as the rendered size grows: -0.02em below 24px,
+   -0.03em from 24px and -0.04em from 40px. It is a function of the size rather
+   than of the heading level, so a step that changes size keeps sane tracking. */
+@function heading-tracking($size) {
+    @if $size >= 40 {
+        @return -0.04em;
+    }
+
+    @if $size >= 24 {
+        @return -0.03em;
+    }
+
+    @return -0.02em;
+}
+
+/* One heading step. Size and leading are given in pixels on the framework scale
+   and the tracking follows the size, so a step cannot drift out of its band. */
+@mixin heading-step($size, $line-height) {
+    font-size: rem($size);
+    line-height: rem($line-height);
+    letter-spacing: heading-tracking($size);
+}
+
+/* Small-text sizing for secondary copy. */
+@mixin text-small() {
+    font-size: 80%;
+    line-height: 1.3em;
+}
+
+/* Reduced-emphasis opacity for secondary copy. */
+@mixin text-dimmed() {
+    opacity: 0.6;
+}

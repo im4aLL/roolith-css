@@ -1,6 +1,5 @@
 @use '../function' as *;
 @use '../mixin';
-@use 'sass:color';
 
 @mixin form-search() {
     .form-field-search {
@@ -35,29 +34,29 @@
     .form-field-search-icon {
         position: absolute;
         left: rem(12);
-        top: rem(10);
+        top: rem(8);
         z-index: 1;
         font-size: 120%;
-        color: var(--r-color-light-darken-30);
+        color: var(--r-text-placeholder);
 
         .form-field-search.small & {
             left: rem(7);
-            top: rem(7);
+            top: rem(6);
         }
 
         .form-field-search.large & {
             font-size: 130%;
-            top: rem(12);
+            top: rem(10);
         }
     }
 
     .form-field-search-loading-icon {
         @include mixin.loader(16);
-        @extend .loader;
         position: absolute;
-        top: 50%;
+        top: 0;
+        bottom: 0;
+        margin-block: auto;
         right: rem(12);
-        transform: translateY(-50%);
         z-index: 2;
         display: none;
 
@@ -153,7 +152,7 @@
         position: relative;
 
         .form & {
-            padding-bottom: rem(20);
+            margin-bottom: rem(20);
         }
     }
 
@@ -194,7 +193,7 @@
         }
     }
 
-    .form-input {
+    %roolith-form-input {
         width: 100%;
         border: rem(1) solid var(--r-form-input-border-color);
         border-radius: var(--r-form-input-radius);
@@ -233,23 +232,31 @@
         }
     }
 
-    .form-primary .form-input {
-        border: rem(1) solid var(--r-form-primary-border-color);
-        background: var(--r-form-primary-color);
-        box-shadow: none;
+    .form-input {
+        @extend %roolith-form-input;
+    }
 
-        &:hover {
-            border-color: var(--r-form-primary-hover-color);
-        }
+    .form-primary {
+        .form-input,
+        .form-textarea,
+        .form-select {
+            border: rem(1) solid var(--r-form-primary-border-color);
+            background: var(--r-form-primary-color);
+            box-shadow: none;
 
-        &:focus {
-            border-color: var(--r-form-primary-focus-color);
-            background: var(--r-form-primary-focus-color);
+            &:hover {
+                border-color: var(--r-form-primary-hover-color);
+            }
+
+            &:focus {
+                border-color: var(--r-form-primary-focus-color);
+                background: var(--r-form-primary-focus-color);
+            }
         }
     }
 
     .form-textarea {
-        @extend .form-input;
+        @extend %roolith-form-input;
         resize: vertical;
         height: rem(137);
     }
@@ -304,9 +311,9 @@
         appearance: none;
         width: rem(15);
         height: rem(15);
-        background-color: var(--r-color-white);
-        border: rem(1) solid color-mix(in srgb, var(--r-form-input-border-color), black 15%);
-        border-radius: var(--r-form-input-radius);
+        background-color: var(--r-form-input-background-color);
+        border: rem(1) solid color-mix(in srgb, var(--r-form-input-border-color), var(--r-theme-on-surface) 15%);
+        border-radius: rem(4);
         position: absolute;
         left: 0;
         top: rem(4);
@@ -326,16 +333,17 @@
         }
 
         &:checked {
-            background-color: var(--r-color-primary);
-            border-color: var(--r-color-primary);
+            background-color: var(--r-accent);
+            border-color: var(--r-accent);
         }
 
         &:checked:before {
-            background-image: inline-svg(
+            background-color: var(--r-accent-on);
+            mask-image: inline-svg(
                 '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" color="#ffffff" width="14" height="14" viewBox="0 0 24 24"><path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>'
             );
-            background-repeat: no-repeat;
-            background-position: center;
+            mask-repeat: no-repeat;
+            mask-position: center;
             width: rem(14);
             height: rem(14);
         }
@@ -345,22 +353,23 @@
         }
 
         &.is-indeterminate {
-            background-color: var(--r-color-light);
-            border-color: var(--r-color-primary);
+            background-color: var(--r-surface-muted);
+            border-color: var(--r-accent);
 
             &:after {
                 content: '-';
                 position: absolute;
                 left: rem(3);
                 top: rem(-5);
-                color: var(--r-color-primary);
+                color: var(--r-accent);
                 font-size: rem(18);
             }
         }
     }
 
     .form-select {
-        @extend .form-input;
+        @extend %roolith-form-input;
+
         background-image: inline-svg(
             '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#222733" viewBox="0 0 24 24"><path stroke="#222733" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
         );
@@ -371,7 +380,7 @@
 
         .theme-dark & {
             background-image: inline-svg(
-                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#9ca3af" viewBox="0 0 24 24"><path stroke="#9ca3af" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
+                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke-width="1.5" color="#a3a3a3" viewBox="0 0 24 24"><path stroke="#a3a3a3" stroke-linecap="round" stroke-linejoin="round" d="m17 8-5-5-5 5M17 16l-5 5-5-5"/></svg>'
             );
         }
 
@@ -451,12 +460,18 @@
 
     .form-file {
         &::file-selector-button {
-            @extend .button, .button-small;
+            @include mixin.button-base();
+            @include mixin.button-small();
         }
     }
 
     .form-field-password {
-        position: relative;
+        display: grid;
+
+        > .form-input,
+        > .form-password-toggle {
+            grid-area: 2 / 1;
+        }
 
         .form-input {
             padding-right: rem(40);
@@ -464,13 +479,12 @@
     }
 
     .form-password-toggle {
-        position: absolute;
-        right: rem(12);
-        top: 50%;
-        transform: translateY(-50%);
+        justify-self: end;
+        align-self: center;
+        z-index: 1;
         cursor: pointer;
         padding: 0;
-        margin: 0;
+        margin: 0 rem(12) 0 0;
         background: transparent;
         border: none;
         color: var(--r-form-input-color);
@@ -478,15 +492,9 @@
         line-height: rem(18);
         width: rem(18);
         height: rem(18);
-        margin-top: rem(2);
 
         .small & {
-            right: rem(8);
-            margin-top: 0;
-        }
-
-        .large & {
-            margin-top: rem(4);
+            margin-right: rem(8);
         }
     }
 

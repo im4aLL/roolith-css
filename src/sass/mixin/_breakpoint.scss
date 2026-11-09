@@ -35,6 +35,10 @@
         @media (min-width: #{$large-upper-boundary}) and (max-width: #{$xlarge-upper-boundary - 1}) {
             @content;
         }
+    } @else if $range == 'xxlarge-only' {
+        @media (min-width: #{$xlarge-upper-boundary}) {
+            @content;
+        }
     } @else if $range == 'xxlarge-up' {
         @media (min-width: #{$xlarge-upper-boundary}) {
             @content;

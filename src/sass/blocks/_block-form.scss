@@ -11,7 +11,7 @@
     }
 
     .block-form-title {
-        padding-bottom: rem(7);
+        padding-bottom: calc(var(--r-block-padding) / 2);
     }
 
     .block-form-text {
@@ -45,5 +45,10 @@
         border: none;
         padding-left: 0;
         padding-right: 0;
+    }
+
+    .block-form-secondary {
+        display: grid;
+        gap: var(--r-block-padding);
     }
 }

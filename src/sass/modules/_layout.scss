@@ -23,7 +23,6 @@
         padding: rem(20);
     }
 
-    // header
     .layout-header {
         background-color: var(--r-layout-header-background-color);
         border-bottom: var(--r-layout-border-width) solid var(--r-layout-header-border-color);
@@ -83,7 +82,6 @@
         border-right: var(--r-layout-border-width) solid var(--r-layout-header-border-color);
     }
 
-    // header secondary
     .layout-header-secondary {
         padding: var(--r-layout-header-padding);
         display: flex;
@@ -92,7 +90,7 @@
         gap: rem(20);
 
         .form .form-field {
-            padding-bottom: 0;
+            margin-bottom: 0;
         }
     }
 
@@ -120,7 +118,6 @@
         }
     }
 
-    // compact
     .layout-compact {
         --r-layout-sidebar-width: var(--r-layout-compact-sidebar-width);
 

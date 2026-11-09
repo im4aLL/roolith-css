@@ -1,0 +1,12 @@
+/* Visibility, duration, fill mode and easing for an .animation element, plus the
+   named keyframes when one is passed; each keyframe class supplies only the name. */
+@mixin animation($name: null) {
+    visibility: visible !important;
+    animation-duration: var(--r-animation-duration);
+    animation-fill-mode: both;
+    transition-timing-function: var(--r-animation-easing);
+
+    @if $name {
+        animation-name: $name;
+    }
+}

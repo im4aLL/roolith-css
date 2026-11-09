@@ -1,15 +1,13 @@
-@use 'sass:color';
-@use 'sass:map';
 @use './function' as *;
 
-/* Global */
+// Global
 $global-base-font-size: 100% !default;
 $global-base-font: 'Inter', sans-serif !default;
 $global-font-weight: normal !default;
 $global-font-bold-weight: 600 !default;
-$global-border-radius: rem(4) !default;
+$global-border-radius: rem(8) !default;
 
-/* Breakpoints */
+// Breakpoints
 $breakpoints: (
     small: 0,
     medium: 640px,
@@ -18,7 +16,7 @@ $breakpoints: (
     xxlarge: 1440px,
 ) !default;
 
-/* Grid settings */
+// Grid
 $global-width: rem(1200) !default;
 
 $grid-gutter: (
@@ -28,113 +26,126 @@ $grid-gutter: (
 ) !default;
 
 $grid-column-count: 12 !default;
-$grid-layout: traditional !default; /* css-grid || traditional */
+$grid-layout: css-grid !default;
 
-/* Colors */
+// Palette
 $colors: (
-    primary: #3b82f6,
-    secondary: #8b5cf6,
-    tertiary: #0ea5e9,
-    info: #f87315,
-    success: #10b47f,
-    danger: #ef4444,
-    link: #739bf8,
-    dark: #222733,
-    black: #030712,
+    primary: #4a5cd0,
+    secondary: #7b6aa6,
+    tertiary: #4c7d8f,
+    info: #94702f,
+    success: #38805f,
+    danger: #bf4a50,
+    link: #5568de,
+    dark: #1e2128,
+    black: #0b0d12,
     white: #ffffff,
-    light: #f5f8fb,
+    light: #f4f5f8,
 ) !default;
 
-/* Animation */
+// Palette foreground pairs
+$colors-on: () !default;
+
+// Accent roles
+$accent-roles: () !default;
+
+// Theme
+$theme-dark-color: #0c0c0c !default;
+
+$theme-light-seeds: () !default;
+$theme-dark-seeds: () !default;
+
+$theme-light-steps: () !default;
+$theme-dark-steps: () !default;
+
+$theme-light: () !default;
+$theme-dark: () !default;
+
+// Animation
 $animation-easing: cubic-bezier(1, 0, 0, 1) !default;
 $animation-duration: 0.25s !default;
 
-/* button */
+// Button
 $button-radius: $global-border-radius !default;
 $button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
 $button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
 $button-active-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.1) !default;
 $button-active-dark-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.2) !default;
 
-/* nav */
+// Nav
 $nav-border-radius: $global-border-radius !default;
 $nav-spacing: rem(13) !default;
 
-/* form */
+// Form
 $form-input-radius: $global-border-radius !default;
 $form-radio-group-gap: rem(10);
 $form-radio-group-item-padding: rem(20);
 $form-radio-group-width: rem(300);
 
-/* table */
+// Table
 $table-spacing: rem(10) !default;
+$table-min-width: rem(480) !default;
 
-/* img */
+// Image
 $img-radius: $global-border-radius !default;
 
-/* message */
+// Message
 $message-radius: $global-border-radius !default;
-$message-icon-size: rem(12) !default;
 
-/* badge */
+// Badge
 $badge-radius: $global-border-radius !default;
 
-/* breadcrumb */
+// Breadcrumb
 $breadcrumb-spacing: rem(10) !default;
 $breadcrumb-size: 80% !default;
 
-/* card */
+// Card
 $card-radius: $global-border-radius !default;
 $card-shadow: 0 0 0 rem(1) rgba(0, 0, 0, 0.04) !default;
 
-/* dropdown */
+// Dropdown
 $dropdown-icons-size: rem(5) !default;
 $dropdown-icons-size-small: rem(4) !default;
 $dropdown-icons-size-large: rem(7) !default;
 $dropdown-width: rem(220) !default;
 $dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
 
-/* modal */
+// Modal
 $modal-content-radius: $global-border-radius !default;
 $modal-content-spacing: rem(20) !default;
 $modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0, 0, 0, 0.1) !default;
-$modal-layout: css-grid !default; /* css-grid || traditional || flex */
+$modal-layout: css-grid !default;
 
-/* box */
+// Box
 $box-spacing: rem(20) !default;
 $box-spacing-small: rem(15) !default;
 $box-spacing-large: rem(40) !default;
 $box-border-radius: $global-border-radius !default;
 
-/* progress */
+// Progress
 $progress-background-shadow: 0 rem(2) rem(5) rgba(0, 0, 0, 0.05) inset !default;
 $progress-bar-radius: $global-border-radius !default;
 
-/* collage */
+// Collage
 $collage-item-default-width: rem(200) !default;
 $collage-item-default-height: rem(200) !default;
 $collage-item-default-gap: rem(10) !default;
 $collage-item-small-gap: rem(1) !default;
 $collage-item-large-gap: rem(20) !default;
 
-/* avatar */
+// Avatar
 $avatar-default-size: rem(40) !default;
 $avatar-small-size: rem(30) !default;
 
-/* toast */
+// Toast notification
 $toast-notification-width: rem(400) !default;
 
-/* icon */
+// Icon
 $icon-size: rem(16) !default;
 $icon-small-size: rem(14) !default;
 $icon-large-size: rem(32) !default;
 
-/* theme dark */
-$theme-dark-color: #050814 !default;
-
-/* extended modules */
-
-// layout
+// Layout
 $layout-sidebar-width: rem(230) !default;
 $layout-sidebar-width-compact: rem(46) !default;
 $layout-header-logo-width: rem(80) !default;
@@ -142,54 +153,49 @@ $layout-header-padding: rem(10) rem(15) !default;
 $layout-border-width: rem(1) !default;
 $layout-header-search-width: rem(300) !default;
 
-// sidebar-nav
+// Sidebar nav
 $sidebar-nav-padding: rem(15) !default;
 $sidebar-nav-list-label-font-weight: 400 !default;
 $sidebar-nav-item-caret-size: rem(5) !default;
+$sidebar-nav-badge-dot-size: rem(6) !default;
 
-// tooltip
+// Tooltip
 $tooltip-padding: rem(5) rem(10) !default;
 $tooltip-padding-large: rem(15) !default;
 $tooltip-transition-duration: 150ms !default;
 $tooltip-transition-delay: 250ms !default;
 
-// popover
+// Popover
 $popover-border-radius: $global-border-radius !default;
 $popover-width: rem(275) !default;
 $popover-offset: rem(10) !default;
 
-// switch
+// Switch
 $switch-size: rem(36) !default;
 $switch-size-large: rem(44) !default;
 
-// range
+// Range
 $range-size: rem(6) !default;
 
-// action menu
+// Action menu
 $action-menu-list-gap: rem(2) !default;
 
-// pagination
+// Pagination
 $pagination-item-font-size: rem(14) !default;
 
-// block-box
+// Block box
 $block-box-size: rem(250) !default;
 
-// spacer
+// Spacer
 $spacer: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 150, 200, 250 !default;
 
-// block form
-$block-form-group-padding: $box-spacing-large !default;
+// Block
+$block-padding: rem(20) !default;
 
-// block enable
-$block-enable-box-spacing: rem(10) !default;
-
-// indicator
+// Indicator
 $indicator-icon-size: rem(14) !default;
 
-// block end
-$block-stat-item-gap: rem(20) !default;
-
-// quick menu
+// Quick menu
 $quick-menu-spacing: rem(8) !default;
 $quick-menu-font-size: rem(14) !default;
 $quick-menu-spacing-small: rem(5) !default;
@@ -197,7 +203,7 @@ $quick-menu-font-size-small: rem(12) !default;
 $quick-menu-spacing-x-small: rem(4) !default;
 $quick-menu-font-size-x-small: rem(10) !default;
 
-// combo box
+// Combo box
 $combo-box-icon-size: rem(5) !default;
 $combo-box-icon-size-small: rem(4) !default;
 $combo-box-icon-size-large: rem(7) !default;
@@ -207,10 +213,7 @@ $combo-box-show-animation-duration: 50ms !default;
 $combo-box-item-y-padding: rem(7) !default;
 $combo-box-item-x-padding: rem(15) !default;
 
-// block inline
-$block-inline-gap: rem(10) !default;
-
-// datepicker
+// Form datepicker
 $form-datepicker-margin-top: rem(5) !default;
 $form-datepicker-row-gap: rem(5) !default;
 $form-datepicker-tile-height: rem(22) !default;

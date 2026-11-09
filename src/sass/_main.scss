@@ -17,7 +17,10 @@
     @if (settings.$grid-layout == css-grid) {
         @include modules.roolith-css-grid();
     } @else if(settings.$grid-layout == traditional) {
+        @warn 'roolith: $grid-layout: traditional is the legacy float grid. Use the default css-grid layout for new work.';
         @include modules.roolith-grid();
+    } @else {
+        @error 'roolith: $grid-layout must be css-grid or traditional, got #{settings.$grid-layout}.';
     }
 
     @include modules.roolith-animation();

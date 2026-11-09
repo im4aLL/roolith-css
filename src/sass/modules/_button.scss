@@ -1,44 +1,11 @@
 @use '../function' as *;
 @use '../mixin';
 @use '../settings';
-@use 'sass:color';
+@use '../resolved';
 
 @mixin roolith-button() {
     .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--r-global-base-font);
-        text-decoration: none;
-        cursor: pointer;
-        border-radius: var(--r-button-radius);
-        font-size: rem(14);
-        line-height: normal;
-        min-width: rem(60);
-        text-align: center;
-        padding: rem(9) rem(20);
-        position: relative;
-        background-color: var(--r-button-default-background);
-        background: linear-gradient(
-            to bottom,
-            var(--r-button-default-background) 0%,
-            var(--r-button-default-background-end) 100%
-        );
-        border: rem(1) solid var(--r-button-default-border);
-        color: var(--r-button-default-color);
-        @include mixin.transition('background, color, box-shadow');
-
-        &:hover {
-            background-color: var(--r-button-default-hover-background);
-            background: linear-gradient(
-                to bottom,
-                var(--r-button-default-hover-background) 0%,
-                var(--r-button-default-hover-background-end) 100%
-            );
-            border: rem(1) solid var(--r-button-default-hover-border);
-            box-shadow: var(--r-button-hover-shadow);
-            color: var(--r-button-default-hover-color);
-        }
+        @include mixin.button-base();
 
         &.active {
             box-shadow: var(--r-button-active-shadow);
@@ -54,7 +21,7 @@
             font-weight: var(--r-global-font-bold-weight);
 
             &:hover {
-                background-color: var(--r-button-default-hover-background);
+                background-color: var(--r-surface-hover);
                 box-shadow: none;
             }
         }
@@ -83,10 +50,9 @@
             &:after {
                 content: '';
                 position: absolute;
-                top: 50%;
-                left: 50%;
+                inset: 0;
+                margin: auto;
                 @include mixin.loader();
-                @extend .loader;
             }
         }
     }
@@ -97,9 +63,7 @@
     }
 
     .button-small {
-        font-size: rem(12);
-        min-width: rem(50);
-        padding: rem(5) rem(10);
+        @include mixin.button-small();
 
         &.loading:after {
             @include mixin.loader(12);
@@ -132,26 +96,20 @@
 
     @each $name, $value in settings.$colors {
         @if ($name != white) {
+            $fill: palette-fill(resolved.$slot-roles, $name);
+            $on: palette-on(resolved.$slot-roles, $name);
+            $text: palette-text(resolved.$slot-roles, $name);
+
             .button-#{'' + $name} {
-                background: var(--r-color-#{$name});
-                background: linear-gradient(
-                    to bottom,
-                    color-lighten(var(--r-color-#{$name}), 5%) 0%,
-                    var(--r-color-#{$name}) 100%
-                );
-                color: var(--r-color-white);
-                border: rem(1) solid color-darken(var(--r-color-#{$name}), 5%);
+                background: $fill;
+                color: $on;
+                border: rem(1) solid color-darken($fill, 5%);
 
                 &:hover {
-                    background: color-lighten(var(--r-color-#{$name}), 3%);
-                    background: linear-gradient(
-                        to bottom,
-                        color-lighten(var(--r-color-#{$name}), 7%) 0%,
-                        color-lighten(var(--r-color-#{$name}), 3%) 100%
-                    );
-                    border: rem(1) solid var(--r-color-#{$name});
+                    background: color-darken($fill, 5%);
+                    border: rem(1) solid color-darken($fill, 10%);
                     box-shadow: var(--r-button-hover-shadow-dark);
-                    color: var(--r-color-white);
+                    color: $on;
                 }
 
                 &.active {
@@ -160,32 +118,33 @@
 
                 &.button-outline {
                     background: transparent;
-                    color: var(--r-color-#{$name});
+                    border-color: $text;
+                    color: $text;
 
                     &:hover {
-                        background: color-lighten(var(--r-color-#{$name}), 3%);
-                        color: var(--r-color-white);
+                        background: color-darken($fill, 5%);
+                        color: $on;
                     }
                 }
 
                 &.button-text {
                     background: transparent;
                     border-color: transparent;
-                    color: var(--r-color-#{$name});
+                    color: $text;
 
                     &:hover {
-                        background-color: var(--r-button-default-hover-background);
-                        color: var(--r-color-#{$name});
+                        background-color: var(--r-surface-hover);
+                        color: $text;
                     }
                 }
 
                 &.loading:after {
-                    border: rem(2) solid rgba(255, 255, 255, 0.3);
-                    border-top-color: rgb(255, 255, 255);
+                    border: rem(2) solid color-mix(in srgb, currentColor 30%, transparent);
+                    border-top-color: currentColor;
                 }
 
                 .icon {
-                    background-color: var(--r-color-white);
+                    background-color: currentColor;
                 }
             }
         }
@@ -196,18 +155,20 @@
 
         .button {
             float: left;
-            border-radius: 0;
-            margin-right: rem(-1);
             min-width: auto;
 
-            &:first-child {
-                @include mixin.border-left-radius(var(--r-button-radius));
-                @include mixin.border-top-radius(var(--r-button-radius));
+            & + .button {
+                margin-left: rem(-1);
             }
 
-            &:last-child {
-                @include mixin.border-right-radius(var(--r-button-radius));
-                @include mixin.border-bottom-radius(var(--r-button-radius));
+            &:not(:first-child) {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            &:not(:last-child) {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
             }
         }
     }

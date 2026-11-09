@@ -5,7 +5,7 @@
     .block-boxes {
         display: flex;
         flex-wrap: wrap;
-        gap: rem(15);
+        gap: var(--r-block-padding);
     }
 
     .block-box {
