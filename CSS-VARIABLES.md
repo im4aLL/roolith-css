@@ -71,7 +71,7 @@ An excerpt of the emitted CSS, shortened to a few tokens per scope. The media bl
 }
 ```
 
-A theme switch never rewrites a component rule. `:root, .theme-light` and `.theme-dark` declare the same token names, so adding `.theme-dark` to `<html>` or to any container recolours that subtree, and removing it falls back to the light values. With no class at all the OS setting decides, and an explicit `.theme-light` wins over the media block because that block only matches `:root:not(.theme-light)`. Each theme scope also sets `color-scheme`, so native controls and scrollbars follow the active theme.
+A theme switch never rewrites a component rule to change a colour that a token already covers. `:root, .theme-light` and `.theme-dark` declare the same token names, so adding `.theme-dark` to `<html>` or to any container recolours that subtree, and removing it falls back to the light values. With no class at all the OS setting decides, and an explicit `.theme-light` wins over the media block because that block only matches `:root:not(.theme-light)`. Each theme scope also sets `color-scheme`, so native controls and scrollbars follow the active theme.
 
 ## The colour model
 
@@ -140,7 +140,7 @@ Private `--_r-*` tokens are internal. Overriding one may work today and break th
 
 A theme-scoped override like the second rule is fine in application code. Rule 5 above is about the framework's own component partials, which must not branch on the theme apart from the two exceptions named there; an application setting a public token under a theme class is using the token layer as intended.
 
-The framework uses the same mechanism internally. A component may reassign one of its own tokens in a narrower scope instead of duplicating the value: `.form-switch-large` sets `--r-form-switch-size` from `--r-form-switch-size-large`, the compact layout maps `--r-layout-sidebar-width` to the compact width, quick menu sizes step down at small widths, and the layout header maps `--r-nav-link-color` to `--r-layout-header-nav-color`. These are overrides of existing tokens, not new tokens, so `TOKENS.md` does not list them separately.
+The framework uses the same mechanism internally. A component may reassign one of its own tokens in a narrower scope instead of duplicating the value: `.form-switch-large` sets `--r-form-switch-size` from `--r-form-switch-size-large`, the compact layout maps `--r-layout-sidebar-width` to the compact width, quick menu sizes step down in the small and x-small modifiers, and the layout header maps `--r-nav-link-color` to `--r-layout-header-nav-color`. These are overrides of existing tokens, not new tokens, so `TOKENS.md` does not list them separately.
 
 ## Naming conventions
 
