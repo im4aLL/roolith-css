@@ -2,25 +2,29 @@
 @use 'sass:map';
 @use './settings' as s;
 @use './component-var';
+@use './functions' as f;
 
 $theme-light-scopes: (':root', '.theme-light');
 $theme-dark-scopes: ('.theme-dark');
 $theme-scopes: list.join($theme-light-scopes, $theme-dark-scopes, 'comma');
 
+$neutral-steps: (50: 2%, 100: 4%, 150: 7%, 200: 10%, 300: 15%, 400: 20%, 500: 45%, 600: 57%, 700: 62%, 800: 70%);
+$neutral-steps-dark: (50: 2.5%, 100: 5%, 150: 9%, 200: 11%, 300: 15%, 400: 22%, 500: 40%, 600: 51.5%, 700: 59%, 800: 62%);
+
 @mixin palette-primitives() {
     @each $name, $value in s.$colors {
-        @if not map.has-key(s.$colors-text, $name) {
-            @error 'roolith: $colors-text is missing an entry for "#{$name}".';
-        }
-
         --r-color-#{'' + $name}: #{$value};
         --r-color-#{'' + $name}-on: #{map.get(s.$colors-on, $name)};
-        --r-color-#{'' + $name}-text: #{map.get(s.$colors-text, $name)};
+        --r-color-#{'' + $name}-text: #{f.text-token($name, s.$colors-text, black)};
     }
 
-    @each $name, $value in s.$neutrals {
-        --r-color-#{'' + $name}: #{$value};
+    --r-color-neutral: #{s.$white-color};
+
+    @each $step, $amount in $neutral-steps {
+        --r-color-neutral-#{$step}: color-mix(in srgb, var(--r-color-neutral), black #{$amount});
     }
+
+    --r-color-neutral-900: #{s.$dark-color};
 }
 
 @mixin palette-dark-primitives() {
@@ -30,16 +34,16 @@ $theme-scopes: list.join($theme-light-scopes, $theme-dark-scopes, 'comma');
     }
 
     @each $name, $value in s.$colors {
-        @if not map.has-key(s.$colors-text-dark, $name) {
-            @error 'roolith: $colors-text-dark is missing an entry for "#{$name}".';
-        }
-
-        --r-color-#{'' + $name}-text: #{map.get(s.$colors-text-dark, $name)};
+        --r-color-#{'' + $name}-text: #{f.text-token($name, s.$colors-text-dark, white)};
     }
 
-    @each $name, $value in s.$neutrals-dark {
-        --r-color-#{'' + $name}: #{$value};
+    --r-color-neutral: #{s.$theme-dark-color};
+
+    @each $step, $amount in $neutral-steps-dark {
+        --r-color-neutral-#{$step}: color-mix(in srgb, var(--r-color-neutral), white #{$amount});
     }
+
+    --r-color-neutral-900: #{s.$white-color};
 }
 
 @mixin semantic-tokens() {

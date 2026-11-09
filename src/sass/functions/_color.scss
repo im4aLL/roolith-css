@@ -1,20 +1,7 @@
-@use 'sass:color';
-@use 'sass:math';
-
 @function color-lighten($color, $amount) {
     @return color-mix(in srgb, $color, white $amount);
 }
 
 @function color-darken($color, $amount) {
     @return color-mix(in srgb, $color, black $amount);
-}
-
-@function text-blend($color, $ink, $weight) {
-    $mixed: color.mix($color, $ink, $weight, $method: rgb);
-
-    @return rgb(
-        math.round(color.channel($mixed, 'red', $space: rgb)),
-        math.round(color.channel($mixed, 'green', $space: rgb)),
-        math.round(color.channel($mixed, 'blue', $space: rgb))
-    );
 }
