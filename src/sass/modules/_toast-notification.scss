@@ -1,10 +1,6 @@
 @use '../functions' as *;
 
-
 @mixin toast-notification() {
-    .toast-notification {
-        --r-toast-notification-width: 25rem;
-    }
 
     .toast-notification {
         position: fixed;

@@ -1,15 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin block-form() {
-    .block-form {
-        --r-block-form-group-border-color: var(--r-border-control);
-        --r-block-form-group-border-radius: calc(var(--r-global-border-radius) * 2);
-        --r-block-form-group-padding: calc(var(--r-block-padding) * 2);
-        --r-block-form-border-color: var(--r-block-form-group-border-color);
-        --r-block-form-text-color: var(--r-text-quiet);
-    }
 
     .block-form-group {
         border: rem(1) solid var(--r-block-form-group-border-color);

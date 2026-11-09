@@ -1,11 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin block-inline() {
-    .block-inline {
-        --r-block-inline-gap: calc(var(--r-block-padding) / 2);
-    }
 
     .block-inline {
         .form-label {

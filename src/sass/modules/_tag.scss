@@ -1,29 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin tag() {
-    .tag {
-        --r-tag-color: var(--r-accent);
-
-        --r-tag-background: color-mix(in srgb, var(--r-tag-color), white 90%);
-        --r-tag-border-color: color-mix(in srgb, var(--r-tag-color), white 20%);
-        --r-tag-text-color: var(--r-tag-color);
-
-        .theme-dark & {
-            --r-tag-background: var(--r-surface-page);
-            --r-tag-border-color: var(--r-border-control);
-            --r-tag-text-color: var(--r-text-subtle);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-tag-background: var(--r-surface-page);
-                --r-tag-border-color: var(--r-border-control);
-                --r-tag-text-color: var(--r-text-subtle);
-            }
-        }
-    }
 
     .tag {
         font-size: rem(12);

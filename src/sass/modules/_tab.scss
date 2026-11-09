@@ -1,12 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin tab() {
-    .tab-list {
-        --r-tab-active-color: var(--r-accent);
-        --r-tab-border-color: var(--_r-surface-muted-step-5);
-    }
 
     .tab-list {
         @include mixins.clearfix();

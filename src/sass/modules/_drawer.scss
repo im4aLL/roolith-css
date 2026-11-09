@@ -1,17 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin drawer() {
-    .drawer {
-        --r-drawer-container-background: rgba(0, 0, 0, 0.5);
-        --r-drawer-background: var(--r-surface-raised);
-        --r-drawer-close-button-color: var(--_r-surface-raised-step-50);
-        --r-drawer-border-radius: var(--r-global-border-radius);
-        --r-drawer-content-spacing: 1.25rem;
-        --r-drawer-border-color: var(--r-border-subtle);
-        --r-drawer-content-shadow: 0 0.3125rem 0.3125rem 0 rgba(0, 0, 0, 0.1);
-    }
 
     .drawer {
         position: absolute;

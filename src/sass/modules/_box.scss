@@ -1,18 +1,7 @@
 @use '../functions' as *;
 @use '../settings' as s;
 
-
 @mixin box() {
-    .box {
-        --r-box-spacing: 1.25rem;
-        --r-box-spacing-small: 0.9375rem;
-        --r-box-spacing-large: 2.5rem;
-        --r-box-border-radius: var(--r-global-border-radius);
-        --r-box-background-color: var(--r-surface-raised);
-        --r-box-border-color: var(--_r-surface-raised-step-10);
-        --r-box-header-text-color: var(--r-text);
-        --r-box-footer-color: var(--_r-surface-raised-step-60);
-    }
 
     .box {
         border: rem(1) solid var(--r-box-border-color);

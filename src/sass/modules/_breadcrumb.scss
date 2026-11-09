@@ -1,15 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin breadcrumb() {
-    .breadcrumb {
-        --r-breadcrumb-spacing: 0.625rem;
-        --r-breadcrumb-size: 80%;
-        --r-breadcrumb-default-color: var(--r-text-subtle);
-        --r-breadcrumb-sep-symbol: "/";
-        --r-breadcrumb-sep-color: var(--r-text-separator);
-    }
 
     .breadcrumb {
         font-size: var(--r-breadcrumb-size);

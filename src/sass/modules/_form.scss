@@ -1,7 +1,6 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin form-search() {
     .form-field-search {
         position: relative;
@@ -129,43 +128,6 @@
 }
 
 @mixin form() {
-    .form-field,
-    .form-input,
-    .form-textarea,
-    .form-select,
-    .form-check-input,
-    .form-checkbox-label,
-    .form-text,
-    .form-label,
-    .form-password-toggle,
-    .form-field-search-hint,
-    ::placeholder,
-    [readonly] {
-        --r-form-input-placeholder-color: var(--r-text-placeholder);
-        --r-form-input-background-color: var(--r-surface-raised);
-        --r-form-input-color: var(--r-text-control);
-        --r-form-input-border-color: var(--r-border-control);
-        --r-form-check-border-color: color-mix(in srgb, var(--r-form-input-border-color), var(--_r-on-surface) 15%);
-        --r-form-input-hover-border-color: var(--r-link);
-        --r-form-input-focus-border-color: var(--r-accent);
-        --r-form-text-color: var(--r-text-helper);
-        --r-form-input-radius: var(--r-global-border-radius);
-        --r-form-checkbox-label-color: var(--r-text-label);
-        --r-form-disable-input-color: var(--r-text-disabled);
-        --r-form-primary-color: var(--_r-surface-muted-step-2);
-        --r-form-primary-border-color: var(--_r-surface-muted-step-5);
-        --r-form-primary-hover-color: var(--r-info);
-        --r-form-primary-focus-color: var(--r-form-input-background-color);
-        --r-form-error-color: var(--r-danger);
-        --r-form-success-color: var(--r-success);
-        --r-form-warning-color: var(--r-warning);
-        --r-form-field-search-hint-background: var(--r-surface-raised);
-        --r-form-field-search-hint-border-color: var(--r-border-subtle);
-        --r-form-field-search-divider-color: var(--r-border-subtle);
-        --r-form-field-search-item-hover-background: var(--r-surface-hover);
-        --r-form-field-search-border-color: var(--r-border-control);
-        --r-form-field-search-hint-color: var(--r-text);
-    }
 
     ::placeholder {
         color: var(--r-form-input-placeholder-color);
@@ -498,29 +460,6 @@
     }
 
     .form-file {
-        --r-button-radius: var(--r-global-border-radius);
-        --r-button-hover-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.1);
-        --r-button-hover-shadow-dark: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.2);
-        --r-button-active-dark-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.2);
-        --r-button-default-background: var(--r-surface-control);
-        --r-button-default-border: var(--r-border);
-        --r-button-default-color: var(--r-text-muted);
-        --r-button-default-hover-background: var(--r-surface-control-hover);
-        --r-button-default-hover-border: var(--r-border-emphasis);
-        --r-button-active-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.1);
-        --r-button-default-hover-color: var(--r-text-muted);
-
-        .theme-dark & {
-            --r-button-active-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.2);
-            --r-button-default-hover-color: var(--r-text-strong);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-button-active-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.2);
-                --r-button-default-hover-color: var(--r-text-strong);
-            }
-        }
 
         &::file-selector-button {
             @include mixins.button-base();

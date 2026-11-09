@@ -2,15 +2,7 @@
 @use '../settings' as s;
 @use '../mixins';
 
-
 @mixin card() {
-    .card {
-        --r-card-radius: var(--r-global-border-radius);
-        --r-card-shadow: 0 0 0 0.0625rem rgba(0, 0, 0, 0.04);
-        --r-card-header-footer-border: var(--r-border-subtle);
-        --r-card-header-footer-color: var(--r-text-subtle);
-        --r-card-background: var(--r-surface);
-    }
 
     .card {
         box-shadow: var(--r-card-shadow);

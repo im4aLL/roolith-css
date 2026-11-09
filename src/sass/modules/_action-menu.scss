@@ -1,27 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin action-menu() {
-    .action-menu-list {
-        --r-action-menu-list-gap: 0.125rem;
-        --r-action-menu-item-color: var(--r-text-muted);
-        --r-action-menu-item-hover-color: var(--r-accent);
-        --r-action-menu-item-hover-background: var(--r-surface-muted);
-        --r-action-menu-item-border-radius: var(--r-global-border-radius);
-
-        --r-action-menu-item-background: var(--r-surface);
-
-        .theme-dark & {
-            --r-action-menu-item-background: transparent;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-action-menu-item-background: transparent;
-            }
-        }
-    }
 
     .action-menu-list {
         display: flex;

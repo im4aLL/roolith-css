@@ -1,32 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin dropdown() {
-    .dropdown {
-        --r-dropdown-icons-size: 0.3125rem;
-        --r-dropdown-icons-size-small: 0.25rem;
-        --r-dropdown-icons-size-large: 0.4375rem;
-        --r-dropdown-width: 13.75rem;
-        --r-dropdown-background: var(--r-surface-overlay);
-        --r-dropdown-border-color: var(--r-border);
-        --r-dropdown-shadow: 0 0.125rem 0.3125rem 0 rgba(0, 0, 0, 0.08);
-        --r-dropdown-item-color: var(--r-text-muted);
-        --r-dropdown-item-hover-background-color: var(--r-surface-hover);
-        --r-dropdown-item-sep: var(--_r-surface-raised-step-8);
-
-        --r-dropdown-item-hover-color: var(--r-text);
-
-        .theme-dark & {
-            --r-dropdown-item-hover-color: var(--r-text-strong);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-dropdown-item-hover-color: var(--r-text-strong);
-            }
-        }
-    }
 
     .dropdown {
         display: inline-block;

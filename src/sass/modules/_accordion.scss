@@ -1,10 +1,6 @@
 @use '../functions' as *;
 
-
 @mixin accordion() {
-    .accordion {
-        --r-accordion-border-color: var(--r-border-hairline);
-    }
 
     .accordion {
         border-top: rem(1) solid var(--r-accordion-border-color);

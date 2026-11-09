@@ -1,14 +1,7 @@
 @use '../functions' as *;
 @use '../settings' as s;
 
-
 @mixin icon() {
-    .icon {
-        --r-icon-color: var(--r-text-placeholder);
-        --r-icon-size: 1rem;
-        --r-icon-small-size: 0.875rem;
-        --r-icon-large-size: 2rem;
-    }
 
     .icon {
         display: inline-block;

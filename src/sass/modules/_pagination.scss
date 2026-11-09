@@ -1,19 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin pagination() {
-    .pagination {
-        --r-pagination-item-active-background-color: var(--r-accent);
-        --r-pagination-item-active-color: var(--r-accent-on);
-        --r-pagination-item-color: var(--r-global-font-color);
-        --r-pagination-item-hover-color: var(--r-global-font-color);
-        --r-pagination-item-background: transparent;
-        --r-pagination-item-hover-background: var(--r-surface-muted);
-        --r-pagination-item-border-radius: var(--r-global-border-radius);
-        --r-pagination-item-border-color: var(--r-border-control);
-        --r-pagination-item-font-size: 0.875rem;
-    }
 
     .pagination {
         display: flex;

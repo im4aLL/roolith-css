@@ -1,20 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin tooltip() {
-    .tooltip,
-    [data-tooltip] {
-        --r-tooltip-bg-color: var(--r-surface-inverse);
-        --r-tooltip-text-color: var(--r-text-inverse);
-        --r-tooltip-padding: 0.3125rem 0.625rem;
-        --r-tooltip-padding-large: 0.9375rem;
-        --r-tooltip-border-radius: var(--r-global-border-radius);
-        --r-tooltip-transition-duration: 150ms;
-        --r-tooltip-transition-delay: 250ms;
-        --r-tooltip-border-color: var(--r-color-tertiary);
-        --r-tooltip-content-btn-bg-color: var(--r-color-tertiary);
-    }
 
     .tooltip {
         position: relative;

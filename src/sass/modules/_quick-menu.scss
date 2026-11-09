@@ -1,29 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin quick-menu() {
-    .quick-menu {
-        --r-quick-menu-background: var(--r-surface-muted);
-        --r-quick-menu-spacing: 0.5rem;
-        --r-quick-menu-font-size: 0.875rem;
-        --r-quick-menu-spacing-small: 0.3125rem;
-        --r-quick-menu-font-size-small: 0.75rem;
-        --r-quick-menu-spacing-x-small: 0.25rem;
-        --r-quick-menu-font-size-x-small: 0.625rem;
-
-        --r-quick-menu-link-hover-background: var(--r-surface);
-
-        .theme-dark & {
-            --r-quick-menu-link-hover-background: var(--r-surface-page);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-quick-menu-link-hover-background: var(--r-surface-page);
-            }
-        }
-    }
 
     .quick-menu {
         display: inline-flex;

@@ -2,25 +2,7 @@
 @use '../settings' as s;
 @use '../mixins';
 
-
 @mixin badge() {
-    .badge {
-        --r-badge-radius: var(--r-global-border-radius);
-        --r-badge-background: var(--r-surface-hover);
-        --r-badge-color: var(--r-text-muted);
-
-        --r-badge-surface: color-mix(in srgb, var(--r-badge-background), white 70%);
-
-        .theme-dark & {
-            --r-badge-surface: color-mix(in srgb, var(--r-badge-background), black 70%);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-badge-surface: color-mix(in srgb, var(--r-badge-background), black 70%);
-            }
-        }
-    }
 
     .badge {
         display: inline-flex;

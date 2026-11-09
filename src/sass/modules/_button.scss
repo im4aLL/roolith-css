@@ -2,34 +2,7 @@
 @use '../settings' as s;
 @use '../mixins';
 
-
 @mixin button() {
-    .button {
-        --r-button-radius: var(--r-global-border-radius);
-        --r-button-hover-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.1);
-        --r-button-hover-shadow-dark: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.2);
-        --r-button-active-dark-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.2);
-        --r-button-default-background: var(--r-surface-control);
-        --r-button-default-border: var(--r-border);
-        --r-button-default-color: var(--r-text-muted);
-        --r-button-default-hover-background: var(--r-surface-control-hover);
-        --r-button-default-hover-border: var(--r-border-emphasis);
-
-        --r-button-active-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.1);
-        --r-button-default-hover-color: var(--r-text-muted);
-
-        .theme-dark & {
-            --r-button-active-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.2);
-            --r-button-default-hover-color: var(--r-text-strong);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-button-active-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.2);
-                --r-button-default-hover-color: var(--r-text-strong);
-            }
-        }
-    }
 
     .button {
         @include mixins.button-base();

@@ -2,24 +2,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin comment() {
-    .comment-group,
-    .comment {
-        --r-comment-highlight-color: var(--_r-comment-highlight);
-
-        --r-comment-border: color-mix(in srgb, var(--r-text) 10%, transparent);
-
-        .theme-dark & {
-            --r-comment-border: var(--_r-surface-raised-step-5);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-comment-border: var(--_r-surface-raised-step-5);
-            }
-        }
-    }
 
     .comment-group {
         border-top: rem(1) solid var(--r-comment-border);

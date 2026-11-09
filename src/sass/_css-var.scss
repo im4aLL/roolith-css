@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use './settings' as s;
+@use './component-var';
 
 @mixin palette-primitives() {
     @each $name, $value in s.$colors {
@@ -156,6 +157,9 @@
     @include palette-primitives();
     @include semantic-tokens();
     @include private-tokens();
+
+    @include component-var.component-tokens-light();
+
     color-scheme: light;
 }
 
@@ -163,6 +167,9 @@
     @include palette-dark-primitives();
     @include semantic-dark-tokens();
     @include private-dark-tokens();
+
+    @include component-var.component-tokens-dark();
+
     color-scheme: dark;
 }
 
@@ -187,6 +194,7 @@
     .theme-dark {
         @include accent-roles();
         @include surface-scales();
+        @include component-var.component-tokens();
 
         --r-global-base-font-size: #{s.$base-font-size};
         --r-global-base-font: #{s.$base-font-family};

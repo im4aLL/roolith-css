@@ -1,11 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin block-list() {
-    .block-list {
-        --r-block-list-item-border-color: var(--_r-surface-muted-step-5);
-    }
 
     .block-list {
         display: flex;

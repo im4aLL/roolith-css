@@ -2,31 +2,7 @@
 @use '../settings' as s;
 @use '../mixins';
 
-
 @mixin nav() {
-    .nav {
-        --r-nav-border-radius: var(--r-global-border-radius);
-        --r-nav-spacing: 0.8125rem;
-        --r-nav-primary-color: var(--r-accent);
-
-        --r-nav-link-color: var(--r-text);
-        --r-nav-dimmed-link-color: var(--r-text-faint);
-        --r-nav-active-link-color: color-mix(in srgb, var(--r-text), var(--r-surface-page) 30%);
-
-        .theme-dark & {
-            --r-nav-link-color: var(--r-link);
-            --r-nav-dimmed-link-color: var(--r-text-muted);
-            --r-nav-active-link-color: var(--r-accent);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-nav-link-color: var(--r-link);
-                --r-nav-dimmed-link-color: var(--r-text-muted);
-                --r-nav-active-link-color: var(--r-accent);
-            }
-        }
-    }
 
     .nav {
         @include mixins.clearfix();

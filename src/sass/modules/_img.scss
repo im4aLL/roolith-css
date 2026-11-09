@@ -1,12 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin img() {
-    .img {
-        --r-img-radius: var(--r-global-border-radius);
-        --r-img-caption-color: var(--r-text-subtle);
-    }
 
     .img {
         max-width: 100%;

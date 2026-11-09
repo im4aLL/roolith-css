@@ -1,14 +1,7 @@
 @use '../functions' as *;
 @use '../settings' as s;
 
-
 @mixin progress() {
-    progress {
-        --r-progress-background: var(--_r-surface-raised-step-5);
-        --r-progress-background-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.05) inset;
-        --r-progress-bar-color: var(--_r-surface-raised-step-30);
-        --r-progress-bar-radius: var(--r-global-border-radius);
-    }
 
     progress {
         appearance: none;

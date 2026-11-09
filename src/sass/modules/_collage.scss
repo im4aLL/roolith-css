@@ -1,17 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin collage() {
-    .collage {
-        --r-collage-item-default-width: 12.5rem;
-        --r-collage-item-default-height: 12.5rem;
-        --r-collage-item-default-gap: 0.625rem;
-        --r-collage-item-small-gap: 0.0625rem;
-        --r-collage-item-large-gap: 1.25rem;
-        --r-collage-caption-background: 0, 0, 0;
-        --r-collage-caption-color: var(--r-text-inverse);
-    }
 
     .collage {
         display: grid;

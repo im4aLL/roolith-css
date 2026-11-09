@@ -1,14 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin avatar() {
-    .avatar {
-        --r-avatar-default-size: 2.5rem;
-        --r-avatar-small-size: 1.875rem;
-        --r-avatar-label-color: var(--r-text-strong);
-        --r-avatar-label-hover-color: var(--r-text-muted);
-    }
 
     .avatar {
         position: relative;

@@ -2,17 +2,7 @@
 @use '../settings' as s;
 @use '../mixins';
 
-
 @mixin modal() {
-    .modal {
-        --r-modal-background: rgba(0, 0, 0, 0.5);
-        --r-modal-content-background: var(--r-surface-raised);
-        --r-modal-close-color: var(--_r-surface-raised-step-50);
-        --r-modal-content-radius: var(--r-global-border-radius);
-        --r-modal-content-spacing: 1.25rem;
-        --r-modal-content-shadow: 0 0.3125rem 0.3125rem 0 rgba(0, 0, 0, 0.1);
-        --r-modal-border-color: var(--r-border-subtle);
-    }
 
     $layout: s.$modal-layout;
     .modal {

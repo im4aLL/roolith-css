@@ -1,24 +1,7 @@
 @use '../functions' as *;
 @use '../settings' as s;
 
-
 @mixin message() {
-    .message {
-        --r-message-radius: var(--r-global-border-radius);
-        --r-message-close-color: var(--r-text);
-
-        --r-message-background: var(--_r-surface-muted-step-2);
-
-        .theme-dark & {
-            --r-message-background: var(--_r-surface-raised-step-5);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not(.theme-light) & {
-                --r-message-background: var(--_r-surface-raised-step-5);
-            }
-        }
-    }
 
     .message {
         font-size: rem(14);

@@ -1,14 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin block-stat() {
-    .block-stat {
-        --r-block-stat-item-gap: var(--r-block-padding);
-        --r-block-stat-item-background-color: transparent;
-        --r-block-stat-item-hover-background-color: var(--r-surface-muted);
-        --r-block-stat-item-border-radius: var(--r-global-border-radius);
-    }
 
     .block-stat {
         display: flex;

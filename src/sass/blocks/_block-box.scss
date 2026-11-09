@@ -1,17 +1,7 @@
 @use '../functions' as *;
 @use '../mixins';
 
-
 @mixin block-box() {
-    .block-box {
-        --r-block-box-spacing: var(--r-block-padding);
-        --r-block-box-size: 15.625rem;
-        --r-block-box-color: var(--r-global-font-color);
-        --r-block-box-hover-color: var(--r-accent-on);
-        --r-block-box-hover-background: var(--r-accent);
-        --r-block-box-icon-color: var(--r-text-quiet);
-        --r-block-box-hl-color: var(--r-text-quiet);
-    }
 
     .block-boxes {
         display: flex;
