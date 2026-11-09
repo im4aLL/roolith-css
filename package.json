@@ -6,9 +6,9 @@
     "scripts": {
         "dev": "vite",
         "dev:host": "vite --host",
-        "build": "vite build",
+        "build": "node scripts/generate-token-reference.mjs && vite build",
         "preview": "vite preview",
-        "tokens": "node scripts/css-custom-properties.mjs --report",
+        "tokens": "node scripts/generate-token-reference.mjs",
         "tokens:json": "node scripts/css-custom-properties.mjs --json",
         "test": "node --test \"scripts/*.test.mjs\""
     },
