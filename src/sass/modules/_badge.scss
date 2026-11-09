@@ -37,7 +37,7 @@
             .badge-#{'' + $name} {
                 background: $fill;
                 color: $on;
-                border-color: $fill;
+                border-color: color-mix(in srgb, $fill, var(--_r-on-surface) 25%);
             }
         }
     }

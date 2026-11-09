@@ -1,12 +1,30 @@
+@use 'sass:color';
+@use 'sass:list';
 @use 'sass:map';
 @use './settings' as s;
 @use './component-var';
+@use './functions' as f;
+
+$light-text-surfaces: (neutral, neutral-50, neutral-100, neutral-150);
+$dark-text-surfaces: (neutral, neutral-50, neutral-100, neutral-150, neutral-200, neutral-300);
+
+@function text-surfaces($neutrals, $steps, $raised-key, $fill, $tint: 10%) {
+    $surfaces: ();
+
+    @each $step in $steps {
+        $surfaces: list.append($surfaces, map.get($neutrals, $step));
+    }
+
+    @return list.append($surfaces, color.mix($fill, map.get($neutrals, $raised-key), $tint, $method: rgb));
+}
 
 @mixin palette-primitives() {
     @each $name, $value in s.$colors {
+        $text: f.text-safe($value, text-surfaces(s.$neutrals, $light-text-surfaces, 'neutral', $value), black);
+
         --r-color-#{'' + $name}: #{$value};
         --r-color-#{'' + $name}-on: #{map.get(s.$colors-on, $name)};
-        --r-color-#{'' + $name}-text: var(--r-color-#{'' + $name});
+        --r-color-#{'' + $name}-text: #{$text};
     }
 
     @each $name, $value in s.$neutrals {
@@ -18,7 +36,13 @@
     @each $name, $value in s.$colors-dark {
         --r-color-#{'' + $name}: #{$value};
         --r-color-#{'' + $name}-on: #{map.get(s.$colors-on, $name)};
-        --r-color-#{'' + $name}-text: var(--r-color-#{'' + $name});
+    }
+
+    @each $name, $value in s.$colors {
+        $fill: if(map.has-key(s.$colors-dark, $name), map.get(s.$colors-dark, $name), $value);
+        $text: f.text-safe($fill, text-surfaces(s.$neutrals-dark, $dark-text-surfaces, 'neutral-150', $fill), white);
+
+        --r-color-#{'' + $name}-text: #{$text};
     }
 
     @each $name, $value in s.$neutrals-dark {
