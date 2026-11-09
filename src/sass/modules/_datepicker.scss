@@ -2,13 +2,12 @@
 @use '../mixins';
 
 @mixin datepicker() {
-
     .form-datepicker-js {
         .qs-datepicker-container {
             font-family: var(--r-global-base-font);
             font-size: rem(12);
             color: var(--r-form-datepicker-color);
-            width: rem(260);
+            width: 100%;
             border: rem(1) solid var(--r-form-datepicker-border-color);
             border-radius: var(--r-form-datepicker-border-radius);
             margin-top: var(--r-form-datepicker-margin-top);
@@ -54,6 +53,11 @@
 
         .qs-arrow:hover.qs-left:after {
             border-right-color: var(--r-form-datepicker-controls-hover-text-color);
+        }
+
+        .qs-active {
+            background-color: var(--r-form-datepicker-active-background-color);
+            color: var(--r-form-datepicker-active-text-color);
         }
     }
 }

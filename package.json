@@ -7,7 +7,9 @@
         "dev": "vite",
         "dev:host": "vite --host",
         "build": "vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "css-vars": "node scripts/generate-css-variables.mjs",
+        "css-vars:all": "node scripts/generate-css-variables.mjs --all"
     },
     "repository": "git+https://github.com/im4aLL/roolith-css.git",
     "keywords": [
