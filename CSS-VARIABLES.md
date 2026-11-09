@@ -25,7 +25,7 @@ components                        read var(--r-*)
 ```
 
 - `_settings.scss` is the input surface. Every entry is a `!default` value that only reuses other settings or a `rem()` call, so nothing in it derives colour, and any of it can be replaced with `@use 'roolith' with (...)`.
-- `_resolved.scss` is the only file that derives values. It merges the settings over built-in defaults, rejects unknown keys, validates the palette and the accent roles, computes the light and dark role maps, and derives each palette slot's text-safe colour.
+- `_resolved.scss` is the only file that derives colour values at build time. It merges the settings over built-in defaults, rejects unknown keys, validates the palette and the accent roles, computes the light and dark role maps, and derives each palette slot's text-safe colour.
 - `_token-registry.scss` names the tokens. `$role-tokens` and `$private-role-tokens` map a derived role to its custom property name, and `$theme-component-tokens` holds the component token values for `light` and `dark`.
 - `_token-emission.scss` holds the mixins that emit each scope: palette primitives, accent roles, surface scales, and the light and dark theme scopes.
 - `_css-variable.scss` declares the five rules and the shared component declarations. It composes the emission mixins and lists the component tokens that are declared once, five of which blend with `color-mix()`. No component partial derives a theme role: derivation lives in `_resolved.scss`, and a component reads tokens, optionally blending one locally with `color-mix()`.
@@ -97,7 +97,7 @@ The contract is one boundary: `--r-*` is public, safe to read, and safe to overr
 2. Use a component token when the value belongs to that component and should stay tunable without touching component logic, such as `--r-card-background` or `--r-form-input-radius`.
 3. Use palette primitives only for palette variants: `--r-color-{slot}` with its `-on` pair for filled variants, and the `-text` pair where the slot is the text colour. Inside SCSS variant loops, go through `palette-fill()`, `palette-on()` and `palette-text()` so a role override still applies.
 4. Never read a `--_r-*` token from a component, and never hardcode a colour, radius or spacing that a token already covers.
-5. Never add a `.theme-dark` colour rule in a component. The theme scopes already declare every themed token, so override the token locally when a narrow scope needs a different value. The inline SVG icon rules in `_form.scss` and `_form-extended.scss` are the only exception, because those icons carry their colour inside the SVG data URI.
+5. Never add a `.theme-dark` colour rule in a component. The theme scopes already declare every themed token, so override the token locally when a narrow scope needs a different value. There are two exceptions, both in `_form.scss` and `_form-extended.scss`. The inline SVG icon rules are one, because those icons carry their colour inside the SVG data URI. The other is the `.theme-dark &:not([multiple]) option` rule in `.form-select`, which sets native `<option>` colours explicitly and therefore only applies under an explicit `.theme-dark` class, not under the `prefers-color-scheme` media query.
 
 ## Changing colour at build time
 
@@ -138,7 +138,7 @@ Every public token is a custom property, so a selector can change it and the cha
 
 Private `--_r-*` tokens are internal. Overriding one may work today and break the next time the token layer rebuilds its scales; set the public token the component reads instead.
 
-A theme-scoped override like the second rule is fine in application code. Rule 5 above is about the framework's own component partials, which must not branch on the theme; an application setting a public token under a theme class is using the token layer as intended.
+A theme-scoped override like the second rule is fine in application code. Rule 5 above is about the framework's own component partials, which must not branch on the theme apart from the two exceptions named there; an application setting a public token under a theme class is using the token layer as intended.
 
 The framework uses the same mechanism internally. A component may reassign one of its own tokens in a narrower scope instead of duplicating the value: `.form-switch-large` sets `--r-form-switch-size` from `--r-form-switch-size-large`, the compact layout maps `--r-layout-sidebar-width` to the compact width, quick menu sizes step down at small widths, and the layout header maps `--r-nav-link-color` to `--r-layout-header-nav-color`. These are overrides of existing tokens, not new tokens, so `TOKENS.md` does not list them separately.
 
