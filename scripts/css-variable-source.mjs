@@ -41,7 +41,7 @@ export function readCssVariableSource({ file = DEFAULT_FILE, registryFile = DEFA
  * names produced by `$theme-component-tokens` for both themes.
  *
  * @param {string} cssVariableScss Contents of `_css-variable.scss`.
- * @param {string} registryScss Contents of `_token-registry.scss`.
+ * @param {string} registryScss Contents of the token registry file.
  * @returns {{settingsPairs: Map<string, string>, themeTokens: Set<string>}} Parsed wiring.
  * @throws {Error} When the component token map cannot be located or is not closed.
  */
@@ -86,13 +86,13 @@ function readThemeComponentTokens(scss) {
     const start = scss.search(THEME_COMPONENT_MAP_START);
 
     if (start === -1) {
-        throw new Error('Cannot find the $theme-component-tokens map in _token-registry.scss.');
+        throw new Error('Cannot find the $theme-component-tokens map in the token registry file.');
     }
 
     const end = scss.indexOf(THEME_COMPONENT_MAP_END, start);
 
     if (end === -1) {
-        throw new Error('The $theme-component-tokens map in _token-registry.scss is not closed.');
+        throw new Error('The $theme-component-tokens map in the token registry file is not closed.');
     }
 
     const tokens = new Set();

@@ -15,6 +15,7 @@ src/sass/_resolved.scss           the only derivation file: input validation, se
         v
 src/sass/_token-registry.scss     role to token names, per-theme component token values
 src/sass/_token-emission.scss     mixins that emit each scope
+src/sass/_token-check.scss        the build invariants, asserted when the module loads
         |
         v
 src/sass/_css-variable.scss       the five rules and the shared component declarations
@@ -27,7 +28,7 @@ components                        read var(--r-*)
 - `_resolved.scss` is the only file that derives values. It merges the settings over built-in defaults, rejects unknown keys, validates the palette and the accent roles, computes the light and dark role maps, and derives each palette slot's text-safe colour.
 - `_token-registry.scss` names the tokens. `$role-tokens` and `$private-role-tokens` map a derived role to its custom property name, and `$theme-component-tokens` holds the component token values for `light` and `dark`.
 - `_token-emission.scss` holds the mixins that emit each scope: palette primitives, accent roles, surface scales, and the light and dark theme scopes.
-- `_css-variable.scss` declares the five rules and the shared component declarations. It composes the emission mixins and lists the component tokens declared once, and no component derives colour; a component only reads tokens.
+- `_css-variable.scss` declares the five rules and the shared component declarations. It composes the emission mixins and lists the component tokens that are declared once, including the few that blend two tokens with `color-mix()`. No component partial derives colour: a component only reads tokens.
 - `_token-check.scss` holds the build invariants, and `_css-variable.scss` imports it for their load-time effect: the two theme component token maps must list the same keys, every derived theme role must be registered, and every registered role must have a derived value.
 - Components read `var(--r-*)`. Palette variant loops such as `.button-primary` go through `palette-fill()`, `palette-on()` and `palette-text()` with `resolved.$slot-roles`, so a scoped role override still recolours a variant.
 
