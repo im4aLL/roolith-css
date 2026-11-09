@@ -7,24 +7,31 @@ Roolith ships its design tokens as CSS custom properties. This guide covers how 
 Settings are compile-time inputs, custom properties are runtime outputs.
 
 ```
-src/sass/_settings.scss      inputs: palette, accent roles, theme seeds and steps, component sizes
+src/sass/_settings.scss           inputs: palette, accent roles, theme seeds and steps, component sizes
         |
         v
-src/sass/_resolved.scss      the only derivation file: validation, seed and step defaults, colour math, role maps
+src/sass/_resolved.scss           the only derivation file: input validation, seed and step defaults, colour math, role maps
         |
         v
-src/sass/_css-variable.scss  emits the custom properties
+src/sass/_token-registry.scss     role to token names, per-theme component token values
+src/sass/_token-emission.scss     mixins that emit each scope
         |
         v
-components                   read var(--r-*)
+src/sass/_css-variable.scss       the five rules and the shared component declarations
+        |
+        v
+components                        read var(--r-*)
 ```
 
 - `_settings.scss` is the input surface. Every entry is a `!default` value that only reuses other settings or a `rem()` call, so nothing in it derives colour, and any of it can be replaced with `@use 'roolith' with (...)`.
 - `_resolved.scss` is the only file that derives values. It merges the settings over built-in defaults, rejects unknown keys, validates the palette and the accent roles, computes the light and dark role maps, and derives each palette slot's text-safe colour.
-- `_css-variable.scss` turns the resolved maps into custom properties. No component derives colour; a component only reads tokens.
+- `_token-registry.scss` names the tokens. `$role-tokens` and `$private-role-tokens` map a derived role to its custom property name, and `$theme-component-tokens` holds the component token values for `light` and `dark`.
+- `_token-emission.scss` holds the mixins that emit each scope: palette primitives, accent roles, surface scales, and the light and dark theme scopes.
+- `_css-variable.scss` declares the five rules and the shared component declarations. It composes the emission mixins and lists the component tokens declared once, and no component derives colour; a component only reads tokens.
+- `_token-check.scss` holds the build invariants, and `_css-variable.scss` imports it for their load-time effect: the two theme component token maps must list the same keys, every derived theme role must be registered, and every registered role must have a derived value.
 - Components read `var(--r-*)`. Palette variant loops such as `.button-primary` go through `palette-fill()`, `palette-on()` and `palette-text()` with `resolved.$slot-roles`, so a scoped role override still recolours a variant.
 
-`_css-variable.scss` emits four scopes plus one shared block, in this order:
+`_css-variable.scss` declares four scopes plus one shared block, in this order:
 
 1. `:root` - palette primitives. `--r-color-{slot}` and `--r-color-{slot}-on` do not change per theme, so they are declared once.
 2. `:root, .theme-light` - the light scope: every theme role, the palette text pairs, the per-theme component tokens, and `color-scheme: light`.
@@ -75,7 +82,7 @@ Palette primitives come from `$colors`. Each slot is emitted three times:
 
 Accent roles come from `$accent-roles`, which aliases a role to a palette slot. Each role emits `--r-{role}`, `--r-{role}-on` and `--r-{role}-text` in the shared block. The defaults are `accent -> primary`, `danger -> danger`, `success -> success`, `warning -> info` and `info -> info`. Components read the role token, not the slot it points at.
 
-Semantic tokens are the public roles derived in `_resolved.scss` from theme seeds and steps: surface (`--r-surface-page` through `--r-surface-control-hover`), text (`--r-text` and its tiers), border (`--r-border` and its tiers), and `--r-link`. They are the tier components use for meaning. `_css-variable.scss` fails the build when a derived role is not registered as a token, or a registered token has no derived value.
+Semantic tokens are the public roles derived in `_resolved.scss` from theme seeds and steps: surface (`--r-surface-page` through `--r-surface-control-hover`), text (`--r-text` and its tiers), border (`--r-border` and its tiers), and `--r-link`. They are the tier components use for meaning. `_token-check.scss` fails the build, through its import from `_css-variable.scss`, when a derived role is not registered as a token, or a registered token has no derived value.
 
 Internal tokens use the `--_r-` prefix and are not part of the public API. They are the private theme roles that carry no semantic name (`--_r-on-surface`, `--_r-table-highlight`, `--_r-comment-highlight`, `--_r-radio-selected`, `--_r-loader-head`) and the surface scales (`--_r-surface-raised-step-*`, `--_r-surface-muted-step-*`), which are `color-mix()` blends between a surface and that theme's `on-surface` direction. The token layer builds component tokens from them; components never read them.
 
@@ -149,8 +156,8 @@ When a name is not obvious from these patterns, read [TOKENS.md](TOKENS.md) inst
 
 - New palette slot: add the slot to `$colors` and its foreground pair to `$colors-on` in `_settings.scss`. `--r-color-{slot}`, `--r-color-{slot}-on` and the derived `--r-color-{slot}-text` appear automatically, and palette variant loops pick the slot up.
 - New accent role: add the role to `$accent-roles` in `_settings.scss` and point it at an existing slot. The shared block emits the role's three tokens.
-- New semantic role: derive it in `theme-roles()` in `_resolved.scss` from an existing seed or step, then register the role and its token in `$-theme-tokens` (public) or `$-theme-private-tokens` (internal) in `_css-variable.scss`. The build fails when a derived role is not registered.
-- New component token that differs per theme: add the key to both the `light` and `dark` maps of `$-theme-component-tokens` in `_css-variable.scss`, then read it as `var(--r-{key})`. The build fails when the two maps disagree.
+- New semantic role: derive it in `theme-roles()` in `_resolved.scss` from an existing seed or step, then register the role and its token in `$role-tokens` (public) or `$private-role-tokens` (internal) in `_token-registry.scss`. The build fails when a derived role is not registered.
+- New component token that differs per theme: add the key to both the `light` and `dark` maps of `$theme-component-tokens` in `_token-registry.scss`, then read it as `var(--r-{key})`. The build fails when the two maps disagree.
 - New component token declared once: add a `!default` setting under the component's group in `_settings.scss`, emit `--r-{key}: #{$setting}` in the shared block of `_css-variable.scss`, and read it as `var(--r-{key})`.
 
 Run `npm run tokens` to refresh `TOKENS.md` and `npm run build` to verify the result.

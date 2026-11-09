@@ -55,7 +55,7 @@ const INTERNAL_PREFIX = '--_r-';
 /**
  * Public semantic groups in the order they are documented.
  *
- * The first four groups are the registry roles declared in `_css-variable.scss`.
+ * The first four groups are the registry roles declared in `_token-registry.scss`.
  * The last three are token layer values that carry no theme role.
  */
 const SEMANTIC_GROUPS = [
@@ -91,7 +91,7 @@ const COMPONENT_GROUP_LABELS = new Map([
  * Group one resolved token snapshot into the reference sections.
  *
  * @param {{light: Map<string, string>, dark: Map<string, string>, sources: {settingsPairs: Map<string, string>, themeTokens: Set<string>}}} input
- * Resolved token maps and the wiring read from `_css-variable.scss`.
+ * Resolved token maps and the wiring read from the token source files.
  * @returns {Sections} Sections in documented order.
  * @throws {Error} When a palette token does not match a slot, an accent role matches several slots, a token cannot be classified, or a token is missing from the result.
  */
@@ -242,7 +242,7 @@ function describeAccent(accentRole) {
  * Describe what controls a component token.
  *
  * @param {string} token Custom property name.
- * @param {{settingsPairs: Map<string, string>, themeTokens: Set<string>}} sources Wiring read from `_css-variable.scss`.
+ * @param {{settingsPairs: Map<string, string>, themeTokens: Set<string>}} sources Wiring read from the token source files.
  * @returns {Control} Control descriptor naming the interpolated setting, the theme token map, or the token layer.
  */
 function describeComponent(token, sources) {

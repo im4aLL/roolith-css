@@ -3,7 +3,8 @@
  *
  * Two facts cannot be read back from the compiled CSS: which setting a
  * declaration interpolates, and which tokens come from the per-theme component
- * token map. Both are read from `_css-variable.scss`, so the generated token
+ * token map. The settings pairs are read from `_css-variable.scss` and the
+ * component token keys from `_token-registry.scss`, so the generated token
  * reference follows the source instead of keeping a second, hand-maintained
  * table next to it.
  *
@@ -13,22 +14,23 @@
 import { readFileSync } from 'node:fs';
 
 const DEFAULT_FILE = 'src/sass/_css-variable.scss';
+const DEFAULT_REGISTRY_FILE = 'src/sass/_token-registry.scss';
 const PUBLIC_PREFIX = '--r-';
 const SETTING_DECLARATION = /^[ \t]*(--[a-z0-9_-]+):[ \t]*'?#\{\$([a-z0-9-]+)\}'?;[ \t]*$/gm;
-const THEME_COMPONENT_MAP_START = /\$-theme-component-tokens:[ \t]*\(/;
+const THEME_COMPONENT_MAP_START = /\$theme-component-tokens:[ \t]*\(/;
 const THEME_COMPONENT_MAP_END = '\n);';
 const THEME_COMPONENT_ENTRY = /^[ \t]+([a-z][a-z0-9-]*):/gm;
 const THEME_COMPONENT_META_KEYS = new Set(['light', 'dark']);
 
 /**
- * Read the custom property wiring declared by `_css-variable.scss`.
+ * Read the custom property wiring declared by the two token source files.
  *
- * @param {{file?: string}} [options] Source file, relative to the process working directory.
+ * @param {{file?: string, registryFile?: string}} [options] Custom property source and component token registry, relative to the process working directory.
  * @returns {{settingsPairs: Map<string, string>, themeTokens: Set<string>}} Token to setting name pairs, and the tokens emitted from the per-theme component token map.
- * @throws {Error} When the file cannot be read or the component token map is malformed.
+ * @throws {Error} When either file cannot be read or the component token map is malformed.
  */
-export function readCssVariableSource({ file = DEFAULT_FILE } = {}) {
-    return parseCssVariableSource(readFileSync(file, 'utf8'));
+export function readCssVariableSource({ file = DEFAULT_FILE, registryFile = DEFAULT_REGISTRY_FILE } = {}) {
+    return parseCssVariableSource(readFileSync(file, 'utf8'), readFileSync(registryFile, 'utf8'));
 }
 
 /**
@@ -36,16 +38,17 @@ export function readCssVariableSource({ file = DEFAULT_FILE } = {}) {
  *
  * `settingsPairs` maps a token to the setting it interpolates, for example
  * `--r-form-input-radius` to `form-input-radius`. `themeTokens` holds the token
- * names produced by `$-theme-component-tokens` for both themes.
+ * names produced by `$theme-component-tokens` for both themes.
  *
- * @param {string} scss Contents of `_css-variable.scss`.
+ * @param {string} cssVariableScss Contents of `_css-variable.scss`.
+ * @param {string} registryScss Contents of `_token-registry.scss`.
  * @returns {{settingsPairs: Map<string, string>, themeTokens: Set<string>}} Parsed wiring.
  * @throws {Error} When the component token map cannot be located or is not closed.
  */
-export function parseCssVariableSource(scss) {
+export function parseCssVariableSource(cssVariableScss, registryScss) {
     return {
-        settingsPairs: readSettingsPairs(scss),
-        themeTokens: readThemeComponentTokens(scss),
+        settingsPairs: readSettingsPairs(cssVariableScss),
+        themeTokens: readThemeComponentTokens(registryScss),
     };
 }
 
@@ -83,13 +86,13 @@ function readThemeComponentTokens(scss) {
     const start = scss.search(THEME_COMPONENT_MAP_START);
 
     if (start === -1) {
-        throw new Error('Cannot find the $-theme-component-tokens map in _css-variable.scss.');
+        throw new Error('Cannot find the $theme-component-tokens map in _token-registry.scss.');
     }
 
     const end = scss.indexOf(THEME_COMPONENT_MAP_END, start);
 
     if (end === -1) {
-        throw new Error('The $-theme-component-tokens map in _css-variable.scss is not closed.');
+        throw new Error('The $theme-component-tokens map in _token-registry.scss is not closed.');
     }
 
     const tokens = new Set();

@@ -7,8 +7,17 @@ import { loadTokens } from './css-custom-properties.mjs';
 import { parseCssVariableSource, readCssVariableSource } from './css-variable-source.mjs';
 import { renderTokenReference } from './token-reference.mjs';
 
-const SOURCE = `
-$-theme-component-tokens: (
+const CSS_VARIABLE_SOURCE = `
+@mixin roolith-css-variable() {
+    :root {
+        --r-button-radius: #{$button-radius};
+        --r-breadcrumb-sep-symbol: '#{$breadcrumb-sep-symbol}';
+    }
+}
+`;
+
+const REGISTRY_SOURCE = `
+$theme-component-tokens: (
     light: (
         nav-link-color: var(--r-text),
     ),
@@ -16,13 +25,13 @@ $-theme-component-tokens: (
         nav-link-color: var(--r-link),
     ),
 );
+`;
 
-@mixin roolith-css-variable() {
-    :root {
-        --r-button-radius: #{$button-radius};
-        --r-breadcrumb-sep-symbol: '#{$breadcrumb-sep-symbol}';
-    }
-}
+const EMPTY_REGISTRY_SOURCE = `
+$theme-component-tokens: (
+    light: (),
+    dark: (),
+);
 `;
 
 /**
@@ -73,7 +82,7 @@ function createSnapshot() {
 }
 
 test('reads the setting pairs and the theme component token names', () => {
-    const sources = parseCssVariableSource(SOURCE);
+    const sources = parseCssVariableSource(CSS_VARIABLE_SOURCE, REGISTRY_SOURCE);
 
     assert.equal(sources.settingsPairs.get('--r-button-radius'), 'button-radius');
     assert.equal(sources.settingsPairs.get('--r-breadcrumb-sep-symbol'), 'breadcrumb-sep-symbol');
@@ -81,7 +90,7 @@ test('reads the setting pairs and the theme component token names', () => {
 });
 
 test('classifies every token into exactly one section', () => {
-    const sources = parseCssVariableSource(SOURCE);
+    const sources = parseCssVariableSource(CSS_VARIABLE_SOURCE, REGISTRY_SOURCE);
     const { markdown, counts } = renderTokenReference({ ...createSnapshot(), sources });
 
     assert.deepEqual(counts, { total: 17, public: 16, internal: 1 });
@@ -98,7 +107,7 @@ test('classifies every token into exactly one section', () => {
 });
 
 test('orders the sections and semantic groups as documented', () => {
-    const sources = parseCssVariableSource(SOURCE);
+    const sources = parseCssVariableSource(CSS_VARIABLE_SOURCE, REGISTRY_SOURCE);
     const { markdown } = renderTokenReference({ ...createSnapshot(), sources });
     const headings = [
         '## Palette primitives',
@@ -127,7 +136,7 @@ test('orders the sections and semantic groups as documented', () => {
 });
 
 test('escapes a pipe so a value cannot end a table cell', () => {
-    const sources = parseCssVariableSource('$-theme-component-tokens: (\n    light: (),\n    dark: (),\n);\n');
+    const sources = parseCssVariableSource('', EMPTY_REGISTRY_SOURCE);
     const snapshot = createSnapshot();
 
     addToken(snapshot, '--r-button-shadow', '0 0 1px red|blue');
@@ -138,7 +147,7 @@ test('escapes a pipe so a value cannot end a table cell', () => {
 });
 
 test('fails when a token has no section', () => {
-    const sources = parseCssVariableSource('$-theme-component-tokens: (\n    light: (),\n    dark: (),\n);\n');
+    const sources = parseCssVariableSource('', EMPTY_REGISTRY_SOURCE);
     const snapshot = createSnapshot();
 
     addToken(snapshot, '--legacy-token', '1px');
@@ -147,7 +156,7 @@ test('fails when a token has no section', () => {
 });
 
 test('fails when an accent role matches more than one palette slot', () => {
-    const sources = parseCssVariableSource('$-theme-component-tokens: (\n    light: (),\n    dark: (),\n);\n');
+    const sources = parseCssVariableSource('', EMPTY_REGISTRY_SOURCE);
     const snapshot = createSnapshot();
 
     addToken(snapshot, '--r-color-brand', '#4a5cd0');

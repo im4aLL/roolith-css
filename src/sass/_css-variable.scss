@@ -1,219 +1,32 @@
-@use 'sass:map';
 @use './settings' as *;
-@use './resolved';
-
-$-theme-tokens: (
-    page: '--r-surface-page',
-    surface: '--r-surface',
-    surface-raised: '--r-surface-raised',
-    surface-overlay: '--r-surface-overlay',
-    surface-muted: '--r-surface-muted',
-    surface-inverse: '--r-surface-inverse',
-    surface-hover: '--r-surface-hover',
-    control: '--r-surface-control',
-    control-hover: '--r-surface-control-hover',
-    text: '--r-text',
-    text-muted: '--r-text-muted',
-    text-subtle: '--r-text-subtle',
-    text-faint: '--r-text-faint',
-    text-quiet: '--r-text-quiet',
-    text-tertiary: '--r-text-tertiary',
-    text-separator: '--r-text-separator',
-    text-strong: '--r-text-strong',
-    text-inverse: '--r-text-inverse',
-    text-control: '--r-text-control',
-    text-placeholder: '--r-text-placeholder',
-    text-helper: '--r-text-helper',
-    text-label: '--r-text-label',
-    text-disabled: '--r-text-disabled',
-    border: '--r-border',
-    border-subtle: '--r-border-subtle',
-    border-layout: '--r-border-layout',
-    border-muted: '--r-border-muted',
-    border-control: '--r-border-control',
-    border-emphasis: '--r-border-emphasis',
-    border-hairline: '--r-border-hairline',
-    link: '--r-link',
-);
-
-$-theme-private-tokens: (
-    on-surface: '--_r-on-surface',
-    table-highlight: '--_r-table-highlight',
-    comment-highlight: '--_r-comment-highlight',
-    radio-selected: '--_r-radio-selected',
-    loader-head: '--_r-loader-head',
-);
-
-$-registered-roles: map.merge($-theme-tokens, $-theme-private-tokens);
-
-// Component tokens
-$-theme-component-tokens: (
-    light: (
-        nav-link-color: var(--r-text),
-        nav-dimmed-link-color: var(--r-text-faint),
-        nav-active-link-color: color-mix(in srgb, var(--r-text), var(--r-surface-page) 30%),
-        dropdown-item-hover-color: var(--r-text),
-        combo-box-item-hover-color: var(--r-text),
-        action-menu-item-background: var(--r-surface),
-        quick-menu-link-hover-background: var(--r-surface),
-        tag-background: color-mix(in srgb, var(--r-tag-color), white 90%),
-        tag-border-color: color-mix(in srgb, var(--r-tag-color), white 20%),
-        tag-text-color: var(--r-tag-color),
-        comment-border: color-mix(in srgb, var(--r-text) 10%, transparent),
-        sidebar-nav-link-hover-color: var(--r-accent),
-        sidebar-nav-active-color: var(--r-text),
-        layout-secondary-background-color: var(--r-surface-muted),
-        popover-background: var(--r-surface-muted),
-        form-datepicker-controls-hover-color: var(--_r-surface-muted-step-5),
-        button-active-shadow: $button-active-shadow,
-        button-default-hover-color: var(--r-text-muted),
-        block-enable-active-border-color: var(--r-accent),
-        message-background: var(--_r-surface-muted-step-2),
-        badge-surface: color-mix(in srgb, var(--r-badge-background), white 70%),
-    ),
-    dark: (
-        nav-link-color: var(--r-link),
-        nav-dimmed-link-color: var(--r-text-muted),
-        nav-active-link-color: var(--r-accent),
-        dropdown-item-hover-color: var(--r-text-strong),
-        combo-box-item-hover-color: var(--r-text-strong),
-        action-menu-item-background: transparent,
-        quick-menu-link-hover-background: var(--r-surface-page),
-        tag-background: var(--r-surface-page),
-        tag-border-color: var(--r-border-control),
-        tag-text-color: var(--r-text-subtle),
-        comment-border: var(--_r-surface-raised-step-5),
-        sidebar-nav-link-hover-color: var(--r-text-strong),
-        sidebar-nav-active-color: var(--r-text-strong),
-        layout-secondary-background-color: var(--r-surface-page),
-        popover-background: var(--r-surface-raised),
-        form-datepicker-controls-hover-color: var(--_r-surface-raised-step-5),
-        button-active-shadow: $button-active-dark-shadow,
-        button-default-hover-color: var(--r-text-strong),
-        block-enable-active-border-color: color-mix(in srgb, var(--r-accent), white 15%),
-        message-background: var(--_r-surface-raised-step-5),
-        badge-surface: color-mix(in srgb, var(--r-badge-background), black 70%),
-    ),
-);
-
-@each $name in map.keys(map.get($-theme-component-tokens, light)) {
-    @if not map.has-key(map.get($-theme-component-tokens, dark), $name) {
-        @error 'Component token "#{$name}" is defined for light but missing from dark.';
-    }
-}
-
-@each $name in map.keys(map.get($-theme-component-tokens, dark)) {
-    @if not map.has-key(map.get($-theme-component-tokens, light), $name) {
-        @error 'Component token "#{$name}" is defined for dark but missing from light.';
-    }
-}
-
-@each $name, $roles in (light: resolved.$theme-light, dark: resolved.$theme-dark) {
-    @each $role in map.keys($roles) {
-        @if not map.has-key($-registered-roles, $role) {
-            @error 'Theme role "#{$role}" from the #{$name} theme is not classified by a token registry.';
-        }
-    }
-}
-
-@each $name, $roles in (light: resolved.$theme-light, dark: resolved.$theme-dark) {
-    @each $role, $token in $-registered-roles {
-        @if not map.has-key($roles, $role) {
-            @error 'Token registry entry "#{$role}" (#{$token}) has no derived value in the #{$name} theme.';
-        }
-    }
-}
-
-// Mixins
-@mixin theme-component-tokens($tokens) {
-    @each $name, $value in $tokens {
-        --r-#{$name}: #{$value};
-    }
-}
-
-@mixin theme-palette-text($text-colors) {
-    @each $name, $value in $text-colors {
-        --r-color-#{'' + $name}-text: #{$value};
-    }
-}
-
-@mixin surface-scale($name, $base, $steps...) {
-    @each $step in $steps {
-        --_r-#{$name}-#{$step}: color-mix(in srgb, var(--r-#{$base}), var(--_r-on-surface) #{$step}%);
-    }
-}
-
-@mixin theme-scope($theme, $text-colors, $component-tokens, $scheme) {
-    @each $role, $token in $-theme-tokens {
-        #{$token}: #{map.get($theme, $role)};
-    }
-
-    @each $role, $token in $-theme-private-tokens {
-        #{$token}: #{map.get($theme, $role)};
-    }
-
-    @include theme-palette-text($text-colors);
-    @include theme-component-tokens($component-tokens);
-
-    color-scheme: $scheme;
-}
+@use './token-check';
+@use './token-emission';
 
 @mixin roolith-css-variable() {
-    // Root
     :root {
-        @each $name, $value in $colors {
-            --r-color-#{'' + $name}: #{$value};
-            --r-color-#{'' + $name}-on: #{map.get(resolved.$colors-on, $name)};
-        }
+        @include token-emission.palette-primitives();
     }
 
-    // Light theme
     :root,
     .theme-light {
-        @include theme-scope(
-            resolved.$theme-light,
-            resolved.$colors-text-light,
-            map.get($-theme-component-tokens, light),
-            light
-        );
+        @include token-emission.light-theme-scope();
     }
 
-    // Dark theme
     .theme-dark {
-        @include theme-scope(
-            resolved.$theme-dark,
-            resolved.$colors-text-dark,
-            map.get($-theme-component-tokens, dark),
-            dark
-        );
+        @include token-emission.dark-theme-scope();
     }
 
-    // OS dark preference
     @media (prefers-color-scheme: dark) {
         :root:not(.theme-light) {
-            @include theme-scope(
-                resolved.$theme-dark,
-                resolved.$colors-text-dark,
-                map.get($-theme-component-tokens, dark),
-                dark
-            );
+            @include token-emission.dark-theme-scope();
         }
     }
 
-    // Shared roles
     :root,
     .theme-light,
     .theme-dark {
-        // Accent roles
-        @each $role, $name in resolved.$accent-roles {
-            --r-#{$role}: var(--r-color-#{$name});
-            --r-#{$role}-on: var(--r-color-#{$name}-on);
-            --r-#{$role}-text: var(--r-color-#{$name}-text);
-        }
-
-        // Surface scales
-        @include surface-scale('surface-raised-step', 'surface-raised', 5, 8, 10, 20, 30, 50, 60);
-        @include surface-scale('surface-muted-step', 'surface-muted', 2, 3, 5, 10);
+        @include token-emission.accent-roles();
+        @include token-emission.surface-scales();
 
         // Global
         --r-global-base-font-size: #{$global-base-font-size};

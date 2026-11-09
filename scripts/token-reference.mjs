@@ -27,7 +27,7 @@ const INTRODUCTION = [
  * Render the token reference for one resolved token snapshot.
  *
  * @param {{light: Map<string, string>, dark: Map<string, string>, sources: {settingsPairs: Map<string, string>, themeTokens: Set<string>}}} input
- * Resolved token maps and the wiring read from `_css-variable.scss`.
+ * Resolved token maps and the wiring read from the token source files.
  * @returns {{markdown: string, counts: {total: number, public: number, internal: number}}} Document text and token totals.
  * @throws {Error} When a palette token does not match a slot, an accent role matches several slots, or a token cannot be classified.
  */
