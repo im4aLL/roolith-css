@@ -1,30 +1,21 @@
-@use 'sass:color';
 @use 'sass:list';
 @use 'sass:map';
 @use './settings' as s;
 @use './component-var';
-@use './functions' as f;
 
-$light-text-surfaces: (neutral, neutral-50, neutral-100, neutral-150);
-$dark-text-surfaces: (neutral, neutral-50, neutral-100, neutral-150, neutral-200, neutral-300);
-
-@function text-surfaces($neutrals, $steps, $raised-key, $fill, $tint: 10%) {
-    $surfaces: ();
-
-    @each $step in $steps {
-        $surfaces: list.append($surfaces, map.get($neutrals, $step));
-    }
-
-    @return list.append($surfaces, color.mix($fill, map.get($neutrals, $raised-key), $tint, $method: rgb));
-}
+$theme-light-scopes: (':root', '.theme-light');
+$theme-dark-scopes: ('.theme-dark');
+$theme-scopes: list.join($theme-light-scopes, $theme-dark-scopes, 'comma');
 
 @mixin palette-primitives() {
     @each $name, $value in s.$colors {
-        $text: f.text-safe($value, text-surfaces(s.$neutrals, $light-text-surfaces, 'neutral', $value), black);
+        @if not map.has-key(s.$colors-text, $name) {
+            @error 'roolith: $colors-text is missing an entry for "#{$name}".';
+        }
 
         --r-color-#{'' + $name}: #{$value};
         --r-color-#{'' + $name}-on: #{map.get(s.$colors-on, $name)};
-        --r-color-#{'' + $name}-text: #{$text};
+        --r-color-#{'' + $name}-text: #{map.get(s.$colors-text, $name)};
     }
 
     @each $name, $value in s.$neutrals {
@@ -39,10 +30,11 @@ $dark-text-surfaces: (neutral, neutral-50, neutral-100, neutral-150, neutral-200
     }
 
     @each $name, $value in s.$colors {
-        $fill: if(map.has-key(s.$colors-dark, $name), map.get(s.$colors-dark, $name), $value);
-        $text: f.text-safe($fill, text-surfaces(s.$neutrals-dark, $dark-text-surfaces, 'neutral-150', $fill), white);
+        @if not map.has-key(s.$colors-text-dark, $name) {
+            @error 'roolith: $colors-text-dark is missing an entry for "#{$name}".';
+        }
 
-        --r-color-#{'' + $name}-text: #{$text};
+        --r-color-#{'' + $name}-text: #{map.get(s.$colors-text-dark, $name)};
     }
 
     @each $name, $value in s.$neutrals-dark {
@@ -84,11 +76,6 @@ $dark-text-surfaces: (neutral, neutral-50, neutral-100, neutral-150, neutral-200
     --r-border-emphasis: var(--r-color-neutral-400);
     --r-border-hairline: var(--r-color-neutral-200);
     --r-link: var(--r-color-link);
-
-    --r-color-dark-text: var(--r-color-dark);
-    --r-color-black-text: var(--r-color-black);
-    --r-color-light-text: var(--r-color-neutral-700);
-    --r-color-white-text: var(--r-color-neutral-700);
 }
 
 @mixin semantic-dark-tokens() {
@@ -125,11 +112,6 @@ $dark-text-surfaces: (neutral, neutral-50, neutral-100, neutral-150, neutral-200
     --r-border-emphasis: var(--r-color-neutral-400);
     --r-border-hairline: var(--r-color-neutral-100);
     --r-link: var(--r-color-link);
-
-    --r-color-dark-text: var(--r-color-neutral-700);
-    --r-color-black-text: var(--r-color-neutral-700);
-    --r-color-light-text: var(--r-color-light);
-    --r-color-white-text: var(--r-color-white);
 }
 
 @mixin private-tokens() {
@@ -197,13 +179,45 @@ $dark-text-surfaces: (neutral, neutral-50, neutral-100, neutral-150, neutral-200
     color-scheme: dark;
 }
 
+@mixin theme-shared() {
+    @include accent-roles();
+    @include surface-scales();
+    @include component-var.component-tokens();
+
+    --r-global-base-font-size: #{s.$base-font-size};
+    --r-global-base-font: #{s.$base-font-family};
+    --r-global-font-weight: #{s.$global-font-weight};
+    --r-global-font-bold-weight: #{s.$global-font-bold-weight};
+    --r-global-background-color: var(--r-surface-page);
+    --r-global-font-color: var(--r-text);
+    --r-global-font-color-light: var(--r-text-muted);
+    --r-global-border-radius: #{s.$border-radius};
+    --r-global-width: #{s.$container-width};
+    --r-focus-ring-color: var(--r-link);
+    --r-animation-easing: #{s.$animation-easing};
+    --r-animation-duration: #{s.$animation-duration};
+    --r-loader-border-color: var(--_r-surface-raised-step-20);
+    --r-loader-border-top-color: var(--_r-loader-head);
+    --r-code-background: var(--r-surface-muted);
+    --r-code-inline-background: var(--_r-surface-muted-step-5);
+    --r-code-inline-border-color: var(--_r-surface-muted-step-10);
+    --r-code-color: var(--r-text-quiet);
+    --r-block-padding: #{s.$block-padding};
+}
+
 @mixin css-variable() {
-    :root,
-    .theme-light {
+    // ":root", ".theme-light", ".theme-dark"
+    #{$theme-scopes} {
+        @include theme-shared();
+    }
+
+    // ":root", ".theme-light"
+    #{$theme-light-scopes} {
         @include theme-default();
     }
 
-    .theme-dark {
+    // .theme-dark
+    #{$theme-dark-scopes} {
         @include theme-dark();
     }
 
@@ -211,33 +225,5 @@ $dark-text-surfaces: (neutral, neutral-50, neutral-100, neutral-150, neutral-200
         :root:not(.theme-light) {
             @include theme-dark();
         }
-    }
-
-    :root,
-    .theme-light,
-    .theme-dark {
-        @include accent-roles();
-        @include surface-scales();
-        @include component-var.component-tokens();
-
-        --r-global-base-font-size: #{s.$base-font-size};
-        --r-global-base-font: #{s.$base-font-family};
-        --r-global-font-weight: #{s.$global-font-weight};
-        --r-global-font-bold-weight: #{s.$global-font-bold-weight};
-        --r-global-background-color: var(--r-surface-page);
-        --r-global-font-color: var(--r-text);
-        --r-global-font-color-light: var(--r-text-muted);
-        --r-global-border-radius: #{s.$border-radius};
-        --r-global-width: #{s.$container-width};
-        --r-focus-ring-color: var(--r-link);
-        --r-animation-easing: #{s.$animation-easing};
-        --r-animation-duration: #{s.$animation-duration};
-        --r-loader-border-color: var(--_r-surface-raised-step-20);
-        --r-loader-border-top-color: var(--_r-loader-head);
-        --r-code-background: var(--r-surface-muted);
-        --r-code-inline-background: var(--_r-surface-muted-step-5);
-        --r-code-inline-border-color: var(--_r-surface-muted-step-10);
-        --r-code-color: var(--r-text-quiet);
-        --r-block-padding: #{s.$block-padding};
     }
 }

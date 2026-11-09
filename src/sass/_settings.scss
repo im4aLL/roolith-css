@@ -1,4 +1,6 @@
 @use 'sass:color';
+@use 'sass:map';
+@use './functions/color' as *;
 @use './functions/rem' as *;
 
 // Global
@@ -46,11 +48,7 @@ $theme-dark-color: #0c0c0c !default;
 
 $colors: (
     'primary': $primary-color,
-    'primary-light': color.scale($primary-color, $lightness: 7%),
-    'primary-lighter': color.scale($primary-color, $lightness: 14%),
     'secondary': $secondary-color,
-    'secondary-light': color.scale($secondary-color, $lightness: 10%),
-    'secondary-dark': color.scale($secondary-color, $lightness: -10%),
     'tertiary': $tertiary-color,
     'info': $info-color,
     'success': $success-color,
@@ -64,11 +62,7 @@ $colors: (
 
 $colors-on: (
     'primary': $white-color,
-    'primary-light': $white-color,
-    'primary-lighter': $white-color,
     'secondary': $white-color,
-    'secondary-light': $white-color,
-    'secondary-dark': $white-color,
     'tertiary': $white-color,
     'info': $white-color,
     'success': $white-color,
@@ -78,6 +72,20 @@ $colors-on: (
     'black': $white-color,
     'white': $dark-color,
     'light': $dark-color,
+) !default;
+
+$colors-text: (
+    'primary': text-blend($primary-color, black, 100%),
+    'secondary': text-blend($secondary-color, black, 92%),
+    'tertiary': text-blend($tertiary-color, black, 90%),
+    'info': text-blend($info-color, black, 90%),
+    'success': text-blend($success-color, black, 94%),
+    'danger': text-blend($danger-color, black, 94%),
+    'link': text-blend($link-color, black, 92%),
+    'dark': var(--r-color-dark),
+    'black': var(--r-color-black),
+    'white': var(--r-color-neutral-700),
+    'light': var(--r-color-neutral-700),
 ) !default;
 
 $neutrals: (
@@ -96,11 +104,23 @@ $neutrals: (
 ) !default;
 
 $colors-dark: (
-    'primary-light': color.scale($primary-color, $lightness: 10%),
-    'primary-lighter': color.scale($primary-color, $lightness: 20%),
     'secondary': color.scale($secondary-color, $lightness: 25%),
     'info': color.scale($info-color, $lightness: 20%),
     'link': color.scale($link-color, $lightness: 30%),
+) !default;
+
+$colors-text-dark: (
+    'primary': text-blend($primary-color, white, 66%),
+    'secondary': text-blend(map.get($colors-dark, 'secondary') or $secondary-color, white, 98%),
+    'tertiary': text-blend($tertiary-color, white, 74%),
+    'info': text-blend(map.get($colors-dark, 'info') or $info-color, white, 100%),
+    'success': text-blend($success-color, white, 72%),
+    'danger': text-blend($danger-color, white, 68%),
+    'link': text-blend(map.get($colors-dark, 'link') or $link-color, white, 100%),
+    'dark': var(--r-color-neutral-700),
+    'black': var(--r-color-neutral-700),
+    'white': var(--r-color-white),
+    'light': var(--r-color-light),
 ) !default;
 
 $neutrals-dark: (
