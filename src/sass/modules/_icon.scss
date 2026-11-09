@@ -1,8 +1,15 @@
-@use '../function' as *;
+@use '../functions' as *;
+@use '../settings' as s;
 
-/* Emits the icon module. $colors supplies only the slot names, so changing a
-   palette value does not change this output. */
-@mixin roolith-icon($colors) {
+
+@mixin icon() {
+    .icon {
+        --r-icon-color: var(--r-text-placeholder);
+        --r-icon-size: 1rem;
+        --r-icon-small-size: 0.875rem;
+        --r-icon-large-size: 2rem;
+    }
+
     .icon {
         display: inline-block;
         width: var(--r-icon-size);
@@ -23,7 +30,7 @@
         height: var(--r-icon-large-size);
     }
 
-    @each $name, $value in $colors {
+    @each $name, $value in s.$colors {
         .icon-color-#{'' + $name} {
             background-color: var(--r-color-#{$name});
         }

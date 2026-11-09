@@ -1,6 +1,27 @@
-@use '../function' as *;
+@use '../functions' as *;
 
-@mixin roolith-popover() {
+
+@mixin popover() {
+    .popover {
+        --r-popover-color: var(--r-text);
+        --r-popover-border-radius: var(--r-global-border-radius);
+        --r-popover-width: 17.1875rem;
+        --r-popover-border-color: var(--_r-surface-raised-step-10);
+        --r-popover-offset: 0.625rem;
+
+        --r-popover-background: var(--r-surface-muted);
+
+        .theme-dark & {
+            --r-popover-background: var(--r-surface-raised);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not(.theme-light) & {
+                --r-popover-background: var(--r-surface-raised);
+            }
+        }
+    }
+
     .popover {
         position: absolute;
         bottom: 0;

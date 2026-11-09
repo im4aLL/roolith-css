@@ -1,11 +1,17 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../settings' as s;
+@use '../mixins';
 
-/* Emits the card module. $colors supplies only the slot names, so changing a
-   palette value does not change this output. $slot-roles is the slot to role
-   map used to pick the token name and must be derived from the same $colors,
-   or a missing role silently falls back to the slot's own token. */
-@mixin roolith-card($colors, $slot-roles) {
+
+@mixin card() {
+    .card {
+        --r-card-radius: var(--r-global-border-radius);
+        --r-card-shadow: 0 0 0 0.0625rem rgba(0, 0, 0, 0.04);
+        --r-card-header-footer-border: var(--r-border-subtle);
+        --r-card-header-footer-color: var(--r-text-subtle);
+        --r-card-background: var(--r-surface);
+    }
+
     .card {
         box-shadow: var(--r-card-shadow);
         border-radius: var(--r-card-radius);
@@ -15,11 +21,11 @@
     }
 
     .card-img {
-        @include mixin.img-full-width();
+        @include mixins.img-full-width();
     }
 
     .card-body-img {
-        @include mixin.img-full-width();
+        @include mixins.img-full-width();
         margin: rem(10) 0;
     }
 
@@ -38,14 +44,14 @@
     }
 
     .card-information {
-        @include mixin.text-dimmed();
+        @include mixins.text-dimmed();
         font-size: 80%;
         display: block;
         padding: rem(20) 0 0 0;
     }
 
     .card-subtitle {
-        @include mixin.text-dimmed();
+        @include mixins.text-dimmed();
         padding-bottom: rem(10);
     }
 
@@ -63,10 +69,10 @@
         font-size: rem(14);
     }
 
-    @each $name, $value in $colors {
+    @each $name, $value in s.$colors {
         @if ($name != white) {
-            $fill: palette-fill($slot-roles, $name);
-            $on: palette-on($slot-roles, $name);
+            $fill: palette-fill($name);
+            $on: palette-on($name);
 
             .card-#{'' + $name} {
                 background: $fill;

@@ -1,8 +1,8 @@
-@use '../mixin';
+@use '../mixins';
 
-@mixin roolith-animation() {
+@mixin animation() {
     .animation {
-        @include mixin.animation();
+        @include mixins.animation();
     }
 
     .fadeInUp {

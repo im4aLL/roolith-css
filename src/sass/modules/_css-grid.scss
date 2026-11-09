@@ -1,5 +1,6 @@
 @use 'sass:map';
-@use '../mixin';
+@use '../mixins';
+@use '../settings' as s;
 
 /* Applies horizontal padding at a multiple of the gutter for each breakpoint.
    $factor multiplies the gutter and $gutter is the grid gutter map. */
@@ -7,12 +8,12 @@
     padding-left: map.get($gutter, 'small') * $factor;
     padding-right: map.get($gutter, 'small') * $factor;
 
-    @include mixin.breakpoint(medium-up) {
+    @include mixins.breakpoint(medium-up) {
         padding-left: map.get($gutter, 'medium') * $factor;
         padding-right: map.get($gutter, 'medium') * $factor;
     }
 
-    @include mixin.breakpoint(large-up) {
+    @include mixins.breakpoint(large-up) {
         padding-left: map.get($gutter, 'large') * $factor;
         padding-right: map.get($gutter, 'large') * $factor;
     }
@@ -24,12 +25,12 @@
     margin-left: map.get($gutter, 'small') * $factor;
     margin-right: map.get($gutter, 'small') * $factor;
 
-    @include mixin.breakpoint(medium-up) {
+    @include mixins.breakpoint(medium-up) {
         margin-left: map.get($gutter, 'medium') * $factor;
         margin-right: map.get($gutter, 'medium') * $factor;
     }
 
-    @include mixin.breakpoint(large-up) {
+    @include mixins.breakpoint(large-up) {
         margin-left: map.get($gutter, 'large') * $factor;
         margin-right: map.get($gutter, 'large') * $factor;
     }
@@ -65,9 +66,9 @@
     }
 }
 
-/* Emits the css-grid implementation. $columns is the column count and $gutter
-   the grid gutter map. */
-@mixin roolith-css-grid($columns, $gutter) {
+@mixin css-grid() {
+    $columns: s.$grid-column-count;
+    $gutter: s.$grid-gutter;
     .container {
         max-width: var(--r-global-width);
         margin-left: auto;
@@ -120,11 +121,11 @@
 
     @include grid-column-classes('small', $columns);
 
-    @include mixin.breakpoint(medium-up) {
+    @include mixins.breakpoint(medium-up) {
         @include grid-column-classes('medium', $columns);
     }
 
-    @include mixin.breakpoint(large-up) {
+    @include mixins.breakpoint(large-up) {
         @include grid-column-classes('large', $columns);
     }
 }

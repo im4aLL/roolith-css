@@ -1,11 +1,12 @@
-@use './function' as *;
+@use 'sass:color';
+@use './functions/rem' as *;
 
 // Global
-$global-base-font-size: 100% !default;
-$global-base-font: 'Inter', sans-serif !default;
+$base-font-size: 100% !default;
+$base-font-family: 'Inter', sans-serif !default;
 $global-font-weight: normal !default;
 $global-font-bold-weight: 600 !default;
-$global-border-radius: rem(8) !default;
+$border-radius: rem(8) !default;
 
 // Breakpoints
 $breakpoints: (
@@ -17,206 +18,115 @@ $breakpoints: (
 ) !default;
 
 // Grid
-$global-width: rem(1200) !default;
+$container-width: rem(1200) !default;
+$grid-gutter-size: rem(20) !default;
 
 $grid-gutter: (
-    small: rem(20),
-    medium: rem(20),
-    large: rem(20),
+    small: $grid-gutter-size,
+    medium: $grid-gutter-size,
+    large: $grid-gutter-size,
 ) !default;
 
 $grid-column-count: 12 !default;
 $grid-layout: css-grid !default;
 
-// Palette
-$colors: (
-    primary: #4a5cd0,
-    secondary: #7b6aa6,
-    tertiary: #4c7d8f,
-    info: #94702f,
-    success: #38805f,
-    danger: #bf4a50,
-    link: #5568de,
-    dark: #1e2128,
-    black: #0b0d12,
-    white: #ffffff,
-    light: #f4f5f8,
-) !default;
-
-// Palette foreground pairs
-$colors-on: () !default;
-
-// Accent roles
-$accent-roles: () !default;
-
-// Theme
+// Colors
+$primary-color: #4a5cd0 !default;
+$secondary-color: #7b6aa6 !default;
+$tertiary-color: #4c7d8f !default;
+$info-color: #94702f !default;
+$success-color: #38805f !default;
+$danger-color: #bf4a50 !default;
+$link-color: #5568de !default;
+$dark-color: #1e2128 !default;
+$black-color: #0b0d12 !default;
+$white-color: #ffffff !default;
+$light-color: #f4f5f8 !default;
 $theme-dark-color: #0c0c0c !default;
 
-$theme-light-seeds: () !default;
-$theme-dark-seeds: () !default;
+$colors: (
+    'primary': $primary-color,
+    'primary-light': color.scale($primary-color, $lightness: 7%),
+    'primary-lighter': color.scale($primary-color, $lightness: 14%),
+    'secondary': $secondary-color,
+    'secondary-light': color.scale($secondary-color, $lightness: 10%),
+    'secondary-dark': color.scale($secondary-color, $lightness: -10%),
+    'tertiary': $tertiary-color,
+    'info': $info-color,
+    'success': $success-color,
+    'danger': $danger-color,
+    'link': $link-color,
+    'dark': $dark-color,
+    'black': $black-color,
+    'white': $white-color,
+    'light': $light-color,
+) !default;
 
-$theme-light-steps: () !default;
-$theme-dark-steps: () !default;
+$colors-on: (
+    'primary': $white-color,
+    'primary-light': $white-color,
+    'primary-lighter': $white-color,
+    'secondary': $white-color,
+    'secondary-light': $white-color,
+    'secondary-dark': $white-color,
+    'tertiary': $white-color,
+    'info': $white-color,
+    'success': $white-color,
+    'danger': $white-color,
+    'link': $white-color,
+    'dark': $white-color,
+    'black': $white-color,
+    'white': $dark-color,
+    'light': $dark-color,
+) !default;
 
-$theme-light: () !default;
-$theme-dark: () !default;
+$neutrals: (
+    'neutral': $white-color,
+    'neutral-50': color.scale($white-color, $lightness: -2%),
+    'neutral-100': color.scale($white-color, $lightness: -4%),
+    'neutral-150': color.scale($white-color, $lightness: -7%),
+    'neutral-200': color.scale($white-color, $lightness: -10%),
+    'neutral-300': color.scale($white-color, $lightness: -15%),
+    'neutral-400': color.scale($white-color, $lightness: -20%),
+    'neutral-500': color.scale($white-color, $lightness: -45%),
+    'neutral-600': color.scale($white-color, $lightness: -57%),
+    'neutral-700': color.scale($white-color, $lightness: -62%),
+    'neutral-800': color.scale($white-color, $lightness: -70%),
+    'neutral-900': $dark-color,
+) !default;
+
+$colors-dark: (
+    'primary-light': color.scale($primary-color, $lightness: 10%),
+    'primary-lighter': color.scale($primary-color, $lightness: 20%),
+    'secondary': color.scale($secondary-color, $lightness: 25%),
+    'info': color.scale($info-color, $lightness: 20%),
+    'link': color.scale($link-color, $lightness: 30%),
+) !default;
+
+$neutrals-dark: (
+    'neutral': $theme-dark-color,
+    'neutral-50': color.scale($theme-dark-color, $lightness: 2.5%),
+    'neutral-100': color.scale($theme-dark-color, $lightness: 5%),
+    'neutral-150': color.scale($theme-dark-color, $lightness: 9%),
+    'neutral-200': color.scale($theme-dark-color, $lightness: 11%),
+    'neutral-300': color.scale($theme-dark-color, $lightness: 15%),
+    'neutral-400': color.scale($theme-dark-color, $lightness: 22%),
+    'neutral-500': color.scale($theme-dark-color, $lightness: 40%),
+    'neutral-600': color.scale($theme-dark-color, $lightness: 51.5%),
+    'neutral-700': color.scale($theme-dark-color, $lightness: 59%),
+    'neutral-800': color.scale($theme-dark-color, $lightness: 62%),
+    'neutral-900': $white-color,
+) !default;
 
 // Animation
 $animation-easing: cubic-bezier(1, 0, 0, 1) !default;
 $animation-duration: 0.25s !default;
 
-// Button
-$button-radius: $global-border-radius !default;
-$button-hover-shadow: 0 rem(1) rem(1) rgba(0, 0, 0, 0.1) !default;
-$button-hover-shadow-dark: 0 rem(1) rem(1) rgba(0, 0, 0, 0.2) !default;
-$button-active-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.1) !default;
-$button-active-dark-shadow: inset 0 0 rem(3) rgba(0, 0, 0, 0.2) !default;
-
-// Nav
-$nav-border-radius: $global-border-radius !default;
-$nav-spacing: rem(13) !default;
-
-// Form
-$form-input-radius: $global-border-radius !default;
-$form-radio-group-gap: rem(10) !default;
-$form-radio-group-item-padding: rem(20) !default;
-$form-radio-group-width: rem(300) !default;
-
-// Table
-$table-spacing: rem(10) !default;
-$table-min-width: rem(480) !default;
-
-// Image
-$img-radius: $global-border-radius !default;
-
-// Message
-$message-radius: $global-border-radius !default;
-
-// Badge
-$badge-radius: $global-border-radius !default;
-
-// Breadcrumb
-$breadcrumb-spacing: rem(10) !default;
-$breadcrumb-size: 80% !default;
-$breadcrumb-sep-symbol: '/' !default;
-
-// Card
-$card-radius: $global-border-radius !default;
-$card-shadow: 0 0 0 rem(1) rgba(0, 0, 0, 0.04) !default;
-
-// Dropdown
-$dropdown-icons-size: rem(5) !default;
-$dropdown-icons-size-small: rem(4) !default;
-$dropdown-icons-size-large: rem(7) !default;
-$dropdown-width: rem(220) !default;
-$dropdown-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
-
 // Modal
-$modal-background: rgba(0, 0, 0, 0.5) !default;
-$modal-content-radius: $global-border-radius !default;
-$modal-content-spacing: rem(20) !default;
-$modal-content-shadow: 0 rem(5) rem(5) 0 rgba(0, 0, 0, 0.1) !default;
 $modal-layout: css-grid !default;
-
-// Box
-$box-spacing: rem(20) !default;
-$box-spacing-small: rem(15) !default;
-$box-spacing-large: rem(40) !default;
-$box-border-radius: $global-border-radius !default;
-
-// Progress
-$progress-background-shadow: 0 rem(2) rem(5) rgba(0, 0, 0, 0.05) inset !default;
-$progress-bar-radius: $global-border-radius !default;
-
-// Collage
-$collage-item-default-width: rem(200) !default;
-$collage-item-default-height: rem(200) !default;
-$collage-item-default-gap: rem(10) !default;
-$collage-item-small-gap: rem(1) !default;
-$collage-item-large-gap: rem(20) !default;
-$collage-caption-background: 0, 0, 0 !default;
-
-// Avatar
-$avatar-default-size: rem(40) !default;
-$avatar-small-size: rem(30) !default;
-
-// Toast notification
-$toast-notification-width: rem(400) !default;
-
-// Icon
-$icon-size: rem(16) !default;
-$icon-small-size: rem(14) !default;
-$icon-large-size: rem(32) !default;
-
-// Layout
-$layout-sidebar-width: rem(230) !default;
-$layout-sidebar-width-compact: rem(46) !default;
-$layout-header-logo-width: rem(80) !default;
-$layout-header-padding: rem(10) rem(15) !default;
-$layout-header-height: 3.8125rem !default;
-$layout-border-width: rem(1) !default;
-$layout-header-search-width: rem(300) !default;
-
-// Sidebar nav
-$sidebar-nav-padding: rem(15) !default;
-$sidebar-nav-list-label-font-weight: 400 !default;
-$sidebar-nav-item-caret-size: rem(5) !default;
-$sidebar-nav-badge-dot-size: rem(6) !default;
-
-// Tooltip
-$tooltip-padding: rem(5) rem(10) !default;
-$tooltip-padding-large: rem(15) !default;
-$tooltip-transition-duration: 150ms !default;
-$tooltip-transition-delay: 250ms !default;
-
-// Popover
-$popover-border-radius: $global-border-radius !default;
-$popover-width: rem(275) !default;
-$popover-offset: rem(10) !default;
-
-// Switch
-$switch-size: rem(36) !default;
-$switch-size-large: rem(44) !default;
-
-// Range
-$range-size: rem(6) !default;
-$form-range-value: 50% !default;
-
-// Action menu
-$action-menu-list-gap: rem(2) !default;
-
-// Pagination
-$pagination-item-font-size: rem(14) !default;
-
-// Block box
-$block-box-size: rem(250) !default;
 
 // Spacer
 $spacer: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 150, 200, 250 !default;
 
 // Block
 $block-padding: rem(20) !default;
-
-// Indicator
-$indicator-icon-size: rem(14) !default;
-
-// Quick menu
-$quick-menu-spacing: rem(8) !default;
-$quick-menu-font-size: rem(14) !default;
-$quick-menu-spacing-small: rem(5) !default;
-$quick-menu-font-size-small: rem(12) !default;
-$quick-menu-spacing-x-small: rem(4) !default;
-$quick-menu-font-size-x-small: rem(10) !default;
-
-// Combo box
-$combo-box-icon-size: rem(5) !default;
-$combo-box-width: rem(220) !default;
-$combo-box-shadow: 0 rem(2) rem(5) 0 rgba(0, 0, 0, 0.08) !default;
-$combo-box-show-animation-duration: 50ms !default;
-$combo-box-item-y-padding: rem(7) !default;
-$combo-box-item-x-padding: rem(15) !default;
-
-// Form datepicker
-$form-datepicker-margin-top: rem(5) !default;
-$form-datepicker-row-gap: rem(5) !default;
-$form-datepicker-tile-height: rem(22) !default;

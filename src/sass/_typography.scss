@@ -1,7 +1,7 @@
-@use './function' as *;
-@use './mixin';
+@use './functions' as *;
+@use './mixins';
 
-@mixin roolith-typography() {
+@mixin typography() {
     h1,
     h2,
     h3,
@@ -19,55 +19,55 @@
 
     h1,
     .h1 {
-        @include mixin.heading-step(36, 42);
+        @include mixins.heading-step(36, 42);
 
-        @include mixin.breakpoint(large-up) {
-            @include mixin.heading-step(48, 56);
+        @include mixins.breakpoint(large-up) {
+            @include mixins.heading-step(48, 56);
         }
     }
 
     h2,
     .h2 {
-        @include mixin.heading-step(30, 36);
+        @include mixins.heading-step(30, 36);
 
-        @include mixin.breakpoint(large-up) {
-            @include mixin.heading-step(40, 46);
+        @include mixins.breakpoint(large-up) {
+            @include mixins.heading-step(40, 46);
         }
     }
 
     h3,
     .h3 {
-        @include mixin.heading-step(26, 34);
+        @include mixins.heading-step(26, 34);
 
-        @include mixin.breakpoint(large-up) {
-            @include mixin.heading-step(32, 40);
+        @include mixins.breakpoint(large-up) {
+            @include mixins.heading-step(32, 40);
         }
     }
 
     h4,
     .h4 {
-        @include mixin.heading-step(22, 28);
+        @include mixins.heading-step(22, 28);
 
-        @include mixin.breakpoint(large-up) {
-            @include mixin.heading-step(28, 34);
+        @include mixins.breakpoint(large-up) {
+            @include mixins.heading-step(28, 34);
         }
     }
 
     h5,
     .h5 {
-        @include mixin.heading-step(18, 22);
+        @include mixins.heading-step(18, 22);
 
-        @include mixin.breakpoint(large-up) {
-            @include mixin.heading-step(22, 28);
+        @include mixins.breakpoint(large-up) {
+            @include mixins.heading-step(22, 28);
         }
     }
 
     h6,
     .h6 {
-        @include mixin.heading-step(16, 20);
+        @include mixins.heading-step(16, 20);
 
-        @include mixin.breakpoint(large-up) {
-            @include mixin.heading-step(18, 24);
+        @include mixins.breakpoint(large-up) {
+            @include mixins.heading-step(18, 24);
         }
     }
 
@@ -109,7 +109,7 @@
 
     small,
     .small {
-        @include mixin.text-small();
+        @include mixins.text-small();
     }
 
     %roolith-code {
@@ -122,7 +122,7 @@
         border: rem(1) solid var(--r-code-inline-border-color);
         border-radius: rem(3);
         overflow: auto;
-        @include mixin.nice-scroll();
+        @include mixins.nice-scroll();
     }
 
     code {
@@ -130,7 +130,7 @@
     }
 
     .dimmed {
-        @include mixin.text-dimmed();
+        @include mixins.text-dimmed();
     }
 
     %roolith-list {

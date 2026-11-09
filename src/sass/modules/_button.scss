@@ -1,13 +1,38 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../settings' as s;
+@use '../mixins';
 
-/* Emits the button module. $colors supplies only the slot names, so changing a
-   palette value does not change this output. $slot-roles is the slot to role
-   map used to pick the token name and must be derived from the same $colors,
-   or a missing role silently falls back to the slot's own token. */
-@mixin roolith-button($colors, $slot-roles) {
+
+@mixin button() {
     .button {
-        @include mixin.button-base();
+        --r-button-radius: var(--r-global-border-radius);
+        --r-button-hover-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.1);
+        --r-button-hover-shadow-dark: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.2);
+        --r-button-active-dark-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.2);
+        --r-button-default-background: var(--r-surface-control);
+        --r-button-default-border: var(--r-border);
+        --r-button-default-color: var(--r-text-muted);
+        --r-button-default-hover-background: var(--r-surface-control-hover);
+        --r-button-default-hover-border: var(--r-border-emphasis);
+
+        --r-button-active-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.1);
+        --r-button-default-hover-color: var(--r-text-muted);
+
+        .theme-dark & {
+            --r-button-active-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.2);
+            --r-button-default-hover-color: var(--r-text-strong);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not(.theme-light) & {
+                --r-button-active-shadow: inset 0 0 0.1875rem rgba(0, 0, 0, 0.2);
+                --r-button-default-hover-color: var(--r-text-strong);
+            }
+        }
+    }
+
+    .button {
+        @include mixins.button-base();
 
         &.active {
             box-shadow: var(--r-button-active-shadow);
@@ -29,7 +54,7 @@
         }
 
         &.disabled {
-            @include mixin.opacity(0.6);
+            @include mixins.opacity(0.6);
             cursor: not-allowed;
             pointer-events: none;
 
@@ -54,7 +79,7 @@
                 position: absolute;
                 inset: 0;
                 margin: auto;
-                @include mixin.loader();
+                @include mixins.loader();
             }
         }
     }
@@ -65,10 +90,10 @@
     }
 
     .button-small {
-        @include mixin.button-small();
+        @include mixins.button-small();
 
         &.loading:after {
-            @include mixin.loader(12);
+            @include mixins.loader(12);
         }
     }
 
@@ -78,7 +103,7 @@
         padding: rem(6) rem(12);
 
         &.loading:after {
-            @include mixin.loader(16);
+            @include mixins.loader(16);
         }
     }
 
@@ -92,15 +117,15 @@
         }
 
         &.loading:after {
-            @include mixin.loader(24);
+            @include mixins.loader(24);
         }
     }
 
-    @each $name, $value in $colors {
+    @each $name, $value in s.$colors {
         @if ($name != white) {
-            $fill: palette-fill($slot-roles, $name);
-            $on: palette-on($slot-roles, $name);
-            $text: palette-text($slot-roles, $name);
+            $fill: palette-fill($name);
+            $on: palette-on($name);
+            $text: palette-text($name);
 
             .button-#{'' + $name} {
                 background: $fill;
@@ -153,7 +178,7 @@
     }
 
     .button-group {
-        @include mixin.clearfix();
+        @include mixins.clearfix();
 
         .button {
             float: left;

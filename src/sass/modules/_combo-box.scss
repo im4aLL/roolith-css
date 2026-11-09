@@ -1,7 +1,37 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-combo-box() {
+
+@mixin combo-box() {
+    .combo-box {
+        --r-combo-box-icon-size: 0.3125rem;
+        --r-combo-box-width: 13.75rem;
+        --r-combo-box-background: var(--r-surface-overlay);
+        --r-combo-box-border-color: var(--r-border);
+        --r-combo-box-shadow: 0 0.125rem 0.3125rem 0 rgba(0, 0, 0, 0.08);
+        --r-combo-box-item-color: var(--r-text-muted);
+        --r-combo-box-item-hover-background-color: var(--r-surface-hover);
+        --r-combo-box-item-sep: var(--_r-surface-raised-step-8);
+        --r-combo-box-border-radius: var(--r-global-border-radius);
+        --r-combo-box-secondary-color: var(--r-text-faint);
+        --r-combo-box-item-header-color: var(--r-text-tertiary);
+        --r-combo-box-show-animation-duration: 50ms;
+        --r-combo-box-item-x-padding: 0.9375rem;
+        --r-combo-box-item-y-padding: 0.4375rem;
+
+        --r-combo-box-item-hover-color: var(--r-text);
+
+        .theme-dark & {
+            --r-combo-box-item-hover-color: var(--r-text-strong);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not(.theme-light) & {
+                --r-combo-box-item-hover-color: var(--r-text-strong);
+            }
+        }
+    }
+
     .combo-box {
         display: inline-block;
         position: relative;
@@ -30,7 +60,7 @@
         border: rem(1) solid var(--r-combo-box-border-color);
         border-radius: var(--r-combo-box-border-radius);
         box-shadow: var(--r-combo-box-shadow);
-        @include mixin.animation(fadeIn);
+        @include mixins.animation(fadeIn);
 
         .combo-box-right & {
             left: auto;
@@ -64,7 +94,7 @@
                 top: 50%;
                 right: var(--r-combo-box-item-x-padding);
                 transform: translateY(-50%);
-                @include mixin.triangle(right, var(--r-combo-box-icon-size));
+                @include mixins.triangle(right, var(--r-combo-box-icon-size));
             }
         }
     }
@@ -80,7 +110,7 @@
         color: var(--r-combo-box-item-color);
         font-size: rem(14);
         line-height: 1.3;
-        @include mixin.transition('background, color');
+        @include mixins.transition('background, color');
 
         &:hover {
             background-color: var(--r-combo-box-item-hover-background-color);

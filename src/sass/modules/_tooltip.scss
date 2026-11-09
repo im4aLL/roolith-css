@@ -1,7 +1,21 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-tooltip() {
+
+@mixin tooltip() {
+    .tooltip,
+    [data-tooltip] {
+        --r-tooltip-bg-color: var(--r-surface-inverse);
+        --r-tooltip-text-color: var(--r-text-inverse);
+        --r-tooltip-padding: 0.3125rem 0.625rem;
+        --r-tooltip-padding-large: 0.9375rem;
+        --r-tooltip-border-radius: var(--r-global-border-radius);
+        --r-tooltip-transition-duration: 150ms;
+        --r-tooltip-transition-delay: 250ms;
+        --r-tooltip-border-color: var(--r-color-tertiary);
+        --r-tooltip-content-btn-bg-color: var(--r-color-tertiary);
+    }
+
     .tooltip {
         position: relative;
         display: inline-block;
@@ -36,7 +50,7 @@
             line-height: rem(18);
             z-index: 1;
 
-            @include mixin.transition(
+            @include mixins.transition(
                 'opacity, visibility',
                 var(--r-tooltip-transition-duration),
                 var(--r-tooltip-transition-delay)
@@ -66,7 +80,7 @@
         line-height: rem(18);
         z-index: 1;
 
-        @include mixin.transition(
+        @include mixins.transition(
             'opacity, visibility',
             var(--r-tooltip-transition-duration),
             var(--r-tooltip-transition-delay)
@@ -81,7 +95,7 @@
 
     .tooltip-up {
         .tooltip-content::before {
-            @include mixin.triangle('down', rem(5), var(--r-tooltip-bg-color));
+            @include mixins.triangle('down', rem(5), var(--r-tooltip-bg-color));
             position: absolute;
             bottom: rem(-5);
             left: 50%;
@@ -96,7 +110,7 @@
         }
 
         .tooltip-content::before {
-            @include mixin.triangle('up', rem(5), var(--r-tooltip-bg-color));
+            @include mixins.triangle('up', rem(5), var(--r-tooltip-bg-color));
             transform: translateX(-50%);
             top: rem(-5);
             left: 50%;
@@ -113,7 +127,7 @@
         }
 
         .tooltip-content::before {
-            @include mixin.triangle('right', rem(5), var(--r-tooltip-bg-color));
+            @include mixins.triangle('right', rem(5), var(--r-tooltip-bg-color));
             right: rem(-5);
             top: 50%;
             transform: translateY(-50%);
@@ -130,7 +144,7 @@
         }
 
         .tooltip-content::before {
-            @include mixin.triangle('left', rem(5), var(--r-tooltip-bg-color));
+            @include mixins.triangle('left', rem(5), var(--r-tooltip-bg-color));
             left: rem(-5);
             top: 50%;
             transform: translateY(-50%);

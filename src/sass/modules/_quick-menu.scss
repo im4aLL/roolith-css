@@ -1,7 +1,30 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-quick-menu() {
+
+@mixin quick-menu() {
+    .quick-menu {
+        --r-quick-menu-background: var(--r-surface-muted);
+        --r-quick-menu-spacing: 0.5rem;
+        --r-quick-menu-font-size: 0.875rem;
+        --r-quick-menu-spacing-small: 0.3125rem;
+        --r-quick-menu-font-size-small: 0.75rem;
+        --r-quick-menu-spacing-x-small: 0.25rem;
+        --r-quick-menu-font-size-x-small: 0.625rem;
+
+        --r-quick-menu-link-hover-background: var(--r-surface);
+
+        .theme-dark & {
+            --r-quick-menu-link-hover-background: var(--r-surface-page);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not(.theme-light) & {
+                --r-quick-menu-link-hover-background: var(--r-surface-page);
+            }
+        }
+    }
+
     .quick-menu {
         display: inline-flex;
         border-radius: var(--r-global-border-radius);
@@ -27,7 +50,7 @@
         display: inline-flex;
         padding: var(--r-quick-menu-spacing) calc(var(--r-quick-menu-spacing) * 1.5);
         border-radius: var(--r-global-border-radius);
-        @include mixin.transition('background, color');
+        @include mixins.transition('background, color');
 
         &:hover,
         .active & {

@@ -1,7 +1,25 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-enable() {
+
+@mixin block-enable() {
+    .block-enable {
+        --r-block-enable-box-spacing: calc(var(--r-block-padding) / 2);
+        --r-block-enable-active-background-color: color-mix(in srgb, var(--r-accent) 5%, var(--r-surface-raised));
+
+        --r-block-enable-active-border-color: var(--r-accent);
+
+        .theme-dark & {
+            --r-block-enable-active-border-color: color-mix(in srgb, var(--r-accent), white 15%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not(.theme-light) & {
+                --r-block-enable-active-border-color: color-mix(in srgb, var(--r-accent), white 15%);
+            }
+        }
+    }
+
     .block-enable {
         .box {
             padding: var(--r-block-enable-box-spacing);

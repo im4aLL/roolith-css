@@ -1,7 +1,18 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-collage() {
+
+@mixin collage() {
+    .collage {
+        --r-collage-item-default-width: 12.5rem;
+        --r-collage-item-default-height: 12.5rem;
+        --r-collage-item-default-gap: 0.625rem;
+        --r-collage-item-small-gap: 0.0625rem;
+        --r-collage-item-large-gap: 1.25rem;
+        --r-collage-caption-background: 0, 0, 0;
+        --r-collage-caption-color: var(--r-text-inverse);
+    }
+
     .collage {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(var(--r-collage-item-default-width), 1fr));
@@ -66,7 +77,7 @@
         font-size: rem(12);
         line-height: rem(18);
         opacity: 0;
-        @include mixin.transition('opacity');
+        @include mixins.transition('opacity');
 
         &.visible {
             background: linear-gradient(

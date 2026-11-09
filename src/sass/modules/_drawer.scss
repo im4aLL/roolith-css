@@ -1,7 +1,18 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-drawer() {
+
+@mixin drawer() {
+    .drawer {
+        --r-drawer-container-background: rgba(0, 0, 0, 0.5);
+        --r-drawer-background: var(--r-surface-raised);
+        --r-drawer-close-button-color: var(--_r-surface-raised-step-50);
+        --r-drawer-border-radius: var(--r-global-border-radius);
+        --r-drawer-content-spacing: 1.25rem;
+        --r-drawer-border-color: var(--r-border-subtle);
+        --r-drawer-content-shadow: 0 0.3125rem 0.3125rem 0 rgba(0, 0, 0, 0.1);
+    }
+
     .drawer {
         position: absolute;
         right: calc(var(--r-drawer-content-spacing) / 2);
@@ -12,10 +23,10 @@
         overflow-y: auto;
         background: var(--r-drawer-background);
         border-radius: var(--r-drawer-border-radius);
-        box-shadow: var(--r-modal-content-shadow);
+        box-shadow: var(--r-drawer-content-shadow);
         padding: calc(var(--r-drawer-content-spacing) * 1.5);
-        @include mixin.nice-scroll();
-        @include mixin.animation(fadeInRight);
+        @include mixins.nice-scroll();
+        @include mixins.animation(fadeInRight);
     }
 
     .drawer-container {
@@ -45,10 +56,10 @@
         z-index: 2;
         cursor: pointer;
         color: var(--r-drawer-close-button-color);
-        @include mixin.transition('opacity');
+        @include mixins.transition('opacity');
 
         &:hover {
-            @include mixin.opacity(0.7);
+            @include mixins.opacity(0.7);
         }
     }
 
@@ -70,12 +81,12 @@
         display: block;
         font-size: rem(14);
         margin-top: rem(8);
-        @include mixin.text-dimmed();
+        @include mixins.text-dimmed();
     }
 
     .drawer-body {
         height: calc(100% - var(--r-drawer-content-spacing) * 2 - #{rem(95)});
         overflow-y: auto;
-        @include mixin.nice-scroll();
+        @include mixins.nice-scroll();
     }
 }

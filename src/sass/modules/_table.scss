@@ -1,7 +1,23 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-table {
+
+@mixin table {
+    .table {
+        --r-table-header-border-color: var(--_r-surface-muted-step-10);
+        --r-table-border-color: var(--_r-surface-muted-step-5);
+        --r-table-header-font-weight: var(--r-global-font-bold-weight);
+        --r-table-spacing: 0.625rem;
+        --r-table-row-hover-color: var(--_r-surface-muted-step-2);
+        --r-table-primary-header-color: var(--_r-surface-muted-step-5);
+        --r-table-row-striped-color: var(--_r-surface-muted-step-2);
+        --r-table-row-striped-hover-color: var(--_r-surface-muted-step-3);
+        --r-table-row-highlight-color: var(--_r-table-highlight);
+        --r-table-min-width: 30rem;
+        --r-table-scroll-scrim-color: var(--r-surface-raised);
+        --r-table-scroll-shadow-color: color-mix(in srgb, var(--r-text) 25%, transparent);
+    }
+
     .table {
         font-size: rem(14);
         line-height: rem(18);
@@ -79,7 +95,7 @@
         }
 
         tbody tr {
-            @include mixin.transition('background');
+            @include mixins.transition('background');
 
             &:hover {
                 background-color: var(--r-table-row-hover-color);
@@ -124,7 +140,7 @@
         }
 
         tbody tr {
-            @include mixin.transition('background');
+            @include mixins.transition('background');
 
             &:hover {
                 background-color: var(--r-table-row-hover-color);
@@ -145,7 +161,7 @@
         background-repeat: no-repeat;
         background-size: rem(40) 100%, rem(40) 100%, rem(14) 100%, rem(14) 100%;
         background-attachment: local, local, scroll, scroll;
-        @include mixin.nice-scroll();
+        @include mixins.nice-scroll();
 
         .table {
             min-width: var(--r-table-min-width);

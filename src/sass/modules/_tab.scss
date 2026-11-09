@@ -1,9 +1,15 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-tab() {
+
+@mixin tab() {
     .tab-list {
-        @include mixin.clearfix();
+        --r-tab-active-color: var(--r-accent);
+        --r-tab-border-color: var(--_r-surface-muted-step-5);
+    }
+
+    .tab-list {
+        @include mixins.clearfix();
         border-bottom: rem(1) solid var(--r-tab-border-color);
     }
 
@@ -14,7 +20,7 @@
         padding: rem(10) rem(20);
         border-bottom: rem(2) solid transparent;
         margin-bottom: rem(-1);
-        @include mixin.transition('color, border, background');
+        @include mixins.transition('color, border, background');
 
         &:hover {
             cursor: pointer;

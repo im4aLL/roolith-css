@@ -1,10 +1,19 @@
-@use '../function' as *;
+@use '../functions' as *;
+@use '../settings' as s;
 
-/* Emits the box module. $colors supplies only the slot names, so changing a
-   palette value does not change this output. $slot-roles is the slot to role
-   map used to pick the token name and must be derived from the same $colors,
-   or a missing role silently falls back to the slot's own token. */
-@mixin roolith-box($colors, $slot-roles) {
+
+@mixin box() {
+    .box {
+        --r-box-spacing: 1.25rem;
+        --r-box-spacing-small: 0.9375rem;
+        --r-box-spacing-large: 2.5rem;
+        --r-box-border-radius: var(--r-global-border-radius);
+        --r-box-background-color: var(--r-surface-raised);
+        --r-box-border-color: var(--_r-surface-raised-step-10);
+        --r-box-header-text-color: var(--r-text);
+        --r-box-footer-color: var(--_r-surface-raised-step-60);
+    }
+
     .box {
         border: rem(1) solid var(--r-box-border-color);
         border-radius: calc(var(--r-box-border-radius) * 2);
@@ -90,9 +99,9 @@
         }
     }
 
-    @each $name, $value in $colors {
+    @each $name, $value in s.$colors {
         @if ($name != white) {
-            $text: palette-text($slot-roles, $name);
+            $text: palette-text($name);
 
             .box-#{'' + $name} {
                 border: rem(1) solid $text;

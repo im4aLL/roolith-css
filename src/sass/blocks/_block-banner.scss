@@ -1,7 +1,12 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-banner() {
+
+@mixin block-banner() {
+    .block-banner {
+        --r-block-banner-text-color: var(--r-text-subtle);
+    }
+
     .block-banner-title {
         padding-bottom: calc(var(--r-block-padding) / 2);
     }
@@ -16,7 +21,7 @@
         gap: var(--r-block-padding);
         flex-direction: column;
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             flex-direction: row;
         }
     }

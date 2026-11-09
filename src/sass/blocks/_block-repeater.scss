@@ -1,7 +1,7 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-repeater() {
+@mixin block-repeater() {
     .block-repeater {
         .form-field {
             margin-bottom: 0;
@@ -41,7 +41,7 @@
         padding: calc(var(--r-block-padding) / 4) 0 calc(var(--r-block-padding) / 2) 0;
     }
 
-    @include mixin.breakpoint(small-only) {
+    @include mixins.breakpoint(small-only) {
         .block-repeater-item {
             flex-wrap: wrap;
         }

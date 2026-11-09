@@ -1,7 +1,16 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-indicator() {
+
+@mixin indicator() {
+    .indicator {
+        --r-indicator-icon-size: 0.875rem;
+        --r-indicator-flat-color: var(--r-text-subtle);
+        --r-indicator-upward-color: var(--r-success);
+        --r-indicator-downward-color: var(--r-danger);
+        --r-indicator-online-color: var(--r-success);
+    }
+
     .indicator {
         position: relative;
         padding-left: calc(var(--r-indicator-icon-size) + #{rem(3)});

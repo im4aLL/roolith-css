@@ -1,4 +1,4 @@
-@use '../function' as *;
+@use '../functions' as *;
 
 @mixin loader($size: 20) {
     display: inline-block;

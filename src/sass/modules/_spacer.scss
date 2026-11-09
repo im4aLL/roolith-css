@@ -1,8 +1,8 @@
-@use '../function' as *;
+@use '../functions' as *;
+@use '../settings' as s;
 
-/* Emits the spacer utilities. $sizes is a list of unitless pixel values
-   consumed by rem(). */
-@mixin roolith-spacer($sizes) {
+@mixin spacer() {
+    $sizes: s.$spacer;
     @each $size in $sizes {
         .spacer-#{'' + $size} {
             height: rem($size);

@@ -6,11 +6,8 @@
     "scripts": {
         "dev": "vite",
         "dev:host": "vite --host",
-        "build": "node scripts/generate-token-reference.mjs && vite build",
-        "preview": "vite preview",
-        "tokens": "node scripts/generate-token-reference.mjs",
-        "tokens:json": "node scripts/css-custom-properties.mjs --json",
-        "test": "node --test \"scripts/*.test.mjs\""
+        "build": "vite build",
+        "preview": "vite preview"
     },
     "repository": "git+https://github.com/im4aLL/roolith-css.git",
     "keywords": [

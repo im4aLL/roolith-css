@@ -1,5 +1,6 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
+
 
 @mixin form-switch() {
     .form-switch {
@@ -31,7 +32,7 @@
         background-color: var(--r-form-switch-background-color);
         border-radius: rem(25);
         box-shadow: inset 0 0 rem(2) rem(3) rgba(0, 0, 0, 0.03);
-        @include mixin.transition('background-color');
+        @include mixins.transition('background-color');
 
         .form-switch-input:checked + & {
             background-color: var(--r-form-switch-checked-background-color);
@@ -46,7 +47,7 @@
             height: calc(var(--r-form-switch-size) / 2 - #{rem(4)});
             background-color: var(--r-form-switch-handler-color);
             border-radius: 50%;
-            @include mixin.transition('left');
+            @include mixins.transition('left');
             will-change: left;
 
             .form-switch-input:checked + & {
@@ -103,7 +104,7 @@
             border-radius: 50%;
             cursor: pointer;
             margin-top: calc(var(--r-form-range-height) / 2 - var(--r-form-range-thumb-size) / 2);
-            @include mixin.transition('background');
+            @include mixins.transition('background');
         }
 
         &::-webkit-slider-thumb:hover {
@@ -129,7 +130,7 @@
             max-width: var(--r-form-radio-group-width);
             margin-right: 0;
             cursor: pointer;
-            @include mixin.transition('border');
+            @include mixins.transition('border');
 
             &:has(.form-radio:checked) {
                 border-color: var(--r-form-radio-selected-border-color);
@@ -244,7 +245,33 @@
     }
 }
 
-@mixin roolith-form-extended() {
+@mixin form-extended() {
+    .form-switch,
+    .form-range,
+    .form-radio-group {
+        --r-form-radio-group-gap: 0.625rem;
+        --r-form-radio-group-item-padding: 1.25rem;
+        --r-form-radio-group-width: 18.75rem;
+        --r-form-radio-selected-border-color: var(--r-accent);
+        --r-form-radio-selected-background-color: var(--_r-radio-selected);
+        --r-form-radio-selected-color: var(--r-accent);
+        --r-form-radio-text-color: color-mix(in srgb, var(--r-text-helper), var(--_r-on-surface) 40%);
+        --r-form-switch-background-color: var(--r-border-control);
+        --r-form-switch-checked-background-color: var(--r-accent);
+        --r-form-switch-handler-color: var(--r-accent-on);
+        --r-form-switch-size: 2.25rem;
+        --r-form-switch-size-large: 2.75rem;
+        --r-form-range-height: 0.375rem;
+        --r-form-range-track-color: var(--_r-surface-muted-step-5);
+        --r-form-range-thumb-color: var(--r-accent);
+        --r-form-range-thumb-hover-color: color-mix(in srgb, var(--r-accent), black 10%);
+        --r-form-range-border-radius: var(--r-global-border-radius);
+        --r-form-range-thumb-size: calc(var(--r-form-range-height) * 3);
+        --r-form-range-value: 50%;
+        --r-form-input-border-color: var(--r-border-control);
+        --r-form-input-radius: var(--r-global-border-radius);
+    }
+
     @include form-switch();
     @include form-range();
     @include form-radio-group();

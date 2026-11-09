@@ -1,7 +1,35 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-datepicker() {
+
+@mixin datepicker() {
+    .qs-datepicker-container {
+        --r-form-datepicker-background-color: var(--r-surface-raised);
+        --r-form-datepicker-color: var(--r-text);
+        --r-form-datepicker-border-color: var(--r-border-control);
+        --r-form-datepicker-border-radius: var(--r-global-border-radius);
+        --r-form-datepicker-margin-top: 0.3125rem;
+        --r-form-datepicker-strong-weight: var(--r-global-font-weight);
+        --r-form-datepicker-accent-color: var(--r-accent);
+        --r-form-datepicker-accent-text-color: var(--r-accent-on);
+        --r-form-datepicker-row-gap: 0.3125rem;
+        --r-form-datepicker-tile-height: 1.375rem;
+        --r-form-datepicker-controls-background-color: var(--r-surface-raised);
+        --r-form-datepicker-controls-hover-text-color: var(--r-text);
+
+        --r-form-datepicker-controls-hover-color: var(--_r-surface-muted-step-5);
+
+        .theme-dark & {
+            --r-form-datepicker-controls-hover-color: var(--_r-surface-raised-step-5);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not(.theme-light) & {
+                --r-form-datepicker-controls-hover-color: var(--_r-surface-raised-step-5);
+            }
+        }
+    }
+
     .form-datepicker-js {
         .qs-datepicker-container {
             font-family: var(--r-global-base-font);

@@ -1,7 +1,33 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-dropdown() {
+
+@mixin dropdown() {
+    .dropdown {
+        --r-dropdown-icons-size: 0.3125rem;
+        --r-dropdown-icons-size-small: 0.25rem;
+        --r-dropdown-icons-size-large: 0.4375rem;
+        --r-dropdown-width: 13.75rem;
+        --r-dropdown-background: var(--r-surface-overlay);
+        --r-dropdown-border-color: var(--r-border);
+        --r-dropdown-shadow: 0 0.125rem 0.3125rem 0 rgba(0, 0, 0, 0.08);
+        --r-dropdown-item-color: var(--r-text-muted);
+        --r-dropdown-item-hover-background-color: var(--r-surface-hover);
+        --r-dropdown-item-sep: var(--_r-surface-raised-step-8);
+
+        --r-dropdown-item-hover-color: var(--r-text);
+
+        .theme-dark & {
+            --r-dropdown-item-hover-color: var(--r-text-strong);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not(.theme-light) & {
+                --r-dropdown-item-hover-color: var(--r-text-strong);
+            }
+        }
+    }
+
     .dropdown {
         display: inline-block;
         position: relative;
@@ -13,17 +39,17 @@
 
     .has-dropdown-icon {
         &:after {
-            @include mixin.triangle(down, var(--r-dropdown-icons-size));
+            @include mixins.triangle(down, var(--r-dropdown-icons-size));
             vertical-align: rem(2);
             margin-left: rem(25);
         }
 
         &.button-small:after {
-            @include mixin.triangle(down, var(--r-dropdown-icons-size-small));
+            @include mixins.triangle(down, var(--r-dropdown-icons-size-small));
         }
 
         &.button-large:after {
-            @include mixin.triangle(down, var(--r-dropdown-icons-size-large));
+            @include mixins.triangle(down, var(--r-dropdown-icons-size-large));
             margin-left: rem(35);
         }
     }
@@ -56,7 +82,7 @@
         display: block;
         padding: rem(5) rem(15);
         color: var(--r-dropdown-item-color);
-        @include mixin.transition('background, color');
+        @include mixins.transition('background, color');
 
         &:hover {
             background-color: var(--r-dropdown-item-hover-background-color);

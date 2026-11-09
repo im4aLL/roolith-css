@@ -1,10 +1,15 @@
-@use '../function' as *;
+@use '../functions' as *;
+@use '../settings' as s;
 
-/* Emits the progress bar module. $colors supplies only the slot names, so
-   changing a palette value does not change this output. $slot-roles is the slot
-   to role map used to pick the token name and must be derived from the same
-   $colors, or a missing role silently falls back to the slot's own token. */
-@mixin roolith-progress-bar($colors, $slot-roles) {
+
+@mixin progress() {
+    progress {
+        --r-progress-background: var(--_r-surface-raised-step-5);
+        --r-progress-background-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.05) inset;
+        --r-progress-bar-color: var(--_r-surface-raised-step-30);
+        --r-progress-bar-radius: var(--r-global-border-radius);
+    }
+
     progress {
         appearance: none;
         width: 100%;
@@ -37,9 +42,9 @@
         background: var(--r-progress-background);
     }
 
-    @each $name, $value in $colors {
+    @each $name, $value in s.$colors {
         @if ($name != white) {
-            $fill: palette-fill($slot-roles, $name);
+            $fill: palette-fill($name);
 
             .progress-#{'' + $name}::-moz-progress-bar {
                 background: $fill;

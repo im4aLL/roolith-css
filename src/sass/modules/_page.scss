@@ -1,7 +1,7 @@
-@use '../mixin';
-@use '../function' as *;
+@use '../mixins';
+@use '../functions' as *;
 
-@mixin roolith-page() {
+@mixin page() {
     .page {
         height: 100%;
         height: 100vh;
@@ -39,7 +39,7 @@
 
     .page-footer {
         padding: rem(100) 0 0;
-        @include mixin.text-small();
-        @include mixin.text-dimmed();
+        @include mixins.text-small();
+        @include mixins.text-dimmed();
     }
 }

@@ -1,9 +1,20 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../settings' as s;
+@use '../mixins';
 
-/* Emits the modal module. $layout selects the css-grid, traditional or flex
-   layout. */
-@mixin roolith-modal($layout) {
+
+@mixin modal() {
+    .modal {
+        --r-modal-background: rgba(0, 0, 0, 0.5);
+        --r-modal-content-background: var(--r-surface-raised);
+        --r-modal-close-color: var(--_r-surface-raised-step-50);
+        --r-modal-content-radius: var(--r-global-border-radius);
+        --r-modal-content-spacing: 1.25rem;
+        --r-modal-content-shadow: 0 0.3125rem 0.3125rem 0 rgba(0, 0, 0, 0.1);
+        --r-modal-border-color: var(--r-border-subtle);
+    }
+
+    $layout: s.$modal-layout;
     .modal {
         width: 100%;
         height: 100%;
@@ -41,16 +52,16 @@
             grid-area: body;
             margin-left: auto;
             margin-right: auto;
-            @include mixin.animation(fadeInUp);
+            @include mixins.animation(fadeInUp);
         } @else if($layout == traditional) {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            @include mixin.animation(fadeIn);
+            @include mixins.animation(fadeIn);
         }
         @if ($layout == flex) {
             max-height: 90%;
-            @include mixin.animation(fadeInUp);
+            @include mixins.animation(fadeInUp);
         }
         max-width: rem(600);
         overflow-y: auto;
@@ -72,7 +83,7 @@
     }
 
     .modal-header {
-        @include mixin.clearfix();
+        @include mixins.clearfix();
         padding: var(--r-modal-content-spacing);
         border-bottom: rem(1) solid var(--r-modal-border-color);
         font-size: rem(16);
@@ -106,10 +117,10 @@
         z-index: 2;
         cursor: pointer;
         color: var(--r-modal-close-color);
-        @include mixin.transition('opacity');
+        @include mixins.transition('opacity');
 
         &:hover {
-            @include mixin.opacity(0.7);
+            @include mixins.opacity(0.7);
         }
     }
 }

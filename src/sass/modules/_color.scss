@@ -1,7 +1,8 @@
-/* Emits the colour utilities. $colors supplies only the slot names, so
-   changing a palette value does not change this output. */
-@mixin roolith-color($colors) {
-    @each $name, $value in $colors {
+@use '../functions' as *;
+@use '../settings' as s;
+
+@mixin color() {
+    @each $name, $value in s.$colors {
         .color-#{'' + $name} {
             color: var(--r-color-#{$name});
         }

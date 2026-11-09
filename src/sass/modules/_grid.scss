@@ -1,6 +1,7 @@
 @use 'sass:math';
 @use 'sass:map';
-@use '../mixin';
+@use '../mixins';
+@use '../settings' as s;
 
 /* Emits half-gutter horizontal padding on both sides at each breakpoint.
    $gutter is the grid gutter map. */
@@ -8,20 +9,20 @@
     padding-left: math.div(map.get($gutter, 'small'), 2);
     padding-right: math.div(map.get($gutter, 'small'), 2);
 
-    @include mixin.breakpoint(medium-up) {
+    @include mixins.breakpoint(medium-up) {
         padding-left: math.div(map.get($gutter, 'medium'), 2);
         padding-right: math.div(map.get($gutter, 'medium'), 2);
     }
 
-    @include mixin.breakpoint(large-up) {
+    @include mixins.breakpoint(large-up) {
         padding-left: math.div(map.get($gutter, 'large'), 2);
         padding-right: math.div(map.get($gutter, 'large'), 2);
     }
 }
 
-/* Emits the traditional float grid. $columns is the column count and $gutter
-   the grid gutter map. */
-@mixin roolith-grid($columns, $gutter) {
+@mixin grid() {
+    $columns: s.$grid-column-count;
+    $gutter: s.$grid-gutter;
     $small-gutter: math.div(map.get($gutter, 'small'), 2);
     $medium-gutter: math.div(map.get($gutter, 'medium'), 2);
     $large-gutter: math.div(map.get($gutter, 'large'), 2);
@@ -33,7 +34,7 @@
     }
 
     .row {
-        @include mixin.clearfix();
+        @include mixins.clearfix();
         @include add-gutter($gutter);
     }
 
@@ -46,12 +47,12 @@
         padding-left: map.get($gutter, 'small');
         padding-right: map.get($gutter, 'small');
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             padding-left: map.get($gutter, 'medium');
             padding-right: map.get($gutter, 'medium');
         }
 
-        @include mixin.breakpoint(large-up) {
+        @include mixins.breakpoint(large-up) {
             padding-left: map.get($gutter, 'large');
             padding-right: map.get($gutter, 'large');
         }
@@ -82,7 +83,7 @@
         }
     }
 
-    @include mixin.breakpoint(medium-up) {
+    @include mixins.breakpoint(medium-up) {
         @for $i from 1 through $columns {
             .medium-#{$i} {
                 width: math.percentage(math.div($i, $columns));
@@ -104,7 +105,7 @@
         }
     }
 
-    @include mixin.breakpoint(large-up) {
+    @include mixins.breakpoint(large-up) {
         @for $i from 1 through $columns {
             .large-#{$i} {
                 width: math.percentage(math.div($i, $columns));
@@ -133,12 +134,12 @@
         margin-left: -$small-gutter;
         margin-right: -$small-gutter;
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             margin-left: -$medium-gutter;
             margin-right: -$medium-gutter;
         }
 
-        @include mixin.breakpoint(large-up) {
+        @include mixins.breakpoint(large-up) {
             margin-left: -$large-gutter;
             margin-right: -$large-gutter;
         }

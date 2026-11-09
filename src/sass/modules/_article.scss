@@ -1,7 +1,7 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-article() {
+@mixin article() {
     %roolith-article-font-style {
         font-size: rem(16);
         line-height: rem(26);
@@ -34,8 +34,8 @@
         }
 
         aside {
-            @include mixin.text-small();
-            @include mixin.text-dimmed();
+            @include mixins.text-small();
+            @include mixins.text-dimmed();
             padding-bottom: rem(20);
         }
 
@@ -65,7 +65,7 @@
         grid-template-columns: rem(10) 1fr rem(10);
         grid-column-gap: rem(20);
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             grid-template-columns: rem(100) 1fr rem(100);
         }
 
@@ -78,17 +78,17 @@
         & > blockquote {
             grid-column: 1 / -1;
 
-            @include mixin.breakpoint(medium-up) {
+            @include mixins.breakpoint(medium-up) {
                 margin: rem(20) rem(40) rem(40);
             }
         }
 
         & > aside {
             font-style: italic;
-            @include mixin.text-small();
-            @include mixin.text-dimmed();
+            @include mixins.text-small();
+            @include mixins.text-dimmed();
 
-            @include mixin.breakpoint(large-up) {
+            @include mixins.breakpoint(large-up) {
                 grid-column: 3;
             }
         }

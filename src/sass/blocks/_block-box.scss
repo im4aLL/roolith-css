@@ -1,7 +1,18 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-box() {
+
+@mixin block-box() {
+    .block-box {
+        --r-block-box-spacing: var(--r-block-padding);
+        --r-block-box-size: 15.625rem;
+        --r-block-box-color: var(--r-global-font-color);
+        --r-block-box-hover-color: var(--r-accent-on);
+        --r-block-box-hover-background: var(--r-accent);
+        --r-block-box-icon-color: var(--r-text-quiet);
+        --r-block-box-hl-color: var(--r-text-quiet);
+    }
+
     .block-boxes {
         display: flex;
         flex-wrap: wrap;
@@ -16,7 +27,7 @@
         width: var(--r-block-box-size);
         color: var(--r-block-box-color);
         margin: 0;
-        @include mixin.transition('color, background, border');
+        @include mixins.transition('color, background, border');
 
         &:hover {
             color: var(--r-block-box-hover-color);
@@ -42,13 +53,13 @@
         justify-self: end;
         font-size: rem(24);
         color: var(--r-block-box-icon-color);
-        @include mixin.transition('color');
+        @include mixins.transition('color');
     }
 
     .block-box-hl {
         font-size: rem(32);
         font-weight: var(--r-global-font-bold-weight);
         color: var(--r-block-box-hl-color);
-        @include mixin.transition('color');
+        @include mixins.transition('color');
     }
 }

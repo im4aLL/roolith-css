@@ -1,13 +1,34 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-action-menu() {
+
+@mixin action-menu() {
+    .action-menu-list {
+        --r-action-menu-list-gap: 0.125rem;
+        --r-action-menu-item-color: var(--r-text-muted);
+        --r-action-menu-item-hover-color: var(--r-accent);
+        --r-action-menu-item-hover-background: var(--r-surface-muted);
+        --r-action-menu-item-border-radius: var(--r-global-border-radius);
+
+        --r-action-menu-item-background: var(--r-surface);
+
+        .theme-dark & {
+            --r-action-menu-item-background: transparent;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not(.theme-light) & {
+                --r-action-menu-item-background: transparent;
+            }
+        }
+    }
+
     .action-menu-list {
         display: flex;
         gap: var(--r-action-menu-list-gap);
         flex-direction: column;
 
-        @include mixin.breakpoint(medium-up) {
+        @include mixins.breakpoint(medium-up) {
             flex-direction: row;
         }
     }
@@ -22,7 +43,7 @@
         padding: rem(8) rem(10);
         border-radius: var(--r-action-menu-item-border-radius);
         background: var(--r-action-menu-item-background);
-        @include mixin.transition('color, background');
+        @include mixins.transition('color, background');
 
         &:hover {
             color: var(--r-action-menu-item-hover-color);

@@ -1,7 +1,12 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
 
-@mixin roolith-block-list() {
+
+@mixin block-list() {
+    .block-list {
+        --r-block-list-item-border-color: var(--_r-surface-muted-step-5);
+    }
+
     .block-list {
         display: flex;
         flex-direction: column;

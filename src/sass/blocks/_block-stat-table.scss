@@ -1,5 +1,6 @@
-@use '../function' as *;
-@use '../mixin';
+@use '../functions' as *;
+@use '../mixins';
+
 
 @mixin row-style() {
     display: flex;
@@ -29,7 +30,12 @@
     }
 }
 
-@mixin roolith-block-stat-table() {
+@mixin block-stat-table() {
+    .block-stat-table {
+        --r-block-stat-table-header-color: var(--r-text-faint);
+        --r-block-stat-table-indicator-color: var(--r-surface-muted);
+    }
+
     .block-stat-table {
         @include row-style();
         font-size: rem(14);
