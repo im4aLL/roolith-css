@@ -69,6 +69,7 @@
     @include b.block-stat();
     @include b.block-stat-table();
     @include b.block-analytics();
+    @include b.block-svg-map();
 }
 
 @mixin roolith-layout-style() {

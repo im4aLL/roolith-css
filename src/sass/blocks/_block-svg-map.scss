@@ -1,0 +1,53 @@
+@use '../functions' as *;
+@use '../mixins';
+
+@mixin block-svg-map() {
+    .block-svg-map {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        path {
+            fill: var(--r-block-svg-map-fill-color);
+            stroke: var(--r-block-svg-map-stroke-color);
+            @include mixins.transition('fill');
+
+            &:hover {
+                fill: var(--r-block-svg-map-fill-hover-color);
+            }
+        }
+    }
+
+    .block-svg-map-tooltip {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        padding: var(--r-block-svg-map-tooltip-padding);
+        border-radius: var(--r-block-svg-map-tooltip-border-radius);
+        background-color: var(--r-block-svg-map-tooltip-bg-color);
+        color: var(--r-block-svg-map-tooltip-text-color);
+        font-size: rem(12);
+        line-height: rem(18);
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+
+        @include mixins.transition('opacity, visibility', var(--r-block-svg-map-tooltip-transition-duration));
+
+        &.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    .block-svg-map-tooltip-content-hl {
+        font-size: rem(14);
+        font-weight: var(--r-block-svg-map-content-hl-weight);
+
+        + .block-svg-map-tooltip-content-text {
+            padding-top: rem(5);
+        }
+    }
+}

@@ -38,6 +38,17 @@
     --r-block-stat-item-hover-background-color: var(--r-surface-muted);
     --r-block-stat-item-border-radius: var(--r-global-border-radius);
 
+    // Block SVG Map
+    --r-block-svg-map-fill-color: var(--r-color-neutral-400);
+    --r-block-svg-map-fill-hover-color: var(--r-color-neutral-500);
+    --r-block-svg-map-stroke-color: var(--r-color-neutral);
+    --r-block-svg-map-tooltip-padding: var(--r-tooltip-padding);
+    --r-block-svg-map-tooltip-border-radius: var(--r-tooltip-border-radius);
+    --r-block-svg-map-tooltip-bg-color: var(--r-tooltip-bg-color);
+    --r-block-svg-map-tooltip-text-color: var(--r-tooltip-text-color);
+    --r-block-svg-map-tooltip-transition-duration: var(--r-tooltip-transition-duration);
+    --r-block-svg-map-content-hl-weight: var(--r-global-font-bold-weight);
+
     // Accordion
     --r-accordion-border-color: var(--r-border-hairline);
 
