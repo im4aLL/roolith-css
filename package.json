@@ -7,7 +7,10 @@
         "dev": "vite",
         "dev:host": "vite --host",
         "build": "vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "tokens": "node scripts/css-custom-properties.mjs --report",
+        "tokens:json": "node scripts/css-custom-properties.mjs --json",
+        "test": "node --test \"scripts/*.test.mjs\""
     },
     "repository": "git+https://github.com/im4aLL/roolith-css.git",
     "keywords": [
