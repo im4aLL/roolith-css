@@ -73,7 +73,7 @@
     --r-breadcrumb-spacing: 0.625rem;
     --r-breadcrumb-size: 80%;
     --r-breadcrumb-default-color: var(--r-text-subtle);
-    --r-breadcrumb-sep-symbol: "/";
+    --r-breadcrumb-sep-symbol: '/';
     --r-breadcrumb-sep-color: var(--r-text-separator);
 
     // Button
@@ -303,8 +303,8 @@
     --r-tab-border-color: var(--_r-surface-muted-step-5);
 
     // Table
-    --r-table-header-border-color: var(--_r-surface-muted-step-10);
-    --r-table-border-color: var(--_r-surface-muted-step-5);
+    --r-table-header-border-color: var(--_r-surface-muted-step-15);
+    --r-table-border-color: var(--_r-surface-muted-step-10);
     --r-table-header-font-weight: var(--r-global-font-bold-weight);
     --r-table-spacing: 0.625rem;
     --r-table-row-hover-color: var(--_r-surface-muted-step-2);
@@ -332,7 +332,6 @@
     --r-tooltip-transition-delay: 250ms;
     --r-tooltip-border-color: var(--r-color-tertiary);
     --r-tooltip-content-btn-bg-color: var(--r-color-tertiary);
-
 }
 
 @mixin component-tokens-light() {

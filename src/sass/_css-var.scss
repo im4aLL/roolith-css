@@ -150,7 +150,7 @@
 
 @mixin surface-scales() {
     @include surface-scale('surface-raised-step', 'surface-raised', 5, 8, 10, 20, 30, 50, 60);
-    @include surface-scale('surface-muted-step', 'surface-muted', 2, 3, 5, 10);
+    @include surface-scale('surface-muted-step', 'surface-muted', 2, 3, 5, 10, 15);
 }
 
 @mixin theme-default() {
