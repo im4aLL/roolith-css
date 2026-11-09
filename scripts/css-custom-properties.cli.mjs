@@ -12,7 +12,7 @@
  * Run the command-line surface.
  *
  * @param {string[]} argv Arguments after the script name.
- * @param {() => {light: Map<string, string>, dark: Map<string, string>, unresolved: Array<{token: string, themes: string[], reason: string}>}} load
+ * @param {() => {light: Map<string, string>, dark: Map<string, string>, unresolved: Array<{token: string, themes: string[], reason: string}>, css: string}} load
  * Loader that compiles and resolves the token snapshot.
  * @returns {void}
  */
@@ -41,7 +41,7 @@ export function runCli(argv, load) {
 /**
  * Write the JSON snapshot to stdout and counts to stderr.
  *
- * @param {() => {light: Map<string, string>, dark: Map<string, string>, unresolved: Array<{token: string, themes: string[], reason: string}>}} load
+ * @param {() => {light: Map<string, string>, dark: Map<string, string>, unresolved: Array<{token: string, themes: string[], reason: string}>, css: string}} load
  * Token loader.
  * @returns {void}
  */
@@ -56,7 +56,7 @@ function emitJson(load) {
 /**
  * Write the human summary to stdout.
  *
- * @param {() => {light: Map<string, string>, dark: Map<string, string>, unresolved: Array<{token: string, themes: string[], reason: string}>}} load
+ * @param {() => {light: Map<string, string>, dark: Map<string, string>, unresolved: Array<{token: string, themes: string[], reason: string}>, css: string}} load
  * Token loader.
  * @returns {void}
  */

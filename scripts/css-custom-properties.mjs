@@ -23,14 +23,15 @@ const DEFAULT_LOAD_PATHS = ['src/sass'];
  *
  * @param {{file?: string, loadPaths?: string[]}} [options] Sass entry point and
  * import paths, relative to the process working directory.
- * @returns {{light: Map<string, string>, dark: Map<string, string>, unresolved: Array<{token: string, themes: string[], reason: string}>}}
- * Resolved token maps and a merged report of tokens that could not resolve.
+ * @returns {{light: Map<string, string>, dark: Map<string, string>, unresolved: Array<{token: string, themes: string[], reason: string}>, css: string}}
+ * Resolved token maps, a merged report of tokens that could not resolve, and the
+ * expanded stylesheet the maps were resolved from.
  * @throws {Error} When Sass compilation fails or a var() cycle is found.
  */
 export function loadTokens({ file = DEFAULT_FILE, loadPaths = DEFAULT_LOAD_PATHS } = {}) {
     const { css } = compile(file, { loadPaths, style: 'expanded' });
 
-    return resolveTokens(css);
+    return { ...resolveTokens(css), css };
 }
 
 /**

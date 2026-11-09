@@ -116,9 +116,11 @@ $-theme-component-tokens: (
     }
 }
 
-@each $role, $token in $-registered-roles {
-    @if not map.has-key(resolved.$theme-light, $role) {
-        @error 'Token registry entry "#{$role}" (#{$token}) has no derived value.';
+@each $name, $roles in (light: resolved.$theme-light, dark: resolved.$theme-dark) {
+    @each $role, $token in $-registered-roles {
+        @if not map.has-key($roles, $role) {
+            @error 'Token registry entry "#{$role}" (#{$token}) has no derived value in the #{$name} theme.';
+        }
     }
 }
 

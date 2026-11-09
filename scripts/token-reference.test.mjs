@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import { loadTokens } from './css-custom-properties.mjs';
 import { parseCssVariableSource, readCssVariableSource } from './css-variable-source.mjs';
@@ -170,4 +171,11 @@ test('covers every token the framework resolves', () => {
         values.some((value) => value.includes('var(')),
         false,
     );
+});
+
+test('keeps the generated token reference in sync with the framework', () => {
+    const { light, dark } = loadTokens();
+    const { markdown } = renderTokenReference({ light, dark, sources: readCssVariableSource() });
+
+    assert.equal(readFileSync(new URL('../TOKENS.md', import.meta.url), 'utf8'), markdown);
 });

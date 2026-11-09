@@ -109,6 +109,8 @@
     );
 }
 
+/* Semantic role values for one theme, derived from the palette seeds, the per-theme steps, and the accent.
+   Secondary text fades toward the page in every theme, because blending toward white inverted the ladder in dark. */
 @function theme-roles($seeds, $steps, $accent) {
     $page: map.get($seeds, page);
     $surface: map.get($seeds, surface);
@@ -133,9 +135,6 @@
         control: $control,
         control-hover: tone($control, map.get($steps, control-hover)),
         text: $text,
-        // Secondary text fades toward the page in every theme. Blending toward
-        // white inverted the ladder in dark, where a "faint" tier came out
-        // brighter than body text.
         text-muted: blend($text, $page, map.get($steps, text-muted)),
         text-subtle: blend($text, $page, map.get($steps, text-subtle)),
         text-faint: blend($text, $page, map.get($steps, text-faint)),
