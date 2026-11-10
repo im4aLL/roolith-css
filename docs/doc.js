@@ -106,13 +106,72 @@ function toggleAccordionItem(title) {
     }
 }
 
+const SIDEBAR_MEDIA = window.matchMedia('(max-width: 1023px)');
+
 /**
- * Wire up theme toggle, copy buttons, and accordion items once the DOM is ready.
+ * Open or close the mobile navigation drawer.
+ * @param {boolean} open - Whether the drawer should be open.
+ * @returns {void}
+ */
+function setSidebarOpen(open) {
+    document.documentElement.classList.toggle('doc-sidebar-open', open);
+    document.querySelectorAll('[data-doc-sidebar-toggle]').forEach((button) => {
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        button.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    });
+}
+
+/**
+ * Close the mobile navigation drawer when it is open.
+ * @returns {void}
+ */
+function closeSidebar() {
+    if (document.documentElement.classList.contains('doc-sidebar-open')) {
+        setSidebarOpen(false);
+    }
+}
+
+/**
+ * Wire up the mobile navigation drawer, theme toggle, copy buttons, and accordion items.
  * @returns {void}
  */
 function initDocSite() {
     document.querySelectorAll('[data-doc-theme-toggle]').forEach((button) => {
         button.addEventListener('click', toggleTheme);
+    });
+
+    document.querySelectorAll('[data-doc-sidebar-toggle]').forEach((button) => {
+        button.addEventListener('click', () => {
+            setSidebarOpen(!document.documentElement.classList.contains('doc-sidebar-open'));
+        });
+    });
+
+    document.querySelectorAll('[data-doc-sidebar-close]').forEach((element) => {
+        element.addEventListener('click', closeSidebar);
+    });
+
+    document.querySelectorAll('#doc-sidebar a').forEach((link) => {
+        link.addEventListener('click', closeSidebar);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+        if (!document.documentElement.classList.contains('doc-sidebar-open')) {
+            return;
+        }
+        closeSidebar();
+        const toggle = document.querySelector('[data-doc-sidebar-toggle]');
+        if (toggle) {
+            toggle.focus();
+        }
+    });
+
+    SIDEBAR_MEDIA.addEventListener('change', (event) => {
+        if (!event.matches) {
+            closeSidebar();
+        }
     });
 
     document.querySelectorAll('[data-doc-copy]').forEach((button) => {
