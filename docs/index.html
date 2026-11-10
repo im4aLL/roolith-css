@@ -11,170 +11,18 @@
         <link rel="stylesheet" href="roolith-4.0.0.min.css" />
         <link rel="stylesheet" href="doc.css" />
         <script src="doc.js"></script>
+        <script type="module">
+            import 'https://esm.sh/@github/include-fragment-element@6';
+        </script>
     </head>
     <body>
-        <header class="doc-header-container">
-            <div class="layout-header doc-header">
-                <div class="layout-header-primary">
-                    <a class="layout-header-logo doc-logo" href="index.html" aria-label="roolith home">
-                        <svg
-                            class="doc-logo-wordmark"
-                            viewBox="0 0 239.7 68"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            focusable="false">
-                            <path
-                                d="M81.6 42.5c0 4.2-.7 8.2-2.4 11.9-2.7 6-7.3 10.1-13.6 12.1-6.1 1.9-12.2 2-18.3.1-8.5-2.6-13.6-8.5-15.6-17.1-1.2-5.4-1.1-10.8.7-16.1 2.4-7.3 7.3-12.2 14.6-14.5 6.2-1.9 12.5-2 18.7.1 8.1 2.7 13 8.4 15 16.6.7 2.2.9 4.6.9 6.9zm-14.6.1c0-1.1 0-2.3-.2-3.4-.3-2.4-.8-4.8-2-7-2.1-4-6.2-5.8-10.6-4.9-3.5.7-5.8 3-7.1 6.2-1.3 3-1.6 6.1-1.6 9.3 0 3.3.4 6.5 1.8 9.5 2 4.3 5.9 6.4 10.5 5.7 3.5-.5 5.8-2.6 7.2-5.6 1.6-3.1 2-6.4 2-9.8z"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd" />
-                            <path
-                                d="M165.8 42.5V28.7c0-.5-.1-.7-.6-.6h-3.7c-1.8 0-3-1.2-3-3v-3.9c0-1.2.9-2.1 2.1-2.1h4.4c.6 0 .7-.2.7-.8V9.1c0-1.2.9-2.1 2.1-2.1H178c1.2 0 1.9.7 1.9 1.9v9.5c0 .6.2.7.7.7h7c.4 0 .7.1 1.1.2 1.1.4 1.4.8 1.4 2v4.6c0 1.3-.9 2.2-2.1 2.2h-7.4c-.5 0-.6.1-.6.6v22.9c0 .9.1 1.7.2 2.6.5 2.6 1.7 3.7 4.4 3.9.7.1 1.5.1 2.2.1.5 0 .9.1 1.3.3.7.4 1.1.9 1.1 1.8-.1 1.5 0 2.9 0 4.4 0 .5-.1 1-.3 1.5-.4.7-.9 1.1-1.7 1.2-3.5.4-7 .6-10.5.2-1.4-.1-2.9-.4-4.2-.9-3.8-1.3-5.7-4-6.3-7.9-.4-2.8-.3-5.6-.4-8.4v-7.9z"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd" />
-                            <path
-                                d="M76.1 62.2c3.1-3 5.2-6.6 6.5-10.7.7 1.2 1.4 2.2 2.3 3 3.5 3.2 10.7 3.4 14.2-1.8 1.5-2.3 2.3-4.9 2.6-7.6.4-3.7.4-7.4-.6-11-.7-2.4-1.7-4.5-3.6-6.2-3.5-3.2-11-3.3-14.4 2.3-.3.5-.6 1.1-1 1.7-.1-.3-.3-.7-.4-1-1.5-3.6-3.9-6.5-6.8-9.1-.5-.4-.4-.5 0-.9 3.3-2.6 7.2-4 11.3-4.6 5-.7 9.9-.5 14.7 1.1 8.2 2.8 13.1 8.7 14.9 17.1 1.2 5.6 1 11.3-1 16.7-2.9 7.9-8.7 12.7-16.9 14.4-6.3 1.3-12.5.9-18.4-1.6-1.2-.4-2.3-1-3.4-1.8z"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd" />
-                            <path
-                                d="M119.2 30.4V2.7c0-1.3.9-2.2 2.2-2.2h9.7c1.3 0 2.2.9 2.2 2.2v49.4c0 .9 0 1.7.1 2.6.1 1.5.8 2.3 2.3 2.5.5.1 1 .1 1.5.2 1.2 0 1.7.6 1.7 1.7 0 1.9.1 3.9-.1 5.8 0 .3-.1.5-.2.8-.4 1.2-.7 1.4-1.9 1.5-2.8.2-5.6.4-8.3.2-1.2-.1-2.4-.3-3.6-.7-3.3-1.2-5-3.7-5.4-7.1-.3-2.5-.3-5-.3-7.5.1-7.3.1-14.5.1-21.7z"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd" />
-                            <path
-                                d="M14.6 27.6c1-1.8 2-3.6 2.9-5.4.4-.8 1-1.5 1.7-2 2.5-1.9 5.3-2.8 8.5-2.7.9 0 1.7.3 2.2 1.1.3.4.4.7.4 1.2v8.9c0 .5-.1.6-.6.6-1.9-.1-3.9-.1-5.8.3-4.4.9-7.1 3.6-8.4 7.8-1 3.2-1.1 6.4-1.1 9.7v17.3c0 1.4-.9 2.4-2.3 2.4H3.7c-.5 0-1.1 0-1.6-.1-1.2-.2-1.8-.9-1.8-2V21.2c0-1.6.7-2.3 2.3-2.3h9.7c1.1 0 2.1 1 2.1 2.1v6.8l.2-.2z"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd" />
-                            <path
-                                d="M156.1 42.5v22.2c0 1.3-.7 2-2 2H144c-1.2 0-2-.8-2-2V20.9c0-.4 0-.9.2-1.3.4-.6.8-.9 1.5-.9 3.4.1 6.8 0 10.2 0 .3 0 .5 0 .8.1 1.1.4 1.3.6 1.3 1.7.1 7.3.1 14.6.1 22z"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd" />
-                            <path
-                                d="M149.2 14.5c-1.2 0-2.2-.1-3.1-.5-2.6-.9-4.1-2.8-4.4-5.5-.2-1.3-.1-2.5.3-3.7 1-2.9 3.2-4.2 6.1-4.5 2.1-.2 4.1.1 5.9 1.4 2.5 1.9 3.1 4.6 2.4 7.5-.6 2.8-2.5 4.4-5.3 5.1-.8.1-1.5.2-1.9.2z"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd" />
-                            <path
-                                d="M239.8 39.9c0-3.5 0-6.9-.6-10.3-1-5.3-4-9.1-9.1-10.9-3.3-1.2-6.6-1.4-10.1-1.1-.6 0-1.2.1-1.8.2h.1c-9.1 1-10.9 8.5-10.9 8.5v-1c0-7.7-.1-15.4-.1-23.1 0-.6-.2-1-.7-1.3-.6-.5-1.2-.7-2-.7h-9.2c-1.5 0-2.4.9-2.4 2.4V65.3c.1.7.8 1.5 1.4 1.5 3.7 0 7.3.2 11-.1 1.3-.1 1.7-.6 1.7-1.9V43.6c0-3.3.4-6.5 1.5-9.6 1.6-4.3 4.7-7.2 9.8-6.5 3.3.4 5.6 2.3 6.5 5.5.6 2 .5 4.1.5 6.2V65c0 .9 1 1.9 1.8 1.9h10.1c1.3 0 2.2-1 2.2-2.3.3-8.4.3-16.6.3-24.7z"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <span class="doc-logo-version">v4.0.0</span>
-                    </a>
-                </div>
-                <div class="layout-header-secondary">
-                    <form action="" class="form layout-header-search">
-                        <div class="form-field form-field-search">
-                            <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
-                            <input type="text" name="" class="form-input" placeholder="Search docs ..." />
-                        </div>
-                    </form>
-                    <ul class="nav layout-header-nav">
-                        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="components/buttons.html">Components</a></li>
-                        <li class="nav-item"><a class="nav-link" href="components/buttons.html">Docs</a></li>
-                    </ul>
-                    <button
-                        type="button"
-                        class="button button-icon button-text doc-theme-toggle"
-                        data-doc-theme-toggle
-                        aria-label="Toggle color theme">
-                        <svg
-                            class="doc-icon-sun"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            focusable="false">
-                            <path
-                                d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M22 12L23 12"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M12 2V1"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M12 23V22"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M20 20L19 19"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M20 4L19 5"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M4 20L5 19"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M4 4L5 5"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M1 12L2 12"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                        <svg
-                            class="doc-icon-moon"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            focusable="false">
-                            <path
-                                d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                    <a
-                        class="button button-icon button-text doc-github-link"
-                        href="https://github.com/im4aLL/roolith-css"
-                        aria-label="roolith on GitHub">
-                        <svg
-                            viewBox="0 -0.5 25 25"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            focusable="false">
-                            <path
-                                d="m12.301 0h.093c2.242 0 4.34.613 6.137 1.68l-.055-.031c1.871 1.094 3.386 2.609 4.449 4.422l.031.058c1.04 1.769 1.654 3.896 1.654 6.166 0 5.406-3.483 10-8.327 11.658l-.087.026c-.063.02-.135.031-.209.031-.162 0-.312-.054-.433-.144l.002.001c-.128-.115-.208-.281-.208-.466 0-.005 0-.01 0-.014v.001q0-.048.008-1.226t.008-2.154c.007-.075.011-.161.011-.249 0-.792-.323-1.508-.844-2.025.618-.061 1.176-.163 1.718-.305l-.076.017c.573-.16 1.073-.373 1.537-.642l-.031.017c.508-.28.938-.636 1.292-1.058l.006-.007c.372-.476.663-1.036.84-1.645l.009-.035c.209-.683.329-1.468.329-2.281 0-.045 0-.091-.001-.136v.007c0-.022.001-.047.001-.072 0-1.248-.482-2.383-1.269-3.23l.003.003c.168-.44.265-.948.265-1.479 0-.649-.145-1.263-.404-1.814l.011.026c-.115-.022-.246-.035-.381-.035-.334 0-.649.078-.929.216l.012-.005c-.568.21-1.054.448-1.512.726l.038-.022-.609.384c-.922-.264-1.981-.416-3.075-.416s-2.153.152-3.157.436l.081-.02q-.256-.176-.681-.433c-.373-.214-.814-.421-1.272-.595l-.066-.022c-.293-.154-.64-.244-1.009-.244-.124 0-.246.01-.364.03l.013-.002c-.248.524-.393 1.139-.393 1.788 0 .531.097 1.04.275 1.509l-.01-.029c-.785.844-1.266 1.979-1.266 3.227 0 .025 0 .051.001.076v-.004c-.001.039-.001.084-.001.13 0 .809.12 1.591.344 2.327l-.015-.057c.189.643.476 1.202.85 1.693l-.009-.013c.354.435.782.793 1.267 1.062l.022.011c.432.252.933.465 1.46.614l.046.011c.466.125 1.024.227 1.595.284l.046.004c-.431.428-.718 1-.784 1.638l-.001.012c-.207.101-.448.183-.699.236l-.021.004c-.256.051-.549.08-.85.08-.022 0-.044 0-.066 0h.003c-.394-.008-.756-.136-1.055-.348l.006.004c-.371-.259-.671-.595-.881-.986l-.007-.015c-.198-.336-.459-.614-.768-.827l-.009-.006c-.225-.169-.49-.301-.776-.38l-.016-.004-.32-.048c-.023-.002-.05-.003-.077-.003-.14 0-.273.028-.394.077l.007-.003q-.128.072-.08.184c.039.086.087.16.145.225l-.001-.001c.061.072.13.135.205.19l.003.002.112.08c.283.148.516.354.693.603l.004.006c.191.237.359.505.494.792l.01.024.16.368c.135.402.38.738.7.981l.005.004c.3.234.662.402 1.057.478l.016.002c.33.064.714.104 1.106.112h.007c.045.002.097.002.15.002.261 0 .517-.021.767-.062l-.027.004.368-.064q0 .609.008 1.418t.008.873v.014c0 .185-.08.351-.208.466h-.001c-.119.089-.268.143-.431.143-.075 0-.147-.011-.214-.032l.005.001c-4.929-1.689-8.409-6.283-8.409-11.69 0-2.268.612-4.393 1.681-6.219l-.032.058c1.094-1.871 2.609-3.386 4.422-4.449l.058-.031c1.739-1.034 3.835-1.645 6.073-1.645h.098-.005zm-7.64 17.666q.048-.112-.112-.192-.16-.048-.208.032-.048.112.112.192.144.096.208-.032zm.497.545q.112-.08-.032-.256-.16-.144-.256-.048-.112.08.032.256.159.157.256.047zm.48.72q.144-.112 0-.304-.128-.208-.272-.096-.144.08 0 .288t.272.112zm.672.673q.128-.128-.064-.304-.192-.192-.32-.048-.144.128.064.304.192.192.32.044zm.913.4q.048-.176-.208-.256-.24-.064-.304.112t.208.24q.24.097.304-.096zm1.009.08q0-.208-.272-.176-.256 0-.256.176 0 .208.272.176.256.001.256-.175zm.929-.16q-.032-.176-.288-.144-.256.048-.224.24t.288.128.225-.224z" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </header>
+        <include-fragment class="doc-fragment" src="/partials/header.html" loading="eager">
+            <p>Loading...</p>
+        </include-fragment>
 
-        <main>
-            <section class="container doc-hero">
-                <div>
+        <main class="doc-home">
+            <section class="container doc-hero" data-doc-hero>
+                <div class="doc-hero-copy">
                     <div class="doc-eyebrow">
                         <span class="doc-eyebrow-dot"></span>
                         Version 4.0.0 - MIT licensed
@@ -201,36 +49,119 @@
                         <button type="button" class="doc-install-copy" data-doc-copy="install-cmd">Copy</button>
                     </div>
                 </div>
-                <div class="doc-hero-visual">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong>Release checklist</strong>
-                            <span class="badge badge-success">On track</span>
+
+                <div class="doc-hero-visual" data-doc-lab>
+                    <div class="doc-lab-window">
+                        <div class="doc-lab-bar">
+                            <span class="doc-lab-title">
+                                <span class="doc-lab-live-dot" aria-hidden="true"></span>
+                                token-lab.css
+                            </span>
+                            <span class="doc-lab-hint">Try the controls</span>
                         </div>
-                        <div class="card-body">
-                            <div class="doc-hero-row">
-                                <span class="doc-hero-row-label">Token layer</span>
-                                <span class="badge badge-primary">Shipped</span>
+
+                        <div class="doc-lab-stage">
+                            <div class="card doc-lab-preview">
+                                <div class="card-body">
+                                    <div class="doc-lab-preview-head">
+                                        <div>
+                                            <span class="doc-lab-preview-kicker">Live preview</span>
+                                            <strong class="doc-lab-preview-title">Same markup</strong>
+                                        </div>
+                                        <span class="doc-lab-preview-dot" aria-hidden="true"></span>
+                                    </div>
+                                    <p class="doc-lab-preview-text">These components read the tokens you pick.</p>
+                                    <div class="doc-lab-meter" aria-hidden="true"><span></span></div>
+                                    <div class="doc-lab-preview-actions">
+                                        <button type="button" class="button button-primary button-small" tabindex="-1">
+                                            Primary
+                                        </button>
+                                        <button type="button" class="button button-outline button-small" tabindex="-1">
+                                            Outline
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="doc-hero-row">
-                                <span class="doc-hero-row-label">Dark mode</span>
-                                <span class="badge badge-primary">Shipped</span>
-                            </div>
-                            <div class="doc-hero-row">
-                                <span class="doc-hero-row-label">Form controls</span>
-                                <span class="badge badge-warning">In review</span>
-                            </div>
-                            <div class="doc-hero-badges">
-                                <span class="tag">css variables</span>
-                                <span class="tag">responsive</span>
-                                <span class="tag">no js required</span>
-                            </div>
-                            <button type="button" class="button button-primary">Approve</button>
                         </div>
-                        <div class="card-footer">
-                            <a href="components/buttons.html" class="button button-text button-small">
-                                Explore the kit
-                            </a>
+
+                        <div class="doc-lab-controls">
+                            <div class="doc-lab-control">
+                                <span class="doc-lab-label">Accent</span>
+                                <div class="doc-lab-swatches" role="group" aria-label="Accent color">
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #4a5cd0"
+                                        data-doc-lab-color="#4a5cd0"
+                                        aria-pressed="true"
+                                        aria-label="Indigo accent"
+                                        title="Indigo"></button>
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #7c3aed"
+                                        data-doc-lab-color="#7c3aed"
+                                        aria-pressed="false"
+                                        aria-label="Violet accent"
+                                        title="Violet"></button>
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #0f766e"
+                                        data-doc-lab-color="#0f766e"
+                                        aria-pressed="false"
+                                        aria-label="Teal accent"
+                                        title="Teal"></button>
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #be123c"
+                                        data-doc-lab-color="#be123c"
+                                        aria-pressed="false"
+                                        aria-label="Rose accent"
+                                        title="Rose"></button>
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #94702f"
+                                        data-doc-lab-color="#94702f"
+                                        aria-pressed="false"
+                                        aria-label="Amber accent"
+                                        title="Amber"></button>
+                                </div>
+                            </div>
+                            <div class="doc-lab-control doc-lab-control-radius">
+                                <label class="doc-lab-label" for="doc-lab-radius">
+                                    Radius
+                                    <output class="doc-lab-value" data-doc-lab-radius-value>8px</output>
+                                </label>
+                                <input
+                                    type="range"
+                                    class="doc-lab-range"
+                                    id="doc-lab-radius"
+                                    min="0"
+                                    max="24"
+                                    step="1"
+                                    value="8"
+                                    data-doc-lab-radius />
+                            </div>
+                        </div>
+
+                        <div class="doc-code doc-lab-code">
+                            <div class="doc-code-bar">
+                                <span class="doc-code-lang">css</span>
+                                <button
+                                    type="button"
+                                    class="doc-copy"
+                                    data-doc-copy="doc-lab-snippet"
+                                    aria-label="Copy token overrides">
+                                    Copy
+                                </button>
+                            </div>
+                            <pre><code id="doc-lab-snippet" data-doc-lab-snippet>:root {
+    --r-color-primary: #4a5cd0;
+    --r-global-border-radius: 8px;
+}</code></pre>
                         </div>
                     </div>
                 </div>
@@ -604,17 +535,8 @@
             </section>
         </main>
 
-        <footer class="doc-footer">
-            <div class="container doc-footer-inner">
-                <div class="small dimmed">roolith css v4.0.0 - MIT licensed</div>
-                <ul class="nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="components/buttons.html">Components</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/im4aLL/roolith-css">GitHub</a>
-                    </li>
-                </ul>
-            </div>
-        </footer>
+        <include-fragment class="doc-fragment" src="/partials/footer.html" loading="eager">
+            <p>Loading...</p>
+        </include-fragment>
     </body>
 </html>
