@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Box - roolith css</title>
+        <meta name="description" content="Bordered content boxes with header, body, and footer slots, plus sizes and color variants in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Box</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Box</h1>
+                            <p class="doc-content-lead">
+                                Box is a bordered surface for grouping related content, with optional header, body, and
+                                footer slots. It is deliberately plain: the container adds the border, radius, and
+                                background, while every slot owns its own padding and type scale.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.box</strong>
+                                - defined in
+                                <strong>modules/_box.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                The body slot carries the padding, so use
+                                <code>.box-body</code>
+                                on the content element instead of relying on the container.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="box">
+                                        <p class="box-body">Deploys are paused for this environment until the next release window.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="box-basic">Copy</button>
+                                </div>
+                                <pre><code id="box-basic" class="language-html">&lt;div class="box"&gt;
+    &lt;p class="box-body"&gt;Deploys are paused for this environment until the next release window.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="structure">
+                            <h2>Header, body, and footer</h2>
+                            <p>
+                                Header and footer are optional slots around the body. The header is bold 14px with no
+                                bottom padding, the body runs at 14px over 22px lines, and the footer drops to 80% size
+                                with no top padding, so the three slots stay tight without extra markup.
+                            </p>
+                            <p>
+                                The base class adds no borders between the slots. If you want a divider, style the header
+                                or footer element in your own layer.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="box">
+                                        <div class="box-header">Release window</div>
+                                        <p class="box-body">
+                                            The next window opens on Thursday at 09:00 UTC. Changes merged after the
+                                            freeze stay queued until then.
+                                        </p>
+                                        <div class="box-footer">Updated by the release bot</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="box-structure">Copy</button>
+                                </div>
+                                <pre><code id="box-structure" class="language-html">&lt;div class="box"&gt;
+    &lt;div class="box-header"&gt;Release window&lt;/div&gt;
+    &lt;p class="box-body"&gt;
+        The next window opens on Thursday at 09:00 UTC. Changes merged after the
+        freeze stay queued until then.
+    &lt;/p&gt;
+    &lt;div class="box-footer"&gt;Updated by the release bot&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="sizes">
+                            <h2>Sizes</h2>
+                            <p>
+                                Three sizes change the padding and the type scale together.
+                                <code>.box-small</code>
+                                uses 0.9375rem of padding with 12px text, the default uses 1.25rem with 14px text, and
+                                <code>.box-large</code>
+                                uses 2.5rem with 16px text.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="box box-small">
+                                        <div class="box-header">Small box</div>
+                                        <p class="box-body">Dense metadata panels and secondary notes.</p>
+                                    </div>
+                                </div>
+                                <div class="full-width">
+                                    <div class="box">
+                                        <div class="box-header">Default box</div>
+                                        <p class="box-body">The default works for most inline content groupings.</p>
+                                    </div>
+                                </div>
+                                <div class="full-width">
+                                    <div class="box box-large">
+                                        <div class="box-header">Large box</div>
+                                        <p class="box-body">Roomier panels such as empty states and introductions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="box-sizes">Copy</button>
+                                </div>
+                                <pre><code id="box-sizes" class="language-html">&lt;div class="box box-small"&gt;
+    &lt;div class="box-header"&gt;Small box&lt;/div&gt;
+    &lt;p class="box-body"&gt;Dense metadata panels and secondary notes.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="box"&gt;
+    &lt;div class="box-header"&gt;Default box&lt;/div&gt;
+    &lt;p class="box-body"&gt;The default works for most inline content groupings.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-large"&gt;
+    &lt;div class="box-header"&gt;Large box&lt;/div&gt;
+    &lt;p class="box-body"&gt;Roomier panels such as empty states and introductions.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="colors">
+                            <h2>Colors</h2>
+                            <p>
+                                A color class sets the border and the text of every slot to the same palette value,
+                                which keeps the variant readable without a filled background. Every palette name except
+                                white is generated, including dark and black.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="box box-primary">
+                                        <div class="box-header">Primary box</div>
+                                        <p class="box-body">Use it to mark the main record or the recommended path.</p>
+                                        <div class="box-footer">Primary variant</div>
+                                    </div>
+                                </div>
+                                <div class="full-width">
+                                    <div class="box box-tertiary">
+                                        <div class="box-header">Tertiary box</div>
+                                        <p class="box-body">A quieter accent for secondary information.</p>
+                                        <div class="box-footer">Tertiary variant</div>
+                                    </div>
+                                </div>
+                                <div class="full-width">
+                                    <div class="box box-light">
+                                        <div class="box-header">Light box</div>
+                                        <p class="box-body">
+                                            The light slot resolves to a text-safe value, so the copy stays readable on
+                                            the box surface in both themes.
+                                        </p>
+                                        <div class="box-footer">Light variant</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="box-colors">Copy</button>
+                                </div>
+                                <pre><code id="box-colors" class="language-html">&lt;div class="box box-primary"&gt;
+    &lt;div class="box-header"&gt;Primary box&lt;/div&gt;
+    &lt;p class="box-body"&gt;Use it to mark the main record or the recommended path.&lt;/p&gt;
+    &lt;div class="box-footer"&gt;Primary variant&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-tertiary"&gt;
+    &lt;div class="box-header"&gt;Tertiary box&lt;/div&gt;
+    &lt;p class="box-body"&gt;A quieter accent for secondary information.&lt;/p&gt;
+    &lt;div class="box-footer"&gt;Tertiary variant&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-light"&gt;
+    &lt;div class="box-header"&gt;Light box&lt;/div&gt;
+    &lt;p class="box-body"&gt;
+        The light slot resolves to a text-safe value, so the copy stays readable on
+        the box surface in both themes.
+    &lt;/p&gt;
+    &lt;div class="box-footer"&gt;Light variant&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                A box is a visual grouping, not a landmark or a widget. The border adds nothing for
+                                assistive technology.
+                            </p>
+                            <ul>
+                                <li>Use a real heading element inside <code>.box-header</code> when the box labels a section, so it lands in the document outline.</li>
+                                <li>Do not make the box the only cue that content is separate; keep the heading and copy meaningful without the border.</li>
+                                <li>When the whole box becomes a link, as in the stat block pattern, keep the anchor semantics and a visible focus style.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Slot classes go inside the box. Size and color classes go on the box element itself.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.box</code></td>
+                                            <td>Base</td>
+                                            <td>Border, doubled radius, and surface background. No padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.box-header</code></td>
+                                            <td>Slot</td>
+                                            <td>Bold 14px label with no bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.box-body</code></td>
+                                            <td>Slot</td>
+                                            <td>14px over 22px lines and the main padding bearer.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.box-footer</code></td>
+                                            <td>Slot</td>
+                                            <td>80% size, muted, with no top padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.box-small</code></td>
+                                            <td>Size</td>
+                                            <td>Tighter padding with 12px slot text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.box-large</code></td>
+                                            <td>Size</td>
+                                            <td>Wider padding with 16px slot text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.box-primary</code></td>
+                                            <td>Color</td>
+                                            <td>Any palette name except white: secondary, tertiary, info, success, warning, danger, link, dark, black, light.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/badge.html">Previous: Badge</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/breadcrumb.html">Next: Breadcrumb</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#structure">Header, body, and footer</a>
+                        <a class="doc-toc-link" href="#sizes">Sizes</a>
+                        <a class="doc-toc-link" href="#colors">Colors</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

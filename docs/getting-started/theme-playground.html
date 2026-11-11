@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Theme playground - roolith css</title>
+        <meta
+            name="description"
+            content="Tune roolith css theme tokens in the browser, judge them on real components, and copy the generated override CSS for light and dark." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link rel="stylesheet" href="../playground.css" />
+        <link rel="stylesheet" href="/vendor/highlight-github.min.css" data-hljs-theme="light" />
+        <link rel="stylesheet" href="/vendor/highlight-github-dark.min.css" data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+        <script src="../playground-theme.js" defer></script>
+        <script src="../playground-controls.js" defer></script>
+        <script src="../playground.js" defer></script>
+    </head>
+    <body class="doc-playground-page">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <h1 class="doc-visually-hidden">Theme playground</h1>
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item">
+                                    <a href="/getting-started/introduction.html">Getting started</a>
+                                </li>
+                                <li class="breadcrumb-item active">Theme playground</li>
+                            </ol>
+                        </div>
+
+                        <div class="doc-playground" data-doc-playground>
+                            <!-- Placeholder markup: the control values, readouts, and empty-state text below are replaced by the controller with the measured framework defaults. -->
+                            <div class="doc-playground-controls">
+                                <div class="doc-playground-controls-body">
+                                    <div class="doc-playground-group">
+                                        <p class="doc-playground-note">
+                                            Each fill also sets its on-color and text tint, so buttons, badges, and
+                                            messages stay legible.
+                                        </p>
+                                        <div class="doc-playground-colors">
+                                            <div class="doc-playground-color">
+                                                <label class="doc-playground-label" for="doc-playground-color-primary">
+                                                    Primary
+                                                    <code class="doc-playground-token">--r-color-primary</code>
+                                                </label>
+                                                <div class="doc-playground-color-row">
+                                                    <input
+                                                        class="doc-playground-swatch"
+                                                        type="color"
+                                                        id="doc-playground-color-primary"
+                                                        data-doc-playground-color="primary"
+                                                        value="#4a5cd0" />
+                                                    <input
+                                                        class="doc-playground-hex form-input"
+                                                        type="text"
+                                                        id="doc-playground-hex-primary"
+                                                        data-doc-playground-hex="primary"
+                                                        value="#4a5cd0"
+                                                        aria-label="Primary hex value"
+                                                        autocomplete="off"
+                                                        spellcheck="false" />
+                                                </div>
+                                            </div>
+                                            <div class="doc-playground-color">
+                                                <label
+                                                    class="doc-playground-label"
+                                                    for="doc-playground-color-secondary">
+                                                    Secondary
+                                                    <code class="doc-playground-token">--r-color-secondary</code>
+                                                </label>
+                                                <div class="doc-playground-color-row">
+                                                    <input
+                                                        class="doc-playground-swatch"
+                                                        type="color"
+                                                        id="doc-playground-color-secondary"
+                                                        data-doc-playground-color="secondary"
+                                                        value="#7b6aa6" />
+                                                    <input
+                                                        class="doc-playground-hex form-input"
+                                                        type="text"
+                                                        id="doc-playground-hex-secondary"
+                                                        data-doc-playground-hex="secondary"
+                                                        value="#7b6aa6"
+                                                        aria-label="Secondary hex value"
+                                                        autocomplete="off"
+                                                        spellcheck="false" />
+                                                </div>
+                                            </div>
+                                            <div class="doc-playground-color">
+                                                <label class="doc-playground-label" for="doc-playground-color-info">
+                                                    Info
+                                                    <code class="doc-playground-token">--r-color-info</code>
+                                                </label>
+                                                <div class="doc-playground-color-row">
+                                                    <input
+                                                        class="doc-playground-swatch"
+                                                        type="color"
+                                                        id="doc-playground-color-info"
+                                                        data-doc-playground-color="info"
+                                                        value="#2c6196" />
+                                                    <input
+                                                        class="doc-playground-hex form-input"
+                                                        type="text"
+                                                        id="doc-playground-hex-info"
+                                                        data-doc-playground-hex="info"
+                                                        value="#2c6196"
+                                                        aria-label="Info hex value"
+                                                        autocomplete="off"
+                                                        spellcheck="false" />
+                                                </div>
+                                            </div>
+                                            <div class="doc-playground-color">
+                                                <label class="doc-playground-label" for="doc-playground-color-success">
+                                                    Success
+                                                    <code class="doc-playground-token">--r-color-success</code>
+                                                </label>
+                                                <div class="doc-playground-color-row">
+                                                    <input
+                                                        class="doc-playground-swatch"
+                                                        type="color"
+                                                        id="doc-playground-color-success"
+                                                        data-doc-playground-color="success"
+                                                        value="#38805f" />
+                                                    <input
+                                                        class="doc-playground-hex form-input"
+                                                        type="text"
+                                                        id="doc-playground-hex-success"
+                                                        data-doc-playground-hex="success"
+                                                        value="#38805f"
+                                                        aria-label="Success hex value"
+                                                        autocomplete="off"
+                                                        spellcheck="false" />
+                                                </div>
+                                            </div>
+                                            <div class="doc-playground-color">
+                                                <label class="doc-playground-label" for="doc-playground-color-warning">
+                                                    Warning
+                                                    <code class="doc-playground-token">--r-color-warning</code>
+                                                </label>
+                                                <div class="doc-playground-color-row">
+                                                    <input
+                                                        class="doc-playground-swatch"
+                                                        type="color"
+                                                        id="doc-playground-color-warning"
+                                                        data-doc-playground-color="warning"
+                                                        value="#94702f" />
+                                                    <input
+                                                        class="doc-playground-hex form-input"
+                                                        type="text"
+                                                        id="doc-playground-hex-warning"
+                                                        data-doc-playground-hex="warning"
+                                                        value="#94702f"
+                                                        aria-label="Warning hex value"
+                                                        autocomplete="off"
+                                                        spellcheck="false" />
+                                                </div>
+                                            </div>
+                                            <div class="doc-playground-color">
+                                                <label class="doc-playground-label" for="doc-playground-color-danger">
+                                                    Danger
+                                                    <code class="doc-playground-token">--r-color-danger</code>
+                                                </label>
+                                                <div class="doc-playground-color-row">
+                                                    <input
+                                                        class="doc-playground-swatch"
+                                                        type="color"
+                                                        id="doc-playground-color-danger"
+                                                        data-doc-playground-color="danger"
+                                                        value="#bf4a50" />
+                                                    <input
+                                                        class="doc-playground-hex form-input"
+                                                        type="text"
+                                                        id="doc-playground-hex-danger"
+                                                        data-doc-playground-hex="danger"
+                                                        value="#bf4a50"
+                                                        aria-label="Danger hex value"
+                                                        autocomplete="off"
+                                                        spellcheck="false" />
+                                                </div>
+                                            </div>
+                                            <div class="doc-playground-color">
+                                                <label class="doc-playground-label" for="doc-playground-color-link">
+                                                    Link
+                                                    <code class="doc-playground-token">--r-color-link</code>
+                                                </label>
+                                                <div class="doc-playground-color-row">
+                                                    <input
+                                                        class="doc-playground-swatch"
+                                                        type="color"
+                                                        id="doc-playground-color-link"
+                                                        data-doc-playground-color="link"
+                                                        value="#5568de" />
+                                                    <input
+                                                        class="doc-playground-hex form-input"
+                                                        type="text"
+                                                        id="doc-playground-hex-link"
+                                                        data-doc-playground-hex="link"
+                                                        value="#5568de"
+                                                        aria-label="Link hex value"
+                                                        autocomplete="off"
+                                                        spellcheck="false" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="doc-playground-group">
+                                        <div class="doc-playground-field">
+                                            <div class="doc-playground-field-head">
+                                                <label class="doc-playground-label" for="doc-playground-radius">
+                                                    Border radius
+                                                </label>
+                                                <output
+                                                    class="doc-playground-value"
+                                                    for="doc-playground-radius"
+                                                    data-doc-playground-radius-value>
+                                                    8px
+                                                </output>
+                                            </div>
+                                            <code class="doc-playground-token">--r-global-border-radius</code>
+                                            <input
+                                                class="doc-playground-range"
+                                                type="range"
+                                                id="doc-playground-radius"
+                                                data-doc-playground-range="radius"
+                                                min="0"
+                                                max="24"
+                                                step="1"
+                                                value="8" />
+                                        </div>
+                                        <div class="doc-playground-field">
+                                            <div class="doc-playground-field-head">
+                                                <label class="doc-playground-label" for="doc-playground-font-size">
+                                                    Base font size
+                                                </label>
+                                                <output
+                                                    class="doc-playground-value"
+                                                    for="doc-playground-font-size"
+                                                    data-doc-playground-font-size-value>
+                                                    16px
+                                                </output>
+                                            </div>
+                                            <code class="doc-playground-token">--r-global-base-font-size</code>
+                                            <input
+                                                class="doc-playground-range"
+                                                type="range"
+                                                id="doc-playground-font-size"
+                                                data-doc-playground-range="fontSize"
+                                                min="12"
+                                                max="20"
+                                                step="1"
+                                                value="16" />
+                                        </div>
+                                        <div class="doc-playground-field">
+                                            <label class="doc-playground-label" for="doc-playground-font">
+                                                Base font family
+                                            </label>
+                                            <code class="doc-playground-token">--r-global-base-font</code>
+                                            <select
+                                                class="form-select doc-playground-select"
+                                                id="doc-playground-font"
+                                                data-doc-playground-font>
+                                                <option value="">Framework default</option>
+                                                <option
+                                                    value='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'>
+                                                    System sans
+                                                </option>
+                                                <option value='Georgia, "Times New Roman", serif'>Serif</option>
+                                                <option
+                                                    value="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+                                                    Monospace
+                                                </option>
+                                                <option value='"Helvetica Neue", Helvetica, Arial, sans-serif'>
+                                                    Helvetica
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="doc-playground-actions">
+                                    <button type="button" class="button button-medium" data-doc-playground-reset>
+                                        Reset
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="button button-primary button-medium"
+                                        data-doc-playground-copy
+                                        disabled>
+                                        Copy CSS
+                                    </button>
+                                </div>
+                                <p class="doc-playground-status" role="status" data-doc-playground-status>
+                                    Nothing to copy yet. Change a control to generate theme overrides.
+                                </p>
+                            </div>
+
+                            <div class="doc-playground-output">
+                                <div class="doc-playground-preview">
+                                    <!-- Placeholder markup: a composed app screen so a theme change is judged in context. Framework components keep their own styles; only the app shell and chart are playground specific. -->
+                                    <div class="doc-playground-app">
+                                        <div class="doc-playground-app-bar">
+                                            <div class="doc-playground-app-brand">
+                                                <span class="doc-playground-app-mark" aria-hidden="true"></span>
+                                                Northwind
+                                                <span class="badge badge-primary">Pro</span>
+                                            </div>
+                                            <nav class="doc-playground-app-nav" aria-label="Preview app">
+                                                <a class="active" href="#doc-content">Overview</a>
+                                                <a href="#doc-content">Deployments</a>
+                                                <a href="#doc-content">Activity</a>
+                                                <a href="#doc-content">Settings</a>
+                                            </nav>
+                                            <div class="avatar avatar-small">
+                                                <figure class="avatar-fig rounded">
+                                                    <img src="https://picsum.photos/32/32?image=500" alt="" />
+                                                </figure>
+                                                <a class="avatar-label" href="#doc-content">Ariana Cole</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="doc-playground-app-body">
+                                            <ol class="breadcrumb doc-playground-app-crumbs">
+                                                <li class="breadcrumb-item">
+                                                    <a href="#doc-content">Projects</a>
+                                                </li>
+                                                <li class="breadcrumb-item active">Northwind</li>
+                                            </ol>
+
+                                            <div class="doc-playground-app-head">
+                                                <div>
+                                                    <h3 class="doc-playground-app-title">Deployments</h3>
+                                                    <p class="doc-playground-app-subtitle">
+                                                        Builds across every environment, newest first.
+                                                    </p>
+                                                </div>
+                                                <div class="doc-playground-row">
+                                                    <button
+                                                        type="button"
+                                                        class="button button-outline button-small">
+                                                        Export
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        class="button button-primary button-small">
+                                                        New deploy
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="doc-playground-app-stats">
+                                                <div class="card">
+                                                    <div class="stat">
+                                                        <span class="stat-header">Deploys today</span>
+                                                        <span class="stat-body">24</span>
+                                                        <span class="stat-footer">
+                                                            <span class="doc-playground-trend-up">+6</span>
+                                                            vs yesterday
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="stat">
+                                                        <span class="stat-header">Success rate</span>
+                                                        <span class="stat-body">98.6%</span>
+                                                        <span class="stat-footer">Across three environments</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="stat">
+                                                        <span class="stat-header">Avg build time</span>
+                                                        <span class="stat-body">2m 14s</span>
+                                                        <span class="stat-footer">
+                                                            <span class="doc-playground-trend-up">
+                                                                11s faster
+                                                            </span>
+                                                            this week
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="stat">
+                                                        <span class="stat-header">Open incidents</span>
+                                                        <span class="stat-body">2</span>
+                                                        <span class="stat-footer">
+                                                            <span class="doc-playground-trend-warn">
+                                                                One high priority
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="doc-playground-app-columns">
+                                                <div class="doc-playground-app-main-col">
+                                                    <div class="card doc-playground-panel">
+                                                        <div class="card-header">
+                                                            <div class="doc-playground-panel-head">
+                                                                <strong>Recent deployments</strong>
+                                                                <div class="form-field small">
+                                                                    <input
+                                                                        class="form-input doc-playground-search"
+                                                                        type="search"
+                                                                        placeholder="Search service"
+                                                                        aria-label="Search deployments" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="tab">
+                                                                <ul class="tab-list">
+                                                                    <li
+                                                                        class="tab-title active"
+                                                                        data-doc-tab="#doc-playground-deploy-all">
+                                                                        All
+                                                                    </li>
+                                                                    <li
+                                                                        class="tab-title"
+                                                                        data-doc-tab="#doc-playground-deploy-failed">
+                                                                        Failed
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="tab-content active"
+                                                                    id="doc-playground-deploy-all">
+                                                                    <div
+                                                                        class="doc-playground-table-wrap">
+                                                                        <table
+                                                                            class="table doc-playground-table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col">Service</th>
+                                                                                    <th scope="col">
+                                                                                        Environment
+                                                                                    </th>
+                                                                                    <th scope="col">Status</th>
+                                                                                    <th scope="col">Duration</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>api-gateway</td>
+                                                                                    <td>
+                                                                                        <span
+                                                                                            class="badge badge-info">
+                                                                                            Production
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <span
+                                                                                            class="badge badge-success">
+                                                                                            Passed
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td>1m 42s</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>web-app</td>
+                                                                                    <td>
+                                                                                        <span class="badge">
+                                                                                            Staging
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <span
+                                                                                            class="badge badge-primary">
+                                                                                            Running
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td>0m 38s</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>worker</td>
+                                                                                    <td>
+                                                                                        <span
+                                                                                            class="badge badge-info">
+                                                                                            Production
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <span
+                                                                                            class="badge badge-danger">
+                                                                                            Failed
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td>2m 04s</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="tab-content"
+                                                                    id="doc-playground-deploy-failed">
+                                                                    <div class="message message-danger">
+                                                                        Worker builds need attention before the
+                                                                        next release.
+                                                                    </div>
+                                                                    <div
+                                                                        class="doc-playground-table-wrap">
+                                                                        <table
+                                                                            class="table doc-playground-table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col">Service</th>
+                                                                                    <th scope="col">
+                                                                                        Environment
+                                                                                    </th>
+                                                                                    <th scope="col">Status</th>
+                                                                                    <th scope="col">Duration</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>worker</td>
+                                                                                    <td>
+                                                                                        <span
+                                                                                            class="badge badge-info">
+                                                                                            Production
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <span
+                                                                                            class="badge badge-danger">
+                                                                                            Failed
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td>2m 04s</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer doc-playground-panel-foot">
+                                                            <span>Showing 3 of 42</span>
+                                                            <nav
+                                                                class="pagination"
+                                                                aria-label="Deployments pagination">
+                                                                <ul class="pagination-list">
+                                                                    <li class="pagination-item">
+                                                                        <a
+                                                                            class="pagination-link"
+                                                                            href="#doc-content">
+                                                                            Previous
+                                                                        </a>
+                                                                    </li>
+                                                                    <li
+                                                                        class="pagination-item pagination-item-active">
+                                                                        <a
+                                                                            class="pagination-link"
+                                                                            href="#doc-content"
+                                                                            aria-current="page">
+                                                                            2
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="pagination-item">
+                                                                        <a
+                                                                            class="pagination-link"
+                                                                            href="#doc-content">
+                                                                            Next
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </nav>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card doc-playground-panel doc-playground-chart-card">
+                                                        <div class="card-header">
+                                                            <div class="doc-playground-panel-head">
+                                                                <strong>Deployment volume</strong>
+                                                                <span class="doc-playground-panel-meta">
+                                                                    Last 7 days
+                                                                    <span class="badge badge-success">
+                                                                        +12%
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="doc-playground-chart">
+                                                            <div
+                                                                class="doc-playground-chart-plot"
+                                                                role="img"
+                                                                aria-label="Deploys per day over the last week, peaking on Saturday">
+                                                                <span
+                                                                    class="doc-playground-chart-bar"
+                                                                    style="height: 38%"></span>
+                                                                <span
+                                                                    class="doc-playground-chart-bar"
+                                                                    style="height: 54%"></span>
+                                                                <span
+                                                                    class="doc-playground-chart-bar"
+                                                                    style="height: 43%"></span>
+                                                                <span
+                                                                    class="doc-playground-chart-bar"
+                                                                    style="height: 62%"></span>
+                                                                <span
+                                                                    class="doc-playground-chart-bar"
+                                                                    style="height: 57%"></span>
+                                                                <span
+                                                                    class="doc-playground-chart-bar is-peak"
+                                                                    style="height: 88%"></span>
+                                                                <span
+                                                                    class="doc-playground-chart-bar"
+                                                                    style="height: 71%"></span>
+                                                            </div>
+                                                            <div
+                                                                class="doc-playground-chart-labels"
+                                                                aria-hidden="true">
+                                                                <span>Mon</span>
+                                                                <span>Tue</span>
+                                                                <span>Wed</span>
+                                                                <span>Thu</span>
+                                                                <span>Fri</span>
+                                                                <span>Sat</span>
+                                                                <span>Sun</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="doc-playground-app-side">
+                                                    <div class="card doc-playground-panel">
+                                                        <div class="card-header">Activity</div>
+                                                        <div class="card-body">
+                                                            <div class="doc-playground-stack">
+                                                                <div class="message message-success">
+                                                                    Deploy 1284 reached production.
+                                                                </div>
+                                                                <div class="comment comment-highlight">
+                                                                    <div class="avatar avatar-small">
+                                                                        <figure class="avatar-fig rounded">
+                                                                            <img
+                                                                                src="https://picsum.photos/32/32?image=507"
+                                                                                alt="" />
+                                                                        </figure>
+                                                                        <a
+                                                                            class="avatar-label"
+                                                                            href="#doc-content">
+                                                                            Sofia Almeida
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="comment-body">
+                                                                        Approved the production rollout after
+                                                                        the smoke tests passed.
+                                                                    </div>
+                                                                    <div class="comment-info">2 min ago</div>
+                                                                </div>
+                                                                <div class="comment">
+                                                                    <div class="avatar avatar-small">
+                                                                        <figure class="avatar-fig rounded">
+                                                                            <img
+                                                                                src="https://picsum.photos/32/32?image=501"
+                                                                                alt="" />
+                                                                        </figure>
+                                                                        <a
+                                                                            class="avatar-label"
+                                                                            href="#doc-content">
+                                                                            Marcus Lee
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="comment-body">
+                                                                        Opened an issue for the failed worker
+                                                                        build.
+                                                                    </div>
+                                                                    <div class="comment-info">23 min ago</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card doc-playground-panel">
+                                                        <div class="card-header">
+                                                            Invite a teammate
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="doc-playground-stack">
+                                                                <div class="form-field">
+                                                                    <label
+                                                                        class="form-label"
+                                                                        for="doc-playground-invite-email">
+                                                                        Email address
+                                                                    </label>
+                                                                    <input
+                                                                        class="form-input"
+                                                                        type="email"
+                                                                        id="doc-playground-invite-email"
+                                                                        name="playground-invite-email"
+                                                                        placeholder="name@company.com" />
+                                                                </div>
+                                                                <div class="form-field">
+                                                                    <label
+                                                                        class="form-label"
+                                                                        for="doc-playground-invite-role">
+                                                                        Role
+                                                                    </label>
+                                                                    <select
+                                                                        class="form-select"
+                                                                        id="doc-playground-invite-role"
+                                                                        name="playground-invite-role">
+                                                                        <option>Developer</option>
+                                                                        <option>Maintainer</option>
+                                                                    </select>
+                                                                </div>
+                                                                <button
+                                                                    type="button"
+                                                                    class="button button-primary button-block">
+                                                                    Send invite
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card doc-playground-panel">
+                                                        <div class="card-body">
+                                                            <strong
+                                                                class="doc-playground-panel-label">
+                                                                Filters
+                                                            </strong>
+                                                            <div class="accordion">
+                                                                <div class="accordion-item active">
+                                                                    <div class="accordion-item-title">
+                                                                        Environment
+                                                                    </div>
+                                                                    <div class="accordion-item-body">
+                                                                        <label class="form-checkbox-label">
+                                                                            <input
+                                                                                class="form-check-input"
+                                                                                type="checkbox"
+                                                                                checked />
+                                                                            Production
+                                                                        </label>
+                                                                        <label class="form-checkbox-label">
+                                                                            <input
+                                                                                class="form-check-input"
+                                                                                type="checkbox"
+                                                                                checked />
+                                                                            Staging
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="accordion-item">
+                                                                    <div class="accordion-item-title">
+                                                                        Status
+                                                                    </div>
+                                                                    <div class="accordion-item-body">
+                                                                        <label class="form-checkbox-label">
+                                                                            <input
+                                                                                class="form-check-input"
+                                                                                type="checkbox" />
+                                                                            Failed only
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="doc-playground-code doc-code">
+                                    <!-- Placeholder CSS: the controller replaces this empty-state text with the generated override block. -->
+                                    <div class="doc-code-bar">
+                                        <span class="doc-code-lang">CSS</span>
+                                        <span class="doc-playground-token-count" data-doc-playground-count>
+                                            0 tokens
+                                        </span>
+                                    </div>
+                                    <pre><code class="language-css" data-doc-playground-css>/* Nothing to copy yet. Change a control to generate theme overrides. */</code></pre>
+                                </div>
+                                <p class="doc-playground-hint">
+                                    Generated from the framework defaults, so it lists only the tokens that differ.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/theming.html">
+                                        Previous: Theming
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/layout.html">Next: Layout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

@@ -1,5 +1,8 @@
 /**
- * Doc site behavior: theme toggle, copy-to-clipboard buttons, and accordion items.
+ * Doc site behavior: theme toggle, copy-to-clipboard buttons, navigation state,
+ * and the shared demo hooks used by component pages. Search lives in
+ * `doc-search.js` and the transient surface controllers live in
+ * `doc-surfaces.js`.
  */
 
 const THEME_KEY = 'roolith-doc-theme';
@@ -24,6 +27,17 @@ function applyCodeTheme(theme) {
 }
 
 /**
+ * Reflect the active theme on every theme toggle in the shared header.
+ * @returns {void}
+ */
+function syncThemeToggleState() {
+    const isDark = document.documentElement.classList.contains('theme-dark');
+    document.querySelectorAll('[data-doc-theme-toggle]').forEach((button) => {
+        button.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    });
+}
+
+/**
  * Apply a theme by setting exactly one explicit scope class, so the automatic
  * `prefers-color-scheme` fallback in the framework CSS never overrides it.
  * @param {'light' | 'dark'} theme - Theme to apply.
@@ -33,10 +47,11 @@ function applyTheme(theme) {
     document.documentElement.classList.toggle('theme-dark', theme === 'dark');
     document.documentElement.classList.toggle('theme-light', theme === 'light');
     applyCodeTheme(theme);
+    syncThemeToggleState();
 }
 
 /**
- * Highlight code blocks with the CDN build of highlight.js, when it loaded.
+ * Highlight code blocks with the bundled highlight.js build, when it loaded.
  * @returns {void}
  */
 function highlightCodeBlocks() {
@@ -125,7 +140,67 @@ function toggleAccordionItem(title) {
     const item = title.closest('.accordion-item');
     if (item) {
         item.classList.toggle('active');
+        refreshScrollableTables();
     }
+}
+
+/**
+ * Activate one tab title and its panel, clearing the siblings in the same tab.
+ * @param {HTMLElement} title - The clicked tab title.
+ * @returns {void}
+ */
+function activateTab(title) {
+    const tab = title.closest('.tab');
+    if (!tab) {
+        return;
+    }
+    const selector = title.getAttribute('data-doc-tab');
+    const content = selector ? document.getElementById(selector.replace(/^#/, '')) : null;
+    tab.querySelectorAll('.tab-title').forEach((item) => {
+        item.classList.toggle('active', item === title);
+    });
+    tab.querySelectorAll('.tab-content').forEach((panel) => {
+        panel.classList.toggle('active', panel === content);
+    });
+    refreshScrollableTables();
+}
+
+/**
+ * Remove a dismissible message from the page.
+ * @param {HTMLElement} button - The clicked message close control.
+ * @returns {void}
+ */
+function dismissMessage(button) {
+    const message = button.closest('.message[data-doc-dismissible]');
+    if (message) {
+        message.remove();
+    }
+}
+
+const TOAST_DURATION = 3500;
+
+/**
+ * Append a demo toast notification to the body and remove it after a short delay.
+ * @param {HTMLElement} trigger - Element carrying `data-doc-toast-show`.
+ * @returns {void}
+ */
+function showToast(trigger) {
+    const text = trigger.getAttribute('data-doc-toast-show') || 'Saved successfully.';
+    const position = trigger.getAttribute('data-doc-toast-position');
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    if (position === 'bottom' || position === 'left' || position === 'top') {
+        toast.classList.add(position);
+    }
+
+    const message = document.createElement('div');
+    message.className = 'message message-success';
+    message.setAttribute('role', 'status');
+    message.textContent = text;
+
+    toast.appendChild(message);
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), TOAST_DURATION);
 }
 
 const SIDEBAR_MEDIA = window.matchMedia('(max-width: 1023px)');
@@ -254,10 +329,40 @@ let navSyncQueued = false;
  * @returns {void}
  */
 function setSidebarOpen(open) {
+    if (open && !document.getElementById('doc-sidebar')) {
+        return;
+    }
     document.documentElement.classList.toggle('doc-sidebar-open', open);
+    syncSidebarToggleTarget();
+}
+
+/**
+ * Keep the sidebar toggle pointing at `#doc-sidebar` whenever the drawer exists,
+ * and only drop the relationship on pages that have neither the sidebar nor a
+ * still pending placeholder that may load it. The toggle stays disabled until a
+ * drawer exists, reads `Loading navigation` while a placeholder may still load
+ * it, and is hidden outright when the drawer will never arrive, so it never
+ * advertises a state it cannot produce.
+ * @returns {void}
+ */
+function syncSidebarToggleTarget() {
+    const hasSidebar = Boolean(document.getElementById('doc-sidebar'));
+    const hasPlaceholder = Boolean(document.querySelector('include-fragment[src*="sidebar"]:not(.is-error):not(.is-loaded)'));
+    const isOpen = document.documentElement.classList.contains('doc-sidebar-open');
     document.querySelectorAll('[data-doc-sidebar-toggle]').forEach((button) => {
-        button.setAttribute('aria-expanded', open ? 'true' : 'false');
-        button.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        button.hidden = !hasSidebar && !hasPlaceholder;
+        button.disabled = !hasSidebar;
+        if (hasSidebar) {
+            button.setAttribute('aria-controls', 'doc-sidebar');
+            button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            button.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+            return;
+        }
+        button.removeAttribute('aria-controls');
+        button.removeAttribute('aria-expanded');
+        if (hasPlaceholder) {
+            button.setAttribute('aria-label', 'Loading navigation');
+        }
     });
 }
 
@@ -272,12 +377,33 @@ function closeSidebar() {
 }
 
 /**
- * Normalize a pathname so `/`, `/index.html`, and `/foo/` compare consistently.
+ * Normalize a pathname so `/`, `/index.html`, `/foo/`, and a clean `/foo` URL all
+ * compare consistently, because static hosts may strip or add the `.html` suffix.
  * @param {string} pathname - Pathname to normalize.
  * @returns {string} Normalized pathname.
  */
 function normalizePath(pathname) {
-    return pathname.replace(/index\.html$/, '').replace(/\/+$/, '');
+    return pathname
+        .replace(/index\.html$/, '')
+        .replace(/\.html$/, '')
+        .replace(/\/+$/, '');
+}
+
+/**
+ * Test whether a navigation URL addresses the page currently being viewed. The
+ * comparison also accepts a site mounted under a subpath, so a dev server that
+ * serves the docs from `/docs/` still marks the page whose links are rooted at
+ * the deployment root.
+ * @param {string} href - URL to compare with the current page.
+ * @returns {boolean} Whether the URL points at the current page.
+ */
+function isCurrentPage(href) {
+    const current = normalizePath(window.location.pathname);
+    const target = normalizePath(new URL(href).pathname);
+    if (current === target) {
+        return true;
+    }
+    return Boolean(target) && current.endsWith(target);
 }
 
 /**
@@ -286,15 +412,36 @@ function normalizePath(pathname) {
  * @returns {void}
  */
 function markActiveNav() {
-    const current = normalizePath(window.location.pathname);
     document.querySelectorAll('.layout-header-nav, .doc-footer .nav').forEach((list) => {
         let matched = false;
         list.querySelectorAll('.nav-item').forEach((item) => {
             const link = item.querySelector('a');
-            const isMatch = Boolean(link) && !matched && normalizePath(new URL(link.href).pathname) === current;
+            const isMatch = Boolean(link) && !matched && isCurrentPage(link.href);
             matched = matched || isMatch;
             item.classList.toggle('active', isMatch);
         });
+    });
+}
+
+/**
+ * Highlight the sidebar entry that matches the current page and mark it as the
+ * current page for assistive technology. Runs repeatedly so it also works when
+ * the sidebar partial replaces its placeholder later.
+ * @returns {void}
+ */
+function markActiveSidebar() {
+    document.querySelectorAll('#doc-sidebar .sidebar-nav-list-item').forEach((item) => {
+        const link = item.querySelector('.sidebar-nav-list-link');
+        const isMatch = Boolean(link) && isCurrentPage(link.href);
+        item.classList.toggle('is-active', isMatch);
+        if (!link) {
+            return;
+        }
+        if (isMatch) {
+            link.setAttribute('aria-current', 'page');
+            return;
+        }
+        link.removeAttribute('aria-current');
     });
 }
 
@@ -310,6 +457,53 @@ function scheduleNavSync() {
     requestAnimationFrame(() => {
         navSyncQueued = false;
         markActiveNav();
+        markActiveSidebar();
+        syncSidebarToggleTarget();
+        syncThemeToggleState();
+    });
+}
+
+const TABLE_SCROLL_TOLERANCE = 1;
+
+let tableSyncQueued = false;
+
+/**
+ * Gate each documentation table wrapper on whether it actually overflows, so a
+ * keyboard user finds a scroll stop where one is needed and no inert stop where
+ * the table already fits. On overflow the gate adds `tabindex="0"` and ensures
+ * `role="region"`; when the wrapper fits it removes only `tabindex`. The region
+ * role and the authored name are never removed, so `aria-label` or
+ * `aria-labelledby` stays valid whether or not the wrapper overflows.
+ * @returns {void}
+ */
+function updateScrollableTables() {
+    document.querySelectorAll('.doc-table-wrap, .table-responsive').forEach((wrapper) => {
+        const overflows = wrapper.scrollWidth - wrapper.clientWidth > TABLE_SCROLL_TOLERANCE;
+        if (overflows) {
+            wrapper.setAttribute('tabindex', '0');
+            wrapper.setAttribute('role', 'region');
+            return;
+        }
+        wrapper.removeAttribute('tabindex');
+    });
+}
+
+/**
+ * Gate table-wrapper focusability once on load and again after each resize,
+ * coalescing bursts of resize events into a single animation frame.
+ * @returns {void}
+ */
+function initScrollableTables() {
+    updateScrollableTables();
+    window.addEventListener('resize', () => {
+        if (tableSyncQueued) {
+            return;
+        }
+        tableSyncQueued = true;
+        requestAnimationFrame(() => {
+            tableSyncQueued = false;
+            updateScrollableTables();
+        });
     });
 }
 
@@ -325,8 +519,26 @@ async function handleClick(event) {
         return;
     }
 
+    if (!target.closest('[data-doc-search]') && !target.closest('[data-doc-search-toggle]')) {
+        closeSearchResults();
+        closeSearchBar();
+    }
+
+    if (!target.closest('.combo-box')) {
+        closeComboBoxes();
+    }
+
+    if (!target.closest('.popover') && !target.closest('[data-doc-popover]')) {
+        closePopovers(false);
+    }
+
     if (target.closest('[data-doc-theme-toggle]')) {
         toggleTheme();
+        return;
+    }
+
+    if (target.closest('[data-doc-search-toggle]')) {
+        setSearchOpen(!isSearchBarOpen());
         return;
     }
 
@@ -362,14 +574,85 @@ async function handleClick(event) {
         return;
     }
 
+    const modalClose = target.closest('.modal-close, [data-doc-modal-close]');
+    if (modalClose) {
+        const modal = modalClose.closest('.modal');
+        if (modal) {
+            closeModal(modal);
+        }
+        return;
+    }
+
+    if (target.classList.contains('modal')) {
+        closeModal(target);
+        return;
+    }
+
+    const drawerClose = target.closest('.drawer-close, [data-doc-drawer-close]');
+    if (drawerClose) {
+        const container = drawerClose.closest('.drawer-container');
+        if (container) {
+            closeDrawer(container);
+        }
+        return;
+    }
+
+    const drawerBackdrop = target.closest('.drawer-container');
+    if (drawerBackdrop && !target.closest('.drawer')) {
+        closeDrawer(drawerBackdrop);
+        return;
+    }
+
+    const modalTrigger = target.closest('[data-doc-modal]');
+    if (modalTrigger) {
+        openModal(modalTrigger);
+        return;
+    }
+
+    const drawerTrigger = target.closest('[data-doc-drawer]');
+    if (drawerTrigger) {
+        openDrawer(drawerTrigger);
+        return;
+    }
+
+    const tabTitle = target.closest('.tab-title[data-doc-tab]');
+    if (tabTitle) {
+        activateTab(tabTitle);
+        return;
+    }
+
     const accordionTitle = target.closest('.accordion-item-title');
     if (accordionTitle) {
         toggleAccordionItem(accordionTitle);
+        return;
+    }
+
+    const comboTrigger = target.closest('[data-doc-combo-box]');
+    if (comboTrigger) {
+        toggleComboBox(comboTrigger);
+        return;
+    }
+
+    const popoverTrigger = target.closest('[data-doc-popover]');
+    if (popoverTrigger) {
+        togglePopover(popoverTrigger);
+        return;
+    }
+
+    const messageClose = target.closest('.message-close');
+    if (messageClose) {
+        dismissMessage(messageClose);
+        return;
+    }
+
+    const toastTrigger = target.closest('[data-doc-toast-show]');
+    if (toastTrigger) {
+        showToast(toastTrigger);
     }
 }
 
 /**
- * Close the mobile drawer on Escape and return focus to the toggle button.
+ * Close the topmost transient surface on Escape and return focus when possible.
  * @param {KeyboardEvent} event - The keydown event.
  * @returns {void}
  */
@@ -377,13 +660,72 @@ function handleKeydown(event) {
     if (event.key !== 'Escape') {
         return;
     }
+
+    // Result rows use `tabIndex = -1`, so this covers the click-focus race or a
+    // programmatic focus on a result link: closing the panel removes that node,
+    // so focus is returned to the input instead of falling back to the body.
+    const focusInPanel = isSearchResultsFocused();
+
+    if (closeSearchResults()) {
+        if (focusInPanel) {
+            focusSearchInput();
+        }
+        return;
+    }
+
+    if (isSearchBarOpen()) {
+        closeSearchBar();
+        const searchToggle = document.querySelector('[data-doc-search-toggle]');
+        if (searchToggle) {
+            searchToggle.focus();
+        }
+        return;
+    }
+
+    const modal = document.querySelector('.modal.active');
+    if (modal) {
+        closeModal(modal);
+        return;
+    }
+
+    const drawer = document.querySelector('.drawer-container.open');
+    if (drawer) {
+        closeDrawer(drawer);
+        return;
+    }
+
+    if (closePopovers(true)) {
+        return;
+    }
+
+    if (closeComboBoxes()) {
+        return;
+    }
+
     if (!document.documentElement.classList.contains('doc-sidebar-open')) {
         return;
     }
+
     closeSidebar();
     const toggle = document.querySelector('[data-doc-sidebar-toggle]');
     if (toggle) {
         toggle.focus();
+    }
+}
+
+/**
+ * Re-sync navigation state once a shared partial has either loaded or failed, so the
+ * sidebar toggle never points at a drawer that will not arrive. The sidebar toggle is
+ * corrected immediately as well, because the queued frame may never run when
+ * `requestAnimationFrame` is throttled.
+ * @param {Event} event - The `load` or `error` event fired by an include-fragment.
+ * @returns {void}
+ */
+function handleFragmentEvent(event) {
+    const target = event.target;
+    if (target instanceof Element && target.matches('include-fragment')) {
+        syncSidebarToggleTarget();
+        scheduleNavSync();
     }
 }
 
@@ -394,6 +736,11 @@ function handleKeydown(event) {
 function initDocSite() {
     document.addEventListener('click', handleClick);
     document.addEventListener('keydown', handleKeydown);
+    initSearch();
+    document.addEventListener('load', handleFragmentEvent);
+    document.addEventListener('error', handleFragmentEvent, true);
+    initSurfaces();
+
     SIDEBAR_MEDIA.addEventListener('change', (event) => {
         if (!event.matches) {
             closeSidebar();
@@ -404,6 +751,8 @@ function initDocSite() {
     // page gains nodes instead of assuming the header is already in place.
     new MutationObserver(scheduleNavSync).observe(document.body, { childList: true, subtree: true });
     scheduleNavSync();
+
+    initScrollableTables();
 
     initLabControls();
     document.querySelectorAll('[data-doc-hero]').forEach((hero) => initSpotlight(hero));

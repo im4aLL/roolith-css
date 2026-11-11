@@ -10,17 +10,17 @@
         <link rel="icon" href="favicon.ico" sizes="any" />
         <link rel="stylesheet" href="roolith-4.0.0.min.css" />
         <link rel="stylesheet" href="doc.css" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
         <script src="doc.js"></script>
-        <script type="module">
-            import 'https://esm.sh/@github/include-fragment-element@6';
-        </script>
+        <script src="/include-fragment.js" defer></script>
     </head>
     <body>
-        <include-fragment class="doc-fragment" src="/partials/header.html" loading="eager">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
             <p>Loading...</p>
         </include-fragment>
 
-        <main class="doc-home">
+        <main class="doc-home" id="doc-content" tabindex="-1">
             <section class="container doc-hero" data-doc-hero>
                 <div class="doc-hero-copy">
                     <div class="doc-eyebrow">
@@ -36,11 +36,11 @@
                         makes theming and dark mode a single class flip away.
                     </p>
                     <div class="doc-hero-actions">
-                        <a class="button button-primary button-large" href="components/buttons.html">
+                        <a class="button button-primary button-large" href="/components/button.html">
                             Browse components
                         </a>
-                        <a class="button button-outline button-large" href="https://github.com/im4aLL/roolith-css">
-                            View on GitHub
+                        <a class="button button-outline button-large" href="/getting-started/introduction.html">
+                            Read the docs
                         </a>
                     </div>
                     <div class="doc-install">
@@ -469,7 +469,7 @@
                     </p>
                 </div>
                 <div class="doc-component-grid">
-                    <a class="card doc-component-card" href="components/buttons.html">
+                    <a class="card doc-component-card" href="/components/button.html">
                         <div class="card-body">
                             <div class="card-title">Buttons</div>
                             <p class="card-text doc-component-desc">
@@ -477,13 +477,13 @@
                             </p>
                         </div>
                     </a>
-                    <a class="card doc-component-card is-soon">
+                    <a class="card doc-component-card" href="/components/badge.html">
                         <div class="card-body">
                             <div class="card-title">Badges</div>
                             <p class="card-text doc-component-desc">Compact status labels in every palette color.</p>
                         </div>
                     </a>
-                    <a class="card doc-component-card is-soon">
+                    <a class="card doc-component-card" href="/components/form.html">
                         <div class="card-body">
                             <div class="card-title">Forms</div>
                             <p class="card-text doc-component-desc">
@@ -491,7 +491,7 @@
                             </p>
                         </div>
                     </a>
-                    <a class="card doc-component-card is-soon">
+                    <a class="card doc-component-card" href="/components/table.html">
                         <div class="card-body">
                             <div class="card-title">Tables</div>
                             <p class="card-text doc-component-desc">
@@ -499,7 +499,7 @@
                             </p>
                         </div>
                     </a>
-                    <a class="card doc-component-card is-soon">
+                    <a class="card doc-component-card" href="/components/card.html">
                         <div class="card-body">
                             <div class="card-title">Cards</div>
                             <p class="card-text doc-component-desc">
@@ -507,7 +507,7 @@
                             </p>
                         </div>
                     </a>
-                    <a class="card doc-component-card is-soon">
+                    <a class="card doc-component-card" href="/components/nav.html">
                         <div class="card-body">
                             <div class="card-title">Navigation</div>
                             <p class="card-text doc-component-desc">
@@ -526,7 +526,7 @@
                             <p>Drop in the stylesheet, grab the markup, and tune the tokens.</p>
                         </div>
                         <div class="doc-cta-actions">
-                            <a class="button button-primary button-large" href="components/buttons.html">
+                            <a class="button button-primary button-large" href="/getting-started/introduction.html">
                                 Open the docs
                             </a>
                         </div>
@@ -535,7 +535,7 @@
             </section>
         </main>
 
-        <include-fragment class="doc-fragment" src="/partials/footer.html" loading="eager">
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
             <p>Loading...</p>
         </include-fragment>
     </body>

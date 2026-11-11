@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Button - roolith css</title>
+        <meta name="description" content="Button colors, outline and text variants, sizes, rounded shapes, groups, bundles, icons, and active, disabled, and loading states in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Button</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Button</h1>
+                            <p class="doc-content-lead">Buttons signal actions. The <code>.button</code> base class owns the shared shape, padding, and hover and press behavior, while color, size, and variant classes fine-tune the look. Everything below stacks onto that one base class, so a button is always one base class plus as many modifiers as the job needs.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.button</strong>
+                                - defined in
+                                <strong>modules/_button.scss</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            The base button reads its resting colors from the <code>--r-button-*</code> tokens, while every colored variant derives its fill, border, and text from the palette (<code>--r-color-primary</code>, <code>--r-color-primary-on</code>, <code>--r-color-primary-text</code>). Override a palette token and all button variants follow.
+                        </div>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>Start with the base class and a label. It works on <code>&lt;button&gt;</code> elements and on links that navigate.</p>
+                            <p>The base sets an inline-flex box, centers the label, uses a 14px label over normal line height, and adds 9px by 20px of padding with a 60px minimum width. Hover raises the fill one step and adds a hairline shadow, and the native active state moves the button down by 1px.</p>
+                            <div class="doc-demo">
+                                <button class="button" type="button">Save draft</button>
+                                <a class="button" href="#">Open documentation</a>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-basic">Copy</button>
+                                </div>
+                                <pre><code id="button-basic" class="language-html">&lt;button class="button" type="button"&gt;Save draft&lt;/button&gt;
+&lt;a class="button" href="#"&gt;Open documentation&lt;/a&gt;</code></pre>
+                            </div>
+                            <p>Use the <code>--r-button-radius</code>, <code>--r-button-default-background</code>, <code>--r-button-default-border</code>, and <code>--r-button-default-color</code> tokens to retune the uncolored button, including the matching <code>--r-button-default-hover-*</code> tokens for the hover state.</p>
+                        </section>
+
+                        <section class="doc-section" id="colors">
+                            <h2>Colors</h2>
+                            <p>Append a palette name to the base class. Each variant pulls its fill from <code>--r-color-&lt;name&gt;</code>, its label from <code>--r-color-&lt;name&gt;-on</code>, and its border from a 5% darker version of the fill, so the label contrast is decided by the palette rather than by the page.</p>
+                            <div class="doc-demo">
+                                <button class="button" type="button">Default</button>
+                                <button class="button button-primary" type="button">Primary</button>
+                                <button class="button button-secondary" type="button">Secondary</button>
+                                <button class="button button-tertiary" type="button">Tertiary</button>
+                                <button class="button button-info" type="button">Info</button>
+                                <button class="button button-success" type="button">Success</button>
+                                <button class="button button-warning" type="button">Warning</button>
+                                <button class="button button-danger" type="button">Danger</button>
+                                <button class="button button-link" type="button">Link</button>
+                                <button class="button button-dark" type="button">Dark</button>
+                                <button class="button button-black" type="button">Black</button>
+                                <button class="button button-light" type="button">Light</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-colors">Copy</button>
+                                </div>
+                                <pre><code id="button-colors" class="language-html">&lt;button class="button" type="button"&gt;Default&lt;/button&gt;
+&lt;button class="button button-primary" type="button"&gt;Primary&lt;/button&gt;
+&lt;button class="button button-secondary" type="button"&gt;Secondary&lt;/button&gt;
+&lt;button class="button button-tertiary" type="button"&gt;Tertiary&lt;/button&gt;
+&lt;button class="button button-info" type="button"&gt;Info&lt;/button&gt;
+&lt;button class="button button-success" type="button"&gt;Success&lt;/button&gt;
+&lt;button class="button button-warning" type="button"&gt;Warning&lt;/button&gt;
+&lt;button class="button button-danger" type="button"&gt;Danger&lt;/button&gt;
+&lt;button class="button button-link" type="button"&gt;Link&lt;/button&gt;
+&lt;button class="button button-dark" type="button"&gt;Dark&lt;/button&gt;
+&lt;button class="button button-black" type="button"&gt;Black&lt;/button&gt;
+&lt;button class="button button-light" type="button"&gt;Light&lt;/button&gt;</code></pre>
+                            </div>
+                            <p>The palette loop skips <code>white</code>, so no <code>.button-white</code> class is generated by <code>_button.scss</code>. Use the uncolored base button for a neutral control and <code>.button-light</code> when you need a fixed light fill. <code>.button-dark</code>, <code>.button-black</code>, and <code>.button-light</code> keep the same fill in both themes because they are fixed palette values, not theme surfaces.</p>
+                        </section>
+
+                        <section class="doc-section" id="outline">
+                            <h2>Outline buttons</h2>
+                            <p>Add <code>button-outline</code> for a transparent fill that keeps the border and label color. Colored outline buttons read <code>--r-color-&lt;name&gt;-text</code>, the text-safe version of the palette, and fill with a slightly darker version of the solid color on hover.</p>
+                            <div class="doc-demo">
+                                <button class="button button-outline" type="button">Default</button>
+                                <button class="button button-primary button-outline" type="button">Primary</button>
+                                <button class="button button-secondary button-outline" type="button">Secondary</button>
+                                <button class="button button-success button-outline" type="button">Success</button>
+                                <button class="button button-warning button-outline" type="button">Warning</button>
+                                <button class="button button-danger button-outline" type="button">Danger</button>
+                                <button class="button button-dark button-outline" type="button">Dark</button>
+                                <button class="button button-black button-outline" type="button">Black</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-outline">Copy</button>
+                                </div>
+                                <pre><code id="button-outline" class="language-html">&lt;button class="button button-outline" type="button"&gt;Default&lt;/button&gt;
+&lt;button class="button button-primary button-outline" type="button"&gt;Primary&lt;/button&gt;
+&lt;button class="button button-secondary button-outline" type="button"&gt;Secondary&lt;/button&gt;
+&lt;button class="button button-success button-outline" type="button"&gt;Success&lt;/button&gt;
+&lt;button class="button button-warning button-outline" type="button"&gt;Warning&lt;/button&gt;
+&lt;button class="button button-danger button-outline" type="button"&gt;Danger&lt;/button&gt;
+&lt;button class="button button-dark button-outline" type="button"&gt;Dark&lt;/button&gt;
+&lt;button class="button button-black button-outline" type="button"&gt;Black&lt;/button&gt;</code></pre>
+                            </div>
+                            <p>A light outline on a light surface has almost no contrast. Put <code>.button-light.button-outline</code> on a dark or inverted surface, or switch to the solid or text variant when the background is unknown.</p>
+                        </section>
+
+                        <section class="doc-section" id="text">
+                            <h2>Text buttons</h2>
+                            <p>Add <code>button-text</code> to drop the border and fill entirely and raise the label to the bold weight. Hover paints the shared <code>--r-surface-hover</code> surface without a shadow, which makes text buttons the right choice for low-emphasis actions inside cards, toolbars, and table rows.</p>
+                            <div class="doc-demo">
+                                <button class="button button-text" type="button">Cancel</button>
+                                <button class="button button-primary button-text" type="button">Edit</button>
+                                <button class="button button-secondary button-text" type="button">Duplicate</button>
+                                <button class="button button-danger button-text" type="button">Delete</button>
+                                <button class="button button-link button-text" type="button">View logs</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-text">Copy</button>
+                                </div>
+                                <pre><code id="button-text" class="language-html">&lt;button class="button button-text" type="button"&gt;Cancel&lt;/button&gt;
+&lt;button class="button button-primary button-text" type="button"&gt;Edit&lt;/button&gt;
+&lt;button class="button button-secondary button-text" type="button"&gt;Duplicate&lt;/button&gt;
+&lt;button class="button button-danger button-text" type="button"&gt;Delete&lt;/button&gt;
+&lt;button class="button button-link button-text" type="button"&gt;View logs&lt;/button&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="sizes">
+                            <h2>Sizes</h2>
+                            <p>Four sizes cover dense toolbars through prominent calls to action. Small and medium share a 12px label and a 50px minimum width, but medium keeps a taller padding box; the default size sits at 14px with 9px by 20px of padding, and large moves to 16px with 11px by 30px.</p>
+                            <div class="doc-demo">
+                                <button class="button button-small button-primary" type="button">Small</button>
+                                <button class="button button-medium button-primary" type="button">Medium</button>
+                                <button class="button button-primary" type="button">Default</button>
+                                <button class="button button-large button-primary" type="button">Large</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-sizes">Copy</button>
+                                </div>
+                                <pre><code id="button-sizes" class="language-html">&lt;button class="button button-small button-primary" type="button"&gt;Small&lt;/button&gt;
+&lt;button class="button button-medium button-primary" type="button"&gt;Medium&lt;/button&gt;
+&lt;button class="button button-primary" type="button"&gt;Default&lt;/button&gt;
+&lt;button class="button button-large button-primary" type="button"&gt;Large&lt;/button&gt;</code></pre>
+                            </div>
+                            <p>Size classes are plain modifiers, not nested under <code>.button</code>, so they also change the minimum width of a standalone element. Keep the base class in place; the size class only adjusts type and padding.</p>
+                        </section>
+
+                        <section class="doc-section" id="rounded">
+                            <h2>Rounded buttons</h2>
+                            <p>Add <code>button-rounded</code> for a pill radius of 25px and a 120px minimum width. It combines with color, outline, text, and size classes, and it is useful for marketing surfaces, empty states, and single primary actions.</p>
+                            <div class="doc-demo">
+                                <button class="button button-rounded button-primary" type="button">Get started</button>
+                                <button class="button button-rounded button-outline" type="button">Learn more</button>
+                                <button class="button button-rounded button-primary button-small" type="button">Small pill</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-rounded">Copy</button>
+                                </div>
+                                <pre><code id="button-rounded" class="language-html">&lt;button class="button button-rounded button-primary" type="button"&gt;Get started&lt;/button&gt;
+&lt;button class="button button-rounded button-outline" type="button"&gt;Learn more&lt;/button&gt;
+&lt;button class="button button-rounded button-primary button-small" type="button"&gt;Small pill&lt;/button&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="layout">
+                            <h2>Block and bundle</h2>
+                            <p><code>button-block</code> stretches a button to the full width of its container. It is the usual choice in a narrow form column, a drawer footer, or a mobile action area.</p>
+                            <p><code>button-bundle</code> is a flex wrapper with a 10px gap for grouping related actions without merging them. A bundle keeps the shape of each button, unlike a button group, and it is the right wrapper for a cancel and save pair.</p>
+                            <div class="doc-demo">
+                                <button class="button button-primary button-block" type="button">Publish release</button>
+                                <div class="button-bundle">
+                                    <button class="button button-outline" type="button">Cancel</button>
+                                    <button class="button button-primary" type="button">Save changes</button>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-layout">Copy</button>
+                                </div>
+                                <pre><code id="button-layout" class="language-html">&lt;button class="button button-primary button-block" type="button"&gt;Publish release&lt;/button&gt;
+
+&lt;div class="button-bundle"&gt;
+    &lt;button class="button button-outline" type="button"&gt;Cancel&lt;/button&gt;
+    &lt;button class="button button-primary" type="button"&gt;Save changes&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="groups">
+                            <h2>Button groups</h2>
+                            <p><code>button-group</code> joins adjacent buttons into one shape. The group clears its own floats, each button floats left, the next button pulls back by 1px so the shared border stays a single line, and only the outer corners keep the radius.</p>
+                            <div class="doc-demo">
+                                <div class="button-group">
+                                    <a class="button button-primary" href="#">Day</a>
+                                    <a class="button button-primary active" href="#">Week</a>
+                                    <a class="button button-primary" href="#">Month</a>
+                                </div>
+                                <div class="button-group">
+                                    <a class="button" href="#">Left</a>
+                                    <a class="button active" href="#">Center</a>
+                                    <a class="button" href="#">Right</a>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-groups">Copy</button>
+                                </div>
+                                <pre><code id="button-groups" class="language-html">&lt;div class="button-group"&gt;
+    &lt;a class="button button-primary" href="#"&gt;Day&lt;/a&gt;
+    &lt;a class="button button-primary active" href="#"&gt;Week&lt;/a&gt;
+    &lt;a class="button button-primary" href="#"&gt;Month&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="button-group"&gt;
+    &lt;a class="button" href="#"&gt;Left&lt;/a&gt;
+    &lt;a class="button active" href="#"&gt;Center&lt;/a&gt;
+    &lt;a class="button" href="#"&gt;Right&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The group needs the wrapper: the float and the negative margin only apply to buttons inside <code>.button-group</code>. Grouped buttons also lose their minimum width, so group labels size themselves from their content.</p>
+                        </section>
+
+                        <section class="doc-section" id="icons">
+                            <h2>Icon buttons</h2>
+                            <p><code>button-icon</code> adds a 5px flex gap between the icon and the label, and the module also gives any <code>.icon</code> inside a button a 5px right margin. Use the framework icon classes (<code>.icon .icon-download</code> and <code>.icon .icon-search</code>) or your own inline SVG.</p>
+                            <p><code>button-has-icon</code> widens the gap to 20px for buttons where the icon is a separate visual element, such as an arrow that points out of the button. A colored button repaints <code>.icon</code> with <code>currentColor</code>, so the icon follows the label color automatically.</p>
+                            <div class="doc-demo">
+                                <button class="button button-primary button-icon" type="button">
+                                    <i class="icon icon-download"></i>
+                                    Download report
+                                </button>
+                                <button class="button button-icon" type="button" aria-label="Search">
+                                    <i class="icon icon-search"></i>
+                                </button>
+                                <a class="button button-has-icon" href="#">
+                                    Create report
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-icons">Copy</button>
+                                </div>
+                                <pre><code id="button-icons" class="language-html">&lt;button class="button button-primary button-icon" type="button"&gt;
+    &lt;i class="icon icon-download"&gt;&lt;/i&gt;
+    Download report
+&lt;/button&gt;
+
+&lt;button class="button button-icon" type="button" aria-label="Search"&gt;
+    &lt;i class="icon icon-search"&gt;&lt;/i&gt;
+&lt;/button&gt;
+
+&lt;a class="button button-has-icon" href="#"&gt;
+    Create report
+    &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+        &lt;path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+    &lt;/svg&gt;
+&lt;/a&gt;</code></pre>
+                            </div>
+                            <p>An icon-only button needs an accessible name. <code>aria-label</code> on the button is enough, and the icon itself should be presentational: an empty <code>alt</code> for an image, or <code>aria-hidden="true"</code> for an inline SVG. Do not put the only label inside a masked <code>.icon</code>, because the mask renders no text.</p>
+                        </section>
+
+                        <section class="doc-section" id="states">
+                            <h2>States</h2>
+                            <p><code>active</code> adds an inset shadow to mark a pressed or current choice. It works on top of any variant and is the same class used by the middle item of a button group.</p>
+                            <p><code>disabled</code> drops the button to 60% opacity, sets a not-allowed cursor, and turns off pointer events. <code>loading</code> hides the label with a negative text indent, disables pointer events, sets a wait cursor, and draws a spinner in the center with the shared loader mixin. The spinner is 20px by default and 12px, 16px, and 24px for the small, medium, and large buttons.</p>
+                            <div class="doc-demo">
+                                <button class="button button-primary active" type="button">Active</button>
+                                <button class="button button-primary disabled" type="button" disabled>Disabled</button>
+                                <button class="button button-primary loading" type="button" aria-busy="true">Saving</button>
+                                <button class="button button-outline loading" type="button" aria-busy="true">Saving</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="button-states">Copy</button>
+                                </div>
+                                <pre><code id="button-states" class="language-html">&lt;button class="button button-primary active" type="button"&gt;Active&lt;/button&gt;
+&lt;button class="button button-primary disabled" type="button" disabled&gt;Disabled&lt;/button&gt;
+&lt;button class="button button-primary loading" type="button" aria-busy="true"&gt;Saving&lt;/button&gt;
+&lt;button class="button button-outline loading" type="button" aria-busy="true"&gt;Saving&lt;/button&gt;</code></pre>
+                            </div>
+                            <p><code>.active</code> is a visual class only. If the pressed state has meaning, mirror it with <code>aria-pressed</code> on a toggle button or <code>aria-current</code> on a navigation link, and keep the class in sync with that attribute.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>Choose the element by behavior, not by look. A button performs an action in the page, a link navigates to a URL, and the styling classes work on both.</p>
+                            <ul>
+                                <li>Use <code>&lt;button type="button"&gt;</code> for actions, and set <code>type="submit"</code> or <code>type="reset"</code> explicitly inside a form. A button without a type defaults to submit.</li>
+                                <li>Use <code>&lt;a href&gt;</code> for navigation. An anchor without <code>href</code> is not focusable and is not announced as a link, so style a real button instead.</li>
+                                <li>The <code>.disabled</code> class is visual only. On a button, also add the native <code>disabled</code> attribute. On a link, add <code>aria-disabled="true"</code> and remove the <code>href</code> or block activation in script, because <code>pointer-events: none</code> does not stop keyboard activation.</li>
+                                <li>Give every icon-only button a name with <code>aria-label</code> or visually hidden text, and hide the icon from assistive technology.</li>
+                                <li>For <code>.loading</code>, set <code>aria-busy="true"</code> and disable the control so a second submit cannot fire. The label stays in the accessibility tree because the text is only indented out of view, so write it as the in-progress action, and announce completion elsewhere if the user needs confirmation.</li>
+                                <li>Keep the global focus ring visible. Do not remove outlines or replace them with a hover-only cue, and keep the pressed state in a real attribute when it carries meaning.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>Every modifier class stacks onto the <code>.button</code> base, except the standalone layout helpers listed at the end.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.button</code></td>
+                                            <td>Base</td>
+                                            <td>Inline-flex box, 14px label, 9px by 20px padding, 60px minimum width, token radius, hover fill, and a 1px press offset.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-primary</code></td>
+                                            <td>Color</td>
+                                            <td>Any generated palette name: secondary, tertiary, info, success, warning, danger, link, dark, black, light. The source loop skips white.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-outline</code></td>
+                                            <td>Variant</td>
+                                            <td>Transparent fill with a colored border and label. Colored variants fill on hover; the uncolored outline keeps its transparent fill.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-text</code></td>
+                                            <td>Variant</td>
+                                            <td>No border or fill, bold label, hover uses <code>--r-surface-hover</code> with no shadow.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-small</code></td>
+                                            <td>Size</td>
+                                            <td>12px label, 5px by 10px padding, 50px minimum width.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-medium</code></td>
+                                            <td>Size</td>
+                                            <td>12px label, 6px by 12px padding, 50px minimum width.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-large</code></td>
+                                            <td>Size</td>
+                                            <td>16px label, 11px by 30px padding, 80px minimum width.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-rounded</code></td>
+                                            <td>Shape</td>
+                                            <td>25px radius with a 120px minimum width.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-block</code></td>
+                                            <td>Layout</td>
+                                            <td>Full width of the container.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-bundle</code></td>
+                                            <td>Layout</td>
+                                            <td>Flex wrapper with a 10px gap for related actions.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-group</code></td>
+                                            <td>Layout</td>
+                                            <td>Float-based wrapper that merges adjacent buttons and trims the inner radii.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-icon</code></td>
+                                            <td>Icon</td>
+                                            <td>5px flex gap between icon and label. Use <code>.icon</code> children.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.button-has-icon</code></td>
+                                            <td>Icon</td>
+                                            <td>20px flex gap for a separated leading or trailing icon.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.icon</code></td>
+                                            <td>Icon</td>
+                                            <td>Masked 16px icon. Inside a colored button it paints with <code>currentColor</code> and gets a 5px right margin.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.active</code></td>
+                                            <td>State</td>
+                                            <td>Inset shadow for a pressed or current choice.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.disabled</code></td>
+                                            <td>State</td>
+                                            <td>60% opacity, not-allowed cursor, no pointer events. Pair with the native <code>disabled</code> attribute.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.loading</code></td>
+                                            <td>State</td>
+                                            <td>Hides the label, shows a spinner, blocks pointer events, and sets a wait cursor.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/breadcrumb.html">Previous: Breadcrumb</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/card.html">Next: Card</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#colors">Colors</a>
+                        <a class="doc-toc-link" href="#outline">Outline buttons</a>
+                        <a class="doc-toc-link" href="#text">Text buttons</a>
+                        <a class="doc-toc-link" href="#sizes">Sizes</a>
+                        <a class="doc-toc-link" href="#rounded">Rounded buttons</a>
+                        <a class="doc-toc-link" href="#layout">Block and bundle</a>
+                        <a class="doc-toc-link" href="#groups">Button groups</a>
+                        <a class="doc-toc-link" href="#icons">Icon buttons</a>
+                        <a class="doc-toc-link" href="#states">States</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

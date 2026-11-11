@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Tooltip - roolith css</title>
+        <meta name="description" content="Hover tooltips from the data-tooltip attribute or a tooltip wrapper, with up, bottom, left, and right placement, large content, and a forced active state in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Tooltip</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Tooltip</h1>
+                            <p class="doc-content-lead">
+                                A tooltip adds one short line of context to something already on the page. roolith css offers two shapes: a <code>data-tooltip</code> attribute that draws its own text through a pseudo-element, and a <code>.tooltip</code> wrapper around a <code>.tooltip-content</code> element that can hold markup. Both open on hover and both need no JavaScript.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.tooltip</strong>
+                                - defined in
+                                <strong>modules/_tooltip.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p><code>data-tooltip</code> is the shortest path. Put the text in the attribute and the module renders it in an <code>::after</code> box above the element, centered on it, with the inverted surface from <code>--r-tooltip-bg-color</code> and the 12px type of the module.</p>
+                            <p>The rule also sets <code>position: relative</code>, <code>display: inline-block</code>, and a pointer cursor on the element, so it works on a button, a link, or a plain span without extra markup.</p>
+                            <div class="doc-demo">
+                                <button type="button" class="button" data-tooltip="Rebuilds the cache for this environment.">Rebuild cache</button>
+                                <span data-tooltip="Refreshed 2 minutes ago">Last sync</span>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="tooltip-basic">Copy</button>
+                                </div>
+                                <pre><code id="tooltip-basic" class="language-html">&lt;button type="button" class="button" data-tooltip="Rebuilds the cache for this environment."&gt;Rebuild cache&lt;/button&gt;
+
+&lt;span data-tooltip="Refreshed 2 minutes ago"&gt;Last sync&lt;/span&gt;</code></pre>
+                            </div>
+                            <p>The text from <code>data-tooltip</code> is drawn by a pseudo-element, so it is plain text only. For a heading, a paragraph, or a button inside the panel, use the wrapper below.</p>
+                        </section>
+
+                        <section class="doc-section" id="tooltip-element">
+                            <h2>Tooltip wrapper</h2>
+                            <p><code>.tooltip</code> is an inline-block wrapper with a dotted bottom border in <code>--r-tooltip-border-color</code>, which is the usual cue for an abbreviation or a term that needs a definition. The hover rule lives on the wrapper, so anything inside it keeps the tooltip open.</p>
+                            <p><code>.tooltip-content</code> is the panel. It uses the same surface, padding, radius, and 12px type as the attribute version, sits 5px above the wrapper, and is centered with a 50% left offset and translate.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <p>
+                                        The build runs in a
+                                        <span class="tooltip">
+                                            sandbox
+                                            <span class="tooltip-content">No network access.</span>
+                                        </span>
+                                        with a read only copy of the production database.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="tooltip-wrapper-markup">Copy</button>
+                                </div>
+                                <pre><code id="tooltip-wrapper-markup" class="language-html">&lt;p&gt;
+    The build runs in a
+    &lt;span class="tooltip"&gt;
+        sandbox
+        &lt;span class="tooltip-content"&gt;No network access.&lt;/span&gt;
+    &lt;/span&gt;
+    with a read only copy of the production database.
+&lt;/p&gt;</code></pre>
+                            </div>
+                            <p>The wrapper needs an inline context: it is <code>display: inline-block</code>, so using it as a block element centers itself under nothing. Wrap it in a paragraph or a line of text.</p>
+                        </section>
+
+                        <section class="doc-section" id="positions">
+                            <h2>Positions</h2>
+                            <p>Without a modifier the panel sits above the wrapper and draws no arrow. <code>.tooltip-up</code> keeps that placement and adds a down pointing arrow at the bottom of the panel, which is the variant to use when you want the callout to read as a speech bubble.</p>
+                            <p><code>.tooltip-bottom</code> moves the panel 6px below the wrapper with an up pointing arrow. <code>.tooltip-left</code> and <code>.tooltip-right</code> place the panel beside the wrapper, vertically centered with a translate, and pull it 6px to 7px away so the arrow sits in the gap. Each direction prints its arrow with the shared triangle mixin in <code>--r-tooltip-bg-color</code>.</p>
+                            <div class="doc-demo doc-demo-stack">
+                                <span class="tooltip tooltip-up">
+                                    Up
+                                    <span class="tooltip-content">Panel above the trigger.</span>
+                                </span>
+                                <span class="tooltip tooltip-bottom">
+                                    Bottom
+                                    <span class="tooltip-content">Panel below the trigger.</span>
+                                </span>
+                                <span class="tooltip tooltip-left">
+                                    Left
+                                    <span class="tooltip-content">Panel to the left.</span>
+                                </span>
+                                <span class="tooltip tooltip-right">
+                                    Right
+                                    <span class="tooltip-content">Panel to the right.</span>
+                                </span>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="tooltip-positions">Copy</button>
+                                </div>
+                                <pre><code id="tooltip-positions" class="language-html">&lt;span class="tooltip tooltip-up"&gt;
+    Up
+    &lt;span class="tooltip-content"&gt;Panel above the trigger.&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class="tooltip tooltip-bottom"&gt;
+    Bottom
+    &lt;span class="tooltip-content"&gt;Panel below the trigger.&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class="tooltip tooltip-left"&gt;
+    Left
+    &lt;span class="tooltip-content"&gt;Panel to the left.&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class="tooltip tooltip-right"&gt;
+    Right
+    &lt;span class="tooltip-content"&gt;Panel to the right.&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+                            </div>
+                            <p>There is no collision handling. A left tooltip near the viewport edge, or a right tooltip near the right edge, is cut off. Pick the direction from the space around the trigger, not from the look you prefer.</p>
+                        </section>
+
+                        <section class="doc-section" id="behavior">
+                            <h2>Hover behavior</h2>
+                            <p>The reveal is two lines of CSS: <code>.tooltip:hover .tooltip-content</code>, and the matching <code>::after</code> rule for the attribute version. Nothing is measured, positioned, or recalculated, so no script runs and no observer watches the page.</p>
+                            <p>Both surfaces animate <code>opacity</code> and <code>visibility</code> with <code>--r-tooltip-transition-duration</code> (150ms) and <code>--r-tooltip-transition-delay</code> (250ms). The delay is what stops a tooltip from flashing as the pointer crosses a toolbar.</p>
+                            <p>The panel stays hidden with <code>opacity: 0</code> and <code>visibility: hidden</code> rather than <code>display: none</code>, so the transition can run in both directions. The panel is absolutely positioned, so the box it keeps does not push the surrounding text.</p>
+                            <p>Lower the delay when the tooltip is the only way to read a value, and raise it when it is a hint on an otherwise self explaining control.</p>
+                        </section>
+
+                        <section class="doc-section" id="large">
+                            <h2>Large content</h2>
+                            <p><code>.tooltip-large</code> drops <code>white-space: nowrap</code>, fixes the panel at 250px, and uses <code>--r-tooltip-padding-large</code>, which is 15px on every side. It is the only variant that can hold a paragraph.</p>
+                            <p>Inside the panel, <code>.tooltip-content-hl</code> is the heading: 14px at the bold weight with 5px of bottom padding. <code>.tooltip-content-button</code> is a full width call to action with a 10px top margin, meant for a <code>.button</code> with <code>button-small</code>.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="spacer-100"></div>
+                                    <span class="tooltip tooltip-large">
+                                        Retention policy
+                                        <span class="tooltip-content">
+                                            <span class="tooltip-content-hl">Retention policy</span>
+                                            Logs are kept for 30 days in the hot tier, then moved to cold storage for a year.
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="tooltip-large">Copy</button>
+                                </div>
+                                <pre><code id="tooltip-large" class="language-html">&lt;span class="tooltip tooltip-large"&gt;
+    Retention policy
+    &lt;span class="tooltip-content"&gt;
+        &lt;span class="tooltip-content-hl"&gt;Retention policy&lt;/span&gt;
+        Logs are kept for 30 days in the hot tier, then moved to cold storage for a year.
+    &lt;/span&gt;
+&lt;/span&gt;</code></pre>
+                            </div>
+                            <p>A 250px panel with a paragraph is already a small card. Two or three lines is the limit before a popover is the better tool, and anything clickable inside a hover panel has the gap problem described in the accessibility notes.</p>
+                        </section>
+
+                        <section class="doc-section" id="active-state">
+                            <h2>Active state</h2>
+                            <p><code>.tooltip-active</code> forces the panel visible with <code>opacity: 1</code> and <code>visibility: visible</code>, regardless of hover. Add it when you toggle a tooltip from a click, when a form field needs a persistent hint, or when the panel contains a control that must be reachable without holding the pointer still.</p>
+                            <p>The class goes on the <code>.tooltip</code> wrapper, and it lasts as long as the class does, so your script owns the timing.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <span class="tooltip tooltip-bottom tooltip-large tooltip-active">
+                                        Export settings
+                                        <span class="tooltip-content">
+                                            <span class="tooltip-content-hl">Export settings</span>
+                                            The export runs in the background and emails a signed link when the file is ready.
+                                            <a class="button button-small button-primary tooltip-content-button" href="#">Open export queue</a>
+                                        </span>
+                                    </span>
+                                    <div class="spacer-150"></div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="tooltip-active">Copy</button>
+                                </div>
+                                <pre><code id="tooltip-active" class="language-html">&lt;span class="tooltip tooltip-bottom tooltip-large tooltip-active"&gt;
+    Export settings
+    &lt;span class="tooltip-content"&gt;
+        &lt;span class="tooltip-content-hl"&gt;Export settings&lt;/span&gt;
+        The export runs in the background and emails a signed link when the file is ready.
+        &lt;a class="button button-small button-primary tooltip-content-button" href="#"&gt;Open export queue&lt;/a&gt;
+    &lt;/span&gt;
+&lt;/span&gt;</code></pre>
+                            </div>
+                            <p>Once the panel holds a link or a button, use the <a href="/components/popover.html">popover</a> component instead. It already handles outside clicks, Escape, and focus, and a hover tooltip does not.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>Hover is a pointer only input. The module has no <code>:focus</code>, <code>:focus-within</code>, or touch fallback, so treat the tooltip as an enhancement and never as the only place a value or an instruction exists.</p>
+                            <ul>
+                                <li>Do not hide required information in a tooltip. Repeat anything essential in visible text, a helper line under the field, or an inline message.</li>
+                                <li>Link the panel to its trigger with <code>aria-describedby</code> when the text matters, because a pseudo-element from <code>data-tooltip</code> is not a reliable description for assistive technology.</li>
+                                <li>Keyboard users cannot open a hover tooltip. Add your own <code>:focus-visible</code> rule that reveals <code>.tooltip-content</code>, or use <code>.tooltip-active</code> on focus, or switch to a popover when the content has to be reachable.</li>
+                                <li>Touch devices have no hover, and some browsers fire it once on tap and never again. Assume the panel is unreachable on a phone.</li>
+                                <li>Keep the panel non interactive. Crossing the 5px gap between the trigger and the panel drops <code>:hover</code>, so a link inside it is hard to click and impossible to tab to reliably.</li>
+                                <li>The module sets <code>cursor: pointer</code> on every <code>.tooltip</code> and <code>[data-tooltip]</code> element. If the element does something on click, make it a real <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code> rather than styling a span to look like one.</li>
+                                <li><code>white-space: nowrap</code> is the default, so long text runs off the edge. Use <code>.tooltip-large</code> for anything longer than a few words, and keep the first line short.</li>
+                                <li>Reduced motion is handled globally: the base reset collapses transition durations and delays when the user asks for it, so the panel appears without the fade.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>Direction and size classes go on the <code>.tooltip</code> wrapper. The <code>.tooltip-content</code> element is always a child of that wrapper, never a sibling.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.tooltip</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Inline-block, relative, pointer cursor, and a dotted bottom border in <code>--r-tooltip-border-color</code>. Owns the hover rule.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tooltip-content</code></td>
+                                            <td>Panel</td>
+                                            <td>Absolutely positioned above the wrapper, hidden by opacity and visibility, with <code>--r-tooltip-padding</code>, the token radius, and 12px type over 18px.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>[data-tooltip]</code></td>
+                                            <td>Any element</td>
+                                            <td>Attribute version. Draws <code>attr(data-tooltip)</code> in an <code>::after</code> box above the element and sets a relative inline-block box.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tooltip-up</code></td>
+                                            <td>Direction</td>
+                                            <td>Keeps the panel above and adds a down pointing arrow at its bottom edge.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tooltip-bottom</code></td>
+                                            <td>Direction</td>
+                                            <td>Panel 6px below the wrapper with an up pointing arrow on top.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tooltip-left</code></td>
+                                            <td>Direction</td>
+                                            <td>Panel to the left, vertically centered, 7px away, with a right pointing arrow.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tooltip-right</code></td>
+                                            <td>Direction</td>
+                                            <td>Panel to the right, vertically centered, 6px away, with a left pointing arrow.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tooltip-large</code></td>
+                                            <td>Size</td>
+                                            <td>250px wide panel that wraps instead of staying on one line, padded by <code>--r-tooltip-padding-large</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tooltip-content-hl</code></td>
+                                            <td>Content</td>
+                                            <td>Panel heading at 14px and the bold weight token, with 5px of bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tooltip-content-button</code></td>
+                                            <td>Content</td>
+                                            <td>Full width action with a 10px top margin. Pair it with <code>.button.button-small</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tooltip-active</code></td>
+                                            <td>State</td>
+                                            <td>Forces the panel visible. Put it on the wrapper and remove it from your own script.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/toast-notification.html">Previous: Toast notification</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/utilities.html">Next: Utilities</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#tooltip-element">Tooltip wrapper</a>
+                        <a class="doc-toc-link" href="#positions">Positions</a>
+                        <a class="doc-toc-link" href="#behavior">Hover behavior</a>
+                        <a class="doc-toc-link" href="#large">Large content</a>
+                        <a class="doc-toc-link" href="#active-state">Active state</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

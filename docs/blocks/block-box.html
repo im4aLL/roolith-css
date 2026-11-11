@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block box - roolith css</title>
+        <meta name="description" content="Block box metric tiles: a two column grid with a highlight value, a title, and an icon, plus the wrapping row and the accent hover state in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block box</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block box</h1>
+                            <p class="doc-content-lead">A block box is a compact metric tile: one large highlight value, a short title, and an icon, laid out in a fixed width grid. The block is a composition layer, so it paints no surface on its own and expects the base <code>.box</code> class for the border and background.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-box</strong>
+                                - defined in
+                                <strong>blocks/_block-box.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>Build the tile from three children in this order: the highlight value, the icon, then the title. The block uses a two column grid with a 10px gap, so the value and the icon share the first row and the title spans both columns underneath.</p>
+                            <p>Pair the block with <code>.box</code>. <code>.block-box.scss</code> only sets the grid, the fixed width, the color token, and the hover state; the border, radius, and background come from the <a href="/components/box.html">Box</a> module. The canonical admin demo uses an anchor so each tile navigates to its list view.</p>
+                            <div class="doc-demo">
+                                <a href="#" class="box block-box">
+                                    <span class="block-box-hl">128</span>
+                                    <svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                    </svg>
+                                    <span class="block-box-title">Open tickets</span>
+                                </a>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-box-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-box-basic" class="language-html">&lt;a href="#" class="box block-box"&gt;
+    &lt;span class="block-box-hl"&gt;128&lt;/span&gt;
+    &lt;svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+        &lt;path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+    &lt;/svg&gt;
+    &lt;span class="block-box-title"&gt;Open tickets&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+                            </div>
+                            <p>The tile is a fixed <code>--r-block-box-size</code> of 15.625rem (250px) and takes its spacing from <code>--r-block-box-spacing</code>, which defaults to <code>--r-block-padding</code>. <code>.block-box-hl</code> renders at 32px in the bold weight with <code>--r-block-box-hl-color</code>, and <code>.block-box-title</code> renders at 14px in the inherited block color.</p>
+                        </section>
+
+                        <section class="doc-section" id="rows">
+                            <h2>Rows of boxes</h2>
+                            <p><code>.block-boxes</code> is the row wrapper: a wrapping flex container with the block padding token as its gap. Because each tile keeps its own fixed width, the row reflows by wrapping instead of stretching the tiles.</p>
+                            <p>Keep the highlight value scannable and the title short. The value is the only element in the tile with its own weight and size, so a long title competes with it rather than supporting it.</p>
+                            <div class="doc-demo">
+                                <div class="block-boxes">
+                                    <a href="#" class="box block-box">
+                                        <span class="block-box-hl">99</span>
+                                        <svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 3h9l3 3v15H6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                        </svg>
+                                        <span class="block-box-title">Published pages</span>
+                                    </a>
+                                    <a href="#" class="box block-box">
+                                        <span class="block-box-hl">7</span>
+                                        <svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 3h9l3 3v15H6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                            <path d="M9 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                        <span class="block-box-title">Draft pages</span>
+                                    </a>
+                                    <a href="#" class="box block-box">
+                                        <span class="block-box-hl">24</span>
+                                        <svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                        </svg>
+                                        <span class="block-box-title">Modules</span>
+                                    </a>
+                                    <a href="#" class="box block-box">
+                                        <span class="block-box-hl">3</span>
+                                        <svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M4 6h16v9H9l-5 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                        </svg>
+                                        <span class="block-box-title">Unread messages</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-box-row">Copy</button>
+                                </div>
+                                <pre><code id="block-box-row" class="language-html">&lt;div class="block-boxes"&gt;
+    &lt;a href="#" class="box block-box"&gt;
+        &lt;span class="block-box-hl"&gt;99&lt;/span&gt;
+        &lt;svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M6 3h9l3 3v15H6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /&gt;
+        &lt;/svg&gt;
+        &lt;span class="block-box-title"&gt;Published pages&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="box block-box"&gt;
+        &lt;span class="block-box-hl"&gt;7&lt;/span&gt;
+        &lt;svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M6 3h9l3 3v15H6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /&gt;
+            &lt;path d="M9 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+        &lt;/svg&gt;
+        &lt;span class="block-box-title"&gt;Draft pages&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="box block-box"&gt;
+        &lt;span class="block-box-hl"&gt;24&lt;/span&gt;
+        &lt;svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /&gt;
+        &lt;/svg&gt;
+        &lt;span class="block-box-title"&gt;Modules&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="box block-box"&gt;
+        &lt;span class="block-box-hl"&gt;3&lt;/span&gt;
+        &lt;svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M4 6h16v9H9l-5 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /&gt;
+        &lt;/svg&gt;
+        &lt;span class="block-box-title"&gt;Unread messages&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>For a uniform dashboard grid with equal columns, use the <a href="/blocks/block-grid.html">Block grid</a> wrapper instead. <code>.block-boxes</code> is the right choice when the tiles should keep one size and wrap naturally.</p>
+                        </section>
+
+                        <section class="doc-section" id="hover">
+                            <h2>Hover state</h2>
+                            <p>Hovering a tile flips it to the accent: the text becomes <code>--r-block-box-hover-color</code> (the on-accent value), and the background and border both become <code>--r-block-box-hover-background</code> (the accent itself). The icon and the highlight value are repainted with the same hover color so all three layers stay legible on the accent fill.</p>
+                            <p>The transition covers color, background, and border, so the change is smooth without any extra class. Hover the tiles below to see it.</p>
+                            <div class="doc-demo">
+                                <div class="block-boxes">
+                                    <a href="#" class="box block-box">
+                                        <span class="block-box-hl">12</span>
+                                        <svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                        <span class="block-box-title">New this week</span>
+                                    </a>
+                                    <a href="#" class="box block-box">
+                                        <span class="block-box-hl">48</span>
+                                        <svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M4 19V9m6 10V5m6 14v-7m4 7H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                        <span class="block-box-title">Reports exported</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-box-hover">Copy</button>
+                                </div>
+                                <pre><code id="block-box-hover" class="language-html">&lt;div class="block-boxes"&gt;
+    &lt;a href="#" class="box block-box"&gt;
+        &lt;span class="block-box-hl"&gt;12&lt;/span&gt;
+        &lt;svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+        &lt;/svg&gt;
+        &lt;span class="block-box-title"&gt;New this week&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="box block-box"&gt;
+        &lt;span class="block-box-hl"&gt;48&lt;/span&gt;
+        &lt;svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M4 19V9m6 10V5m6 14v-7m4 7H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+        &lt;/svg&gt;
+        &lt;span class="block-box-title"&gt;Reports exported&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The state colors all come from the token layer: <code>--r-block-box-hover-color</code> and <code>--r-block-box-hover-background</code> for the tile, plus <code>--r-block-box-icon-color</code> and <code>--r-block-box-hl-color</code> for the resting icon and value. Changing the accent palette token repaints the hover state in both themes, and overriding <code>--r-block-box-hover-background</code> on a wrapper gives a group of tiles a different hover fill.</p>
+                        </section>
+
+                        <section class="doc-section" id="icons">
+                            <h2>Icons</h2>
+                            <p><code>.block-box-icon</code> sets only the placement, the 24px size, and the <code>--r-block-box-icon-color</code> color, so it works with any icon system. The canonical admin demo puts it on an Iconoir font icon (<code>&lt;i class="iconoir-multiple-pages block-box-icon"&gt;&lt;/i&gt;</code>), which paints with <code>color</code>.</p>
+                            <p>With inline SVG, keep the markup at 24px and draw with <code>currentColor</code>. The class then controls the color, including the hover repaint, and the SVG inherits it. Hide the graphic from assistive technology with <code>aria-hidden="true"</code> and <code>focusable="false"</code>, because the title already carries the meaning.</p>
+                            <div class="doc-demo">
+                                <div class="block-boxes">
+                                    <div class="box block-box">
+                                        <span class="block-box-hl">4</span>
+                                        <svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+                                            <path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                        <span class="block-box-title">Scheduled jobs</span>
+                                    </div>
+                                    <div class="box block-box">
+                                        <span class="block-box-hl">18</span>
+                                        <svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5" />
+                                            <path d="M17 4a3 3 0 0 1 0 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                        <span class="block-box-title">Active users</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-box-icons">Copy</button>
+                                </div>
+                                <pre><code id="block-box-icons" class="language-html">&lt;div class="block-boxes"&gt;
+    &lt;div class="box block-box"&gt;
+        &lt;span class="block-box-hl"&gt;4&lt;/span&gt;
+        &lt;svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" /&gt;
+            &lt;path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+        &lt;/svg&gt;
+        &lt;span class="block-box-title"&gt;Scheduled jobs&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="box block-box"&gt;
+        &lt;span class="block-box-hl"&gt;18&lt;/span&gt;
+        &lt;svg class="block-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+            &lt;circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5" /&gt;
+            &lt;path d="M17 4a3 3 0 0 1 0 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+        &lt;/svg&gt;
+        &lt;span class="block-box-title"&gt;Active users&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Use a non-interactive element for a tile that only reports a number. The anchor form is for navigation, and it needs a visible focus ring, which the framework already provides on <code>:focus-visible</code>.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>A tile is a number, a label, and an icon on one surface, so the work is in the element you pick and the name it produces.</p>
+                            <ul>
+                                <li>When a tile navigates, keep it an <code>&lt;a&gt;</code> and keep the title text inside that link, so the accessible name is <code>Open tickets</code> and not just <code>128</code>.</li>
+                                <li>Keep the focus state visible. The framework paints a <code>:focus-visible</code> ring on links, so do not remove the outline to make the hover fill look cleaner.</li>
+                                <li>Hide the icon from assistive technology with <code>aria-hidden="true"</code> and <code>focusable="false"</code>, as the demos do, because the title already carries the meaning.</li>
+                                <li>Do not put information only in the hover state. The hover fill is a pointer-only decoration, so anything a reader needs has to be in the resting text.</li>
+                                <li>Write the highlight value so it reads correctly, and let the title carry the unit or the subject when the number alone is ambiguous.</li>
+                                <li>Use a <code>&lt;div&gt;</code> for a tile that only reports a value. An anchor without a destination puts a dead stop in the tab order.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>The block needs the base <code>.box</code> class for its surface. Every other class belongs to the block.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-boxes</code></td>
+                                            <td>Row wrapper</td>
+                                            <td>Wrapping flex row with <code>--r-block-padding</code> as the gap.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-box</code></td>
+                                            <td>Tile</td>
+                                            <td>Two column grid with a 10px gap, <code>--r-block-box-spacing</code> padding, and a fixed <code>--r-block-box-size</code> width of 15.625rem. Pair with <code>.box</code> for border and background.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-box-hl</code></td>
+                                            <td>Highlight</td>
+                                            <td>32px bold value in <code>--r-block-box-hl-color</code>, repainted on hover.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-box-title</code></td>
+                                            <td>Title</td>
+                                            <td>14px label that spans both grid columns, so it sits under the value and the icon.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-box-icon</code></td>
+                                            <td>Icon</td>
+                                            <td>End aligned 24px icon in <code>--r-block-box-icon-color</code>, repainted on hover.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-banner.html">Previous: Block banner</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-enable.html">Next: Block enable</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#rows">Rows of boxes</a>
+                        <a class="doc-toc-link" href="#hover">Hover state</a>
+                        <a class="doc-toc-link" href="#icons">Icons</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Introduction - roolith css</title>
+        <meta
+            name="description"
+            content="What roolith css is, who it is for, and how to start building pages with its tokens, grid, and components." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/getting-started/introduction.html">Getting started</a></li>
+                                <li class="breadcrumb-item active">Introduction</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Introduction</h1>
+                            <p class="doc-content-lead">
+                                roolith is a responsive CSS framework written in SCSS and shipped as one stylesheet. A typographic base, a 12 column grid, and a component set share a single token layer, so theming and dark mode come from CSS custom properties instead of duplicate stylesheets.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>Multiple classes</strong>
+                                - defined in
+                                <strong>src/sass/roolith.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="what-is-roolith">
+                            <h2>What is roolith</h2>
+                            <p>roolith is a responsive CSS framework. The entry point, <code>src/sass/roolith.scss</code>, composes a reset, a typographic base, layout, state rules, the component modules, and the block patterns into one stylesheet.</p>
+                            <p>Every visual decision is a CSS custom property. Colors, surfaces, text, borders, radii, and component details all resolve through tokens, so <code>.theme-dark</code> or an operating system preference re-themes the page without a second stylesheet.</p>
+                            <p>The build output is CSS only. roolith ships no JavaScript: components that change state are styled against class hooks such as <code>.active</code>, <code>.open</code>, and <code>.loading</code>, and you attach the behavior with the script your project already loads.</p>
+                        </section>
+
+                        <section class="doc-section" id="who-it-is-for">
+                            <h2>Who it is for</h2>
+                            <p>roolith fits server-rendered apps, static sites, and admin screens where markup is written by hand or generated from templates. It assumes you want a small, readable CSS base that you can extend with your own rules.</p>
+                            <p>It is a poor fit if you want a class for every property. There is no utility explosion here: you get base element styles, a grid, and components, then your own product CSS on top. If you prefer utility-first class lists, a utility framework will suit you better.</p>
+                            <p>Teams that already use Sass get the most out of it, because the source is plain SCSS with a settings file and a small function and mixin set. Plain HTML projects can use the compiled stylesheet and ignore Sass entirely.</p>
+                        </section>
+
+                        <section class="doc-section" id="design-principles">
+                            <h2>Design principles</h2>
+                            <p>A few decisions shape the rest of the framework.</p>
+                            <ul>
+                                <li><strong>Tokens before values.</strong> Components reference semantic tokens such as <code>--r-surface-raised</code> and <code>--r-text-muted</code> instead of literal colors.</li>
+                                <li><strong>Semantic class names.</strong> Classes describe a role - <code>.card</code>, <code>.message-info</code>, <code>.button-primary</code> - so markup stays readable.</li>
+                                <li><strong>Low specificity.</strong> The reset is written with <code>:where()</code>, which keeps element resets at zero specificity, so your own rules win without <code>!important</code>.</li>
+                                <li><strong>Accessibility defaults.</strong> Focusable controls get a <code>:focus-visible</code> ring, <code>prefers-reduced-motion</code> is honored globally, and links inside prose containers are underlined for WCAG 1.4.1.</li>
+                                <li><strong>Mobile first.</strong> Breakpoints start at small (0), then medium (640px) and large (1024px), and the layout is a 12 column CSS grid.</li>
+                                <li><strong>Progressive enhancement.</strong> Modern CSS such as <code>color-mix()</code> drives the neutral ramp, and optional properties such as <code>text-box-trim</code> in <code>.badge</code> degrade without breaking layout.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="minimal-page">
+                            <h2>A minimal page</h2>
+                            <p>One stylesheet link and a handful of classes is enough to see the framework working. The card below uses <code>.card</code>, <code>.button</code>, and <code>.button-primary</code> with no custom CSS.</p>
+                            <div class="doc-demo">
+                                <div class="card" style="width: 100%; max-width: 34rem; margin-bottom: 0">
+                                    <div class="card-body">
+                                        <h2 class="h4">Release notes</h2>
+                                        <p class="card-text">Version 4.0.0 ships the token layer, dark mode, and the CSS grid layout.</p>
+                                        <button class="button button-primary" type="button">Read the notes</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="introduction-minimal-page">Copy</button>
+                                </div>
+                                <pre><code id="introduction-minimal-page" class="language-html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+        &lt;title&gt;Release notes&lt;/title&gt;
+        &lt;link rel="stylesheet" href="roolith-4.0.0.min.css" /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;main class="container"&gt;
+            &lt;div class="card"&gt;
+                &lt;div class="card-body"&gt;
+                    &lt;h2 class="h4"&gt;Release notes&lt;/h2&gt;
+                    &lt;p class="card-text"&gt;Version 4.0.0 ships the token layer, dark mode, and the CSS grid layout.&lt;/p&gt;
+                    &lt;button class="button button-primary" type="button"&gt;Read the notes&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/main&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="documentation-map">
+                            <h2>Documentation map</h2>
+                            <p>The docs are split into three groups. Start here, then read the component and block pages as you need them.</p>
+                            <ul>
+                                <li><strong>Getting started</strong> covers <a href="/getting-started/installation.html">Installation</a>, <a href="/getting-started/theming.html">Theming</a>, <a href="/getting-started/layout.html">Layout</a>, <a href="/getting-started/typography.html">Typography</a>, and the <a href="/getting-started/sass-api.html">Sass API</a>.</li>
+                                <li><strong>Components</strong> has one page per module, from <a href="/components/accordion.html">Accordion</a> to <a href="/components/utilities.html">Utilities</a>. Each page shows the live result next to the markup, states, and the classes involved.</li>
+                                <li><strong>Blocks</strong> documents composed patterns built from several components, such as <a href="/blocks/block-auth.html">Auth</a>, <a href="/blocks/block-header.html">Header</a>, and <a href="/blocks/block-analytics.html">Analytics</a>.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="browser-support">
+                            <h2>Browser support</h2>
+                            <p>roolith targets current evergreen browsers: recent Chrome, Edge, Safari, and Firefox. Internet Explorer is not supported.</p>
+                            <p>The hard baseline is <code>color-mix()</code>. The neutral ramp, every tinted surface, and most hover states are built with it, so a browser without support renders those colors as invalid. <code>:has()</code> is used by the radio group and the combo box submenu for the same reason.</p>
+                            <p>Optional properties degrade on their own. <code>text-box-trim</code>, used only in <code>.badge</code>, trims the line box where it is supported and leaves normal spacing where it is not.</p>
+                            <p>If you have to support an older browser, the fix belongs in your own stylesheet: override the affected component tokens with plain color values rather than patching the framework output.</p>
+                        </section>
+
+                        <section class="doc-section" id="external-resources">
+                            <h2>External resources</h2>
+                            <p>roolith does not ship an icon font, and it does not bundle a webfont. Two external stylesheets fill both gaps: Iconoir for icon classes, and Inter for the default typeface.</p>
+                            <p>The base font token, <code>--r-global-base-font</code>, defaults to <code>'Inter', sans-serif</code>, so the Google Fonts link is what makes Inter render instead of the system fallback. The framework's bold weight is 600, which is why the link requests 400 and 600.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="introduction-external-resources">Copy</button>
+                                </div>
+                                <pre><code id="introduction-external-resources" class="language-html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" /&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet" /&gt;</code></pre>
+                            </div>
+                            <p>Load both after the framework stylesheet and before your own, so your rules keep the last word. Iconoir supplies classes such as <code>iconoir-home</code>; use them on an <code>&lt;i&gt;</code> or <code>&lt;span&gt;</code> where you would normally place an icon.</p>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list"></div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/installation.html">Next: Installation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#what-is-roolith">What is roolith</a>
+                        <a class="doc-toc-link" href="#who-it-is-for">Who it is for</a>
+                        <a class="doc-toc-link" href="#design-principles">Design principles</a>
+                        <a class="doc-toc-link" href="#minimal-page">A minimal page</a>
+                        <a class="doc-toc-link" href="#documentation-map">Documentation map</a>
+                        <a class="doc-toc-link" href="#browser-support">Browser support</a>
+                        <a class="doc-toc-link" href="#external-resources">External resources</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

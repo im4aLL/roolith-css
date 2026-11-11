@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Nav - roolith css</title>
+        <meta
+            name="description"
+            content="Horizontal, vertical, centered, and icon-only navigation lists with active and colored link modifiers in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Nav</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Nav</h1>
+                            <p class="doc-content-lead">
+                                Nav is a floated list of links for moving between views, sections, or sibling pages. It
+                                ships horizontal and vertical layouts, center and right alignment, an icon-only mode, and
+                                color modifiers for links that should read as actions rather than navigation.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.nav</strong>
+                                - defined in
+                                <strong>modules/_nav.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                The list element carries
+                                <code>.nav</code>
+                                and each row is a
+                                <code>.nav-item</code>
+                                holding a
+                                <code>.nav-link</code>. The link is a block with 7px of vertical padding and the
+                                <code>--r-nav-spacing</code>
+                                token on each side, which is 13px by default.
+                            </p>
+                            <p>
+                                <code>.nav</code>
+                                pulls itself left by that same spacing so the first label lines up with the edge of the
+                                container instead of starting at its own padding. It floats, so any block that has to
+                                report the list height needs
+                                <code>.clearfix</code>
+                                or a flex parent. The demo wrappers on this page use
+                                <code>.clearfix</code>
+                                for exactly that reason and are not part of the component markup.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="clearfix full-width">
+                                    <nav aria-label="Documentation">
+                                        <ul class="nav">
+                                            <li class="nav-item"><a class="nav-link" href="#">Guides</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Modules</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Extending</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Changelog</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="nav-basic">Copy</button>
+                                </div>
+                                <pre><code id="nav-basic" class="language-html">&lt;nav aria-label="Documentation"&gt;
+    &lt;ul class="nav"&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Guides&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Modules&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Extending&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="states">
+                            <h2>Active and dimmed links</h2>
+                            <p>
+                                <code>.active</code>
+                                belongs on the
+                                <code>.nav-item</code>, not on the link. The link reads the active color token through the
+                                parent, so one class switches the whole row, and hover reuses the same token.
+                            </p>
+                            <p>
+                                <code>.dimmed</code>
+                                goes on the
+                                <code>.nav-link</code>
+                                and uses the dimmed link token, which is faint text in light mode and muted text in dark
+                                mode. Both states are color only: no border, no underline, no weight change.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="clearfix full-width">
+                                    <nav aria-label="Account sections">
+                                        <ul class="nav">
+                                            <li class="nav-item"><a class="nav-link" href="#">Overview</a></li>
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="#" aria-current="page">Billing</a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Invoices</a></li>
+                                            <li class="nav-item"><a class="nav-link dimmed" href="#">Archived</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="nav-states">Copy</button>
+                                </div>
+                                <pre><code id="nav-states" class="language-html">&lt;ul class="nav"&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="#" aria-current="page"&gt;Billing&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Invoices&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link dimmed" href="#"&gt;Archived&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="primary">
+                            <h2>Primary nav</h2>
+                            <p>
+                                <code>.nav-primary</code>
+                                turns the row into a segmented control: every link gets the nav border radius, and the
+                                active link is filled with
+                                <code>--r-nav-primary-color</code>
+                                and the accent on-color. Inactive links stay text only, so the block does not look like a
+                                row of buttons until one is selected.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="clearfix full-width">
+                                    <nav aria-label="Report views">
+                                        <ul class="nav nav-primary">
+                                            <li class="nav-item"><a class="nav-link" href="#">Overview</a></li>
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="#" aria-current="page">Traffic</a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Conversions</a></li>
+                                            <li class="nav-item"><a class="nav-link dimmed" href="#">Cohorts</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="nav-primary">Copy</button>
+                                </div>
+                                <pre><code id="nav-primary" class="language-html">&lt;ul class="nav nav-primary"&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="#" aria-current="page"&gt;Traffic&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Conversions&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link dimmed" href="#"&gt;Cohorts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="alignment">
+                            <h2>Centered and right aligned</h2>
+                            <p>
+                                <code>.nav-center</code>
+                                drops the float, turns items into inline blocks, and centers the text, so the row fills its
+                                container and the items sit in the middle. It does not reset the negative left margin from
+                                <code>.nav</code>, so the centered row is offset by the nav spacing; account for that if you
+                                need the row to line up with a pixel edge.
+                            </p>
+                            <p>
+                                <code>.nav-right</code>
+                                floats the list to the right, clears the left offset, and applies the negative spacing on
+                                the right instead, so the last label ends flush with the container edge. The two classes
+                                are not combined: pick one per list.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="clearfix full-width">
+                                    <nav aria-label="Settings tabs, centered">
+                                        <ul class="nav nav-center">
+                                            <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="#" aria-current="page">Security</a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Sessions</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="clearfix full-width">
+                                    <nav aria-label="Utility links, right aligned">
+                                        <ul class="nav nav-right">
+                                            <li class="nav-item"><a class="nav-link" href="#">Status</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Docs</a></li>
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="#" aria-current="page">Support</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="nav-alignment">Copy</button>
+                                </div>
+                                <pre><code id="nav-alignment" class="language-html">&lt;ul class="nav nav-center"&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="#" aria-current="page"&gt;Security&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Sessions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class="nav nav-right"&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Status&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Docs&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="#" aria-current="page"&gt;Support&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="vertical">
+                            <h2>Vertical nav</h2>
+                            <p>
+                                <code>.nav-vertical</code>
+                                removes the float and the negative margin, stacks the items as blocks with 5px of bottom
+                                padding, and zeroes the padding on the last item. The list has no width of its own, so
+                                constrain the parent when you need a fixed column.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="clearfix full-width" style="max-width: 250px">
+                                    <nav aria-label="Workspace settings">
+                                        <ul class="nav nav-vertical nav-primary">
+                                            <li class="nav-item"><a class="nav-link" href="#">General</a></li>
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="#" aria-current="page">Members</a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Integrations</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Danger zone</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="nav-vertical">Copy</button>
+                                </div>
+                                <pre><code id="nav-vertical" class="language-html">&lt;ul class="nav nav-vertical nav-primary"&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;General&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="#" aria-current="page"&gt;Members&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Integrations&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Danger zone&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="icon-only">
+                            <h2>Icon-only nav</h2>
+                            <p>
+                                <code>.nav-icon-only</code>
+                                raises the link font size from 14px to 16px so an icon font glyph scales up. It changes
+                                nothing else: padding, spacing, and hover stay the same. Inline SVG with its own width and
+                                height ignores the font size, which is why the demo icons render at 16px either way.
+                            </p>
+                            <p>
+                                The framework does not ship an icon set. The SVGs below use
+                                <code>currentColor</code>
+                                stroke, so they follow the link color and the active color without extra rules.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="clearfix full-width">
+                                    <nav aria-label="Workspace tools">
+                                        <ul class="nav nav-icon-only">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" aria-label="Search">
+                                                    <svg
+                                                        width="16"
+                                                        height="16"
+                                                        viewBox="0 0 16 16"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.25"
+                                                        stroke-linecap="round"
+                                                        aria-hidden="true">
+                                                        <circle cx="7" cy="7" r="4.5" />
+                                                        <path d="m10.5 10.5 3.5 3.5" />
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" aria-label="Notifications">
+                                                    <svg
+                                                        width="16"
+                                                        height="16"
+                                                        viewBox="0 0 16 16"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.25"
+                                                        stroke-linecap="round"
+                                                        aria-hidden="true">
+                                                        <path d="M8 2a3.5 3.5 0 0 1 3.5 3.5v2.2l1.2 2.3H3.3l1.2-2.3V5.5A3.5 3.5 0 0 1 8 2Z" />
+                                                        <path d="M6.5 12.5a1.5 1.5 0 0 0 3 0" />
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="#" aria-label="Settings" aria-current="page">
+                                                    <svg
+                                                        width="16"
+                                                        height="16"
+                                                        viewBox="0 0 16 16"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.25"
+                                                        stroke-linecap="round"
+                                                        aria-hidden="true">
+                                                        <circle cx="8" cy="8" r="2.2" />
+                                                        <path
+                                                            d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M12.6 3.4l-1.1 1.1M4.5 11.5l-1.1 1.1" />
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" aria-label="Create new">
+                                                    <svg
+                                                        width="16"
+                                                        height="16"
+                                                        viewBox="0 0 16 16"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.25"
+                                                        stroke-linecap="round"
+                                                        aria-hidden="true">
+                                                        <path d="M8 3v10M3 8h10" />
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="nav-icon-only">Copy</button>
+                                </div>
+                                <pre><code id="nav-icon-only" class="language-html">&lt;ul class="nav nav-icon-only"&gt;
+    &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="#" aria-label="Search"&gt;
+            &lt;svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                &lt;circle cx="7" cy="7" r="4.5" /&gt;
+                &lt;path d="m10.5 10.5 3.5 3.5" /&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="#" aria-label="Settings" aria-current="page"&gt;
+            &lt;svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                &lt;circle cx="8" cy="8" r="2.2" /&gt;
+                &lt;path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M12.6 3.4l-1.1 1.1M4.5 11.5l-1.1 1.1" /&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="link-colors">
+                            <h2>Colored links</h2>
+                            <p>
+                                Every palette name produces a
+                                <code>.nav-link-{name}</code>
+                                class. The link takes the palette fill and its on-color, and hover darkens the fill by 5%
+                                and applies
+                                <code>--r-button-hover-shadow-dark</code>, so a colored link reads as a button inside the
+                                row.
+                            </p>
+                            <p>
+                                These classes are for actions that sit beside navigation, such as Sign in or Create
+                                account, not for marking the current page. Use
+                                <code>.active</code>
+                                for state and keep color for meaning.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="clearfix full-width">
+                                    <nav aria-label="Session actions">
+                                        <ul class="nav nav-primary">
+                                            <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="#" aria-current="page">Sign in</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link nav-link-primary" href="#">Create account</a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link nav-link-danger" href="#">Sign out</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="nav-link-colors">Copy</button>
+                                </div>
+                                <pre><code id="nav-link-colors" class="language-html">&lt;ul class="nav nav-primary"&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Pricing&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="#" aria-current="page"&gt;Sign in&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link nav-link-primary" href="#"&gt;Create account&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link nav-link-danger" href="#"&gt;Sign out&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="in-header">
+                            <h2>In a header</h2>
+                            <p>
+                                The layout header is the most common home for a nav.
+                                <code>.layout-header-nav</code>
+                                clears the float, pushes the list to the end of the header cell with
+                                <code>margin-left: auto</code>, switches it to inline flex, and hides it below 640px. It
+                                also repoints
+                                <code>--r-nav-link-color</code>
+                                at the header nav token, so the same links match the header surface.
+                            </p>
+                            <p>
+                                Keep the search form and the nav as siblings inside
+                                <code>.layout-header-secondary</code>. The header cell already sets the 20px gap and
+                                removes the field margin, so nothing else is needed.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <header class="layout-header">
+                                        <div class="layout-header-primary">
+                                            <a class="layout-header-logo" href="#">Acme</a>
+                                            <button class="layout-header-sidebar-toggle" type="button">Menu</button>
+                                        </div>
+                                        <div class="layout-header-secondary">
+                                            <form class="form layout-header-search" action="/search" role="search">
+                                                <div class="form-field form-field-search">
+                                                    <input
+                                                        class="form-input"
+                                                        type="search"
+                                                        name="q"
+                                                        placeholder="Search" />
+                                                </div>
+                                            </form>
+                                            <ul class="nav layout-header-nav">
+                                                <li class="nav-item"><a class="nav-link" href="#">Docs</a></li>
+                                                <li class="nav-item active">
+                                                    <a class="nav-link" href="#" aria-current="page">Support</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </header>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="nav-in-header">Copy</button>
+                                </div>
+                                <pre><code id="nav-in-header" class="language-html">&lt;header class="layout-header"&gt;
+    &lt;div class="layout-header-primary"&gt;
+        &lt;a class="layout-header-logo" href="/"&gt;Acme&lt;/a&gt;
+        &lt;button class="layout-header-sidebar-toggle" type="button"&gt;Menu&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="layout-header-secondary"&gt;
+        &lt;form class="form layout-header-search" action="/search" role="search"&gt;
+            &lt;div class="form-field form-field-search"&gt;
+                &lt;input class="form-input" type="search" name="q" placeholder="Search" /&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+        &lt;ul class="nav layout-header-nav"&gt;
+            &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Docs&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="nav-item active"&gt;
+                &lt;a class="nav-link" href="#" aria-current="page"&gt;Support&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The component is a list of links, so keep the list and wrap it in a landmark when it is a
+                                set of navigation links. Name the landmark, and expose the current page as state rather
+                                than color.
+                            </p>
+                            <ul>
+                                <li>Wrap the list in <code>&lt;nav&gt;</code> with an <code>aria-label</code> that says what the set is for, such as Documentation or Account sections. The framework class does not add a landmark on its own.</li>
+                                <li>Put <code>aria-current="page"</code> on the active link, next to <code>.active</code> on the item. The color alone is not announced and disappears for users who cannot see the difference.</li>
+                                <li>Do not use <code>.dimmed</code> to mean unavailable. Use it for secondary emphasis; if a link is truly disabled, render it as text instead of an anchor.</li>
+                                <li>Icon-only links need an accessible name. Use <code>aria-label</code> on the link and <code>aria-hidden="true"</code> on the icon so the name is announced once.</li>
+                                <li>Keep focus visible. The component never removes the outline, and the hover color is not a substitute for it.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Layout classes go on the list, state classes go on the item or the link. Colors, spacing,
+                                and radius come from the nav token group, so an override on
+                                <code>--r-nav-spacing</code>
+                                or
+                                <code>--r-nav-primary-color</code>
+                                moves most of the component. The 7px vertical padding and the link font sizes are fixed rem
+                                values.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.nav</code></td>
+                                            <td>Base</td>
+                                            <td>
+                                                Clears its own floats, pulls left by
+                                                <code>--r-nav-spacing</code>, and floats left.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.nav-item</code></td>
+                                            <td>Row</td>
+                                            <td>Floats left. Holds the active state for the link inside it.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.nav-link</code></td>
+                                            <td>Link</td>
+                                            <td>
+                                                Block link with 7px vertical padding, 13px horizontal spacing, 14px
+                                                text, and a color transition.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.active</code></td>
+                                            <td>State</td>
+                                            <td>On the item. Switches the link to the active color token.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.dimmed</code></td>
+                                            <td>State</td>
+                                            <td>On the link. Uses the dimmed link token.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.nav-primary</code></td>
+                                            <td>Variant</td>
+                                            <td>
+                                                Adds the nav radius to links and fills the active link with the accent
+                                                color.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.nav-center</code></td>
+                                            <td>Alignment</td>
+                                            <td>Clears the float, centers the text, and makes items inline blocks.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.nav-right</code></td>
+                                            <td>Alignment</td>
+                                            <td>Floats right and moves the negative spacing to the right edge.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.nav-vertical</code></td>
+                                            <td>Variant</td>
+                                            <td>Stacks items as blocks with 5px bottom padding, last child zeroed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.nav-icon-only</code></td>
+                                            <td>Variant</td>
+                                            <td>Raises the link font size to 16px for icon glyphs.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.nav-link-primary</code></td>
+                                            <td>Color</td>
+                                            <td>
+                                                One per palette name: secondary, tertiary, info, success, warning,
+                                                danger, link, dark, black, white, light.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-header-nav</code></td>
+                                            <td>Composition</td>
+                                            <td>
+                                                On the list inside a header. Clears the float, aligns right, repoints
+                                                the link color token, and hides below 640px.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/modal.html">Previous: Modal</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/page.html">Next: Page</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#states">Active and dimmed links</a>
+                        <a class="doc-toc-link" href="#primary">Primary nav</a>
+                        <a class="doc-toc-link" href="#alignment">Centered and right aligned</a>
+                        <a class="doc-toc-link" href="#vertical">Vertical nav</a>
+                        <a class="doc-toc-link" href="#icon-only">Icon-only nav</a>
+                        <a class="doc-toc-link" href="#link-colors">Colored links</a>
+                        <a class="doc-toc-link" href="#in-header">In a header</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

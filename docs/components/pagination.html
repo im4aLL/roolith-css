@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Pagination - roolith css</title>
+        <meta
+            name="description"
+            content="Pagination lists, numbered pages, active state, and the meta row with a per page selection form in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Pagination</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Pagination</h1>
+                            <p class="doc-content-lead">
+                                Pagination moves a reader through a long result set. The component gives you a list of
+                                links with an active state, a numbered mode that collapses on small screens, and a meta row
+                                for the range summary and a per page selector.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.pagination</strong>
+                                - defined in
+                                <strong>modules/_pagination.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                <code>.pagination</code>
+                                is a flex column with a 10px gap and centered items, so the controls and the meta row stack
+                                on narrow screens. From 640px it becomes a row with
+                                <code>space-between</code>, which keeps one group on each edge. With a single child the row
+                                puts it on the left edge, so a lone link group is centered on phones and left aligned on
+                                desktop.
+                            </p>
+                            <p>
+                                Inside it,
+                                <code>.pagination-list</code>
+                                is a wrapping flex row with a 5px gap, and
+                                <code>.pagination-item</code>
+                                holds a
+                                <code>.pagination-link</code>. The link is 32px tall with 6px by 10px of padding, a 1px
+                                border, the radius token, and a background transition.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <nav class="pagination" aria-label="Search results pages">
+                                        <ul class="pagination-list">
+                                            <li class="pagination-item">
+                                                <a class="pagination-link" href="#">Previous</a>
+                                            </li>
+                                            <li class="pagination-item">
+                                                <a class="pagination-link" href="#">Next</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="pagination-basic">Copy</button>
+                                </div>
+                                <pre><code id="pagination-basic" class="language-html">&lt;nav class="pagination" aria-label="Search results pages"&gt;
+    &lt;ul class="pagination-list"&gt;
+        &lt;li class="pagination-item"&gt;
+            &lt;a class="pagination-link" href="#"&gt;Previous&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item"&gt;
+            &lt;a class="pagination-link" href="#"&gt;Next&lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="numbers">
+                            <h2>Numbered pages</h2>
+                            <p>
+                                Add
+                                <code>.is-number</code>
+                                to every numbered item. The class hides the item below 640px and shows it again from 640px
+                                up, except when the item also has
+                                <code>.pagination-item-active</code>, which always stays visible. That way a phone shows
+                                the controls and the current page only.
+                            </p>
+                            <p>
+                                The active item carries the accent background and the accent on-color. The gap item is a
+                                plain
+                                <code>.pagination-item</code>
+                                with text instead of a link, so it has no border or background and reads as punctuation.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <nav class="pagination" aria-label="Audit log pages">
+                                        <ul class="pagination-list">
+                                            <li class="pagination-item">
+                                                <a class="pagination-link" href="#" aria-label="Previous page">
+                                                    Previous
+                                                </a>
+                                            </li>
+                                            <li class="pagination-item is-number">
+                                                <a class="pagination-link" href="#">1</a>
+                                            </li>
+                                            <li class="pagination-item is-number pagination-item-active">
+                                                <a class="pagination-link" href="#" aria-current="page">2</a>
+                                            </li>
+                                            <li class="pagination-item is-number">
+                                                <a class="pagination-link" href="#">3</a>
+                                            </li>
+                                            <li class="pagination-item is-number">...</li>
+                                            <li class="pagination-item is-number">
+                                                <a class="pagination-link" href="#">48</a>
+                                            </li>
+                                            <li class="pagination-item">
+                                                <a class="pagination-link" href="#" aria-label="Next page">
+                                                    Next
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="pagination-numbers">Copy</button>
+                                </div>
+                                <pre><code id="pagination-numbers" class="language-html">&lt;nav class="pagination" aria-label="Audit log pages"&gt;
+    &lt;ul class="pagination-list"&gt;
+        &lt;li class="pagination-item"&gt;
+            &lt;a class="pagination-link" href="#" aria-label="Previous page"&gt;Previous&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item is-number"&gt;
+            &lt;a class="pagination-link" href="#"&gt;1&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item is-number pagination-item-active"&gt;
+            &lt;a class="pagination-link" href="#" aria-current="page"&gt;2&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item is-number"&gt;
+            &lt;a class="pagination-link" href="#"&gt;3&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item is-number"&gt;...&lt;/li&gt;
+        &lt;li class="pagination-item is-number"&gt;
+            &lt;a class="pagination-link" href="#"&gt;48&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item"&gt;
+            &lt;a class="pagination-link" href="#" aria-label="Next page"&gt;Next&lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                            <p>
+                                The legacy example in this repository also puts
+                                <code>.is-disabled</code>
+                                on the last arrow. The module defines no rule for that class, so a disabled control needs
+                                its own styling plus
+                                <code>aria-disabled="true"</code>, or no link at all.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="meta">
+                            <h2>Meta row</h2>
+                            <p>
+                                <code>.pagination-meta</code>
+                                holds the summary and the page size control. It is a centered flex column with a 10px gap
+                                and switches to a row from 640px, matching the parent direction. Use it as the other child
+                                of
+                                <code>.pagination</code>
+                                beside the list: space-between puts the two groups on opposite edges.
+                            </p>
+                            <p>
+                                <code>.pagination-meta-label</code>
+                                carries the range summary at the item font size and centers below 640px.
+                                <code>.pagination-meta-selection</code>
+                                is where the form classes compose: the nested
+                                <code>.form-field</code>
+                                becomes a flex row with a 10px gap and no bottom margin, and its
+                                <code>.form-label</code>
+                                loses padding and is set to
+                                <code>nowrap</code>. The
+                                <code>.form-select</code>
+                                keeps its own control chrome, so no extra rules are needed.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <nav class="pagination" aria-label="Audit log pages">
+                                        <ul class="pagination-list">
+                                            <li class="pagination-item">
+                                                <a class="pagination-link" href="#" aria-label="Previous page">
+                                                    Previous
+                                                </a>
+                                            </li>
+                                            <li class="pagination-item is-number pagination-item-active">
+                                                <a class="pagination-link" href="#" aria-current="page">2</a>
+                                            </li>
+                                            <li class="pagination-item">
+                                                <a class="pagination-link" href="#" aria-label="Next page">
+                                                    Next
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="pagination-meta">
+                                            <div class="pagination-meta-label">
+                                                Total row(s) 2000 - showing page
+                                                <strong>2</strong>
+                                                out of
+                                                <strong>100</strong>
+                                            </div>
+                                            <div class="pagination-meta-selection">
+                                                <div class="form-field">
+                                                    <label for="pagination-per-page" class="form-label">
+                                                        Per page
+                                                    </label>
+                                                    <select id="pagination-per-page" class="form-select">
+                                                        <option value="10">10</option>
+                                                        <option value="20" selected>20</option>
+                                                        <option value="30">30</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="pagination-meta">Copy</button>
+                                </div>
+                                <pre><code id="pagination-meta" class="language-html">&lt;nav class="pagination" aria-label="Audit log pages"&gt;
+    &lt;ul class="pagination-list"&gt;
+        &lt;li class="pagination-item"&gt;
+            &lt;a class="pagination-link" href="#" aria-label="Previous page"&gt;Previous&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item is-number pagination-item-active"&gt;
+            &lt;a class="pagination-link" href="#" aria-current="page"&gt;2&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item"&gt;
+            &lt;a class="pagination-link" href="#" aria-label="Next page"&gt;Next&lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class="pagination-meta"&gt;
+        &lt;div class="pagination-meta-label"&gt;
+            Total row(s) 2000 - showing page &lt;strong&gt;2&lt;/strong&gt; out of &lt;strong&gt;100&lt;/strong&gt;
+        &lt;/div&gt;
+        &lt;div class="pagination-meta-selection"&gt;
+            &lt;div class="form-field"&gt;
+                &lt;label for="pagination-per-page" class="form-label"&gt;Per page&lt;/label&gt;
+                &lt;select id="pagination-per-page" class="form-select"&gt;
+                    &lt;option value="10"&gt;10&lt;/option&gt;
+                    &lt;option value="20" selected&gt;20&lt;/option&gt;
+                    &lt;option value="30"&gt;30&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                Pagination is a set of links, so it needs a labelling landmark and a current page marker
+                                that assistive technology can read.
+                            </p>
+                            <ul>
+                                <li>Put the component on a <code>&lt;nav&gt;</code> element with a unique <code>aria-label</code>, such as Search results pages or Audit log pages. Two navs on one page need different labels.</li>
+                                <li>Add <code>aria-current="page"</code> to the active link. The fill color alone is not announced, and it disappears for users who cannot see it.</li>
+                                <li>Label icon or arrow controls with <code>aria-label</code> such as Previous page, and hide the glyph with <code>aria-hidden="true"</code>.</li>
+                                <li>Read the summary in <code>.pagination-meta-label</code> as one sentence. Screen readers announce it in order, so keep the numbers inside the text and not in separate fragments.</li>
+                                <li>The page size select keeps its <code>.form-label</code> with a matching <code>for</code> attribute. Do not replace it with a placeholder.</li>
+                                <li>The active link points at the current page and still needs a visible focus ring, so do not remove the outline on the link.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Colors, radius, and font size come from the
+                                <code>--r-pagination-*</code>
+                                token group. The 32px link height, the padding, and the 1px border are fixed rem values in
+                                the module.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.pagination</code></td>
+                                            <td>Base</td>
+                                            <td>
+                                                Flex column, centered, 10px gap; a space-between row from 640px up.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.pagination-list</code></td>
+                                            <td>Group</td>
+                                            <td>Wrapping flex row with a 5px gap.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.pagination-item</code></td>
+                                            <td>Row</td>
+                                            <td>Holds one link or plain text such as an ellipsis.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-number</code></td>
+                                            <td>Variant</td>
+                                            <td>On the item. Hidden below 640px unless the item is also active.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.pagination-item-active</code></td>
+                                            <td>State</td>
+                                            <td>
+                                                On the item. Fills the link with the accent color and keeps a numbered
+                                                item visible on small screens.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.pagination-link</code></td>
+                                            <td>Link</td>
+                                            <td>
+                                                32px flex link, 6px by 10px padding, 1px border, radius token, hover
+                                                surface.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.pagination-meta</code></td>
+                                            <td>Group</td>
+                                            <td>Centered column with a 10px gap; row from 640px up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.pagination-meta-label</code></td>
+                                            <td>Text</td>
+                                            <td>Item font size, centered, left aligned from 640px up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.pagination-meta-selection</code></td>
+                                            <td>Group</td>
+                                            <td>
+                                                Makes the nested <code>.form-field</code> a flex row with a 10px gap
+                                                and no bottom margin, and strips the label padding.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/page.html">Previous: Page</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/popover.html">Next: Popover</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#numbers">Numbered pages</a>
+                        <a class="doc-toc-link" href="#meta">Meta row</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

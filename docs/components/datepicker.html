@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Datepicker - roolith css</title>
+        <meta
+            name="description"
+            content="Native date and time field styles plus the js-datepicker panel overrides in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Datepicker</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Datepicker</h1>
+                            <p class="doc-content-lead">
+                                roolith css ships no datepicker widget. It styles the native date and time inputs, and it supplies a thin skin for the panel the js-datepicker library renders inside
+                                <code>.form-datepicker-js</code>. The rest of the field system lives on the
+                                <a href="/components/form.html">Form</a>
+                                and
+                                <a href="/components/form-extended.html">Form extended</a>
+                                pages.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.form-datepicker</strong>
+                                and
+                                <strong>.form-datepicker-js</strong>
+                                - defined in
+                                <strong>modules/_form-extended.scss</strong>
+                                and
+                                <strong>modules/_datepicker.scss</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            All behavior comes from the browser for native inputs, and from the third-party library for the JavaScript panel. Nothing is faked on this page.
+                        </div>
+
+                        <section class="doc-section" id="native-inputs">
+                            <h2>Native date input</h2>
+                            <p>
+                                Wrap an
+                                <code>&lt;input type="date"&gt;</code>
+                                in
+                                <code>.form-field.form-datepicker</code>
+                                and give it
+                                <code>.form-input</code>
+                                for the shared field shape. The wrapper drops the native appearance, fixes the input height at 39px, and hides the
+                                <code>::-webkit-calendar-picker-indicator</code>
+                                so the icon is consistent across browsers.
+                            </p>
+                            <p>
+                                A calendar icon is drawn as an inline SVG in the wrapper's
+                                <code>::after</code>
+                                pseudo-element and set to
+                                <code>pointer-events: none</code>, so clicks pass through to the input. No icon font and no extra element are needed.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="form-field form-datepicker" style="width: 260px">
+                                    <label for="datepicker-native-demo" class="form-label">Start date</label>
+                                    <input type="date" class="form-input" id="datepicker-native-demo" name="start-date" />
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="datepicker-native">Copy</button>
+                                </div>
+                                <pre><code id="datepicker-native" class="language-html">&lt;div class="form-field form-datepicker"&gt;
+    &lt;label for="start-date" class="form-label"&gt;Start date&lt;/label&gt;
+    &lt;input type="date" class="form-input" id="start-date" name="start-date" /&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The calendar picker itself is opened by the browser. The framework only controls the field, the icon, and the focus and hover states inherited from
+                                <code>.form-input</code>.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="sizes">
+                            <h2>Sizes</h2>
+                            <p>
+                                Add
+                                <code>.small</code>
+                                or
+                                <code>.large</code>
+                                to the
+                                <code>.form-field</code>
+                                wrapper. The input height moves to 27px or 44px and the icon is repositioned and resized to match.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="form-field small form-datepicker" style="width: 220px">
+                                    <label for="datepicker-small-demo" class="form-label">Small</label>
+                                    <input type="date" class="form-input" id="datepicker-small-demo" name="date-small" />
+                                </div>
+                                <div class="form-field form-datepicker" style="width: 220px">
+                                    <label for="datepicker-default-demo" class="form-label">Default</label>
+                                    <input type="date" class="form-input" id="datepicker-default-demo" name="date-default" />
+                                </div>
+                                <div class="form-field large form-datepicker" style="width: 240px">
+                                    <label for="datepicker-large-demo" class="form-label">Large</label>
+                                    <input type="date" class="form-input" id="datepicker-large-demo" name="date-large" />
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="datepicker-sizes">Copy</button>
+                                </div>
+                                <pre><code id="datepicker-sizes" class="language-html">&lt;div class="form-field small form-datepicker"&gt;
+    &lt;label for="date-small" class="form-label"&gt;Small&lt;/label&gt;
+    &lt;input type="date" class="form-input" id="date-small" name="date-small" /&gt;
+&lt;/div&gt;
+&lt;div class="form-field form-datepicker"&gt;
+    &lt;label for="date-default" class="form-label"&gt;Default&lt;/label&gt;
+    &lt;input type="date" class="form-input" id="date-default" name="date-default" /&gt;
+&lt;/div&gt;
+&lt;div class="form-field large form-datepicker"&gt;
+    &lt;label for="date-large" class="form-label"&gt;Large&lt;/label&gt;
+    &lt;input type="date" class="form-input" id="date-large" name="date-large" /&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="date-and-time-types">
+                            <h2>Date and time types</h2>
+                            <p>
+                                The wrapper is not tied to a single input type. Any native date or time type that renders a picker works:
+                                <code>datetime-local</code>,
+                                <code>month</code>,
+                                <code>week</code>, and
+                                <code>time</code>.
+                            </p>
+                            <p>
+                                Use
+                                <code>.form-timepicker</code>
+                                instead of
+                                <code>.form-datepicker</code>
+                                for time fields, because it swaps the calendar icon for a clock icon.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="form-field form-datepicker" style="width: 260px">
+                                    <label for="field-datetime-demo" class="form-label">Date and time</label>
+                                    <input type="datetime-local" class="form-input" id="field-datetime-demo" name="when" />
+                                </div>
+                                <div class="form-field form-datepicker" style="width: 220px">
+                                    <label for="field-month-demo" class="form-label">Month</label>
+                                    <input type="month" class="form-input" id="field-month-demo" name="month" />
+                                </div>
+                                <div class="form-field form-datepicker" style="width: 220px">
+                                    <label for="field-week-demo" class="form-label">Week</label>
+                                    <input type="week" class="form-input" id="field-week-demo" name="week" />
+                                </div>
+                                <div class="form-field form-timepicker" style="width: 200px">
+                                    <label for="field-time-demo" class="form-label">Time</label>
+                                    <input type="time" class="form-input" id="field-time-demo" name="time" min="09:00" max="17:00" step="900" />
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="datepicker-types">Copy</button>
+                                </div>
+                                <pre><code id="datepicker-types" class="language-html">&lt;div class="form-field form-datepicker"&gt;
+    &lt;label for="when" class="form-label"&gt;Date and time&lt;/label&gt;
+    &lt;input type="datetime-local" class="form-input" id="when" name="when" /&gt;
+&lt;/div&gt;
+&lt;div class="form-field form-datepicker"&gt;
+    &lt;label for="month" class="form-label"&gt;Month&lt;/label&gt;
+    &lt;input type="month" class="form-input" id="month" name="month" /&gt;
+&lt;/div&gt;
+&lt;div class="form-field form-datepicker"&gt;
+    &lt;label for="week" class="form-label"&gt;Week&lt;/label&gt;
+    &lt;input type="week" class="form-input" id="week" name="week" /&gt;
+&lt;/div&gt;
+&lt;div class="form-field form-timepicker"&gt;
+    &lt;label for="time" class="form-label"&gt;Time&lt;/label&gt;
+    &lt;input type="time" class="form-input" id="time" name="time" min="09:00" max="17:00" step="900" /&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="javascript-datepicker">
+                            <h2>Third-party datepicker</h2>
+                            <p>
+                                For a text input with a calendar panel, use the js-datepicker library and add
+                                <code>.form-datepicker-js</code>
+                                next to
+                                <code>.form-datepicker</code>. The class does two things: it reserves 32px of right padding on the input and scopes every
+                                <code>.qs-</code>
+                                override to that wrapper.
+                            </p>
+                            <p>
+                                Load the library stylesheet, then its script, then initialize it against the inputs inside the wrapper. The overrides only apply when the generated panel ends up inside
+                                <code>.form-datepicker-js</code>, which happens when the wrapper is the input's parent; if your version appends the panel to the body, pass the wrapper as the panel parent.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="form-field form-datepicker form-datepicker-js" style="width: 260px">
+                                    <label for="datepicker-js-demo" class="form-label">Start date</label>
+                                    <input type="text" class="form-input" id="datepicker-js-demo" name="start-date" />
+                                </div>
+                            </div>
+                            <p>
+                                This page does not run the library, so the demo above is only the prepared field. No calendar opens on click here, and adding the library script would be the next step in your own page.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="datepicker-js-markup">Copy</button>
+                                </div>
+                                <pre><code id="datepicker-js-markup" class="language-html">&lt;link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css" /&gt;
+
+&lt;div class="form-field form-datepicker form-datepicker-js"&gt;
+    &lt;label for="start-date" class="form-label"&gt;Start date&lt;/label&gt;
+    &lt;input type="text" class="form-input" id="start-date" name="start-date" /&gt;
+&lt;/div&gt;
+
+&lt;script src="https://unpkg.com/js-datepicker"&gt;&lt;/script&gt;
+&lt;script&gt;
+    datepicker('.form-datepicker-js .form-input');
+&lt;/script&gt;</code></pre>
+                            </div>
+                            <p>
+                                The library owns the date math, keyboard handling, and the markup it generates. The framework only restyles that markup, so upgrading either side is independent of the other.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="library-panel">
+                            <h2>Styling the library panel</h2>
+                            <p>
+                                The overrides target the classes js-datepicker renders. The snippet below is the markup that library produces, reduced to one week, so you can see which parts the framework touches. It is not rendered live on this page because the panel only exists once the library runs, and the library stylesheet supplies the grid the overrides sit on top of.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="datepicker-panel">Copy</button>
+                                </div>
+                                <pre><code id="datepicker-panel" class="language-html">&lt;div class="qs-datepicker-container"&gt;
+    &lt;div class="qs-datepicker"&gt;
+        &lt;div class="qs-controls"&gt;
+            &lt;div class="qs-arrow qs-left"&gt;&lt;/div&gt;
+            &lt;div class="qs-month-year"&gt;
+                &lt;span class="qs-month"&gt;March&lt;/span&gt;
+                &lt;span class="qs-year"&gt;2025&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="qs-arrow qs-right"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="qs-squares"&gt;
+            &lt;div class="qs-square qs-day"&gt;Su&lt;/div&gt;
+            &lt;div class="qs-square qs-day"&gt;Mo&lt;/div&gt;
+            &lt;div class="qs-square qs-day"&gt;Tu&lt;/div&gt;
+            &lt;div class="qs-square qs-day"&gt;We&lt;/div&gt;
+            &lt;div class="qs-square qs-day"&gt;Th&lt;/div&gt;
+            &lt;div class="qs-square qs-day"&gt;Fr&lt;/div&gt;
+            &lt;div class="qs-square qs-day"&gt;Sa&lt;/div&gt;
+            &lt;div class="qs-square qs-empty"&gt;&lt;/div&gt;
+            &lt;div class="qs-square qs-empty"&gt;&lt;/div&gt;
+            &lt;div class="qs-square"&gt;&lt;span class="qs-num"&gt;1&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="qs-square"&gt;&lt;span class="qs-num"&gt;2&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="qs-square qs-current"&gt;&lt;span class="qs-num"&gt;3&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="qs-square qs-active"&gt;&lt;span class="qs-num"&gt;4&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="qs-square qs-disabled"&gt;&lt;span class="qs-num"&gt;5&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The container carries the surface, border, radius, and top margin. The controls row gets its own background, the two
+                                <code>.qs-arrow</code>
+                                elements become 25px by 30px hit areas with a hover background, and the arrows themselves are recolored through their
+                                <code>::after</code>
+                                border. Every cell is 28px tall and the rows are separated by the
+                                <code>row-gap</code>
+                                token.
+                            </p>
+                            <p>
+                                The hover rule skips
+                                <code>.qs-empty</code>,
+                                <code>.qs-disabled</code>,
+                                <code>.qs-day</code>, and
+                                <code>.qs-active</code>, so weekday labels, padding cells, and unselectable days never react to the pointer. The selected day is painted by
+                                <code>.qs-active</code>
+                                with the active background and text tokens.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                Native inputs are accessible as long as they are labeled. The library panel brings its own keyboard model, and the framework does not change it, so test it rather than assuming.
+                            </p>
+                            <ul>
+                                <li>
+                                    Always pair the input with a
+                                    <code>&lt;label for&gt;</code>
+                                    or an
+                                    <code>aria-label</code>. A placeholder disappears as soon as the user types, and it does not name the field.
+                                </li>
+                                <li>
+                                    Keep the
+                                    <code>name</code>
+                                    attribute so the submitted value is identifiable, and set
+                                    <code>autocomplete="off"</code>
+                                    on the text input if the browser's own suggestion panel competes with the library panel.
+                                </li>
+                                <li>
+                                    The arrow keys, Enter, and Escape belong to the library. Confirm they work with the keyboard only, and that focus returns to the input when the panel closes.
+                                </li>
+                                <li>
+                                    The selected day is communicated by background color alone. Check the contrast of the active background and text token pair in both light and dark mode.
+                                </li>
+                                <li>
+                                    <code>.qs-empty</code>
+                                    and
+                                    <code>.qs-disabled</code>
+                                    cells are visual only. If a range of dates is unavailable, state that in text next to the field as well.
+                                </li>
+                                <li>
+                                    Do not remove the focus style from the input. The framework outlines
+                                    <code>.form-input</code>
+                                    on
+                                    <code>:focus-visible</code>
+                                    and that is the only cue that ties the field to the open panel.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                The first group is framework markup. The second group is generated by js-datepicker and only styled inside
+                                <code>.form-datepicker-js</code>.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.form-field</code></td>
+                                            <td>Wrapper</td>
+                                            <td>
+                                                Relative positioning for the icon. Also accepts <code>.small</code> and <code>.large</code>.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-datepicker</code></td>
+                                            <td>Wrapper modifier</td>
+                                            <td>Resets the native appearance, sets a 39px input height, and draws the calendar icon.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-timepicker</code></td>
+                                            <td>Wrapper modifier</td>
+                                            <td>Same treatment as the date wrapper, with a clock icon.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-datepicker-js</code></td>
+                                            <td>Wrapper modifier</td>
+                                            <td>32px of right input padding and the scope for every qs override below.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-datepicker-container</code></td>
+                                            <td>Library root</td>
+                                            <td>Font, size, color, border, radius, top margin, and background.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-controls</code></td>
+                                            <td>Library header row</td>
+                                            <td>Background color only.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-arrow</code></td>
+                                            <td>Library nav arrows</td>
+                                            <td>25px by 30px with a hover background; the glyph is recolored through <code>::after</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-month-year</code></td>
+                                            <td>Library label</td>
+                                            <td>Font weight from the strong weight token.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-squares</code></td>
+                                            <td>Library grid</td>
+                                            <td>Row gap only. The columns come from the library stylesheet.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-square</code></td>
+                                            <td>Library cell</td>
+                                            <td>28px tile height. Hover skips empty, disabled, day, and active cells.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-day</code></td>
+                                            <td>Library weekday label</td>
+                                            <td>Font weight only.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-current</code></td>
+                                            <td>Library today cell</td>
+                                            <td>Font weight only.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-active</code></td>
+                                            <td>Library selected cell</td>
+                                            <td>Active background and text color tokens.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.qs-empty</code></td>
+                                            <td>Library state</td>
+                                            <td>
+                                                Not a framework style. It is js-datepicker's marker for a padding cell and appears only inside the <code>:not(.qs-empty)</code> guard on the hover rule. Same for <code>.qs-disabled</code>.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/comment.html">Previous: Comment</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/drawer.html">Next: Drawer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#native-inputs">Native date input</a>
+                        <a class="doc-toc-link" href="#sizes">Sizes</a>
+                        <a class="doc-toc-link" href="#date-and-time-types">Date and time types</a>
+                        <a class="doc-toc-link" href="#javascript-datepicker">Third-party datepicker</a>
+                        <a class="doc-toc-link" href="#library-panel">Styling the library panel</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

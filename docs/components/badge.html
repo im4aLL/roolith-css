@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Badge - roolith css</title>
+        <meta name="description" content="Badge colors, sizing, and inline usage for status labels and counts in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Badge</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Badge</h1>
+                            <p class="doc-content-lead">
+                                Badges are compact labels for counts, statuses, and short metadata. They render as
+                                inline-flex, so they sit inside running text, links, and table cells without breaking the
+                                line.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.badge</strong>
+                                - defined in
+                                <strong>modules/_badge.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                A badge is a
+                                <code>&lt;span&gt;</code>
+                                with the base class and a short label. Without a color class it uses the neutral badge
+                                tokens.
+                            </p>
+                            <div class="doc-demo">
+                                <p>Build status <span class="badge">Pending</span></p>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="badge-basic">Copy</button>
+                                </div>
+                                <pre><code id="badge-basic" class="language-html">&lt;p&gt;Build status &lt;span class="badge"&gt;Pending&lt;/span&gt;&lt;/p&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="colors">
+                            <h2>Colors</h2>
+                            <p>
+                                Append any palette name to the base class. Colors other than dark, black, and white
+                                produce a tinted chip whose border and label use the palette text value; those three fill
+                                the chip with the palette color and switch the label to its on-color.
+                            </p>
+                            <div class="doc-demo">
+                                <span class="badge">Default</span>
+                                <span class="badge badge-primary">Primary</span>
+                                <span class="badge badge-secondary">Secondary</span>
+                                <span class="badge badge-tertiary">Tertiary</span>
+                                <span class="badge badge-info">Info</span>
+                                <span class="badge badge-success">Success</span>
+                                <span class="badge badge-warning">Warning</span>
+                                <span class="badge badge-danger">Danger</span>
+                                <span class="badge badge-link">Link</span>
+                                <span class="badge badge-dark">Dark</span>
+                                <span class="badge badge-black">Black</span>
+                                <span class="badge badge-light">Light</span>
+                                <span class="badge badge-white">White</span>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="badge-colors">Copy</button>
+                                </div>
+                                <pre><code id="badge-colors" class="language-html">&lt;span class="badge"&gt;Default&lt;/span&gt;
+&lt;span class="badge badge-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="badge badge-secondary"&gt;Secondary&lt;/span&gt;
+&lt;span class="badge badge-tertiary"&gt;Tertiary&lt;/span&gt;
+&lt;span class="badge badge-info"&gt;Info&lt;/span&gt;
+&lt;span class="badge badge-success"&gt;Success&lt;/span&gt;
+&lt;span class="badge badge-warning"&gt;Warning&lt;/span&gt;
+&lt;span class="badge badge-danger"&gt;Danger&lt;/span&gt;
+&lt;span class="badge badge-link"&gt;Link&lt;/span&gt;
+&lt;span class="badge badge-dark"&gt;Dark&lt;/span&gt;
+&lt;span class="badge badge-black"&gt;Black&lt;/span&gt;
+&lt;span class="badge badge-light"&gt;Light&lt;/span&gt;
+&lt;span class="badge badge-white"&gt;White&lt;/span&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="sizing">
+                            <h2>Sizing and casing</h2>
+                            <p>
+                                The badge owns its typography: an 11px font size, a line height of 1, and an uppercase
+                                transform. It does not inherit the size or the casing of the surrounding text, so a label
+                                written in sentence case always renders in capitals.
+                            </p>
+                            <p>
+                                Padding is 3px by 4px with a 1px border, which keeps the chip tight next to 14px body
+                                copy. Text box trimming removes the extra cap height above and below the glyphs, so the
+                                label centers optically instead of by font metrics. All of those values are fixed in
+                                <code>_badge.scss</code>.
+                            </p>
+                            <div class="doc-demo">
+                                <span class="badge">draft</span>
+                                <span class="badge badge-success">active</span>
+                                <span class="badge badge-danger">failed</span>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="badge-sizing">Copy</button>
+                                </div>
+                                <pre><code id="badge-sizing" class="language-html">&lt;span class="badge"&gt;draft&lt;/span&gt;
+&lt;span class="badge badge-success"&gt;active&lt;/span&gt;
+&lt;span class="badge badge-danger"&gt;failed&lt;/span&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="in-context">
+                            <h2>In context</h2>
+                            <p>
+                                Because the badge is inline-flex, it drops into links and table cells without extra
+                                layout wrappers. Keep the label short and let the surrounding element carry the meaning.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <p><a href="#">Unread messages <span class="badge badge-danger">4</span></a></p>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Worker</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Sync worker</td>
+                                                <td><span class="badge badge-success">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mail worker</td>
+                                                <td><span class="badge badge-warning">Paused</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="badge-in-context">Copy</button>
+                                </div>
+                                <pre><code id="badge-in-context" class="language-html">&lt;p&gt;&lt;a href="#"&gt;Unread messages &lt;span class="badge badge-danger"&gt;4&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;table class="table"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Worker&lt;/th&gt;
+            &lt;th&gt;Status&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Sync worker&lt;/td&gt;
+            &lt;td&gt;&lt;span class="badge badge-success"&gt;Active&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Mail worker&lt;/td&gt;
+            &lt;td&gt;&lt;span class="badge badge-warning"&gt;Paused&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                A badge is text, so a screen reader announces its label where it sits in the document.
+                                The color is decoration on top of that label.
+                            </p>
+                            <ul>
+                                <li>Write the state in the label. A red badge with no text carries no meaning for assistive technology.</li>
+                                <li>Do not rely on the color alone for status. Pair it with a word such as Failed or Active.</li>
+                                <li>Keep labels to a word or a number so the chip stays readable at 11px.</li>
+                                <li>When the badge is only a dot or a count that repeats nearby text, hide it with <code>aria-hidden="true"</code>.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                The color class stacks onto
+                                <code>.badge</code>
+                                . On the base chip, three values are tokens: <code>--r-badge-surface</code> for the
+                                fill, <code>--r-badge-background</code> for the border, and <code>--r-badge-color</code>
+                                for the label. The geometry and type values are fixed in the module: 3px by 4px padding,
+                                a 5px radius, an 11px font size, and a line height of 1. <code>--r-badge-radius</code> is
+                                declared in <code>_component-var.scss</code>, but <code>_badge.scss</code> hardcodes the
+                                5px radius today, so overriding that token does not change the chip.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.badge</code></td>
+                                            <td>Base</td>
+                                            <td>Tight inline chip with 11px uppercase text, 3px by 4px padding, a 5px radius, and a 1px border.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.badge-primary</code></td>
+                                            <td>Color</td>
+                                            <td>
+                                                Any palette name: secondary, tertiary, info, success, warning, danger,
+                                                link, dark, black, white, light.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/avatar.html">Previous: Avatar</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/box.html">Next: Box</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#colors">Colors</a>
+                        <a class="doc-toc-link" href="#sizing">Sizing and casing</a>
+                        <a class="doc-toc-link" href="#in-context">In context</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

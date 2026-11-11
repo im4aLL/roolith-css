@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block enable - roolith css</title>
+        <meta name="description" content="Block enable cards: a box with a header, body, switch footer, and an is-active state that tints the surface and border in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block enable</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block enable</h1>
+                            <p class="doc-content-lead">A block enable card pairs a setting with its switch. It wraps a <code>.box</code> with a header, a body, and a footer that holds the control, then marks the enabled card with <code>.is-active</code>. The framework only styles the card; turning the setting on and off is application behavior.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-enable</strong>
+                                - defined in
+                                <strong>blocks/_block-enable.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>The wrapper is a namespacing class: it only reaches into the <a href="/components/box.html">Box</a> module it contains. Inside the block, the <code>.box</code> element itself gets <code>--r-block-enable-box-spacing</code> padding, which defaults to half the block padding. The header, body, and footer keep their own box spacing, so the extra padding sits between the card border and the content instead of replacing the section padding.</p>
+                            <p>The footer becomes a flex row with <code>space-between</code>, so the switch sits on the left and the documentation link sits on the right. Use the <a href="/components/form-extended.html">Form extended</a> switch markup for the control and a text <a href="/components/button.html">Button</a> for the secondary action.</p>
+                            <div class="doc-demo">
+                                <div class="block-enable">
+                                    <div class="box">
+                                        <div class="box-header">Enable server settings</div>
+                                        <div class="box-body">Allow the deployment pipeline to change environment variables and restart the service without a manual review.</div>
+                                        <div class="box-footer">
+                                            <div class="form-switch">
+                                                <label for="block-enable-switch-off" class="form-switch-label">
+                                                    <input type="checkbox" name="enable" id="block-enable-switch-off" class="form-switch-input" />
+                                                    <span class="form-switch-slider"></span>
+
+                                                    <span class="form-switch-slider-text">Disabled</span>
+                                                </label>
+                                            </div>
+
+                                            <a href="#" class="button button-text button-link button-has-icon">
+                                                Learn more
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                    <path d="M14 4h6v6M20 4l-8 8M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-enable-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-enable-basic" class="language-html">&lt;div class="block-enable"&gt;
+    &lt;div class="box"&gt;
+        &lt;div class="box-header"&gt;Enable server settings&lt;/div&gt;
+        &lt;div class="box-body"&gt;Allow the deployment pipeline to change environment variables and restart the service without a manual review.&lt;/div&gt;
+        &lt;div class="box-footer"&gt;
+            &lt;div class="form-switch"&gt;
+                &lt;label for="enable" class="form-switch-label"&gt;
+                    &lt;input type="checkbox" name="enable" id="enable" class="form-switch-input" /&gt;
+                    &lt;span class="form-switch-slider"&gt;&lt;/span&gt;
+
+                    &lt;span class="form-switch-slider-text"&gt;Disabled&lt;/span&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+
+            &lt;a href="#" class="button button-text button-link button-has-icon"&gt;
+                Learn more
+                &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                    &lt;path d="M14 4h6v6M20 4l-8 8M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                &lt;/svg&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The footer text is 80% of its parent size and uses <code>--r-box-footer-color</code>, both from the Box module. Keep the switch label at its own 14px size, which the <code>.form-switch-label</code> rule already sets, so the control stays readable at the smaller footer scale.</p>
+                        </section>
+
+                        <section class="doc-section" id="active-state">
+                            <h2>Active state</h2>
+                            <p>Add <code>is-active</code> to the <code>.block-enable</code> wrapper, not to the box. The state tints the box background with <code>--r-block-enable-active-background-color</code> and repaints the border with <code>--r-block-enable-active-border-color</code>, which is the accent in the light theme and a lightened accent in the dark theme.</p>
+                            <p>Everything else, including the padding override and the footer layout, still applies while the card is active, so the switch and the link never move between states.</p>
+                            <div class="doc-demo">
+                                <div class="block-enable is-active">
+                                    <div class="box">
+                                        <div class="box-header">Enable server settings</div>
+                                        <div class="box-body">Allow the deployment pipeline to change environment variables and restart the service without a manual review.</div>
+                                        <div class="box-footer">
+                                            <div class="form-switch">
+                                                <label for="block-enable-switch-on" class="form-switch-label">
+                                                    <input type="checkbox" name="enable" id="block-enable-switch-on" class="form-switch-input" checked />
+                                                    <span class="form-switch-slider"></span>
+
+                                                    <span class="form-switch-slider-text">Enabled</span>
+                                                </label>
+                                            </div>
+
+                                            <a href="#" class="button button-text button-link button-has-icon">
+                                                Learn more
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                    <path d="M14 4h6v6M20 4l-8 8M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-enable-active">Copy</button>
+                                </div>
+                                <pre><code id="block-enable-active" class="language-html">&lt;div class="block-enable is-active"&gt;
+    &lt;div class="box"&gt;
+        &lt;div class="box-header"&gt;Enable server settings&lt;/div&gt;
+        &lt;div class="box-body"&gt;Allow the deployment pipeline to change environment variables and restart the service without a manual review.&lt;/div&gt;
+        &lt;div class="box-footer"&gt;
+            &lt;div class="form-switch"&gt;
+                &lt;label for="enable" class="form-switch-label"&gt;
+                    &lt;input type="checkbox" name="enable" id="enable" class="form-switch-input" checked /&gt;
+                    &lt;span class="form-switch-slider"&gt;&lt;/span&gt;
+
+                    &lt;span class="form-switch-slider-text"&gt;Enabled&lt;/span&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+
+            &lt;a href="#" class="button button-text button-link button-has-icon"&gt;
+                Learn more
+                &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                    &lt;path d="M14 4h6v6M20 4l-8 8M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                &lt;/svg&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The checked switch and the active card are independent. The switch input repaints the slider through the form module, and <code>.is-active</code> repaints the card, so nothing stops them from disagreeing. Keep them in sync in application code and treat the checked input as the source of truth.</p>
+                        </section>
+
+                        <section class="doc-section" id="grid">
+                            <h2>Cards in a row</h2>
+                            <p>Wrap the cards in <code>.block-grid</code> to lay them out in equal columns with the block padding as a gap. The canonical demo shows one inactive card and one active card side by side to compare the two states.</p>
+                            <p>Below 640px the cards land in one column, but that is incidental rather than designed. The base declaration is <code>grid-template-columns: repeat(auto-fit, 1fr)</code>, which is not a valid auto-repeat track list, so browsers drop it and the grid stays on its default single column. From 640px up the block grid module sets <code>repeat(auto-fit, minmax(0, 1fr))</code> with <code>--r-block-padding</code> as the gap, so the cards spread into equal columns.</p>
+                            <div class="doc-demo">
+                                <div class="block-grid full-width">
+                                    <div class="block-enable">
+                                        <div class="box">
+                                            <div class="box-header">Enable server settings</div>
+                                            <div class="box-body">Allow the deployment pipeline to change environment variables and restart the service without a manual review.</div>
+                                            <div class="box-footer">
+                                                <div class="form-switch">
+                                                    <label for="block-enable-grid-off" class="form-switch-label">
+                                                        <input type="checkbox" name="server" id="block-enable-grid-off" class="form-switch-input" />
+                                                        <span class="form-switch-slider"></span>
+
+                                                        <span class="form-switch-slider-text">Disabled</span>
+                                                    </label>
+                                                </div>
+
+                                                <a href="#" class="button button-text button-link">Learn more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="block-enable is-active">
+                                        <div class="box">
+                                            <div class="box-header">Enable email notifications</div>
+                                            <div class="box-body">Send a message to project owners when a release finishes or a build fails.</div>
+                                            <div class="box-footer">
+                                                <div class="form-switch">
+                                                    <label for="block-enable-grid-on" class="form-switch-label">
+                                                        <input type="checkbox" name="email" id="block-enable-grid-on" class="form-switch-input" checked />
+                                                        <span class="form-switch-slider"></span>
+
+                                                        <span class="form-switch-slider-text">Enabled</span>
+                                                    </label>
+                                                </div>
+
+                                                <a href="#" class="button button-text button-link">Learn more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-enable-grid">Copy</button>
+                                </div>
+                                <pre><code id="block-enable-grid" class="language-html">&lt;div class="block-grid"&gt;
+    &lt;div class="block-enable"&gt;
+        &lt;div class="box"&gt;
+            &lt;div class="box-header"&gt;Enable server settings&lt;/div&gt;
+            &lt;div class="box-body"&gt;Allow the deployment pipeline to change environment variables and restart the service without a manual review.&lt;/div&gt;
+            &lt;div class="box-footer"&gt;
+                &lt;div class="form-switch"&gt;
+                    &lt;label for="server" class="form-switch-label"&gt;
+                        &lt;input type="checkbox" name="server" id="server" class="form-switch-input" /&gt;
+                        &lt;span class="form-switch-slider"&gt;&lt;/span&gt;
+
+                        &lt;span class="form-switch-slider-text"&gt;Disabled&lt;/span&gt;
+                    &lt;/label&gt;
+                &lt;/div&gt;
+
+                &lt;a href="#" class="button button-text button-link"&gt;Learn more&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="block-enable is-active"&gt;
+        &lt;div class="box"&gt;
+            &lt;div class="box-header"&gt;Enable email notifications&lt;/div&gt;
+            &lt;div class="box-body"&gt;Send a message to project owners when a release finishes or a build fails.&lt;/div&gt;
+            &lt;div class="box-footer"&gt;
+                &lt;div class="form-switch"&gt;
+                    &lt;label for="email" class="form-switch-label"&gt;
+                        &lt;input type="checkbox" name="email" id="email" class="form-switch-input" checked /&gt;
+                        &lt;span class="form-switch-slider"&gt;&lt;/span&gt;
+
+                        &lt;span class="form-switch-slider-text"&gt;Enabled&lt;/span&gt;
+                    &lt;/label&gt;
+                &lt;/div&gt;
+
+                &lt;a href="#" class="button button-text button-link"&gt;Learn more&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="behavior">
+                            <h2>Toggle behavior</h2>
+                            <p>roolith css ships no JavaScript, and this block is styling only. <code>.is-active</code> changes the card surface and border, and the checked state of <code>.form-switch-input</code> moves the slider; nothing connects the two. Application code must read the setting, update the class, and persist the change.</p>
+                            <p>The snippet below wires the two states together. It assumes each card carries a <code>data-block-enable</code> hook and that the switch inside it is the source of truth. It is docs-only guidance, not part of the framework, and it is not loaded on this page.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JavaScript</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-enable-state">Copy</button>
+                                </div>
+                                <pre><code id="block-enable-state" class="language-js">document.querySelectorAll('[data-block-enable]').forEach((card) =&gt; {
+    const toggle = card.querySelector('.form-switch-input');
+    if (!toggle) {
+        return;
+    }
+
+    card.classList.toggle('is-active', toggle.checked);
+
+    toggle.addEventListener('change', () =&gt; {
+        card.classList.toggle('is-active', toggle.checked);
+    });
+});</code></pre>
+                            </div>
+                            <p>Set the initial class on the server when you can, so the card does not flash the wrong state before the script runs. The script above still reapplies the class on load, which keeps the markup and the stored setting from drifting apart.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The card pairs a setting with the switch that controls it, so the control has to be a real form control with a name, and the card state has to be readable without the tint.</p>
+                            <ul>
+                                <li>Use the checkbox behind <code>.form-switch-input</code>, or a button with <code>role="switch"</code>, and give it an accessible name. The <code>.form-switch-label</code> text is that name, so keep it in the markup and keep it describing the setting.</li>
+                                <li>Reflect the state on the control itself: <code>checked</code> for the checkbox, <code>aria-pressed</code> on a toggle button, or <code>aria-checked</code> alongside <code>role="switch"</code>. <code>.is-active</code> only repaints the card and announces nothing.</li>
+                                <li>Do not rely on color alone. The active border and background are a second cue on top of the control state, and the label text should already spell out Enabled or Disabled.</li>
+                                <li>The switch input is transparent and sits behind the slider, so the framework draws no focus ring for it, and the card draws none either. Add a visible focus style on the slider, as the <a href="/components/form-extended.html">Form extended</a> page shows, and do not replace the input with a styled div.</li>
+                                <li><code>.is-active</code> changes the background and the border only, so the footer stays put between states. Keep it that way when you add rules, because a control that moves on focus or on toggle pulls the body text away from the reader.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>The block targets the box inside it. The switch classes come from the Form extended module and are documented there.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-enable</code></td>
+                                            <td>Base</td>
+                                            <td>Wrapper for one setting card. Requires a <code>.box</code> child.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-enable .box</code></td>
+                                            <td>Box</td>
+                                            <td>Adds <code>--r-block-enable-box-spacing</code> padding to the box element, on top of the section padding. The token is half of the block padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-enable .box-footer</code></td>
+                                            <td>Footer</td>
+                                            <td>Flex row with <code>space-between</code>, putting the switch and the secondary link at opposite ends.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-active</code></td>
+                                            <td>State</td>
+                                            <td>Applied to the <code>.block-enable</code> wrapper. Tints the box background with <code>--r-block-enable-active-background-color</code> and sets the border to <code>--r-block-enable-active-border-color</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-switch</code></td>
+                                            <td>Control</td>
+                                            <td>The switch from the Form extended module. Put it in the box footer.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-box.html">Previous: Block box</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-form.html">Next: Block form</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#active-state">Active state</a>
+                        <a class="doc-toc-link" href="#grid">Cards in a row</a>
+                        <a class="doc-toc-link" href="#behavior">Toggle behavior</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block SVG map - roolith css</title>
+        <meta name="description" content="Composite SVG map block with token driven path fills, a hover fill state, and a fixed position tooltip with a show state in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block SVG map</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block SVG map</h1>
+                            <p class="doc-content-lead">
+                                The SVG map block paints a set of inline SVG paths and positions a tooltip near the pointer. It owns the fill, the hover fill, the stroke, and the tooltip box, and leaves the map geometry and the tooltip script to you.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-svg-map</strong>
+                                - defined in
+                                <strong>blocks/_block-svg-map.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                <code>.block-svg-map</code> is a flex wrapper that centers its content. Every <code>path</code> inside it takes its fill from <code>--r-block-svg-map-fill-color</code> and its stroke from <code>--r-block-svg-map-stroke-color</code>, with a transition on the fill property. On hover the fill moves to <code>--r-block-svg-map-fill-hover-color</code>.
+                            </p>
+                            <p>
+                                The default tokens are neutral 400 for the fill, neutral 500 for the hover fill, and the neutral color for the stroke, so the map reads as a quiet surface until the pointer lands on a region. Override those three tokens to recolor every region at once.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-svg-map-tooltip" id="region-map-tooltip"></div>
+
+                                    <div class="block-svg-map" id="region-map">
+                                        <svg viewBox="0 0 480 228" style="width: 100%; max-width: 480px; height: auto" role="group" aria-label="Pageviews by region">
+                                            <path
+                                                d="M30 24 L212 14 L222 84 L126 100 L36 82 Z"
+                                                data-name="North region"
+                                                data-pageviews="120k"
+                                                data-unique-visitors="42k"
+                                                data-visits="180k">
+                                                <title>North region: 120k pageviews</title>
+                                            </path>
+                                            <path
+                                                d="M234 12 L450 34 L438 90 L336 98 L226 84 Z"
+                                                data-name="East region"
+                                                data-pageviews="96k"
+                                                data-unique-visitors="31k"
+                                                data-visits="142k">
+                                                <title>East region: 96k pageviews</title>
+                                            </path>
+                                            <path
+                                                d="M34 104 L128 122 L216 98 L220 158 L120 176 L40 158 Z"
+                                                data-name="West region"
+                                                data-pageviews="78k"
+                                                data-unique-visitors="26k"
+                                                data-visits="118k">
+                                                <title>West region: 78k pageviews</title>
+                                            </path>
+                                            <path
+                                                d="M232 102 L334 114 L434 104 L442 158 L332 178 L224 164 Z"
+                                                data-name="South region"
+                                                data-pageviews="64k"
+                                                data-unique-visitors="21k"
+                                                data-visits="96k">
+                                                <title>South region: 64k pageviews</title>
+                                            </path>
+                                            <path
+                                                d="M126 186 L320 190 L316 214 L130 210 Z"
+                                                data-name="Central region"
+                                                data-pageviews="22k"
+                                                data-unique-visitors="8k"
+                                                data-visits="34k">
+                                                <title>Central region: 22k pageviews</title>
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-svg-map-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-svg-map-basic" class="language-html">&lt;div class="block-svg-map-tooltip" id="region-map-tooltip"&gt;&lt;/div&gt;
+
+&lt;div class="block-svg-map" id="region-map"&gt;
+    &lt;svg viewBox="0 0 480 228" style="width: 100%; max-width: 480px; height: auto" role="group" aria-label="Pageviews by region"&gt;
+        &lt;path
+            d="M30 24 L212 14 L222 84 L126 100 L36 82 Z"
+            data-name="North region"
+            data-pageviews="120k"
+            data-unique-visitors="42k"
+            data-visits="180k"&gt;
+            &lt;title&gt;North region: 120k pageviews&lt;/title&gt;
+        &lt;/path&gt;
+        &lt;path
+            d="M234 12 L450 34 L438 90 L336 98 L226 84 Z"
+            data-name="East region"
+            data-pageviews="96k"
+            data-unique-visitors="31k"
+            data-visits="142k"&gt;
+            &lt;title&gt;East region: 96k pageviews&lt;/title&gt;
+        &lt;/path&gt;
+        &lt;path
+            d="M34 104 L128 122 L216 98 L220 158 L120 176 L40 158 Z"
+            data-name="West region"
+            data-pageviews="78k"
+            data-unique-visitors="26k"
+            data-visits="118k"&gt;
+            &lt;title&gt;West region: 78k pageviews&lt;/title&gt;
+        &lt;/path&gt;
+        &lt;path
+            d="M232 102 L334 114 L434 104 L442 158 L332 178 L224 164 Z"
+            data-name="South region"
+            data-pageviews="64k"
+            data-unique-visitors="21k"
+            data-visits="96k"&gt;
+            &lt;title&gt;South region: 64k pageviews&lt;/title&gt;
+        &lt;/path&gt;
+        &lt;path
+            d="M126 186 L320 190 L316 214 L130 210 Z"
+            data-name="Central region"
+            data-pageviews="22k"
+            data-unique-visitors="8k"
+            data-visits="34k"&gt;
+            &lt;title&gt;Central region: 22k pageviews&lt;/title&gt;
+        &lt;/path&gt;
+    &lt;/svg&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The demo uses a small schematic outline so the shape rules stay readable. The canonical world map in <code>extended/blocks.html</code> uses the same structure with one path per country and the same <code>data-name</code>, <code>data-pageviews</code>, <code>data-unique-visitors</code>, and <code>data-visits</code> attributes.
+                            </p>
+                            <p>
+                                The hover fill is a CSS <code>:hover</code> rule, so it is pointer only. Keyboard focus gets no fill change from the framework, and the demo runs no script, which is why hovering here changes the fill and nothing else.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="tooltip">
+                            <h2>Tooltip</h2>
+                            <p>
+                                <code>.block-svg-map-tooltip</code> is a fixed position box pinned at the top left corner with <code>z-index: 10</code>, <code>pointer-events: none</code>, <code>opacity: 0</code>, and <code>visibility: hidden</code>. It carries 12px text over an 18px line height and never wraps. Padding, radius, background, text color, and the fade duration all come from the tooltip tokens.
+                            </p>
+                            <p>
+                                The <code>show</code> class sets opacity to 1 and visibility to visible, and the change is transitioned over <code>--r-block-svg-map-tooltip-transition-duration</code>, which defaults to the 150ms tooltip duration. Nothing in the SCSS sets <code>left</code> or <code>top</code> beyond the initial zero, so the position has to come from script.
+                            </p>
+                            <p>
+                                Inside the tooltip, <code>.block-svg-map-tooltip-content-hl</code> is 14px at the bold weight, and a <code>.block-svg-map-tooltip-content-text</code> that follows it gets 5px of top padding. On its own, <code>-text</code> has no declarations and inherits the 12px tooltip type. The <code>.block-svg-map-tooltip-content</code> wrapper is present in the canonical script but has no styles.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-svg-map-tooltip">Copy</button>
+                                </div>
+                                <pre><code id="block-svg-map-tooltip" class="language-html">&lt;div class="block-svg-map-tooltip" id="region-map-tooltip"&gt;
+    &lt;div class="block-svg-map-tooltip-content"&gt;
+        &lt;div class="block-svg-map-tooltip-content-hl"&gt;North region&lt;/div&gt;
+        &lt;div class="block-svg-map-tooltip-content-text"&gt;Pageviews: 120k&lt;/div&gt;
+        &lt;div class="block-svg-map-tooltip-content-text"&gt;Unique: 42k&lt;/div&gt;
+        &lt;div class="block-svg-map-tooltip-content-text"&gt;Visits: 180k&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                roolith css ships no JavaScript. This snippet is docs only, and the docs page does not run it, so the live map above never opens a tooltip. It pairs the tooltip with the map, reads the data attributes off the hovered path, and writes text nodes rather than HTML.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JavaScript</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-svg-map-tooltip-js">Copy</button>
+                                </div>
+                                <pre><code id="block-svg-map-tooltip-js" class="language-javascript">const map = document.getElementById('region-map');
+const tooltip = document.getElementById('region-map-tooltip');
+
+// The tooltip is fixed, so client coordinates map straight to its inset values.
+const position = (event) =&gt; {
+    const gap = 12;
+    const rect = tooltip.getBoundingClientRect();
+
+    const overflowsRight = event.clientX + gap + rect.width &gt; window.innerWidth;
+    const left = overflowsRight ? event.clientX - rect.width - gap : event.clientX + gap;
+
+    const overflowsTop = event.clientY - rect.height - gap &lt; gap;
+    const top = overflowsTop ? event.clientY + gap : event.clientY - rect.height - gap;
+
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+};
+
+// Only the metrics that exist on the path are rendered.
+const render = (path) =&gt; {
+    tooltip.replaceChildren();
+
+    const title = document.createElement('div');
+    title.className = 'block-svg-map-tooltip-content-hl';
+    title.textContent = path.dataset.name;
+    tooltip.append(title);
+
+    if (path.dataset.pageviews) {
+        const metrics = document.createElement('div');
+        metrics.className = 'block-svg-map-tooltip-content-text';
+        metrics.textContent = `Pageviews: ${path.dataset.pageviews}`;
+        tooltip.append(metrics);
+    }
+};
+
+map.querySelectorAll('path').forEach((path) =&gt; {
+    path.addEventListener('pointerenter', (event) =&gt; {
+        render(path);
+        position(event);
+        tooltip.classList.add('show');
+    });
+
+    path.addEventListener('pointermove', position);
+    path.addEventListener('pointerleave', () =&gt; tooltip.classList.remove('show'));
+});</code></pre>
+                            </div>
+                            <p>
+                                The order matters: render first, then measure and position, so <code>getBoundingClientRect</code> sees the new content. The element keeps its box while it is hidden by <code>visibility</code>, so the measurement is correct before <code>show</code> is added.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="tooltip-visible">
+                            <h2>Visible tooltip state</h2>
+                            <p>
+                                The box below is the same <code>.block-svg-map-tooltip</code> element carrying <code>show</code>, so you can read the surface, the padding, and the type scale without running the map script. The demo pins it with an inline style, marked in the markup, because the framework keeps the box <code>position: fixed</code> with <code>left</code> and <code>top</code> at zero.
+                            </p>
+                            <div class="doc-demo">
+                                <!-- Demo only: this inline style overrides the fixed positioning so the open tooltip is readable on the page. -->
+                                <div class="block-svg-map-tooltip show" style="position: static; opacity: 1; visibility: visible">
+                                    <div class="block-svg-map-tooltip-content">
+                                        <div class="block-svg-map-tooltip-content-hl">North region</div>
+                                        <div class="block-svg-map-tooltip-content-text">Pageviews: 120k</div>
+                                        <div class="block-svg-map-tooltip-content-text">Unique: 42k</div>
+                                        <div class="block-svg-map-tooltip-content-text">Visits: 180k</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-svg-map-tooltip-visible">Copy</button>
+                                </div>
+                                <pre><code id="block-svg-map-tooltip-visible" class="language-html">&lt;div class="block-svg-map-tooltip show"&gt;
+    &lt;div class="block-svg-map-tooltip-content"&gt;
+        &lt;div class="block-svg-map-tooltip-content-hl"&gt;North region&lt;/div&gt;
+        &lt;div class="block-svg-map-tooltip-content-text"&gt;Pageviews: 120k&lt;/div&gt;
+        &lt;div class="block-svg-map-tooltip-content-text"&gt;Unique: 42k&lt;/div&gt;
+        &lt;div class="block-svg-map-tooltip-content-text"&gt;Visits: 180k&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                That markup is the whole framework side of the tooltip. Positioning it near the pointer and toggling <code>show</code> are application JavaScript, as in the script above, and neither happens in this demo. The map demo on the first section does not run any script either, so the region hover changes the fill and stops there.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                An SVG map is a picture made of shapes. Screen readers need a name for the whole map and a name for each region you make interactive, and keyboard users need a way to reach those regions at all.
+                            </p>
+                            <ul>
+                                <li>Name the collection with <code>role="group"</code> and <code>aria-label</code> on the <code>svg</code>. Avoid <code>role="img"</code> when the paths are focusable, because it hides the children from assistive technology.</li>
+                                <li>Put a <code>&lt;title&gt;</code> as the first child of each interactive path, so the region has a name without relying on the tooltip.</li>
+                                <li>Add <code>tabindex="0"</code> to every interactive path. Give it <code>role="link"</code> or <code>role="button"</code>, and handle Enter and Space, because a click handler alone is unreachable from the keyboard.</li>
+                                <li>The framework styles <code>path:hover</code> only. Add a <code>:focus-visible</code> fill or outline in your own CSS so the focused region is visible.</li>
+                                <li>Repeat the numbers somewhere in text. A tooltip that only appears on hover is not available to touch users, keyboard users, or screen reader users in reading mode.</li>
+                                <li>Touch has no hover. Show the tooltip on tap and hide it on release, or open the region detail in a panel instead of a floating box.</li>
+                                <li>Keep <code>pointer-events: none</code> on the tooltip so it never blocks the region underneath it.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                The block styles the wrapper, the paths, and the tooltip box. The geometry, the data attributes, and the positioning script are yours.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-svg-map</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Flex container that centers the SVG.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-svg-map path</code></td>
+                                            <td>Region</td>
+                                            <td>Fill, stroke, and a fill transition from the block tokens. <code>:hover</code> raises the fill to <code>--r-block-svg-map-fill-hover-color</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-svg-map-tooltip</code></td>
+                                            <td>Tooltip</td>
+                                            <td>Fixed box at the top left with 12px text, no wrapping, no pointer events, and hidden by opacity and visibility. Position comes from script.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-svg-map-tooltip.show</code></td>
+                                            <td>State</td>
+                                            <td>Sets opacity to 1 and visibility to visible, transitioned over the tooltip duration.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-svg-map-tooltip-content</code></td>
+                                            <td>Tooltip content</td>
+                                            <td>Unstyled wrapper used by the canonical script to build the tooltip body.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-svg-map-tooltip-content-hl</code></td>
+                                            <td>Tooltip content</td>
+                                            <td>14px at <code>--r-block-svg-map-content-hl-weight</code>, which defaults to the global bold weight.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-svg-map-tooltip-content-text</code></td>
+                                            <td>Tooltip content</td>
+                                            <td>No declarations of its own. Gets 5px of top padding when it follows a <code>-hl</code> element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-stat-table.html">Previous: Stat table</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#tooltip">Tooltip</a>
+                        <a class="doc-toc-link" href="#tooltip-visible">Visible tooltip state</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

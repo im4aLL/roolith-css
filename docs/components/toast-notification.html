@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Toast notification - roolith css</title>
+        <meta name="description" content="Fixed toast notification wrappers with top right, bottom, left, and top positions, plus the message surfaces they carry and live region guidance in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Toast notification</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Toast notification</h1>
+                            <p class="doc-content-lead">
+                                A toast is a short confirmation that arrives after the page has already moved on. <code>.toast-notification</code> is only the positioning wrapper: it pins itself to a corner of the viewport, and the <code>.message</code> you put inside it supplies the surface, the padding, and the color.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.toast-notification</strong>
+                                - defined in
+                                <strong>modules/_toast-notification.scss</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            This module styles the wrapper only. It has no visible surface of its own, so an empty <code>.toast-notification</code> renders as nothing at all. The surface, radius, and spacing all come from the <a href="/components/message.html">message</a> component inside it.
+                        </div>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>The wrapper is fixed, capped at <code>--r-toast-notification-width</code>, and placed 30px from the right edge and 20px from the top, which makes top right the default position.</p>
+                            <p>Inside it goes a <code>.message</code> with the text you want to announce. The buttons below carry the documentation hook, which appends exactly this markup to the body and removes it again after a few seconds. Click one and look at the top right corner.</p>
+                            <div class="doc-demo">
+                                <button type="button" class="button button-primary" data-doc-toast-show="Saved successfully.">Show toast</button>
+                                <button type="button" class="button button-success" data-doc-toast-show="Deployment finished in 42 seconds.">
+                                    Show deploy toast
+                                </button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="toast-basic">Copy</button>
+                                </div>
+                                <pre><code id="toast-basic" class="language-html">&lt;div class="toast-notification"&gt;
+    &lt;div class="message message-success"&gt;Saved successfully.&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The trigger attribute in the demo is a documentation hook, not part of the framework. A real page appends the wrapper with its own code, covered in the JavaScript section below.</p>
+                            <p>Because the wrapper is fixed, it leaves the document flow completely. The page underneath does not reflow when a toast appears, and the toast is not clipped by any card, drawer, or scroll container.</p>
+                        </section>
+
+                        <section class="doc-section" id="positions">
+                            <h2>Positions</h2>
+                            <p>Three modifiers move the wrapper away from the default top right corner. Add the class to the wrapper, not to the message inside it.</p>
+                            <p><code>.bottom</code> centers the wrapper horizontally 0px from the bottom edge and also centers its text. <code>.left</code> sits 30px from the left edge and 20px from the bottom, and <code>.top</code> sits 30px from the left edge and 20px from the top.</p>
+                            <div class="doc-demo">
+                                <button type="button" class="button" data-doc-toast-position="bottom" data-doc-toast-show="Report exported to CSV.">
+                                    Bottom center
+                                </button>
+                                <button type="button" class="button" data-doc-toast-position="left" data-doc-toast-show="Invite sent to 3 people.">
+                                    Bottom left
+                                </button>
+                                <button type="button" class="button" data-doc-toast-position="top" data-doc-toast-show="Filters applied.">
+                                    Top left
+                                </button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="toast-positions">Copy</button>
+                                </div>
+                                <pre><code id="toast-positions" class="language-html">&lt;div class="toast-notification bottom"&gt;
+    &lt;div class="message message-success"&gt;Report exported to CSV.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="toast-notification left"&gt;
+    &lt;div class="message message-success"&gt;Invite sent to 3 people.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="toast-notification top"&gt;
+    &lt;div class="message message-success"&gt;Filters applied.&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The documentation hook accepts <code>bottom</code>, <code>left</code>, and <code>top</code> through <code>data-doc-toast-position</code>. Pick one corner per app and stay there, so a reader learns where to look after the first toast.</p>
+                        </section>
+
+                        <section class="doc-section" id="placement">
+                            <h2>Placement and stacking</h2>
+                            <p>The default corner is right 30px and top 20px, with a <code>z-index</code> of 10 on the wrapper. <code>.top</code> keeps the 20px top offset and moves to the left edge, while <code>.left</code> clears the top offset and drops to 20px from the bottom.</p>
+                            <p><code>.bottom</code> is the different one: it clears the top offset, anchors to 0px from the bottom, centers itself with a 50% right offset and a 50% translate, centers the text, and adds 20px of padding so the message never touches the screen edge.</p>
+                            <p>The wrapper is capped by <code>--r-toast-notification-width</code>, which is 25rem by default. A long message wraps inside that cap rather than stretching across the viewport.</p>
+                            <p>That <code>z-index</code> of 10 is low in practice: the sticky header in the layout shell uses 1000, and any ancestor that opens a stacking context can place the wrapper beneath other chrome. A toast can therefore render under an application header. Raise <code>z-index</code> on <code>.toast-notification</code> in your own stylesheet when that happens. This docs page does exactly that, with a higher <code>z-index</code> on the demo wrapper so it clears the docs header.</p>
+                            <p>Every wrapper at the same corner lands on the same coordinates, so two live toasts overlap. Either remove the previous toast before showing a new one, or manage a small queue and stack them yourself with your own offsets. The module ships no queue.</p>
+                        </section>
+
+                        <section class="doc-section" id="surfaces">
+                            <h2>Surfaces</h2>
+                            <p>The message is a component of its own, and the toast inherits whatever it brings. Without a color class it uses <code>--r-message-background</code> and the default text color.</p>
+                            <p>A color class mixes 10% of the palette color into <code>--r-surface-raised</code> for the background and takes the label from the text safe palette value. That is the tint that tells a reader at a glance whether the toast is a confirmation, a warning, or a failure.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="message">Settings saved.</div>
+                                    <div class="message message-success">Deployment finished.</div>
+                                    <div class="message message-warning">Rate limit is at 80%.</div>
+                                    <div class="message message-danger">Upload failed. Try again.</div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="toast-surfaces">Copy</button>
+                                </div>
+                                <pre><code id="toast-surfaces" class="language-html">&lt;div class="message"&gt;Settings saved.&lt;/div&gt;
+&lt;div class="message message-success"&gt;Deployment finished.&lt;/div&gt;
+&lt;div class="message message-warning"&gt;Rate limit is at 80%.&lt;/div&gt;
+&lt;div class="message message-danger"&gt;Upload failed. Try again.&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>A message can also carry a <code>.message-close</code> button, but removing that button's parent leaves an empty fixed wrapper behind. When a toast has a close control, remove the <code>.toast-notification</code> element itself, not just the message.</p>
+                        </section>
+
+                        <section class="doc-section" id="javascript">
+                            <h2>JavaScript</h2>
+                            <p>roolith css ships no JavaScript. The snippet below is documentation only and is the behavior this page uses: build the wrapper, put a message inside it, append it to the body, and remove it on a timer.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JavaScript</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="toast-js">Copy</button>
+                                </div>
+                                <pre><code id="toast-js" class="language-js">const TOAST_DURATION = 3500;
+
+/**
+ * Append a toast notification to the body and remove it after a short delay.
+ * @param {string} text - Message text to announce.
+ * @param {string} [position] - One of bottom, left, or top. Omit for top right.
+ * @returns {void}
+ */
+function showToast(text, position) {
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+
+    if (position === 'bottom' || position === 'left' || position === 'top') {
+        toast.classList.add(position);
+    }
+
+    const message = document.createElement('div');
+    message.className = 'message message-success';
+    message.setAttribute('role', 'status');
+    message.textContent = text;
+
+    toast.appendChild(message);
+    document.body.appendChild(toast);
+
+    setTimeout(() =&gt; toast.remove(), TOAST_DURATION);
+}
+
+const trigger = document.querySelector('[data-toast-trigger]');
+
+trigger.addEventListener('click', () =&gt; {
+    showToast('Saved successfully.', 'bottom');
+});</code></pre>
+                            </div>
+                            <p>Use <code>textContent</code> rather than <code>innerHTML</code> for the message body. The text usually comes from user data, and the message is in the live region that screen readers read out.</p>
+                            <p>Keep the timer tied to the toast element, not to a global, so two quick actions can each clear their own toast without cancelling the other.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>A toast is a status update, not a dialog. It should never take focus and it should never be the only place a user can read something important.</p>
+                            <ul>
+                                <li>Put <code>role="status"</code> on the message so it is announced politely, or <code>role="alert"</code> for a failure that needs immediate attention. Both imply a live region, so you do not need <code>aria-live</code> as well.</li>
+                                <li>Insert the message with its text already in place, which is what this page does and what current screen readers announce. If you need a stronger guarantee, keep one empty live region in the layout and write each toast text into it instead of moving the region itself.</li>
+                                <li>Do not move focus into the toast, and do not remove focus from the control that triggered it. A pointer switch to a fixed corner breaks keyboard work.</li>
+                                <li>A toast that disappears on a timer can cut a slow reader off. Keep the text to one sentence, repeat lasting state somewhere in the page, and never put an error's only explanation in a toast.</li>
+                                <li>If a toast needs a close control, use a real <code>&lt;button&gt;</code> with an <code>aria-label</code>, keep it focusable, and do not auto dismiss while it is focused.</li>
+                                <li>The message tint is decoration. Write the state in the words, such as Upload failed, and let the color support it.</li>
+                                <li>Keep the fixed corner clear of other fixed chrome. At high zoom the wrapper takes a large part of the viewport, so let the message wrap instead of widening it.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>The position classes go on <code>.toast-notification</code>. The message classes belong to the message component and are listed here because a toast needs one.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.toast-notification</code></td>
+                                            <td>Base</td>
+                                            <td>Fixed wrapper, right 30px and top 20px, capped by <code>--r-toast-notification-width</code>. No surface of its own.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.bottom</code></td>
+                                            <td>Position</td>
+                                            <td>Anchored to the bottom edge and centered horizontally with a 50% right offset plus translate. Centers text and adds 20px of padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.left</code></td>
+                                            <td>Position</td>
+                                            <td>Bottom 20px and left 30px. Clears the default right and top offsets.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.top</code></td>
+                                            <td>Position</td>
+                                            <td>Top 20px and left 30px. Clears the default right offset.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.message</code></td>
+                                            <td>Content</td>
+                                            <td>14px text with 17px by 30px by 17px by 20px padding, the token radius, and <code>--r-message-background</code>. Supplies the visible surface.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.message-success</code></td>
+                                            <td>Content</td>
+                                            <td>Any palette name except white: primary, secondary, tertiary, info, success, warning, danger, link, dark, black, light.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.message-close</code></td>
+                                            <td>Content</td>
+                                            <td>Absolutely positioned close control at the top right of the message. Removing it does not remove the toast wrapper.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/table.html">Previous: Table</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/tooltip.html">Next: Tooltip</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#positions">Positions</a>
+                        <a class="doc-toc-link" href="#placement">Placement and stacking</a>
+                        <a class="doc-toc-link" href="#surfaces">Surfaces</a>
+                        <a class="doc-toc-link" href="#javascript">JavaScript</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

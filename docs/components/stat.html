@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Stat - roolith css</title>
+        <meta name="description" content="Stat label, value, and footer slots, indicator composition, and responsive stat card grids in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Stat</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Stat</h1>
+                            <p class="doc-content-lead">A stat shows one number with a label above it and optional context below. The component is text only: it owns the type sizes and the vertical rhythm, and leaves the surface, border, and radius to whatever container you place it in.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.stat</strong>
+                                - defined in
+                                <strong>modules/_stat.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>The module defines one wrapper and three slots. <code>.stat</code> centers its text and pads 15px above and below with no horizontal padding, <code>.stat-header</code> is the 12px muted label, <code>.stat-body</code> is the 32px bold value, and <code>.stat-footer</code> is the 12px closing line.</p>
+                            <p>There is no <code>.stat-label</code> or <code>.stat-value</code> class. The label is the header and the value is the body, which keeps the element order in the markup the same as the visual order.</p>
+                            <div class="doc-demo">
+                                <div class="card" style="width: 220px; margin-bottom: 0">
+                                    <div class="stat">
+                                        <span class="stat-header">Tweets</span>
+                                        <span class="stat-body">55,654</span>
+                                        <span class="stat-footer">Last updated 23 min ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="stat-basic">Copy</button>
+                                </div>
+                                <pre><code id="stat-basic" class="language-html">&lt;div class="stat"&gt;
+    &lt;span class="stat-header"&gt;Tweets&lt;/span&gt;
+    &lt;span class="stat-body"&gt;55,654&lt;/span&gt;
+    &lt;span class="stat-footer"&gt;Last updated 23 min ago&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>All three slots are block elements, so they stack without any wrapper per line. The header carries 7px of bottom padding, the footer 10px of top padding, and the body sits between them at the bold weight from <code>--r-global-font-bold-weight</code>.</p>
+                        </section>
+
+                        <section class="doc-section" id="grid">
+                            <h2>Stat cards in a grid</h2>
+                            <p>Stats are usually shown as a row of cards. Put a <code>.stat</code> inside a <code>.card</code> for the raised surface and the radius, then place the cards in a <code>.row</code> with <code>.columns</code> spans. <code>.medium-6</code> gives two cards per row on tablet widths and <code>.large-3</code> gives four on desktop widths, while the default span keeps a single column on phones.</p>
+                            <p>The card keeps its own 20px bottom margin, so set it to zero inside a grid cell where the row gap already separates the cards.</p>
+                            <div class="doc-demo">
+                                <div class="row full-width">
+                                    <div class="columns medium-6 large-3">
+                                        <div class="card" style="margin-bottom: 0">
+                                            <div class="stat">
+                                                <span class="stat-header">Revenue</span>
+                                                <span class="stat-body">$48.2k</span>
+                                                <span class="stat-footer">Rolling 30 days</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="columns medium-6 large-3">
+                                        <div class="card" style="margin-bottom: 0">
+                                            <div class="stat">
+                                                <span class="stat-header">Active users</span>
+                                                <span class="stat-body">12,480</span>
+                                                <span class="stat-footer">Rolling 30 days</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="columns medium-6 large-3">
+                                        <div class="card" style="margin-bottom: 0">
+                                            <div class="stat">
+                                                <span class="stat-header">Churn</span>
+                                                <span class="stat-body">1.8%</span>
+                                                <span class="stat-footer">
+                                                    <span class="indicator is-downward">0.4 pts</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="columns medium-6 large-3">
+                                        <div class="card" style="margin-bottom: 0">
+                                            <div class="stat">
+                                                <span class="stat-header">Open tickets</span>
+                                                <span class="stat-body">37</span>
+                                                <span class="stat-footer">12 escalated</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="stat-grid">Copy</button>
+                                </div>
+                                <pre><code id="stat-grid" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="columns medium-6 large-3"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="stat"&gt;
+                &lt;span class="stat-header"&gt;Revenue&lt;/span&gt;
+                &lt;span class="stat-body"&gt;$48.2k&lt;/span&gt;
+                &lt;span class="stat-footer"&gt;Rolling 30 days&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="columns medium-6 large-3"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="stat"&gt;
+                &lt;span class="stat-header"&gt;Active users&lt;/span&gt;
+                &lt;span class="stat-body"&gt;12,480&lt;/span&gt;
+                &lt;span class="stat-footer"&gt;Rolling 30 days&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="columns medium-6 large-3"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="stat"&gt;
+                &lt;span class="stat-header"&gt;Churn&lt;/span&gt;
+                &lt;span class="stat-body"&gt;1.8%&lt;/span&gt;
+                &lt;span class="stat-footer"&gt;
+                    &lt;span class="indicator is-downward"&gt;0.4 pts&lt;/span&gt;
+                &lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="columns medium-6 large-3"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="stat"&gt;
+                &lt;span class="stat-header"&gt;Open tickets&lt;/span&gt;
+                &lt;span class="stat-body"&gt;37&lt;/span&gt;
+                &lt;span class="stat-footer"&gt;12 escalated&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>For a strip of stats without card surfaces, the block layer has <code>.block-stat</code> with <code>.block-stat-item</code>, <code>.block-stat-label</code>, <code>.block-stat-value</code>, and <code>.block-stat-indicator</code>. It lays the items out in a row from 640px up and is covered on the Blocks side of the docs.</p>
+                        </section>
+
+                        <section class="doc-section" id="indicators">
+                            <h2>Indicators</h2>
+                            <p>The indicator module adds a change marker as a 14px inline element with a masked arrow in front of it. <code>is-upward</code> paints it with <code>--r-indicator-upward-color</code>, <code>is-downward</code> with <code>--r-indicator-downward-color</code>, and <code>is-flat</code> with <code>--r-indicator-flat-color</code>. There is also <code>is-online</code> for a filled dot.</p>
+                            <p>Place the indicator in the footer for a comparison against the previous period, or in the header next to the label when the change describes the number itself. The indicator sets its own 14px font size, so it reads slightly larger than the 12px slot it usually sits in.</p>
+                            <div class="doc-demo">
+                                <div class="card" style="width: 220px; margin-bottom: 0">
+                                    <div class="stat">
+                                        <span class="stat-header">Monthly revenue</span>
+                                        <span class="stat-body">$48,290</span>
+                                        <span class="stat-footer">
+                                            <span class="indicator is-upward">12.4%</span>
+                                            vs last month
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card" style="width: 220px; margin-bottom: 0">
+                                    <div class="stat">
+                                        <span class="stat-header">Refunds</span>
+                                        <span class="stat-body">$1,120</span>
+                                        <span class="stat-footer">
+                                            <span class="indicator is-flat">0.0%</span>
+                                            vs last month
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card" style="width: 220px; margin-bottom: 0">
+                                    <div class="stat">
+                                        <span class="stat-header">Queue depth</span>
+                                        <span class="stat-body">4</span>
+                                        <span class="stat-footer">
+                                            <span class="indicator is-online">All workers healthy</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="stat-indicators">Copy</button>
+                                </div>
+                                <pre><code id="stat-indicators" class="language-html">&lt;div class="stat"&gt;
+    &lt;span class="stat-header"&gt;Monthly revenue&lt;/span&gt;
+    &lt;span class="stat-body"&gt;$48,290&lt;/span&gt;
+    &lt;span class="stat-footer"&gt;
+        &lt;span class="indicator is-upward"&gt;12.4%&lt;/span&gt;
+        vs last month
+    &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="stat"&gt;
+    &lt;span class="stat-header"&gt;Refunds&lt;/span&gt;
+    &lt;span class="stat-body"&gt;$1,120&lt;/span&gt;
+    &lt;span class="stat-footer"&gt;
+        &lt;span class="indicator is-flat"&gt;0.0%&lt;/span&gt;
+        vs last month
+    &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The arrow is a mask painted with the indicator color, so it follows the modifier without an icon font. Pair the color with the sign or the word you already write, because color alone does not carry the direction for every reader.</p>
+                        </section>
+
+                        <section class="doc-section" id="containers">
+                            <h2>Containers and alignment</h2>
+                            <p>The stat has no background, border, or radius, so it works inside a card, a box, or a page section that already draws one. A <code>.box</code> gives a flatter surface with a single border when cards feel too heavy for a dashboard.</p>
+                            <p>The center alignment comes from the module layer, which is loaded after the typography utilities, so <code>.text-left</code> on the same element does not win. Set <code>text-align: left</code> inline or in a later rule of your own when a stat has to sit against a chart axis.</p>
+                            <div class="doc-demo">
+                                <div class="box" style="width: 240px">
+                                    <div class="box-body">
+                                        <div class="stat">
+                                            <span class="stat-header">Uptime</span>
+                                            <span class="stat-body">99.98%</span>
+                                            <span class="stat-footer">Last 90 days</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box" style="width: 240px">
+                                    <div class="box-body">
+                                        <div class="stat" style="text-align: left">
+                                            <span class="stat-header">P95 latency</span>
+                                            <span class="stat-body">184 ms</span>
+                                            <span class="stat-footer">Last 24 hours</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="stat-containers">Copy</button>
+                                </div>
+                                <pre><code id="stat-containers" class="language-html">&lt;div class="box"&gt;
+    &lt;div class="box-body"&gt;
+        &lt;div class="stat"&gt;
+            &lt;span class="stat-header"&gt;Uptime&lt;/span&gt;
+            &lt;span class="stat-body"&gt;99.98%&lt;/span&gt;
+            &lt;span class="stat-footer"&gt;Last 90 days&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box"&gt;
+    &lt;div class="box-body"&gt;
+        &lt;div class="stat" style="text-align: left"&gt;
+            &lt;span class="stat-header"&gt;P95 latency&lt;/span&gt;
+            &lt;span class="stat-body"&gt;184 ms&lt;/span&gt;
+            &lt;span class="stat-footer"&gt;Last 24 hours&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>A stat is a number with a label, and the markup order is what makes it readable out loud.</p>
+                            <ul>
+                                <li>Pair every number with a visible label. The <code>.stat-header</code> text is the label, and a bare 32px figure carries no meaning on its own.</li>
+                                <li>The arrow is a <code>::before</code> pseudo-element, so it produces no text for assistive technology. Write the direction into the label, as in <code>up 12.4%</code> or <code>down 2%</code>, instead of leaving it to the glyph.</li>
+                                <li>Do not rely on the indicator color alone for a direction. Upward maps to success and downward to danger out of the box, which can be backwards for a metric where a rise is bad.</li>
+                                <li>Keep heading order. Place the stat inside a section that already has a real heading, and do not promote the number to a heading level to size it.</li>
+                                <li>Keep the label, the value, and the footer in that order in the markup. The module styles the slots, so the reading order has to follow the visual order.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>Four classes, no component tokens. Colors come from the shared text tokens, so both themes follow automatically.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.stat</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Centered text with 15px of vertical padding. No surface, border, or radius.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.stat-header</code></td>
+                                            <td>Label</td>
+                                            <td>12px block in <code>--r-text-muted</code> with 7px below it.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.stat-body</code></td>
+                                            <td>Value</td>
+                                            <td>32px block at <code>--r-global-font-bold-weight</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.stat-footer</code></td>
+                                            <td>Footer</td>
+                                            <td>12px block in <code>--r-text-subtle</code> with 10px above it.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.indicator</code></td>
+                                            <td>Composition</td>
+                                            <td>14px inline change marker with a masked arrow. Modifiers: <code>is-upward</code>, <code>is-downward</code>, <code>is-flat</code>, <code>is-online</code>.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/sidebar-nav.html">Previous: Sidebar nav</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/tab.html">Next: Tab</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#grid">Stat cards in a grid</a>
+                        <a class="doc-toc-link" href="#indicators">Indicators</a>
+                        <a class="doc-toc-link" href="#containers">Containers and alignment</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

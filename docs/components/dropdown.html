@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Dropdown - roolith css</title>
+        <meta
+            name="description"
+            content="Hover dropdowns, item lists, separators, and the active open state in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Dropdown</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Dropdown</h1>
+                            <p class="doc-content-lead">
+                                A dropdown pairs a trigger with a panel of links. The base styles open the panel on hover, and the
+                                <code>.active</code>
+                                state on the wrapper keeps it open for click and keyboard driven menus.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.dropdown</strong>
+                                - defined in
+                                <strong>modules/_dropdown.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                <code>.dropdown</code>
+                                is inline-block and relative, which makes it the anchor for the absolutely positioned panel. The panel itself stays hidden until the wrapper is hovered, so the demo below opens when the pointer is over the button.
+                            </p>
+                            <p>
+                                The demos add a
+                                <code>.spacer-*</code>
+                                element inside the demo box so an open panel has room and does not cover the code sample underneath. That spacer is documentation scaffolding, not part of the component, so it is left out of the snippets. It is paired with
+                                <code>.full-width</code>
+                                so it takes its own flex line in the demo container.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="dropdown">
+                                    <button class="button has-dropdown-icon" type="button">Actions</button>
+                                    <div class="dropdown-body">
+                                        <a class="dropdown-item" href="#">Rename</a>
+                                        <a class="dropdown-item" href="#">Duplicate</a>
+                                        <a class="dropdown-item" href="#">Archive</a>
+                                    </div>
+                                </div>
+                                <div class="spacer-150 full-width"></div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="dropdown-basic">Copy</button>
+                                </div>
+                                <pre><code id="dropdown-basic" class="language-html">&lt;div class="dropdown"&gt;
+    &lt;button class="button has-dropdown-icon" type="button"&gt;Actions&lt;/button&gt;
+    &lt;div class="dropdown-body"&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Rename&lt;/a&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Duplicate&lt;/a&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Archive&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The trigger does not have to be a button. Any element can sit in the wrapper, but a real
+                                <code>&lt;button&gt;</code>
+                                is the only one that brings the keyboard and focus behavior a menu needs.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="content">
+                            <h2>Items, separators, and text</h2>
+                            <p>
+                                <code>.dropdown-item</code>
+                                is a block link with 5px of vertical and 15px of horizontal padding. The first and last children also get 5px of outer margin, so the list never touches the panel border, and the background and text color only transition on hover.
+                            </p>
+                            <p>
+                                <code>.dropdown-item-sep</code>
+                                is a 1px rule that spans the panel, and
+                                <code>.dropdown-body-text</code>
+                                gives a prose block 15px of padding when the panel holds more than links.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="dropdown">
+                                    <button class="button button-primary has-dropdown-icon" type="button">Filters</button>
+                                    <div class="dropdown-body">
+                                        <a class="dropdown-item" href="#">All deployments</a>
+                                        <a class="dropdown-item" href="#">Failed only</a>
+                                        <span class="dropdown-item-sep"></span>
+                                        <div class="dropdown-body-text">Filters apply to the last 30 days of the selected environment.</div>
+                                        <span class="dropdown-item-sep"></span>
+                                        <a class="dropdown-item" href="#">Save as view</a>
+                                    </div>
+                                </div>
+                                <div class="spacer-250 full-width"></div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="dropdown-content">Copy</button>
+                                </div>
+                                <pre><code id="dropdown-content" class="language-html">&lt;div class="dropdown"&gt;
+    &lt;button class="button button-primary has-dropdown-icon" type="button"&gt;Filters&lt;/button&gt;
+    &lt;div class="dropdown-body"&gt;
+        &lt;a class="dropdown-item" href="#"&gt;All deployments&lt;/a&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Failed only&lt;/a&gt;
+        &lt;span class="dropdown-item-sep"&gt;&lt;/span&gt;
+        &lt;div class="dropdown-body-text"&gt;Filters apply to the last 30 days of the selected environment.&lt;/div&gt;
+        &lt;span class="dropdown-item-sep"&gt;&lt;/span&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Save as view&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="icon-button">
+                            <h2>Icon button</h2>
+                            <p>
+                                <code>.has-dropdown-icon</code>
+                                draws a downward triangle in the
+                                <code>::after</code>
+                                pseudo-element, so no icon font or extra element is needed. The triangle is sized by
+                                <code>--r-dropdown-icons-size</code>
+                                with 25px of left margin and a 2px vertical nudge that centers it against the label.
+                            </p>
+                            <p>
+                                The size modifiers are matched on the same element:
+                                <code>.button-small:after</code>
+                                uses the small triangle token and
+                                <code>.button-large:after</code>
+                                uses the large one with a wider 35px gap. Because the triangle is CSS, it inherits the button's text color.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="dropdown">
+                                    <button class="button button-small has-dropdown-icon" type="button">Small</button>
+                                    <div class="dropdown-body">
+                                        <a class="dropdown-item" href="#">Move up</a>
+                                        <a class="dropdown-item" href="#">Move down</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="button has-dropdown-icon" type="button">Default</button>
+                                    <div class="dropdown-body">
+                                        <a class="dropdown-item" href="#">Move up</a>
+                                        <a class="dropdown-item" href="#">Move down</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="button button-large button-primary has-dropdown-icon" type="button">
+                                        Large
+                                    </button>
+                                    <div class="dropdown-body">
+                                        <a class="dropdown-item" href="#">Move up</a>
+                                        <a class="dropdown-item" href="#">Move down</a>
+                                    </div>
+                                </div>
+                                <div class="spacer-150 full-width"></div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="dropdown-icon">Copy</button>
+                                </div>
+                                <pre><code id="dropdown-icon" class="language-html">&lt;div class="dropdown"&gt;
+    &lt;button class="button button-small has-dropdown-icon" type="button"&gt;Small&lt;/button&gt;
+    &lt;div class="dropdown-body"&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Move up&lt;/a&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Move down&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="dropdown"&gt;
+    &lt;button class="button has-dropdown-icon" type="button"&gt;Default&lt;/button&gt;
+    &lt;div class="dropdown-body"&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Move up&lt;/a&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Move down&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="dropdown"&gt;
+    &lt;button class="button button-large button-primary has-dropdown-icon" type="button"&gt;Large&lt;/button&gt;
+    &lt;div class="dropdown-body"&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Move up&lt;/a&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Move down&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="active-state">
+                            <h2>Open state</h2>
+                            <p>
+                                Hover alone is not enough. It does not exist on touch devices, and the panel closes as soon as the pointer leaves the wrapper, which makes a menu hard to use with a mouse. The stylesheet rules out both problems with one selector:
+                                <code>.active .dropdown-body</code>
+                                is
+                                <code>display: block</code>.
+                            </p>
+                            <p>
+                                Add
+                                <code>.active</code>
+                                to the
+                                <code>.dropdown</code>
+                                wrapper to hold the panel open. The selector matches any ancestor, so an
+                                <code>.active</code>
+                                class higher up also opens it, which is useful for a menu opened from a toolbar state.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="dropdown active">
+                                    <button class="button button-primary has-dropdown-icon" type="button">Open by default</button>
+                                    <div class="dropdown-body">
+                                        <a class="dropdown-item" href="#">Edit release</a>
+                                        <a class="dropdown-item" href="#">Copy link</a>
+                                        <span class="dropdown-item-sep"></span>
+                                        <a class="dropdown-item" href="#">Delete release</a>
+                                    </div>
+                                </div>
+                                <div class="spacer-150 full-width"></div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="dropdown-active">Copy</button>
+                                </div>
+                                <pre><code id="dropdown-active" class="language-html">&lt;div class="dropdown active"&gt;
+    &lt;button class="button button-primary has-dropdown-icon" type="button"&gt;Open by default&lt;/button&gt;
+    &lt;div class="dropdown-body"&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Edit release&lt;/a&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Copy link&lt;/a&gt;
+        &lt;span class="dropdown-item-sep"&gt;&lt;/span&gt;
+        &lt;a class="dropdown-item" href="#"&gt;Delete release&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="javascript">
+                            <h2>JavaScript</h2>
+                            <p>
+                                roolith css ships no JavaScript. CSS can render the open state but it cannot toggle a class on click, so the panel needs a few lines of script for touch and keyboard use. The snippet below is documentation only and matches the hooks this page uses.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JavaScript</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="dropdown-js">Copy</button>
+                                </div>
+                                <pre><code id="dropdown-js" class="language-js">const dropdown = document.querySelector('.dropdown');
+const trigger = dropdown.querySelector('.has-dropdown-icon');
+
+/**
+ * Toggle the open state and keep aria-expanded in sync.
+ * @returns {void}
+ */
+function toggleDropdown() {
+    const open = dropdown.classList.toggle('active');
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+trigger.addEventListener('click', toggleDropdown);
+
+document.addEventListener('click', (event) =&gt; {
+    if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('active');
+        trigger.setAttribute('aria-expanded', 'false');
+    }
+});
+
+document.addEventListener('keydown', (event) =&gt; {
+    if (event.key === 'Escape' &amp;&amp; dropdown.classList.contains('active')) {
+        dropdown.classList.remove('active');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+    }
+});</code></pre>
+                            </div>
+                            <p>
+                                For more than one dropdown on a page, track the open element instead of closing every instance on each document click, and close the open panel when another one opens.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                A hover panel is invisible to keyboard users, so the click driven
+                                <code>.active</code>
+                                path is the one to ship. The rest is menu semantics.
+                            </p>
+                            <ul>
+                                <li>
+                                    The trigger must be a
+                                    <code>&lt;button type="button"&gt;</code>
+                                    so it is reachable with Tab and activated with Enter and Space. A
+                                    <code>div</code>
+                                    with a click handler is not a button.
+                                </li>
+                                <li>
+                                    Set
+                                    <code>aria-expanded="true|false"</code>
+                                    on the trigger, point
+                                    <code>aria-controls</code>
+                                    at the id of
+                                    <code>.dropdown-body</code>, and keep both in sync with
+                                    <code>.active</code>. CSS alone cannot report the open state.
+                                </li>
+                                <li>
+                                    Items should be links or buttons, never bare
+                                    <code>div</code>
+                                    elements, so they are focusable and respond to Enter. Every item needs visible text; an icon-only item needs an accessible name.
+                                </li>
+                                <li>
+                                    Escape closes the panel and returns focus to the trigger. Clicking outside should close it too, so a stray open panel never traps the next click.
+                                </li>
+                                <li>
+                                    The hover behavior fires whenever the pointer crosses the wrapper, which can open the panel on the way to something else. If that is a problem, keep the panel closed on hover and rely only on
+                                    <code>.active</code>.
+                                </li>
+                                <li>
+                                    The CSS triangle is decorative and generated content, so there is nothing to label for screen readers.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Surfaces, borders, and the item colors come from the
+                                <code>--r-dropdown-*</code>
+                                tokens. The panel is fixed at
+                                <code>--r-dropdown-width</code>, which defaults to 13.75rem.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.dropdown</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Inline-block anchor. Opens the panel on hover and holds <code>.active</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.has-dropdown-icon</code></td>
+                                            <td>Trigger</td>
+                                            <td>CSS triangle in <code>::after</code>, sized by the icon size tokens.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.dropdown-body</code></td>
+                                            <td>Panel</td>
+                                            <td>Hidden until hover or an <code>.active</code> ancestor, then a bordered 13.75rem surface.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.dropdown-item</code></td>
+                                            <td>Item</td>
+                                            <td>Block link with 5px by 15px padding and a hover background and color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.dropdown-item-sep</code></td>
+                                            <td>Separator</td>
+                                            <td>1px rule across the panel. Use a <code>span</code>, since it carries no content.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.dropdown-body-text</code></td>
+                                            <td>Prose block</td>
+                                            <td>15px padding for a note inside the panel.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.active</code></td>
+                                            <td>State on the wrapper</td>
+                                            <td>Keeps the panel open. The selector matches any active ancestor.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/drawer.html">Previous: Drawer</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/form.html">Next: Form</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#content">Items, separators, and text</a>
+                        <a class="doc-toc-link" href="#icon-button">Icon button</a>
+                        <a class="doc-toc-link" href="#active-state">Open state</a>
+                        <a class="doc-toc-link" href="#javascript">JavaScript</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

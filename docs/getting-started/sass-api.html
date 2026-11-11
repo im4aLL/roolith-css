@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Sass API - roolith css</title>
+        <meta
+            name="description"
+            content="Configure roolith css with @use, build selectively, and reuse its Sass functions and mixins." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/getting-started/introduction.html">Getting started</a></li>
+                                <li class="breadcrumb-item active">Sass API</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Sass API</h1>
+                            <p class="doc-content-lead">
+                                roolith css is a set of Sass modules. Settings live in their own module, so you configure
+                                the build with a
+                                <code>@use ... with</code>
+                                block before you load the entry, and the same functions and mixins that build the
+                                framework are available to your own components.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>Multiple mixins and functions</strong>
+                                - defined in
+                                <strong>roolith.scss, _settings.scss, functions/, mixins/</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            The examples use paths your bundler resolves from the installed package:
+                            <code>roolith-css/src/sass/roolith.scss</code> for the complete stylesheet and
+                            <code>roolith-css/src/sass/main</code> when you want to include only some groups. Adjust the
+                            prefix if you load the source from
+                            somewhere else.
+                        </div>
+
+                        <section class="doc-section" id="entry-point">
+                            <h2>Entry point</h2>
+                            <p>
+                                <code>src/sass/roolith.scss</code>
+                                is the install entry. It loads
+                                <code>./main</code>
+                                and runs
+                                <code>roolith-everything()</code>
+                                at the end, so one
+                                <code>@use</code>
+                                emits the complete stylesheet.
+                            </p>
+                            <p>
+                                <code>src/sass/main.scss</code>
+                                is the library behind that entry. It declares the mixins that emit each group of styles
+                                and writes no rules: only the mixins you include produce output, which is what makes
+                                <a href="#selective-builds">selective builds</a> possible. Neither file declares a
+                                variable, so overrides go to <code>settings</code>, which you load with a
+                                <code>with</code>
+                                block before either one.
+                            </p>
+                            <ul>
+                                <li><code>_main.scss</code> declares the group mixins; <code>roolith.scss</code> includes all of them.</li>
+                                <li><code>_settings.scss</code> holds every configurable variable, all with <code>!default</code>.</li>
+                                <li><code>_css-var.scss</code> turns those settings into the <code>--r-*</code> custom properties.</li>
+                                <li><code>_reset.scss</code>, <code>_base.scss</code>, and <code>_typography.scss</code> cover element defaults.</li>
+                                <li><code>_state.scss</code> adds the show, hide, and state helpers.</li>
+                                <li><code>modules/</code> and <code>blocks/</code> hold one partial per component, each exposing a mixin.</li>
+                                <li><code>functions/</code> and <code>mixins/</code> are the shared toolkit the modules are built on.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="configuration">
+                            <h2>Configuration</h2>
+                            <p>
+                                Load the settings module with a
+                                <code>with</code>
+                                block before the file that reads it. The configuration is applied on that first load,
+                                so keep it in one place and keep it first.
+                            </p>
+                            <p>
+                                An override replaces the default rather than merging into it, so a map such as
+                                <code>$colors</code>
+                                has to be passed complete. Keep
+                                <code>$colors</code>
+                                ,
+                                <code>$colors-on</code>
+                                , and
+                                <code>$colors-text</code>
+                                in step as well: a palette name without a text recipe stops the build inside
+                                <code>text-token()</code>.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">SCSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sass-api-use">Copy</button>
+                                </div>
+                                <pre><code id="sass-api-use" class="language-scss">@use 'roolith-css/src/sass/settings' with (
+    $base-font-family: ('Inter', sans-serif),
+    $container-width: 90rem,
+    $grid-gutter-size: 1.5rem,
+    $border-radius: 0.5rem,
+    $primary-color: #2f6feb,
+    $animation-duration: 0.2s
+);
+@use 'roolith-css/src/sass/roolith';</code></pre>
+                            </div>
+                            <h3 class="h5" id="sass-global-settings">Global settings</h3>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="sass-global-settings">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Variable</th>
+                                            <th scope="col">Default</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>$base-font-size</code></td>
+                                            <td><code>100%</code></td>
+                                            <td>Root font size, exposed as --r-global-base-font-size.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$base-font-family</code></td>
+                                            <td><code>'Inter', sans-serif</code></td>
+                                            <td>Body font family, exposed as --r-global-base-font.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$global-font-weight</code></td>
+                                            <td><code>normal</code></td>
+                                            <td>Body weight.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$global-font-bold-weight</code></td>
+                                            <td><code>600</code></td>
+                                            <td>Headings, strong, and definition terms.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$border-radius</code></td>
+                                            <td><code>rem(8)</code></td>
+                                            <td>Exposed as --r-global-border-radius.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h3 class="h5" id="sass-breakpoints">Breakpoints</h3>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="sass-breakpoints">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Variable</th>
+                                            <th scope="col">Default</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>$breakpoints</code></td>
+                                            <td>
+                                                <code>small: 0</code>,
+                                                <code>medium: 640px</code>,
+                                                <code>large: 1024px</code>,
+                                                <code>xlarge: 1200px</code>,
+                                                <code>xxlarge: 1440px</code>
+                                            </td>
+                                            <td>
+                                                Drives the breakpoint mixin, the grid prefixes, and the show and hide
+                                                helpers. Keys are read by name, so keep all five.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h3 class="h5" id="sass-grid">Grid</h3>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="sass-grid">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Variable</th>
+                                            <th scope="col">Default</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>$container-width</code></td>
+                                            <td><code>rem(1200)</code></td>
+                                            <td>Exposed as --r-global-width and used by .container.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$grid-gutter-size</code></td>
+                                            <td><code>rem(20)</code></td>
+                                            <td>Single gutter value used to build the gutter map.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$grid-gutter</code></td>
+                                            <td><code>small, medium, large</code></td>
+                                            <td>Per breakpoint gutter map. Override it for a different rhythm per size.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$grid-column-count</code></td>
+                                            <td><code>12</code></td>
+                                            <td>Track count for the grid and the span, offset, push, and pull loops.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$grid-layout</code></td>
+                                            <td><code>css-grid</code></td>
+                                            <td>
+                                                Or
+                                                <code>traditional</code>
+                                                for the legacy float grid. Any other value stops the build with an
+                                                error.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h3 class="h5" id="sass-colors">Colors</h3>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="sass-colors">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Variable</th>
+                                            <th scope="col">Default</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>$primary-color</code></td>
+                                            <td><code>#4a5cd0</code></td>
+                                            <td>
+                                                One variable per palette name: primary, secondary, tertiary, info,
+                                                success, warning, danger, link, dark, black, white, light. Each becomes
+                                                --r-color-&lt;name&gt;.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$theme-dark-color</code></td>
+                                            <td><code>#0c0c0c</code></td>
+                                            <td>Base neutral for the dark theme.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$colors</code></td>
+                                            <td>Palette map</td>
+                                            <td>Drives every color and background utility, and every component that loops the palette.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$colors-on</code></td>
+                                            <td>Palette map</td>
+                                            <td>Foreground color for each palette fill.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$colors-text</code></td>
+                                            <td>Palette map</td>
+                                            <td>Text recipe per palette name for light surfaces.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$colors-dark</code></td>
+                                            <td>Partial map</td>
+                                            <td>Color overrides in dark mode. Only the listed names change.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$colors-text-dark</code></td>
+                                            <td>Palette map</td>
+                                            <td>Text recipes in dark mode.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h3 class="h5" id="sass-animation-and-other">Animation and other</h3>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="sass-animation-and-other">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Variable</th>
+                                            <th scope="col">Default</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>$animation-easing</code></td>
+                                            <td><code>cubic-bezier(1, 0, 0, 1)</code></td>
+                                            <td>Exposed as --r-animation-easing.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$animation-duration</code></td>
+                                            <td><code>0.25s</code></td>
+                                            <td>Exposed as --r-animation-duration.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$modal-layout</code></td>
+                                            <td><code>css-grid</code></td>
+                                            <td>
+                                                Or
+                                                <code>traditional</code>
+                                                for the legacy block internals, or
+                                                <code>flex</code>
+                                                to center the content with flexbox. Selects the grid, block, or flex internals of the modal.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$spacer</code></td>
+                                            <td><code>5, 10, 15 ... 250</code></td>
+                                            <td>Pixel list that generates the .spacer-N classes.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>$block-padding</code></td>
+                                            <td><code>rem(20)</code></td>
+                                            <td>Exposed as --r-block-padding for the block partials.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="selective-builds">
+                            <h2 id="selective-builds-heading">Selective builds</h2>
+                            <p>
+                                The framework groups its output into six mixins, and
+                                <code>roolith-everything()</code>
+                                calls all of them. Each group is a plain list of includes in
+                                <code>src/sass/_main.scss</code>
+                                , so you can see exactly what it emits.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="selective-builds-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Mixin</th>
+                                            <th scope="col">Emits</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>roolith-base()</code></td>
+                                            <td>
+                                                The custom properties, the reset, the base element styles, typography,
+                                                and the color utilities.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>roolith-modules()</code></td>
+                                            <td>
+                                                The core components: animation, button, nav, form, table, img, message,
+                                                badge, breadcrumb, card, dropdown, modal, stat, accordion, tab, box,
+                                                article, progress, collage, avatar, tag, page, comment, toast
+                                                notification, and icon.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>roolith-extended-modules()</code></td>
+                                            <td>
+                                                The higher level components: form extended, tooltip, popover, drawer,
+                                                combo box, action menu, pagination, spacer, indicator, quick menu,
+                                                sidebar nav, and datepicker.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>roolith-blocks()</code></td>
+                                            <td>
+                                                Every composed page block in
+                                                <code>blocks/</code>
+                                                , from the header and auth screens to the stat table and SVG map.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>roolith-layout()</code></td>
+                                            <td>
+                                                The grid selected by
+                                                <code>$grid-layout</code>
+                                                , then the application layout scaffold.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>roolith-state()</code></td>
+                                            <td>
+                                                The show and hide helpers,
+                                                <code>.clearfix</code>, and the
+                                                <code>.is-*</code>
+                                                state classes.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>roolith-everything()</code></td>
+                                            <td>
+                                                All six above, in that order: base, modules, extended modules,
+                                                blocks, layout, state.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                <code>roolith-layout()</code>
+                                prints a warning when
+                                <code>$grid-layout</code>
+                                is
+                                <code>traditional</code>
+                                and raises an error for any other value, so a typo cannot quietly produce a stylesheet
+                                without a grid.
+                            </p>
+                            <p>
+                                Loading the entry file emits everything, so a smaller bundle means loading
+                                <code>main</code>
+                                and calling only the groups you need. It writes nothing on its own. To override a
+                                setting, load
+                                <code>settings</code>
+                                with a
+                                <code>with</code>
+                                block first; the entry file reads the same module when you use it instead.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">SCSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sass-api-selective">Copy</button>
+                                </div>
+                                <pre><code id="sass-api-selective" class="language-scss">@use 'roolith-css/src/sass/main' as r;
+
+@include r.roolith-base();
+@include r.roolith-modules();
+@include r.roolith-extended-modules();
+@include r.roolith-blocks();
+@include r.roolith-layout();
+@include r.roolith-state();</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="functions">
+                            <h2 id="functions-heading">Functions</h2>
+                            <p>
+                                Functions live in
+                                <code>src/sass/functions</code>
+                                . Load them with a wildcard namespace when you want the short names, or a named one to
+                                keep the call sites explicit.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="functions-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Signature</th>
+                                            <th scope="col">Returns</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>rem($pixels, $context: 16px)</code></td>
+                                            <td>
+                                                A rem value. Unitless input is treated as pixels; the context divides
+                                                it.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>color-lighten($color, $amount)</code></td>
+                                            <td>A color-mix with white at the given amount.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>color-darken($color, $amount)</code></td>
+                                            <td>A color-mix with black at the given amount.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>str-replace($string, $search, $replace: '')</code></td>
+                                            <td>The string with every match replaced. The replacement defaults to empty.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>url-encode($string)</code></td>
+                                            <td>The string with URL reserved characters percent encoded.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>inline-svg($string)</code></td>
+                                            <td>A url() with the encoded SVG as a utf8 data URI.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>palette-fill($name)</code></td>
+                                            <td>var(--r-color-&lt;name&gt;).</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>palette-on($name)</code></td>
+                                            <td>var(--r-color-&lt;name&gt;-on), the foreground for that fill.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>palette-text($name)</code></td>
+                                            <td>var(--r-color-&lt;name&gt;-text), the readable text tone.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>text-token($name, $recipes, $ink)</code></td>
+                                            <td>
+                                                A color-mix of the palette color and the ink, or the raw variable when the
+                                                recipe is 0%. Errors when the name has no recipe.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>heading-tracking($size)</code></td>
+                                            <td>
+                                                -0.02em below 24, -0.03em from 24, -0.04em from 40. Ships with the
+                                                text pattern in <code>mixins/_text-pattern.scss</code>, so load it through
+                                                the mixins namespace.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">SCSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sass-api-functions">Copy</button>
+                                </div>
+                                <pre><code id="sass-api-functions" class="language-scss">@use 'roolith-css/src/sass/functions' as *;
+
+.card-cover {
+    width: rem(320);
+    padding: rem(20);
+    border: rem(1) solid palette-text('primary');
+    background-color: palette-fill('primary');
+    color: palette-on('primary');
+}
+
+.card-cover-link {
+    color: color-darken(#4a5cd0, 15%);
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="mixins">
+                            <h2 id="mixins-heading">Mixins</h2>
+                            <p>
+                                Mixins live in
+                                <code>src/sass/mixins</code>
+                                . They are the same helpers the framework modules use, so a custom component built on
+                                them follows the framework's breakpoints, transitions, and text rhythm without copying
+                                values.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="mixins-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Signature</th>
+                                            <th scope="col">Emits</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>breakpoint($range)</code></td>
+                                            <td>
+                                                A media query for
+                                                <code>small-only</code>,
+                                                <code>medium-up</code>,
+                                                <code>medium-only</code>,
+                                                <code>large-up</code>,
+                                                <code>large-only</code>,
+                                                <code>xlarge-up</code>,
+                                                <code>xlarge-only</code>,
+                                                <code>xxlarge-only</code>, or
+                                                <code>xxlarge-up</code>.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>transition($property, $transition-duration: 150ms, $transition-delay: 0s, $transition-method: ease-in-out)</code>
+                                            </td>
+                                            <td>Property, duration, timing function, and delay.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>abs-pos($top: auto, $right: auto, $bottom: auto, $left: auto)</code></td>
+                                            <td>Absolute positioning with the four offsets.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>border-radius($radius)</code></td>
+                                            <td>
+                                                Radius plus
+                                                <code>background-clip: padding-box</code>. Also
+                                                <code>border-top-radius</code>,
+                                                <code>border-right-radius</code>,
+                                                <code>border-bottom-radius</code>, and
+                                                <code>border-left-radius</code>.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>clearfix</code></td>
+                                            <td>A table based clearfix on the current selector.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>opacity($opacity)</code></td>
+                                            <td>Opacity plus the legacy filter fallback.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>triangle($direction, $size, $color: currentColor)</code></td>
+                                            <td>
+                                                A border triangle for up, down, left, or right. Any other value is
+                                                treated as a rotation angle.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>image-2x($image, $width, $height)</code></td>
+                                            <td>A retina media query with the background image and size.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>nice-scroll($trackColor: var(--r-scrollbar-track), $scrollbarColor: var(--r-scrollbar-thumb))</code>
+                                            </td>
+                                            <td>
+                                                A thin WebKit scrollbar. Defaults to the
+                                                <code>--r-scrollbar-*</code>
+                                                tokens.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>loader($size: 20)</code></td>
+                                            <td>A spinning circle that uses the loading keyframes.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>text-truncate</code></td>
+                                            <td>Overflow hidden with an ellipsis and no wrapping.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>animation($name: null)</code></td>
+                                            <td>
+                                                Visible, with the duration, fill mode, and easing tokens. Pass a name to
+                                                set the animation.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>heading-step($size, $line-height)</code></td>
+                                            <td>A heading size and leading in pixels on the framework scale, with matching tracking.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>text-small</code></td>
+                                            <td>80% size with a 1.3em line height.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>text-dimmed</code></td>
+                                            <td>Opacity 0.6.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>button-base</code>, <code>button-small</code></td>
+                                            <td>Resting, hover, and active button appearance, and the small size.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>img-full-width</code>, <code>fig-fit</code></td>
+                                            <td>Full width media, and cover cropping for a fixed ratio figure.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                A custom component below uses three of them together:
+                                <code>rem</code>
+                                keeps the spacing on the root scale,
+                                <code>breakpoint</code>
+                                keeps the media query in step with the grid, and
+                                <code>transition</code>
+                                keeps the timing consistent with the framework.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">SCSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sass-api-custom-component">Copy</button>
+                                </div>
+                                <pre><code id="sass-api-custom-component" class="language-scss">@use 'roolith-css/src/sass/functions' as *;
+@use 'roolith-css/src/sass/mixins' as *;
+
+.notice-bar {
+    padding: rem(12) rem(16);
+    border-left: rem(3) solid palette-fill('info');
+    background-color: var(--r-surface-muted);
+    font-size: rem(14);
+    line-height: rem(22);
+    @include transition('background-color, border-color');
+
+    @include breakpoint(large-up) {
+        padding: rem(16) rem(24);
+        font-size: rem(16);
+        line-height: rem(24);
+    }
+
+    &amp;:hover {
+        background-color: var(--r-surface-hover);
+        border-left-color: palette-fill('primary');
+    }
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="sass-vs-css-variables">
+                            <h2>Sass settings and CSS variables</h2>
+                            <p>
+                                A Sass setting is read at build time. The same value is usually emitted as a custom
+                                property, which is read at runtime. That split decides where a change belongs.
+                            </p>
+                            <ul>
+                                <li>
+                                    Colors, the container width, the base font, the border radius, the animation values,
+                                    and the block padding all reach the browser as
+                                    <code>--r-*</code>
+                                    tokens, so overriding the custom property is enough.
+                                </li>
+                                <li>
+                                    Breakpoints define media queries, the grid layout selects which grid compiles, the
+                                    gutter and column count are baked into padding and span rules, and the spacer list
+                                    generates classes. Those need a rebuild.
+                                </li>
+                            </ul>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">CSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sass-api-runtime-tokens">Copy</button>
+                                </div>
+                                <pre><code id="sass-api-runtime-tokens" class="language-css">:root,
+.theme-dark {
+    --r-global-width: 90rem;
+    --r-color-primary: #2f6feb;
+}</code></pre>
+                            </div>
+                            <p>
+                                Theme classes redeclare the palette, so scope a runtime override to the theme class you
+                                target, or list both scopes as above. Components read the tokens, so a single override
+                                reaches every component that uses that role.
+                            </p>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/typography.html">Previous: Typography</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/accordion.html">Next: Accordion</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#entry-point">Entry point</a>
+                        <a class="doc-toc-link" href="#configuration">Configuration</a>
+                        <a class="doc-toc-link" href="#selective-builds">Selective builds</a>
+                        <a class="doc-toc-link" href="#functions">Functions</a>
+                        <a class="doc-toc-link" href="#mixins">Mixins</a>
+                        <a class="doc-toc-link" href="#sass-vs-css-variables">Sass settings and CSS variables</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

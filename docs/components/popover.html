@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Popover - roolith css</title>
+        <meta
+            name="description"
+            content="Anchored popover panels with headers, body content, an active state, and the trigger script needed to open, close, and dismiss them." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Popover</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Popover</h1>
+                            <p class="doc-content-lead">
+                                A popover is a small panel anchored to the control that opened it. Use it for a few lines
+                                of explanation, a compact form, or a secondary action that should not take over the screen
+                                the way a modal does.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.popover</strong>
+                                - defined in
+                                <strong>modules/_popover.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                Wrap the trigger and the panel in
+                                <code>.popover-container</code>, which is only
+                                <code>position: relative</code>. The panel
+                                <code>.popover</code>
+                                is absolutely positioned at the bottom left of that container and translated down by
+                                its own height plus
+                                <code>--r-popover-offset</code>, so it opens below the trigger with its left edge on the
+                                trigger's left edge.
+                            </p>
+                            <p>
+                                The panel is
+                                <code>display: none</code>
+                                until it carries
+                                <code>.active</code>. It caps at
+                                <code>--r-popover-width</code>
+                                (17.1875rem), pads 15px, and draws a 1px border with the radius token. The background comes
+                                from
+                                <code>--r-popover-background</code>, which resolves to the muted surface in light mode and
+                                the raised surface in dark mode.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="popover-container">
+                                    <button
+                                        type="button"
+                                        class="button button-outline"
+                                        data-doc-popover="#popover-quota"
+                                        aria-controls="popover-quota"
+                                        aria-expanded="false">
+                                        Plan quota
+                                    </button>
+                                    <div class="popover" id="popover-quota">
+                                        <div class="popover-header">Monthly quota</div>
+                                        <div class="popover-body">
+                                            You have used 8.4 GB of 10 GB. Archive old builds to free space before the
+                                            next billing cycle.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="popover-basic">Copy</button>
+                                </div>
+                                <pre><code id="popover-basic" class="language-html">&lt;div class="popover-container"&gt;
+    &lt;button type="button" class="button button-outline" data-doc-popover="#popover-quota" aria-controls="popover-quota" aria-expanded="false"&gt;
+        Plan quota
+    &lt;/button&gt;
+    &lt;div class="popover" id="popover-quota"&gt;
+        &lt;div class="popover-header"&gt;Monthly quota&lt;/div&gt;
+        &lt;div class="popover-body"&gt;
+            You have used 8.4 GB of 10 GB. Archive old builds to free space before the next billing cycle.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                Click the trigger to see it. The
+                                <code>data-doc-popover</code>
+                                attribute is a docs convention, not a framework hook: it holds a CSS selector for the panel.
+                                See the JavaScript section for the script behind it.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="sections">
+                            <h2>Headers and body</h2>
+                            <p>
+                                The panel takes any number of
+                                <code>.popover-header</code>
+                                and
+                                <code>.popover-body</code>
+                                pairs. A header is bold with 16px above it and 8px below, except when it is the first child,
+                                which drops the top margin so the panel does not start with an empty band.
+                            </p>
+                            <p>
+                                Body copy is 14px over a 1.5 line height. A
+                                <code>.button</code>
+                                inside the body gets 8px of top margin, so actions do not touch the text above them.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="popover-container">
+                                    <button
+                                        type="button"
+                                        class="button button-primary"
+                                        data-doc-popover="#popover-release"
+                                        aria-controls="popover-release"
+                                        aria-expanded="false">
+                                        Release notes
+                                    </button>
+                                    <div class="popover" id="popover-release">
+                                        <div class="popover-header">4.0.0</div>
+                                        <div class="popover-body">
+                                            Design tokens replace the old Sass-only variables. No runtime changes.
+                                        </div>
+                                        <div class="popover-header">4.1.0</div>
+                                        <div class="popover-body">
+                                            Adds the page and pagination modules and the popover offset token.
+                                            <a class="button button-small button-primary" href="/components/page.html">
+                                                Read the summary
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="popover-sections">Copy</button>
+                                </div>
+                                <pre><code id="popover-sections" class="language-html">&lt;div class="popover-container"&gt;
+    &lt;button type="button" class="button button-primary" data-doc-popover="#popover-release" aria-controls="popover-release" aria-expanded="false"&gt;
+        Release notes
+    &lt;/button&gt;
+    &lt;div class="popover" id="popover-release"&gt;
+        &lt;div class="popover-header"&gt;4.0.0&lt;/div&gt;
+        &lt;div class="popover-body"&gt;
+            Design tokens replace the old Sass-only variables. No runtime changes.
+        &lt;/div&gt;
+        &lt;div class="popover-header"&gt;4.1.0&lt;/div&gt;
+        &lt;div class="popover-body"&gt;
+            Adds the page and pagination modules and the popover offset token.
+            &lt;a class="button button-small button-primary" href="/components/page.html"&gt;Read the summary&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="active-state">
+                            <h2>Active state</h2>
+                            <p>
+                                The component has one state:
+                                <code>.active</code>
+                                on the panel, which switches it from
+                                <code>display: none</code>
+                                to
+                                <code>display: block</code>. There is no animation, so no layout work is needed when it
+                                appears.
+                            </p>
+                            <p>
+                                Start the markup with
+                                <code>.active</code>
+                                when the panel should be visible on load, for example for a dismissible tip. The class is
+                                the only thing CSS sees; the script owns the transitions and must also close the panel on
+                                an outside click and on Escape.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="popover-container">
+                                    <button
+                                        type="button"
+                                        class="button button-outline"
+                                        data-doc-popover="#popover-tip"
+                                        aria-controls="popover-tip"
+                                        aria-expanded="true">
+                                        Why this field
+                                    </button>
+                                    <div class="popover active" id="popover-tip">
+                                        <div class="popover-header">About the retention window</div>
+                                        <div class="popover-body">
+                                            Backups are kept for 30 days. Raising the window increases storage cost on the
+                                            next invoice.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="popover-active-state">Copy</button>
+                                </div>
+                                <pre><code id="popover-active-state" class="language-html">&lt;div class="popover-container"&gt;
+    &lt;button type="button" class="button button-outline" data-doc-popover="#popover-tip" aria-controls="popover-tip" aria-expanded="true"&gt;
+        Why this field
+    &lt;/button&gt;
+    &lt;div class="popover active" id="popover-tip"&gt;
+        &lt;div class="popover-header"&gt;About the retention window&lt;/div&gt;
+        &lt;div class="popover-body"&gt;
+            Backups are kept for 30 days. Raising the window increases storage cost on the next invoice.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="javascript">
+                            <h2>JavaScript</h2>
+                            <p>
+                                roolith css ships no JavaScript. The snippet below is documentation only and matches the
+                                behavior this page uses: a trigger toggles the panel, an outside click closes it, and Escape
+                                closes it while returning focus to the trigger. It also keeps
+                                <code>aria-expanded</code>
+                                in sync, which a class toggle alone does not do.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JavaScript</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="popover-js">Copy</button>
+                                </div>
+                                <pre><code id="popover-js" class="language-js">let lastPopoverTrigger = null;
+
+/**
+ * Close every open popover and optionally return focus to its trigger.
+ * @param {boolean} restoreFocus - Whether to move focus back to the trigger.
+ * @returns {boolean} Whether at least one popover was open.
+ */
+function closePopovers(restoreFocus) {
+    const open = document.querySelectorAll('.popover.active');
+
+    if (!open.length) {
+        return false;
+    }
+
+    open.forEach((popover) =&gt; {
+        popover.classList.remove('active');
+
+        const trigger = document.querySelector('[data-doc-popover="#' + popover.id + '"]');
+        if (trigger) {
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    if (restoreFocus &amp;&amp; lastPopoverTrigger &amp;&amp; document.body.contains(lastPopoverTrigger)) {
+        lastPopoverTrigger.focus();
+    }
+
+    lastPopoverTrigger = null;
+
+    return true;
+}
+
+document.addEventListener('click', (event) =&gt; {
+    const trigger = event.target.closest('[data-doc-popover]');
+
+    if (trigger) {
+        const popover = document.querySelector(trigger.getAttribute('data-doc-popover'));
+
+        if (!popover) {
+            return;
+        }
+
+        const willOpen = !popover.classList.contains('active');
+
+        closePopovers(false);
+        popover.classList.toggle('active', willOpen);
+        trigger.setAttribute('aria-expanded', String(willOpen));
+        lastPopoverTrigger = willOpen ? trigger : null;
+
+        return;
+    }
+
+    if (!event.target.closest('.popover')) {
+        closePopovers(false);
+    }
+});
+
+document.addEventListener('keydown', (event) =&gt; {
+    if (event.key === 'Escape') {
+        closePopovers(true);
+    }
+});</code></pre>
+                            </div>
+                            <p>
+                                If you need several panels open at once, drop the
+                                <code>closePopovers(false)</code>
+                                call before the toggle so opening a second panel leaves the first one in place.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                A popover is a disclosure, not a dialog. It does not trap focus and it does not take over
+                                the page, so the trigger has to announce the relationship and the state.
+                            </p>
+                            <ul>
+                                <li>Use a <code>&lt;button&gt;</code> for the trigger and give it <code>aria-controls</code> pointing at the panel id.</li>
+                                <li>Mirror the open state in <code>aria-expanded="true|false"</code> every time the class changes. A screen reader cannot see <code>.active</code>.</li>
+                                <li>Do not add <code>role="dialog"</code> or <code>aria-haspopup="dialog"</code> unless you also trap focus, move focus into the panel on open, and return it on close. For a short note or an inline action, plain disclosure semantics are correct.</li>
+                                <li>Close on Escape and return focus to the trigger. Close on an outside click without moving focus.</li>
+                                <li>Keep every control inside the panel in the normal tab order. The panel stays in the document, so tabbing past the trigger reaches it while it is open.</li>
+                                <li>Never put information that exists only in an open popover. The panel is hidden from assistive technology while <code>display: none</code> applies, so the trigger label must still make sense on its own.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Two classes shape the panel and its parts; the container only supplies the positioning
+                                context. All colors, the width, and the offset come from the
+                                <code>--r-popover-*</code>
+                                token group.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.popover-container</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Relative positioning context for the trigger and the panel.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.popover</code></td>
+                                            <td>Panel</td>
+                                            <td>
+                                                Absolute panel below the trigger, 15px padding, 1px border, radius and
+                                                width tokens, <code>z-index: 1000</code>, hidden by default.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.active</code></td>
+                                            <td>State</td>
+                                            <td>On the panel. Switches it from <code>display: none</code> to block.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.popover-header</code></td>
+                                            <td>Part</td>
+                                            <td>Bold label with 16px above and 8px below; the top margin drops on first child.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.popover-body</code></td>
+                                            <td>Part</td>
+                                            <td>
+                                                14px text over a 1.5 line height; a nested
+                                                <code>.button</code>
+                                                gets 8px of top margin.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/pagination.html">Previous: Pagination</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/quick-menu.html">Next: Quick menu</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#sections">Headers and body</a>
+                        <a class="doc-toc-link" href="#active-state">Active state</a>
+                        <a class="doc-toc-link" href="#javascript">JavaScript</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

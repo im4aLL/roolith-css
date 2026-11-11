@@ -10,9 +10,8 @@
         "preview": "vite preview",
         "css-vars": "node scripts/generate-css-variables.mjs",
         "css-vars:all": "node scripts/generate-css-variables.mjs --all",
-        "docs:dev": "vitepress dev docs",
-        "docs:build": "vitepress build docs",
-        "docs:preview": "vitepress preview docs"
+        "test": "node docs/check-playground-theme.mjs",
+        "check:playground": "node docs/check-playground-theme.mjs"
     },
     "repository": "git+https://github.com/im4aLL/roolith-css.git",
     "keywords": [

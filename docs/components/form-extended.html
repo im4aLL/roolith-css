@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Form extended - roolith css</title>
+        <meta name="description" content="Switches, card-style radio groups, styled range inputs, and date and time field wrappers from the roolith css extended form module." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Form extended</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Form extended</h1>
+                            <p class="doc-content-lead">The extended module covers controls the base field set does not: switches, card-style radio groups, a styled range input, and the wrappers that add a calendar or clock icon to a date or time field. Each piece is opt-in markup that sits on top of the field system from the <a href="/components/form.html">Form</a> page.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.form-switch</strong>
+                                and
+                                <strong>.form-radio-group</strong>
+                                - defined in
+                                <strong>modules/_form-extended.scss</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            These classes style markup only. The switch is a real checkbox, the range is a real range input, and the date and time fields are native inputs, so all keyboard and form behavior still comes from the browser. A JavaScript datepicker is a third-party concern, documented on the <a href="/components/datepicker.html">Datepicker</a> page.
+                        </div>
+
+                        <section class="doc-section" id="switches">
+                            <h2>Switches</h2>
+                            <p><code>.form-switch</code> is the row: a flex container with an 8px gap, centered items, and a 14px label. Inside it, <code>.form-switch-label</code> wraps the real checkbox and the slider so the whole control is clickable and the label text is not selectable.</p>
+                            <p>The checkbox itself is <code>.form-switch-input</code>, absolutely positioned, fully transparent, and pushed behind the surface with <code>z-index: -1</code>. It stays in the accessibility tree and keeps its keyboard behavior; the sibling selector <code>:checked +</code> is what drives the visual state. <code>.form-switch-slider</code> is a pill whose width comes from <code>--r-form-switch-size</code> (36px) and whose height is half of that, with a 14px knob that slides from one edge to the other.</p>
+                            <p><code>.form-switch-large</code> swaps in <code>--r-form-switch-size-large</code> (44px) and repositions the checked knob for the wider track. Put it on the same wrapper as <code>.form-switch</code>.</p>
+                            <div class="doc-demo">
+                                <div class="form-field form-switch">
+                                    <label class="form-switch-label">
+                                        <input class="form-switch-input" type="checkbox" name="notifications" checked />
+                                        <span class="form-switch-slider"></span>
+                                        <span class="form-switch-slider-text">Email notifications</span>
+                                    </label>
+                                </div>
+                                <div class="form-field form-switch">
+                                    <label class="form-switch-label">
+                                        <input class="form-switch-input" type="checkbox" name="beta" />
+                                        <span class="form-switch-slider"></span>
+                                        <span class="form-switch-slider-text">Join the beta channel</span>
+                                    </label>
+                                </div>
+                                <div class="form-field form-switch form-switch-large">
+                                    <label class="form-switch-label">
+                                        <input class="form-switch-input" type="checkbox" name="compact" checked />
+                                        <span class="form-switch-slider"></span>
+                                        <span class="form-switch-slider-text">Compact tables</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-extended-switches">Copy</button>
+                                </div>
+                                <pre><code id="form-extended-switches" class="language-html">&lt;div class="form-field form-switch"&gt;
+    &lt;label class="form-switch-label"&gt;
+        &lt;input class="form-switch-input" type="checkbox" name="notifications" checked /&gt;
+        &lt;span class="form-switch-slider"&gt;&lt;/span&gt;
+        &lt;span class="form-switch-slider-text"&gt;Email notifications&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field form-switch"&gt;
+    &lt;label class="form-switch-label"&gt;
+        &lt;input class="form-switch-input" type="checkbox" name="beta" /&gt;
+        &lt;span class="form-switch-slider"&gt;&lt;/span&gt;
+        &lt;span class="form-switch-slider-text"&gt;Join the beta channel&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field form-switch form-switch-large"&gt;
+    &lt;label class="form-switch-label"&gt;
+        &lt;input class="form-switch-input" type="checkbox" name="compact" checked /&gt;
+        &lt;span class="form-switch-slider"&gt;&lt;/span&gt;
+        &lt;span class="form-switch-slider-text"&gt;Compact tables&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The order matters: the checkbox must be the immediate previous sibling of the slider, because both the fill and the knob position are driven by <code>.form-switch-input:checked + .form-switch-slider</code>. Text placed after the slider inside the label acts as the switch label; use <code>.form-switch-slider-text</code> for its 8px offset.</p>
+                            <p>A switch is a checkbox with a different look, so keep <code>name</code> and <code>value</code> on the input and read its checked state exactly as you would for any other checkbox. The input is what gets submitted; the slider is decoration.</p>
+                        </section>
+
+                        <section class="doc-section" id="radio-groups">
+                            <h2>Radio groups</h2>
+                            <p><code>.form-radio-group</code> turns a radio list into a row of cards. It is a flex row with a 10px gap, and each <code>.form-radio-item</code> inside it gains a 1px border, a radius of twice <code>--r-form-input-radius</code>, the token padding (20px), a 10px gap between the radio and the copy, and a 300px maximum width.</p>
+                            <p>Selection is drawn with <code>:has(.form-radio:checked)</code>: the bordered card takes the accent border and the <code>--r-form-radio-selected-background-color</code> fill, which is a very light primary tint in the light theme and a muted neutral in the dark theme. That means the card highlight follows the checked radio, so a group needs a checked option or a real empty state.</p>
+                            <p><code>.form-radio-hl</code> is the option title, nudged up 3px with 5px of bottom padding. <code>.form-radio-text</code> is the 12px supporting line below it. <code>.form-radio-group-vertical</code> stacks the same cards in a column, and the group's <code>.form-radio</code> is set to <code>position: static</code> so it sits in the flow next to that copy.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="form-field">
+                                        <span class="form-label" id="form-extended-plan-label">Plan</span>
+                                        <div class="form-radio-group" role="radiogroup" aria-labelledby="form-extended-plan-label">
+                                            <label class="form-radio-item">
+                                                <input class="form-radio" type="radio" name="plan" value="starter" />
+                                                <div>
+                                                    <div class="form-radio-hl">Starter</div>
+                                                    <div class="form-radio-text">One project, community support, and a shared staging domain.</div>
+                                                </div>
+                                            </label>
+                                            <label class="form-radio-item">
+                                                <input class="form-radio" type="radio" name="plan" value="growth" checked />
+                                                <div>
+                                                    <div class="form-radio-hl">Growth</div>
+                                                    <div class="form-radio-text">Unlimited projects, three environments, and priority support.</div>
+                                                </div>
+                                            </label>
+                                            <label class="form-radio-item">
+                                                <input class="form-radio" type="radio" name="plan" value="scale" />
+                                                <div>
+                                                    <div class="form-radio-hl">Scale</div>
+                                                    <div class="form-radio-text">Dedicated infrastructure, audit logs, and a named engineer.</div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                <hr />
+                                <div class="form-field">
+                                    <span class="form-label" id="form-extended-region-label">Primary region</span>
+                                    <div class="form-radio-group form-radio-group-vertical" role="radiogroup" aria-labelledby="form-extended-region-label">
+                                        <label class="form-radio-item">
+                                            <input class="form-radio" type="radio" name="region" value="eu" checked />
+                                            <div>
+                                                <div class="form-radio-hl">Frankfurt</div>
+                                                <div class="form-radio-text">EU data residency, 12ms median response in western Europe.</div>
+                                            </div>
+                                        </label>
+                                        <label class="form-radio-item">
+                                            <input class="form-radio" type="radio" name="region" value="us" />
+                                            <div>
+                                                <div class="form-radio-hl">Virginia</div>
+                                                <div class="form-radio-text">US data residency, 18ms median response in eastern North America.</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-extended-radio-groups">Copy</button>
+                                </div>
+                                <pre><code id="form-extended-radio-groups" class="language-html">&lt;div class="form-field"&gt;
+    &lt;span class="form-label" id="plan-label"&gt;Plan&lt;/span&gt;
+    &lt;div class="form-radio-group" role="radiogroup" aria-labelledby="plan-label"&gt;
+        &lt;label class="form-radio-item"&gt;
+            &lt;input class="form-radio" type="radio" name="plan" value="starter" /&gt;
+            &lt;div&gt;
+                &lt;div class="form-radio-hl"&gt;Starter&lt;/div&gt;
+                &lt;div class="form-radio-text"&gt;One project, community support, and a shared staging domain.&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/label&gt;
+        &lt;label class="form-radio-item"&gt;
+            &lt;input class="form-radio" type="radio" name="plan" value="growth" checked /&gt;
+            &lt;div&gt;
+                &lt;div class="form-radio-hl"&gt;Growth&lt;/div&gt;
+                &lt;div class="form-radio-text"&gt;Unlimited projects, three environments, and priority support.&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/label&gt;
+        &lt;label class="form-radio-item"&gt;
+            &lt;input class="form-radio" type="radio" name="plan" value="scale" /&gt;
+            &lt;div&gt;
+                &lt;div class="form-radio-hl"&gt;Scale&lt;/div&gt;
+                &lt;div class="form-radio-text"&gt;Dedicated infrastructure, audit logs, and a named engineer.&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;span class="form-label" id="region-label"&gt;Primary region&lt;/span&gt;
+    &lt;div class="form-radio-group form-radio-group-vertical" role="radiogroup" aria-labelledby="region-label"&gt;
+        &lt;label class="form-radio-item"&gt;
+            &lt;input class="form-radio" type="radio" name="region" value="eu" checked /&gt;
+            &lt;div&gt;
+                &lt;div class="form-radio-hl"&gt;Frankfurt&lt;/div&gt;
+                &lt;div class="form-radio-text"&gt;EU data residency, 12ms median response in western Europe.&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/label&gt;
+        &lt;label class="form-radio-item"&gt;
+            &lt;input class="form-radio" type="radio" name="region" value="us" /&gt;
+            &lt;div&gt;
+                &lt;div class="form-radio-hl"&gt;Virginia&lt;/div&gt;
+                &lt;div class="form-radio-text"&gt;US data residency, 18ms median response in eastern North America.&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>For a plain inline radio list without card borders, use <code>.form-radio-items</code> from the <a href="/components/form.html">Form</a> page instead. The two lists are not interchangeable: only <code>.form-radio-item</code> inside <code>.form-radio-group</code> gets the card treatment.</p>
+                        </section>
+
+                        <section class="doc-section" id="range">
+                            <h2>Range input</h2>
+                            <p><code>.form-range</code> removes the native appearance, sets the track to <code>--r-form-range-height</code> (6px) with the token radius, and paints the track as a two-stop gradient. The filled part runs to <code>--r-form-range-value</code> in the thumb color and the rest uses the track color, so the token, not the browser, decides how much of the track looks filled.</p>
+                            <p>The knob is an 18px circle from <code>::-webkit-slider-thumb</code>, sized from the track height, colored with the thumb token, and darkened on hover. The thumb rule only targets the WebKit pseudo-element, so Firefox draws its own native thumb against the styled track.</p>
+                            <p><code>--r-form-range-value</code> defaults to 50%. Set it to match the value you render, and update it on <code>input</code> if the control is interactive.</p>
+                            <div class="doc-demo">
+                                <div class="form-field" style="width: 100%; max-width: 320px">
+                                    <label class="form-label" for="form-extended-range">Session timeout</label>
+                                    <input class="form-range" type="range" id="form-extended-range" name="timeout" min="0" max="100" step="5" value="30" style="--r-form-range-value: 30%" />
+                                    <small class="form-text">Applies to every signed-in session.</small>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-extended-range-markup">Copy</button>
+                                </div>
+                                <pre><code id="form-extended-range-markup" class="language-html">&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="timeout"&gt;Session timeout&lt;/label&gt;
+    &lt;input class="form-range" type="range" id="timeout" name="timeout" min="0" max="100" step="5" value="30" style="--r-form-range-value: 30%" /&gt;
+    &lt;small class="form-text"&gt;Applies to every signed-in session.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>To keep the fill in step while dragging, recompute the percentage and write it back to the same custom property: <code>range.style.setProperty('--r-form-range-value', `${(range.value - range.min) / (range.max - range.min) * 100}%`)</code>. The framework ships no script for this.</p>
+                        </section>
+
+                        <section class="doc-section" id="date-and-time">
+                            <h2>Date and time fields</h2>
+                            <p><code>.form-datepicker</code> and <code>.form-timepicker</code> are wrappers around a normal <code>.form-input</code>. They remove the native appearance, fix the input height at 39px, hide the browser's calendar indicator, and draw a calendar or clock icon in the wrapper's <code>::after</code> pseudo-element at 10px from the bottom and right. The icon has <code>pointer-events: none</code>, so clicks pass through to the input.</p>
+                            <p><code>small</code> and <code>large</code> adjust the input height to 27px and 44px and move or resize the icon to match. The dark theme swaps the icon for a lighter stroke. The native <code>datetime-local</code>, <code>month</code>, and <code>week</code> inputs use the same datepicker wrapper.</p>
+                            <p><code>.form-datepicker-js</code> adds 32px of right padding for a field that opens a library panel instead of the native picker. The panel skin lives in <code>modules/_datepicker.scss</code> and is documented on the <a href="/components/datepicker.html">Datepicker</a> page. The picker behavior itself comes from the browser or from a third-party library, never from this framework.</p>
+                            <div class="doc-demo">
+                                <div class="form-field form-datepicker" style="width: 240px">
+                                    <label class="form-label" for="form-extended-date">Start date</label>
+                                    <input class="form-input" type="date" id="form-extended-date" name="start-date" />
+                                </div>
+                                <div class="form-field form-timepicker" style="width: 240px">
+                                    <label class="form-label" for="form-extended-time">Daily sync</label>
+                                    <input class="form-input" type="time" id="form-extended-time" name="sync-time" min="09:00" max="17:00" step="900" value="09:30" />
+                                </div>
+                                <div class="form-field form-datepicker" style="width: 240px">
+                                    <label class="form-label" for="form-extended-datetime">Cutover</label>
+                                    <input class="form-input" type="datetime-local" id="form-extended-datetime" name="cutover" />
+                                </div>
+                                <div class="form-field form-datepicker form-datepicker-js" style="width: 240px">
+                                    <label class="form-label" for="form-extended-picker">Release window</label>
+                                    <input class="form-input" type="text" id="form-extended-picker" name="window" placeholder="Select a date" />
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-extended-date-time">Copy</button>
+                                </div>
+                                <pre><code id="form-extended-date-time" class="language-html">&lt;div class="form-field form-datepicker"&gt;
+    &lt;label class="form-label" for="start-date"&gt;Start date&lt;/label&gt;
+    &lt;input class="form-input" type="date" id="start-date" name="start-date" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field form-timepicker"&gt;
+    &lt;label class="form-label" for="sync-time"&gt;Daily sync&lt;/label&gt;
+    &lt;input class="form-input" type="time" id="sync-time" name="sync-time" min="09:00" max="17:00" step="900" value="09:30" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field form-datepicker"&gt;
+    &lt;label class="form-label" for="cutover"&gt;Cutover&lt;/label&gt;
+    &lt;input class="form-input" type="datetime-local" id="cutover" name="cutover" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field form-datepicker form-datepicker-js"&gt;
+    &lt;label class="form-label" for="window"&gt;Release window&lt;/label&gt;
+    &lt;input class="form-input" type="text" id="window" name="window" placeholder="Select a date" /&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The text input inside <code>.form-datepicker-js</code> is still a text input, so it needs the library to fill it and it needs a real label. Without the library, use a native <code>type="date"</code> input and let the browser provide the picker.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>These controls are thin skins over native inputs, which is the point: keep the native element and the keyboard behavior comes for free. The gaps are in the visual layer, and they are the ones to check.</p>
+                            <ul>
+                                <li>The switch input is hidden with <code>opacity: 0</code> and sits behind the surface, so the framework draws no focus ring for it. Add a visible focus style on the slider with <code>.form-switch-input:focus-visible + .form-switch-slider</code>, and never replace the input with a styled div.</li>
+                                <li>Keep the switch text inside the label so the whole control is clickable and named. If the text sits outside the label, connect it with <code>aria-labelledby</code>.</li>
+                                <li>Label a radio group as a group. A <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> is the simplest option, or use <code>role="radiogroup"</code> with <code>aria-labelledby</code> pointing at the <code>.form-label</code>.</li>
+                                <li>The accent border on a checked card is decoration. The radio's checked state is what assistive technology announces, and arrow keys are what move between options.</li>
+                                <li>Give the range a label and show its current value as text. A gradient fill and a thumb position are not announced; an <code>&lt;output&gt;</code> element or a text readout next to the field is.</li>
+                                <li>Prefer the native date and time inputs. If you swap in a library panel, keep the label on the visible input, announce the selected value when it changes, and make sure the panel traps Tab and closes on Escape.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>All classes come from the extended module, except the shared field wrapper, label, text, and size modifiers that the base form module already defines.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.form-switch</code></td>
+                                            <td>Switch wrapper</td>
+                                            <td>Flex row with an 8px gap, centered items, and 14px text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-switch-large</code></td>
+                                            <td>Switch modifier</td>
+                                            <td>Sets <code>--r-form-switch-size</code> to the 44px large token and adjusts the checked knob offset.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-switch-label</code></td>
+                                            <td>Switch label</td>
+                                            <td>Clickable flex wrapper. Holds the input, the slider, and the optional text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-switch-input</code></td>
+                                            <td>Switch input</td>
+                                            <td>Native checkbox, transparent and offset, still focusable and still the state owner.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-switch-slider</code></td>
+                                            <td>Switch track</td>
+                                            <td>Pill track sized from <code>--r-form-switch-size</code>, filled with the accent when checked.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-switch-slider-text</code></td>
+                                            <td>Switch text</td>
+                                            <td>Inline text after the slider with an 8px left margin.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-radio-group</code></td>
+                                            <td>Radio group</td>
+                                            <td>Flex row of bordered cards with the <code>--r-form-radio-group-gap</code> gap.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-radio-group-vertical</code></td>
+                                            <td>Group modifier</td>
+                                            <td>Stacks the cards in a column. The gap token still applies.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-radio-item</code></td>
+                                            <td>Option card</td>
+                                            <td>Inside the group it gains the border, doubled radius, 20px padding, and a 300px maximum width. The accent border and the selected fill follow the checked radio.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-radio-hl</code></td>
+                                            <td>Option title</td>
+                                            <td>Card heading with 5px of bottom padding, offset 3px upward.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-radio-text</code></td>
+                                            <td>Option copy</td>
+                                            <td>12px line on an 18px height in the radio text color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-radio</code></td>
+                                            <td>Radio</td>
+                                            <td>Static inside the group so it flows next to the copy. The control stays native.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-range</code></td>
+                                            <td>Range input</td>
+                                            <td>Custom track with a gradient fill up to <code>--r-form-range-value</code> and a WebKit thumb.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-datepicker</code></td>
+                                            <td>Date wrapper</td>
+                                            <td>39px input with a calendar icon in <code>::after</code>. Supports <code>.small</code> and <code>.large</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-timepicker</code></td>
+                                            <td>Time wrapper</td>
+                                            <td>Same wrapper with a clock icon instead of the calendar.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-datepicker-js</code></td>
+                                            <td>Date wrapper</td>
+                                            <td>Adds 32px of right padding for a library panel. The panel skin is in <code>modules/_datepicker.scss</code>.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/form.html">Previous: Form</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/message.html">Next: Message</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#switches">Switches</a>
+                        <a class="doc-toc-link" href="#radio-groups">Radio groups</a>
+                        <a class="doc-toc-link" href="#range">Range input</a>
+                        <a class="doc-toc-link" href="#date-and-time">Date and time fields</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

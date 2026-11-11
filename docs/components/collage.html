@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Collage - roolith css</title>
+        <meta name="description" content="Collage image grids with item sizes, gap variants, figure captions, and automatic responsive reflow in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Collage</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Collage</h1>
+                            <p class="doc-content-lead">Collage is a dense CSS grid for a set of images where a few tiles are deliberately larger than the rest. Column count is automatic, row height is fixed by a token, and item classes decide which cells span extra rows or columns.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.collage</strong>
+                                - defined in
+                                <strong>modules/_collage.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>Wrap the images in <code>.collage</code> and each direct child in <code>.collage-item</code>. The grid uses <code>repeat(auto-fit, minmax(12.5rem, 1fr))</code> columns, so the browser fits as many 200px tracks as the container allows and shares the remaining space between them.</p>
+                            <p>Rows are created with <code>grid-auto-rows</code> at a fixed <code>--r-collage-item-default-height</code> of 12.5rem, and <code>grid-auto-flow: dense</code> pulls later cells into holes left by spanning tiles. <code>.collage-item</code> itself only clips overflow, so the media inside has to fill the cell.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <section class="collage">
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="collage-basic">Copy</button>
+                                </div>
+                                <pre><code id="collage-basic" class="language-html">&lt;section class="collage"&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                            </div>
+                            <p><code>.fig-fit</code> comes from the image module and is what makes the tile work: it sets <code>width: 100%</code>, <code>height: 100%</code>, and <code>object-fit: cover</code>, so any image crops to the cell instead of stretching it. A single collage does not set its own width, so place it in a normal block container or add <code>.full-width</code> when it sits inside a flex parent such as a demo panel.</p>
+                        </section>
+
+                        <section class="doc-section" id="sizes">
+                            <h2>Item sizes</h2>
+                            <p>Three item classes change how many grid cells a tile occupies. They are independent, so a tile can be big, wide, or tall, but not a combination of them.</p>
+                            <ul>
+                                <li><code>.collage-item-big</code> spans two rows and two columns, for the lead image of the set.</li>
+                                <li><code>.collage-item-wide</code> spans two columns and one row, for a panoramic tile.</li>
+                                <li><code>.collage-item-tall</code> spans two rows and one column, for a portrait tile.</li>
+                            </ul>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <section class="collage">
+                                        <div class="collage-item collage-item-big">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item collage-item-wide">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item collage-item-tall">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="collage-sizes">Copy</button>
+                                </div>
+                                <pre><code id="collage-sizes" class="language-html">&lt;section class="collage"&gt;
+    &lt;div class="collage-item collage-item-big"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item collage-item-wide"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item collage-item-tall"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                            </div>
+                            <p>Dense flow keeps the grid solid: a later normal tile backfills any hole left by a spanning tile. Keep one big tile per set as the visual anchor, and use wide and tall tiles to vary the rhythm around it.</p>
+                        </section>
+
+                        <section class="doc-section" id="gaps">
+                            <h2>Gaps</h2>
+                            <p>The default gap is <code>--r-collage-item-default-gap</code> at 0.625rem. Three modifiers replace it on the same element: <code>.collage-small-gap</code> collapses to 1px for a tight contact sheet, <code>.collage-large-gap</code> opens to 1.25rem, and <code>.collage-no-gap</code> removes it entirely for a seamless mosaic.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <section class="collage collage-small-gap">
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="full-width">
+                                    <section class="collage collage-large-gap">
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="full-width">
+                                    <section class="collage collage-no-gap">
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="collage-gaps">Copy</button>
+                                </div>
+                                <pre><code id="collage-gaps" class="language-html">&lt;section class="collage collage-small-gap"&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="collage collage-large-gap"&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="collage collage-no-gap"&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                            </div>
+                            <p>A gap modifier sets both the row and the column gap, so it always replaces the default pair rather than adding to it. No gap also means no visible separation, which only reads well when every tile has an image edge.</p>
+                        </section>
+
+                        <section class="doc-section" id="captions">
+                            <h2>Figure captions</h2>
+                            <p>For a caption, replace the bare image with a <code>figure.collage-fig</code> that holds the image and a <code>figcaption.collage-fig-caption</code>. The figure fills the cell, and the caption is an absolutely positioned overlay across the whole tile.</p>
+                            <p>By default the caption is transparent with 70% black at full opacity and only appears on figure hover. Add <code>.visible</code> to keep it on: the overlay switches to a bottom gradient so the caption sits on the image edge instead of covering it, and the text aligns to the bottom.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <section class="collage">
+                                        <div class="collage-item">
+                                            <figure class="collage-fig">
+                                                <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                                <figcaption class="collage-fig-caption">Hover to read the caption</figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="collage-item collage-item-wide">
+                                            <figure class="collage-fig">
+                                                <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                                <figcaption class="collage-fig-caption visible">Always visible caption over a bottom gradient</figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="collage-item">
+                                            <figure class="collage-fig">
+                                                <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" />
+                                                <figcaption class="collage-fig-caption">Hover caption</figcaption>
+                                            </figure>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="collage-captions">Copy</button>
+                                </div>
+                                <pre><code id="collage-captions" class="language-html">&lt;section class="collage"&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;figure class="collage-fig"&gt;
+            &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+            &lt;figcaption class="collage-fig-caption"&gt;Hover to read the caption&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item collage-item-wide"&gt;
+        &lt;figure class="collage-fig"&gt;
+            &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+            &lt;figcaption class="collage-fig-caption visible"&gt;
+                Always visible caption over a bottom gradient
+            &lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;figure class="collage-fig"&gt;
+            &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" /&gt;
+            &lt;figcaption class="collage-fig-caption"&gt;Hover caption&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                            </div>
+                            <p>The caption overlay takes its backdrop from <code>--r-collage-caption-background</code>, which is an RGB triple rather than a color, and its text from <code>--r-collage-caption-color</code>. Caption text is 12px over 18px lines with 20px of padding, so keep it to a short line or two.</p>
+                            <p>Hover-only captions are unreachable on touch and from the keyboard. When the caption text carries information, use <code>.visible</code>, or repeat the text next to the collage in normal content.</p>
+                        </section>
+
+                        <section class="doc-section" id="responsive">
+                            <h2>Responsive behavior</h2>
+                            <p>There are no breakpoint classes. The column count falls out of <code>auto-fit</code> and the track width, so the same markup shows four columns in a wide panel, two on a tablet, and one on a phone without a media query.</p>
+                            <p>The row height stays fixed, which means tiles keep their size while the column count drops; only the number of visible columns changes. To make the whole grid denser or larger, override the tokens on the collage element, for example <code>style="--r-collage-item-default-width: 8rem; --r-collage-item-default-height: 8rem;"</code>.</p>
+                            <p>Keep an eye on spanning tiles below roughly 400px of container width. A two-column span needs two tracks to exist, and when only one track fits the browser creates an implicit second track that can overflow the container. Lower the default width, or drop the big and wide modifiers at that size, instead of relying on shrinking.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <section class="collage" style="--r-collage-item-default-width: 8rem; --r-collage-item-default-height: 8rem;">
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" />
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="collage-responsive">Copy</button>
+                                </div>
+                                <pre><code id="collage-responsive" class="language-html">&lt;section class="collage" style="--r-collage-item-default-width: 8rem; --r-collage-item-default-height: 8rem;"&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23dfe7f5'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23b7c7e4'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c8d4e9'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23e1efe7'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%239cc7b3'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23c3e0d1'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23f2eadc'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23d8bf97'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23e6d5b8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Cpath%20d='M0,0h400v400H0z'%20fill='%23ece4f2'/%3E%3Cpath%20d='M200,90a70,70,0,1,0,0.1,0z'%20fill='%23c0a8d8'/%3E%3Cpath%20d='M0,300h400v100H0z'%20fill='%23d8c9e8'/%3E%3C/svg%3E" alt="" /&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                            </div>
+                            <p>Token overrides are the intended escape hatch: the module reads width, height, gap, caption colors, and the small and large gap values from custom properties, so a local override on one collage does not affect the rest of the page.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>A collage is a set of images, so the meaning lives in the image text rather than in the grid classes.</p>
+                            <ul>
+                                <li>Write a useful <code>alt</code> for every image that carries meaning, and leave <code>alt=""</code> only for tiles that are pure decoration.</li>
+                                <li>Put a caption in a real <code>figcaption</code> inside <code>figure.collage-fig</code>, so the text is announced with the image instead of existing only as an overlay.</li>
+                                <li>Do not put essential text only inside an image. A caption or a heading next to the collage stays readable at any zoom, in either theme, and without the images.</li>
+                                <li>Do not rely on <code>.visible</code> for information. A hover-only caption is unreachable on touch and from the keyboard, which is why the visible variant exists.</li>
+                                <li>When a tile is a link, give it an accessible name beyond the picture and keep the global focus ring visible on top of the image.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>Gap modifiers go on the collage element, item modifiers go on the tile, and caption classes go inside the tile.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.collage</code></td>
+                                            <td>Base</td>
+                                            <td>Auto-fit grid with 12.5rem minimum tracks, 12.5rem rows, the default gap, and dense flow.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.collage-small-gap</code></td>
+                                            <td>Gap</td>
+                                            <td>1px gap.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.collage-large-gap</code></td>
+                                            <td>Gap</td>
+                                            <td>1.25rem gap.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.collage-no-gap</code></td>
+                                            <td>Gap</td>
+                                            <td>No gap.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.collage-item</code></td>
+                                            <td>Tile</td>
+                                            <td>Clipped cell. Does not size the media inside it.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.collage-item-big</code></td>
+                                            <td>Tile</td>
+                                            <td>Spans two rows and two columns.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.collage-item-wide</code></td>
+                                            <td>Tile</td>
+                                            <td>Spans two columns and one row.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.collage-item-tall</code></td>
+                                            <td>Tile</td>
+                                            <td>Spans two rows and one column.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.collage-fig</code></td>
+                                            <td>Caption</td>
+                                            <td>Full-size relative wrapper for an image and its caption.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.collage-fig-caption</code></td>
+                                            <td>Caption</td>
+                                            <td>Absolute overlay, hidden until the figure is hovered. 12px text over 18px lines with 20px padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.visible</code></td>
+                                            <td>Caption</td>
+                                            <td>Keeps the caption shown with a bottom gradient and bottom-aligned text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.fig-fit</code></td>
+                                            <td>Media</td>
+                                            <td>Image module class: full width and height with <code>object-fit: cover</code>.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/card.html">Previous: Card</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/combo-box.html">Next: Combo box</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#sizes">Item sizes</a>
+                        <a class="doc-toc-link" href="#gaps">Gaps</a>
+                        <a class="doc-toc-link" href="#captions">Figure captions</a>
+                        <a class="doc-toc-link" href="#responsive">Responsive behavior</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

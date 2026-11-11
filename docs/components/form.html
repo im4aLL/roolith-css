@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Form - roolith css</title>
+        <meta name="description" content="Form field wrappers, labels, helper text, validation states, native input types, selects, textareas, checkboxes, radios, file inputs, search and password fields, sizes, and the primary field variant in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Form</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Form</h1>
+                            <p class="doc-content-lead">Form controls share one wrapper: <code>.form-field</code> holds the label, the control, and the helper text, and its state classes recolor all three at once. Everything is applied to native elements, so validation, keyboard behavior, and submission stay with the browser.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.form-field</strong>
+                                - defined in
+                                <strong>modules/_form.scss</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            Colors, borders, radius, and spacing come from the <code>--r-form-*</code> token layer. Override <code>--r-form-input-border-color</code>, <code>--r-form-input-radius</code>, or <code>--r-form-error-color</code> once and every field on the page follows, in both themes.
+                        </div>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p><code>.form-field</code> is the layout unit. It is relatively positioned so icons and toggles can be anchored to it, and inside a <code>.form</code> wrapper it adds 20px of bottom margin between fields.</p>
+                            <p><code>.form-label</code> is a block level 14px label on an 18px line with 8px of bottom padding, so it sits above the control without a wrapper. The control carries <code>.form-input</code>: full width, a 1px border, the token radius, and 10px by 12px of padding. Hover raises the border to the link color and focus raises it to the accent.</p>
+                            <p>Helper text is a <code>&lt;small class="form-text"&gt;</code> below the control: 11px, 8px of top padding, and the muted helper color.</p>
+                            <div class="doc-demo">
+                                <div class="form-field" style="width: 320px">
+                                    <label class="form-label" for="form-project-name">Project name</label>
+                                    <input class="form-input" type="text" id="form-project-name" name="project-name" placeholder="roolith-css" aria-describedby="form-project-name-help" />
+                                    <small class="form-text" id="form-project-name-help">Used in the repository URL and the release notes.</small>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-basic">Copy</button>
+                                </div>
+                                <pre><code id="form-basic" class="language-html">&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="project-name"&gt;Project name&lt;/label&gt;
+    &lt;input class="form-input" type="text" id="project-name" name="project-name" placeholder="roolith-css" aria-describedby="project-name-help" /&gt;
+    &lt;small class="form-text" id="project-name-help"&gt;Used in the repository URL and the release notes.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Wrap a group of fields in <code>.form</code> to get the 20px rhythm between them. The class adds no other styling, so it is safe on a <code>&lt;form&gt;</code>, a <code>&lt;div&gt;</code>, or a section of a larger layout.</p>
+                        </section>
+
+                        <section class="doc-section" id="validation">
+                            <h2>Validation states</h2>
+                            <p>Put <code>error</code>, <code>success</code>, or <code>warning</code> on <code>.form-field</code>. The state recolors the label, the control border, and the helper text from one class, using <code>--r-form-error-color</code>, <code>--r-form-success-color</code>, and <code>--r-form-warning-color</code>.</p>
+                            <p>The state is visual only. Pair it with <code>aria-invalid="true"</code> on the control and an error message that is referenced by <code>aria-describedby</code>, so the message reaches keyboard and screen reader users too.</p>
+                            <div class="doc-demo">
+                                <div class="form-field error" style="width: 300px">
+                                    <label class="form-label" for="form-validation-email">Email address</label>
+                                    <input class="form-input" type="email" id="form-validation-email" name="email" value="ada@" aria-invalid="true" aria-describedby="form-validation-email-help" />
+                                    <small class="form-text" id="form-validation-email-help">Enter a complete address, for example ada@example.com.</small>
+                                </div>
+                                <div class="form-field success" style="width: 300px">
+                                    <label class="form-label" for="form-validation-slug">Workspace slug</label>
+                                    <input class="form-input" type="text" id="form-validation-slug" name="slug" value="acme-platform" aria-describedby="form-validation-slug-help" />
+                                    <small class="form-text" id="form-validation-slug-help">This slug is available.</small>
+                                </div>
+                                <div class="form-field warning" style="width: 300px">
+                                    <label class="form-label" for="form-validation-seats">Seats</label>
+                                    <input class="form-input" type="number" id="form-validation-seats" name="seats" value="48" aria-describedby="form-validation-seats-help" />
+                                    <small class="form-text" id="form-validation-seats-help">Your plan includes 50 seats.</small>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-validation">Copy</button>
+                                </div>
+                                <pre><code id="form-validation" class="language-html">&lt;div class="form-field error"&gt;
+    &lt;label class="form-label" for="email"&gt;Email address&lt;/label&gt;
+    &lt;input class="form-input" type="email" id="email" name="email" value="ada@" aria-invalid="true" aria-describedby="email-help" /&gt;
+    &lt;small class="form-text" id="email-help"&gt;Enter a complete address, for example ada@example.com.&lt;/small&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field success"&gt;
+    &lt;label class="form-label" for="slug"&gt;Workspace slug&lt;/label&gt;
+    &lt;input class="form-input" type="text" id="slug" name="slug" value="acme-platform" aria-describedby="slug-help" /&gt;
+    &lt;small class="form-text" id="slug-help"&gt;This slug is available.&lt;/small&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field warning"&gt;
+    &lt;label class="form-label" for="seats"&gt;Seats&lt;/label&gt;
+    &lt;input class="form-input" type="number" id="seats" name="seats" value="48" aria-describedby="seats-help" /&gt;
+    &lt;small class="form-text" id="seats-help"&gt;Your plan includes 50 seats.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="text-inputs">
+                            <h2>Text and native inputs</h2>
+                            <p><code>.form-input</code> is type agnostic: it styles the box, not the value, so <code>email</code>, <code>tel</code>, <code>url</code>, <code>number</code>, <code>search</code>, and the rest keep their native keyboards, constraints, and validation.</p>
+                            <p>Pick the type that matches the data. <code>type="email"</code> gives a mobile keyboard with an at sign and a built-in format check, <code>type="tel"</code> gives a numeric keypad, and <code>type="number"</code> gives steppers plus <code>min</code>, <code>max</code>, and <code>step</code>. Date and time inputs have their own wrappers on the <a href="/components/form-extended.html">Form extended</a> page.</p>
+                            <div class="doc-demo">
+                                <div class="form-field" style="width: 260px">
+                                    <label class="form-label" for="form-input-email">Email</label>
+                                    <input class="form-input" type="email" id="form-input-email" name="email" placeholder="ada@example.com" autocomplete="email" />
+                                </div>
+                                <div class="form-field" style="width: 260px">
+                                    <label class="form-label" for="form-input-phone">Phone</label>
+                                    <input class="form-input" type="tel" id="form-input-phone" name="phone" placeholder="+1 555 019 2837" autocomplete="tel" />
+                                </div>
+                                <div class="form-field" style="width: 260px">
+                                    <label class="form-label" for="form-input-url">Website</label>
+                                    <input class="form-input" type="url" id="form-input-url" name="website" placeholder="https://example.com" />
+                                </div>
+                                <div class="form-field" style="width: 260px">
+                                    <label class="form-label" for="form-input-seats">Seats</label>
+                                    <input class="form-input" type="number" id="form-input-seats" name="seats" value="5" min="1" max="50" />
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-text-inputs">Copy</button>
+                                </div>
+                                <pre><code id="form-text-inputs" class="language-html">&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="email"&gt;Email&lt;/label&gt;
+    &lt;input class="form-input" type="email" id="email" name="email" placeholder="ada@example.com" autocomplete="email" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="phone"&gt;Phone&lt;/label&gt;
+    &lt;input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 555 019 2837" autocomplete="tel" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="website"&gt;Website&lt;/label&gt;
+    &lt;input class="form-input" type="url" id="website" name="website" placeholder="https://example.com" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="seats"&gt;Seats&lt;/label&gt;
+    &lt;input class="form-input" type="number" id="seats" name="seats" value="5" min="1" max="50" /&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="select-and-textarea">
+                            <h2>Select and textarea</h2>
+                            <p><code>.form-select</code> shares the input skin and adds its own arrow: the native appearance is removed and a chevron SVG is drawn at 10px from the right edge, with 32px of right padding to clear it. The dark theme swaps the chevron for a lighter one, and <code>[multiple]</code> drops the arrow because a list box has nothing to open.</p>
+                            <p><code>.form-textarea</code> shares the same skin, keeps only vertical resizing, and starts at 137px tall.</p>
+                            <div class="doc-demo">
+                                <div class="form-field" style="width: 300px">
+                                    <label class="form-label" for="form-select-country">Country</label>
+                                    <select class="form-select" id="form-select-country" name="country">
+                                        <option value="CA">Canada</option>
+                                        <option value="BD">Bangladesh</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="JP">Japan</option>
+                                    </select>
+                                    <small class="form-text">Billing country for the invoice.</small>
+                                </div>
+                                <div class="form-field" style="width: 300px">
+                                    <label class="form-label" for="form-select-regions">Covered regions</label>
+                                    <select class="form-select" id="form-select-regions" name="regions" multiple size="4">
+                                        <option value="eu" selected>Europe</option>
+                                        <option value="na">North America</option>
+                                        <option value="apac">Asia Pacific</option>
+                                        <option value="latam">Latin America</option>
+                                    </select>
+                                    <small class="form-text">Hold Command or Control to select more than one.</small>
+                                </div>
+                                <div class="form-field" style="width: 300px">
+                                    <label class="form-label" for="form-textarea-note">Delivery note</label>
+                                    <textarea class="form-textarea" id="form-textarea-note" name="note" rows="4" placeholder="Leave at the reception desk."></textarea>
+                                    <small class="form-text">Printed on the packing slip.</small>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-select-textarea">Copy</button>
+                                </div>
+                                <pre><code id="form-select-textarea" class="language-html">&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="country"&gt;Country&lt;/label&gt;
+    &lt;select class="form-select" id="country" name="country"&gt;
+        &lt;option value="CA"&gt;Canada&lt;/option&gt;
+        &lt;option value="BD"&gt;Bangladesh&lt;/option&gt;
+        &lt;option value="DE"&gt;Germany&lt;/option&gt;
+        &lt;option value="JP"&gt;Japan&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;small class="form-text"&gt;Billing country for the invoice.&lt;/small&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="regions"&gt;Covered regions&lt;/label&gt;
+    &lt;select class="form-select" id="regions" name="regions" multiple size="4"&gt;
+        &lt;option value="eu" selected&gt;Europe&lt;/option&gt;
+        &lt;option value="na"&gt;North America&lt;/option&gt;
+        &lt;option value="apac"&gt;Asia Pacific&lt;/option&gt;
+        &lt;option value="latam"&gt;Latin America&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;small class="form-text"&gt;Hold Command or Control to select more than one.&lt;/small&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="note"&gt;Delivery note&lt;/label&gt;
+    &lt;textarea class="form-textarea" id="note" name="note" rows="4" placeholder="Leave at the reception desk."&gt;&lt;/textarea&gt;
+    &lt;small class="form-text"&gt;Printed on the packing slip.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="checkboxes-and-radios">
+                            <h2>Checkboxes and radios</h2>
+                            <p>Checkboxes are fully custom. <code>.form-checkbox-label</code> is a block label with 25px of left padding, and <code>.form-check-input</code> is an appearance-none 15px box placed at the left edge. When it is checked the fill turns accent and a check mark is drawn with a mask, so the mark follows the accent color in both themes. Add <code>.is-indeterminate</code> to a checkbox that represents a partially selected group.</p>
+                            <p>Radios stay native. <code>.form-radio-items</code> is a flex row with a 10px gap and <code>.form-radio-item</code> is a label that centers the native radio with 5px between it and the text. Add <code>vertical</code> to the <code>.form-field</code> wrapper to stack the list with a 5px gap, and <code>.is-multiline</code> to an item with a long label so the radio aligns with the first line instead of the middle.</p>
+                            <div class="doc-demo">
+                                <div class="form-field" style="width: 300px">
+                                    <label class="form-checkbox-label">
+                                        <input class="form-check-input" type="checkbox" name="notify" checked />
+                                        Email me about new releases
+                                    </label>
+                                    <label class="form-checkbox-label">
+                                        <input class="form-check-input" type="checkbox" name="digest" />
+                                        Send a weekly digest
+                                    </label>
+                                    <label class="form-checkbox-label">
+                                        <input class="form-check-input is-indeterminate" type="checkbox" name="partial" />
+                                        Some environments selected
+                                    </label>
+                                </div>
+                                <div class="form-field" style="width: 300px">
+                                    <span class="form-label" id="form-radio-horizontal-label">Billing cycle</span>
+                                    <div class="form-radio-items" role="radiogroup" aria-labelledby="form-radio-horizontal-label">
+                                        <label class="form-radio-item">
+                                            <input class="form-radio" type="radio" name="cycle" value="monthly" checked />
+                                            Monthly
+                                        </label>
+                                        <label class="form-radio-item">
+                                            <input class="form-radio" type="radio" name="cycle" value="yearly" />
+                                            Yearly
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-field vertical" style="width: 300px">
+                                    <span class="form-label" id="form-radio-vertical-label">Region</span>
+                                    <div class="form-radio-items" role="radiogroup" aria-labelledby="form-radio-vertical-label">
+                                        <label class="form-radio-item">
+                                            <input class="form-radio" type="radio" name="region" value="eu" checked />
+                                            Europe
+                                        </label>
+                                        <label class="form-radio-item is-multiline">
+                                            <input class="form-radio" type="radio" name="region" value="apac" />
+                                            Asia Pacific, including the Sydney and Singapore edge nodes that serve the region
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-checkbox-radio">Copy</button>
+                                </div>
+                                <pre><code id="form-checkbox-radio" class="language-html">&lt;div class="form-field"&gt;
+    &lt;label class="form-checkbox-label"&gt;
+        &lt;input class="form-check-input" type="checkbox" name="notify" checked /&gt;
+        Email me about new releases
+    &lt;/label&gt;
+    &lt;label class="form-checkbox-label"&gt;
+        &lt;input class="form-check-input" type="checkbox" name="digest" /&gt;
+        Send a weekly digest
+    &lt;/label&gt;
+    &lt;label class="form-checkbox-label"&gt;
+        &lt;input class="form-check-input is-indeterminate" type="checkbox" name="partial" /&gt;
+        Some environments selected
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;span class="form-label" id="cycle-label"&gt;Billing cycle&lt;/span&gt;
+    &lt;div class="form-radio-items" role="radiogroup" aria-labelledby="cycle-label"&gt;
+        &lt;label class="form-radio-item"&gt;
+            &lt;input class="form-radio" type="radio" name="cycle" value="monthly" checked /&gt;
+            Monthly
+        &lt;/label&gt;
+        &lt;label class="form-radio-item"&gt;
+            &lt;input class="form-radio" type="radio" name="cycle" value="yearly" /&gt;
+            Yearly
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field vertical"&gt;
+    &lt;span class="form-label" id="region-label"&gt;Region&lt;/span&gt;
+    &lt;div class="form-radio-items" role="radiogroup" aria-labelledby="region-label"&gt;
+        &lt;label class="form-radio-item"&gt;
+            &lt;input class="form-radio" type="radio" name="region" value="eu" checked /&gt;
+            Europe
+        &lt;/label&gt;
+        &lt;label class="form-radio-item is-multiline"&gt;
+            &lt;input class="form-radio" type="radio" name="region" value="apac" /&gt;
+            Asia Pacific, including the Sydney and Singapore edge nodes that serve the region
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p><code>.form-radio</code> only zeroes the native margin, so a radio outside <code>.form-radio-item</code> keeps the browser default. The checkbox class draws its own mark, which means a checkbox without <code>.form-check-input</code> keeps the native box and is still a valid form control.</p>
+                        </section>
+
+                        <section class="doc-section" id="file-input">
+                            <h2>File input</h2>
+                            <p><code>.form-file</code> styles the one part of a file input that can be styled: the <code>::file-selector-button</code>, which borrows the shared button base and the small button metrics. The filename area stays native, so the visible result is a small button next to the browser's own text.</p>
+                            <div class="doc-demo">
+                                <div class="form-field" style="width: 320px">
+                                    <label class="form-label" for="form-file-photo">Profile photo</label>
+                                    <input class="form-file" type="file" id="form-file-photo" name="photo" accept="image/png, image/jpeg" aria-describedby="form-file-photo-help" />
+                                    <small class="form-text" id="form-file-photo-help">PNG or JPEG, up to 2 MB.</small>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-file">Copy</button>
+                                </div>
+                                <pre><code id="form-file" class="language-html">&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="photo"&gt;Profile photo&lt;/label&gt;
+    &lt;input class="form-file" type="file" id="photo" name="photo" accept="image/png, image/jpeg" aria-describedby="photo-help" /&gt;
+    &lt;small class="form-text" id="photo-help"&gt;PNG or JPEG, up to 2 MB.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Do not add <code>.form-input</code> to the same element. The input class draws a full border and padding for a text field, which would frame the native file control twice.</p>
+                        </section>
+
+                        <section class="doc-section" id="search">
+                            <h2>Search field</h2>
+                            <p><code>.form-field-search</code> is a positioned wrapper with no padding of its own. The input keeps <code>.form-input</code> and gains 34px of left padding for the icon, which is an ordinary <code>.form-field-search-icon</code> span placed at 12px from the left, 8px from the top, and painted in the placeholder color.</p>
+                            <p>Add <code>loading</code> to the wrapper and include a <code>.form-field-search-loading-icon</code> element to show a 16px spinner pinned 12px from the right. The input also gains 34px of right padding while loading so text never runs under it.</p>
+                            <p>The same wrapper accepts a suggestion list: add <code>hint</code> to it and a <code>.form-field-search-hint</code> element holding a list of links. The list is absolutely positioned under the field, capped at 300px with its own scroll area, and each link gets a hover surface. The hint is not shown on this page because it overlaps the code panel below the demo.</p>
+                            <div class="doc-demo">
+                                <div class="form-field form-field-search" style="width: 300px">
+                                    <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
+                                    <input class="form-input" type="search" name="query" placeholder="Search components" aria-label="Search components" />
+                                </div>
+                                <div class="form-field form-field-search loading" style="width: 300px">
+                                    <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
+                                    <input class="form-input" type="search" name="filter" placeholder="Filter results" aria-label="Filter results" />
+                                    <i class="form-field-search-loading-icon"></i>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-search">Copy</button>
+                                </div>
+                                <pre><code id="form-search" class="language-html">&lt;div class="form-field form-field-search"&gt;
+    &lt;span class="form-field-search-icon"&gt;&lt;i class="icon icon-search"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input class="form-input" type="search" name="query" placeholder="Search components" aria-label="Search components" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field form-field-search loading"&gt;
+    &lt;span class="form-field-search-icon"&gt;&lt;i class="icon icon-search"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input class="form-input" type="search" name="filter" placeholder="Filter results" aria-label="Filter results" /&gt;
+    &lt;i class="form-field-search-loading-icon"&gt;&lt;/i&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The wrapper also scales: <code>small</code> moves the icon to 7px by 6px and narrows both paddings, and <code>large</code> grows the icon to 130% and moves it down to 10px. The loading spinner drops to 12px on the small variant.</p>
+                        </section>
+
+                        <section class="doc-section" id="password">
+                            <h2>Password field</h2>
+                            <p><code>.form-field-password</code> is a grid whose input and <code>.form-password-toggle</code> button share one cell, placed below the label. The input gets 40px of right padding and the toggle is aligned to the end of that cell, so the button never covers the text.</p>
+                            <p>The toggle itself is a transparent 18px button with no border, colored with the input text token, and it is the only part of the field that needs script. The framework positions the button; switching the input type is up to you.</p>
+                            <div class="doc-demo">
+                                <div class="form-field form-field-password" style="width: 300px">
+                                    <label class="form-label" for="form-password-demo">Password</label>
+                                    <input class="form-input" type="password" id="form-password-demo" name="password" autocomplete="current-password" />
+                                    <button class="form-password-toggle" type="button" aria-label="Show password" aria-pressed="false">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-password">Copy</button>
+                                </div>
+                                <pre><code id="form-password" class="language-html">&lt;div class="form-field form-field-password"&gt;
+    &lt;label class="form-label" for="password"&gt;Password&lt;/label&gt;
+    &lt;input class="form-input" type="password" id="password" name="password" autocomplete="current-password" /&gt;
+    &lt;button class="form-password-toggle" type="button" aria-label="Show password" aria-pressed="false"&gt;
+        &lt;svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+            &lt;circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" /&gt;
+        &lt;/svg&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Keep the toggle a real <code>&lt;button type="button"&gt;</code>, update <code>aria-pressed</code> and its label when the visibility changes, and leave <code>autocomplete="current-password"</code> in place. Hiding the value again should return focus to the input, not to the button, so typing can continue.</p>
+                        </section>
+
+                        <section class="doc-section" id="variants">
+                            <h2>Sizes, primary, and disabled</h2>
+                            <p>Size classes go on the <code>.form-field</code> wrapper, not the control. <code>small</code> drops the label to 12px on a 16px line with 5px of bottom padding, sets 12px control text, and cuts the input padding to 5px by 7px. <code>large</code> raises the label to 16px on a 22px line, sets 16px control text, and pads the input 11px by 12px.</p>
+                            <p><code>.form-primary</code> is a wrapper that repaints every input, textarea, and select inside it: the fill comes from <code>--r-form-primary-color</code> and the border from <code>--r-form-primary-border-color</code>. Hover turns the border to the info color, and focus moves both the border and the fill to <code>--r-form-primary-focus-color</code>, which resolves to the normal input surface, so the field appears unfilled again while it has focus.</p>
+                            <p>An input with the native <code>readonly</code> attribute gets the muted fill from <code>--r-form-disable-input-color</code> and keeps its resting border on hover and focus. The framework has no <code>:disabled</code> rule, so a native <code>disabled</code> input keeps browser styling; use it when the field must also be removed from submission and the tab order.</p>
+                            <div class="doc-demo">
+                                <div class="form-field small" style="width: 220px">
+                                    <label class="form-label" for="form-size-small">Small</label>
+                                    <input class="form-input" type="text" id="form-size-small" name="small" placeholder="Dense toolbar" />
+                                </div>
+                                <div class="form-field" style="width: 220px">
+                                    <label class="form-label" for="form-size-default">Default</label>
+                                    <input class="form-input" type="text" id="form-size-default" name="default" placeholder="Standard field" />
+                                </div>
+                                <div class="form-field large" style="width: 220px">
+                                    <label class="form-label" for="form-size-large">Large</label>
+                                    <input class="form-input" type="text" id="form-size-large" name="large" placeholder="Prominent field" />
+                                </div>
+                                <div class="form-primary" style="width: 220px">
+                                    <div class="form-field">
+                                        <label class="form-label" for="form-primary-demo">Primary fill</label>
+                                        <input class="form-input" type="text" id="form-primary-demo" name="primary" placeholder="Muted surface" />
+                                    </div>
+                                </div>
+                                <div class="form-field" style="width: 220px">
+                                    <label class="form-label" for="form-readonly-demo">Read only</label>
+                                    <input class="form-input" type="text" id="form-readonly-demo" name="readonly" value="acme-platform" readonly />
+                                </div>
+                                <div class="form-field" style="width: 220px">
+                                    <label class="form-label" for="form-disabled-demo">Disabled</label>
+                                    <input class="form-input" type="text" id="form-disabled-demo" name="disabled" value="Locked by policy" disabled />
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-variants">Copy</button>
+                                </div>
+                                <pre><code id="form-variants" class="language-html">&lt;div class="form-field small"&gt;
+    &lt;label class="form-label" for="size-small"&gt;Small&lt;/label&gt;
+    &lt;input class="form-input" type="text" id="size-small" name="small" placeholder="Dense toolbar" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="size-default"&gt;Default&lt;/label&gt;
+    &lt;input class="form-input" type="text" id="size-default" name="default" placeholder="Standard field" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field large"&gt;
+    &lt;label class="form-label" for="size-large"&gt;Large&lt;/label&gt;
+    &lt;input class="form-input" type="text" id="size-large" name="large" placeholder="Prominent field" /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-primary"&gt;
+    &lt;div class="form-field"&gt;
+        &lt;label class="form-label" for="primary"&gt;Primary fill&lt;/label&gt;
+        &lt;input class="form-input" type="text" id="primary" name="primary" placeholder="Muted surface" /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="readonly"&gt;Read only&lt;/label&gt;
+    &lt;input class="form-input" type="text" id="readonly" name="readonly" value="acme-platform" readonly /&gt;
+&lt;/div&gt;
+
+&lt;div class="form-field"&gt;
+    &lt;label class="form-label" for="disabled"&gt;Disabled&lt;/label&gt;
+    &lt;input class="form-input" type="text" id="disabled" name="disabled" value="Locked by policy" disabled /&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p><code>.form-label.right</code> right-aligns a label and adds 8px of top padding from the large breakpoint up, which is what an inline label and control row needs. Below that breakpoint the label returns to its normal block layout.</p>
+                        </section>
+
+                        <section class="doc-section" id="complete-form">
+                            <h2>Complete form</h2>
+                            <p>A realistic form stacks the pieces: a text field, a typed field, a select, a textarea, a checkbox with its consent copy, and a bundle of actions. The <code>.form</code> wrapper supplies the spacing, and the fields keep their own helper text so the form can explain itself without a second column.</p>
+                            <div class="doc-demo">
+                                <form class="form" action="#" style="width: 100%; max-width: 420px">
+                                    <div class="form-field">
+                                        <label class="form-label" for="form-complete-name">Full name</label>
+                                        <input class="form-input" type="text" id="form-complete-name" name="name" autocomplete="name" required />
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label" for="form-complete-email">Work email</label>
+                                        <input class="form-input" type="email" id="form-complete-email" name="email" placeholder="ada@example.com" autocomplete="email" required aria-describedby="form-complete-email-help" />
+                                        <small class="form-text" id="form-complete-email-help">We send the invite link here.</small>
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label" for="form-complete-team">Team size</label>
+                                        <select class="form-select" id="form-complete-team" name="team">
+                                            <option value="1-10">1 to 10 people</option>
+                                            <option value="11-50">11 to 50 people</option>
+                                            <option value="51-200">51 to 200 people</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label" for="form-complete-message">What are you building?</label>
+                                        <textarea class="form-textarea" id="form-complete-message" name="message" placeholder="A design system for three product teams."></textarea>
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-checkbox-label">
+                                            <input class="form-check-input" type="checkbox" name="terms" required />
+                                            I agree to the terms of service and the privacy policy.
+                                        </label>
+                                    </div>
+                                    <div class="button-bundle">
+                                        <button class="button button-outline" type="reset">Reset</button>
+                                        <button class="button button-primary" type="submit">Create workspace</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="form-complete">Copy</button>
+                                </div>
+                                <pre><code id="form-complete" class="language-html">&lt;form class="form" action="/workspaces" method="post"&gt;
+    &lt;div class="form-field"&gt;
+        &lt;label class="form-label" for="name"&gt;Full name&lt;/label&gt;
+        &lt;input class="form-input" type="text" id="name" name="name" autocomplete="name" required /&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-field"&gt;
+        &lt;label class="form-label" for="email"&gt;Work email&lt;/label&gt;
+        &lt;input class="form-input" type="email" id="email" name="email" placeholder="ada@example.com" autocomplete="email" required aria-describedby="email-help" /&gt;
+        &lt;small class="form-text" id="email-help"&gt;We send the invite link here.&lt;/small&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-field"&gt;
+        &lt;label class="form-label" for="team"&gt;Team size&lt;/label&gt;
+        &lt;select class="form-select" id="team" name="team"&gt;
+            &lt;option value="1-10"&gt;1 to 10 people&lt;/option&gt;
+            &lt;option value="11-50"&gt;11 to 50 people&lt;/option&gt;
+            &lt;option value="51-200"&gt;51 to 200 people&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-field"&gt;
+        &lt;label class="form-label" for="message"&gt;What are you building?&lt;/label&gt;
+        &lt;textarea class="form-textarea" id="message" name="message" placeholder="A design system for three product teams."&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-field"&gt;
+        &lt;label class="form-checkbox-label"&gt;
+            &lt;input class="form-check-input" type="checkbox" name="terms" required /&gt;
+            I agree to the terms of service and the privacy policy.
+        &lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class="button-bundle"&gt;
+        &lt;button class="button button-outline" type="reset"&gt;Reset&lt;/button&gt;
+        &lt;button class="button button-primary" type="submit"&gt;Create workspace&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>Every control needs a programmatic name, and the visual label is the cheapest way to give it one. The framework styles the label; the association is markup.</p>
+                            <ul>
+                                <li>Give every input an <code>id</code> and point the <code>&lt;label for&gt;</code> at it. A label that wraps the input also works for checkbox and radio items, which is why those are built that way.</li>
+                                <li>Do not use the placeholder as a label. It disappears on input, it is not reliably announced, and the helper text below is a description, not a name.</li>
+                                <li>Mark required fields with the native <code>required</code> attribute. The browser blocks submission and announces the failed constraint, so a red asterisk alone is not a substitute. If you add one, put the meaning in text such as "all fields required".</li>
+                                <li>Connect helper and error text with <code>aria-describedby</code>, and add <code>aria-invalid="true"</code> while a field is in the error state. Both point at the same <code>.form-text</code> element the state class colors.</li>
+                                <li>Group radios and checkboxes that answer one question. A <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code> is the simplest option; a wrapper with <code>role="radiogroup"</code> and <code>aria-labelledby</code> pointing at a <code>.form-label</code> also works, and it avoids resetting the fieldset border.</li>
+                                <li>Keep a visible focus indicator. The framework moves the border to the accent on focus; if you change that token, check the contrast against the surrounding surface.</li>
+                                <li>For the search field, give the input an <code>aria-label</code> when there is no visible label, and announce result counts in a live region elsewhere on the page rather than relying on the spinner.</li>
+                                <li>The password toggle needs a name, a pressed state, and a label that changes with the action, for example "Show password" and "Hide password".</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>Most classes are modifiers on <code>.form-field</code> or on the control itself. Sizes and states belong to the wrapper so they can reach the label, the control, and the helper text with one class.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.form</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Adds 20px of bottom margin to each <code>.form-field</code> inside it. No other styling.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-field</code></td>
+                                            <td>Field wrapper</td>
+                                            <td>Relatively positioned wrapper for a label, one control, and helper text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-label</code></td>
+                                            <td>Label</td>
+                                            <td>Block 14px label on an 18px line with 8px of bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-label.right</code></td>
+                                            <td>Label modifier</td>
+                                            <td>Right-aligned with 8px of top padding from the large breakpoint up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.small</code></td>
+                                            <td>Field size</td>
+                                            <td>12px label and control text, 5px by 7px input padding, 5px label and helper padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.large</code></td>
+                                            <td>Field size</td>
+                                            <td>16px label and control text, 11px by 12px input padding, 22px label line height.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-input</code></td>
+                                            <td>Control</td>
+                                            <td>Full width text field with a 1px border, token radius, token fill, and hover and focus border states.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-text</code></td>
+                                            <td>Helper text</td>
+                                            <td>Block 11px helper line with 8px of top padding. Inherits the field state color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-textarea</code></td>
+                                            <td>Control</td>
+                                            <td>Same skin as the input, 137px tall, resizes vertically only.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-select</code></td>
+                                            <td>Control</td>
+                                            <td>Input skin with a drawn chevron at 10px from the right and 32px of right padding. No chevron on <code>[multiple]</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-primary</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Repaints inputs, textareas, and selects with the primary fill and border, including hover and focus.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.error</code></td>
+                                            <td>Field state</td>
+                                            <td>Recolors the label, border, and helper text with <code>--r-form-error-color</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.success</code></td>
+                                            <td>Field state</td>
+                                            <td>Recolors the label, border, and helper text with <code>--r-form-success-color</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.warning</code></td>
+                                            <td>Field state</td>
+                                            <td>Recolors the label, border, and helper text with <code>--r-form-warning-color</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-checkbox-label</code></td>
+                                            <td>Checkbox wrapper</td>
+                                            <td>Block label with 25px of left padding to clear the custom box.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-check-input</code></td>
+                                            <td>Checkbox</td>
+                                            <td>15px appearance-none box at the left edge. Checked fills with the accent and draws a mask check.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-check-input.is-indeterminate</code></td>
+                                            <td>Checkbox state</td>
+                                            <td>Muted fill with an accent border and an accent dash for a partially selected group.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-radio-items</code></td>
+                                            <td>Radio list</td>
+                                            <td>Flex row with a 10px gap. Switches to a column with a 5px gap when the field has <code>.vertical</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-radio-item</code></td>
+                                            <td>Radio label</td>
+                                            <td>Flex row that centers the radio with 5px to the text. <code>.is-multiline</code> aligns to the top for long labels.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-radio</code></td>
+                                            <td>Radio</td>
+                                            <td>Zeroes the native margin. The control itself stays native.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.vertical</code></td>
+                                            <td>Field modifier</td>
+                                            <td>Stacks <code>.form-radio-items</code> in a column with a 5px gap.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-file</code></td>
+                                            <td>File input</td>
+                                            <td>Styles only <code>::file-selector-button</code> with the small button base. Do not combine with <code>.form-input</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-field-search</code></td>
+                                            <td>Search wrapper</td>
+                                            <td>Positioned wrapper with no padding. Supports <code>.small</code>, <code>.large</code>, <code>.loading</code>, and <code>.hint</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-field-search-icon</code></td>
+                                            <td>Search icon</td>
+                                            <td>Absolutely positioned at 12px by 8px in the placeholder color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-field-search-loading-icon</code></td>
+                                            <td>Search spinner</td>
+                                            <td>16px loader pinned 12px from the right and hidden until the wrapper has <code>.loading</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-field-search-hint</code></td>
+                                            <td>Search suggestions</td>
+                                            <td>Absolutely positioned list under the field, capped at 300px with its own scroll, shown when the wrapper has <code>.hint</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-field-password</code></td>
+                                            <td>Password wrapper</td>
+                                            <td>Two-row grid that overlaps the input and the toggle in the second row.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-password-toggle</code></td>
+                                            <td>Password button</td>
+                                            <td>Transparent 18px button aligned to the end of the field, with a 12px right margin.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/dropdown.html">Previous: Dropdown</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/form-extended.html">Next: Form extended</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#validation">Validation states</a>
+                        <a class="doc-toc-link" href="#text-inputs">Text and native inputs</a>
+                        <a class="doc-toc-link" href="#select-and-textarea">Select and textarea</a>
+                        <a class="doc-toc-link" href="#checkboxes-and-radios">Checkboxes and radios</a>
+                        <a class="doc-toc-link" href="#file-input">File input</a>
+                        <a class="doc-toc-link" href="#search">Search field</a>
+                        <a class="doc-toc-link" href="#password">Password field</a>
+                        <a class="doc-toc-link" href="#variants">Sizes, primary, and disabled</a>
+                        <a class="doc-toc-link" href="#complete-form">Complete form</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

@@ -1,0 +1,1814 @@
+{
+    "pages": [
+        {
+            "title": "Installation",
+            "url": "/getting-started/installation.html",
+            "group": "Getting started",
+            "headings": [
+                {
+                    "text": "Install from npm",
+                    "anchor": "install-from-npm"
+                },
+                {
+                    "text": "Link the built stylesheet",
+                    "anchor": "stylesheet"
+                },
+                {
+                    "text": "Use the SCSS source",
+                    "anchor": "scss"
+                },
+                {
+                    "text": "Build from source",
+                    "anchor": "build-from-source"
+                },
+                {
+                    "text": "CSS variable dump",
+                    "anchor": "variables"
+                },
+                {
+                    "text": "HTML document shell",
+                    "anchor": "document-shell"
+                }
+            ]
+        },
+        {
+            "title": "Introduction",
+            "url": "/getting-started/introduction.html",
+            "group": "Getting started",
+            "headings": [
+                {
+                    "text": "What is roolith",
+                    "anchor": "what-is-roolith"
+                },
+                {
+                    "text": "Who it is for",
+                    "anchor": "who-it-is-for"
+                },
+                {
+                    "text": "Design principles",
+                    "anchor": "design-principles"
+                },
+                {
+                    "text": "A minimal page",
+                    "anchor": "minimal-page"
+                },
+                {
+                    "text": "Documentation map",
+                    "anchor": "documentation-map"
+                },
+                {
+                    "text": "Browser support",
+                    "anchor": "browser-support"
+                },
+                {
+                    "text": "External resources",
+                    "anchor": "external-resources"
+                }
+            ]
+        },
+        {
+            "title": "Layout",
+            "url": "/getting-started/layout.html",
+            "group": "Getting started",
+            "headings": [
+                {
+                    "text": "Container",
+                    "anchor": "container"
+                },
+                {
+                    "text": "The row and column system",
+                    "anchor": "grid"
+                },
+                {
+                    "text": "Breakpoints",
+                    "anchor": "breakpoints-heading"
+                },
+                {
+                    "text": "Offsets",
+                    "anchor": "offsets"
+                },
+                {
+                    "text": "Push and pull",
+                    "anchor": "push-pull"
+                },
+                {
+                    "text": "Gutters and nesting",
+                    "anchor": "gutters"
+                },
+                {
+                    "text": "Application layout",
+                    "anchor": "application-shell"
+                },
+                {
+                    "text": "The legacy float grid",
+                    "anchor": "legacy-grid"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Sass API",
+            "url": "/getting-started/sass-api.html",
+            "group": "Getting started",
+            "headings": [
+                {
+                    "text": "Entry point",
+                    "anchor": "entry-point"
+                },
+                {
+                    "text": "Configuration",
+                    "anchor": "configuration"
+                },
+                {
+                    "text": "Global settings",
+                    "anchor": "sass-global-settings"
+                },
+                {
+                    "text": "Breakpoints",
+                    "anchor": "sass-breakpoints"
+                },
+                {
+                    "text": "Grid",
+                    "anchor": "sass-grid"
+                },
+                {
+                    "text": "Colors",
+                    "anchor": "sass-colors"
+                },
+                {
+                    "text": "Animation and other",
+                    "anchor": "sass-animation-and-other"
+                },
+                {
+                    "text": "Selective builds",
+                    "anchor": "selective-builds-heading"
+                },
+                {
+                    "text": "Functions",
+                    "anchor": "functions-heading"
+                },
+                {
+                    "text": "Mixins",
+                    "anchor": "mixins-heading"
+                },
+                {
+                    "text": "Sass settings and CSS variables",
+                    "anchor": "sass-vs-css-variables"
+                }
+            ]
+        },
+        {
+            "title": "Theme playground",
+            "url": "/getting-started/theme-playground.html",
+            "group": "Getting started",
+            "headings": []
+        },
+        {
+            "title": "Theming",
+            "url": "/getting-started/theming.html",
+            "group": "Getting started",
+            "headings": [
+                {
+                    "text": "Token layers",
+                    "anchor": "token-layers"
+                },
+                {
+                    "text": "Theme scopes",
+                    "anchor": "theme-scopes"
+                },
+                {
+                    "text": "Overriding tokens",
+                    "anchor": "overriding-tokens"
+                },
+                {
+                    "text": "Base tokens to override",
+                    "anchor": "base-overrides"
+                },
+                {
+                    "text": "Component tokens",
+                    "anchor": "component-tokens"
+                },
+                {
+                    "text": "Dark mode toggle",
+                    "anchor": "dark-mode-toggle"
+                },
+                {
+                    "text": "Inspecting the tokens",
+                    "anchor": "token-list"
+                }
+            ]
+        },
+        {
+            "title": "Typography",
+            "url": "/getting-started/typography.html",
+            "group": "Getting started",
+            "headings": [
+                {
+                    "text": "Base text",
+                    "anchor": "base-text"
+                },
+                {
+                    "text": "Headings",
+                    "anchor": "headings-heading"
+                },
+                {
+                    "text": "Links",
+                    "anchor": "links"
+                },
+                {
+                    "text": "Lists",
+                    "anchor": "lists"
+                },
+                {
+                    "text": "Small and dimmed text",
+                    "anchor": "small-and-dimmed"
+                },
+                {
+                    "text": "Alignment and floats",
+                    "anchor": "alignment"
+                },
+                {
+                    "text": "Code and pre",
+                    "anchor": "code"
+                },
+                {
+                    "text": "Blockquote and horizontal rule",
+                    "anchor": "quotes-and-rules"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Accordion",
+            "url": "/components/accordion.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Multiple items",
+                    "anchor": "multiple-items"
+                },
+                {
+                    "text": "JavaScript",
+                    "anchor": "javascript"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Action menu",
+            "url": "/components/action-menu.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Icons",
+                    "anchor": "icons"
+                },
+                {
+                    "text": "Primary variant",
+                    "anchor": "primary"
+                },
+                {
+                    "text": "Highlight item",
+                    "anchor": "highlight"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Article",
+            "url": "/components/article.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Primary layout",
+                    "anchor": "primary-layout"
+                },
+                {
+                    "text": "Figures",
+                    "anchor": "figures"
+                },
+                {
+                    "text": "Lists",
+                    "anchor": "lists"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Avatar",
+            "url": "/components/avatar.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Small avatar",
+                    "anchor": "small"
+                },
+                {
+                    "text": "Figure shapes",
+                    "anchor": "figure-shapes"
+                },
+                {
+                    "text": "Metadata blocks",
+                    "anchor": "blocks"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Badge",
+            "url": "/components/badge.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Colors",
+                    "anchor": "colors"
+                },
+                {
+                    "text": "Sizing and casing",
+                    "anchor": "sizing"
+                },
+                {
+                    "text": "In context",
+                    "anchor": "in-context"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Box",
+            "url": "/components/box.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Header, body, and footer",
+                    "anchor": "structure"
+                },
+                {
+                    "text": "Sizes",
+                    "anchor": "sizes"
+                },
+                {
+                    "text": "Colors",
+                    "anchor": "colors"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Breadcrumb",
+            "url": "/components/breadcrumb.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Active item",
+                    "anchor": "active-item"
+                },
+                {
+                    "text": "Long trails",
+                    "anchor": "long-trails"
+                },
+                {
+                    "text": "With page headers",
+                    "anchor": "with-page-headers"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Button",
+            "url": "/components/button.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Colors",
+                    "anchor": "colors"
+                },
+                {
+                    "text": "Outline buttons",
+                    "anchor": "outline"
+                },
+                {
+                    "text": "Text buttons",
+                    "anchor": "text"
+                },
+                {
+                    "text": "Sizes",
+                    "anchor": "sizes"
+                },
+                {
+                    "text": "Rounded buttons",
+                    "anchor": "rounded"
+                },
+                {
+                    "text": "Block and bundle",
+                    "anchor": "layout"
+                },
+                {
+                    "text": "Button groups",
+                    "anchor": "groups"
+                },
+                {
+                    "text": "Icon buttons",
+                    "anchor": "icons"
+                },
+                {
+                    "text": "States",
+                    "anchor": "states"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Card",
+            "url": "/components/card.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Title, subtitle, text, and information",
+                    "anchor": "anatomy"
+                },
+                {
+                    "text": "Header and footer",
+                    "anchor": "header-footer"
+                },
+                {
+                    "text": "Images",
+                    "anchor": "images"
+                },
+                {
+                    "text": "Colors",
+                    "anchor": "colors"
+                },
+                {
+                    "text": "Links",
+                    "anchor": "links"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Collage",
+            "url": "/components/collage.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Item sizes",
+                    "anchor": "sizes"
+                },
+                {
+                    "text": "Gaps",
+                    "anchor": "gaps"
+                },
+                {
+                    "text": "Figure captions",
+                    "anchor": "captions"
+                },
+                {
+                    "text": "Responsive behavior",
+                    "anchor": "responsive"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Combo box",
+            "url": "/components/combo-box.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Right aligned menu",
+                    "anchor": "alignment"
+                },
+                {
+                    "text": "Submenu",
+                    "anchor": "submenu"
+                },
+                {
+                    "text": "Group headers and separators",
+                    "anchor": "headers-separators"
+                },
+                {
+                    "text": "Primary and secondary rows",
+                    "anchor": "text-rows"
+                },
+                {
+                    "text": "JavaScript",
+                    "anchor": "javascript"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Comment",
+            "url": "/components/comment.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Actions",
+                    "anchor": "actions"
+                },
+                {
+                    "text": "Comment group",
+                    "anchor": "comment-group"
+                },
+                {
+                    "text": "Indented replies",
+                    "anchor": "indented-replies"
+                },
+                {
+                    "text": "States",
+                    "anchor": "states"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Datepicker",
+            "url": "/components/datepicker.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Native date input",
+                    "anchor": "native-inputs"
+                },
+                {
+                    "text": "Sizes",
+                    "anchor": "sizes"
+                },
+                {
+                    "text": "Date and time types",
+                    "anchor": "date-and-time-types"
+                },
+                {
+                    "text": "Third-party datepicker",
+                    "anchor": "javascript-datepicker"
+                },
+                {
+                    "text": "Styling the library panel",
+                    "anchor": "library-panel"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Drawer",
+            "url": "/components/drawer.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Layout and backdrop",
+                    "anchor": "layout-and-backdrop"
+                },
+                {
+                    "text": "JavaScript",
+                    "anchor": "javascript"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Dropdown",
+            "url": "/components/dropdown.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Items, separators, and text",
+                    "anchor": "content"
+                },
+                {
+                    "text": "Icon button",
+                    "anchor": "icon-button"
+                },
+                {
+                    "text": "Open state",
+                    "anchor": "active-state"
+                },
+                {
+                    "text": "JavaScript",
+                    "anchor": "javascript"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Form",
+            "url": "/components/form.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Validation states",
+                    "anchor": "validation"
+                },
+                {
+                    "text": "Text and native inputs",
+                    "anchor": "text-inputs"
+                },
+                {
+                    "text": "Select and textarea",
+                    "anchor": "select-and-textarea"
+                },
+                {
+                    "text": "Checkboxes and radios",
+                    "anchor": "checkboxes-and-radios"
+                },
+                {
+                    "text": "File input",
+                    "anchor": "file-input"
+                },
+                {
+                    "text": "Search field",
+                    "anchor": "search"
+                },
+                {
+                    "text": "Password field",
+                    "anchor": "password"
+                },
+                {
+                    "text": "Sizes, primary, and disabled",
+                    "anchor": "variants"
+                },
+                {
+                    "text": "Complete form",
+                    "anchor": "complete-form"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Form extended",
+            "url": "/components/form-extended.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Switches",
+                    "anchor": "switches"
+                },
+                {
+                    "text": "Radio groups",
+                    "anchor": "radio-groups"
+                },
+                {
+                    "text": "Range input",
+                    "anchor": "range"
+                },
+                {
+                    "text": "Date and time fields",
+                    "anchor": "date-and-time"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Message",
+            "url": "/components/message.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Colors",
+                    "anchor": "colors"
+                },
+                {
+                    "text": "Extra padding",
+                    "anchor": "extra-pad"
+                },
+                {
+                    "text": "Dismissible message",
+                    "anchor": "dismissible"
+                },
+                {
+                    "text": "Messages with icons",
+                    "anchor": "icons"
+                },
+                {
+                    "text": "JavaScript",
+                    "anchor": "javascript"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Modal",
+            "url": "/components/modal.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Sizes",
+                    "anchor": "sizes"
+                },
+                {
+                    "text": "Footer actions",
+                    "anchor": "footer-actions"
+                },
+                {
+                    "text": "Opening and closing",
+                    "anchor": "opening-and-closing"
+                },
+                {
+                    "text": "JavaScript",
+                    "anchor": "javascript"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Nav",
+            "url": "/components/nav.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Active and dimmed links",
+                    "anchor": "states"
+                },
+                {
+                    "text": "Primary nav",
+                    "anchor": "primary"
+                },
+                {
+                    "text": "Centered and right aligned",
+                    "anchor": "alignment"
+                },
+                {
+                    "text": "Vertical nav",
+                    "anchor": "vertical"
+                },
+                {
+                    "text": "Icon-only nav",
+                    "anchor": "icon-only"
+                },
+                {
+                    "text": "Colored links",
+                    "anchor": "link-colors"
+                },
+                {
+                    "text": "In a header",
+                    "anchor": "in-header"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Page",
+            "url": "/components/page.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Full-height shell",
+                    "anchor": "full-height"
+                },
+                {
+                    "text": "A 404 screen",
+                    "anchor": "not-found"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Pagination",
+            "url": "/components/pagination.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Numbered pages",
+                    "anchor": "numbers"
+                },
+                {
+                    "text": "Meta row",
+                    "anchor": "meta"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Popover",
+            "url": "/components/popover.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Headers and body",
+                    "anchor": "sections"
+                },
+                {
+                    "text": "Active state",
+                    "anchor": "active-state"
+                },
+                {
+                    "text": "JavaScript",
+                    "anchor": "javascript"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Quick menu",
+            "url": "/components/quick-menu.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Sizes",
+                    "anchor": "sizes"
+                },
+                {
+                    "text": "Active link",
+                    "anchor": "active-link"
+                },
+                {
+                    "text": "Icons",
+                    "anchor": "icons"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Sidebar nav",
+            "url": "/components/sidebar-nav.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Groups",
+                    "anchor": "groups"
+                },
+                {
+                    "text": "Nested lists",
+                    "anchor": "nested"
+                },
+                {
+                    "text": "Compact rail",
+                    "anchor": "compact"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Stat",
+            "url": "/components/stat.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Stat cards in a grid",
+                    "anchor": "grid"
+                },
+                {
+                    "text": "Indicators",
+                    "anchor": "indicators"
+                },
+                {
+                    "text": "Containers and alignment",
+                    "anchor": "containers"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Tab",
+            "url": "/components/tab.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Centered list",
+                    "anchor": "centered"
+                },
+                {
+                    "text": "Fluid list",
+                    "anchor": "fluid"
+                },
+                {
+                    "text": "JavaScript",
+                    "anchor": "javascript"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Table",
+            "url": "/components/table.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Striped rows",
+                    "anchor": "striped"
+                },
+                {
+                    "text": "Bordered rows",
+                    "anchor": "bordered"
+                },
+                {
+                    "text": "Primary and sortable headers",
+                    "anchor": "primary"
+                },
+                {
+                    "text": "Responsive wrapper",
+                    "anchor": "responsive"
+                },
+                {
+                    "text": "Row states",
+                    "anchor": "row-states"
+                },
+                {
+                    "text": "Selection column",
+                    "anchor": "selection"
+                },
+                {
+                    "text": "Composition",
+                    "anchor": "composition"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Toast notification",
+            "url": "/components/toast-notification.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Positions",
+                    "anchor": "positions"
+                },
+                {
+                    "text": "Placement and stacking",
+                    "anchor": "placement"
+                },
+                {
+                    "text": "Surfaces",
+                    "anchor": "surfaces"
+                },
+                {
+                    "text": "JavaScript",
+                    "anchor": "javascript"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Tooltip",
+            "url": "/components/tooltip.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Tooltip wrapper",
+                    "anchor": "tooltip-element"
+                },
+                {
+                    "text": "Positions",
+                    "anchor": "positions"
+                },
+                {
+                    "text": "Hover behavior",
+                    "anchor": "behavior"
+                },
+                {
+                    "text": "Large content",
+                    "anchor": "large"
+                },
+                {
+                    "text": "Active state",
+                    "anchor": "active-state"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Utilities",
+            "url": "/components/utilities.html",
+            "group": "Components",
+            "headings": [
+                {
+                    "text": "Color utilities",
+                    "anchor": "color"
+                },
+                {
+                    "text": "Icons",
+                    "anchor": "icons"
+                },
+                {
+                    "text": "Images and figures",
+                    "anchor": "images"
+                },
+                {
+                    "text": "Tags",
+                    "anchor": "tags"
+                },
+                {
+                    "text": "Progress",
+                    "anchor": "progress"
+                },
+                {
+                    "text": "Spacers",
+                    "anchor": "spacers"
+                },
+                {
+                    "text": "Indicators",
+                    "anchor": "indicators"
+                },
+                {
+                    "text": "Animation",
+                    "anchor": "animation"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference"
+                },
+                {
+                    "text": "Color",
+                    "anchor": "reference-color"
+                },
+                {
+                    "text": "Icon",
+                    "anchor": "reference-icon"
+                },
+                {
+                    "text": "Image and figure",
+                    "anchor": "reference-image"
+                },
+                {
+                    "text": "Tag",
+                    "anchor": "reference-tag"
+                },
+                {
+                    "text": "Progress",
+                    "anchor": "reference-progress"
+                },
+                {
+                    "text": "Spacer",
+                    "anchor": "reference-spacer"
+                },
+                {
+                    "text": "Indicator",
+                    "anchor": "reference-indicator"
+                },
+                {
+                    "text": "Animation",
+                    "anchor": "reference-animation"
+                }
+            ]
+        },
+        {
+            "title": "Block analytics",
+            "url": "/blocks/block-analytics.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "With a stat table",
+                    "anchor": "with-a-table"
+                },
+                {
+                    "text": "Structure and spacing",
+                    "anchor": "structure"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block auth",
+            "url": "/blocks/block-auth.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Sign in form",
+                    "anchor": "sign-in"
+                },
+                {
+                    "text": "Field states and errors",
+                    "anchor": "field-states"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block banner",
+            "url": "/blocks/block-banner.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Steps",
+                    "anchor": "steps"
+                },
+                {
+                    "text": "Full banner",
+                    "anchor": "full-example"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block box",
+            "url": "/blocks/block-box.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Rows of boxes",
+                    "anchor": "rows"
+                },
+                {
+                    "text": "Hover state",
+                    "anchor": "hover"
+                },
+                {
+                    "text": "Icons",
+                    "anchor": "icons"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block enable",
+            "url": "/blocks/block-enable.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Active state",
+                    "anchor": "active-state"
+                },
+                {
+                    "text": "Cards in a row",
+                    "anchor": "grid"
+                },
+                {
+                    "text": "Toggle behavior",
+                    "anchor": "behavior"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block form",
+            "url": "/blocks/block-form.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Full settings form",
+                    "anchor": "full-form"
+                },
+                {
+                    "text": "Alternate group",
+                    "anchor": "alternate-group"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block grid",
+            "url": "/blocks/block-grid.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Responsive behavior",
+                    "anchor": "responsive"
+                },
+                {
+                    "text": "Cards in a grid",
+                    "anchor": "cards"
+                },
+                {
+                    "text": "Stats in a grid",
+                    "anchor": "stats"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block header",
+            "url": "/blocks/block-header.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Action-led header",
+                    "anchor": "action-led"
+                },
+                {
+                    "text": "Responsive stacking",
+                    "anchor": "responsive"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block inline",
+            "url": "/blocks/block-inline.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Labels and alignment",
+                    "anchor": "labels"
+                },
+                {
+                    "text": "Right-aligned section",
+                    "anchor": "alt-section"
+                },
+                {
+                    "text": "Filter bar",
+                    "anchor": "filter-bar"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block list",
+            "url": "/blocks/block-list.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Bordered list",
+                    "anchor": "bordered"
+                },
+                {
+                    "text": "Label and value rows",
+                    "anchor": "values"
+                },
+                {
+                    "text": "Actions and controls",
+                    "anchor": "actions"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block repeater",
+            "url": "/blocks/block-repeater.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Sort handle and cells",
+                    "anchor": "cells"
+                },
+                {
+                    "text": "Sorting, adding, and removing",
+                    "anchor": "behavior"
+                },
+                {
+                    "text": "Responsive stacking",
+                    "anchor": "responsive"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block stat",
+            "url": "/blocks/block-stat.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Indicators",
+                    "anchor": "indicators"
+                },
+                {
+                    "text": "Active and hover",
+                    "anchor": "states"
+                },
+                {
+                    "text": "Responsive row",
+                    "anchor": "responsive"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block stat table",
+            "url": "/blocks/block-stat-table.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Column spans and alignment",
+                    "anchor": "columns"
+                },
+                {
+                    "text": "Text and indicator layers",
+                    "anchor": "bars"
+                },
+                {
+                    "text": "Responsive columns",
+                    "anchor": "responsive"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "Block SVG map",
+            "url": "/blocks/block-svg-map.html",
+            "group": "Blocks",
+            "headings": [
+                {
+                    "text": "Basic usage",
+                    "anchor": "basic-usage"
+                },
+                {
+                    "text": "Tooltip",
+                    "anchor": "tooltip"
+                },
+                {
+                    "text": "Visible tooltip state",
+                    "anchor": "tooltip-visible"
+                },
+                {
+                    "text": "Accessibility",
+                    "anchor": "accessibility"
+                },
+                {
+                    "text": "Class reference",
+                    "anchor": "reference-heading"
+                }
+            ]
+        },
+        {
+            "title": "A simple CSS boilerplate with real design tokens",
+            "url": "/index.html",
+            "group": "Overview",
+            "headings": [
+                {
+                    "text": "Everything you need, nothing you have to fight",
+                    "anchor": "features"
+                },
+                {
+                    "text": "One palette, every surface",
+                    "anchor": "palette"
+                },
+                {
+                    "text": "Building blocks that share one language",
+                    "anchor": "components"
+                }
+            ]
+        }
+    ]
+}

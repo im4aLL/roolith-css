@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block banner - roolith css</title>
+        <meta name="description" content="Block banner onboarding callouts: a title, supporting text, and a responsive row of numbered steps, built on the box, badge, and button modules in roolith css." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block banner</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block banner</h1>
+                            <p class="doc-content-lead">A block banner is an onboarding or empty state panel: a heading, a paragraph of context, and an optional row of steps that leads the user to the first action. The block supplies spacing and stacking only, so the panel itself is a <code>.box</code> and the step markers are badges.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>Multiple classes</strong>
+                                - defined in
+                                <strong>blocks/_block-banner.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>The wrapper class <code>.block-banner</code> carries no declarations. It is a namespacing hook for the child classes, and the visual surface comes from the <a href="/components/box.html">Box</a> module. The canonical demo uses <code>.box.box-large</code> with a <code>.box-body</code> inside so the banner gets the large box spacing and 16px body copy.</p>
+                            <p><code>.block-banner-title</code> adds half the block padding below the heading, and <code>.block-banner-text</code> adds one and a half times that padding below the paragraph. The text also switches to <code>--r-block-banner-text-color</code>, which defaults to the subtle text token, so the body copy recedes behind the heading.</p>
+                            <div class="doc-demo">
+                                <div class="block-banner">
+                                    <div class="box box-large">
+                                        <div class="box-body">
+                                            <h5 class="block-banner-title">Welcome to your workspace</h5>
+                                            <p class="block-banner-text">Create your first module, then build pages from it. You can upload media files and publish when the content is ready.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-banner-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-banner-basic" class="language-html">&lt;div class="block-banner"&gt;
+    &lt;div class="box box-large"&gt;
+        &lt;div class="box-body"&gt;
+            &lt;h5 class="block-banner-title"&gt;Welcome to your workspace&lt;/h5&gt;
+            &lt;p class="block-banner-text"&gt;Create your first module, then build pages from it. You can upload media files and publish when the content is ready.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Because the padding is expressed in <code>--r-block-padding</code>, the banner follows the same rhythm as the other block pages. Override that token on a wrapper to tighten every banner inside it without touching the individual classes.</p>
+                        </section>
+
+                        <section class="doc-section" id="steps">
+                            <h2>Steps</h2>
+                            <p><code>.block-banner-steps</code> is a flex column with the block padding as its gap, and it becomes a row from the medium breakpoint up. Each <code>.block-banner-step</code> takes an equal share of that row with <code>flex: 1</code>, so three steps always divide the width evenly.</p>
+                            <p>Inside a step, the <code>.block-banner-step-title</code> gets 10px above and 5px below, the <code>.block-banner-step-text</code> uses the same subtle color as the banner text, and <code>.block-banner-step-button</code> gets the full block padding as a top margin to separate the action from the copy.</p>
+                            <div class="doc-demo">
+                                <div class="block-banner">
+                                    <div class="box box-large">
+                                        <div class="box-body">
+                                            <h5 class="block-banner-title">Create your first page</h5>
+                                            <p class="block-banner-text">Three steps take you from an empty workspace to a published page.</p>
+
+                                            <div class="block-banner-steps">
+                                                <div class="block-banner-step">
+                                                    <span class="badge">Step 1</span>
+                                                    <h6 class="block-banner-step-title">Create module settings</h6>
+                                                    <p class="block-banner-step-text">Define the fields that every module of this type will share.</p>
+                                                    <a href="#" class="button button-primary block-banner-step-button">Add module settings</a>
+                                                </div>
+
+                                                <div class="block-banner-step">
+                                                    <span class="badge">Step 2</span>
+                                                    <h6 class="block-banner-step-title">Create a module</h6>
+                                                    <p class="block-banner-step-text">Build one or more modules from the settings you just defined.</p>
+                                                    <a href="#" class="button block-banner-step-button">Add module</a>
+                                                </div>
+
+                                                <div class="block-banner-step">
+                                                    <span class="badge">Step 3</span>
+                                                    <h6 class="block-banner-step-title">Create a page</h6>
+                                                    <p class="block-banner-step-text">Combine modules into a page and order them the way you want.</p>
+                                                    <a href="#" class="button block-banner-step-button">Create page</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-banner-steps">Copy</button>
+                                </div>
+                                <pre><code id="block-banner-steps" class="language-html">&lt;div class="block-banner"&gt;
+    &lt;div class="box box-large"&gt;
+        &lt;div class="box-body"&gt;
+            &lt;h5 class="block-banner-title"&gt;Create your first page&lt;/h5&gt;
+            &lt;p class="block-banner-text"&gt;Three steps take you from an empty workspace to a published page.&lt;/p&gt;
+
+            &lt;div class="block-banner-steps"&gt;
+                &lt;div class="block-banner-step"&gt;
+                    &lt;span class="badge"&gt;Step 1&lt;/span&gt;
+                    &lt;h6 class="block-banner-step-title"&gt;Create module settings&lt;/h6&gt;
+                    &lt;p class="block-banner-step-text"&gt;Define the fields that every module of this type will share.&lt;/p&gt;
+                    &lt;a href="#" class="button button-primary block-banner-step-button"&gt;Add module settings&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class="block-banner-step"&gt;
+                    &lt;span class="badge"&gt;Step 2&lt;/span&gt;
+                    &lt;h6 class="block-banner-step-title"&gt;Create a module&lt;/h6&gt;
+                    &lt;p class="block-banner-step-text"&gt;Build one or more modules from the settings you just defined.&lt;/p&gt;
+                    &lt;a href="#" class="button block-banner-step-button"&gt;Add module&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class="block-banner-step"&gt;
+                    &lt;span class="badge"&gt;Step 3&lt;/span&gt;
+                    &lt;h6 class="block-banner-step-title"&gt;Create a page&lt;/h6&gt;
+                    &lt;p class="block-banner-step-text"&gt;Combine modules into a page and order them the way you want.&lt;/p&gt;
+                    &lt;a href="#" class="button block-banner-step-button"&gt;Create page&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The step markers are the shared <a href="/components/badge.html">Badge</a> component, and the step actions are plain <a href="/components/button.html">Button</a> classes. The block does not restyle either of them, so a step button keeps its normal size, color, and hover behavior.</p>
+                        </section>
+
+                        <section class="doc-section" id="full-example">
+                            <h2>Full banner</h2>
+                            <p>The full example stacks all the parts: a heading, a paragraph, a row of steps, and two closing actions in a <code>.button-bundle</code>. Use the bundle for the primary and secondary action because it spaces them with the 10px gap from the Button module, and keep the primary action first in the visual order.</p>
+                            <p>When the banner is only an invitation, drop the steps and keep the heading, the text, and the bundle. When it is a checklist, keep the steps and drop the bundle, so there is exactly one obvious next action.</p>
+                            <div class="doc-demo">
+                                <div class="block-banner">
+                                    <div class="box box-large">
+                                        <div class="box-body">
+                                            <h5 class="block-banner-title">Publish your first release</h5>
+                                            <p class="block-banner-text">The workspace is ready. Connect a repository, choose a branch, and publish a release to see build metrics on the analytics page.</p>
+
+                                            <div class="block-banner-steps">
+                                                <div class="block-banner-step">
+                                                    <span class="badge badge-info">Step 1</span>
+                                                    <h6 class="block-banner-step-title">Connect a repository</h6>
+                                                    <p class="block-banner-step-text">Authorize the provider and pick the repository you want to build.</p>
+                                                    <a href="#" class="button button-primary block-banner-step-button">Connect repository</a>
+                                                </div>
+
+                                                <div class="block-banner-step">
+                                                    <span class="badge badge-info">Step 2</span>
+                                                    <h6 class="block-banner-step-title">Choose a branch</h6>
+                                                    <p class="block-banner-step-text">Select the branch that production builds should follow.</p>
+                                                    <a href="#" class="button block-banner-step-button">Choose branch</a>
+                                                </div>
+
+                                                <div class="block-banner-step">
+                                                    <span class="badge badge-info">Step 3</span>
+                                                    <h6 class="block-banner-step-title">Publish the release</h6>
+                                                    <p class="block-banner-step-text">Trigger the first build and watch it finish on the releases page.</p>
+                                                    <a href="#" class="button block-banner-step-button">Publish release</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="button-bundle">
+                                                <a href="#" class="button button-primary button-icon">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <path d="M12 4v12m0 0 4-4m-4 4-4-4M4 20h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Import project
+                                                </a>
+                                                <a href="#" class="button button-text button-has-icon">
+                                                    Read the guide
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-banner-full">Copy</button>
+                                </div>
+                                <pre><code id="block-banner-full" class="language-html">&lt;div class="block-banner"&gt;
+    &lt;div class="box box-large"&gt;
+        &lt;div class="box-body"&gt;
+            &lt;h5 class="block-banner-title"&gt;Publish your first release&lt;/h5&gt;
+            &lt;p class="block-banner-text"&gt;The workspace is ready. Connect a repository, choose a branch, and publish a release to see build metrics on the analytics page.&lt;/p&gt;
+
+            &lt;div class="block-banner-steps"&gt;
+                &lt;div class="block-banner-step"&gt;
+                    &lt;span class="badge badge-info"&gt;Step 1&lt;/span&gt;
+                    &lt;h6 class="block-banner-step-title"&gt;Connect a repository&lt;/h6&gt;
+                    &lt;p class="block-banner-step-text"&gt;Authorize the provider and pick the repository you want to build.&lt;/p&gt;
+                    &lt;a href="#" class="button button-primary block-banner-step-button"&gt;Connect repository&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class="block-banner-step"&gt;
+                    &lt;span class="badge badge-info"&gt;Step 2&lt;/span&gt;
+                    &lt;h6 class="block-banner-step-title"&gt;Choose a branch&lt;/h6&gt;
+                    &lt;p class="block-banner-step-text"&gt;Select the branch that production builds should follow.&lt;/p&gt;
+                    &lt;a href="#" class="button block-banner-step-button"&gt;Choose branch&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class="block-banner-step"&gt;
+                    &lt;span class="badge badge-info"&gt;Step 3&lt;/span&gt;
+                    &lt;h6 class="block-banner-step-title"&gt;Publish the release&lt;/h6&gt;
+                    &lt;p class="block-banner-step-text"&gt;Trigger the first build and watch it finish on the releases page.&lt;/p&gt;
+                    &lt;a href="#" class="button block-banner-step-button"&gt;Publish release&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="button-bundle"&gt;
+                &lt;a href="#" class="button button-primary button-icon"&gt;
+                    &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                        &lt;path d="M12 4v12m0 0 4-4m-4 4-4-4M4 20h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                    &lt;/svg&gt;
+                    Import project
+                &lt;/a&gt;
+                &lt;a href="#" class="button button-text button-has-icon"&gt;
+                    Read the guide
+                    &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                        &lt;path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                    &lt;/svg&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The steps container adds no margin of its own. The spacing above each step action comes from the 20px top margin on <code>.block-banner-step-button</code>, and the bundle follows the steps block directly, so the vertical rhythm stays even whether the banner ends with steps or with actions.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>A banner is a heading, a paragraph of context, and a short sequence of steps, so the markup carries that structure. The block only supplies the spacing, and it does not add semantics of its own.</p>
+                            <ul>
+                                <li>Make the banner title a real heading and keep the heading order around it intact. Pick the level from the page it sits on, and keep the step titles below the banner title rather than at the same level.</li>
+                                <li>The steps are a sequence, so say so in the DOM: <code>&lt;ol class="block-banner-steps"&gt;</code> with <code>&lt;li class="block-banner-step"&gt;</code>. The reset already removes the markers and the indent, so the block lays out the same.</li>
+                                <li>Keep the step number in the badge text, as in <code>Step 1</code>. A number that exists only as a visual marker is lost to a screen reader and to anyone reading the page in a text browser.</li>
+                                <li>Each step action needs a name that stands on its own, so <code>Add module settings</code> works where <code>Add</code> does not. An icon-only action needs a label or an <code>aria-label</code>.</li>
+                                <li>The demo links use <code>href="#"</code> as a placeholder. Ship a real destination, because a link with no target is noise in a link list.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p><code>.block-banner</code> is a wrapper hook only. The surface and typography come from <code>.box</code> and the heading level you choose.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-banner</code></td>
+                                            <td>Wrapper</td>
+                                            <td>No declarations. Namespaces the child classes and holds the box.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-banner-title</code></td>
+                                            <td>Heading</td>
+                                            <td>Adds 10px of bottom padding, which is half of <code>--r-block-padding</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-banner-text</code></td>
+                                            <td>Paragraph</td>
+                                            <td>Adds 30px of bottom padding and paints with <code>--r-block-banner-text-color</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-banner-steps</code></td>
+                                            <td>Steps wrapper</td>
+                                            <td>Flex column with a 20px gap, switching to a row from the medium breakpoint up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-banner-step</code></td>
+                                            <td>Step</td>
+                                            <td>Takes an equal share of the row with <code>flex: 1</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-banner-step-title</code></td>
+                                            <td>Step heading</td>
+                                            <td>10px top padding and 5px bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-banner-step-text</code></td>
+                                            <td>Step paragraph</td>
+                                            <td>Uses <code>--r-block-banner-text-color</code>, the same subtle color as the banner text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-banner-step-button</code></td>
+                                            <td>Step action</td>
+                                            <td>20px top margin, which is the full block padding.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-auth.html">Previous: Block auth</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-box.html">Next: Block box</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#steps">Steps</a>
+                        <a class="doc-toc-link" href="#full-example">Full banner</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

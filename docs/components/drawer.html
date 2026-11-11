@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Drawer - roolith css</title>
+        <meta
+            name="description"
+            content="Drawer markup, open state, layout, and the small amount of JavaScript needed to open and close it in roolith css." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Drawer</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Drawer</h1>
+                            <p class="doc-content-lead">
+                                A drawer slides a panel in from the right over a full-screen scrim. The styles are a container, the panel, and an
+                                <code>.open</code>
+                                state; everything else is optional header, body, and footer markup.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.drawer-container</strong>
+                                - defined in
+                                <strong>modules/_drawer.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                The trigger is a normal button. Opening the drawer means adding
+                                <code>.open</code>
+                                to
+                                <code>.drawer-container</code>, which switches it from
+                                <code>display: none</code>
+                                to
+                                <code>display: block</code>
+                                and lets the panel run its fade-in animation. The button below is wired with the documentation hooks, so it works on this page.
+                            </p>
+                            <div class="doc-demo">
+                                <button type="button" class="button button-primary" data-doc-drawer="#drawer-release-notes">
+                                    Open drawer
+                                </button>
+                            </div>
+                            <p>
+                                The demo drawer lives at the end of this page, outside the demo box, because a fixed container cannot be previewed inline. Use the button to open it and the close button, the backdrop, or Escape to dismiss it.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="drawer-basic">Copy</button>
+                                </div>
+                                <pre><code id="drawer-basic" class="language-html">&lt;button type="button" class="button button-primary" data-doc-drawer="#drawer-release-notes"&gt;
+    Open drawer
+&lt;/button&gt;
+
+&lt;div class="drawer-container" id="drawer-release-notes"&gt;
+    &lt;div class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-release-title"&gt;
+        &lt;div class="drawer-header" id="drawer-release-title"&gt;
+            Release notes
+            &lt;span class="drawer-sub-header"&gt;Version 4.0.0 - 12 March 2025&lt;/span&gt;
+            &lt;button type="button" class="drawer-close" data-doc-drawer-close aria-label="Close drawer"&gt;
+                &lt;svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"&gt;
+                    &lt;path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" /&gt;
+                &lt;/svg&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="drawer-body"&gt;
+            &lt;p&gt;
+                The token layer moved into &lt;code&gt;_component-var.scss&lt;/code&gt; and every component now reads its
+                values from a custom property, so a theme can override one variable instead of a rule.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Two components changed shape: the badge keeps its fixed 5px radius and uppercase label, and only the
+                outline message variants draw a border.
+                Both are listed in the upgrade guide.
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="drawer-footer"&gt;
+            &lt;button type="button" class="button button-outline" data-doc-drawer-close&gt;Cancel&lt;/button&gt;
+            &lt;button type="button" class="button button-primary" data-doc-drawer-close&gt;Save changes&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                Mark any element inside the container with
+                                <code>data-doc-drawer-close</code>
+                                to make it close the drawer. The framework itself has no hooks, so pick your own attributes and keep them consistent.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="layout-and-backdrop">
+                            <h2>Layout and backdrop</h2>
+                            <p>
+                                <code>.drawer-container</code>
+                                is fixed to the viewport at full size with a
+                                <code>z-index</code>
+                                of 9999 and a semi-transparent background token. It also carries the base padding, so the panel never touches the screen edge.
+                            </p>
+                            <p>
+                                <code>.drawer</code>
+                                is absolutely positioned inside that padded area, anchored to the top and right with half the content spacing as an inset. It is full width up to a 600px cap, scrolls its own overflow, and runs the
+                                <code>fadeInRight</code>
+                                animation on open.
+                            </p>
+                            <p>
+                                <code>--r-drawer-content-spacing</code>
+                                drives the container padding, the panel inset, the header and footer gaps, and the body height. Raise it once and the whole panel keeps its proportions. The body height is the panel height minus twice the spacing and a fixed 95px reserved for the header and footer, so keep those two slots close to their default height if you change their contents.
+                            </p>
+                            <p>
+                                Place the container at the end of
+                                <code>body</code>
+                                rather than inside a card or a layout column. It is fixed, so its position in the flow does not matter visually, but keeping it last avoids stacking-context surprises with transformed or filtered ancestors.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="javascript">
+                            <h2>JavaScript</h2>
+                            <p>
+                                roolith css ships no JavaScript. The snippet below is documentation only and is the behavior this page uses: the trigger opens the container, the close button and the backdrop close it, and Escape closes it while returning focus to the trigger.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JavaScript</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="drawer-js">Copy</button>
+                                </div>
+                                <pre><code id="drawer-js" class="language-js">const trigger = document.querySelector('[data-doc-drawer]');
+const container = document.querySelector('#drawer-release-notes');
+
+/**
+ * Show the drawer container.
+ * @returns {void}
+ */
+function openDrawer() {
+    container.classList.add('open');
+}
+
+/**
+ * Hide the drawer container and return focus to the trigger.
+ * @returns {void}
+ */
+function closeDrawer() {
+    container.classList.remove('open');
+    trigger.focus();
+}
+
+trigger.addEventListener('click', openDrawer);
+
+container.addEventListener('click', (event) =&gt; {
+    if (event.target.closest('.drawer-close, [data-doc-drawer-close]')) {
+        closeDrawer();
+        return;
+    }
+
+    if (!event.target.closest('.drawer')) {
+        closeDrawer();
+    }
+});
+
+document.addEventListener('keydown', (event) =&gt; {
+    if (event.key === 'Escape' &amp;&amp; container.classList.contains('open')) {
+        closeDrawer();
+    }
+});</code></pre>
+                            </div>
+                            <p>
+                                Only one drawer should be open at a time, and a drawer that opens another surface, such as a modal, should handle Escape in the right order so the topmost layer closes first. The docs script keeps a single open drawer for exactly that reason.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The framework ships the visual layer only, so the dialog semantics and focus behavior are yours to add. The list below is the minimum for a usable drawer.
+                            </p>
+                            <ul>
+                                <li>
+                                    Put
+                                    <code>role="dialog"</code>
+                                    and
+                                    <code>aria-modal="true"</code>
+                                    on
+                                    <code>.drawer</code>, and point
+                                    <code>aria-labelledby</code>
+                                    at the id of
+                                    <code>.drawer-header</code>
+                                    so the panel has a name.
+                                </li>
+                                <li>
+                                    Move focus into the drawer when it opens. Focus the panel itself with
+                                    <code>tabindex="-1"</code>
+                                    or the first control, then keep Tab and Shift + Tab inside the drawer until it closes.
+                                </li>
+                                <li>
+                                    Return focus to the trigger on close. Without that, keyboard users land back at the top of the document.
+                                </li>
+                                <li>
+                                    Escape must close the drawer. Handle it at the document level while the drawer is open and ignore it when a nested surface is on top.
+                                </li>
+                                <li>
+                                    The closed state is
+                                    <code>display: none</code>
+                                    through the framework, so a closed drawer is already out of the tab order and the accessibility tree. Do not replace it with opacity or transform hiding that leaves it focusable.
+                                </li>
+                                <li>
+                                    Give the close button an
+                                    <code>aria-label</code>
+                                    when it holds an icon only, set
+                                    <code>type="button"</code>
+                                    so it cannot submit a form, and do not rely on the backdrop click for closing, since it is not a keyboard target.
+                                </li>
+                                <li>
+                                    Stop the page behind from scrolling while the drawer is open. The framework scrolls
+                                    <code>.drawer-body</code>
+                                    only and does not lock the document.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Colors, spacing, radius, and the shadow come from the
+                                <code>--r-drawer-*</code>
+                                tokens, so a dark theme inherits the same structure with different values.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.drawer-container</code></td>
+                                            <td>Root</td>
+                                            <td>
+                                                Fixed full-screen scrim at <code>z-index: 9999</code>, hidden until it gains
+                                                <code>.open</code>.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.open</code></td>
+                                            <td>State on the container</td>
+                                            <td>Switches the container to <code>display: block</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.drawer</code></td>
+                                            <td>Panel</td>
+                                            <td>
+                                                Right-anchored, 600px max width, radius, shadow, own scrolling, and the
+                                                <code>fadeInRight</code>
+                                                animation.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.drawer-header</code></td>
+                                            <td>Header</td>
+                                            <td>18px title with 15px of bottom margin. Position the close button against it.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.drawer-sub-header</code></td>
+                                            <td>Header subtitle</td>
+                                            <td>Block level 14px dimmed line with 8px of top margin.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.drawer-body</code></td>
+                                            <td>Body</td>
+                                            <td>Scrollable area sized from the panel height minus the spacing and a 95px reserve.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.drawer-footer</code></td>
+                                            <td>Footer</td>
+                                            <td>Top border, 10px gap, and right-aligned actions laid out in a row.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.drawer-close</code></td>
+                                            <td>Close button</td>
+                                            <td>Pinned to the top right with 15px by 17px padding and a hover opacity change.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/datepicker.html">Previous: Datepicker</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/dropdown.html">Next: Dropdown</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#layout-and-backdrop">Layout and backdrop</a>
+                        <a class="doc-toc-link" href="#javascript">JavaScript</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <div class="drawer-container" id="drawer-release-notes">
+            <div class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-release-title">
+                <div class="drawer-header" id="drawer-release-title">
+                    Release notes
+                    <span class="drawer-sub-header">Version 4.0.0 - 12 March 2025</span>
+                    <button type="button" class="drawer-close" data-doc-drawer-close aria-label="Close drawer">
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            aria-hidden="true"
+                            focusable="false">
+                            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="drawer-body">
+                    <p>
+                        The token layer moved into
+                        <code>_component-var.scss</code>
+                        and every component now reads its values from a custom property, so a theme can override one variable instead of a rule.
+                    </p>
+                    <p>
+                        Two components changed shape: the badge keeps its fixed 5px radius and uppercase label, and only the outline message variants draw a border. Both are listed in the upgrade guide.
+                    </p>
+                </div>
+                <div class="drawer-footer">
+                    <button type="button" class="button button-outline" data-doc-drawer-close>Cancel</button>
+                    <button type="button" class="button button-primary" data-doc-drawer-close>Save changes</button>
+                </div>
+            </div>
+        </div>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

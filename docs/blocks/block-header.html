@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block header - roolith css</title>
+        <meta name="description" content="Compose a breadcrumb trail, a page title, and an action menu into one responsive page header with the roolith css block header classes." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block header</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block header</h1>
+                            <p class="doc-content-lead">A block header opens a page: a breadcrumb trail, the page title with optional supporting text, and the actions that apply to the whole page. The block owns the vertical rhythm and the switch from a stacked column to a two-sided row, while the breadcrumb, heading, and action menu keep their own component styles.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-header</strong>
+                                - defined in
+                                <strong>blocks/_block-header.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p><code>.block-header</code> is the outer wrapper. It adds <code>--r-block-padding</code> of space below the header and gives a nested <code>.breadcrumb</code> half of that as bottom padding, so the trail is separated from the title without an extra wrapper.</p>
+                            <p><code>.block-header-container</code> does the layout: a wrapping flex column with a <code>--r-block-padding</code> gap and half of that padding above. From 640px up it becomes a row with <code>justify-content: space-between</code>, so the title sits on the left and the actions on the right.</p>
+                            <p><code>.block-header-secondary</code> holds the actions and is capped at <code>max-width: 100%</code>. Below 640px it takes the full width and its <code>.action-menu-list</code> switches to a wrapping row, which keeps every command reachable without horizontal scrolling.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-header">
+                                        <nav aria-label="Breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                                <li class="breadcrumb-item"><a href="#">Reports</a></li>
+                                                <li class="breadcrumb-item active" aria-current="page">Revenue</li>
+                                            </ol>
+                                        </nav>
+                                        <div class="block-header-container">
+                                            <div>
+                                                <h3>Revenue</h3>
+                                                <p>Quarterly recurring revenue by region, refreshed every hour.</p>
+                                            </div>
+                                            <div class="block-header-secondary">
+                                                <nav class="action-menu" aria-label="Report actions">
+                                                    <ul class="action-menu-list">
+                                                        <li class="action-menu-item">
+                                                            <a href="#" class="action-menu-link">
+                                                                <span class="action-menu-label">Settings</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="action-menu-item">
+                                                            <a href="#" class="action-menu-link">
+                                                                <span class="action-menu-label">Export</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="action-menu-item">
+                                                            <a href="#" class="action-menu-link">
+                                                                <span class="action-menu-label">Share</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-header-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-header-basic" class="language-html">&lt;div class="block-header"&gt;
+    &lt;nav aria-label="Breadcrumb"&gt;
+        &lt;ol class="breadcrumb"&gt;
+            &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Reports&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="breadcrumb-item active" aria-current="page"&gt;Revenue&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/nav&gt;
+
+    &lt;div class="block-header-container"&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Revenue&lt;/h3&gt;
+            &lt;p&gt;Quarterly recurring revenue by region, refreshed every hour.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="block-header-secondary"&gt;
+            &lt;nav class="action-menu" aria-label="Report actions"&gt;
+                &lt;ul class="action-menu-list"&gt;
+                    &lt;li class="action-menu-item"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;span class="action-menu-label"&gt;Settings&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="action-menu-item"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;span class="action-menu-label"&gt;Export&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="action-menu-item"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;span class="action-menu-label"&gt;Share&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>All spacing comes from one token. <code>--r-block-padding</code> is <code>1.25rem</code> by default, which produces the 20px below the block, the 10px below the breadcrumb, the 10px above the container, and the gap between its two sides. Override it on the block for a tighter header, or on <code>:root</code> to retune every block that shares the rhythm.</p>
+                        </section>
+
+                        <section class="doc-section" id="action-led">
+                            <h2>Action-led header</h2>
+                            <p>Many pages do not need a trail. Drop the breadcrumb and the container keeps its half padding above, so the header still separates from the surface above it. The heading becomes the first thing a reader hears and sees.</p>
+                            <p>Put the primary actions in <code>.block-header-secondary</code>. A <code>.button-bundle</code> is the right wrapper for a cancel and save pair, while an <a href="/components/action-menu.html">action menu</a> suits several low-emphasis commands. Both keep their own component spacing inside the header.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-header">
+                                        <div class="block-header-container">
+                                            <div>
+                                                <h3>Invoices</h3>
+                                                <p>12 open invoices across 4 teams, due by the end of the month.</p>
+                                            </div>
+                                            <div class="block-header-secondary">
+                                                <div class="button-bundle">
+                                                    <button class="button button-outline" type="button">Save draft</button>
+                                                    <button class="button button-primary" type="button">Send invoices</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-header-actions">Copy</button>
+                                </div>
+                                <pre><code id="block-header-actions" class="language-html">&lt;div class="block-header"&gt;
+    &lt;div class="block-header-container"&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Invoices&lt;/h3&gt;
+            &lt;p&gt;12 open invoices across 4 teams, due by the end of the month.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="block-header-secondary"&gt;
+            &lt;div class="button-bundle"&gt;
+                &lt;button class="button button-outline" type="button"&gt;Save draft&lt;/button&gt;
+                &lt;button class="button button-primary" type="button"&gt;Send invoices&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The small-screen rule still applies to this markup. Below 640px <code>.block-header-secondary</code> stretches to the full width of the column, and the bundle sits under the title with the same block gap above it. The buttons keep their intrinsic width, and <code>.button-bundle</code> does not wrap, so give the bundle a wrapping rule of your own if the pair has to survive a very narrow screen.</p>
+                        </section>
+
+                        <section class="doc-section" id="responsive">
+                            <h2>Responsive stacking</h2>
+                            <p>One breakpoint at 640px changes the header. Below it the container is a column, the secondary is full width, and the action list is a row that wraps. At 640px and up the container becomes a row with <code>space-between</code>, and the action list is a row by default.</p>
+                            <p>Long labels are the stress case. The secondary is capped at <code>max-width: 100%</code>, so it never takes more than the room the container gives it, and the list wraps between items below 640px. Keep command labels short: there is no truncation rule, and one very long unbreakable word can still force the header wider than the page.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-header">
+                                        <nav aria-label="Breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="#">Billing</a></li>
+                                                <li class="breadcrumb-item"><a href="#">Invoices</a></li>
+                                                <li class="breadcrumb-item active" aria-current="page">June 2025</li>
+                                            </ol>
+                                        </nav>
+                                        <div class="block-header-container">
+                                            <div>
+                                                <h3>June 2025</h3>
+                                                <p>48 invoices issued, 3 awaiting approval.</p>
+                                            </div>
+                                            <div class="block-header-secondary">
+                                                <nav class="action-menu" aria-label="Invoice actions">
+                                                    <ul class="action-menu-list">
+                                                        <li class="action-menu-item">
+                                                            <a href="#" class="action-menu-link">
+                                                                <span class="action-menu-label">Request approval</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="action-menu-item">
+                                                            <a href="#" class="action-menu-link">
+                                                                <span class="action-menu-label">Download all invoices</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="action-menu-item">
+                                                            <a href="#" class="action-menu-link">
+                                                                <span class="action-menu-label">Archive month</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-header-responsive">Copy</button>
+                                </div>
+                                <pre><code id="block-header-responsive" class="language-html">&lt;div class="block-header"&gt;
+    &lt;nav aria-label="Breadcrumb"&gt;
+        &lt;ol class="breadcrumb"&gt;
+            &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Billing&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Invoices&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="breadcrumb-item active" aria-current="page"&gt;June 2025&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/nav&gt;
+
+    &lt;div class="block-header-container"&gt;
+        &lt;div&gt;
+            &lt;h3&gt;June 2025&lt;/h3&gt;
+            &lt;p&gt;48 invoices issued, 3 awaiting approval.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="block-header-secondary"&gt;
+            &lt;nav class="action-menu" aria-label="Invoice actions"&gt;
+                &lt;ul class="action-menu-list"&gt;
+                    &lt;li class="action-menu-item"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;span class="action-menu-label"&gt;Request approval&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="action-menu-item"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;span class="action-menu-label"&gt;Download all invoices&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="action-menu-item"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;span class="action-menu-label"&gt;Archive month&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Narrow the browser below 640px to see the stacking. Nothing in the markup changes; only the container direction, the secondary width, and the list wrapping do.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The header holds three navigation-relevant pieces: the trail, the page heading, and the action group. Structure each one for assistive technology instead of relying on its position.</p>
+                            <ul>
+                                <li>Give the page exactly one <code>&lt;h1&gt;</code>. These demos use <code>&lt;h3&gt;</code> because this documentation page already has an <code>&lt;h1&gt;</code>; in an application the title inside <code>.block-header-container</code> is normally the page <code>&lt;h1&gt;</code>.</li>
+                                <li>Wrap the breadcrumb in <code>&lt;nav aria-label="Breadcrumb"&gt;</code> and keep the ordered list. Put <code>aria-current="page"</code> on the current item, because <code>.active</code> is visual only.</li>
+                                <li>Give every <code>&lt;nav class="action-menu"&gt;</code> a label that describes the group, such as "Report actions", so the landmark list stays useful when a page has more than one menu.</li>
+                                <li>Keep the source order trail, heading, then actions. At wide widths the actions sit on the right, but both reading and tab order still reach them after the heading.</li>
+                                <li>Let the heading wrap rather than truncating it, and keep the supporting line as a real paragraph so it is announced in context.</li>
+                                <li>Use a link for navigation and a button for an action. The header changes layout, not element semantics.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>The block defines three layout classes and repeats one rule for the action menu label. The breadcrumb and action menu classes come from their own modules and keep their own documentation.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-header</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Bottom padding of <code>--r-block-padding</code>. A nested <code>.breadcrumb</code> gets half of that below it.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-header-container</code></td>
+                                            <td>Layout</td>
+                                            <td>Wrapping flex column with a <code>--r-block-padding</code> gap and half of it above. A row with <code>space-between</code> from 640px up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-header-secondary</code></td>
+                                            <td>Layout</td>
+                                            <td><code>max-width: 100%</code>. Below 640px it is full width and its <code>.action-menu-list</code> becomes a wrapping row.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.action-menu-label</code></td>
+                                            <td>Action menu</td>
+                                            <td>Sets <code>user-select: none</code>. The action menu module declares the same rule.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-grid.html">Previous: Block grid</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-inline.html">Next: Block inline</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#action-led">Action-led header</a>
+                        <a class="doc-toc-link" href="#responsive">Responsive stacking</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

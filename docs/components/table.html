@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Table - roolith css</title>
+        <meta name="description" content="Table variants for striping, borders, filled headers, responsive overflow, row highlight and checked states, and selection columns in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Table</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Table</h1>
+                            <p class="doc-content-lead">
+                                Tables carry the rows that other components describe. The <code>.table</code> base class sets a compact 14px grid with token borders and a first-cell padding reset, and the variant classes add striping, a closed border grid, or a filled header. Row state classes mark the selected and the changed rows without touching the markup.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.table</strong>
+                                - defined in
+                                <strong>modules/_table.scss</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            Every surface, border, and spacing value in this module reads a <code>--r-table-*</code> token, including the hover, striped, and highlight colors. Retune <code>--r-table-spacing</code> and the whole grid follows, in both themes.
+                        </div>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>The base class goes on a real <code>&lt;table&gt;</code>. It sets 14px text over an 18px line height, left aligns the headers at <code>--r-table-header-font-weight</code>, and pads every cell by <code>--r-table-spacing</code>, which is 0.625rem by default.</p>
+                            <p>The first cell in each row drops its left padding, so the table lines up with the heading above it instead of sitting 10px to the right. The striped, bordered, and primary variants put that padding back because they own the outer edge themselves.</p>
+                            <p>A table is as wide as its content by default. Add <code>.full-width</code> from the typography module to stretch it to the container, and reach for the responsive wrapper below when the column count can pass the available width.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Worker</th>
+                                                <th scope="col">Region</th>
+                                                <th scope="col">Queue</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Sync worker</td>
+                                                <td>eu-west-1</td>
+                                                <td>128</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mail worker</td>
+                                                <td>us-east-1</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Export worker</td>
+                                                <td>ap-south-1</td>
+                                                <td>12</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="table-basic">Copy</button>
+                                </div>
+                                <pre><code id="table-basic" class="language-html">&lt;table class="table"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Worker&lt;/th&gt;
+            &lt;th scope="col"&gt;Region&lt;/th&gt;
+            &lt;th scope="col"&gt;Queue&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Sync worker&lt;/td&gt;
+            &lt;td&gt;eu-west-1&lt;/td&gt;
+            &lt;td&gt;128&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Mail worker&lt;/td&gt;
+            &lt;td&gt;us-east-1&lt;/td&gt;
+            &lt;td&gt;0&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Export worker&lt;/td&gt;
+            &lt;td&gt;ap-south-1&lt;/td&gt;
+            &lt;td&gt;12&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                            <p>The header row takes its rule from <code>--r-table-header-border-color</code>, and body rows take theirs from <code>--r-table-border-color</code>, which is the lighter of the two.</p>
+                        </section>
+
+                        <section class="doc-section" id="striped">
+                            <h2>Striped rows</h2>
+                            <p><code>.table-striped</code> shades every even body row with <code>--r-table-row-striped-color</code> and lifts the hovered row to <code>--r-table-row-striped-hover-color</code>. It shares the primary group, so the header also gets <code>--r-table-primary-header-color</code> behind it.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Plan</th>
+                                                <th scope="col">Seats</th>
+                                                <th scope="col">Monthly</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Starter</td>
+                                                <td>3</td>
+                                                <td>$0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Team</td>
+                                                <td>25</td>
+                                                <td>$120</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business</td>
+                                                <td>100</td>
+                                                <td>$480</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Enterprise</td>
+                                                <td>Unlimited</td>
+                                                <td>Contact us</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="table-striped">Copy</button>
+                                </div>
+                                <pre><code id="table-striped" class="language-html">&lt;table class="table table-striped"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Plan&lt;/th&gt;
+            &lt;th scope="col"&gt;Seats&lt;/th&gt;
+            &lt;th scope="col"&gt;Monthly&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Starter&lt;/td&gt;
+            &lt;td&gt;3&lt;/td&gt;
+            &lt;td&gt;$0&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Team&lt;/td&gt;
+            &lt;td&gt;25&lt;/td&gt;
+            &lt;td&gt;$120&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Business&lt;/td&gt;
+            &lt;td&gt;100&lt;/td&gt;
+            &lt;td&gt;$480&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Enterprise&lt;/td&gt;
+            &lt;td&gt;Unlimited&lt;/td&gt;
+            &lt;td&gt;Contact us&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="bordered">
+                            <h2>Bordered rows</h2>
+                            <p><code>.table-bordered</code> draws the top and left border on the table itself and puts the bottom and right border on each cell, which closes a full grid. The header row drops its own bottom border because the cells already provide one, so no line doubles up.</p>
+                            <p>The variant also restores the first-cell left padding and keeps the background transition on body rows. It is the right choice when a row has to be readable across a wide gap, such as a comparison table.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Check</th>
+                                                <th scope="col">Build</th>
+                                                <th scope="col">Tests</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Lint</td>
+                                                <td>Passed</td>
+                                                <td>12s</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Unit</td>
+                                                <td>Passed</td>
+                                                <td>48s</td>
+                                            </tr>
+                                            <tr>
+                                                <td>End to end</td>
+                                                <td>Flaky</td>
+                                                <td>3m 20s</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="table-bordered">Copy</button>
+                                </div>
+                                <pre><code id="table-bordered" class="language-html">&lt;table class="table table-bordered"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Check&lt;/th&gt;
+            &lt;th scope="col"&gt;Build&lt;/th&gt;
+            &lt;th scope="col"&gt;Tests&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Lint&lt;/td&gt;
+            &lt;td&gt;Passed&lt;/td&gt;
+            &lt;td&gt;12s&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Unit&lt;/td&gt;
+            &lt;td&gt;Passed&lt;/td&gt;
+            &lt;td&gt;48s&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;End to end&lt;/td&gt;
+            &lt;td&gt;Flaky&lt;/td&gt;
+            &lt;td&gt;3m 20s&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="primary">
+                            <h2>Primary and sortable headers</h2>
+                            <p><code>.table-primary</code> fills the header with <code>--r-table-primary-header-color</code> and transitions the background of every body row to <code>--r-table-row-hover-color</code> on hover. It is the default choice for a data table that a reader scans row by row.</p>
+                            <p>A sortable column needs a control inside the <code>&lt;th&gt;</code>. <code>.table-thead-label</code> is a full width flex button that spreads the label and the sort glyph to opposite edges, resets the background, border, and padding, inherits the cell type, and sets a pointer cursor.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <table class="table table-primary">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <button type="button" class="table-thead-label">
+                                                        Worker
+                                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                                                            <path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th scope="col" aria-sort="ascending">
+                                                    <button type="button" class="table-thead-label">
+                                                        Queue
+                                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                                                            <path d="M8 15l4-4 4 4" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Sync worker</td>
+                                                <td>128</td>
+                                                <td>Running</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mail worker</td>
+                                                <td>0</td>
+                                                <td>Idle</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="table-primary">Copy</button>
+                                </div>
+                                <pre><code id="table-primary" class="language-html">&lt;table class="table table-primary"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;
+                &lt;button type="button" class="table-thead-label"&gt;
+                    Worker
+                    &lt;svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"&gt;
+                        &lt;path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/th&gt;
+            &lt;th scope="col" aria-sort="ascending"&gt;
+                &lt;button type="button" class="table-thead-label"&gt;
+                    Queue
+                    &lt;svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"&gt;
+                        &lt;path d="M8 15l4-4 4 4" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/th&gt;
+            &lt;th scope="col"&gt;Status&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Sync worker&lt;/td&gt;
+            &lt;td&gt;128&lt;/td&gt;
+            &lt;td&gt;Running&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Mail worker&lt;/td&gt;
+            &lt;td&gt;0&lt;/td&gt;
+            &lt;td&gt;Idle&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                            <p>The label button ships no sorting behavior. Keep the order in the server or your script, and move <code>aria-sort</code> to the column that is actually sorted.</p>
+                        </section>
+
+                        <section class="doc-section" id="responsive">
+                            <h2>Responsive wrapper</h2>
+                            <p><code>.table-responsive</code> caps the width at the container, scrolls the overflow on the x axis, and pins two edge scrims plus two shadow gradients over the table. The scrims use <code>--r-table-scroll-scrim-color</code> and the shadows use <code>--r-table-scroll-shadow-color</code>.</p>
+                            <p>Two of those gradients scroll with the content and two stay fixed, which is what makes a shadow appear only on a side that still has hidden columns. Once the table is fully visible both shadows disappear, so the effect needs no JavaScript.</p>
+                            <p>The wrapper raises the inner <code>.table</code> to a <code>--r-table-min-width</code> of 30rem so columns do not collapse before the scroll starts, and it applies the shared 4px scrollbar from <code>--r-scrollbar-track</code> and <code>--r-scrollbar-thumb</code>.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="table-responsive" tabindex="0" role="region" aria-label="Deployments, scrollable table">
+                                        <table class="table table-primary full-width">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Service</th>
+                                                    <th scope="col">Environment</th>
+                                                    <th scope="col">Region</th>
+                                                    <th scope="col">Version</th>
+                                                    <th scope="col">CPU</th>
+                                                    <th scope="col">Memory</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Last deploy</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>api</td>
+                                                    <td>production</td>
+                                                    <td>eu-west-1</td>
+                                                    <td>4.0.0</td>
+                                                    <td>42%</td>
+                                                    <td>1.2 GB</td>
+                                                    <td>Healthy</td>
+                                                    <td>2 minutes ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>worker</td>
+                                                    <td>production</td>
+                                                    <td>us-east-1</td>
+                                                    <td>3.9.4</td>
+                                                    <td>71%</td>
+                                                    <td>2.4 GB</td>
+                                                    <td>Degraded</td>
+                                                    <td>1 hour ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>scheduler</td>
+                                                    <td>staging</td>
+                                                    <td>ap-south-1</td>
+                                                    <td>4.0.0-rc.2</td>
+                                                    <td>8%</td>
+                                                    <td>512 MB</td>
+                                                    <td>Healthy</td>
+                                                    <td>Yesterday</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="table-responsive">Copy</button>
+                                </div>
+                                <pre><code id="table-responsive" class="language-html">&lt;div class="table-responsive" tabindex="0" role="region" aria-label="Deployments, scrollable table"&gt;
+    &lt;table class="table table-primary full-width"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th scope="col"&gt;Service&lt;/th&gt;
+                &lt;th scope="col"&gt;Environment&lt;/th&gt;
+                &lt;th scope="col"&gt;Region&lt;/th&gt;
+                &lt;th scope="col"&gt;Version&lt;/th&gt;
+                &lt;th scope="col"&gt;CPU&lt;/th&gt;
+                &lt;th scope="col"&gt;Memory&lt;/th&gt;
+                &lt;th scope="col"&gt;Status&lt;/th&gt;
+                &lt;th scope="col"&gt;Last deploy&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;api&lt;/td&gt;
+                &lt;td&gt;production&lt;/td&gt;
+                &lt;td&gt;eu-west-1&lt;/td&gt;
+                &lt;td&gt;4.0.0&lt;/td&gt;
+                &lt;td&gt;42%&lt;/td&gt;
+                &lt;td&gt;1.2 GB&lt;/td&gt;
+                &lt;td&gt;Healthy&lt;/td&gt;
+                &lt;td&gt;2 minutes ago&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>In a narrow window, scroll the demo above sideways to see the scrim and the shadow drop away as the last column comes into view.</p>
+                            <p id="table-gate">The conditional <code>tabindex="0"</code> is the one part of this wrapper that the stylesheet cannot supply. The framework ships no JavaScript, so gating the attribute on overflow takes a few lines of script, and this site uses the gate in <code>docs/doc.js</code>, which adds <code>tabindex="0"</code> while a wrapper overflows and removes it once the table fits. Without that gate, decide once: keep <code>tabindex="0"</code> and accept a focus stop when the table fits, or omit it and accept that a narrow viewport cannot reach the scroll.</p>
+                        </section>
+
+                        <section class="doc-section" id="row-states">
+                            <h2>Row states</h2>
+                            <p><code>.is-highlight</code> tints a row with <code>--r-table-row-highlight-color</code> and draws a 3px inset bar in <code>--r-accent</code> on the first cell. Use it for the row a deep link just landed on, or for the row that a bulk action changed.</p>
+                            <p><code>.is-checked</code> tints a row with <code>--r-table-row-hover-color</code>. It is a separate class from the checkbox state, so keep the two in sync in your script and do not let the tint carry the meaning on its own.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Invoice</th>
+                                                <th scope="col">Client</th>
+                                                <th scope="col">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="is-highlight">
+                                                <td>INV-1042</td>
+                                                <td>Northwind</td>
+                                                <td>$2,400</td>
+                                            </tr>
+                                            <tr class="is-checked">
+                                                <td>INV-1043</td>
+                                                <td>Contoso</td>
+                                                <td>$860</td>
+                                            </tr>
+                                            <tr>
+                                                <td>INV-1044</td>
+                                                <td>Fabrikam</td>
+                                                <td>$1,150</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="table-row-states">Copy</button>
+                                </div>
+                                <pre><code id="table-row-states" class="language-html">&lt;tr class="is-highlight"&gt;
+    &lt;td&gt;INV-1042&lt;/td&gt;
+    &lt;td&gt;Northwind&lt;/td&gt;
+    &lt;td&gt;$2,400&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="is-checked"&gt;
+    &lt;td&gt;INV-1043&lt;/td&gt;
+    &lt;td&gt;Contoso&lt;/td&gt;
+    &lt;td&gt;$860&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+                            </div>
+                            <p>Both classes go on the <code>&lt;tr&gt;</code>. The highlight bar only appears on the first cell, and it draws inside the cell box, so the bordered variant keeps its grid intact.</p>
+                        </section>
+
+                        <section class="doc-section" id="selection">
+                            <h2>Selection column</h2>
+                            <p>A checkbox column is an ordinary cell with <code>.form-check-input</code> inside it. The table gives that input a 7px by 12px margin so the control centers against the 18px line instead of sitting on the baseline.</p>
+                            <p>Repeat the input in the header for a select all control, and use <code>.is-indeterminate</code> on it when only some rows are selected. The modifier fills the box with <code>--r-surface-muted</code>, draws the accent border, and renders a dash.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <table class="table table-primary">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <input type="checkbox" class="form-check-input is-indeterminate" aria-label="Select all invoices" />
+                                                </th>
+                                                <th scope="col">Invoice</th>
+                                                <th scope="col">Client</th>
+                                                <th scope="col">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="is-checked">
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" checked aria-label="Select INV-1042" />
+                                                </td>
+                                                <td>INV-1042</td>
+                                                <td>Northwind</td>
+                                                <td>$2,400</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" aria-label="Select INV-1043" />
+                                                </td>
+                                                <td>INV-1043</td>
+                                                <td>Contoso</td>
+                                                <td>$860</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="table-selection">Copy</button>
+                                </div>
+                                <pre><code id="table-selection" class="language-html">&lt;table class="table table-primary"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;
+                &lt;input type="checkbox" class="form-check-input is-indeterminate" aria-label="Select all invoices" /&gt;
+            &lt;/th&gt;
+            &lt;th scope="col"&gt;Invoice&lt;/th&gt;
+            &lt;th scope="col"&gt;Client&lt;/th&gt;
+            &lt;th scope="col"&gt;Amount&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr class="is-checked"&gt;
+            &lt;td&gt;
+                &lt;input type="checkbox" class="form-check-input" checked aria-label="Select INV-1042" /&gt;
+            &lt;/td&gt;
+            &lt;td&gt;INV-1042&lt;/td&gt;
+            &lt;td&gt;Northwind&lt;/td&gt;
+            &lt;td&gt;$2,400&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;input type="checkbox" class="form-check-input" aria-label="Select INV-1043" /&gt;
+            &lt;/td&gt;
+            &lt;td&gt;INV-1043&lt;/td&gt;
+            &lt;td&gt;Contoso&lt;/td&gt;
+            &lt;td&gt;$860&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                            <p>Marking the row is your job. Listen to the change event and toggle <code>.is-checked</code> on the closest <code>&lt;tr&gt;</code> so the tint always matches the input.</p>
+                        </section>
+
+                        <section class="doc-section" id="composition">
+                            <h2>Composition</h2>
+                            <p>Cells are plain block content, so badges and buttons drop in without wrappers. Keep row actions small: a <code>.button-text</code> or a <code>.button-small</code> keeps the row height predictable, while a full size button stretches every row to 40px or more.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Worker</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Started</th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Sync worker</td>
+                                                <td><span class="badge badge-success">Active</span></td>
+                                                <td>4 minutes ago</td>
+                                                <td>
+                                                    <button type="button" class="button button-text button-small">Restart</button>
+                                                    <button type="button" class="button button-text button-small">Logs</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mail worker</td>
+                                                <td><span class="badge badge-warning">Paused</span></td>
+                                                <td>2 hours ago</td>
+                                                <td>
+                                                    <button type="button" class="button button-text button-small">Resume</button>
+                                                    <button type="button" class="button button-text button-small">Logs</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Export worker</td>
+                                                <td><span class="badge badge-danger">Failed</span></td>
+                                                <td>Yesterday</td>
+                                                <td>
+                                                    <button type="button" class="button button-text button-small">Retry</button>
+                                                    <button type="button" class="button button-text button-small">Logs</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="table-composition">Copy</button>
+                                </div>
+                                <pre><code id="table-composition" class="language-html">&lt;table class="table table-striped"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Worker&lt;/th&gt;
+            &lt;th scope="col"&gt;Status&lt;/th&gt;
+            &lt;th scope="col"&gt;Started&lt;/th&gt;
+            &lt;th scope="col"&gt;Actions&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Sync worker&lt;/td&gt;
+            &lt;td&gt;&lt;span class="badge badge-success"&gt;Active&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;4 minutes ago&lt;/td&gt;
+            &lt;td&gt;
+                &lt;button type="button" class="button button-text button-small"&gt;Restart&lt;/button&gt;
+                &lt;button type="button" class="button button-text button-small"&gt;Logs&lt;/button&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Mail worker&lt;/td&gt;
+            &lt;td&gt;&lt;span class="badge badge-warning"&gt;Paused&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;2 hours ago&lt;/td&gt;
+            &lt;td&gt;
+                &lt;button type="button" class="button button-text button-small"&gt;Resume&lt;/button&gt;
+                &lt;button type="button" class="button button-text button-small"&gt;Logs&lt;/button&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                            <p>Write the status word in the badge. The tint is only a second cue, and a row of colors tells a screen reader nothing.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>A table is the right element only when the content has rows and columns that relate to each other. For a two column list of labels and values, use a description list instead.</p>
+                            <ul>
+                                <li>Keep the real table structure: <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and <code>&lt;th&gt;</code> for the header cells. A grid of <code>&lt;div&gt;</code> elements is not announced as a table.</li>
+                                <li>Set <code>scope="col"</code> on column headers and <code>scope="row"</code> on row headers, so a screen reader can pair each cell with its label.</li>
+                                <li>Label the table with a <code>&lt;caption&gt;</code> as the first child of <code>&lt;table&gt;</code>. When a nearby heading already names the table, give that heading an id and point <code>aria-labelledby</code> at it instead of repeating the text.</li>
+                                <li>Give a scrollable <code>.table-responsive</code> wrapper <code>role="region"</code> and an <code>aria-label</code> whether or not the table overflows, and <code>tabindex="0"</code> while it overflows, so the scroll area is a named region and a keyboard user can scroll with the arrow keys when needed.</li>
+                                <li>Every documentation reference table points <code>aria-labelledby</code> at the id of its nearest heading, and the docs wrappers become focusable only while they actually overflow.</li>
+                                <li>Give every checkbox in a selection column its own name with <code>aria-label</code> or a visually hidden label, and name the header checkbox by what it does, such as Select all invoices.</li>
+                                <li>Move <code>aria-sort="ascending"</code> or <code>aria-sort="descending"</code> onto the <code>&lt;th&gt;</code> of the sorted column, and leave it off the others. The sort glyph is decoration, so hide it with <code>aria-hidden="true"</code>.</li>
+                                <li>Do not encode state in the tint alone. <code>.is-checked</code> follows the input, and <code>.is-highlight</code> needs a word in the row or a note nearby.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>The variants stack onto <code>.table</code>. The row classes go on a <code>&lt;tr&gt;</code>, and <code>.table-thead-label</code> goes on a button inside a header cell.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.table</code></td>
+                                            <td>Base</td>
+                                            <td>14px text over 18px, token borders, <code>--r-table-spacing</code> cell padding, 30px minimum cell width, and no left padding on the first cell.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.table-primary</code></td>
+                                            <td>Variant</td>
+                                            <td>Filled header from <code>--r-table-primary-header-color</code>, restored first-cell padding, and a hover background transition on body rows.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.table-striped</code></td>
+                                            <td>Variant</td>
+                                            <td>Even rows take <code>--r-table-row-striped-color</code> and <code>--r-table-row-striped-hover-color</code> on hover. Shares the primary header and padding rules.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.table-bordered</code></td>
+                                            <td>Variant</td>
+                                            <td>Outer top and left border with bottom and right borders on each cell. The header row drops its own rule.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.table-responsive</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Scrolls on the x axis with edge scrims and shadows, styles a 4px scrollbar, and raises the inner table to <code>--r-table-min-width</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.table-thead-label</code></td>
+                                            <td>Header control</td>
+                                            <td>Full width flex button that spreads the label and the glyph, with the background, border, and padding reset and the cell type inherited.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-highlight</code></td>
+                                            <td>Row state</td>
+                                            <td><code>--r-table-row-highlight-color</code> plus a 3px inset <code>--r-accent</code> bar on the first cell.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-checked</code></td>
+                                            <td>Row state</td>
+                                            <td><code>--r-table-row-hover-color</code> tint. Separate from the input state, so keep both in sync.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.form-check-input</code></td>
+                                            <td>Cell control</td>
+                                            <td>Form checkbox. Inside a table cell it gets a 7px by 12px margin, and <code>.is-indeterminate</code> renders the mixed state.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.full-width</code></td>
+                                            <td>Layout helper</td>
+                                            <td>Typography utility that sets <code>width: 100%</code> on the table. Not part of this module.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/tab.html">Previous: Tab</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/toast-notification.html">Next: Toast notification</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#striped">Striped rows</a>
+                        <a class="doc-toc-link" href="#bordered">Bordered rows</a>
+                        <a class="doc-toc-link" href="#primary">Primary and sortable headers</a>
+                        <a class="doc-toc-link" href="#responsive">Responsive wrapper</a>
+                        <a class="doc-toc-link" href="#row-states">Row states</a>
+                        <a class="doc-toc-link" href="#selection">Selection column</a>
+                        <a class="doc-toc-link" href="#composition">Composition</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

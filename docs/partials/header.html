@@ -1,4 +1,5 @@
 <header class="doc-header-container">
+    <a class="doc-skip" href="#doc-content">Skip to content</a>
     <div class="layout-header doc-header">
         <div class="layout-header-primary">
             <a class="layout-header-logo doc-logo" href="/" aria-label="roolith home">
@@ -46,17 +47,70 @@
             </a>
         </div>
         <div class="layout-header-secondary">
-            <form action="" class="form layout-header-search">
+            <form
+                action=""
+                role="search"
+                class="form layout-header-search"
+                id="doc-search-form"
+                data-doc-search
+                autocomplete="off">
                 <div class="form-field form-field-search">
                     <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
-                    <input type="text" name="" class="form-input" placeholder="Search docs ..." />
+                    <input
+                        type="text"
+                        name=""
+                        class="form-input"
+                        placeholder="Search docs ..."
+                        data-doc-search-input
+                        role="combobox"
+                        aria-autocomplete="list"
+                        aria-label="Search documentation"
+                        aria-expanded="false"
+                        aria-controls="doc-search-results" />
                 </div>
+                <div
+                    class="doc-search-results"
+                    id="doc-search-results"
+                    role="listbox"
+                    aria-label="Search results"
+                    data-doc-search-results
+                    hidden></div>
+                <span
+                    class="doc-visually-hidden"
+                    role="status"
+                    aria-live="polite"
+                    data-doc-search-status></span>
             </form>
             <ul class="nav layout-header-nav">
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/components/buttons.html">Components</a></li>
-                <li class="nav-item"><a class="nav-link" href="/components/buttons.html">Docs</a></li>
+                <li class="nav-item"><a class="nav-link" href="/getting-started/introduction.html">Docs</a></li>
+                <li class="nav-item"><a class="nav-link" href="/components/accordion.html">Components</a></li>
+                <li class="nav-item"><a class="nav-link" href="/blocks/block-header.html">Blocks</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/getting-started/theme-playground.html">Playground</a>
+                </li>
             </ul>
+            <button
+                type="button"
+                class="button button-icon button-text doc-search-toggle"
+                data-doc-search-toggle
+                aria-expanded="false"
+                aria-controls="doc-search-form"
+                aria-label="Open search">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                    stroke-width="1.5">
+                    <path
+                        d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
             <button
                 type="button"
                 class="button button-icon button-text doc-theme-toggle"
