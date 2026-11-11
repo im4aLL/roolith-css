@@ -13,30 +13,29 @@
     }
 
     .comment {
-        padding: rem(20) rem(20) 0 rem(20);
+        padding: var(--r-comment-spacing) var(--r-comment-spacing) 0;
     }
 
     .comment-body {
         font-size: rem(14);
         line-height: rem(22);
-        padding: rem(15) 0;
-
-        .comment-small & {
-            font-size: rem(12);
-            line-height: rem(18);
-            padding: rem(10) 0;
-        }
+        padding: var(--r-comment-body-spacing);
     }
 
     .comment-info {
         @include mixins.text-small();
         @include mixins.text-dimmed();
-        padding-bottom: rem(20);
+        padding-bottom: var(--r-comment-spacing);
     }
 
     .comment-action {
         @include mixins.clearfix();
-        padding-bottom: rem(20);
+        padding-bottom: var(--r-comment-spacing);
+    }
+
+    .comment-small {
+        --r-comment-spacing: var(--r-comment-spacing-small);
+        --r-comment-body-spacing: var(--r-comment-body-spacing-small);
     }
 
     .comment-action-item {

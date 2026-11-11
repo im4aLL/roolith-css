@@ -104,6 +104,10 @@
     --r-card-header-footer-border: var(--r-border-subtle);
     --r-card-header-footer-color: var(--r-text-subtle);
     --r-card-background: var(--r-surface);
+    --r-card-spacing: 1.5625rem;
+    --r-card-spacing-small: 0.9375rem;
+    --r-card-header-footer-spacing: 0.9375rem 1.5625rem;
+    --r-card-header-footer-spacing-small: 0.625rem 0.9375rem;
 
     // Collage
     --r-collage-item-default-width: 12.5rem;
@@ -132,6 +136,10 @@
 
     // Comment
     --r-comment-highlight-color: var(--_r-comment-highlight);
+    --r-comment-spacing: 1.25rem;
+    --r-comment-spacing-small: 0.9375rem;
+    --r-comment-body-spacing: 0.9375rem 0;
+    --r-comment-body-spacing-small: 0.625rem 0;
 
     // Datepicker
     --r-form-datepicker-background-color: var(--r-surface-raised);
@@ -250,6 +258,14 @@
     // Message
     --r-message-radius: var(--r-global-border-radius);
     --r-message-close-color: var(--r-text);
+    --r-message-spacing: 1.0625rem 1.875rem 1.0625rem 1.25rem;
+    --r-message-spacing-small: 0.75rem 1.25rem 0.75rem 0.875rem;
+    --r-message-margin: 0.625rem 0;
+    --r-message-margin-small: 0;
+    --r-message-extra-spacing: 1.6875rem 1.875rem;
+    --r-message-extra-spacing-small: 1.1875rem 1.25rem;
+    --r-message-outline-spacing: 0.875rem 1.0625rem;
+    --r-message-outline-spacing-small: 0.625rem 0.875rem;
 
     // Modal
     --r-modal-background: rgba(0, 0, 0, 0.5);

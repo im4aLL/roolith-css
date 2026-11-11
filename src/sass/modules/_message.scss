@@ -6,17 +6,23 @@
     .message {
         font-size: rem(14);
         line-height: 1.5;
-        padding: rem(17) rem(30) rem(17) rem(20);
+        padding: var(--r-message-spacing);
         border-radius: var(--r-message-radius);
-        margin-top: rem(10);
-        margin-bottom: rem(10);
+        margin: var(--r-message-margin);
         background: var(--r-message-background);
         position: relative;
         text-align: left;
     }
 
+    .message-small {
+        --r-message-spacing: var(--r-message-spacing-small);
+        --r-message-extra-spacing: var(--r-message-extra-spacing-small);
+        --r-message-outline-spacing: var(--r-message-outline-spacing-small);
+        --r-message-margin: var(--r-message-margin-small);
+    }
+
     .message-extra-pad {
-        padding: rem(27) rem(30);
+        padding: var(--r-message-extra-spacing);
     }
 
     .message-close {
@@ -52,7 +58,7 @@
                 background: transparent;
                 color: $text;
                 border: rem(1) solid $text;
-                padding: rem(14) rem(17);
+                padding: var(--r-message-outline-spacing);
             }
         }
     }

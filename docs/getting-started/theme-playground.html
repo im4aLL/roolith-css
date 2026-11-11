@@ -349,14 +349,10 @@
                                                     </p>
                                                 </div>
                                                 <div class="doc-playground-row">
-                                                    <button
-                                                        type="button"
-                                                        class="button button-outline button-small">
+                                                    <button type="button" class="button button-outline button-small">
                                                         Export
                                                     </button>
-                                                    <button
-                                                        type="button"
-                                                        class="button button-primary button-small">
+                                                    <button type="button" class="button button-primary button-small">
                                                         New deploy
                                                     </button>
                                                 </div>
@@ -385,9 +381,7 @@
                                                         <span class="stat-header">Avg build time</span>
                                                         <span class="stat-body">2m 14s</span>
                                                         <span class="stat-footer">
-                                                            <span class="doc-playground-trend-up">
-                                                                11s faster
-                                                            </span>
+                                                            <span class="doc-playground-trend-up">11s faster</span>
                                                             this week
                                                         </span>
                                                     </div>
@@ -407,13 +401,17 @@
 
                                             <div class="doc-playground-app-columns">
                                                 <div class="doc-playground-app-main-col">
-                                                    <div class="card doc-playground-panel">
+                                                    <div class="card card-small doc-playground-panel">
                                                         <div class="card-header">
                                                             <div class="doc-playground-panel-head">
                                                                 <strong>Recent deployments</strong>
-                                                                <div class="form-field small">
+                                                                <div
+                                                                    class="form-field small form-field-search doc-playground-search">
+                                                                    <span class="form-field-search-icon">
+                                                                        <i class="icon icon-search icon-small"></i>
+                                                                    </span>
                                                                     <input
-                                                                        class="form-input doc-playground-search"
+                                                                        class="form-input"
                                                                         type="search"
                                                                         placeholder="Search service"
                                                                         aria-label="Search deployments" />
@@ -437,16 +435,12 @@
                                                                 <div
                                                                     class="tab-content active"
                                                                     id="doc-playground-deploy-all">
-                                                                    <div
-                                                                        class="doc-playground-table-wrap">
-                                                                        <table
-                                                                            class="table doc-playground-table">
+                                                                    <div class="doc-playground-table-wrap">
+                                                                        <table class="table doc-playground-table">
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th scope="col">Service</th>
-                                                                                    <th scope="col">
-                                                                                        Environment
-                                                                                    </th>
+                                                                                    <th scope="col">Environment</th>
                                                                                     <th scope="col">Status</th>
                                                                                     <th scope="col">Duration</th>
                                                                                 </tr>
@@ -455,8 +449,7 @@
                                                                                 <tr>
                                                                                     <td>api-gateway</td>
                                                                                     <td>
-                                                                                        <span
-                                                                                            class="badge badge-info">
+                                                                                        <span class="badge badge-info">
                                                                                             Production
                                                                                         </span>
                                                                                     </td>
@@ -486,8 +479,7 @@
                                                                                 <tr>
                                                                                     <td>worker</td>
                                                                                     <td>
-                                                                                        <span
-                                                                                            class="badge badge-info">
+                                                                                        <span class="badge badge-info">
                                                                                             Production
                                                                                         </span>
                                                                                     </td>
@@ -506,20 +498,16 @@
                                                                 <div
                                                                     class="tab-content"
                                                                     id="doc-playground-deploy-failed">
-                                                                    <div class="message message-danger">
-                                                                        Worker builds need attention before the
-                                                                        next release.
+                                                                    <div class="message message-small message-danger">
+                                                                        Worker builds need attention before the next
+                                                                        release.
                                                                     </div>
-                                                                    <div
-                                                                        class="doc-playground-table-wrap">
-                                                                        <table
-                                                                            class="table doc-playground-table">
+                                                                    <div class="doc-playground-table-wrap">
+                                                                        <table class="table doc-playground-table">
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th scope="col">Service</th>
-                                                                                    <th scope="col">
-                                                                                        Environment
-                                                                                    </th>
+                                                                                    <th scope="col">Environment</th>
                                                                                     <th scope="col">Status</th>
                                                                                     <th scope="col">Duration</th>
                                                                                 </tr>
@@ -528,8 +516,7 @@
                                                                                 <tr>
                                                                                     <td>worker</td>
                                                                                     <td>
-                                                                                        <span
-                                                                                            class="badge badge-info">
+                                                                                        <span class="badge badge-info">
                                                                                             Production
                                                                                         </span>
                                                                                     </td>
@@ -549,19 +536,14 @@
                                                         </div>
                                                         <div class="card-footer doc-playground-panel-foot">
                                                             <span>Showing 3 of 42</span>
-                                                            <nav
-                                                                class="pagination"
-                                                                aria-label="Deployments pagination">
+                                                            <nav class="pagination" aria-label="Deployments pagination">
                                                                 <ul class="pagination-list">
                                                                     <li class="pagination-item">
-                                                                        <a
-                                                                            class="pagination-link"
-                                                                            href="#doc-content">
+                                                                        <a class="pagination-link" href="#doc-content">
                                                                             Previous
                                                                         </a>
                                                                     </li>
-                                                                    <li
-                                                                        class="pagination-item pagination-item-active">
+                                                                    <li class="pagination-item pagination-item-active">
                                                                         <a
                                                                             class="pagination-link"
                                                                             href="#doc-content"
@@ -570,9 +552,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li class="pagination-item">
-                                                                        <a
-                                                                            class="pagination-link"
-                                                                            href="#doc-content">
+                                                                        <a class="pagination-link" href="#doc-content">
                                                                             Next
                                                                         </a>
                                                                     </li>
@@ -581,15 +561,14 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="card doc-playground-panel doc-playground-chart-card">
+                                                    <div
+                                                        class="card card-small doc-playground-panel doc-playground-chart-card">
                                                         <div class="card-header">
                                                             <div class="doc-playground-panel-head">
                                                                 <strong>Deployment volume</strong>
                                                                 <span class="doc-playground-panel-meta">
                                                                     Last 7 days
-                                                                    <span class="badge badge-success">
-                                                                        +12%
-                                                                    </span>
+                                                                    <span class="badge badge-success">+12%</span>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -620,9 +599,7 @@
                                                                     class="doc-playground-chart-bar"
                                                                     style="height: 71%"></span>
                                                             </div>
-                                                            <div
-                                                                class="doc-playground-chart-labels"
-                                                                aria-hidden="true">
+                                                            <div class="doc-playground-chart-labels" aria-hidden="true">
                                                                 <span>Mon</span>
                                                                 <span>Tue</span>
                                                                 <span>Wed</span>
@@ -636,48 +613,43 @@
                                                 </div>
 
                                                 <div class="doc-playground-app-side">
-                                                    <div class="card doc-playground-panel">
+                                                    <div class="card card-small doc-playground-panel">
                                                         <div class="card-header">Activity</div>
                                                         <div class="card-body">
                                                             <div class="doc-playground-stack">
-                                                                <div class="message message-success">
+                                                                <div class="message message-small message-success">
                                                                     Deploy 1284 reached production.
                                                                 </div>
-                                                                <div class="comment comment-highlight">
+                                                                <div class="comment comment-small comment-highlight">
                                                                     <div class="avatar avatar-small">
                                                                         <figure class="avatar-fig rounded">
                                                                             <img
                                                                                 src="https://picsum.photos/32/32?image=507"
                                                                                 alt="" />
                                                                         </figure>
-                                                                        <a
-                                                                            class="avatar-label"
-                                                                            href="#doc-content">
+                                                                        <a class="avatar-label" href="#doc-content">
                                                                             Sofia Almeida
                                                                         </a>
                                                                     </div>
                                                                     <div class="comment-body">
-                                                                        Approved the production rollout after
-                                                                        the smoke tests passed.
+                                                                        Approved the production rollout after the smoke
+                                                                        tests passed.
                                                                     </div>
                                                                     <div class="comment-info">2 min ago</div>
                                                                 </div>
-                                                                <div class="comment">
+                                                                <div class="comment comment-small">
                                                                     <div class="avatar avatar-small">
                                                                         <figure class="avatar-fig rounded">
                                                                             <img
                                                                                 src="https://picsum.photos/32/32?image=501"
                                                                                 alt="" />
                                                                         </figure>
-                                                                        <a
-                                                                            class="avatar-label"
-                                                                            href="#doc-content">
+                                                                        <a class="avatar-label" href="#doc-content">
                                                                             Marcus Lee
                                                                         </a>
                                                                     </div>
                                                                     <div class="comment-body">
-                                                                        Opened an issue for the failed worker
-                                                                        build.
+                                                                        Opened an issue for the failed worker build.
                                                                     </div>
                                                                     <div class="comment-info">23 min ago</div>
                                                                 </div>
@@ -685,10 +657,8 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="card doc-playground-panel">
-                                                        <div class="card-header">
-                                                            Invite a teammate
-                                                        </div>
+                                                    <div class="card card-small doc-playground-panel">
+                                                        <div class="card-header">Invite a teammate</div>
                                                         <div class="card-body">
                                                             <div class="doc-playground-stack">
                                                                 <div class="form-field">
@@ -727,17 +697,12 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="card doc-playground-panel">
+                                                    <div class="card card-small doc-playground-panel">
                                                         <div class="card-body">
-                                                            <strong
-                                                                class="doc-playground-panel-label">
-                                                                Filters
-                                                            </strong>
+                                                            <strong class="doc-playground-panel-label">Filters</strong>
                                                             <div class="accordion">
                                                                 <div class="accordion-item active">
-                                                                    <div class="accordion-item-title">
-                                                                        Environment
-                                                                    </div>
+                                                                    <div class="accordion-item-title">Environment</div>
                                                                     <div class="accordion-item-body">
                                                                         <label class="form-checkbox-label">
                                                                             <input
@@ -756,9 +721,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="accordion-item">
-                                                                    <div class="accordion-item-title">
-                                                                        Status
-                                                                    </div>
+                                                                    <div class="accordion-item-title">Status</div>
                                                                     <div class="accordion-item-body">
                                                                         <label class="form-checkbox-label">
                                                                             <input

@@ -22,7 +22,7 @@
     }
 
     .card-body {
-        padding: rem(25);
+        padding: var(--r-card-spacing);
     }
 
     .card-title {
@@ -48,17 +48,22 @@
     }
 
     .card-header {
-        padding: rem(15) rem(25);
+        padding: var(--r-card-header-footer-spacing);
         border-bottom: rem(1) solid var(--r-card-header-footer-border);
         font-size: rem(14);
         color: var(--r-card-header-footer-color);
     }
 
     .card-footer {
-        padding: rem(15) rem(25);
+        padding: var(--r-card-header-footer-spacing);
         border-top: rem(1) solid var(--r-card-header-footer-border);
         color: var(--r-card-header-footer-color);
         font-size: rem(14);
+    }
+
+    .card-small {
+        --r-card-spacing: var(--r-card-spacing-small);
+        --r-card-header-footer-spacing: var(--r-card-header-footer-spacing-small);
     }
 
     @each $name, $value in s.$colors {
