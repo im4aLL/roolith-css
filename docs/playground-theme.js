@@ -1,13 +1,20 @@
 /**
  * Theme model for the docs theme playground: reads the framework token defaults
- * from the loaded stylesheet, validates control state, and renders override CSS
- * with the same light and dark scope selectors the framework emits.
+ * from the loaded stylesheet, validates control state, and renders both the CSS
+ * offered for copying and the stylesheet applied to the preview subtree.
+ * Light and dark are independent palettes, because the framework ships different
+ * brand fills per scope and the copyable CSS has to preserve that split.
  *
- * This is a classic script loaded with `defer` before `/playground-controls.js`
- * and `/playground.js`. It publishes one namespace,
- * `window.roolithPlaygroundTheme`, because the page controller is a separate
- * classic script and both share the global scope. The model holds no state and
- * touches the document only to measure token defaults.
+ * This is a classic script loaded with `defer` after `/playground-tokens.js` and
+ * before `/playground-controls.js` and `/playground.js`. It publishes one
+ * namespace, `window.roolithPlaygroundTheme`, because the page controller is a
+ * separate classic script and both share the global scope. The model holds no
+ * state and touches the document only to measure token defaults.
+ *
+ * `/playground-tokens.js` is generated from the framework Sass and lists every
+ * theme token the advanced panel exposes, which is every custom property the
+ * framework declares in its theme scopes except component tokens, private
+ * `--_r-*` tokens, and the tokens the basic panel already edits.
  */
 (function () {
     'use strict';
@@ -15,6 +22,7 @@
     const BRAND_TOKENS = [
         { name: 'primary', lightMix: 0, darkMix: 34 },
         { name: 'secondary', lightMix: 8, darkMix: 2 },
+        { name: 'tertiary', lightMix: 10, darkMix: 26 },
         { name: 'info', lightMix: 10, darkMix: 0 },
         { name: 'success', lightMix: 6, darkMix: 28 },
         { name: 'warning', lightMix: 10, darkMix: 0 },
@@ -25,6 +33,7 @@
     const TOKEN_FALLBACKS = {
         '--r-color-primary': '#4a5cd0',
         '--r-color-secondary': '#7b6aa6',
+        '--r-color-tertiary': '#4c7d8f',
         '--r-color-info': '#2c6196',
         '--r-color-success': '#38805f',
         '--r-color-warning': '#94702f',
@@ -36,42 +45,24 @@
     };
 
     /**
-     * Alias tokens the framework declares at theme scope and the preview consumes,
-     * repeated inside the preview subtree.
-     *
-     * Custom properties are substituted where they are declared, so every framework
-     * token the preview consumes that is derived from a tuned token must be listed
-     * here, or the preview keeps the page value while the copied CSS moves. The list
-     * is exactly that set: no more and no less, meaning nothing the preview does not
-     * consume and no consumed, tuned token left out. Adding a component to the
-     * preview markup means auditing its tokens against this list.
-     * A component token that reads a private framework token has to repeat that
-     * private recipe, because the private value is resolved where the framework
-     * declares it and would otherwise keep the page fill; `--r-comment-highlight-color`
-     * mirrors `--_r-comment-highlight` for that reason, so `renderPreviewCss` also
-     * cancels its light recipe in the dark scope.
+     * One advanced editor row.
+     * @typedef {object} AdvancedToken
+     * @property {string} name - Custom property name.
+     * @property {string} group - Panel group, such as `Palette` or `Surfaces`.
+     * @property {'color' | 'value'} kind - Editor kind, deciding whether a color chip is shown.
+     * @property {boolean} shared - True when the framework declares the token in every scope.
      */
-    const PREVIEW_ALIASES = [
-        { name: '--r-accent', value: 'var(--r-color-primary)' },
-        { name: '--r-accent-on', value: 'var(--r-color-primary-on)' },
-        { name: '--r-link', value: 'var(--r-color-link)' },
-        { name: '--r-focus-ring-color', value: 'var(--r-link)' },
-        { name: '--r-form-input-hover-border-color', value: 'var(--r-link)' },
-        { name: '--r-form-input-focus-border-color', value: 'var(--r-accent)' },
-        { name: '--r-pagination-item-active-background-color', value: 'var(--r-accent)' },
-        { name: '--r-pagination-item-active-color', value: 'var(--r-accent-on)' },
-        { name: '--r-tab-active-color', value: 'var(--r-accent)' },
-        {
-            name: '--r-comment-highlight-color',
-            value: 'color-mix(in srgb, var(--r-color-primary) 20%, var(--r-surface-page))',
-        },
-        { name: '--r-button-radius', value: 'var(--r-global-border-radius)' },
-        { name: '--r-card-radius', value: 'var(--r-global-border-radius)' },
-        { name: '--r-form-input-radius', value: 'var(--r-global-border-radius)' },
-        { name: '--r-img-radius', value: 'var(--r-global-border-radius)' },
-        { name: '--r-message-radius', value: 'var(--r-global-border-radius)' },
-        { name: '--r-pagination-item-border-radius', value: 'var(--r-global-border-radius)' },
-    ];
+
+    /**
+     * Advanced tokens from the generated catalog. A missing or malformed catalog
+     * leaves the advanced panel empty instead of breaking the basic controls.
+     * @type {AdvancedToken[]}
+     */
+    const TOKENS = Array.isArray(window.roolithPlaygroundTokens)
+        ? window.roolithPlaygroundTokens.filter(
+              (token) => token !== null && typeof token === 'object' && typeof token.name === 'string',
+          )
+        : [];
 
     /**
      * One custom property declaration in a generated rule.
@@ -81,12 +72,14 @@
      */
 
     /**
-     * The dark value of the one alias whose framework recipe differs by theme. The
-     * dark scope keeps this neutral grey, and the copied CSS never overrides it, so
-     * the preview has to reset the light recipe there.
-     * @type {TokenDeclaration}
+     * Declared advanced token values, keyed by scope. Values are the framework's
+     * declared expressions, not resolved colors, so an unchanged scope can be
+     * re-declared without breaking a `var()` chain.
+     * @typedef {object} AdvancedDefaults
+     * @property {Record<string, string>} shared - Tokens declared in every scope.
+     * @property {Record<string, string>} light - Effective light scope values.
+     * @property {Record<string, string>} dark - Effective dark scope values.
      */
-    const DARK_COMMENT_RESET = { name: '--r-comment-highlight-color', value: 'var(--r-color-neutral-300)' };
 
     /**
      * Framework defaults read from the loaded stylesheet.
@@ -96,12 +89,17 @@
      * @property {number} radius - Shared border radius in pixels.
      * @property {number} fontSize - Shared root font size in pixels.
      * @property {string} fontFamily - Shared font stack.
+     * @property {AdvancedDefaults} advanced - Declared advanced token values.
      */
 
     /**
      * Values currently held by the playground controls.
      * @typedef {object} PlaygroundState
-     * @property {Record<string, string>} colors - Chosen brand fills.
+     * @property {Record<string, string>} colors - Chosen brand fills in the light scope.
+     * @property {Record<string, string>} darkColors - Chosen brand fills in the dark scope.
+     * @property {Record<string, string>} advanced - Advanced token overrides in the light scope.
+     * @property {Record<string, string>} darkAdvanced - Advanced token overrides in the dark scope.
+     * @property {Record<string, string>} sharedAdvanced - Advanced token overrides for every scope.
      * @property {number} radius - Chosen border radius in pixels.
      * @property {number} fontSize - Chosen root font size in pixels.
      * @property {string} fontFamily - Chosen font stack, empty for the framework default.
@@ -113,6 +111,7 @@
      * @property {TokenDeclaration[]} shared - Declarations valid in every scope.
      * @property {TokenDeclaration[]} light - Light scope declarations.
      * @property {TokenDeclaration[]} dark - Dark scope declarations.
+     * @property {{light: boolean, dark: boolean}} changed - Scopes with at least one edited token.
      * @property {number} count - Distinct token names across the three groups.
      */
 
@@ -136,6 +135,61 @@
         }
 
         return `#${digits}`;
+    }
+
+    /**
+     * Round one color channel into the 0-255 range and format it as two hex digits.
+     * @param {number} value - Channel value.
+     * @returns {string} Two lowercase hex digits.
+     */
+    function hexChannel(value) {
+        return Math.round(Math.min(255, Math.max(0, value)))
+            .toString(16)
+            .padStart(2, '0');
+    }
+
+    /**
+     * Normalize a color to lowercase `#rrggbb`. Accepts hex with or without a
+     * leading hash, three or six digits, or an `rgb()`/`rgba()` value with numeric
+     * or percentage channels. The framework declares four of its dark brand fills
+     * as `rgb()` values, so reading defaults has to accept more than hex. An alpha
+     * channel is ignored because brand fills are opaque.
+     * @param {unknown} value - Candidate color.
+     * @returns {string | null} The normalized color, or null when the value is not a hex or rgb color.
+     */
+    function normalizeColor(value) {
+        if (typeof value !== 'string') {
+            return null;
+        }
+
+        const hex = normalizeHex(value);
+
+        if (hex !== null) {
+            return hex;
+        }
+
+        const match = /^rgba?\(\s*([^)]+)\)$/i.exec(value.trim());
+        const channels = match === null ? [] : match[1].split(/[\s,/]+/).filter(Boolean).slice(0, 3);
+
+        if (channels.length !== 3) {
+            return null;
+        }
+
+        const values = channels.map((channel) => {
+            const number = Number.parseFloat(channel);
+
+            if (!Number.isFinite(number)) {
+                return null;
+            }
+
+            return channel.endsWith('%') ? (number / 100) * 255 : number;
+        });
+
+        if (values.some((channel) => channel === null)) {
+            return null;
+        }
+
+        return `#${values.map(hexChannel).join('')}`;
     }
 
     /**
@@ -203,6 +257,77 @@
     }
 
     /**
+     * Visit every style rule in a rule list, descending into grouping rules such as
+     * `@media`, so the media scoped dark tokens are read too. Keyframe rules carry a
+     * style but no selector, so only rules with a selector are visited.
+     * @param {CSSRuleList} rules - Rules to walk.
+     * @param {(rule: CSSStyleRule) => void} visit - Called for every style rule.
+     * @returns {void}
+     */
+    function walkStyleRules(rules, visit) {
+        for (const rule of Array.from(rules)) {
+            if (typeof rule.selectorText === 'string') {
+                visit(rule);
+            }
+
+            if (rule.cssRules !== undefined) {
+                walkStyleRules(rule.cssRules, visit);
+            }
+        }
+    }
+
+    /**
+     * Read the declared advanced token values straight out of the loaded
+     * stylesheet rules, keyed by the scope that declares them. Reading the declared
+     * expressions instead of resolved colors keeps expressions such as
+     * `var(--r-color-neutral)` intact, so re-declaring an unchanged scope keeps the
+     * framework's token chain.
+     * @returns {AdvancedDefaults} Declared values with light and dark resolved.
+     */
+    function readTokenDeclarations() {
+        const declared = { shared: {}, light: {}, dark: {} };
+        const scopeBySelector = {
+            ':root,.theme-light,.theme-dark': 'shared',
+            ':root,.theme-light': 'light',
+            '.theme-dark': 'dark',
+            ':root:not(.theme-light)': 'dark',
+        };
+
+        for (const sheet of Array.from(document.styleSheets)) {
+            let rules = null;
+
+            try {
+                rules = sheet.cssRules;
+            } catch (error) {
+                /* a cross origin sheet cannot be inspected, skip it */
+                continue;
+            }
+
+            walkStyleRules(rules, (rule) => {
+                const scope = scopeBySelector[rule.selectorText.replace(/\s+/g, '')];
+
+                if (scope === undefined) {
+                    return;
+                }
+
+                for (const token of TOKENS) {
+                    const value = rule.style.getPropertyValue(token.name).trim();
+
+                    if (value !== '') {
+                        declared[scope][token.name] = value;
+                    }
+                }
+            });
+        }
+
+        return {
+            shared: declared.shared,
+            light: { ...declared.shared, ...declared.light },
+            dark: { ...declared.shared, ...declared.light, ...declared.dark },
+        };
+    }
+
+    /**
      * Build the defaults the controls start from: the brand fills of both theme
      * scopes plus the structural values they share.
      * @returns {PlaygroundDefaults} Defaults read from the loaded stylesheet.
@@ -216,8 +341,8 @@
         for (const token of BRAND_TOKENS) {
             const name = `--r-color-${token.name}`;
 
-            colors[token.name] = normalizeHex(light[name]) || TOKEN_FALLBACKS[name];
-            darkColors[token.name] = normalizeHex(dark[name]) || TOKEN_FALLBACKS[name];
+            colors[token.name] = normalizeColor(light[name]) || TOKEN_FALLBACKS[name];
+            darkColors[token.name] = normalizeColor(dark[name]) || TOKEN_FALLBACKS[name];
         }
 
         return {
@@ -226,7 +351,32 @@
             radius: Math.round(resolvePx(light['--r-global-border-radius'])),
             fontSize: Math.round(resolvePx(light['--r-global-base-font-size'])),
             fontFamily: light['--r-global-base-font'],
+            advanced: readTokenDeclarations(),
         };
+    }
+
+    /**
+     * List the advanced tokens the panel should render.
+     * @returns {AdvancedToken[]} The generated catalog.
+     */
+    function listTokens() {
+        return TOKENS;
+    }
+
+    /**
+     * Resolve the framework default of one advanced token in one scope. Shared
+     * tokens have a single default because the framework declares them once.
+     * @param {AdvancedToken} token - Advanced token.
+     * @param {PlaygroundDefaults} frameworkDefaults - Defaults read from the stylesheet.
+     * @param {'light' | 'dark'} scope - Scope to resolve.
+     * @returns {string} The declared default, or an empty string when the stylesheet does not declare it.
+     */
+    function tokenDefault(token, frameworkDefaults, scope) {
+        if (token.shared) {
+            return frameworkDefaults.advanced.shared[token.name] || '';
+        }
+
+        return frameworkDefaults.advanced[scope === 'dark' ? 'dark' : 'light'][token.name] || '';
     }
 
     /**
@@ -238,10 +388,37 @@
     function createState(frameworkDefaults) {
         return {
             colors: { ...frameworkDefaults.colors },
+            darkColors: { ...frameworkDefaults.darkColors },
+            advanced: {},
+            darkAdvanced: {},
+            sharedAdvanced: {},
             radius: frameworkDefaults.radius,
             fontSize: frameworkDefaults.fontSize,
             fontFamily: '',
         };
+    }
+
+    /**
+     * Validate one stored palette, keeping only entries that are hex colors and
+     * falling back to the framework palette for every other entry.
+     * @param {unknown} candidate - Parsed palette from storage.
+     * @param {Record<string, string>} fallback - Framework palette for this scope.
+     * @returns {Record<string, string>} A complete, safe palette.
+     */
+    function sanitizePalette(candidate, fallback) {
+        const source = candidate !== null && typeof candidate === 'object' ? candidate : {};
+        const palette = { ...fallback };
+
+        for (const token of BRAND_TOKENS) {
+            const stored = source[token.name];
+            const hex = typeof stored === 'string' ? normalizeHex(stored) : null;
+
+            if (hex !== null) {
+                palette[token.name] = hex;
+            }
+        }
+
+        return palette;
     }
 
     /**
@@ -280,6 +457,62 @@
     }
 
     /**
+     * Validate one advanced token value before it reaches the generated CSS. The
+     * value is free form CSS, so braces, semicolons, angle brackets, backslashes,
+     * comment markers, and control characters are rejected to keep an edited
+     * value from closing its declaration, and unbalanced parentheses are rejected
+     * so a half typed `var()` never reaches the preview.
+     * @param {unknown} value - Candidate declaration value.
+     * @returns {string | null} The trimmed value, or null when it is not safe to emit.
+     */
+    function normalizeTokenValue(value) {
+        if (typeof value !== 'string') {
+            return null;
+        }
+
+        const trimmed = value.trim();
+
+        if (trimmed === '' || trimmed.length > 160) {
+            return null;
+        }
+
+        if (/[;{}<>\\\n\r]/.test(trimmed) || trimmed.includes('/*') || trimmed.includes('*/')) {
+            return null;
+        }
+
+        const opened = trimmed.split('(').length - 1;
+        const closed = trimmed.split(')').length - 1;
+
+        return opened === closed ? trimmed : null;
+    }
+
+    /**
+     * Validate one stored overrides map, keeping only known advanced tokens and
+     * values that are safe to emit.
+     * @param {unknown} candidate - Parsed overrides from storage.
+     * @param {boolean} shared - True for the shared token map.
+     * @returns {Record<string, string>} A safe overrides map.
+     */
+    function sanitizeOverrides(candidate, shared) {
+        const source = candidate !== null && typeof candidate === 'object' ? candidate : {};
+        const overrides = {};
+
+        for (const token of TOKENS) {
+            if (token.shared !== shared) {
+                continue;
+            }
+
+            const value = normalizeTokenValue(source[token.name]);
+
+            if (value !== null) {
+                overrides[token.name] = value;
+            }
+        }
+
+        return overrides;
+    }
+
+    /**
      * Validate a stored state before it reaches the controls, so stale or edited
      * storage cannot produce an out of range slider or an unknown font stack.
      * Numeric controls are accepted only as finite numbers: `null`, an empty
@@ -293,22 +526,15 @@
     function sanitizeState(candidate, frameworkDefaults, bounds) {
         const fallback = createState(frameworkDefaults);
         const source = candidate !== null && typeof candidate === 'object' ? candidate : {};
-        const sourceColors = source.colors !== null && typeof source.colors === 'object' ? source.colors : {};
-        const colors = { ...fallback.colors };
         const radius = isFiniteNumber(source.radius) ? source.radius : null;
         const fontSize = isFiniteNumber(source.fontSize) ? source.fontSize : null;
 
-        for (const token of BRAND_TOKENS) {
-            const stored = sourceColors[token.name];
-            const hex = typeof stored === 'string' ? normalizeHex(stored) : null;
-
-            if (hex !== null) {
-                colors[token.name] = hex;
-            }
-        }
-
         return {
-            colors,
+            colors: sanitizePalette(source.colors, fallback.colors),
+            darkColors: sanitizePalette(source.darkColors, fallback.darkColors),
+            advanced: sanitizeOverrides(source.advanced, false),
+            darkAdvanced: sanitizeOverrides(source.darkAdvanced, false),
+            sharedAdvanced: sanitizeOverrides(source.sharedAdvanced, true),
             radius:
                 radius === null
                     ? fallback.radius
@@ -344,6 +570,29 @@
     }
 
     /**
+     * Build the framework's own declarations for one brand in one scope, used when
+     * the other scope changed and this one has to re-assert its default so the
+     * changed scope's rule cannot leak in. The on-color and text tint come from the
+     * declared defaults when the catalog provides them, because re-deriving them
+     * with the playground recipe could change a value the user never edited.
+     * @param {{name: string}} token - Brand token definition.
+     * @param {PlaygroundDefaults} frameworkDefaults - Defaults read from the stylesheet.
+     * @param {'light' | 'dark'} scope - Scope whose defaults to emit.
+     * @returns {TokenDeclaration[]} The framework fill triple.
+     */
+    function buildBrandDefaults(token, frameworkDefaults, scope) {
+        const name = `--r-color-${token.name}`;
+        const fill = scope === 'dark' ? frameworkDefaults.darkColors[token.name] : frameworkDefaults.colors[token.name];
+        const declared = scope === 'dark' ? frameworkDefaults.advanced.dark : frameworkDefaults.advanced.light;
+
+        return [
+            { name, value: fill },
+            { name: `${name}-on`, value: declared[`${name}-on`] || readableInk(fill) },
+            { name: `${name}-text`, value: declared[`${name}-text`] || `var(${name})` },
+        ];
+    }
+
+    /**
      * Compare a state with the framework defaults and collect only the
      * declarations that need to be emitted, grouped by the scope that applies
      * them. Structural tokens are shared by every scope in the framework.
@@ -352,7 +601,7 @@
      * @returns {TokenBlocks} Declarations to emit and their distinct token count.
      */
     function buildDeclarations(state, frameworkDefaults) {
-        const blocks = { shared: [], light: [], dark: [], count: 0 };
+        const blocks = { shared: [], light: [], dark: [], changed: { light: false, dark: false }, count: 0 };
 
         if (state.radius !== frameworkDefaults.radius) {
             blocks.shared.push({ name: '--r-global-border-radius', value: `${state.radius}px` });
@@ -366,25 +615,80 @@
             blocks.shared.push({ name: '--r-global-base-font', value: state.fontFamily });
         }
 
-        blocks.count = blocks.shared.length;
-
-        for (const token of BRAND_TOKENS) {
-            const value = state.colors[token.name];
-            const changedLight = value !== frameworkDefaults.colors[token.name];
-            const changedDark = value !== frameworkDefaults.darkColors[token.name];
-
-            if (changedLight) {
-                blocks.light.push(...buildBrandDeclarations(token, value, 'light'));
+        for (const token of TOKENS) {
+            if (!token.shared) {
+                continue;
             }
 
-            if (changedDark) {
-                blocks.dark.push(...buildBrandDeclarations(token, value, 'dark'));
-            }
+            const value = state.sharedAdvanced[token.name];
+            const fallback = tokenDefault(token, frameworkDefaults, 'light');
 
-            if (changedLight || changedDark) {
-                blocks.count += 3;
+            if (value !== undefined && value !== fallback) {
+                blocks.shared.push({ name: token.name, value });
             }
         }
+
+        // A scope declaration has to be written to both scope rules, because a
+        // light declaration on `:root` also matches an explicit dark page and the
+        // framework does not redeclare every token in the dark block. Re-declaring
+        // the unchanged scope with its own defaults keeps the palettes independent.
+        for (const token of BRAND_TOKENS) {
+            const light = state.colors[token.name];
+            const dark = state.darkColors[token.name];
+            const changedLight = light !== frameworkDefaults.colors[token.name];
+            const changedDark = dark !== frameworkDefaults.darkColors[token.name];
+
+            if (!changedLight && !changedDark) {
+                continue;
+            }
+
+            const lightDeclarations = changedLight
+                ? buildBrandDeclarations(token, light, 'light')
+                : buildBrandDefaults(token, frameworkDefaults, 'light');
+            const darkDeclarations = changedDark
+                ? buildBrandDeclarations(token, dark, 'dark')
+                : buildBrandDefaults(token, frameworkDefaults, 'dark');
+
+            blocks.light.push(...lightDeclarations);
+            blocks.dark.push(...darkDeclarations);
+
+            blocks.changed.light = blocks.changed.light || changedLight;
+            blocks.changed.dark = blocks.changed.dark || changedDark;
+        }
+        for (const token of TOKENS) {
+            if (token.shared) {
+                continue;
+            }
+
+            const light = state.advanced[token.name];
+            const dark = state.darkAdvanced[token.name];
+            const lightDefault = tokenDefault(token, frameworkDefaults, 'light');
+            const darkDefault = tokenDefault(token, frameworkDefaults, 'dark');
+            const changedLight = light !== undefined && light !== lightDefault;
+            const changedDark = dark !== undefined && dark !== darkDefault;
+
+            if (!changedLight && !changedDark) {
+                continue;
+            }
+
+            const lightValue = light === undefined ? lightDefault : light;
+            const darkValue = dark === undefined ? darkDefault : dark;
+
+            if (lightValue !== '') {
+                blocks.light.push({ name: token.name, value: lightValue });
+            }
+
+            if (darkValue !== '') {
+                blocks.dark.push({ name: token.name, value: darkValue });
+            }
+
+            blocks.changed.light = blocks.changed.light || changedLight;
+            blocks.changed.dark = blocks.changed.dark || changedDark;
+        }
+
+        const declarations = [...blocks.shared, ...blocks.light, ...blocks.dark];
+
+        blocks.count = new Set(declarations.map((declaration) => declaration.name)).size;
 
         return blocks;
     }
@@ -445,40 +749,39 @@
     }
 
     /**
-     * Render the stylesheet applied to a preview subtree only. The light and
-     * structural declarations share one rule, the dark scope is a descendant
-     * rule, and the alias tokens the framework declares at theme scope are
-     * repeated here so the preview resolves them against the local values.
-     *
-     * The dark rule is emitted whenever the base rule is, even with no dark
-     * declarations, because `--r-comment-highlight-color` is the one alias whose
-     * framework recipe differs by theme: the light recipe mixes the primary fill
-     * while the dark scope keeps a neutral grey that the copied CSS never
-     * overrides. Without the paired reset the base alias would tint the
-     * highlighted comment in dark mode while a real page keeps it grey.
+     * Render the stylesheet applied to the preview subtree only. The preview root
+     * carries an explicit `theme-light` or `theme-dark` class, so the framework
+     * itself re-declares that scope's palette and every token derived from it on
+     * the preview element. Custom properties are then resolved against the values
+     * declared on that element, which means the preview needs no alias list: only
+     * the declarations that differ from the framework scope defaults are emitted.
+     * Structural declarations are shared by both scopes and always included.
      * @param {TokenBlocks} blocks - Declarations to emit.
-     * @param {string} lightSelector - Selector for the preview root in the light scope.
-     * @param {string} darkSelector - Selector for the preview root in the dark scope.
+     * @param {'light' | 'dark'} scope - Scope the preview root is showing.
+     * @param {string} selector - Selector matching the preview root in that scope.
      * @returns {string} The scoped preview stylesheet, empty when nothing changed.
      */
-    function renderPreviewCss(blocks, lightSelector, darkSelector) {
-        if (blocks.shared.length === 0 && blocks.light.length === 0 && blocks.dark.length === 0) {
+    function renderPreviewCss(blocks, scope, selector) {
+        const declarations = [...blocks.shared, ...(scope === 'dark' ? blocks.dark : blocks.light)];
+
+        if (declarations.length === 0) {
             return '';
         }
 
-        const lightDeclarations = [...PREVIEW_ALIASES, ...blocks.shared, ...blocks.light];
-        const darkDeclarations = [DARK_COMMENT_RESET, ...blocks.dark];
-
-        return [renderRule(lightSelector, lightDeclarations), renderRule(darkSelector, darkDeclarations)].join('\n\n');
+        return renderRule(selector, declarations);
     }
 
     window.roolithPlaygroundTheme = {
         normalizeHex,
+        normalizeColor,
+        normalizeTokenValue,
         readableInk,
         readDefaults,
         createState,
         sanitizeState,
         widenRange,
+        listTokens,
+        tokenDefault,
         buildDeclarations,
         renderOverrideCss,
         renderPreviewCss,

@@ -10,8 +10,9 @@
         "preview": "vite preview",
         "css-vars": "node scripts/generate-css-variables.mjs",
         "css-vars:all": "node scripts/generate-css-variables.mjs --all",
-        "test": "node docs/check-playground-theme.mjs",
-        "check:playground": "node docs/check-playground-theme.mjs"
+        "test": "node docs/check-playground-theme.mjs && node scripts/generate-playground-tokens.mjs --check",
+        "check:playground": "node docs/check-playground-theme.mjs && node scripts/generate-playground-tokens.mjs --check",
+        "tokens": "node scripts/generate-playground-tokens.mjs"
     },
     "repository": "git+https://github.com/im4aLL/roolith-css.git",
     "keywords": [

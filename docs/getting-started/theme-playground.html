@@ -18,8 +18,10 @@
         <script src="../doc.js"></script>
         <script src="/vendor/highlight.min.js" defer></script>
         <script src="/include-fragment.js" defer></script>
+        <script src="../playground-tokens.js" defer></script>
         <script src="../playground-theme.js" defer></script>
         <script src="../playground-controls.js" defer></script>
+        <script src="../playground-advanced.js" defer></script>
         <script src="../playground.js" defer></script>
     </head>
     <body class="doc-playground-page">
@@ -47,9 +49,39 @@
                             <div class="doc-playground-controls">
                                 <div class="doc-playground-controls-body">
                                     <div class="doc-playground-group">
+                                        <div class="doc-playground-scope-row">
+                                            <div
+                                                class="doc-playground-scope"
+                                                role="group"
+                                                aria-label="Palette scope">
+                                                <button
+                                                    type="button"
+                                                    class="doc-playground-scope-button"
+                                                    data-doc-playground-scope="light"
+                                                    aria-pressed="true">
+                                                    Light
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    class="doc-playground-scope-button"
+                                                    data-doc-playground-scope="dark"
+                                                    aria-pressed="false">
+                                                    Dark
+                                                </button>
+                                            </div>
+                                            <button
+                                                type="button"
+                                                class="doc-playground-advanced-toggle"
+                                                data-doc-playground-advanced-toggle
+                                                aria-expanded="false"
+                                                aria-controls="doc-playground-advanced">
+                                                Advanced
+                                            </button>
+                                        </div>
                                         <p class="doc-playground-note">
-                                            Each fill also sets its on-color and text tint, so buttons, badges, and
-                                            messages stay legible.
+                                            Light and dark are separate palettes, and the preview follows the scope
+                                            you pick. Each fill also sets its on-color and text tint, so buttons,
+                                            badges, and messages stay legible.
                                         </p>
                                         <div class="doc-playground-colors">
                                             <div class="doc-playground-color">
@@ -96,6 +128,29 @@
                                                         data-doc-playground-hex="secondary"
                                                         value="#7b6aa6"
                                                         aria-label="Secondary hex value"
+                                                        autocomplete="off"
+                                                        spellcheck="false" />
+                                                </div>
+                                            </div>
+                                            <div class="doc-playground-color">
+                                                <label class="doc-playground-label" for="doc-playground-color-tertiary">
+                                                    Tertiary
+                                                    <code class="doc-playground-token">--r-color-tertiary</code>
+                                                </label>
+                                                <div class="doc-playground-color-row">
+                                                    <input
+                                                        class="doc-playground-swatch"
+                                                        type="color"
+                                                        id="doc-playground-color-tertiary"
+                                                        data-doc-playground-color="tertiary"
+                                                        value="#4c7d8f" />
+                                                    <input
+                                                        class="doc-playground-hex form-input"
+                                                        type="text"
+                                                        id="doc-playground-hex-tertiary"
+                                                        data-doc-playground-hex="tertiary"
+                                                        value="#4c7d8f"
+                                                        aria-label="Tertiary hex value"
                                                         autocomplete="off"
                                                         spellcheck="false" />
                                                 </div>
@@ -264,6 +319,10 @@
                                                 max="20"
                                                 step="1"
                                                 value="16" />
+                                            <p class="doc-playground-note">
+                                                A root token, so it rescales the rem units of this whole page while
+                                                you tune it.
+                                            </p>
                                         </div>
                                         <div class="doc-playground-field">
                                             <label class="doc-playground-label" for="doc-playground-font">
@@ -290,18 +349,31 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div
+                                        class="doc-playground-advanced"
+                                        id="doc-playground-advanced"
+                                        data-doc-playground-advanced
+                                        hidden>
+                                        <p class="doc-playground-note">
+                                            The rest of the theme tokens, grouped: palette, semantic, and
+                                            structural. Component tokens are not listed. A value is copied as
+                                            written, and an empty field falls back to the framework default.
+                                        </p>
+                                        <p
+                                            class="doc-playground-advanced-label"
+                                            data-doc-playground-advanced-label>
+                                            Light scope tokens
+                                        </p>
+                                        <div data-doc-playground-advanced-theme></div>
+                                        <p class="doc-playground-advanced-label">Shared tokens</p>
+                                        <div data-doc-playground-advanced-shared></div>
+                                    </div>
                                 </div>
 
                                 <div class="doc-playground-actions">
                                     <button type="button" class="button button-medium" data-doc-playground-reset>
                                         Reset
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="button button-primary button-medium"
-                                        data-doc-playground-copy
-                                        disabled>
-                                        Copy CSS
                                     </button>
                                 </div>
                                 <p class="doc-playground-status" role="status" data-doc-playground-status>
@@ -320,23 +392,23 @@
                                                 <span class="badge badge-primary">Pro</span>
                                             </div>
                                             <nav class="doc-playground-app-nav" aria-label="Preview app">
-                                                <a class="active" href="#doc-content">Overview</a>
-                                                <a href="#doc-content">Deployments</a>
-                                                <a href="#doc-content">Activity</a>
-                                                <a href="#doc-content">Settings</a>
+                                                <a class="active">Overview</a>
+                                                <a>Deployments</a>
+                                                <a>Activity</a>
+                                                <a>Settings</a>
                                             </nav>
                                             <div class="avatar avatar-small">
                                                 <figure class="avatar-fig rounded">
                                                     <img src="https://picsum.photos/32/32?image=500" alt="" />
                                                 </figure>
-                                                <a class="avatar-label" href="#doc-content">Ariana Cole</a>
+                                                <a class="avatar-label">Ariana Cole</a>
                                             </div>
                                         </div>
 
                                         <div class="doc-playground-app-body">
                                             <ol class="breadcrumb doc-playground-app-crumbs">
                                                 <li class="breadcrumb-item">
-                                                    <a href="#doc-content">Projects</a>
+                                                    <a>Projects</a>
                                                 </li>
                                                 <li class="breadcrumb-item active">Northwind</li>
                                             </ol>
@@ -435,7 +507,10 @@
                                                                 <div
                                                                     class="tab-content active"
                                                                     id="doc-playground-deploy-all">
-                                                                    <div class="doc-playground-table-wrap">
+                                                                    <div
+                                                                        class="doc-playground-table-wrap"
+                                                                        role="region"
+                                                                        aria-label="Recent deployments">
                                                                         <table class="table doc-playground-table">
                                                                             <thead>
                                                                                 <tr>
@@ -502,7 +577,10 @@
                                                                         Worker builds need attention before the next
                                                                         release.
                                                                     </div>
-                                                                    <div class="doc-playground-table-wrap">
+                                                                    <div
+                                                                        class="doc-playground-table-wrap"
+                                                                        role="region"
+                                                                        aria-label="Failed deployments">
                                                                         <table class="table doc-playground-table">
                                                                             <thead>
                                                                                 <tr>
@@ -539,20 +617,19 @@
                                                             <nav class="pagination" aria-label="Deployments pagination">
                                                                 <ul class="pagination-list">
                                                                     <li class="pagination-item">
-                                                                        <a class="pagination-link" href="#doc-content">
+                                                                        <a class="pagination-link">
                                                                             Previous
                                                                         </a>
                                                                     </li>
                                                                     <li class="pagination-item pagination-item-active">
                                                                         <a
                                                                             class="pagination-link"
-                                                                            href="#doc-content"
                                                                             aria-current="page">
                                                                             2
                                                                         </a>
                                                                     </li>
                                                                     <li class="pagination-item">
-                                                                        <a class="pagination-link" href="#doc-content">
+                                                                        <a class="pagination-link">
                                                                             Next
                                                                         </a>
                                                                     </li>
@@ -627,7 +704,7 @@
                                                                                 src="https://picsum.photos/32/32?image=507"
                                                                                 alt="" />
                                                                         </figure>
-                                                                        <a class="avatar-label" href="#doc-content">
+                                                                        <a class="avatar-label">
                                                                             Sofia Almeida
                                                                         </a>
                                                                     </div>
@@ -644,7 +721,7 @@
                                                                                 src="https://picsum.photos/32/32?image=501"
                                                                                 alt="" />
                                                                         </figure>
-                                                                        <a class="avatar-label" href="#doc-content">
+                                                                        <a class="avatar-label">
                                                                             Marcus Lee
                                                                         </a>
                                                                     </div>
@@ -747,11 +824,19 @@
                                         <span class="doc-playground-token-count" data-doc-playground-count>
                                             0 tokens
                                         </span>
+                                        <button
+                                            type="button"
+                                            class="doc-copy"
+                                            data-doc-playground-copy
+                                            disabled>
+                                            Copy CSS
+                                        </button>
                                     </div>
                                     <pre><code class="language-css" data-doc-playground-css>/* Nothing to copy yet. Change a control to generate theme overrides. */</code></pre>
                                 </div>
                                 <p class="doc-playground-hint">
-                                    Generated from the framework defaults, so it lists only the tokens that differ.
+                                    Each block lists only the tokens that differ from that scope's framework
+                                    defaults, and light and dark are diffed separately.
                                 </p>
                             </div>
                         </div>

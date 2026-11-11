@@ -6,17 +6,17 @@
  *
  * The model is one classic script that publishes its pure functions on
  * `window.roolithPlaygroundTheme` and only touches the document inside
- * `readDefaults`, so it loads in a `node:vm` context that provides `window`
- * alone. No DOM and no browser are involved. The script covers normalization,
- * luminance based ink selection, storage sanitizing, range widening, per scope
- * diffing, and the exact selector order and formatting of the generated and
- * preview CSS, then exits non-zero with the failing expectation when an
- * invariant breaks.
+ * `readDefaults`, so it loads in a `node:vm` context that provides `window` with
+ * a small advanced token catalog. No DOM and no browser are involved. The script
+ * covers color normalization, advanced value validation, luminance based ink
+ * selection, storage sanitizing, range widening, per scope diffing, and the exact
+ * selector order and formatting of the generated and preview CSS, then exits
+ * non-zero with the failing expectation when an invariant breaks.
  *
- * The exact alias pin below is a drift alarm between the model and the hand
- * maintained copy in this file, not proof that the preview markup consumes every
- * alias. Nothing here reads the preview markup or the framework stylesheet, so a
- * component added to the preview without the alias it needs stays green.
+ * The preview needs no alias list because the preview root carries an explicit
+ * theme class, so the framework re-declares every derived token on that element
+ * itself. The assertions below pin that contract: the preview rule holds only
+ * the shared declarations plus the declarations of the scope it is showing.
  */
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -27,7 +27,19 @@ import { fileURLToPath } from 'node:url';
 const docsDirectory = path.dirname(fileURLToPath(import.meta.url));
 const modelFile = path.join(docsDirectory, 'playground-theme.js');
 
-const context = vm.createContext({ window: {} });
+const CATALOG = [
+    { name: '--r-color-primary-on', group: 'Palette', kind: 'color', shared: false },
+    { name: '--r-color-primary-text', group: 'Palette', kind: 'color', shared: false },
+    { name: '--r-color-secondary-on', group: 'Palette', kind: 'color', shared: false },
+    { name: '--r-color-secondary-text', group: 'Palette', kind: 'color', shared: false },
+    { name: '--r-surface-page', group: 'Surfaces', kind: 'color', shared: false },
+    { name: '--r-text', group: 'Text', kind: 'color', shared: false },
+    { name: '--r-accent', group: 'Roles', kind: 'color', shared: true },
+    { name: '--r-global-width', group: 'Global', kind: 'value', shared: true },
+    { name: '--r-code-background', group: 'Detail', kind: 'color', shared: true },
+];
+
+const context = vm.createContext({ window: { roolithPlaygroundTokens: CATALOG } });
 
 vm.runInContext(fs.readFileSync(modelFile, 'utf8'), context, { filename: 'playground-theme.js' });
 
@@ -37,6 +49,7 @@ const DEFAULTS = {
     colors: {
         primary: '#4a5cd0',
         secondary: '#7b6aa6',
+        tertiary: '#4c7d8f',
         info: '#2c6196',
         success: '#38805f',
         warning: '#94702f',
@@ -45,16 +58,46 @@ const DEFAULTS = {
     },
     darkColors: {
         primary: '#4a5cd0',
-        secondary: '#7b6aa6',
-        info: '#2c6196',
+        secondary: '#9c8fbc',
+        tertiary: '#4c7d8f',
+        info: '#6098d0',
         success: '#38805f',
-        warning: '#94702f',
+        warning: '#c29440',
         danger: '#bf4a50',
-        link: '#5568de',
+        link: '#8895e8',
     },
     radius: 8,
     fontSize: 16,
     fontFamily: "'Inter', sans-serif",
+    advanced: {
+        shared: {
+            '--r-accent': 'var(--r-color-primary)',
+            '--r-global-width': '75rem',
+            '--r-code-background': 'var(--r-surface-muted)',
+        },
+        light: {
+            '--r-color-primary-on': '#ffffff',
+            '--r-color-primary-text': 'var(--r-color-primary)',
+            '--r-color-secondary-on': '#ffffff',
+            '--r-color-secondary-text': 'color-mix(in srgb, var(--r-color-secondary), black 8%)',
+            '--r-surface-page': 'var(--r-color-neutral)',
+            '--r-text': 'var(--r-color-neutral-900)',
+            '--r-accent': 'var(--r-color-primary)',
+            '--r-global-width': '75rem',
+            '--r-code-background': 'var(--r-surface-muted)',
+        },
+        dark: {
+            '--r-color-primary-on': '#ffffff',
+            '--r-color-primary-text': 'color-mix(in srgb, var(--r-color-primary), white 34%)',
+            '--r-color-secondary-on': '#ffffff',
+            '--r-color-secondary-text': 'color-mix(in srgb, var(--r-color-secondary), white 2%)',
+            '--r-surface-page': 'var(--r-color-neutral)',
+            '--r-text': 'var(--r-color-neutral-800)',
+            '--r-accent': 'var(--r-color-primary)',
+            '--r-global-width': '75rem',
+            '--r-code-background': 'var(--r-surface-muted)',
+        },
+    },
 };
 
 const BOUNDS = {
@@ -63,63 +106,23 @@ const BOUNDS = {
     fonts: ['', 'Georgia, "Times New Roman", serif'],
 };
 
-const SEPARATE_DARK_DEFAULTS = {
-    ...DEFAULTS,
-    darkColors: { ...DEFAULTS.colors, primary: '#101010' },
-};
-
 const NAMESPACE_KEYS = [
     'buildDeclarations',
     'createState',
+    'listTokens',
+    'normalizeColor',
     'normalizeHex',
+    'normalizeTokenValue',
     'readDefaults',
     'readableInk',
     'renderOverrideCss',
     'renderPreviewCss',
     'sanitizeState',
+    'tokenDefault',
     'widenRange',
 ];
 
 const BRAND_NAMES = ['--r-color-primary', '--r-color-primary-on', '--r-color-primary-text'];
-
-const PREVIEW_ALIAS_NAMES = [
-    '--r-accent',
-    '--r-accent-on',
-    '--r-link',
-    '--r-focus-ring-color',
-    '--r-form-input-hover-border-color',
-    '--r-form-input-focus-border-color',
-    '--r-pagination-item-active-background-color',
-    '--r-pagination-item-active-color',
-    '--r-tab-active-color',
-    '--r-comment-highlight-color',
-    '--r-button-radius',
-    '--r-card-radius',
-    '--r-form-input-radius',
-    '--r-img-radius',
-    '--r-message-radius',
-    '--r-pagination-item-border-radius',
-];
-
-const DARK_COMMENT_RESET_NAMES = ['--r-comment-highlight-color'];
-
-const PREVIEW_BLOCKS = {
-    shared: [{ name: '--r-global-border-radius', value: '12px' }],
-    light: [
-        { name: '--r-color-primary', value: '#123456' },
-        { name: '--r-color-primary-on', value: '#ffffff' },
-        { name: '--r-color-primary-text', value: 'var(--r-color-primary)' },
-    ],
-    dark: [],
-    count: 4,
-};
-
-const PREVIEW_DECLARATION_NAMES = [
-    ...PREVIEW_ALIAS_NAMES,
-    '--r-global-border-radius',
-    ...BRAND_NAMES,
-    ...DARK_COMMENT_RESET_NAMES,
-];
 
 let assertionCount = 0;
 
@@ -174,6 +177,10 @@ function hostRealm(value) {
 function createDefaultState() {
     return {
         colors: { ...DEFAULTS.colors },
+        darkColors: { ...DEFAULTS.darkColors },
+        advanced: {},
+        darkAdvanced: {},
+        sharedAdvanced: {},
         radius: DEFAULTS.radius,
         fontSize: DEFAULTS.fontSize,
         fontFamily: '',
@@ -181,7 +188,7 @@ function createDefaultState() {
 }
 
 /**
- * Check the namespace the controller depends on and hex normalization.
+ * Check the namespace the controller depends on and color normalization.
  * @returns {void}
  */
 function checkNormalizeHex() {
@@ -199,6 +206,91 @@ function checkNormalizeHex() {
     check(model.normalizeHex('zzzzzz'), null, 'non hex input returns null');
     check(model.normalizeHex(''), null, 'empty input returns null');
     check(model.normalizeHex('   '), null, 'whitespace only input returns null');
+}
+
+/**
+ * Check color normalization for the framework's computed `rgb()` fills.
+ * @returns {void}
+ */
+function checkNormalizeColor() {
+    check(model.normalizeColor('#4A5CD0'), '#4a5cd0', 'hex colors pass through');
+    check(model.normalizeColor('abc'), '#aabbcc', 'shorthand passes through');
+    check(model.normalizeColor('rgb(156, 143.25, 188.25)'), '#9c8fbc', 'fractional rgb channels round');
+    check(model.normalizeColor('rgb(96.1855670103, 152.3, 208.4144329897)'), '#6098d0', 'long rgb channels round');
+    check(model.normalizeColor('rgba(10, 20, 30, 0.5)'), '#0a141e', 'alpha is ignored for opaque fills');
+    check(model.normalizeColor('rgb(100% 0% 50%)'), '#ff0080', 'percentage channels convert');
+    check(model.normalizeColor('rgb(300, -4, 128)'), '#ff0080', 'channels clamp into range');
+    check(model.normalizeColor('hsl(0 0% 0%)'), null, 'unsupported color syntax returns null');
+    check(model.normalizeColor('rgb(1, 2)'), null, 'missing channels return null');
+    check(model.normalizeColor(100000), null, 'a number is not a color');
+    check(model.normalizeColor(''), null, 'empty input returns null');
+}
+
+/**
+ * Check advanced value validation: anything that could break out of a declaration
+ * or emit a half typed expression is rejected.
+ * @returns {void}
+ */
+function checkNormalizeTokenValue() {
+    check(model.normalizeTokenValue('#f59e0b'), '#f59e0b', 'a hex value is kept');
+    check(
+        model.normalizeTokenValue('  var(--r-color-neutral)  '),
+        'var(--r-color-neutral)',
+        'a var expression is trimmed',
+    );
+    check(
+        model.normalizeTokenValue('color-mix(in srgb, var(--r-surface), white 10%)'),
+        'color-mix(in srgb, var(--r-surface), white 10%)',
+        'a color-mix expression is kept',
+    );
+    check(model.normalizeTokenValue('75rem'), '75rem', 'a length is kept');
+    check(model.normalizeTokenValue(''), null, 'an empty value is rejected');
+    check(model.normalizeTokenValue('   '), null, 'a whitespace value is rejected');
+    check(model.normalizeTokenValue('red; color: blue'), null, 'a semicolon is rejected');
+    check(model.normalizeTokenValue('red } body { display: none'), null, 'a brace is rejected');
+    check(model.normalizeTokenValue('red /*'), null, 'a comment opener is rejected');
+    check(model.normalizeTokenValue('var(--r-text'), null, 'an unbalanced expression is rejected');
+    check(model.normalizeTokenValue('a'.repeat(161)), null, 'an over long value is rejected');
+    check(model.normalizeTokenValue(100000), null, 'a number is rejected');
+    check(model.normalizeTokenValue('a\nb'), null, 'a newline is rejected');
+}
+
+/**
+ * Check the catalog accessors the advanced panel depends on.
+ * @returns {void}
+ */
+function checkAdvancedTokens() {
+    check(
+        hostRealm(model.listTokens()),
+        hostRealm(CATALOG),
+        'the model exposes the generated catalog',
+    );
+
+    const sharedToken = CATALOG.find((token) => token.shared);
+    const themeToken = CATALOG.find((token) => !token.shared);
+
+    check(
+        model.tokenDefault(sharedToken, DEFAULTS, 'light'),
+        'var(--r-color-primary)',
+        'a shared token has one default',
+    );
+    check(
+        model.tokenDefault(sharedToken, DEFAULTS, 'dark'),
+        'var(--r-color-primary)',
+        'a shared default ignores the scope',
+    );
+    check(model.tokenDefault(themeToken, DEFAULTS, 'light'), '#ffffff', 'a theme token reads the light default');
+    check(model.tokenDefault(themeToken, DEFAULTS, 'dark'), '#ffffff', 'a theme token reads the dark default');
+    check(
+        model.tokenDefault(themeToken, DEFAULTS, 'dark'),
+        DEFAULTS.advanced.dark[themeToken.name],
+        'the dark default comes from the dark map',
+    );
+    check(
+        model.tokenDefault({ name: '--r-missing', shared: false }, DEFAULTS, 'light'),
+        '',
+        'an undeclared token has no default',
+    );
 }
 
 /**
@@ -276,10 +368,58 @@ function checkSanitizeState() {
     );
 
     check(
+        model.sanitizeState({ darkColors: { secondary: '#ABC' } }, DEFAULTS, BOUNDS).darkColors.secondary,
+        '#aabbcc',
+        'a stored dark fill is normalized',
+    );
+
+    check(
+        model.sanitizeState({ colors: { primary: '#101010' } }, DEFAULTS, BOUNDS).darkColors.primary,
+        DEFAULTS.darkColors.primary,
+        'a missing dark palette falls back to the framework dark defaults',
+    );
+
+    const legacy = model.sanitizeState({ colors: { primary: '#101010' } }, DEFAULTS, BOUNDS);
+
+    check(legacy.colors.primary, '#101010', 'a legacy payload keeps its light palette');
+    check(
+        hostRealm(legacy.darkColors),
+        { ...DEFAULTS.darkColors },
+        'a legacy payload gets the framework dark palette, not the light one',
+    );
+
+    check(
         hostRealm(model.sanitizeState('x', DEFAULTS, BOUNDS)),
         createDefaultState(),
         'a non-object payload falls back to the framework defaults',
     );
+
+    const advanced = model.sanitizeState(
+        {
+            advanced: {
+                '--r-surface-page': ' #101010 ',
+                '--r-text': 'red; }',
+                '--r-accent': 'red',
+                '--r-unknown': 'red',
+            },
+            darkAdvanced: { '--r-text': 'var(--r-color-white)' },
+            sharedAdvanced: { '--r-global-width': '90rem', '--r-surface-page': 'red' },
+        },
+        DEFAULTS,
+        BOUNDS,
+    );
+
+    check(
+        hostRealm(advanced.advanced),
+        { '--r-surface-page': '#101010' },
+        'only safe, theme scoped advanced values are kept',
+    );
+    check(
+        hostRealm(advanced.darkAdvanced),
+        { '--r-text': 'var(--r-color-white)' },
+        'dark advanced values are sanitized',
+    );
+    check(hostRealm(advanced.sharedAdvanced), { '--r-global-width': '90rem' }, 'only shared advanced tokens survive');
 }
 
 /**
@@ -332,15 +472,49 @@ function checkBuildDeclarations() {
     check(clean.count, 0, 'a clean state reports no overridden tokens');
 
     const lightOnlyState = createDefaultState();
-    lightOnlyState.colors.primary = SEPARATE_DARK_DEFAULTS.darkColors.primary;
+    lightOnlyState.colors.primary = '#123456';
 
-    const lightBlocks = model.buildDeclarations(lightOnlyState, SEPARATE_DARK_DEFAULTS);
+    const lightBlocks = model.buildDeclarations(lightOnlyState, DEFAULTS);
 
     check(lightBlocks.light.length, 3, 'a light only change emits the fill triple');
-    check(lightBlocks.dark.length, 0, 'a light only change emits no dark block');
+    check(lightBlocks.dark.length, 3, 'a light only change re-asserts the dark defaults');
+    check(lightBlocks.dark[0].value, DEFAULTS.darkColors.primary, 'the dark scope keeps its own fill');
+    check(
+        lightBlocks.dark[2].value,
+        DEFAULTS.advanced.dark['--r-color-primary-text'],
+        'the dark scope keeps its declared text tint',
+    );
+    check(hostRealm(lightBlocks.changed), { light: true, dark: false }, 'only the light scope is marked changed');
+
+    const darkOnlyState = createDefaultState();
+    darkOnlyState.darkColors.primary = '#123456';
+
+    const darkBlocks = model.buildDeclarations(darkOnlyState, DEFAULTS);
+
+    check(darkBlocks.light.length, 3, 'a dark only change re-asserts the light defaults');
+    check(darkBlocks.dark.length, 3, 'a dark only change emits the dark fill triple');
+    check(darkBlocks.light[0].value, DEFAULTS.colors.primary, 'the light scope keeps its own fill');
+    check(hostRealm(darkBlocks.changed), { light: false, dark: true }, 'only the dark scope is marked changed');
+
+    const untouchedSecondary = createDefaultState();
+    untouchedSecondary.darkColors.secondary = '#200030';
+
+    const untouchedBlocks = model.buildDeclarations(untouchedSecondary, DEFAULTS);
+
+    check(
+        untouchedBlocks.light[1].value,
+        '#ffffff',
+        'an untouched scope keeps the framework on-color instead of re-deriving it',
+    );
+    check(
+        untouchedBlocks.light[2].value,
+        DEFAULTS.advanced.light['--r-color-secondary-text'],
+        'an untouched scope keeps the framework text tint',
+    );
 
     const bothState = createDefaultState();
     bothState.colors.primary = '#123456';
+    bothState.darkColors.primary = '#654321';
 
     const both = model.buildDeclarations(bothState, DEFAULTS);
 
@@ -348,7 +522,8 @@ function checkBuildDeclarations() {
 
     check([...both.dark.map((declaration) => declaration.name)], BRAND_NAMES, 'the dark block lists the fill triple');
 
-    check(both.light[0].value, '#123456', 'the light rule carries the chosen fill');
+    check(both.light[0].value, '#123456', 'the light rule carries the chosen light fill');
+    check(both.dark[0].value, '#654321', 'the dark rule carries the chosen dark fill');
     check(both.light[1].value, '#ffffff', 'the on-color is readable ink for the chosen fill');
     check(both.light[2].value, 'var(--r-color-primary)', 'a zero light mix reuses the fill');
     check(
@@ -358,6 +533,15 @@ function checkBuildDeclarations() {
     );
 
     check(both.count, 3, 'a brand change counts three token names');
+
+    const tertiaryState = createDefaultState();
+    tertiaryState.colors.tertiary = '#204060';
+    tertiaryState.darkColors.tertiary = '#204060';
+
+    const tertiary = model.buildDeclarations(tertiaryState, DEFAULTS);
+
+    check(tertiary.light[2].value, 'color-mix(in srgb, var(--r-color-tertiary), black 10%)', 'the tertiary light tint');
+    check(tertiary.dark[2].value, 'color-mix(in srgb, var(--r-color-tertiary), white 26%)', 'the tertiary dark tint');
 
     const structuralState = createDefaultState();
     structuralState.radius = 12;
@@ -380,6 +564,83 @@ function checkBuildDeclarations() {
 
     check(structural.light.length + structural.dark.length, 0, 'structural changes emit no brand declarations');
     check(structural.count, 3, 'structural changes count three token names');
+
+    const sharedToken = createDefaultState();
+    sharedToken.sharedAdvanced['--r-global-width'] = '90rem';
+
+    const sharedAdvanced = model.buildDeclarations(sharedToken, DEFAULTS);
+
+    check(
+        hostRealm(sharedAdvanced.shared),
+        [{ name: '--r-global-width', value: '90rem' }],
+        'a shared advanced override goes to the shared block',
+    );
+    check(sharedAdvanced.light.length + sharedAdvanced.dark.length, 0, 'a shared override emits no scope declarations');
+    check(hostRealm(sharedAdvanced.changed), { light: false, dark: false }, 'a shared override marks no scope changed');
+    check(sharedAdvanced.count, 1, 'a shared override counts one token');
+
+    const lightOverride = createDefaultState();
+    lightOverride.advanced['--r-surface-page'] = '#101010';
+
+    const lightAdvanced = model.buildDeclarations(lightOverride, DEFAULTS);
+
+    check(
+        hostRealm(lightAdvanced.light),
+        [{ name: '--r-surface-page', value: '#101010' }],
+        'a light override carries the chosen value',
+    );
+    check(
+        hostRealm(lightAdvanced.dark),
+        [{ name: '--r-surface-page', value: 'var(--r-color-neutral)' }],
+        'a light only override re-declares the dark default, so the palettes stay independent',
+    );
+    check(hostRealm(lightAdvanced.changed), { light: true, dark: false }, 'only the light scope is marked changed');
+    check(lightAdvanced.count, 1, 'a scope override counts one token');
+
+    const darkOverride = createDefaultState();
+    darkOverride.darkAdvanced['--r-text'] = '#e5e5e5';
+
+    const darkAdvanced = model.buildDeclarations(darkOverride, DEFAULTS);
+
+    check(
+        hostRealm(darkAdvanced.dark),
+        [{ name: '--r-text', value: '#e5e5e5' }],
+        'a dark override carries the chosen value',
+    );
+    check(
+        hostRealm(darkAdvanced.light),
+        [{ name: '--r-text', value: 'var(--r-color-neutral-900)' }],
+        'a dark only override re-declares the light default',
+    );
+    check(hostRealm(darkAdvanced.changed), { light: false, dark: true }, 'only the dark scope is marked changed');
+
+    const sameValue = createDefaultState();
+    sameValue.advanced['--r-surface-page'] = DEFAULTS.advanced.light['--r-surface-page'];
+
+    check(
+        hostRealm(model.buildDeclarations(sameValue, DEFAULTS)),
+        hostRealm({ shared: [], light: [], dark: [], changed: { light: false, dark: false }, count: 0 }),
+        'an advanced value equal to the default emits nothing',
+    );
+
+    const derived = createDefaultState();
+    derived.colors.primary = '#123456';
+    derived.advanced['--r-color-primary-on'] = '#00ff00';
+
+    const derivedBlocks = model.buildDeclarations(derived, DEFAULTS);
+    const derivedNames = derivedBlocks.light.map((declaration) => declaration.name);
+
+    check(
+        derivedNames.lastIndexOf('--r-color-primary-on'),
+        derivedNames.length - 1,
+        'a manual advanced override is emitted after the derived brand triple, so it wins',
+    );
+    check(
+        derivedBlocks.light[derivedBlocks.light.length - 1].value,
+        '#00ff00',
+        'the manual on-color value is the last declaration',
+    );
+    check(derivedBlocks.count, 3, 'a derived triple plus one manual override still counts three token names');
 }
 
 /**
@@ -463,96 +724,73 @@ function checkRenderOverrideCss() {
 }
 
 /**
- * Check the scoped preview stylesheet: empty output, the selectors passed in,
- * the re-declared alias tokens the preview needs, and the dark comment reset
- * that always pairs with the base rule.
+ * Check the scoped preview stylesheet: empty output, the selector passed in,
+ * shared declarations first, and only the active scope's declarations.
  * @returns {void}
  */
 function checkRenderPreviewCss() {
-    const empty = model.renderPreviewCss(
-        { shared: [], light: [], dark: [], count: 0 },
-        '.preview-light',
-        '.preview-dark',
-    );
+    const empty = model.renderPreviewCss({ shared: [], light: [], dark: [], count: 0 }, 'light', '.preview-light');
 
     check(empty, '', 'an empty diff renders an empty preview stylesheet');
 
+    const blocks = {
+        shared: [{ name: '--r-global-border-radius', value: '12px' }],
+        light: [
+            { name: '--r-color-primary', value: '#123456' },
+            { name: '--r-color-primary-on', value: '#ffffff' },
+            { name: '--r-color-primary-text', value: 'var(--r-color-primary)' },
+        ],
+        dark: [
+            { name: '--r-color-secondary', value: '#654321' },
+            { name: '--r-color-secondary-on', value: '#000000' },
+            { name: '--r-color-secondary-text', value: 'color-mix(in srgb, var(--r-color-secondary), white 2%)' },
+        ],
+        count: 6,
+    };
+
+    const light = model.renderPreviewCss(blocks, 'light', '.preview.theme-light');
+
+    check(light.startsWith('.preview.theme-light {'), true, 'the preview rule uses the selector it was given');
     check(
-        declarationNames(model.renderPreviewCss(PREVIEW_BLOCKS, '.preview-light', '.preview-dark')),
-        PREVIEW_DECLARATION_NAMES,
-        'the preview re-declares every alias, then the shared and light declarations, then the paired dark reset',
+        declarationNames(light),
+        ['--r-global-border-radius', ...BRAND_NAMES],
+        'the light preview renders shared declarations, then the light palette',
     );
+    check(light.includes('--r-color-secondary'), false, 'the light preview never renders dark declarations');
+    check(light.includes('--r-accent'), false, 'the preview does not repeat framework aliases');
+    check(light.includes('--r-button-radius'), false, 'the preview does not repeat derived component tokens');
+    check(light.includes(':root'), false, 'the preview never emits a root scoped rule');
+    check(light.includes('@media'), false, 'the preview never emits a media query');
 
-    const lightOnly = model.renderPreviewCss(
-        {
-            shared: [{ name: '--r-global-border-radius', value: '12px' }],
-            light: [{ name: '--r-color-primary', value: '#4a5cd0' }],
-            dark: [],
-            count: 2,
-        },
-        '.preview-light',
-        '.preview-dark',
-    );
+    const dark = model.renderPreviewCss(blocks, 'dark', '.preview.theme-dark');
 
-    check(lightOnly.startsWith('.preview-light {'), true, 'the preview rule uses the light selector it was given');
-    check(lightOnly.includes('--r-accent: var(--r-color-primary);'), true, 'the accent alias is re-declared');
-
+    check(dark.startsWith('.preview.theme-dark {'), true, 'the dark preview uses the dark selector it was given');
     check(
-        lightOnly.includes('--r-button-radius: var(--r-global-border-radius);'),
-        true,
-        'derived radii are re-declared',
+        declarationNames(dark),
+        ['--r-global-border-radius', '--r-color-secondary', '--r-color-secondary-on', '--r-color-secondary-text'],
+        'the dark preview renders shared declarations, then the dark palette',
     );
-    check(
-        lightOnly.includes('--r-img-radius: var(--r-global-border-radius);'),
-        true,
-        'the avatar radius is re-declared',
-    );
-    check(lightOnly.includes('--r-global-border-radius: 12px;'), true, 'the shared declaration is applied');
+    check(dark.includes('--r-color-primary:'), false, 'the dark preview never renders light declarations');
+    check(dark.includes('--r-comment-highlight-color'), false, 'the dark scope reads the framework comment recipe');
 
-    const lightOnlyDarkStart = lightOnly.indexOf('.preview-dark {');
-
-    check(lightOnlyDarkStart > 0, true, 'a light only diff still emits a dark preview rule');
-    check(
-        declarationNames(lightOnly.slice(lightOnlyDarkStart)),
-        DARK_COMMENT_RESET_NAMES,
-        'the paired dark rule holds only the comment reset',
-    );
-    check(
-        lightOnly.includes('--r-comment-highlight-color: var(--r-color-neutral-300);'),
-        true,
-        'the dark comment reset uses the framework neutral',
-    );
-    check(lightOnly.includes('.theme-dark'), false, 'the preview does not reuse the page dark selector');
-    check(lightOnly.includes(':root'), false, 'the preview never emits a root scoped rule');
-
-    const both = model.renderPreviewCss(
-        {
-            shared: [],
-            light: [{ name: '--r-color-primary', value: '#4a5cd0' }],
-            dark: [
-                { name: '--r-color-primary', value: '#123456' },
-                { name: '--r-color-primary-on', value: '#ffffff' },
-                {
-                    name: '--r-color-primary-text',
-                    value: 'color-mix(in srgb, var(--r-color-primary), white 34%)',
-                },
-            ],
-            count: 3,
-        },
-        '.preview-light',
-        '.preview-dark',
+    const lightOnlyForDark = model.renderPreviewCss(
+        { shared: [], light: [{ name: '--r-color-primary', value: '#123456' }], dark: [], count: 3 },
+        'dark',
+        '.preview.theme-dark',
     );
 
-    check(both.includes('.preview-dark {'), true, 'the dark preview rule uses the dark selector it was given');
-    check(both.indexOf('.preview-light {') < both.indexOf('.preview-dark {'), true, 'the light rule comes first');
-    check(both.includes('.doc-playground'), false, 'the preview stylesheet only uses the selectors passed in');
+    check(lightOnlyForDark, '', 'a light only diff renders nothing for a dark preview');
 
-    const bothDarkStart = both.indexOf('.preview-dark {');
+    const sharedOnly = model.renderPreviewCss(
+        { shared: [{ name: '--r-global-border-radius', value: '12px' }], light: [], dark: [], count: 1 },
+        'dark',
+        '.preview.theme-dark',
+    );
 
     check(
-        declarationNames(both.slice(bothDarkStart)),
-        [...DARK_COMMENT_RESET_NAMES, ...BRAND_NAMES],
-        'a dark diff puts the comment reset before its own declarations',
+        declarationNames(sharedOnly),
+        ['--r-global-border-radius'],
+        'a shared only change still reaches whichever scope the preview shows',
     );
 }
 
@@ -562,6 +800,9 @@ function checkRenderPreviewCss() {
  */
 function main() {
     checkNormalizeHex();
+    checkNormalizeColor();
+    checkNormalizeTokenValue();
+    checkAdvancedTokens();
     checkReadableInk();
     checkSanitizeState();
     checkWidenRange();

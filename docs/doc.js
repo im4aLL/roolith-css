@@ -477,7 +477,7 @@ let tableSyncQueued = false;
  * @returns {void}
  */
 function updateScrollableTables() {
-    document.querySelectorAll('.doc-table-wrap, .table-responsive').forEach((wrapper) => {
+    document.querySelectorAll('.doc-table-wrap, .table-responsive, .doc-playground-table-wrap').forEach((wrapper) => {
         const overflows = wrapper.scrollWidth - wrapper.clientWidth > TABLE_SCROLL_TOLERANCE;
         if (overflows) {
             wrapper.setAttribute('tabindex', '0');

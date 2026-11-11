@@ -19,12 +19,20 @@
         status: '[data-doc-playground-status]',
         copy: '[data-doc-playground-copy]',
         reset: '[data-doc-playground-reset]',
+        preview: '.doc-playground-preview',
         fontFamily: '[data-doc-playground-font]',
         radius: '[data-doc-playground-range="radius"]',
         fontSize: '[data-doc-playground-range="fontSize"]',
         radiusValue: '[data-doc-playground-radius-value]',
         fontSizeValue: '[data-doc-playground-font-size-value]',
+        advancedToggle: '[data-doc-playground-advanced-toggle]',
+        advancedPanel: '[data-doc-playground-advanced]',
+        advancedLabel: '[data-doc-playground-advanced-label]',
+        advancedTheme: '[data-doc-playground-advanced-theme]',
+        advancedShared: '[data-doc-playground-advanced-shared]',
     };
+
+    const SCOPES = ['light', 'dark'];
 
     /**
      * One slider's allowed values.
@@ -44,7 +52,7 @@
     /**
      * Bind result handed to the controller.
      * @typedef {object} BoundControls
-     * @property {object} elements - Bound controls, including the `colors` and `hex` maps.
+     * @property {object} elements - Bound controls, including the `colors`, `hex`, and `scopes` groups.
      * @property {ControlBounds} bounds - Allowed control values.
      */
 
@@ -125,6 +133,28 @@
     }
 
     /**
+     * Collect the light and dark palette switches, so the controller can rely on
+     * both scopes existing before it reads or writes a palette.
+     * @param {HTMLElement} root - Playground root element.
+     * @param {object} elements - Element map to fill.
+     * @returns {boolean} True when both scopes are switched by a bound control.
+     */
+    function bindScopes(root, elements) {
+        elements.scopes = Array.from(root.querySelectorAll('[data-doc-playground-scope]'));
+
+        const names = new Set(elements.scopes.map((button) => button.getAttribute('data-doc-playground-scope')));
+
+        for (const scope of SCOPES) {
+            if (!names.has(scope)) {
+                console.error(`Theme playground: missing [data-doc-playground-scope="${scope}"]`);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Read the finite limits of one slider, reporting the control and the missing
      * attribute so an incomplete slider cannot leak `NaN` into the generated CSS.
      * @param {HTMLInputElement} control - Slider element.
@@ -183,9 +213,10 @@
         const elements = {
             colors: {},
             hex: {},
+            scopes: [],
         };
 
-        if (!bindElements(root, elements) || !bindColorPairs(root, elements)) {
+        if (!bindElements(root, elements) || !bindColorPairs(root, elements) || !bindScopes(root, elements)) {
             return null;
         }
 
