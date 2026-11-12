@@ -315,6 +315,7 @@
         advancedOpen = open;
         elements.advancedPanel.hidden = !open;
         elements.advancedToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        elements.advancedToggle.classList.toggle('is-active', open);
 
         if (!open) {
             return;
@@ -417,6 +418,11 @@
             return;
         }
 
+        const text = elements.css.textContent;
+
+        // Replace the highlighted markup with plain text before clearing the marker,
+        // so highlight.js does not warn about the child elements it generated.
+        elements.css.textContent = text;
         elements.css.removeAttribute('data-highlighted');
         window.hljs.highlightElement(elements.css);
     }
@@ -427,6 +433,12 @@
      * @returns {void}
      */
     function scheduleHighlight() {
+        if (!elements.css.hasAttribute('data-highlighted')) {
+            // The site wide pass has not colored the block yet, so it will pick up
+            // the current text on its own and a second pass would only duplicate work.
+            return;
+        }
+
         window.clearTimeout(highlightTimer);
         highlightTimer = window.setTimeout(() => {
             highlightTimer = 0;

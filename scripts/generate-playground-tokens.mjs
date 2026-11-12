@@ -20,10 +20,11 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import postcss from 'postcss';
 import { compileString } from 'sass-embedded';
 
-const projectRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sassDir = path.join(projectRoot, 'src', 'sass');
 const outFile = path.join(projectRoot, 'docs', 'playground-tokens.js');
 
@@ -134,7 +135,7 @@ function renderCatalog() {
     const shared = themeRules.get(':root,.theme-light,.theme-dark') || [];
     const light = themeRules.get(':root,.theme-light') || [];
     const dark = themeRules.get('.theme-dark') || [];
-    const componentTokens = new Set([...components.matchAll(/--[A-Za-z0-9_-]+(?=\s*:)/g)].map((match) => match[0]));
+    const componentTokens = new Set([...collectDeclarations(components).values()].flat());
 
     const ordered = [...new Set([...shared, ...light, ...dark])];
     const entries = ordered
