@@ -10,14 +10,8 @@
         <link rel="icon" href="../favicon.ico" sizes="any" />
         <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
         <link rel="stylesheet" href="../doc.css" />
-        <link
-            rel="stylesheet"
-            href="/vendor/highlight-github.min.css"
-            data-hljs-theme="light" />
-        <link
-            rel="stylesheet"
-            href="/vendor/highlight-github-dark.min.css"
-            data-hljs-theme="dark" />
+        <link rel="stylesheet" href="/vendor/highlight-github.min.css" data-hljs-theme="light" />
+        <link rel="stylesheet" href="/vendor/highlight-github-dark.min.css" data-hljs-theme="dark" />
         <script src="/doc-search.js"></script>
         <script src="/doc-surfaces.js"></script>
         <script src="../doc.js"></script>
@@ -77,9 +71,11 @@
                             </p>
                             <p>
                                 <code>.comment</code>
-                                itself only carries padding of 20px on the top and sides. The top border and the divider between entries come from
+                                itself only carries padding of 20px on the top and sides. The top border and the divider
+                                between entries come from
                                 <code>.comment-group</code>
-                                in the next section, so a single entry can sit inside a card or panel without a stray rule.
+                                in the next section, so a single entry can sit inside a card or panel without a stray
+                                rule.
                             </p>
                             <div class="doc-demo">
                                 <div class="full-width">
@@ -94,8 +90,8 @@
                                             </a>
                                         </div>
                                         <div class="comment-body">
-                                            The drawer covers the release notes now. Short version: the token layer moved
-                                            and nothing else broke.
+                                            The drawer covers the release notes now. Short version: the token layer
+                                            moved and nothing else broke.
                                         </div>
                                         <div class="comment-info">23 min ago</div>
                                     </div>
@@ -128,22 +124,26 @@
                             <h2>Actions</h2>
                             <p>
                                 <code>.comment-info</code>
-                                is the small dimmed metadata row. Repeat it when you need a second line such as a like summary, since each row carries 20px of bottom padding and has no marker of its own.
+                                is the small dimmed metadata row. Repeat it when you need a second line such as a like
+                                summary, since each row carries 20px of bottom padding and has no marker of its own.
                             </p>
                             <p>
                                 Actions go in a
-                                <code>ul.comment-action</code>. Every
+                                <code>ul.comment-action</code>
+                                . Every
                                 <code>.comment-action-item</code>
                                 floats left with 15px of right padding and the quiet text color, so a leading
                                 <code>span</code>
                                 can hold a count before the link. The
                                 <code>.comment-action-item-link</code>
-                                is an inline-flex row with a 5px gap for the icon and label, and only the color transitions.
+                                is an inline-flex row with a 5px gap for the icon and label, and only the color
+                                transitions.
                             </p>
                             <p>
                                 The examples use Iconoir class names on the
                                 <code>i</code>
-                                elements, matching the framework examples. Load the Iconoir stylesheet described on the Introduction page if the glyphs are missing; the text labels stay readable without it.
+                                elements, matching the framework examples. Load the Iconoir stylesheet described on the
+                                Introduction page if the glyphs are missing; the text labels stay readable without it.
                             </p>
                             <div class="doc-demo">
                                 <div class="full-width">
@@ -158,8 +158,8 @@
                                             </a>
                                         </div>
                                         <div class="comment-body">
-                                            Reproduced on Safari 17 as well. The field keeps focus after the panel closes,
-                                            which was the part that felt broken.
+                                            Reproduced on Safari 17 as well. The field keeps focus after the panel
+                                            closes, which was the part that felt broken.
                                         </div>
                                         <div class="comment-info">2 hours ago - edited</div>
                                         <ul class="comment-action">
@@ -241,7 +241,8 @@
                                 a bottom border, so a list of entries reads as one divided block.
                             </p>
                             <p>
-                                Put the whole thread in a single group and keep pagination or a "show more" control inside it, so the dividers line up with the entries.
+                                Put the whole thread in a single group and keep pagination or a "show more" control
+                                inside it, so the dividers line up with the entries.
                             </p>
                             <div class="doc-demo">
                                 <div class="full-width">
@@ -257,8 +258,8 @@
                                                 </a>
                                             </div>
                                             <div class="comment-body">
-                                                Does the drawer lock body scroll while it is open? We had a bug where the
-                                                page kept scrolling behind the overlay.
+                                                Does the drawer lock body scroll while it is open? We had a bug where
+                                                the page kept scrolling behind the overlay.
                                             </div>
                                             <div class="comment-info">14 min ago</div>
                                         </div>
@@ -278,6 +279,7 @@
                                             </div>
                                             <div class="comment-info">9 min ago</div>
                                         </div>
+                                        <div class="spacer-20"></div>
                                         <a href="#" class="button button-small">Show more 20 replies</a>
                                     </div>
                                 </div>
@@ -285,7 +287,9 @@
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
-                                    <button type="button" class="doc-copy" data-doc-copy="comment-group-markup">Copy</button>
+                                    <button type="button" class="doc-copy" data-doc-copy="comment-group-markup">
+                                        Copy
+                                    </button>
                                 </div>
                                 <pre><code id="comment-group-markup" class="language-html">&lt;div class="comment-group"&gt;
     &lt;div class="comment"&gt;
@@ -329,12 +333,15 @@
                                 Replies use
                                 <code>.comment-indent-1</code>
                                 through
-                                <code>.comment-indent-10</code>. Each step adds 5% of the container width, because the class maps the step number to a percentage, so the indentation scales with the column instead of using fixed pixels.
+                                <code>.comment-indent-10</code>
+                                . Each step adds 5% of the container width, because the class maps the step number to a
+                                percentage, so the indentation scales with the column instead of using fixed pixels.
                             </p>
                             <p>
                                 Keep replies inside the same
                                 <code>.comment-group</code>
-                                as their parent so the dividers and padding stay consistent. Two or three levels are usually enough before the remaining width gets too narrow on small screens.
+                                as their parent so the dividers and padding stay consistent. Two or three levels are
+                                usually enough before the remaining width gets too narrow on small screens.
                             </p>
                             <div class="doc-demo">
                                 <div class="full-width">
@@ -350,8 +357,8 @@
                                                 </a>
                                             </div>
                                             <div class="comment-body">
-                                                Shipping the token rename in 4.1 then, and keeping the old names as aliases
-                                                for one release.
+                                                Shipping the token rename in 4.1 then, and keeping the old names as
+                                                aliases for one release.
                                             </div>
                                             <div class="comment-info">1 hour ago</div>
                                         </div>
@@ -450,11 +457,14 @@
                             <p>
                                 <code>.comment-highlight</code>
                                 paints the entry with
-                                <code>--r-comment-highlight-color</code>, which is the usual way to mark a pinned or unread comment in a thread.
+                                <code>--r-comment-highlight-color</code>
+                                , which is the usual way to mark a pinned or unread comment in a thread.
                             </p>
                             <p>
                                 <code>.comment-blurred</code>
-                                applies a 2px blur at 40% opacity. The text stays in the DOM and stays selectable, so treat it as a visual gate only; if the content must not be readable, do not send it to the browser.
+                                applies a 2px blur at 40% opacity. The text stays in the DOM and stays selectable, so
+                                treat it as a visual gate only; if the content must not be readable, do not send it to
+                                the browser.
                             </p>
                             <div class="doc-demo">
                                 <div class="full-width">
@@ -470,8 +480,8 @@
                                                 </a>
                                             </div>
                                             <div class="comment-body">
-                                                Pinned: the 4.0 upgrade guide is in the docs, start there before opening an
-                                                issue.
+                                                Pinned: the 4.0 upgrade guide is in the docs, start there before opening
+                                                an issue.
                                             </div>
                                             <div class="comment-info">Pinned by a maintainer</div>
                                         </div>
@@ -534,7 +544,8 @@
                             </div>
                             <p>
                                 <code>.comment-small</code>
-                                goes on the comment element and shrinks the body to 12px over 18px lines with 10px of vertical padding, which suits compact threads in a sidebar or a popover.
+                                goes on the comment element and shrinks the body to 12px over 18px lines with 10px of
+                                vertical padding, which suits compact threads in a sidebar or a popover.
                             </p>
                             <div class="doc-demo">
                                 <div class="full-width">
@@ -563,7 +574,8 @@
                         <section class="doc-section" id="accessibility">
                             <h2>Accessibility</h2>
                             <p>
-                                Comments are prose plus a small set of links, so the markup carries most of the work. The rules below cover what the classes cannot express.
+                                Comments are prose plus a small set of links, so the markup carries most of the work.
+                                The rules below cover what the classes cannot express.
                             </p>
                             <ul>
                                 <li>
@@ -572,7 +584,8 @@
                                     elements with visible text. When an action is icon only, keep an
                                     <code>aria-label</code>
                                     on the link and mark the icon
-                                    <code>aria-hidden="true"</code>.
+                                    <code>aria-hidden="true"</code>
+                                    .
                                 </li>
                                 <li>
                                     The avatar image is decorative because the author name sits next to it. Keep
@@ -582,17 +595,21 @@
                                 <li>
                                     Use
                                     <code>&lt;time datetime="2025-03-04T09:12"&gt;</code>
-                                    when the timestamp matters; a relative label such as "23 min ago" is helpful to read but useless to a parser.
+                                    when the timestamp matters; a relative label such as "23 min ago" is helpful to read
+                                    but useless to a parser.
                                 </li>
                                 <li>
                                     <code>.comment-blurred</code>
-                                    does not remove text from the accessibility tree. Do not rely on it to hide content from anyone, including screen reader users.
+                                    does not remove text from the accessibility tree. Do not rely on it to hide content
+                                    from anyone, including screen reader users.
                                 </li>
                                 <li>
-                                    Indentation is visual only. If nesting changes the meaning of a reply, expose it in the text or with a heading, and keep the reading order parent first.
+                                    Indentation is visual only. If nesting changes the meaning of a reply, expose it in
+                                    the text or with a heading, and keep the reading order parent first.
                                 </li>
                                 <li>
-                                    The highlight color comes from a token. Check the contrast of the body text on that background in both light and dark mode.
+                                    The highlight color comes from a token. Check the contrast of the body text on that
+                                    background in both light and dark mode.
                                 </li>
                             </ul>
                         </section>
@@ -603,7 +620,8 @@
                                 Borders come from
                                 <code>--r-comment-border</code>
                                 and the highlight from
-                                <code>--r-comment-highlight-color</code>. Both follow the active theme.
+                                <code>--r-comment-highlight-color</code>
+                                . Both follow the active theme.
                             </p>
                             <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
                                 <table class="table">
@@ -648,17 +666,27 @@
                                         <tr>
                                             <td><code>.comment-action-item-link</code></td>
                                             <td>Action link</td>
-                                            <td>Inline-flex with a 5px gap for icon and label; transitions color only.</td>
+                                            <td>
+                                                Inline-flex with a 5px gap for icon and label; transitions color only.
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><code>.comment-indent-1</code></td>
                                             <td>Reply depth</td>
-                                            <td>Margin left of step / 20, so 5% per step up to <code>.comment-indent-10</code>.</td>
+                                            <td>
+                                                Margin left of step / 20, so 5% per step up to
+                                                <code>.comment-indent-10</code>
+                                                .
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><code>.comment-highlight</code></td>
                                             <td>State</td>
-                                            <td>Paints the background with <code>--r-comment-highlight-color</code>.</td>
+                                            <td>
+                                                Paints the background with
+                                                <code>--r-comment-highlight-color</code>
+                                                .
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><code>.comment-blurred</code></td>

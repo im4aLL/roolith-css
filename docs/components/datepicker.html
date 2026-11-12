@@ -10,6 +10,7 @@
         <link rel="icon" href="../favicon.ico" sizes="any" />
         <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
         <link rel="stylesheet" href="../doc.css" />
+        <link rel="stylesheet" href="/vendor/datepicker.min.css" />
         <link
             rel="stylesheet"
             href="/vendor/highlight-github.min.css"
@@ -21,6 +22,8 @@
         <script src="/doc-search.js"></script>
         <script src="/doc-surfaces.js"></script>
         <script src="../doc.js"></script>
+        <script src="/vendor/datepicker.min.js" defer></script>
+        <script src="../datepicker-demo.js" defer></script>
         <script src="/vendor/highlight.min.js" defer></script>
         <script src="/include-fragment.js" defer></script>
     </head>
@@ -234,11 +237,16 @@
                             <div class="doc-demo">
                                 <div class="form-field form-datepicker form-datepicker-js" style="width: 260px">
                                     <label for="datepicker-js-demo" class="form-label">Start date</label>
-                                    <input type="text" class="form-input" id="datepicker-js-demo" name="start-date" />
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        id="datepicker-js-demo"
+                                        name="start-date"
+                                        autocomplete="off" />
                                 </div>
                             </div>
                             <p>
-                                This page does not run the library, so the demo above is only the prepared field. No calendar opens on click here, and adding the library script would be the next step in your own page.
+                                Click the field to open the calendar. The library builds the panel at runtime and the framework restyles it, so this demo behaves exactly like the snippet below.
                             </p>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
@@ -249,7 +257,7 @@
 
 &lt;div class="form-field form-datepicker form-datepicker-js"&gt;
     &lt;label for="start-date" class="form-label"&gt;Start date&lt;/label&gt;
-    &lt;input type="text" class="form-input" id="start-date" name="start-date" /&gt;
+    &lt;input type="text" class="form-input" id="start-date" name="start-date" autocomplete="off" /&gt;
 &lt;/div&gt;
 
 &lt;script src="https://unpkg.com/js-datepicker"&gt;&lt;/script&gt;
@@ -265,7 +273,7 @@
                         <section class="doc-section" id="library-panel">
                             <h2>Styling the library panel</h2>
                             <p>
-                                The overrides target the classes js-datepicker renders. The snippet below is the markup that library produces, reduced to one week, so you can see which parts the framework touches. It is not rendered live on this page because the panel only exists once the library runs, and the library stylesheet supplies the grid the overrides sit on top of.
+                                The overrides target the classes js-datepicker renders. The snippet below is the markup that library produces, reduced to one week, so you can see which parts the framework touches. The panel is built at runtime, so the snippet is static while the demo above shows the styled result once you open it.
                             </p>
                             <div class="doc-code">
                                 <div class="doc-code-bar">

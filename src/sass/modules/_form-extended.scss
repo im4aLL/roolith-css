@@ -198,7 +198,7 @@
             }
 
             &::after {
-                top: rem(6);
+                bottom: rem(6);
                 right: rem(6);
                 width: rem(14);
                 height: rem(14);
@@ -211,7 +211,7 @@
             }
 
             &::after {
-                top: rem(12);
+                bottom: rem(12);
                 right: rem(12);
             }
         }

@@ -63,7 +63,7 @@
                         <section class="doc-section" id="basic-usage">
                             <h2>Basic usage</h2>
                             <p><code>.modal</code> is the overlay: fixed to the viewport at full size, padded 20px on each side, painted with the <code>--r-modal-background</code> scrim, and hidden with <code>display: none</code> until it gains <code>.active</code>.</p>
-                            <p>Inside it, <code>.modal-content</code> is the dialog box: a maximum width of 600px, the token radius, the content shadow, its own vertical scroll, and the fade-up animation. The header, body, and footer are ordinary slots, each padded with <code>--r-modal-content-spacing</code> (20px). The header carries a bottom border and a 16px bold title, the footer carries a top border and a 10px gap.</p>
+                            <p>Inside it, <code>.modal-content</code> is the dialog box: a maximum width of 600px, the token radius, the content shadow, its own vertical scroll, and the fade-up animation. The header, body, and footer are ordinary slots, each padded with <code>--r-modal-content-spacing</code> (20px). The header carries a bottom border and a 16px bold title, the footer carries a top border and a 10px gap. The invite demo below sizes the box to an explicit 500px with an inline <code>width</code>, clamped by <code>calc(100vw - 2.5rem)</code> so it still fits the overlay padding on a narrow screen; the Sizes section covers the built-in presets, which only cap the max width.</p>
                             <p>The trigger is a normal button. Here it is wired with the docs hook <code>data-doc-modal="#modal-invite"</code>, which adds <code>.active</code> to the matching overlay. The overlay markup sits after the code block, outside the demo box, because a fixed layer cannot be previewed inline.</p>
                             <div class="doc-demo">
                                 <button type="button" class="button button-primary" data-doc-modal="#modal-invite">Invite a teammate</button>
@@ -78,7 +78,7 @@
 &lt;/button&gt;
 
 &lt;div class="modal" id="modal-invite"&gt;
-    &lt;div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-invite-title" tabindex="-1"&gt;
+    &lt;div class="modal-content" style="width: min(500px, calc(100vw - 2.5rem))" role="dialog" aria-modal="true" aria-labelledby="modal-invite-title" tabindex="-1"&gt;
         &lt;div class="modal-header"&gt;
             &lt;span id="modal-invite-title"&gt;Invite a teammate&lt;/span&gt;
             &lt;button type="button" class="modal-close" aria-label="Close dialog"&gt;
@@ -438,7 +438,7 @@ document.addEventListener('keydown', (event) =&gt; {
                         </section>
 
                         <div class="modal" id="modal-invite" style="z-index: 1100">
-                            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-invite-title" tabindex="-1">
+                            <div class="modal-content" style="width: min(500px, calc(100vw - 2.5rem))" role="dialog" aria-modal="true" aria-labelledby="modal-invite-title" tabindex="-1">
                                 <div class="modal-header">
                                     <span id="modal-invite-title">Invite a teammate</span>
                                     <button type="button" class="modal-close" aria-label="Close dialog">

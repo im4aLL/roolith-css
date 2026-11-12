@@ -3,7 +3,6 @@
 @use '../mixins';
 
 @mixin modal() {
-
     $layout: s.$modal-layout;
     .modal {
         width: 100%;
@@ -83,6 +82,16 @@
 
     .modal-body {
         padding: var(--r-modal-content-spacing);
+        font-size: rem(14);
+        line-height: rem(22);
+
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
     }
 
     .modal-footer {

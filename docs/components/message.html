@@ -4,18 +4,14 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Message - roolith css</title>
-        <meta name="description" content="Inline message blocks in every palette color, outline variants, extra padding, dismissible messages, and icon composition in the roolith css framework." />
+        <meta
+            name="description"
+            content="Inline message blocks in every palette color, outline variants, extra padding, dismissible messages, and icon composition in the roolith css framework." />
         <link rel="icon" href="../favicon.ico" sizes="any" />
         <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
         <link rel="stylesheet" href="../doc.css" />
-        <link
-            rel="stylesheet"
-            href="/vendor/highlight-github.min.css"
-            data-hljs-theme="light" />
-        <link
-            rel="stylesheet"
-            href="/vendor/highlight-github-dark.min.css"
-            data-hljs-theme="dark" />
+        <link rel="stylesheet" href="/vendor/highlight-github.min.css" data-hljs-theme="light" />
+        <link rel="stylesheet" href="/vendor/highlight-github-dark.min.css" data-hljs-theme="dark" />
         <script src="/doc-search.js"></script>
         <script src="/doc-surfaces.js"></script>
         <script src="../doc.js"></script>
@@ -47,7 +43,11 @@
 
                         <header class="doc-content-header">
                             <h1>Message</h1>
-                            <p class="doc-content-lead">A message is an inline block for feedback that belongs to the page: the result of a form submit, a warning above a table, or a status line inside a card. The base class owns the padding, radius, and page flow, and a color class tints the surface from the palette.</p>
+                            <p class="doc-content-lead">
+                                A message is an inline block for feedback that belongs to the page: the result of a form
+                                submit, a warning above a table, or a status line inside a card. The base class owns the
+                                padding, radius, and page flow, and a color class tints the surface from the palette.
+                            </p>
                             <div class="doc-import-line">
                                 class:
                                 <strong>.message</strong>
@@ -57,16 +57,39 @@
                         </header>
 
                         <div class="message message-info">
-                            Every color class is generated from the palette loop in <code>_message.scss</code>, so overriding <code>--r-color-success</code> or <code>--r-surface-raised</code> repaints the whole family. The loop skips <code>white</code>, which means there is no <code>.message-white</code>.
+                            Every color class is generated from the palette loop in
+                            <code>_message.scss</code>
+                            , so overriding
+                            <code>--r-color-success</code>
+                            or
+                            <code>--r-surface-raised</code>
+                            repaints the whole family. The loop skips
+                            <code>white</code>
+                            , which means there is no
+                            <code>.message-white</code>
+                            .
                         </div>
 
                         <section class="doc-section" id="basic-usage">
                             <h2>Basic usage</h2>
-                            <p><code>.message</code> is a block with 17px of top and bottom padding and 20px of left padding against 30px on the right, which reserves the corner for a close button. It carries 14px text on a 1.5 line height, the token radius, 10px of vertical margin, and its own background token, so a stack of messages reads as separate blocks without a wrapper.</p>
-                            <p>Without a color class the surface is the neutral <code>--r-message-background</code>. Use that for notices that do not carry a state, and add color only when the message really is a success, a warning, or a failure.</p>
+                            <p>
+                                <code>.message</code>
+                                is a block with 17px of top and bottom padding and 20px of left padding against 30px on
+                                the right, which reserves the corner for a close button. It carries 14px text on a 1.5
+                                line height, the token radius, 10px of vertical margin, and its own background token, so
+                                a stack of messages reads as separate blocks without a wrapper.
+                            </p>
+                            <p>
+                                Without a color class the surface is the neutral
+                                <code>--r-message-background</code>
+                                . Use that for notices that do not carry a state, and add color only when the message
+                                really is a success, a warning, or a failure.
+                            </p>
                             <div class="doc-demo">
                                 <div class="full-width">
-                                    <div class="message">Your export is queued. We email you when the archive is ready to download.</div>
+                                    <div class="message">
+                                        Your export is queued. We email you when the archive is ready to download.
+                                    </div>
                                 </div>
                             </div>
                             <div class="doc-code">
@@ -80,21 +103,56 @@
 
                         <section class="doc-section" id="colors">
                             <h2>Colors</h2>
-                            <p>Append a palette name to the base class. Each colored message mixes 10% of the palette fill into <code>--r-surface-raised</code> for the background and takes its text from <code>--r-color-&lt;name&gt;-text</code>, the text-safe version of the palette entry. That keeps the label readable in both themes instead of pairing a saturated fill with white text.</p>
-                            <p>The same loop emits an outline variant with <code>-outline</code> appended: the background becomes transparent, the border and text use the palette text color, and the padding drops to 14px by 17px to absorb the border. Use the outline form when a tinted block would be too heavy, for example inside a card that already has a surface.</p>
+                            <p>
+                                Append a palette name to the base class. Each colored message mixes 10% of the palette
+                                fill into
+                                <code>--r-surface-raised</code>
+                                for the background and takes its text from
+                                <code>--r-color-&lt;name&gt;-text</code>
+                                , the text-safe version of the palette entry. That keeps the label readable in both
+                                themes instead of pairing a saturated fill with white text.
+                            </p>
+                            <p>
+                                The same loop emits an outline variant with
+                                <code>-outline</code>
+                                appended: the background becomes transparent, the border and text use the palette text
+                                color, and the padding drops to 14px by 17px to absorb the border. Use the outline form
+                                when a tinted block would be too heavy, for example inside a card that already has a
+                                surface.
+                            </p>
                             <div class="doc-demo">
                                 <div class="full-width">
-                                    <div class="message message-primary">Primary: a deploy key was rotated for production.</div>
-                                    <div class="message message-secondary">Secondary: this workspace is on the legacy billing plan.</div>
-                                    <div class="message message-tertiary">Tertiary: two integrations are waiting for approval.</div>
-                                    <div class="message message-info">Info: the next maintenance window starts at 02:00 UTC.</div>
-                                    <div class="message message-success">Success: the migration finished and the read replicas are caught up.</div>
-                                    <div class="message message-warning">Warning: this token expires in three days.</div>
-                                    <div class="message message-danger">Danger: the last backup failed and the job is paused.</div>
-                                    <div class="message message-link">Link: the upgrade guide covers the breaking changes.</div>
+                                    <div class="message message-primary">
+                                        Primary: a deploy key was rotated for production.
+                                    </div>
+                                    <div class="message message-secondary">
+                                        Secondary: this workspace is on the legacy billing plan.
+                                    </div>
+                                    <div class="message message-tertiary">
+                                        Tertiary: two integrations are waiting for approval.
+                                    </div>
+                                    <div class="message message-info">
+                                        Info: the next maintenance window starts at 02:00 UTC.
+                                    </div>
+                                    <div class="message message-success">
+                                        Success: the migration finished and the read replicas are caught up.
+                                    </div>
+                                    <div class="message message-warning">
+                                        Warning: this token expires in three days.
+                                    </div>
+                                    <div class="message message-danger">
+                                        Danger: the last backup failed and the job is paused.
+                                    </div>
+                                    <div class="message message-link">
+                                        Link: the upgrade guide covers the breaking changes.
+                                    </div>
                                     <div class="message message-dark">Dark: this environment is read only.</div>
-                                    <div class="message message-black">Black: internal tooling, no external traffic.</div>
-                                    <div class="message message-light">Light: the tint is derived from the slot, so the label stays readable.</div>
+                                    <div class="message message-black">
+                                        Black: internal tooling, no external traffic.
+                                    </div>
+                                    <div class="message message-light">
+                                        Light: the tint is derived from the slot, so the label stays readable.
+                                    </div>
                                 </div>
                             </div>
                             <div class="doc-code">
@@ -117,7 +175,9 @@
                             <div class="doc-demo">
                                 <div class="full-width">
                                     <div class="message message-success-outline">Success: the migration finished.</div>
-                                    <div class="message message-warning-outline">Warning: this token expires in three days.</div>
+                                    <div class="message message-warning-outline">
+                                        Warning: this token expires in three days.
+                                    </div>
                                     <div class="message message-danger-outline">Danger: the last backup failed.</div>
                                 </div>
                             </div>
@@ -134,47 +194,95 @@
 
                         <section class="doc-section" id="extra-pad">
                             <h2>Extra padding</h2>
-                            <p><code>.message-extra-pad</code> raises the padding to 27px by 30px, which gives the text the same 30px gutter on both sides instead of 20px on the left. Use it when a message holds a heading and a paragraph, or when it is the main content of a panel rather than a one-line notice.</p>
+                            <p>
+                                <code>.message-extra-pad</code>
+                                raises the padding to 27px by 30px, which gives the text the same 30px gutter on both
+                                sides instead of 20px on the left. Use it when a message holds a heading and a
+                                paragraph, or when it is the main content of a panel rather than a one-line notice.
+                            </p>
                             <div class="doc-demo">
                                 <div class="full-width">
                                     <div class="message message-info message-extra-pad">
                                         <strong>Maintenance window</strong>
-                                        <p>Reads stay available while we upgrade the primary database. Writes queue for about four minutes and replay automatically when the upgrade finishes.</p>
+                                        <p>
+                                            Reads stay available while we upgrade the primary database. Writes queue for
+                                            about four minutes and replay automatically when the upgrade finishes.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
-                                    <button type="button" class="doc-copy" data-doc-copy="message-extra-pad">Copy</button>
+                                    <button type="button" class="doc-copy" data-doc-copy="message-extra-pad">
+                                        Copy
+                                    </button>
                                 </div>
                                 <pre><code id="message-extra-pad" class="language-html">&lt;div class="message message-info message-extra-pad"&gt;
     &lt;strong&gt;Maintenance window&lt;/strong&gt;
     &lt;p&gt;Reads stay available while we upgrade the primary database. Writes queue for about four minutes and replay automatically when the upgrade finishes.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
                             </div>
-                            <p>Combining it with a close button still works, but the taller top padding leaves the button visually detached from the first line. Keep the default padding when a message is dismissible.</p>
+                            <p>
+                                Combining it with a close button still works, but the taller top padding leaves the
+                                button visually detached from the first line. Keep the default padding when a message is
+                                dismissible.
+                            </p>
                         </section>
 
                         <section class="doc-section" id="dismissible">
                             <h2>Dismissible message</h2>
-                            <p><code>.message-close</code> is a transparent button pinned to the top right corner with 8px by 10px of padding, 18px text, and the <code>--r-message-close-color</code> token, which colored messages override with their own palette color. The base message already reserves the space for it.</p>
-                            <p>On this site the removal is handled by the docs script: a message that carries <code>data-doc-dismissible</code> is removed from the document when its <code>.message-close</code> button is clicked. The framework ships no JavaScript, so the attribute is a docs hook, not a framework feature.</p>
+                            <p>
+                                <code>.message-close</code>
+                                is a transparent button pinned to the top right corner with 8px by 10px of padding, 18px
+                                text, and the
+                                <code>--r-message-close-color</code>
+                                token, which colored messages override with their own palette color. The base message
+                                already reserves the space for it.
+                            </p>
+                            <p>
+                                On this site the removal is handled by the docs script: a message that carries
+                                <code>data-doc-dismissible</code>
+                                is removed from the document when its
+                                <code>.message-close</code>
+                                button is clicked. The framework ships no JavaScript, so the attribute is a docs hook,
+                                not a framework feature.
+                            </p>
                             <div class="doc-demo">
                                 <div class="full-width">
                                     <div class="message message-success" data-doc-dismissible>
                                         Deployment finished on all three regions.
                                         <button class="message-close" type="button" aria-label="Dismiss message">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                                                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <svg
+                                                width="18"
+                                                height="18"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                aria-hidden="true"
+                                                focusable="false">
+                                                <path
+                                                    d="M6 6l12 12M18 6L6 18"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round" />
                                             </svg>
                                         </button>
                                     </div>
                                     <div class="message message-warning" data-doc-dismissible>
                                         Your trial ends in two days.
                                         <button class="message-close" type="button" aria-label="Dismiss message">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                                                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <svg
+                                                width="18"
+                                                height="18"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                aria-hidden="true"
+                                                focusable="false">
+                                                <path
+                                                    d="M6 6l12 12M18 6L6 18"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round" />
                                             </svg>
                                         </button>
                                     </div>
@@ -183,7 +291,9 @@
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
-                                    <button type="button" class="doc-copy" data-doc-copy="message-dismissible">Copy</button>
+                                    <button type="button" class="doc-copy" data-doc-copy="message-dismissible">
+                                        Copy
+                                    </button>
                                 </div>
                                 <pre><code id="message-dismissible" class="language-html">&lt;div class="message message-success" data-doc-dismissible&gt;
     Deployment finished on all three regions.
@@ -203,28 +313,68 @@
     &lt;/button&gt;
 &lt;/div&gt;</code></pre>
                             </div>
-                            <p>The close button needs <code>type="button"</code> so it cannot submit a surrounding form, and an <code>aria-label</code> because the icon carries no text. Removing the node is enough for a static notice. If the message is the only confirmation of an action, keep the outcome somewhere that survives the dismissal.</p>
+                            <p>
+                                The close button needs
+                                <code>type="button"</code>
+                                so it cannot submit a surrounding form, and an
+                                <code>aria-label</code>
+                                because the icon carries no text. Removing the node is enough for a static notice. If
+                                the message is the only confirmation of an action, keep the outcome somewhere that
+                                survives the dismissal.
+                            </p>
                         </section>
 
                         <section class="doc-section" id="icons">
                             <h2>Messages with icons</h2>
-                            <p>The message module has no icon styles. An icon is ordinary inline content, so an inline SVG with <code>stroke="currentColor"</code> inherits the message color and needs no extra class. Keep the icon decorative with <code>aria-hidden="true"</code> when the sentence already states the outcome.</p>
+                            <p>
+                                The message module has no icon styles. An icon is ordinary inline content, so an inline
+                                SVG with
+                                <code>stroke="currentColor"</code>
+                                inherits the message color and needs no extra class. Keep the icon decorative with
+                                <code>aria-hidden="true"</code>
+                                when the sentence already states the outcome.
+                            </p>
                             <div class="doc-demo">
                                 <div class="full-width">
                                     <div class="message message-success">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <svg
+                                            class="message-icon"
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            aria-hidden="true"
+                                            focusable="false">
                                             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
-                                            <path d="m8 12 3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="m8 12 3 3 5-6"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round" />
                                         </svg>
-                                        <strong>Backup complete.</strong> 42 GB written to cold storage.
+                                        <strong>Backup complete.</strong>
+                                        42 GB written to cold storage.
                                     </div>
                                     <div class="message message-danger">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <svg
+                                            class="message-icon"
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            aria-hidden="true"
+                                            focusable="false">
                                             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
-                                            <path d="M12 7v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path
+                                                d="M12 7v6"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round" />
                                             <circle cx="12" cy="16.5" r="0.9" fill="currentColor" />
                                         </svg>
-                                        <strong>Payment declined.</strong> Update the card on file to restore the workspace.
+                                        <strong>Payment declined.</strong>
+                                        Update the card on file to restore the workspace.
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +384,7 @@
                                     <button type="button" class="doc-copy" data-doc-copy="message-icons">Copy</button>
                                 </div>
                                 <pre><code id="message-icons" class="language-html">&lt;div class="message message-success"&gt;
-    &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+    &lt;svg class="message-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
         &lt;circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" /&gt;
         &lt;path d="m8 12 3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
     &lt;/svg&gt;
@@ -242,7 +392,7 @@
 &lt;/div&gt;
 
 &lt;div class="message message-danger"&gt;
-    &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+    &lt;svg class="message-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
         &lt;circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" /&gt;
         &lt;path d="M12 7v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
         &lt;circle cx="12" cy="16.5" r="0.9" fill="currentColor" /&gt;
@@ -250,12 +400,20 @@
     &lt;strong&gt;Payment declined.&lt;/strong&gt; Update the card on file to restore the workspace.
 &lt;/div&gt;</code></pre>
                             </div>
-                            <p>An inline SVG sits on the text baseline, which is close enough for a 16px icon in 14px copy. If you need the icon in its own column, add a flex wrapper around the message content yourself; the module does not provide one.</p>
+                            <p>
+                                An inline SVG sits on the text baseline, which is close enough for a 16px icon in 14px
+                                copy. If you need the icon in its own column, add a flex wrapper around the message
+                                content yourself; the module does not provide one.
+                            </p>
                         </section>
 
                         <section class="doc-section" id="javascript">
                             <h2>JavaScript</h2>
-                            <p>roolith css ships no JavaScript. The snippet below is documentation only, and it is the behavior this page uses: find the closest message that opted in with a data attribute, then remove it. Delegating from the document keeps it working for messages added later.</p>
+                            <p>
+                                roolith css ships no JavaScript. The snippet below is documentation only, and it is the
+                                behavior this page uses: find the closest message that opted in with a data attribute,
+                                then remove it. Delegating from the document keeps it working for messages added later.
+                            </p>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">JavaScript</span>
@@ -282,26 +440,73 @@ document.addEventListener('click', (event) =&gt; {
     }
 });</code></pre>
                             </div>
-                            <p>Bind to <code>data-doc-dismissible</code> or your own attribute, but keep the check: a message without the attribute should not disappear when a close button inside it is clicked, because that message may be a permanent notice.</p>
+                            <p>
+                                Bind to
+                                <code>data-doc-dismissible</code>
+                                or your own attribute, but keep the check: a message without the attribute should not
+                                disappear when a close button inside it is clicked, because that message may be a
+                                permanent notice.
+                            </p>
                         </section>
 
                         <section class="doc-section" id="accessibility">
                             <h2>Accessibility</h2>
-                            <p>A message already in the markup is read in place, so it needs nothing extra. A message that appears after an action needs to be announced, and that is a live region decision.</p>
+                            <p>
+                                A message already in the markup is read in place, so it needs nothing extra. A message
+                                that appears after an action needs to be announced, and that is a live region decision.
+                            </p>
                             <ul>
-                                <li>Use <code>role="status"</code> for a polite update such as a saved confirmation, and <code>role="alert"</code> for an error that should interrupt. Both imply a live region, so do not add a second <code>aria-live</code> to the same element.</li>
-                                <li>Insert the live region into the document before you fill it, or update text inside an element that is already present. A region added at the same moment as its text is often not announced.</li>
-                                <li>For a stack of messages, wrap them in a container with <code>aria-live="polite"</code> and <code>aria-atomic="true"</code> so the whole block is read as one update.</li>
-                                <li>Do not move focus to a message. Announce it, leave the focus where the user was, and let them continue.</li>
-                                <li>State the outcome in the text. The color and the tint reinforce the message, they do not carry it, and a colored block with no words tells a screen reader nothing.</li>
-                                <li>The close button needs <code>type="button"</code> and an <code>aria-label</code> when it holds an icon. Without a label it is announced as "button".</li>
-                                <li>Hiding a message with <code>display: none</code> removes it from the accessibility tree, which is what the dismiss snippet does. If the message is transient, make sure the same outcome is available somewhere else.</li>
+                                <li>
+                                    Use
+                                    <code>role="status"</code>
+                                    for a polite update such as a saved confirmation, and
+                                    <code>role="alert"</code>
+                                    for an error that should interrupt. Both imply a live region, so do not add a second
+                                    <code>aria-live</code>
+                                    to the same element.
+                                </li>
+                                <li>
+                                    Insert the live region into the document before you fill it, or update text inside
+                                    an element that is already present. A region added at the same moment as its text is
+                                    often not announced.
+                                </li>
+                                <li>
+                                    For a stack of messages, wrap them in a container with
+                                    <code>aria-live="polite"</code>
+                                    and
+                                    <code>aria-atomic="true"</code>
+                                    so the whole block is read as one update.
+                                </li>
+                                <li>
+                                    Do not move focus to a message. Announce it, leave the focus where the user was, and
+                                    let them continue.
+                                </li>
+                                <li>
+                                    State the outcome in the text. The color and the tint reinforce the message, they do
+                                    not carry it, and a colored block with no words tells a screen reader nothing.
+                                </li>
+                                <li>
+                                    The close button needs
+                                    <code>type="button"</code>
+                                    and an
+                                    <code>aria-label</code>
+                                    when it holds an icon. Without a label it is announced as "button".
+                                </li>
+                                <li>
+                                    Hiding a message with
+                                    <code>display: none</code>
+                                    removes it from the accessibility tree, which is what the dismiss snippet does. If
+                                    the message is transient, make sure the same outcome is available somewhere else.
+                                </li>
                             </ul>
                         </section>
 
                         <section class="doc-section" id="reference">
                             <h2 id="reference-heading">Class reference</h2>
-                            <p>The color classes are generated from the palette map, so the list below is the full set. Each one also has an outline partner.</p>
+                            <p>
+                                The color classes are generated from the palette map, so the list below is the full set.
+                                Each one also has an outline partner.
+                            </p>
                             <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
                                 <table class="table">
                                     <thead>
@@ -315,27 +520,44 @@ document.addEventListener('click', (event) =&gt; {
                                         <tr>
                                             <td><code>.message</code></td>
                                             <td>Base</td>
-                                            <td>Block notice with 17px top and bottom padding, 20px on the left and 30px on the right, token radius, 10px vertical margins, and the neutral message background.</td>
+                                            <td>
+                                                Block notice with 17px top and bottom padding, 20px on the left and 30px
+                                                on the right, token radius, 10px vertical margins, and the neutral
+                                                message background.
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><code>.message-primary</code></td>
                                             <td>Color</td>
-                                            <td>Any palette name except white: secondary, tertiary, info, success, warning, danger, link, dark, black, light. 10% palette fill on the raised surface, palette text color.</td>
+                                            <td>
+                                                Any palette name except white: secondary, tertiary, info, success,
+                                                warning, danger, link, dark, black, light. 10% palette fill on the
+                                                raised surface, palette text color.
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><code>.message-primary-outline</code></td>
                                             <td>Color variant</td>
-                                            <td>Transparent background with a 1px border and text in the palette text color. Padding becomes 14px by 17px.</td>
+                                            <td>
+                                                Transparent background with a 1px border and text in the palette text
+                                                color. Padding becomes 14px by 17px.
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><code>.message-extra-pad</code></td>
                                             <td>Layout</td>
-                                            <td>27px by 30px padding for messages with a heading and copy, so the copy gets the same gutter on both sides.</td>
+                                            <td>
+                                                27px by 30px padding for messages with a heading and copy, so the copy
+                                                gets the same gutter on both sides.
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><code>.message-close</code></td>
                                             <td>Close button</td>
-                                            <td>Transparent button pinned to the top right with 8px by 10px padding and 18px text. Colored messages match their own text color.</td>
+                                            <td>
+                                                Transparent button pinned to the top right with 8px by 10px padding and
+                                                18px text. Colored messages match their own text color.
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -345,7 +567,9 @@ document.addEventListener('click', (event) =&gt; {
                         <div class="pagination doc-pagination">
                             <div class="pagination-list">
                                 <div class="pagination-item">
-                                    <a class="pagination-link" href="/components/form-extended.html">Previous: Form extended</a>
+                                    <a class="pagination-link" href="/components/form-extended.html">
+                                        Previous: Form extended
+                                    </a>
                                 </div>
                             </div>
                             <div class="pagination-list">

@@ -2,7 +2,6 @@
 @use '../settings' as s;
 
 @mixin message() {
-
     .message {
         font-size: rem(14);
         line-height: 1.5;
@@ -23,6 +22,10 @@
 
     .message-extra-pad {
         padding: var(--r-message-extra-spacing);
+    }
+
+    .message-icon {
+        vertical-align: middle;
     }
 
     .message-close {

@@ -14,7 +14,8 @@ Maintainer notes for the roolith docs. This file is not part of the site.
 
 The Advanced switch reveals one editor per token in `playground-tokens.js`, which is grouped in the panel and follows the scope switch for theme scoped tokens while shared tokens stay separate. An advanced override is written to both scope rules, re-declaring the unchanged scope's default, because a light declaration on `:root` also matches an explicit dark page and the framework does not redeclare every token in the dark block. Values are free form CSS, validated in the model before they can reach a declaration. The page must load `playground-theme.js`, then `playground-controls.js`, then `playground.js`, after the three shared docs scripts, because the controller consumes the namespaces the other two publish.
 - `roolith-4.0.0.min.css`: the local framework build the pages load, so the docs always describe the shipped CSS.
-- `vendor/`: the local highlight.js build, the light and dark code themes, and the upstream license file.
+- `datepicker-demo.js`: the datepicker page demo controller, and only that page loads it. It initializes the vendored js-datepicker library on the `.form-datepicker-js` field, guards on both the library global and the field so it stays inert elsewhere, and relies on the library appending its panel to the field wrapper the framework overrides target.
+- `vendor/`: the local highlight.js and js-datepicker builds, the light and dark code themes, and the upstream license files.
 - `index.html`: the overview page. `favicon.ico` sits next to it.
 - `generate-search-index.mjs`: the script that rebuilds `search-index.json`.
 - `scripts/generate-playground-tokens.mjs`: the script that rebuilds `playground-tokens.js`. It compiles the theme scopes and the component token mixins, subtracts the component and private tokens, and writes the sorted catalog. `--check` compares the committed file with a fresh render.
@@ -74,6 +75,7 @@ The site has no required CDN runtime dependencies. Every script, stylesheet, and
 
 - `include-fragment.js` is a small local custom element that fetches `partials/*.html` with `credentials: 'same-origin'`, swaps the response into the element, and leaves the fallback text in place when a request fails. A successful partial gets `is-loaded` and a failed one gets `is-error`, and `doc.js` uses both states. It replaces the previous CDN-loaded `@github/include-fragment-element` package.
 - `vendor/highlight.min.js` provides syntax highlighting, and `vendor/highlight-github.min.css` with `vendor/highlight-github-dark.min.css` provide the light and dark code themes. `vendor/highlight.LICENSE` carries the upstream license.
+- `vendor/datepicker.min.js` and `vendor/datepicker.min.css` are js-datepicker 5.18.4, the third-party library the datepicker page demos. Only that page loads them, and `vendor/datepicker.LICENSE` carries the upstream MIT notice. The page's code sample still points at the unpkg URLs, since a project consuming roolith picks its own copy of the library.
 
 Nothing else the site depends on is fetched from the network, but a few demo pages hot-link remote images from `picsum.photos` and `placehold.co`, so those demos show broken images without a network connection.
 
