@@ -3,7 +3,6 @@
 @use '../mixins';
 
 @mixin button() {
-
     .button {
         @include mixins.button-base();
 
@@ -174,7 +173,7 @@
     }
 
     .button-has-icon {
-        gap: rem(20);
+        gap: rem(10);
     }
 
     .button-icon {

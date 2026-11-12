@@ -3,7 +3,6 @@
 @use '../mixins';
 
 @mixin card() {
-
     .card {
         box-shadow: var(--r-card-shadow);
         border-radius: var(--r-card-radius);
@@ -23,6 +22,10 @@
 
     .card-body {
         padding: var(--r-card-spacing);
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
     }
 
     .card-title {
@@ -32,7 +35,7 @@
     .card-text {
         font-size: rem(14);
         line-height: rem(22);
-        padding-bottom: rem(20);
+        margin-bottom: rem(20);
     }
 
     .card-information {
@@ -44,7 +47,7 @@
 
     .card-subtitle {
         @include mixins.text-dimmed();
-        padding-bottom: rem(10);
+        margin-bottom: rem(10);
     }
 
     .card-header {

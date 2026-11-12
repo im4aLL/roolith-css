@@ -159,34 +159,37 @@
                                 layout wrappers. Keep the label short and let the surrounding element carry the meaning.
                             </p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <p><a href="#">Unread messages <span class="badge badge-danger">4</span></a></p>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Worker</th>
-                                                <th scope="col">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Sync worker</td>
-                                                <td><span class="badge badge-success">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mail worker</td>
-                                                <td><span class="badge badge-warning">Paused</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <p
+                                    class="full-width"
+                                    style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+                                    <a href="#">Unread messages</a>
+                                    <span class="badge badge-danger">4</span>
+                                </p>
+                                <table class="table full-width">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Worker</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Sync worker</td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mail worker</td>
+                                            <td><span class="badge badge-warning">Paused</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="badge-in-context">Copy</button>
                                 </div>
-                                <pre><code id="badge-in-context" class="language-html">&lt;p&gt;&lt;a href="#"&gt;Unread messages &lt;span class="badge badge-danger"&gt;4&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                                <pre><code id="badge-in-context" class="language-html">&lt;p&gt;&lt;a href="#"&gt;Unread messages&lt;/a&gt; &lt;span class="badge badge-danger"&gt;4&lt;/span&gt;&lt;/p&gt;
 
 &lt;table class="table"&gt;
     &lt;thead&gt;
