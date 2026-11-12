@@ -1231,6 +1231,10 @@
                     "anchor": "composition"
                 },
                 {
+                    "text": "Full example",
+                    "anchor": "full-example"
+                },
+                {
                     "text": "Accessibility",
                     "anchor": "accessibility"
                 },
@@ -1350,6 +1354,10 @@
                 {
                     "text": "Animation",
                     "anchor": "animation"
+                },
+                {
+                    "text": "Loading",
+                    "anchor": "loading"
                 },
                 {
                     "text": "Accessibility",

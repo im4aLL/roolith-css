@@ -881,6 +881,66 @@ html.theme-dark .doc-theme-toggle .doc-icon-moon {
     margin-top: 2px;
 }
 
+.doc-color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.doc-color-grid.is-light {
+    padding: 14px;
+    background: var(--r-color-light);
+    border-radius: var(--r-global-border-radius);
+}
+
+.doc-color-grid.is-light .doc-color-cell {
+    border-color: transparent;
+}
+
+.doc-color-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 8px;
+    border: 1px solid var(--r-border-subtle);
+    border-radius: var(--r-global-border-radius);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.doc-color-cell-code {
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.doc-fig-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 240px);
+    gap: 28px;
+    align-items: center;
+}
+
+.doc-loading-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.doc-table-class-wide th:first-child,
+.doc-table-class-wide td:first-child {
+    width: 190px;
+}
+
+@media (max-width: 639px) {
+    .doc-fig-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 .doc-component-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

@@ -65,23 +65,21 @@
                         <section class="doc-section" id="color">
                             <h2>Color utilities</h2>
                             <p><code>_color.scss</code> loops over the palette and emits two classes per name: <code>.color-&lt;name&gt;</code> sets the text color to <code>var(--r-color-&lt;name&gt;)</code>, and <code>.bg-color-&lt;name&gt;</code> sets the background to the same value.</p>
-                            <p>The names are primary, secondary, tertiary, info, success, warning, danger, link, dark, black, white, and light. Both classes use the raw palette value rather than the text safe one, so a saturated color at 14px is usually below the contrast target, and white on a light surface is invisible.</p>
+                            <p>The names are primary, secondary, tertiary, info, success, warning, danger, link, dark, black, white, and light. Both classes use the raw palette value rather than the text safe one, so a saturated color at 14px is usually below the contrast target, and white on a light surface is invisible. The light and white text samples sit on a dark surface for that reason.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <p>
-                                        <span class="color-primary">primary</span>
-                                        <span class="color-secondary">secondary</span>
-                                        <span class="color-tertiary">tertiary</span>
-                                        <span class="color-info">info</span>
-                                        <span class="color-success">success</span>
-                                        <span class="color-warning">warning</span>
-                                        <span class="color-danger">danger</span>
-                                        <span class="color-link">link</span>
-                                        <span class="color-dark">dark</span>
-                                        <span class="color-black">black</span>
-                                        <span class="color-light">light</span>
-                                        <span class="color-white">white</span>
-                                    </p>
+                                <div class="doc-color-grid is-light full-width">
+                                    <span class="doc-color-cell color-primary">primary</span>
+                                    <span class="doc-color-cell color-secondary">secondary</span>
+                                    <span class="doc-color-cell color-tertiary">tertiary</span>
+                                    <span class="doc-color-cell color-info">info</span>
+                                    <span class="doc-color-cell color-success">success</span>
+                                    <span class="doc-color-cell color-warning">warning</span>
+                                    <span class="doc-color-cell color-danger">danger</span>
+                                    <span class="doc-color-cell color-link">link</span>
+                                    <span class="doc-color-cell color-dark">dark</span>
+                                    <span class="doc-color-cell color-black">black</span>
+                                    <span class="doc-color-cell color-light bg-color-dark">light</span>
+                                    <span class="doc-color-cell color-white bg-color-dark">white</span>
                                 </div>
                             </div>
                             <div class="doc-code">
@@ -99,23 +97,23 @@
 &lt;span class="color-link"&gt;link&lt;/span&gt;
 &lt;span class="color-dark"&gt;dark&lt;/span&gt;
 &lt;span class="color-black"&gt;black&lt;/span&gt;
-&lt;span class="color-light"&gt;light&lt;/span&gt;
-&lt;span class="color-white"&gt;white&lt;/span&gt;</code></pre>
+&lt;span class="color-light bg-color-dark"&gt;light&lt;/span&gt;
+&lt;span class="color-white bg-color-dark"&gt;white&lt;/span&gt;</code></pre>
                             </div>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <p class="bg-color-primary color-white">.bg-color-primary</p>
-                                    <p class="bg-color-secondary color-white">.bg-color-secondary</p>
-                                    <p class="bg-color-tertiary color-white">.bg-color-tertiary</p>
-                                    <p class="bg-color-info color-white">.bg-color-info</p>
-                                    <p class="bg-color-success color-white">.bg-color-success</p>
-                                    <p class="bg-color-warning color-white">.bg-color-warning</p>
-                                    <p class="bg-color-danger color-white">.bg-color-danger</p>
-                                    <p class="bg-color-link color-white">.bg-color-link</p>
-                                    <p class="bg-color-dark color-white">.bg-color-dark</p>
-                                    <p class="bg-color-black color-white">.bg-color-black</p>
-                                    <p class="bg-color-light color-dark">.bg-color-light</p>
-                                    <p class="bg-color-white color-dark">.bg-color-white</p>
+                                <div class="doc-color-grid full-width">
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-primary color-white">.bg-color-primary</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-secondary color-white">.bg-color-secondary</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-tertiary color-white">.bg-color-tertiary</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-info color-white">.bg-color-info</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-success color-white">.bg-color-success</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-warning color-white">.bg-color-warning</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-danger color-white">.bg-color-danger</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-link color-white">.bg-color-link</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-dark color-white">.bg-color-dark</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-black color-white">.bg-color-black</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-light color-dark">.bg-color-light</span>
+                                    <span class="doc-color-cell doc-color-cell-code bg-color-white color-dark">.bg-color-white</span>
                                 </div>
                             </div>
                             <div class="doc-code">
@@ -123,18 +121,18 @@
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="utilities-color-background">Copy</button>
                                 </div>
-                                <pre><code id="utilities-color-background" class="language-html">&lt;p class="bg-color-primary color-white"&gt;.bg-color-primary&lt;/p&gt;
-&lt;p class="bg-color-secondary color-white"&gt;.bg-color-secondary&lt;/p&gt;
-&lt;p class="bg-color-tertiary color-white"&gt;.bg-color-tertiary&lt;/p&gt;
-&lt;p class="bg-color-info color-white"&gt;.bg-color-info&lt;/p&gt;
-&lt;p class="bg-color-success color-white"&gt;.bg-color-success&lt;/p&gt;
-&lt;p class="bg-color-warning color-white"&gt;.bg-color-warning&lt;/p&gt;
-&lt;p class="bg-color-danger color-white"&gt;.bg-color-danger&lt;/p&gt;
-&lt;p class="bg-color-link color-white"&gt;.bg-color-link&lt;/p&gt;
-&lt;p class="bg-color-dark color-white"&gt;.bg-color-dark&lt;/p&gt;
-&lt;p class="bg-color-black color-white"&gt;.bg-color-black&lt;/p&gt;
-&lt;p class="bg-color-light color-dark"&gt;.bg-color-light&lt;/p&gt;
-&lt;p class="bg-color-white color-dark"&gt;.bg-color-white&lt;/p&gt;</code></pre>
+                                <pre><code id="utilities-color-background" class="language-html">&lt;span class="bg-color-primary color-white"&gt;.bg-color-primary&lt;/span&gt;
+&lt;span class="bg-color-secondary color-white"&gt;.bg-color-secondary&lt;/span&gt;
+&lt;span class="bg-color-tertiary color-white"&gt;.bg-color-tertiary&lt;/span&gt;
+&lt;span class="bg-color-info color-white"&gt;.bg-color-info&lt;/span&gt;
+&lt;span class="bg-color-success color-white"&gt;.bg-color-success&lt;/span&gt;
+&lt;span class="bg-color-warning color-white"&gt;.bg-color-warning&lt;/span&gt;
+&lt;span class="bg-color-danger color-white"&gt;.bg-color-danger&lt;/span&gt;
+&lt;span class="bg-color-link color-white"&gt;.bg-color-link&lt;/span&gt;
+&lt;span class="bg-color-dark color-white"&gt;.bg-color-dark&lt;/span&gt;
+&lt;span class="bg-color-black color-white"&gt;.bg-color-black&lt;/span&gt;
+&lt;span class="bg-color-light color-dark"&gt;.bg-color-light&lt;/span&gt;
+&lt;span class="bg-color-white color-dark"&gt;.bg-color-white&lt;/span&gt;</code></pre>
                             </div>
                             <p><code>.bg-color-*</code> sets only the background, so pair it with a matching text color yourself. Components that care about contrast, such as buttons and badges, already read the <code>--r-color-&lt;name&gt;-on</code> or <code>--r-color-&lt;name&gt;-text</code> token instead.</p>
                         </section>
@@ -143,10 +141,11 @@
                             <h2>Icons</h2>
                             <p><code>.icon</code> is an empty inline-block painted through a mask. The box is <code>--r-icon-size</code> (1rem), the paint color is <code>--r-icon-color</code> (which defaults to <code>--r-text-placeholder</code>), and the mask is centered and contained. Because the glyph is a mask and not a background image, it takes the paint color and stays crisp at any zoom.</p>
                             <p><code>.icon-small</code> drops the box to 0.875rem and <code>.icon-large</code> raises it to 2rem. Both only change the size, so they stack on the base class. <code>.icon-color-&lt;name&gt;</code> is generated for every palette name and sets the paint color.</p>
-                            <p>Two glyphs ship: <code>.icon-search</code> and <code>.icon-download</code>. For anything else, supply your own <code>mask-image</code> or load an icon font, which the framework's own demo pages do.</p>
+                            <p>Three glyphs ship: <code>.icon-search</code>, <code>.icon-download</code>, and <code>.icon-loading</code>. For anything else, supply your own <code>mask-image</code> or load an icon font, which the framework's own demo pages do.</p>
                             <div class="doc-demo">
                                 <span class="icon icon-search" aria-hidden="true"></span>
                                 <span class="icon icon-download" aria-hidden="true"></span>
+                                <span class="icon icon-loading" aria-hidden="true"></span>
                                 <span class="icon icon-small icon-search" aria-hidden="true"></span>
                                 <span class="icon icon-large icon-download" aria-hidden="true"></span>
                                 <span class="icon icon-color-primary icon-search" aria-hidden="true"></span>
@@ -160,6 +159,7 @@
                                 </div>
                                 <pre><code id="utilities-icons" class="language-html">&lt;span class="icon icon-search" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;span class="icon icon-download" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;span class="icon icon-loading" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;span class="icon icon-small icon-search" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;span class="icon icon-large icon-download" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;span class="icon icon-color-primary icon-search" aria-hidden="true"&gt;&lt;/span&gt;
@@ -175,14 +175,14 @@
                             <p><code>.rounded</code> clips the box to <code>--r-img-radius</code> and <code>.rounded-circle</code> clips it to 50%. Both set <code>overflow: hidden</code>, so put them on the element whose box should be clipped, which is usually the <code>&lt;img&gt;</code> itself.</p>
                             <p><code>.fig-caption</code> is the caption: 14px over 18px in <code>--r-img-caption-color</code> with 3px of top padding. <code>.fig</code> carries no rule of its own outside the article module, where it gets a 20px bottom margin, so on a plain page it is only a semantic figure wrapper. <code>.fig-center</code> centers the figure and its caption.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
+                                <div class="doc-fig-row full-width">
                                     <figure class="fig">
-                                        <img class="img rounded" src="https://picsum.photos/600/300?image=20" alt="Harbour at dusk" width="600" height="300" />
-                                        <figcaption class="fig-caption">A capped width with clipped corners.</figcaption>
+                                        <img class="img rounded" src="../images/4.png" alt="Blue abstract waves" width="320" height="180" />
+                                        <figcaption class="fig-caption">.img never scales up; .rounded clips the corners.</figcaption>
                                     </figure>
                                     <figure class="fig-center">
-                                        <img class="img rounded-circle" src="https://picsum.photos/120/120?image=21" alt="Portrait of a dog" width="120" height="120" />
-                                        <figcaption class="fig-caption">A centered figure with a circular clip.</figcaption>
+                                        <img class="img rounded-circle" src="https://picsum.photos/120/120?image=21" alt="Red shoes on display" width="120" height="120" />
+                                        <figcaption class="fig-caption">.fig-center centers the image and the caption.</figcaption>
                                     </figure>
                                 </div>
                             </div>
@@ -192,13 +192,13 @@
                                     <button type="button" class="doc-copy" data-doc-copy="utilities-images">Copy</button>
                                 </div>
                                 <pre><code id="utilities-images" class="language-html">&lt;figure class="fig"&gt;
-    &lt;img class="img rounded" src="harbour.jpg" alt="Harbour at dusk" width="600" height="300" /&gt;
-    &lt;figcaption class="fig-caption"&gt;A capped width with clipped corners.&lt;/figcaption&gt;
+    &lt;img class="img rounded" src="waves.jpg" alt="Blue abstract waves" width="320" height="180" /&gt;
+    &lt;figcaption class="fig-caption"&gt;.img never scales up; .rounded clips the corners.&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure class="fig-center"&gt;
-    &lt;img class="img rounded-circle" src="portrait.jpg" alt="Portrait of a dog" width="120" height="120" /&gt;
-    &lt;figcaption class="fig-caption"&gt;A centered figure with a circular clip.&lt;/figcaption&gt;
+    &lt;img class="img rounded-circle" src="shoes.jpg" alt="Red shoes on display" width="120" height="120" /&gt;
+    &lt;figcaption class="fig-caption"&gt;.fig-center centers the image and the caption.&lt;/figcaption&gt;
 &lt;/figure&gt;</code></pre>
                             </div>
                             <p><code>.fig-fit</code> sets <code>width: 100%</code>, <code>height: 100%</code>, and <code>object-fit: cover</code>, so it fills a parent that already has a fixed ratio and crops the overflow. It has no ratio or size of its own; the collage module is the built-in example of a sized parent.</p>
@@ -206,12 +206,18 @@
                                 <div class="full-width">
                                     <section class="collage">
                                         <div class="collage-item">
-                                            <img class="fig-fit" src="https://picsum.photos/800/300?image=22" alt="Terrace at sunset" />
+                                            <img class="fig-fit" src="../images/2.jpeg" alt="Purple abstract waves" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="../images/5.jpeg" alt="Blue and orange paint swirls" />
+                                        </div>
+                                        <div class="collage-item">
+                                            <img class="fig-fit" src="../images/6.jpeg" alt="Canyon walls and sky" />
                                         </div>
                                     </section>
                                     <figure class="fig">
-                                        <img class="img-full-width rounded" src="https://picsum.photos/800/200?image=23" alt="Coastline from above" width="800" height="200" />
-                                        <figcaption class="fig-caption">.img-full-width fills the row; .fig-fit crops to the sized collage box above it.</figcaption>
+                                        <img class="img-full-width rounded" src="../images/1.jpg" alt="White woven pattern" width="1920" height="720" />
+                                        <figcaption class="fig-caption">.fig-fit crops each 200px tile; .img-full-width fills the row and keeps its ratio.</figcaption>
                                     </figure>
                                 </div>
                             </div>
@@ -222,13 +228,19 @@
                                 </div>
                                 <pre><code id="utilities-images-fit" class="language-html">&lt;section class="collage"&gt;
     &lt;div class="collage-item"&gt;
-        &lt;img class="fig-fit" src="terrace.jpg" alt="Terrace at sunset" /&gt;
+        &lt;img class="fig-fit" src="waves.jpg" alt="Purple abstract waves" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="paint.jpg" alt="Blue and orange paint swirls" /&gt;
+    &lt;/div&gt;
+    &lt;div class="collage-item"&gt;
+        &lt;img class="fig-fit" src="canyon.jpg" alt="Canyon walls and sky" /&gt;
     &lt;/div&gt;
 &lt;/section&gt;
 
 &lt;figure class="fig"&gt;
-    &lt;img class="img-full-width rounded" src="coastline.jpg" alt="Coastline from above" width="800" height="200" /&gt;
-    &lt;figcaption class="fig-caption"&gt;.img-full-width fills the row.&lt;/figcaption&gt;
+    &lt;img class="img-full-width rounded" src="pattern.jpg" alt="White woven pattern" width="1920" height="720" /&gt;
+    &lt;figcaption class="fig-caption"&gt;.fig-fit crops each 200px tile; .img-full-width fills the row and keeps its ratio.&lt;/figcaption&gt;
 &lt;/figure&gt;</code></pre>
                             </div>
                             <p>Every image still needs an <code>alt</code> value. Use an empty <code>alt=""</code> only when the image is pure decoration, and set the <code>width</code> and <code>height</code> attributes so the browser can reserve the box before the file arrives.</p>
@@ -390,7 +402,7 @@
                                 <span class="badge badge-primary animation fadeInLeft">fadeInLeft</span>
                                 <span class="badge badge-primary animation fadeInRight">fadeInRight</span>
                                 <span class="badge badge-danger animation fadeOut">fadeOut</span>
-                                <span class="icon icon-download loader" aria-hidden="true"></span>
+                                <span class="icon icon-loading loader" aria-hidden="true"></span>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
@@ -403,10 +415,53 @@
 &lt;span class="badge badge-primary animation fadeInLeft"&gt;fadeInLeft&lt;/span&gt;
 &lt;span class="badge badge-primary animation fadeInRight"&gt;fadeInRight&lt;/span&gt;
 &lt;span class="badge badge-danger animation fadeOut"&gt;fadeOut&lt;/span&gt;
-&lt;span class="icon icon-download loader" aria-hidden="true"&gt;&lt;/span&gt;</code></pre>
+&lt;span class="icon icon-loading loader" aria-hidden="true"&gt;&lt;/span&gt;</code></pre>
                             </div>
                             <p>A keyframe animation runs once, when the element first renders. The badges above have already finished by the time you scroll to them; only the loader is still moving. The <code>.fadeOut</code> badge holds its final keyframe, so it has faded to nothing and stays that way, which is the fill mode doing its job. Re-apply a class in your script when content is swapped in if you want the entrance again.</p>
                             <p>Reduced motion is covered globally. The base reset forces every animation duration to 0.01ms and caps the iteration count at one when the user asks for reduced motion, so these classes fall back to their end state without any extra rule.</p>
+                        </section>
+
+                        <section class="doc-section" id="loading">
+                            <h2>Loading</h2>
+                            <p>A loading indicator is the <code>.icon-loading</code> glyph plus the <code>.loader</code> rotation. The glyph is a 270 degree arc with a gap, so the spin reads as motion at any angle; a closed ring would look still. The size and color classes stack on the same element.</p>
+                            <div class="doc-demo">
+                                <span class="icon icon-loading loader" aria-hidden="true"></span>
+                                <span class="icon icon-small icon-loading loader" aria-hidden="true"></span>
+                                <span class="icon icon-large icon-loading loader" aria-hidden="true"></span>
+                                <span class="icon icon-color-primary icon-loading loader" aria-hidden="true"></span>
+                                <span class="icon icon-color-success icon-loading loader" aria-hidden="true"></span>
+                                <span class="icon icon-color-danger icon-loading loader" aria-hidden="true"></span>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="utilities-loading">Copy</button>
+                                </div>
+                                <pre><code id="utilities-loading" class="language-html">&lt;span class="icon icon-loading loader" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;span class="icon icon-small icon-loading loader" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;span class="icon icon-large icon-loading loader" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;span class="icon icon-color-primary icon-loading loader" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;span class="icon icon-color-success icon-loading loader" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;span class="icon icon-color-danger icon-loading loader" aria-hidden="true"&gt;&lt;/span&gt;</code></pre>
+                            </div>
+                            <p>Put the spinner inside a <code>role="status"</code> message so the wait is announced, and hide the glyph itself with <code>aria-hidden="true"</code> so only the text is read. Stop the rotation and replace the text when the work ends instead of leaving a spinner running.</p>
+                            <div class="doc-demo">
+                                <p class="doc-loading-status" role="status">
+                                    <span class="icon icon-color-primary icon-loading loader" aria-hidden="true"></span>
+                                    Saving changes
+                                </p>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="utilities-loading-status">Copy</button>
+                                </div>
+                                <pre><code id="utilities-loading-status" class="language-html">&lt;p role="status"&gt;
+    &lt;span class="icon icon-color-primary icon-loading loader" aria-hidden="true"&gt;&lt;/span&gt;
+    Saving changes
+&lt;/p&gt;</code></pre>
+                            </div>
+                            <p>A button that blocks the next action needs no extra markup: <code>.button.loading</code> draws its own spinner, hides the label, and sets a wait cursor. Keep <code>aria-busy="true"</code> on the control and write the label as the action in progress, as the button page shows.</p>
                         </section>
 
                         <section class="doc-section" id="accessibility">
@@ -418,6 +473,7 @@
                                 <li>Every image needs an <code>alt</code> value. Use an empty <code>alt</code> only when the image adds nothing to the surrounding text.</li>
                                 <li>A <code>.tag-close</code> control needs a real <code>&lt;button&gt;</code>, or <code>role="button"</code> with <code>tabindex="0"</code> and a key handler, plus an accessible name such as <code>aria-label="Remove HTML5"</code>.</li>
                                 <li>Progress needs a native <code>&lt;progress&gt;</code> with <code>value</code> and <code>max</code>, or <code>role="progressbar"</code> with <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code>.</li>
+                                <li>A loading spinner is decoration: hide the glyph with <code>aria-hidden="true"</code> and announce the wait in a <code>role="status"</code> message, or rely on <code>.button.loading</code> with <code>aria-busy="true"</code>.</li>
                                 <li>Color utilities paint the raw palette value, so check the contrast before putting text on <code>.color-&lt;name&gt;</code> or <code>.bg-color-&lt;name&gt;</code>.</li>
                                 <li>Animation has to respect <code>prefers-reduced-motion</code>. The base reset already cuts every duration to 0.01ms and caps the iteration count, so keep new motion inside that reset instead of bypassing it.</li>
                             </ul>
@@ -492,6 +548,11 @@
                                             <td><code>.icon-download</code></td>
                                             <td>Glyph</td>
                                             <td>Built-in download mask.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.icon-loading</code></td>
+                                            <td>Glyph</td>
+                                            <td>Built-in spinner arc mask. Pair with <code>.loader</code> for rotation.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -669,7 +730,7 @@
 
                             <h3 class="h5" id="reference-animation">Animation</h3>
                             <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-animation">
-                                <table class="table">
+                                <table class="table doc-table-class-wide">
                                     <thead>
                                         <tr>
                                             <th scope="col">Class</th>
@@ -747,6 +808,7 @@
                         <a class="doc-toc-link" href="#spacers">Spacers</a>
                         <a class="doc-toc-link" href="#indicators">Indicators</a>
                         <a class="doc-toc-link" href="#animation">Animation</a>
+                        <a class="doc-toc-link" href="#loading">Loading</a>
                         <a class="doc-toc-link" href="#accessibility">Accessibility</a>
                         <a class="doc-toc-link" href="#reference">Class reference</a>
                     </nav>
