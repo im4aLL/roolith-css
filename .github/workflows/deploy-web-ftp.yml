@@ -1,0 +1,24 @@
+name: Deploy web to FTP
+
+on:
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5
+
+            - name: Upload web directory to FTP root
+              uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  local-dir: ./web/
+                  server-dir: ./
+                  exclude: |
+                      **/.git*
+                      **/.git*/
+                      **/.DS_Store

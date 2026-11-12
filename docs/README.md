@@ -37,6 +37,10 @@ Do not open the pages with `file://`. The partial loader fetches `/partials/*.ht
 
 All navigation, partials, and the search index use root-absolute URLs, so the `docs` folder must be served at the site root, not under a subpath. This is the intended deployment model for this site. Putting it under something like `/docs/` breaks the header, sidebar, search, and internal links.
 
+## Favicon
+
+`favicon.ico` is the same 16x16 icon the legacy site at `http://habibhadi.com/lab/roolith/` serves, and it lives at the docs root, so the root page links it as `favicon.ico` and every subfolder page links it as `../favicon.ico`. Reference it as `type="image/x-icon"`. Do not add `sizes="any"`, because that keyword promises a scalable icon, and browsers can then skip the raster ICO and show no icon at all.
+
 ## Build
 
 The documentation is static HTML and is deployed as-is. There is no docs build script and no VitePress configuration. Editing the HTML directly is the workflow. Regenerate only the search index when headings or pages change.
