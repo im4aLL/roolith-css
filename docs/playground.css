@@ -553,6 +553,93 @@
     gap: 14px;
 }
 
+.doc-playground-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid var(--r-border-subtle);
+}
+
+.doc-playground-section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.doc-playground-section-title {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.3;
+    color: var(--r-text-strong);
+}
+
+.doc-playground-section-text {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--r-text-muted);
+}
+
+.doc-playground-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.doc-playground-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.doc-playground-box-copy {
+    margin: 0 0 10px;
+}
+
+.doc-playground-list-progress {
+    margin-top: 8px;
+}
+
+.doc-playground-loader {
+    position: static;
+    display: inline-block;
+    margin: 0;
+}
+
+.doc-playground-stat-table {
+    min-width: 420px;
+}
+
+.doc-playground-map {
+    aspect-ratio: 1000 / 647;
+}
+
+.doc-playground-map svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.doc-playground-map-fragment > p {
+    margin: 0;
+}
+
+.doc-playground-row-tight {
+    gap: 8px;
+}
+
+.doc-playground-row-tight > .popover-container .popover {
+    width: var(--r-popover-width);
+}
+
+.doc-playground-stack > .card {
+    margin-bottom: 0;
+}
+
 .doc-playground-app-main-col {
     display: flex;
     flex-direction: column;
@@ -592,7 +679,7 @@
     color: var(--r-text-muted);
 }
 
-.doc-playground-popover {
+.doc-playground-app-head .doc-playground-popover {
     margin-top: 10px;
 }
 
@@ -653,7 +740,7 @@
 }
 
 .doc-playground-chart-bar.is-peak {
-    background: var(--r-color-primary);
+    background: var(--r-color-tertiary);
 }
 
 .doc-playground-chart-labels {
@@ -700,6 +787,10 @@
         grid-template-columns: minmax(0, 1fr);
     }
 
+    .doc-playground-split {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .doc-playground-app-side {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -716,6 +807,10 @@
 }
 
 @media (max-width: 700px) {
+    .doc-playground-workspace {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .doc-playground-app-side {
         grid-template-columns: minmax(0, 1fr);
     }
