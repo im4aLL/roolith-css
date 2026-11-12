@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block auth - roolith css</title>
+        <meta name="description" content="Block auth scaffold for sign in and password reset screens: a centered 400px container with a header, a form, and a footer, built from the form and button modules in roolith css." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block auth</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block auth</h1>
+                            <p class="doc-content-lead">Block auth is the full screen scaffold for sign in, sign up, and password reset pages. It centers a 400px column on a full viewport height, then leaves the header, form, and footer to the existing form and button modules.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-auth</strong>
+                                - defined in
+                                <strong>blocks/_block-auth.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>The wrapper takes the block padding top and bottom, centers its content on both axes, and sets <code>min-height: 100vh</code>. The container is a fixed 400px wide column with auto side margins, which is narrow enough for a single field column and wide enough for a full label and input pair.</p>
+                            <p>Inside the container, three children do the work: <code>.block-auth-header</code> for the heading and the supporting line, the form itself, and <code>.block-auth-footer</code> for the secondary link. The header adds 30px of bottom padding and the footer adds 10px of top padding, both derived from <code>--r-block-padding</code>.</p>
+                            <div class="doc-demo">
+                                <div class="block-auth" style="min-height: 480px">
+                                    <div class="block-auth-container">
+                                        <div class="block-auth-header">
+                                            <h5>Welcome back</h5>
+                                            <p>Sign in to the deployment dashboard.</p>
+                                        </div>
+
+                                        <form action="#" class="form">
+                                            <div class="form-field">
+                                                <label class="form-label" for="block-auth-email">Email</label>
+                                                <input type="email" class="form-input" id="block-auth-email" name="email" autocomplete="email" />
+                                            </div>
+
+                                            <div class="form-field form-field-password">
+                                                <label class="form-label" for="block-auth-password">Password</label>
+                                                <input type="password" class="form-input" id="block-auth-password" name="password" autocomplete="current-password" />
+                                                <button class="form-password-toggle" type="button" aria-label="Show password" aria-pressed="false">
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <button class="button button-primary button-block" type="submit">Sign in</button>
+                                            </div>
+                                        </form>
+
+                                        <div class="block-auth-footer">
+                                            <p>Forgot your password? <a href="#">Reset password</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-auth-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-auth-basic" class="language-html">&lt;div class="block-auth"&gt;
+    &lt;div class="block-auth-container"&gt;
+        &lt;div class="block-auth-header"&gt;
+            &lt;h5&gt;Welcome back&lt;/h5&gt;
+            &lt;p&gt;Sign in to the deployment dashboard.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;form action="#" class="form"&gt;
+            &lt;div class="form-field"&gt;
+                &lt;label class="form-label" for="email"&gt;Email&lt;/label&gt;
+                &lt;input type="email" class="form-input" id="email" name="email" autocomplete="email" /&gt;
+            &lt;/div&gt;
+
+            &lt;div class="form-field form-field-password"&gt;
+                &lt;label class="form-label" for="password"&gt;Password&lt;/label&gt;
+                &lt;input type="password" class="form-input" id="password" name="password" autocomplete="current-password" /&gt;
+                &lt;button class="form-password-toggle" type="button" aria-label="Show password" aria-pressed="false"&gt;
+                    &lt;svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                        &lt;path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                        &lt;circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div class="form-field"&gt;
+                &lt;button class="button button-primary button-block" type="submit"&gt;Sign in&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+
+        &lt;div class="block-auth-footer"&gt;
+            &lt;p&gt;Forgot your password? &lt;a href="#"&gt;Reset password&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <div class="message message-info">The demo above overrides <code>min-height</code> with an inline style so the block fits inside this page. The code block keeps the unmodified markup; in a real sign in page the <code>100vh</code> minimum fills the viewport.</div>
+                            <p>The canonical demo also puts descriptive classes on the heading, the supporting line, and the footer link. <code>_block-auth.scss</code> defines none of them, so this page uses plain elements and normal anchors instead. Style those pieces with your own type and link rules.</p>
+                        </section>
+
+                        <section class="doc-section" id="sign-in">
+                            <h2>Sign in form</h2>
+                            <p>The scaffold holds any form. The markup inside the container is the shared <a href="/components/form.html">Form</a> and <a href="/components/button.html">Button</a> work: <code>.form-field</code> for the row and its 20px bottom margin, <code>.form-label</code> and <code>.form-input</code> for the pair, and <code>.button-block</code> so the submit action fills the column.</p>
+                            <p>This example adds a remember me checkbox from the <a href="/components/form.html">Form</a> module and a sign up line in the footer. The password field keeps the toggle from <a href="/components/form-extended.html">Form extended</a>, which the framework positions but does not wire up.</p>
+                            <div class="doc-demo">
+                                <div class="block-auth" style="min-height: 640px">
+                                    <div class="block-auth-container">
+                                        <div class="block-auth-header">
+                                            <h5>Sign in</h5>
+                                            <p>Use your work email to continue to the dashboard.</p>
+                                        </div>
+
+                                        <form action="#" class="form">
+                                            <div class="form-field">
+                                                <label class="form-label" for="block-auth-signin-email">Email</label>
+                                                <input type="email" class="form-input" id="block-auth-signin-email" name="email" autocomplete="email" required />
+                                            </div>
+
+                                            <div class="form-field form-field-password">
+                                                <label class="form-label" for="block-auth-signin-password">Password</label>
+                                                <input type="password" class="form-input" id="block-auth-signin-password" name="password" autocomplete="current-password" required />
+                                                <button class="form-password-toggle" type="button" aria-label="Show password" aria-pressed="false">
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <label class="form-checkbox-label">
+                                                    <input class="form-check-input" type="checkbox" name="remember" />
+                                                    Keep me signed in on this device
+                                                </label>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <button class="button button-primary button-block" type="submit">Sign in</button>
+                                            </div>
+                                        </form>
+
+                                        <div class="block-auth-footer">
+                                            <p>New to the dashboard? <a href="#">Create an account</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-auth-signin">Copy</button>
+                                </div>
+                                <pre><code id="block-auth-signin" class="language-html">&lt;div class="block-auth"&gt;
+    &lt;div class="block-auth-container"&gt;
+        &lt;div class="block-auth-header"&gt;
+            &lt;h5&gt;Sign in&lt;/h5&gt;
+            &lt;p&gt;Use your work email to continue to the dashboard.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;form action="#" class="form"&gt;
+            &lt;div class="form-field"&gt;
+                &lt;label class="form-label" for="email"&gt;Email&lt;/label&gt;
+                &lt;input type="email" class="form-input" id="email" name="email" autocomplete="email" required /&gt;
+            &lt;/div&gt;
+
+            &lt;div class="form-field form-field-password"&gt;
+                &lt;label class="form-label" for="password"&gt;Password&lt;/label&gt;
+                &lt;input type="password" class="form-input" id="password" name="password" autocomplete="current-password" required /&gt;
+                &lt;button class="form-password-toggle" type="button" aria-label="Show password" aria-pressed="false"&gt;
+                    &lt;svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                        &lt;path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                        &lt;circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div class="form-field"&gt;
+                &lt;label class="form-checkbox-label"&gt;
+                    &lt;input class="form-check-input" type="checkbox" name="remember" /&gt;
+                    Keep me signed in on this device
+                &lt;/label&gt;
+            &lt;/div&gt;
+
+            &lt;div class="form-field"&gt;
+                &lt;button class="button button-primary button-block" type="submit"&gt;Sign in&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+
+        &lt;div class="block-auth-footer"&gt;
+            &lt;p&gt;New to the dashboard? &lt;a href="#"&gt;Create an account&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The container has no surface, border, or shadow. On a sign in page that needs a card, wrap the form in a <a href="/components/card.html">Card</a> or a <code>.box</code> inside the container instead of styling the container, so the block keeps its single job of centering the column. This demo overrides <code>min-height</code> for the same reason as the previous one; the code block keeps the unmodified markup.</p>
+                        </section>
+
+                        <section class="doc-section" id="field-states">
+                            <h2>Field states and errors</h2>
+                            <p>The form module carries the state classes. Add <code>error</code> to the <code>.form-field</code> wrapper and the label, the input border, and the helper text switch to <code>--r-form-error-color</code>. <code>success</code> and <code>warning</code> work the same way.</p>
+                            <p>Put the message in a <code>.form-text</code> element inside the same field. It renders as an 11px block with an 8px top padding, so the message sits directly under the input instead of pushing the next field away. The same field markup works inside the auth container.</p>
+                            <div class="doc-demo">
+                                <form action="#" class="form" style="width: 400px; max-width: 100%">
+                                    <div class="form-field error">
+                                        <label class="form-label" for="block-auth-error-email">Email</label>
+                                        <input type="email" class="form-input" id="block-auth-error-email" name="email" autocomplete="email" value="hadi@" aria-invalid="true" aria-describedby="block-auth-error-message" />
+                                        <span class="form-text" id="block-auth-error-message" role="alert">Enter a complete email address.</span>
+                                    </div>
+
+                                    <div class="form-field">
+                                        <button class="button button-primary button-block" type="submit">Send reset link</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-auth-errors">Copy</button>
+                                </div>
+                                <pre><code id="block-auth-errors" class="language-html">&lt;form action="#" class="form"&gt;
+    &lt;div class="form-field error"&gt;
+        &lt;label class="form-label" for="email"&gt;Email&lt;/label&gt;
+        &lt;input
+            type="email"
+            class="form-input"
+            id="email"
+            name="email"
+            autocomplete="email"
+            value="hadi@"
+            aria-invalid="true"
+            aria-describedby="email-error" /&gt;
+        &lt;span class="form-text" id="email-error" role="alert"&gt;Enter a complete email address.&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-field"&gt;
+        &lt;button class="button button-primary button-block" type="submit"&gt;Send reset link&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                            </div>
+                            <p>The <code>error</code> class is visual only. The <code>aria-invalid</code> attribute, the <code>aria-describedby</code> reference, and the live announcement are what make the state usable with a screen reader, and all three have to be managed by application code when validation runs.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The block is layout only, so the semantics come from the markup you put inside it. A sign in page is the primary content of the document, which means the wrapper should be the page landmark rather than a decorative div.</p>
+                            <ul>
+                                <li>Make the scaffold the main landmark. On a real page use <code>&lt;main class="block-auth"&gt;</code>, or give the wrapper <code>role="main"</code>. The docs demos keep a div because the page already has a main landmark.</li>
+                                <li>Name the region. Give the container <code>aria-labelledby</code> pointing at the heading in <code>.block-auth-header</code>, and keep one <code>h1</code> per page so the heading order starts at the top level.</li>
+                                <li>Label every input with a real <code>&lt;label for&gt;</code> in <code>.form-label</code>. A placeholder is not a label: it disappears on input and is not reliably announced.</li>
+                                <li>Set the right <code>autocomplete</code> values (<code>email</code>, <code>current-password</code>, <code>new-password</code>) and use <code>type="email"</code> so mobile keyboards and password managers work.</li>
+                                <li>Give the password toggle an <code>aria-label</code> and an <code>aria-pressed</code> state, and change the label when the input type changes. The toggle is a plain button, so it needs script to switch the type.</li>
+                                <li>Use <code>type="submit"</code> on the form action. A button inside a form defaults to submit, but being explicit prevents accidental submits from buttons added later.</li>
+                                <li>Announce errors. Put the message in the same field, connect it with <code>aria-describedby</code>, set <code>aria-invalid="true"</code> on the input, and move focus to the first invalid field after a failed submit.</li>
+                                <li>Do not rely on the <code>error</code> color alone. The message text states the problem, and <code>role="alert"</code> on a message that appears after submit announces it without a focus change.</li>
+                                <li>Make the footer links descriptive on their own. Reset password and Create an account are fine; avoid a bare Click here, and do not nest interactive elements inside each other.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>The block owns four classes. Form and button classes inside the container belong to their own modules.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-auth</code></td>
+                                            <td>Base</td>
+                                            <td>Flex wrapper, centered on both axes, with the block padding top and bottom and <code>min-height: 100vh</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-auth-container</code></td>
+                                            <td>Column</td>
+                                            <td>Fixed 400px width with auto side margins.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-auth-header</code></td>
+                                            <td>Header</td>
+                                            <td>Adds 30px of bottom padding, which is one and a half times the block padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-auth-footer</code></td>
+                                            <td>Footer</td>
+                                            <td>Adds 10px of top padding, which is half the block padding.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-analytics.html">Previous: Block analytics</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-banner.html">Next: Block banner</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#sign-in">Sign in form</a>
+                        <a class="doc-toc-link" href="#field-states">Field states and errors</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

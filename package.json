@@ -9,15 +9,18 @@
         "build": "vite build",
         "preview": "vite preview",
         "css-vars": "node scripts/generate-css-variables.mjs",
-        "css-vars:all": "node scripts/generate-css-variables.mjs --all"
+        "css-vars:all": "node scripts/generate-css-variables.mjs --all",
+        "test": "node docs/check-playground-theme.mjs && node scripts/generate-playground-tokens.mjs --check",
+        "check:playground": "node docs/check-playground-theme.mjs && node scripts/generate-playground-tokens.mjs --check",
+        "tokens": "node scripts/generate-playground-tokens.mjs"
     },
     "repository": "git+https://github.com/im4aLL/roolith-css.git",
     "keywords": [
         "css",
         "framework"
     ],
-    "author": "Habib Hadi <me@habibhadi.com>",
-    "license": "ISC",
+    "author": "Md Habibullah Al Hadi <me@habibhadi.com>",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/im4aLL/roolith-css/issues"
     },
@@ -27,6 +30,7 @@
         "postcss": "^8.5.6",
         "sass-embedded": "^1.89.2",
         "vite": "^7.0.6",
-        "vite-plugin-banner": "^0.8.1"
+        "vite-plugin-banner": "^0.8.1",
+        "vitepress": "^2.0.0-alpha.21"
     }
 }

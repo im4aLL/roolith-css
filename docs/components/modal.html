@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Modal - roolith css</title>
+        <meta name="description" content="Modal overlay, content sizes, header, body and footer slots, close button, right-aligned actions, and the active state used to open and close a dialog in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Modal</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Modal</h1>
+                            <p class="doc-content-lead">A modal is a dialog layer for a decision or a short form that must be finished before the page continues. The framework supplies the fixed overlay, the centered content box, the header, body, and footer slots, and the <code>.active</code> state that reveals them. Opening and closing is script.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.modal</strong>
+                                - defined in
+                                <strong>modules/_modal.scss</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            The default <code>$modal-layout</code> is <code>css-grid</code>, which centers <code>.modal-content</code> between two flexible spacer rows. <code>traditional</code> and <code>flex</code> change the internals of the same markup, not the class names.
+                        </div>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p><code>.modal</code> is the overlay: fixed to the viewport at full size, padded 20px on each side, painted with the <code>--r-modal-background</code> scrim, and hidden with <code>display: none</code> until it gains <code>.active</code>.</p>
+                            <p>Inside it, <code>.modal-content</code> is the dialog box: a maximum width of 600px, the token radius, the content shadow, its own vertical scroll, and the fade-up animation. The header, body, and footer are ordinary slots, each padded with <code>--r-modal-content-spacing</code> (20px). The header carries a bottom border and a 16px bold title, the footer carries a top border and a 10px gap. The invite demo below sizes the box to an explicit 500px with an inline <code>width</code>, clamped by <code>calc(100vw - 2.5rem)</code> so it still fits the overlay padding on a narrow screen; the Sizes section covers the built-in presets, which only cap the max width.</p>
+                            <p>The trigger is a normal button. Here it is wired with the docs hook <code>data-doc-modal="#modal-invite"</code>, which adds <code>.active</code> to the matching overlay. The overlay markup sits after the code block, outside the demo box, because a fixed layer cannot be previewed inline.</p>
+                            <div class="doc-demo">
+                                <button type="button" class="button button-primary" data-doc-modal="#modal-invite">Invite a teammate</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="modal-basic">Copy</button>
+                                </div>
+                                <pre><code id="modal-basic" class="language-html">&lt;button type="button" class="button button-primary" data-doc-modal="#modal-invite"&gt;
+    Invite a teammate
+&lt;/button&gt;
+
+&lt;div class="modal" id="modal-invite"&gt;
+    &lt;div class="modal-content" style="width: min(500px, calc(100vw - 2.5rem))" role="dialog" aria-modal="true" aria-labelledby="modal-invite-title" tabindex="-1"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;span id="modal-invite-title"&gt;Invite a teammate&lt;/span&gt;
+            &lt;button type="button" class="modal-close" aria-label="Close dialog"&gt;
+                &lt;svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                    &lt;path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+                &lt;/svg&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;
+            &lt;div class="form-field"&gt;
+                &lt;label class="form-label" for="invite-email"&gt;Email address&lt;/label&gt;
+                &lt;input class="form-input" type="email" id="invite-email" name="invite-email" placeholder="teammate@example.com" /&gt;
+                &lt;small class="form-text"&gt;They get an email with a link to join the workspace.&lt;/small&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-footer"&gt;
+            &lt;button type="button" class="button button-outline" data-doc-modal-close&gt;Cancel&lt;/button&gt;
+            &lt;button type="button" class="button button-primary"&gt;Send invite&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Two notes on this page. The demo overlay carries an inline <code>z-index: 1100</code> because the docs header is sticky at 1000, while the component itself uses <code>z-index: 10</code>. And the docs hook is only a hook: the framework knows nothing about <code>data-doc-modal</code>, so pick your own attribute in an application.</p>
+                        </section>
+
+                        <section class="doc-section" id="sizes">
+                            <h2>Sizes</h2>
+                            <p>Add <code>small</code>, <code>large</code>, or <code>fluid</code> to <code>.modal-content</code>. Small caps the box at 300px for a confirmation, large raises it to 800px for a wide form or a checklist, and fluid takes up to 80% of the padded overlay width for content that needs the room, such as the scrollable settings comparison below. The default 600px is a comfortable middle for a short form.</p>
+                            <div class="doc-demo">
+                                <button type="button" class="button" data-doc-modal="#modal-small">Small</button>
+                                <button type="button" class="button" data-doc-modal="#modal-large">Large</button>
+                                <button type="button" class="button" data-doc-modal="#modal-fluid">Fluid</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="modal-sizes">Copy</button>
+                                </div>
+                                <pre><code id="modal-sizes" class="language-html">&lt;button type="button" class="button" data-doc-modal="#modal-small"&gt;Small&lt;/button&gt;
+&lt;button type="button" class="button" data-doc-modal="#modal-large"&gt;Large&lt;/button&gt;
+&lt;button type="button" class="button" data-doc-modal="#modal-fluid"&gt;Fluid&lt;/button&gt;
+
+&lt;div class="modal" id="modal-small"&gt;
+    &lt;div class="modal-content small" role="dialog" aria-modal="true" aria-labelledby="modal-small-title" tabindex="-1"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;span id="modal-small-title"&gt;Revoke token&lt;/span&gt;
+            &lt;button type="button" class="modal-close"&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;The CLI stops working immediately. This cannot be undone.&lt;/div&gt;
+        &lt;div class="modal-footer"&gt;
+            &lt;button type="button" class="button button-outline" data-doc-modal-close&gt;Cancel&lt;/button&gt;
+            &lt;button type="button" class="button button-danger"&gt;Revoke&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="modal" id="modal-large"&gt;
+    &lt;div class="modal-content large" role="dialog" aria-modal="true" aria-labelledby="modal-large-title" tabindex="-1"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;span id="modal-large-title"&gt;Release checklist&lt;/span&gt;
+            &lt;button type="button" class="modal-close"&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;
+            &lt;ul class="list"&gt;
+                &lt;li&gt;Version bumped in the manifest and the changelog.&lt;/li&gt;
+                &lt;li&gt;Migration reviewed against a production snapshot.&lt;/li&gt;
+                &lt;li&gt;Rollback image tagged and pushed.&lt;/li&gt;
+                &lt;li&gt;On-call engineer notified in the release channel.&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-footer"&gt;
+            &lt;button type="button" class="button button-primary" data-doc-modal-close&gt;Done&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="modal" id="modal-fluid"&gt;
+    &lt;div class="modal-content fluid" role="dialog" aria-modal="true" aria-labelledby="modal-fluid-title" tabindex="-1"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;span id="modal-fluid-title"&gt;Compare environments&lt;/span&gt;
+            &lt;button type="button" class="modal-close"&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;
+            &lt;div class="table-responsive" tabindex="0" role="region" aria-label="Scrollable settings comparison"&gt;
+                &lt;table class="table" aria-labelledby="modal-fluid-title"&gt;
+                    &lt;thead&gt;
+                        &lt;tr&gt;
+                            &lt;th scope="col"&gt;Setting&lt;/th&gt;
+                            &lt;th scope="col"&gt;Staging&lt;/th&gt;
+                            &lt;th scope="col"&gt;Production&lt;/th&gt;
+                        &lt;/tr&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Replicas&lt;/td&gt;
+                            &lt;td&gt;2&lt;/td&gt;
+                            &lt;td&gt;6&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Cache TTL&lt;/td&gt;
+                            &lt;td&gt;60s&lt;/td&gt;
+                            &lt;td&gt;300s&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Log level&lt;/td&gt;
+                            &lt;td&gt;debug&lt;/td&gt;
+                            &lt;td&gt;warn&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-footer"&gt;
+            &lt;button type="button" class="button button-primary" data-doc-modal-close&gt;Done&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The large example uses <code>.list</code> for its checklist, and <code>.modal-body</code> itself adds token padding only. The sizes snippet abbreviates the close control to a text label, while the live demos use the icon SVG shown in the basic usage example.</p>
+                            <p>The scrollable settings comparison sits in <code>.table-responsive</code>, which scrolls the overflow on the x axis. The wrapper needs <code>role="region"</code> and an <code>aria-label</code> whether or not the table overflows, and <code>tabindex="0"</code> while the table overflows, so a keyboard user can reach the scroll.</p>
+                            <p>The modifiers only change <code>max-width</code>. The overlay stays padded by 20px on each side, so a fluid box is up to 80% of the padded overlay width and never touches the screen edge.</p>
+                            <p>In the default grid layout the content row has no maximum height, so keep a dialog shorter than the viewport. The <code>flex</code> layout caps the box at 90% of the viewport height, and a tall grid dialog needs its own <code>max-height</code> before <code>.modal-content</code> can scroll.</p>
+                        </section>
+
+                        <section class="doc-section" id="footer-actions">
+                            <h2>Footer actions</h2>
+                            <p><code>.modal-footer</code> is a flex row with a 10px gap, so a cancel and a confirm pair sits together without a bundle wrapper. Add <code>.modal-footer-right</code> to push the pair to the right edge, which is the usual pattern when the footer holds exactly one decision.</p>
+                            <p>Keep the destructive action on the left of the primary one and give the primary action the stronger color. A dialog with a single action can drop the cancel button, since the header close button and Escape already dismiss it.</p>
+                            <div class="doc-demo">
+                                <button type="button" class="button button-primary" data-doc-modal="#modal-archive">Archive projects</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="modal-footer">Copy</button>
+                                </div>
+                                <pre><code id="modal-footer" class="language-html">&lt;button type="button" class="button button-primary" data-doc-modal="#modal-archive"&gt;
+    Archive projects
+&lt;/button&gt;
+
+&lt;div class="modal" id="modal-archive"&gt;
+    &lt;div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-archive-title" tabindex="-1"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;span id="modal-archive-title"&gt;Archive 12 projects?&lt;/span&gt;
+            &lt;button type="button" class="modal-close" aria-label="Close dialog"&gt;
+                &lt;svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                    &lt;path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+                &lt;/svg&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;
+            Archived projects keep their history and stop running scheduled jobs. You can restore them from the
+            workspace settings at any time.
+        &lt;/div&gt;
+        &lt;div class="modal-footer modal-footer-right"&gt;
+            &lt;button type="button" class="button button-outline" data-doc-modal-close&gt;Cancel&lt;/button&gt;
+            &lt;button type="button" class="button button-primary"&gt;Archive&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Without <code>.modal-footer-right</code> the actions stay at the start of the footer, which suits a footer that mixes a status line with one button.</p>
+                        </section>
+
+                        <section class="doc-section" id="opening-and-closing">
+                            <h2>Opening and closing</h2>
+                            <p>Only one class matters. The overlay is <code>display: none</code> until it has <code>.active</code>, and adding or removing that class is the entire open and close API. The docs script adds it from a <code>data-doc-modal</code> trigger, removes it from a <code>.modal-close</code> or <code>[data-doc-modal-close]</code> element, removes it when the overlay itself is clicked, and removes it on Escape.</p>
+                            <p>A backdrop click means a click on the <code>.modal</code> element itself, in the space outside <code>.modal-content</code>. That space exists because the overlay is padded and the content is capped in width, so the listener must compare the event target with the overlay rather than with any ancestor.</p>
+                            <p>Escape closes the topmost surface. The docs script returns focus to the trigger on Escape, on a close button click, and on a backdrop click, so the user lands back where the dialog started however it was dismissed.</p>
+                            <div class="doc-demo">
+                                <button type="button" class="button button-primary" data-doc-modal="#modal-rotate-key">Rotate deploy key</button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="modal-hooks">Copy</button>
+                                </div>
+                                <pre><code id="modal-hooks" class="language-html">&lt;button type="button" class="button button-primary" data-doc-modal="#modal-rotate-key"&gt;
+    Rotate deploy key
+&lt;/button&gt;
+
+&lt;div class="modal" id="modal-rotate-key"&gt;
+    &lt;div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-rotate-key-title" tabindex="-1"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;span id="modal-rotate-key-title"&gt;Rotate deploy key&lt;/span&gt;
+            &lt;button type="button" class="modal-close" aria-label="Close dialog"&gt;
+                &lt;svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                    &lt;path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /&gt;
+                &lt;/svg&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;
+            Any pipeline that still uses the old key fails on its next run. Update the secret in CI before the deploy
+            window closes.
+        &lt;/div&gt;
+        &lt;div class="modal-footer modal-footer-right"&gt;
+            &lt;button type="button" class="button button-outline" data-doc-modal-close&gt;Cancel&lt;/button&gt;
+            &lt;button type="button" class="button button-primary"&gt;Rotate key&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Open the dialog, then close it with the header button, the footer cancel, a click on the backdrop, or Escape. The same markup opens with nothing but <code>class="modal active"</code>, which is useful when the server renders the dialog already open.</p>
+                        </section>
+
+                        <section class="doc-section" id="javascript">
+                            <h2>JavaScript</h2>
+                            <p>roolith css ships no JavaScript. The snippet below is documentation only, and it shows the open, close, and focus behavior: a trigger adds <code>.active</code>, and the close controls, the backdrop, and Escape all remove it and return focus to the trigger. The live page also re-runs the table gate when a modal opens, so a wrapper inside a hidden dialog regains its scroll stop, and the <a href="/components/table.html#table-gate">Table</a> page explains that gate.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JavaScript</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="modal-js">Copy</button>
+                                </div>
+                                <pre><code id="modal-js" class="language-js">const modal = document.querySelector('#modal-rotate-key');
+
+let lastTrigger = null;
+
+/**
+ * Show the modal and remember the element that opened it.
+ * @param {HTMLElement} trigger - Element carrying data-doc-modal.
+ * @returns {void}
+ */
+function openModal(trigger) {
+    lastTrigger = trigger;
+    modal.classList.add('active');
+    modal.querySelector('.modal-content').focus();
+}
+
+/**
+ * Hide the modal and return focus to the element that opened it.
+ * @returns {void}
+ */
+function closeModal() {
+    modal.classList.remove('active');
+
+    if (lastTrigger &amp;&amp; document.body.contains(lastTrigger)) {
+        lastTrigger.focus();
+    }
+
+    lastTrigger = null;
+}
+
+document.addEventListener('click', (event) =&gt; {
+    const trigger = event.target.closest('[data-doc-modal]');
+
+    if (trigger) {
+        openModal(trigger);
+        return;
+    }
+
+    if (event.target.closest('.modal-close, [data-doc-modal-close]')) {
+        closeModal();
+        return;
+    }
+
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', (event) =&gt; {
+    if (event.key === 'Escape' &amp;&amp; modal.classList.contains('active')) {
+        closeModal();
+    }
+});</code></pre>
+                            </div>
+                            <p>Two details keep this usable. Focus moves into the dialog after it opens, and every close path, whether the close button, the backdrop, or Escape, returns it to the trigger so a keyboard user does not restart from the top of the document. The snippet does not trap Tab; the accessibility notes below explain why that matters.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The framework draws the layer; the dialog semantics, focus behavior, and Escape handling are yours. The list below is the minimum for a usable modal.</p>
+                            <ul>
+                                <li>Put <code>role="dialog"</code> and <code>aria-modal="true"</code> on <code>.modal-content</code>, not on the overlay, and point <code>aria-labelledby</code> at the element that holds the title so the dialog has a name.</li>
+                                <li>Move focus into the dialog when it opens. Focus the content box with <code>tabindex="-1"</code> or the first field, and keep Tab and Shift + Tab inside the dialog until it closes.</li>
+                                <li>Return focus to the trigger on close, especially when Escape or the backdrop was used. A close button click also has to leave the user somewhere sensible.</li>
+                                <li>Escape must close the dialog. Handle it at the document level while the dialog is open, and let a nested surface close first so one Escape never closes two layers.</li>
+                                <li>The closed state is <code>display: none</code>, so a closed dialog is already out of the tab order and the accessibility tree. Do not replace it with an opacity or transform hide that leaves it focusable.</li>
+                                <li>A backdrop click is a convenience, never the only way out. Keep a visible close button, give it <code>type="button"</code> and an <code>aria-label</code> when it holds an icon.</li>
+                                <li>A wide table in a modal body should sit in <code>.table-responsive</code> with <code>role="region"</code> and an <code>aria-label</code> whether or not the table overflows, and <code>tabindex="0"</code> while the table overflows, so a keyboard user can scroll it. The <a href="/components/table.html#accessibility">Table</a> page documents the same responsive-wrapper rule.</li>
+                                <li>Stop the page behind from scrolling while the dialog is open. The framework scrolls <code>.modal-content</code> only and does not lock the document.</li>
+                                <li>Avoid opening a modal from another modal. If the flow needs two steps, swap the content of one dialog or use a full page instead.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>Radii, spacing, scrim color, shadow, and borders come from the <code>--r-modal-*</code> tokens, so a theme changes the dialog without touching these classes.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.modal</code></td>
+                                            <td>Overlay</td>
+                                            <td>Fixed full-screen scrim at <code>z-index: 10</code> with 20px of side padding. Hidden until it has <code>.active</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal.active</code></td>
+                                            <td>Overlay state</td>
+                                            <td>Switches the overlay to <code>display: grid</code> in the default layout, with the content between two flexible spacer rows.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal-content</code></td>
+                                            <td>Dialog box</td>
+                                            <td>600px maximum width, token radius and shadow, own vertical scrolling, and the fade-up animation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal-content.small</code></td>
+                                            <td>Size</td>
+                                            <td>Caps the dialog at 300px for a short confirmation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal-content.large</code></td>
+                                            <td>Size</td>
+                                            <td>Caps the dialog at 800px for a wide form or a checklist.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal-content.fluid</code></td>
+                                            <td>Size</td>
+                                            <td>Takes up to 80% of the padded overlay width, useful for a scrollable settings comparison or other wide content.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal-header</code></td>
+                                            <td>Header</td>
+                                            <td>Token padding, a bottom border, and a 16px bold title on a 22px line.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal-body</code></td>
+                                            <td>Body</td>
+                                            <td>Token padding only. Fields, copy, lists, and other content are application markup, and the large example uses <code>.list</code> for its checklist.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal-footer</code></td>
+                                            <td>Footer</td>
+                                            <td>Token padding, a top border, and a 10px flex gap for the actions.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal-footer-right</code></td>
+                                            <td>Footer modifier</td>
+                                            <td>Pushes the actions to the right edge of the footer.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.modal-close</code></td>
+                                            <td>Close button</td>
+                                            <td>Pinned to the top right with token padding, 18px text, and a hover opacity change.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="modal" id="modal-invite" style="z-index: 1100">
+                            <div class="modal-content" style="width: min(500px, calc(100vw - 2.5rem))" role="dialog" aria-modal="true" aria-labelledby="modal-invite-title" tabindex="-1">
+                                <div class="modal-header">
+                                    <span id="modal-invite-title">Invite a teammate</span>
+                                    <button type="button" class="modal-close" aria-label="Close dialog">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-field">
+                                        <label class="form-label" for="modal-invite-email">Email address</label>
+                                        <input class="form-input" type="email" id="modal-invite-email" name="invite-email" placeholder="teammate@example.com" />
+                                        <small class="form-text">They get an email with a link to join the workspace.</small>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="button button-outline" data-doc-modal-close>Cancel</button>
+                                    <button type="button" class="button button-primary">Send invite</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal" id="modal-small" style="z-index: 1100">
+                            <div class="modal-content small" role="dialog" aria-modal="true" aria-labelledby="modal-small-title" tabindex="-1">
+                                <div class="modal-header">
+                                    <span id="modal-small-title">Revoke token</span>
+                                    <button type="button" class="modal-close" aria-label="Close dialog">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="modal-body">The CLI stops working immediately. This cannot be undone.</div>
+                                <div class="modal-footer">
+                                    <button type="button" class="button button-outline" data-doc-modal-close>Cancel</button>
+                                    <button type="button" class="button button-danger">Revoke</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal" id="modal-large" style="z-index: 1100">
+                            <div class="modal-content large" role="dialog" aria-modal="true" aria-labelledby="modal-large-title" tabindex="-1">
+                                <div class="modal-header">
+                                    <span id="modal-large-title">Release checklist</span>
+                                    <button type="button" class="modal-close" aria-label="Close dialog">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul class="list">
+                                        <li>Version bumped in the manifest and the changelog.</li>
+                                        <li>Migration reviewed against a production snapshot.</li>
+                                        <li>Rollback image tagged and pushed.</li>
+                                        <li>On-call engineer notified in the release channel.</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="button button-primary" data-doc-modal-close>Done</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal" id="modal-fluid" style="z-index: 1100">
+                            <div class="modal-content fluid" role="dialog" aria-modal="true" aria-labelledby="modal-fluid-title" tabindex="-1">
+                                <div class="modal-header">
+                                    <span id="modal-fluid-title">Compare environments</span>
+                                    <button type="button" class="modal-close" aria-label="Close dialog">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="table-responsive" tabindex="0" role="region" aria-label="Scrollable settings comparison">
+                                        <table class="table" aria-labelledby="modal-fluid-title">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Setting</th>
+                                                    <th scope="col">Staging</th>
+                                                    <th scope="col">Production</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Replicas</td>
+                                                    <td>2</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cache TTL</td>
+                                                    <td>60s</td>
+                                                    <td>300s</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Log level</td>
+                                                    <td>debug</td>
+                                                    <td>warn</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="button button-primary" data-doc-modal-close>Done</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal" id="modal-archive" style="z-index: 1100">
+                            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-archive-title" tabindex="-1">
+                                <div class="modal-header">
+                                    <span id="modal-archive-title">Archive 12 projects?</span>
+                                    <button type="button" class="modal-close" aria-label="Close dialog">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Archived projects keep their history and stop running scheduled jobs. You can restore them from the workspace settings at any time.
+                                </div>
+                                <div class="modal-footer modal-footer-right">
+                                    <button type="button" class="button button-outline" data-doc-modal-close>Cancel</button>
+                                    <button type="button" class="button button-primary">Archive</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal" id="modal-rotate-key" style="z-index: 1100">
+                            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-rotate-key-title" tabindex="-1">
+                                <div class="modal-header">
+                                    <span id="modal-rotate-key-title">Rotate deploy key</span>
+                                    <button type="button" class="modal-close" aria-label="Close dialog">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Any pipeline that still uses the old key fails on its next run. Update the secret in CI before the deploy window closes.
+                                </div>
+                                <div class="modal-footer modal-footer-right">
+                                    <button type="button" class="button button-outline" data-doc-modal-close>Cancel</button>
+                                    <button type="button" class="button button-primary">Rotate key</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/message.html">Previous: Message</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/nav.html">Next: Nav</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#sizes">Sizes</a>
+                        <a class="doc-toc-link" href="#footer-actions">Footer actions</a>
+                        <a class="doc-toc-link" href="#opening-and-closing">Opening and closing</a>
+                        <a class="doc-toc-link" href="#javascript">JavaScript</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

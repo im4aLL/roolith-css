@@ -3,7 +3,6 @@
 @use '../mixins';
 
 @mixin card() {
-
     .card {
         box-shadow: var(--r-card-shadow);
         border-radius: var(--r-card-radius);
@@ -22,7 +21,11 @@
     }
 
     .card-body {
-        padding: rem(25);
+        padding: var(--r-card-spacing);
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
     }
 
     .card-title {
@@ -32,7 +35,7 @@
     .card-text {
         font-size: rem(14);
         line-height: rem(22);
-        padding-bottom: rem(20);
+        margin-bottom: rem(20);
     }
 
     .card-information {
@@ -44,21 +47,26 @@
 
     .card-subtitle {
         @include mixins.text-dimmed();
-        padding-bottom: rem(10);
+        margin-bottom: rem(10);
     }
 
     .card-header {
-        padding: rem(15) rem(25);
+        padding: var(--r-card-header-footer-spacing);
         border-bottom: rem(1) solid var(--r-card-header-footer-border);
         font-size: rem(14);
         color: var(--r-card-header-footer-color);
     }
 
     .card-footer {
-        padding: rem(15) rem(25);
+        padding: var(--r-card-header-footer-spacing);
         border-top: rem(1) solid var(--r-card-header-footer-border);
         color: var(--r-card-header-footer-color);
         font-size: rem(14);
+    }
+
+    .card-small {
+        --r-card-spacing: var(--r-card-spacing-small);
+        --r-card-header-footer-spacing: var(--r-card-header-footer-spacing-small);
     }
 
     @each $name, $value in s.$colors {

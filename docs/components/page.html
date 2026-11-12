@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Page - roolith css</title>
+        <meta
+            name="description"
+            content="Full-height and inline page shells with icon, header, body, and footer slots for 404, success, and empty-state screens." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link rel="stylesheet" href="/vendor/highlight-github.min.css" data-hljs-theme="light" />
+        <link rel="stylesheet" href="/vendor/highlight-github-dark.min.css" data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Page</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Page</h1>
+                            <p class="doc-content-lead">
+                                Page is a shell for screens that hold one message: an error, a confirmation, or an empty
+                                state. It centers a content block in the viewport by default, and
+                                <code>page-normal</code>
+                                turns it back into normal flow so it can sit inside a layout column.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.page</strong>
+                                - defined in
+                                <strong>modules/_page.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                <code>.page</code>
+                                is a flex container that centers its single child both ways. Inside it,
+                                <code>.page-content</code>
+                                holds the four slots: an optional
+                                <code>.page-icon</code>
+                                , a
+                                <code>.page-header</code>
+                                for the title, a
+                                <code>.page-body</code>
+                                for the explanation, and a
+                                <code>.page-footer</code>
+                                for a note or a link.
+                            </p>
+                            <p>
+                                <code>.page-normal</code>
+                                goes on the same element as
+                                <code>.page</code>
+                                . It sets
+                                <code>height: auto</code>
+                                and
+                                <code>display: block</code>
+                                , and its content block switches to left aligned text with 60px of top padding. Use it
+                                whenever the shell is not the whole screen, for example inside a dashboard column or a
+                                card area.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="page page-normal">
+                                        <div class="page-content">
+                                            <div class="page-icon color-success">
+                                                <svg
+                                                    width="72"
+                                                    height="72"
+                                                    viewBox="0 0 72 72"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    aria-hidden="true">
+                                                    <circle cx="36" cy="36" r="26" />
+                                                    <path d="m26 37 7 7 14-16" />
+                                                </svg>
+                                            </div>
+                                            <h2 class="page-header color-success">Deployment complete</h2>
+                                            <div class="page-body">
+                                                Version 4.0.0 is live on production. The previous release stays
+                                                available for rollback for 24 hours.
+                                            </div>
+                                            <div class="page-footer">
+                                                Release 4.0.0 - triggered by the deploy pipeline
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="page-basic">Copy</button>
+                                </div>
+                                <pre><code id="page-basic" class="language-html">&lt;div class="page page-normal"&gt;
+    &lt;div class="page-content"&gt;
+        &lt;div class="page-icon color-success"&gt;
+            &lt;svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+                &lt;circle cx="36" cy="36" r="26" /&gt;
+                &lt;path d="m26 37 7 7 14-16" /&gt;
+            &lt;/svg&gt;
+        &lt;/div&gt;
+        &lt;h2 class="page-header color-success"&gt;Deployment complete&lt;/h2&gt;
+        &lt;div class="page-body"&gt;
+            Version 4.0.0 is live on production. The previous release stays available for rollback for 24 hours.
+        &lt;/div&gt;
+        &lt;div class="page-footer"&gt;Release 4.0.0 - triggered by the deploy pipeline&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                <code>.page-icon</code>
+                                only sets a 72px font size for an icon font glyph. An inline SVG needs its own width and
+                                height, as above. Add a
+                                <code>.color-{name}</code>
+                                utility to the icon or the header to tint either one without new CSS.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="full-height">
+                            <h2>Full-height shell</h2>
+                            <p>
+                                Without
+                                <code>.page-normal</code>
+                                the shell declares
+                                <code>height: 100%</code>
+                                and then
+                                <code>height: 100vh</code>
+                                and centers the content block, which is the shape you want for a standalone route such
+                                as a 404 or an auth result. Place it directly under
+                                <code>body</code>
+                                or inside the main region, not inside a card that already has its own padding.
+                            </p>
+                            <p>
+                                The demo pins a 300px height on the shell so it fits on this page. In production the
+                                class does not need it: leave the height alone and let
+                                <code>100vh</code>
+                                do the work.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="page" style="height: 300px">
+                                        <div class="page-content">
+                                            <div class="page-icon">
+                                                <svg
+                                                    width="72"
+                                                    height="72"
+                                                    viewBox="0 0 72 72"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    aria-hidden="true">
+                                                    <circle cx="36" cy="36" r="26" />
+                                                    <path d="M36 24v16" />
+                                                    <path d="M36 48h.01" />
+                                                </svg>
+                                            </div>
+                                            <h2 class="page-header">Session expired</h2>
+                                            <div class="page-body">Sign in again to continue where you left off.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="page-full-height">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="page-full-height" class="language-html">&lt;div class="page"&gt;
+    &lt;div class="page-content"&gt;
+        &lt;div class="page-icon"&gt;...&lt;/div&gt;
+        &lt;h2 class="page-header"&gt;Session expired&lt;/h2&gt;
+        &lt;div class="page-body"&gt;Sign in again to continue where you left off.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="not-found">
+                            <h2>A 404 screen</h2>
+                            <p>
+                                A not-found route is the typical use: one heading, one sentence of explanation, and one
+                                way out. Use
+                                <code>.page-normal</code>
+                                when the shell renders inside an existing layout, and keep the heading level at
+                                <code>h1</code>
+                                on a standalone route because it is then the only heading on the screen. The live demo
+                                uses
+                                <code>h2</code>
+                                because it sits inside this page, which already has an
+                                <code>h1</code>
+                                .
+                            </p>
+                            <p>
+                                <code>.page-footer</code>
+                                adds 100px of top padding, then drops to 80% font size and 0.6 opacity, so it reads as a
+                                footnote rather than a second message. If you need an action, put it at the end of
+                                <code>.page-body</code>
+                                where the 14px body line height keeps it close to the explanation.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="page page-normal">
+                                        <div class="page-content">
+                                            <div class="page-icon color-danger">
+                                                <svg
+                                                    width="72"
+                                                    height="72"
+                                                    viewBox="0 0 72 72"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    aria-hidden="true">
+                                                    <circle cx="36" cy="36" r="26" />
+                                                    <path d="M26 26l20 20M46 26 26 46" />
+                                                </svg>
+                                            </div>
+                                            <h2 class="page-header color-danger">Page not found</h2>
+                                            <div class="page-body">
+                                                <p>
+                                                    We could not find
+                                                    <code>/reports/q3-revenue</code>
+                                                    . It may have been renamed, moved, or deleted.
+                                                </p>
+                                                <div class="spacer-10"></div>
+                                                <p><a class="button button-primary" href="#">Back to dashboard</a></p>
+                                            </div>
+                                            <div class="page-footer">
+                                                Error 404 - if this keeps happening, contact support.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="page-not-found">Copy</button>
+                                </div>
+                                <pre><code id="page-not-found" class="language-html">&lt;div class="page page-normal"&gt;
+    &lt;div class="page-content"&gt;
+        &lt;div class="page-icon color-danger"&gt;
+            &lt;svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"&gt;
+                &lt;circle cx="36" cy="36" r="26" /&gt;
+                &lt;path d="M26 26l20 20M46 26 26 46" /&gt;
+            &lt;/svg&gt;
+        &lt;/div&gt;
+        &lt;h1 class="page-header color-danger"&gt;Page not found&lt;/h1&gt;
+        &lt;div class="page-body"&gt;
+            &lt;p&gt;We could not find &lt;code&gt;/reports/q3-revenue&lt;/code&gt;. It may have been renamed, moved, or deleted.&lt;/p&gt;
+            &lt;p&gt;&lt;a class="button button-primary" href="/dashboard"&gt;Back to dashboard&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="page-footer"&gt;Error 404 - if this keeps happening, contact support.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The same shell carries an empty state: swap the icon for an inbox or folder glyph, keep
+                                the heading action oriented, and put the primary action in the body.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The shell only draws the surface. The landmark, the heading, and the focus behavior
+                                belong to the page that renders it.
+                            </p>
+                            <ul>
+                                <li>
+                                    Render the shell inside a real
+                                    <code>main</code>
+                                    landmark, and keep one
+                                    <code>h1</code>
+                                    on the screen. Put
+                                    <code>.page-header</code>
+                                    on that heading rather than on a second title.
+                                </li>
+                                <li>
+                                    Announce a 404 or a status screen in the document title and in the heading text, so
+                                    the message does not depend on the icon or the color.
+                                </li>
+                                <li>
+                                    On a client-side route change, move focus to the heading. A route that only swaps
+                                    content leaves a keyboard and screen reader user at the top of the previous page.
+                                </li>
+                                <li>
+                                    Hide decorative icons from assistive technology with
+                                    <code>aria-hidden="true"</code>
+                                    on the SVG, and give an icon that carries meaning a text alternative when no visible
+                                    text explains it.
+                                </li>
+                                <li>
+                                    Keep the visual shell presentational.
+                                    <code>.page</code>
+                                    adds no role and no label, so the surrounding layout has to supply the landmark and
+                                    the heading level.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                The shell classes are structural and read no component tokens beyond the palette
+                                utilities used for color. Spacing comes from fixed rem values in the module.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.page</code></td>
+                                            <td>Base</td>
+                                            <td>Full viewport height as a flex container, centered on both axes.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.page-normal</code></td>
+                                            <td>Variant</td>
+                                            <td>
+                                                On the same element as
+                                                <code>.page</code>
+                                                . Height auto and block display for use inside a layout.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.page-content</code></td>
+                                            <td>Child</td>
+                                            <td>
+                                                Centered text by default; under
+                                                <code>.page-normal</code>
+                                                it gets 60px of top padding and left aligned text.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.page-icon</code></td>
+                                            <td>Slot</td>
+                                            <td>
+                                                Sets a 72px font size for an icon glyph. Inline SVG needs its own size.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.page-header</code></td>
+                                            <td>Slot</td>
+                                            <td>Title block with 10px top and 20px bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.page-body</code></td>
+                                            <td>Slot</td>
+                                            <td>14px text over a 22px line height.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.page-footer</code></td>
+                                            <td>Slot</td>
+                                            <td>100px top padding, 80% font size, and 0.6 opacity.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/nav.html">Previous: Nav</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/pagination.html">Next: Pagination</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#full-height">Full-height shell</a>
+                        <a class="doc-toc-link" href="#not-found">A 404 screen</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

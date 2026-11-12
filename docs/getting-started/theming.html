@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Theming - roolith css</title>
+        <meta
+            name="description"
+            content="How roolith css layers palette, semantic, and component tokens, and how to override them for custom brands and dark mode." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link rel="stylesheet" href="/vendor/highlight-github.min.css" data-hljs-theme="light" />
+        <link rel="stylesheet" href="/vendor/highlight-github-dark.min.css" data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item">
+                                    <a href="/getting-started/introduction.html">Getting started</a>
+                                </li>
+                                <li class="breadcrumb-item active">Theming</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Theming</h1>
+                            <p class="doc-content-lead">
+                                Every color, radius, and surface in roolith comes from a CSS custom property. Tokens are
+                                declared in layers, so you can restyle one component, a whole page, or both themes
+                                without editing a single component rule.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>Multiple classes</strong>
+                                - defined in
+                                <strong>src/sass/_css-var.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="token-layers">
+                            <h2>Token layers</h2>
+                            <p>
+                                Appearance is declared in three layers. Palette primitives hold raw colors, semantic
+                                tokens name the job a color does, and component tokens bind one part of a component to a
+                                semantic token.
+                            </p>
+                            <p>
+                                Palette primitives come from
+                                <code>src/sass/_settings.scss</code>
+                                and are emitted by
+                                <code>palette-primitives()</code>
+                                . Each palette color gets three tokens: the fill, the color used on top of the fill, and
+                                the color used when the palette color is text.
+                            </p>
+                            <div class="doc-palette">
+                                <div class="doc-swatch">
+                                    <div class="doc-swatch-chip" style="background: var(--r-color-primary)"></div>
+                                    <div class="doc-swatch-meta">
+                                        <span class="doc-swatch-name">Primary</span>
+                                        <span class="doc-swatch-var">--r-color-primary</span>
+                                    </div>
+                                </div>
+                                <div class="doc-swatch">
+                                    <div class="doc-swatch-chip" style="background: var(--r-color-secondary)"></div>
+                                    <div class="doc-swatch-meta">
+                                        <span class="doc-swatch-name">Secondary</span>
+                                        <span class="doc-swatch-var">--r-color-secondary</span>
+                                    </div>
+                                </div>
+                                <div class="doc-swatch">
+                                    <div class="doc-swatch-chip" style="background: var(--r-color-tertiary)"></div>
+                                    <div class="doc-swatch-meta">
+                                        <span class="doc-swatch-name">Tertiary</span>
+                                        <span class="doc-swatch-var">--r-color-tertiary</span>
+                                    </div>
+                                </div>
+                                <div class="doc-swatch">
+                                    <div class="doc-swatch-chip" style="background: var(--r-color-info)"></div>
+                                    <div class="doc-swatch-meta">
+                                        <span class="doc-swatch-name">Info</span>
+                                        <span class="doc-swatch-var">--r-color-info</span>
+                                    </div>
+                                </div>
+                                <div class="doc-swatch">
+                                    <div class="doc-swatch-chip" style="background: var(--r-color-success)"></div>
+                                    <div class="doc-swatch-meta">
+                                        <span class="doc-swatch-name">Success</span>
+                                        <span class="doc-swatch-var">--r-color-success</span>
+                                    </div>
+                                </div>
+                                <div class="doc-swatch">
+                                    <div class="doc-swatch-chip" style="background: var(--r-color-warning)"></div>
+                                    <div class="doc-swatch-meta">
+                                        <span class="doc-swatch-name">Warning</span>
+                                        <span class="doc-swatch-var">--r-color-warning</span>
+                                    </div>
+                                </div>
+                                <div class="doc-swatch">
+                                    <div class="doc-swatch-chip" style="background: var(--r-color-danger)"></div>
+                                    <div class="doc-swatch-meta">
+                                        <span class="doc-swatch-name">Danger</span>
+                                        <span class="doc-swatch-var">--r-color-danger</span>
+                                    </div>
+                                </div>
+                                <div class="doc-swatch">
+                                    <div class="doc-swatch-chip" style="background: var(--r-color-link)"></div>
+                                    <div class="doc-swatch-meta">
+                                        <span class="doc-swatch-name">Link</span>
+                                        <span class="doc-swatch-var">--r-color-link</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spacer-10"></div>
+                            <p>
+                                The neutral ramp is generated, not listed:
+                                <code>--r-color-neutral-50</code>
+                                through
+                                <code>--r-color-neutral-800</code>
+                                are mixed from
+                                <code>--r-color-neutral</code>
+                                with
+                                <code>color-mix()</code>
+                                , and
+                                <code>--r-color-neutral-900</code>
+                                is the dark color from settings.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">CSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-primitives">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="theming-primitives" class="language-css">:root {
+    --r-color-primary: #4a5cd0;
+    --r-color-primary-on: #ffffff;
+    --r-color-primary-text: var(--r-color-primary);
+    --r-color-neutral: #ffffff;
+    --r-color-neutral-100: color-mix(in srgb, var(--r-color-neutral), black 4%);
+    --r-color-neutral-800: color-mix(in srgb, var(--r-color-neutral), black 70%);
+    --r-color-neutral-900: #1e2128;
+}</code></pre>
+                            </div>
+                            <p>
+                                Semantic tokens map primitives onto surfaces, text, and borders. Components read these
+                                almost everywhere, so one surface change re-themes every card, modal, and drawer at
+                                once.
+                                <code>--r-accent</code>
+                                and its
+                                <code>-on</code>
+                                and
+                                <code>-text</code>
+                                partners are aliases of the primary palette entry, which is what most interactive
+                                components use.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">CSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-semantic">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="theming-semantic" class="language-css">:root {
+    --r-surface-page: var(--r-color-neutral);
+    --r-surface-raised: var(--r-color-neutral);
+    --r-surface-muted: var(--r-color-neutral-100);
+    --r-text: var(--r-color-neutral-900);
+    --r-text-muted: var(--r-color-neutral-800);
+    --r-border: var(--r-color-neutral-300);
+    --r-link: var(--r-color-link);
+    --r-accent: var(--r-color-primary);
+}</code></pre>
+                            </div>
+                            <p>
+                                Component tokens are the last layer, declared in
+                                <code>src/sass/_component-var.scss</code>
+                                . A component token normally points at a semantic token, so a change at the top flows
+                                down without touching the component file. Names starting with
+                                <code>--_r-</code>
+                                are internal, such as
+                                <code>--_r-on-surface</code>
+                                , and may change between releases.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="theme-scopes">
+                            <h2>Theme scopes</h2>
+                            <p>
+                                Theme tokens are emitted for three scopes:
+                                <code>:root</code>
+                                ,
+                                <code>.theme-light</code>
+                                , and
+                                <code>.theme-dark</code>
+                                . The first two share the light palette, and
+                                <code>.theme-dark</code>
+                                replaces the palette, the semantic mapping, and the component tokens that depend on
+                                them.
+                            </p>
+                            <p>
+                                Shared tokens such as
+                                <code>--r-global-border-radius</code>
+                                and
+                                <code>--r-accent</code>
+                                are declared on all three scopes, so a theme class never leaves a token undefined. Each
+                                theme also sets
+                                <code>color-scheme</code>
+                                , which tells the browser how to render scrollbars, form controls, and the canvas.
+                            </p>
+                            <p>
+                                When no explicit class is present the framework follows the operating system, through
+                                <code>@media (prefers-color-scheme: dark) { :root:not(.theme-light) { ... } }</code>
+                                .
+                                <code>.theme-light</code>
+                                opts a page out of that automatic switch, and
+                                <code>.theme-dark</code>
+                                forces dark.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="doc-theme-compare">
+                                    <div class="doc-theme-panel theme-light">
+                                        <div class="doc-theme-panel-head">
+                                            <span class="doc-theme-panel-title">Light theme</span>
+                                            <code>.theme-light</code>
+                                        </div>
+                                        <p class="doc-theme-panel-text">
+                                            Surfaces, text, borders, and the component tokens built on them all
+                                            resolve to the light palette.
+                                        </p>
+                                        <div class="doc-theme-panel-row">
+                                            <button class="button button-primary" type="button">Primary</button>
+                                            <button class="button button-outline" type="button">Outline</button>
+                                        </div>
+                                        <div class="form-field">
+                                            <label class="form-label" for="theming-light-email">Email</label>
+                                            <input
+                                                class="form-input"
+                                                type="email"
+                                                id="theming-light-email"
+                                                name="light-email"
+                                                placeholder="you@example.com" />
+                                        </div>
+                                        <p class="doc-theme-panel-note">
+                                            Muted text and a
+                                            <a href="#theme-scopes">link token</a>
+                                            follow the same scope.
+                                        </p>
+                                        <div class="doc-theme-panel-foot">
+                                            <span class="badge badge-primary">Badge</span>
+                                        </div>
+                                    </div>
+                                    <div class="doc-theme-panel theme-dark">
+                                        <div class="doc-theme-panel-head">
+                                            <span class="doc-theme-panel-title">Dark theme</span>
+                                            <code>.theme-dark</code>
+                                        </div>
+                                        <p class="doc-theme-panel-text">
+                                            The same markup reads the dark palette, with no component rule changed
+                                            and no second stylesheet.
+                                        </p>
+                                        <div class="doc-theme-panel-row">
+                                            <button class="button button-primary" type="button">Primary</button>
+                                            <button class="button button-outline" type="button">Outline</button>
+                                        </div>
+                                        <div class="form-field">
+                                            <label class="form-label" for="theming-dark-email">Email</label>
+                                            <input
+                                                class="form-input"
+                                                type="email"
+                                                id="theming-dark-email"
+                                                name="dark-email"
+                                                placeholder="you@example.com" />
+                                        </div>
+                                        <p class="doc-theme-panel-note">
+                                            Muted text and a
+                                            <a href="#theme-scopes">link token</a>
+                                            follow the same scope.
+                                        </p>
+                                        <div class="doc-theme-panel-foot">
+                                            <span class="badge badge-primary">Badge</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">CSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-scopes">Copy</button>
+                                </div>
+                                <pre><code id="theming-scopes" class="language-css">:root,
+.theme-light,
+.theme-dark {
+    --r-global-border-radius: 0.5rem;
+    --r-accent: var(--r-color-primary);
+}
+
+:root,
+.theme-light {
+    color-scheme: light;
+    --r-surface-page: var(--r-color-neutral);
+    --r-text: var(--r-color-neutral-900);
+}
+
+.theme-dark {
+    color-scheme: dark;
+    --r-surface-page: var(--r-color-neutral);
+    --r-text: var(--r-color-neutral-800);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.theme-light) {
+        color-scheme: dark;
+        --r-surface-page: var(--r-color-neutral);
+        --r-text: var(--r-color-neutral-800);
+    }
+}</code></pre>
+                            </div>
+                            <p>
+                                The scopes are ordinary class selectors, so a theme also applies to a subtree, as the
+                                two panels above show. That is useful for previews and side-by-side comparisons, but the
+                                document root is the normal place for it.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="overriding-tokens">
+                            <h2>Overriding tokens</h2>
+                            <p>
+                                Load your overrides after the framework stylesheet and override at
+                                <code>:root</code>
+                                . At that level the framework's aliases -
+                                <code>--r-accent</code>
+                                ,
+                                <code>--r-button-radius</code>
+                                ,
+                                <code>--r-card-radius</code>
+                                - are declared on the same element, so they resolve against your new values.
+                            </p>
+                            <p>
+                                Keep contrast pairs together.
+                                <code>--r-color-primary</code>
+                                is the fill,
+                                <code>--r-color-primary-on</code>
+                                is the text placed on it, and
+                                <code>--r-color-primary-text</code>
+                                is the tint used when the palette color becomes text, as in an outline button label or a
+                                badge.
+                            </p>
+                            <p>
+                                Surfaces and text are the fastest way to match a product palette:
+                                <code>--r-surface-page</code>
+                                ,
+                                <code>--r-surface-raised</code>
+                                ,
+                                <code>--r-text</code>
+                                , and
+                                <code>--r-text-muted</code>
+                                cover most of the interface.
+                                <code>--r-global-border-radius</code>
+                                defaults to
+                                <code>0.5rem</code>
+                                and feeds every component radius token.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="row" style="width: 100%">
+                                    <div class="small-12 medium-6">
+                                        <div class="card" style="margin-bottom: 0">
+                                            <div class="card-header">Default tokens</div>
+                                            <div class="card-body">
+                                                <p class="card-text">
+                                                    Primary reads
+                                                    <code>--r-color-primary</code>
+                                                    from the theme scope.
+                                                </p>
+                                                <div class="doc-card-actions">
+                                                    <button class="button button-primary" type="button">
+                                                        Primary
+                                                    </button>
+                                                    <span class="badge badge-primary">Badge</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="small-12 medium-6">
+                                        <div
+                                            class="card"
+                                            style="
+                                                margin-bottom: 0;
+                                                --r-color-primary: #f59e0b;
+                                                --r-color-primary-on: #1f2937;
+                                                --r-color-primary-text: #b45309;
+                                                --r-accent: #f59e0b;
+                                                --r-accent-on: #1f2937;
+                                                --r-accent-text: #b45309;
+                                            ">
+                                            <div class="card-header">Overridden tokens</div>
+                                            <div class="card-body">
+                                                <p class="card-text">
+                                                    The same markup reads the overrides from this wrapper.
+                                                </p>
+                                                <div class="doc-card-actions">
+                                                    <button class="button button-primary" type="button">
+                                                        Primary
+                                                    </button>
+                                                    <span class="badge badge-primary">Badge</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">CSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-global-override">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="theming-global-override" class="language-css">:root {
+    --r-color-primary: #f59e0b;
+    --r-color-primary-on: #1f2937;
+    --r-color-primary-text: #b45309;
+    --r-global-border-radius: 2px;
+    --r-surface-page: #fbfaf7;
+    --r-surface-raised: #ffffff;
+    --r-text: #1f2937;
+    --r-text-muted: #4b5563;
+}</code></pre>
+                            </div>
+                            <p>
+                                A scoped override recalculates only the tokens a component rule reads directly. An alias
+                                declared at the theme scope keeps the value it computed there, so overriding
+                                <code>--r-global-border-radius</code>
+                                on a wrapper will not move
+                                <code>--r-button-radius</code>
+                                or
+                                <code>--r-card-radius</code>
+                                ; repeat the aliases you care about inside the scope.
+                            </p>
+                            <p>
+                                The right-hand card above repeats the primary and accent aliases, which is why its badge
+                                and button change color while its radius stays at the theme value. Structural tokens
+                                belong at
+                                <code>:root</code>
+                                or on
+                                <code>&lt;html&gt;</code>
+                                , where the aliases are declared.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">CSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-scoped-override">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="theming-scoped-override" class="language-css">.promo {
+    --r-color-primary: #f59e0b;
+    --r-color-primary-on: #1f2937;
+    --r-color-primary-text: #b45309;
+    --r-accent: #f59e0b;
+    --r-accent-on: #1f2937;
+    --r-accent-text: #b45309;
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="base-overrides">
+                            <h2>Base tokens to override</h2>
+                            <p>
+                                Most product themes start and end with this set. The palette primitives, the surface,
+                                text, and border roles built on them, and a few structural tokens cover the bulk of an
+                                interface, because every component token above them inherits the change.
+                            </p>
+                            <p>
+                                Override them in the scope you are theming. <code>:root</code> and
+                                <code>.theme-light</code> share one declaration block, while <code>.theme-dark</code>
+                                needs its own, because each theme redeclares the palette rather than inheriting it.
+                            </p>
+                            <div
+                                class="doc-table-wrap"
+                                role="region"
+                                aria-label="Base tokens to override, grouped by role">
+                                <table class="table doc-token-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Token</th>
+                                            <th scope="col">What it changes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="doc-token-group">
+                                            <th colspan="2" scope="colgroup">Palette</th>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-color-primary</code></td>
+                                            <td>
+                                                Brand fill.
+                                                <code>-on</code>
+                                                is the color placed on it, and
+                                                <code>-text</code>
+                                                is the tint used when primary becomes text. Every accent role aliases
+                                                the set.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-color-secondary</code></td>
+                                            <td>
+                                                Second brand fill for secondary buttons, badges, and messages, with
+                                                its own
+                                                <code>-on</code>
+                                                and
+                                                <code>-text</code>
+                                                partners.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>--r-color-success</code>
+                                                <code>--r-color-warning</code>
+                                                <code>--r-color-danger</code>
+                                            </td>
+                                            <td>
+                                                Status fills for messages, badges, and form states. Each has its own
+                                                <code>-on</code> and <code>-text</code> partners.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-color-link</code></td>
+                                            <td>Link color, which is also the default focus ring color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-color-neutral</code></td>
+                                            <td>
+                                                Base of the neutral ramp. Steps <code>50</code> to <code>800</code>
+                                                are mixed from it, so this one value repaints muted surfaces and
+                                                borders.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-color-neutral-900</code></td>
+                                            <td>Strongest neutral: body text in light, white in dark.</td>
+                                        </tr>
+                                        <tr class="doc-token-group">
+                                            <th colspan="2" scope="colgroup">Surfaces</th>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-surface-page</code></td>
+                                            <td>Page canvas, and the surface the other roles are mixed against.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-surface-raised</code></td>
+                                            <td>Cards, boxes, modals, and other panels that sit above the page.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-surface-muted</code></td>
+                                            <td>Code blocks, wells, and quiet fills.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-surface-overlay</code></td>
+                                            <td>Dropdown and combo box panels.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-surface-hover</code></td>
+                                            <td>Hover fill for table rows, nav items, and menus.</td>
+                                        </tr>
+                                        <tr class="doc-token-group">
+                                            <th colspan="2" scope="colgroup">Text</th>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-text</code></td>
+                                            <td>Default body text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-text-muted</code></td>
+                                            <td>Secondary copy, labels, and helper text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-text-subtle</code></td>
+                                            <td>Captions, table headers, and meta text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-text-placeholder</code></td>
+                                            <td>Placeholder text inside form controls.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-link</code></td>
+                                            <td>Prose link color, kept separate from the accent.</td>
+                                        </tr>
+                                        <tr class="doc-token-group">
+                                            <th colspan="2" scope="colgroup">Borders</th>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-border</code></td>
+                                            <td>Default divider and outline color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-border-subtle</code></td>
+                                            <td>Quiet separators such as card and drawer edges.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-border-control</code></td>
+                                            <td>Form control outlines and switch tracks.</td>
+                                        </tr>
+                                        <tr class="doc-token-group">
+                                            <th colspan="2" scope="colgroup">Structure</th>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-global-border-radius</code></td>
+                                            <td>Single radius that every component radius token reads.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-global-base-font-size</code></td>
+                                            <td>Root font size, which sets the rem scale for the whole page.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-global-base-font</code></td>
+                                            <td>Font stack used by body copy and form controls.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-global-width</code></td>
+                                            <td>Maximum width of the grid container.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-block-padding</code></td>
+                                            <td>Base spacing unit for the block patterns.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>--r-focus-ring-color</code></td>
+                                            <td>Outline color of the keyboard focus ring.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                Everything else is a component token. Reach for those only when a change should stop at
+                                one component, since the base tokens above reach it already.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">CSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-base-override">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="theming-base-override" class="language-css">:root,
+.theme-light {
+    --r-color-primary: #f59e0b;
+    --r-color-primary-on: #1f2937;
+    --r-color-neutral: #fbfaf7;
+    --r-surface-page: #fbfaf7;
+    --r-text: #1f2937;
+    --r-border: #e5e0d8;
+    --r-global-border-radius: 0.25rem;
+}
+
+.theme-dark {
+    --r-color-primary: #fbbf24;
+    --r-color-primary-on: #1f2937;
+    --r-color-neutral: #14120f;
+    --r-surface-page: #14120f;
+    --r-text: #e7e2d8;
+    --r-border: #3a352c;
+    --r-global-border-radius: 0.25rem;
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="component-tokens">
+                            <h2>Component tokens</h2>
+                            <p>
+                                Component tokens are the narrowest layer. Form controls read
+                                <code>--r-form-*</code>
+                                , cards read
+                                <code>--r-card-*</code>
+                                , buttons read
+                                <code>--r-button-*</code>
+                                , and
+                                <code>src/sass/_component-var.scss</code>
+                                declares them all.
+                            </p>
+                            <p>
+                                Most of them are shared by both themes and point at a semantic token, which is why a
+                                surface change reaches a component without editing it. A smaller group is declared
+                                twice, once for light and once for dark, for parts such as nav links, dropdown hover,
+                                tag, badge, and message surfaces.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">CSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-component-tokens">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="theming-component-tokens" class="language-css">:root {
+    --r-card-radius: var(--r-global-border-radius);
+    --r-card-background: var(--r-surface);
+    --r-card-header-footer-border: var(--r-border-subtle);
+    --r-card-header-footer-color: var(--r-text-subtle);
+
+    --r-form-input-background-color: var(--r-surface-raised);
+    --r-form-input-border-color: var(--r-border-control);
+    --r-form-input-radius: var(--r-global-border-radius);
+    --r-form-input-color: var(--r-text-control);
+    --r-form-input-focus-border-color: var(--r-accent);
+}</code></pre>
+                            </div>
+                            <p>
+                                Reach for this layer when a change should stop at one component. Cards take radius,
+                                background, and header and footer treatment from four tokens, and a form input takes its
+                                surface, border, radius, text, and focus color from its own set.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="row" style="width: 100%">
+                                    <div class="small-12 medium-6">
+                                        <div class="card" style="margin-bottom: 0">
+                                            <div class="card-header">Invoice</div>
+                                            <div class="card-body">
+                                                <p class="card-title h6">Draft</p>
+                                                <p class="card-text">Due on 30 June.</p>
+                                            </div>
+                                            <div class="card-footer">Default footer</div>
+                                        </div>
+                                    </div>
+                                    <div class="small-12 medium-6">
+                                        <div
+                                            class="card"
+                                            style="
+                                                margin-bottom: 0;
+                                                --r-card-radius: 0;
+                                                --r-card-header-footer-color: var(--r-color-primary-text);
+                                            ">
+                                            <div class="card-header">Invoice</div>
+                                            <div class="card-body">
+                                                <p class="card-title h6">Draft</p>
+                                                <p class="card-text">Due on 30 June.</p>
+                                            </div>
+                                            <div class="card-footer">Overridden footer</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="form-field"
+                                    style="width: 100%; max-width: 22rem; --r-form-input-radius: 1rem">
+                                    <label class="form-label" for="theming-demo-email">Work email</label>
+                                    <input
+                                        class="form-input"
+                                        type="email"
+                                        id="theming-demo-email"
+                                        name="email"
+                                        placeholder="you@example.com" />
+                                    <small class="form-text">
+                                        This field sets
+                                        <code>--r-form-input-radius</code>
+                                        to
+                                        <code>1rem</code>
+                                        .
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">CSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-component-override">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="theming-component-override" class="language-css">:root {
+    --r-card-radius: 0;
+    --r-card-header-footer-color: var(--r-color-primary-text);
+    --r-form-input-radius: 1rem;
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="dark-mode-toggle">
+                            <h2>Dark mode toggle</h2>
+                            <p>
+                                roolith ships no JavaScript, so a toggle is a class flip on
+                                <code>&lt;html&gt;</code>
+                                . Set exactly one explicit class: the automatic media query only steps aside for
+                                <code>.theme-light</code>
+                                , and leaving both classes off means the operating system decides on every visit.
+                            </p>
+                            <p>
+                                Reading the stored choice in
+                                <code>&lt;head&gt;</code>
+                                avoids a flash of the wrong mode, and toggling both classes keeps a stale value from
+                                winning on the next page load.
+                            </p>
+                            <div class="doc-demo">
+                                <button class="button button-outline" type="button" data-doc-theme-toggle>
+                                    Toggle dark mode
+                                </button>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-dark-toggle">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="theming-dark-toggle" class="language-html">&lt;script&gt;
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+
+    if (stored === 'dark' || stored === 'light') {
+        root.classList.add(stored === 'dark' ? 'theme-dark' : 'theme-light');
+    }
+
+    function applyTheme(theme) {
+        root.classList.toggle('theme-dark', theme === 'dark');
+        root.classList.toggle('theme-light', theme === 'light');
+        localStorage.setItem('theme', theme);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('[data-theme-toggle]').addEventListener('click', function () {
+            applyTheme(root.classList.contains('theme-dark') ? 'light' : 'dark');
+        });
+    });
+&lt;/script&gt;</code></pre>
+                            </div>
+                            <p>
+                                The button in the demo above uses the docs site's own toggle hook, which flips the same
+                                two classes. Because each theme sets
+                                <code>color-scheme</code>
+                                , scrollbars and native form controls follow the class without extra CSS.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="token-list">
+                            <h2>Inspecting the tokens</h2>
+                            <p>
+                                The generated stylesheet lists each token with its value and the scope that declares it,
+                                which makes it the fastest way to find a name without reading the Sass.
+                                <code>npm run css-vars</code>
+                                writes the theme tokens;
+                                <code>npm run css-vars:all</code>
+                                adds every custom property the framework sets, including component scoped ones such as
+                                <code>--grid-span</code>
+                                .
+                            </p>
+                            <p>
+                                Both scripts write
+                                <code>dist/roolith-variables.css</code>
+                                . Pass
+                                <code>--out</code>
+                                to write somewhere else, and regenerate after a build because the build empties
+                                <code>dist/</code>
+                                .
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">Shell</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="theming-token-list">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="theming-token-list" class="language-bash">npm run css-vars
+npm run css-vars:all
+node scripts/generate-css-variables.mjs --out tokens.css</code></pre>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/installation.html">
+                                        Previous: Installation
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/theme-playground.html">
+                                        Next: Theme playground
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#token-layers">Token layers</a>
+                        <a class="doc-toc-link" href="#theme-scopes">Theme scopes</a>
+                        <a class="doc-toc-link" href="#overriding-tokens">Overriding tokens</a>
+                        <a class="doc-toc-link" href="#base-overrides">Base tokens to override</a>
+                        <a class="doc-toc-link" href="#component-tokens">Component tokens</a>
+                        <a class="doc-toc-link" href="#dark-mode-toggle">Dark mode toggle</a>
+                        <a class="doc-toc-link" href="#token-list">Inspecting the tokens</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

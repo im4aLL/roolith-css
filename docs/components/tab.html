@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Tab - roolith css</title>
+        <meta name="description" content="Tab lists, active titles, content panels, centered and fluid layouts, the docs toggle script, and ARIA tablist guidance for the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Tab</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Tab</h1>
+                            <p class="doc-content-lead">Tabs swap one panel of content for another without leaving the page. The stylesheet provides the list, the underlined title, and the panel visibility, while a single <code>.active</code> class on the title and on the matching panel decides what is shown.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.tab-list</strong>
+                                - defined in
+                                <strong>modules/_tab.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p><code>.tab-list</code> is a cleared list with a 1px bottom border taken from <code>--r-tab-border-color</code>. Each <code>.tab-title</code> floats left, sets a 14px bold label with 10px by 20px of padding, and draws a 2px transparent bottom border. A negative 1px bottom margin pulls that border onto the list line, so the underline of the active title replaces the separator instead of stacking above it.</p>
+                            <p><code>.tab-content</code> is <code>display: none</code> and pads 15px above and below once it is shown. Only the panel with <code>.active</code> is displayed, so the hidden panels and their links stay out of the tab order.</p>
+                            <div class="doc-demo">
+                                <div class="tab full-width">
+                                    <ul class="tab-list">
+                                        <li class="tab-title active" data-doc-tab="#tab-usage-overview">Overview</li>
+                                        <li class="tab-title" data-doc-tab="#tab-usage-install">Installation</li>
+                                        <li class="tab-title" data-doc-tab="#tab-usage-config">Configuration</li>
+                                    </ul>
+                                    <div class="tab-content active" id="tab-usage-overview">
+                                        <p>Roolith css is a small set of component and layout modules compiled into one stylesheet. Import it once, then use the classes directly in your markup.</p>
+                                    </div>
+                                    <div class="tab-content" id="tab-usage-install">
+                                        <p>Install the package with your package manager, or link the compiled file from the build output. No build step is required if you only need the finished CSS.</p>
+                                    </div>
+                                    <div class="tab-content" id="tab-usage-config">
+                                        <p>Override the custom properties on <code>:root</code> to retune colors, radius, and spacing. Component tokens read from them, so a single override flows through the whole library.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="tab-basic">Copy</button>
+                                </div>
+                                <pre><code id="tab-basic" class="language-html">&lt;div class="tab"&gt;
+    &lt;ul class="tab-list"&gt;
+        &lt;li class="tab-title active" data-doc-tab="#tab-usage-overview"&gt;Overview&lt;/li&gt;
+        &lt;li class="tab-title" data-doc-tab="#tab-usage-install"&gt;Installation&lt;/li&gt;
+        &lt;li class="tab-title" data-doc-tab="#tab-usage-config"&gt;Configuration&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="tab-content active" id="tab-usage-overview"&gt;
+        &lt;p&gt;Roolith css is a small set of component and layout modules compiled into one stylesheet.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="tab-content" id="tab-usage-install"&gt;
+        &lt;p&gt;Install the package with your package manager, or link the compiled file from the build output.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="tab-content" id="tab-usage-config"&gt;
+        &lt;p&gt;Override the custom properties on &lt;code&gt;:root&lt;/code&gt; to retune colors, radius, and spacing.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p><code>.tab</code> itself carries no declarations. It groups one list with its panels, and the docs script uses it as the scope, so several tab groups can live on one page without interfering.</p>
+                            <p>Every title needs its own <code>data-doc-tab</code> value pointing at a unique panel id. The attribute is a docs hook rather than part of the stylesheet, which is why the framework can stay JavaScript free.</p>
+                        </section>
+
+                        <section class="doc-section" id="centered">
+                            <h2>Centered list</h2>
+                            <p><code>tab-list-center</code> centers the row by setting <code>text-align: center</code> on the list and switching the titles from a float to an inline-block. The titles still size themselves from their labels, so the list stays as wide as its content unless the parent stretches it.</p>
+                            <div class="doc-demo">
+                                <div class="tab full-width">
+                                    <ul class="tab-list tab-list-center">
+                                        <li class="tab-title active" data-doc-tab="#tab-center-all">All</li>
+                                        <li class="tab-title" data-doc-tab="#tab-center-open">Open</li>
+                                        <li class="tab-title" data-doc-tab="#tab-center-closed">Closed</li>
+                                    </ul>
+                                    <div class="tab-content active" id="tab-center-all">
+                                        <p>Fourteen issues, including the three that are still open and the two that were closed this week.</p>
+                                    </div>
+                                    <div class="tab-content" id="tab-center-open">
+                                        <p>Three open issues: a broken focus ring on the datepicker, a missing dark mode token, and a layout shift in the sidebar rail.</p>
+                                    </div>
+                                    <div class="tab-content" id="tab-center-closed">
+                                        <p>Two issues closed since Monday, both shipped in the 4.0.1 patch release.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="tab-centered">Copy</button>
+                                </div>
+                                <pre><code id="tab-centered" class="language-html">&lt;ul class="tab-list tab-list-center"&gt;
+    &lt;li class="tab-title active" data-doc-tab="#tab-center-all"&gt;All&lt;/li&gt;
+    &lt;li class="tab-title" data-doc-tab="#tab-center-open"&gt;Open&lt;/li&gt;
+    &lt;li class="tab-title" data-doc-tab="#tab-center-closed"&gt;Closed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="tab-content active" id="tab-center-all"&gt;...&lt;/div&gt;
+&lt;div class="tab-content" id="tab-center-open"&gt;...&lt;/div&gt;
+&lt;div class="tab-content" id="tab-center-closed"&gt;...&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="fluid">
+                            <h2>Fluid list</h2>
+                            <p><code>tab-list-fluid</code> replaces the float with a grid of <code>auto-fit</code> tracks at a 100px minimum and centers each title inside its track. The columns share the available width evenly and the count falls out of the container width, so the same markup shows four columns in a wide panel and two in a narrow one.</p>
+                            <p>The modifier also removes the clearfix pseudo-elements, which are not needed once the list is a grid.</p>
+                            <div class="doc-demo">
+                                <div class="tab full-width">
+                                    <ul class="tab-list tab-list-fluid">
+                                        <li class="tab-title active" data-doc-tab="#tab-fluid-day">Day</li>
+                                        <li class="tab-title" data-doc-tab="#tab-fluid-week">Week</li>
+                                        <li class="tab-title" data-doc-tab="#tab-fluid-month">Month</li>
+                                        <li class="tab-title" data-doc-tab="#tab-fluid-year">Year</li>
+                                    </ul>
+                                    <div class="tab-content active" id="tab-fluid-day">
+                                        <p>Today: 1,204 sessions, 3.1 percent conversion, and 48 new accounts.</p>
+                                    </div>
+                                    <div class="tab-content" id="tab-fluid-week">
+                                        <p>This week: 8,930 sessions, 2.9 percent conversion, and 312 new accounts.</p>
+                                    </div>
+                                    <div class="tab-content" id="tab-fluid-month">
+                                        <p>This month: 38,410 sessions, 3.0 percent conversion, and 1,284 new accounts.</p>
+                                    </div>
+                                    <div class="tab-content" id="tab-fluid-year">
+                                        <p>This year: 412,900 sessions, 2.8 percent conversion, and 14,702 new accounts.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="tab-fluid">Copy</button>
+                                </div>
+                                <pre><code id="tab-fluid" class="language-html">&lt;ul class="tab-list tab-list-fluid"&gt;
+    &lt;li class="tab-title active" data-doc-tab="#tab-fluid-day"&gt;Day&lt;/li&gt;
+    &lt;li class="tab-title" data-doc-tab="#tab-fluid-week"&gt;Week&lt;/li&gt;
+    &lt;li class="tab-title" data-doc-tab="#tab-fluid-month"&gt;Month&lt;/li&gt;
+    &lt;li class="tab-title" data-doc-tab="#tab-fluid-year"&gt;Year&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="tab-content active" id="tab-fluid-day"&gt;...&lt;/div&gt;
+&lt;div class="tab-content" id="tab-fluid-week"&gt;...&lt;/div&gt;
+&lt;div class="tab-content" id="tab-fluid-month"&gt;...&lt;/div&gt;
+&lt;div class="tab-content" id="tab-fluid-year"&gt;...&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Hover paints the title label with <code>--r-tab-active-color</code> and fills it with <code>--r-tab-border-color</code> at the same time. That fill is a plain surface tone, so it reads as a hovered row rather than a second active state.</p>
+                        </section>
+
+                        <section class="doc-section" id="javascript">
+                            <h2>JavaScript</h2>
+                            <p>roolith css ships no JavaScript. The snippet below is documentation only and matches the behavior this page uses: a click on a title clears <code>.active</code> from its siblings, then sets it on the clicked title and on the panel named by <code>data-doc-tab</code>.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JavaScript</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="tab-js">Copy</button>
+                                </div>
+                                <pre><code id="tab-js" class="language-js">document.querySelectorAll('.tab-title[data-doc-tab]').forEach((title) =&gt; {
+    title.addEventListener('click', () =&gt; {
+        const tab = title.closest('.tab');
+        const panel = document.querySelector(title.dataset.docTab);
+
+        tab.querySelectorAll('.tab-title').forEach((item) =&gt; {
+            item.classList.toggle('active', item === title);
+        });
+
+        tab.querySelectorAll('.tab-content').forEach((content) =&gt; {
+            content.classList.toggle('active', content === panel);
+        });
+    });
+});</code></pre>
+                            </div>
+                            <p>Scope every query to the closest <code>.tab</code> so a second tab group on the page is untouched. Keep the hook on the title and let CSS own the visual state; if the panel must also update ARIA attributes, do it in the same handler so the class and the attribute never disagree.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The default markup is a list of clickable list items. That is enough for a visual demo, but a tab widget needs roles, a selected state, and keyboard support before it ships.</p>
+                            <ul>
+                                <li>Put <code>role="tablist"</code> on the <code>.tab-list</code>, <code>role="tab"</code> on each <code>.tab-title</code>, and <code>role="tabpanel"</code> on each <code>.tab-content</code>.</li>
+                                <li>Give every title an <code>id</code> and every panel <code>aria-labelledby</code> pointing at its title, then point <code>aria-controls</code> from the title at the panel id.</li>
+                                <li><code>.active</code> is visual only. Mirror it with <code>aria-selected="true"</code> on the current title and <code>false</code> on the rest, and update both in the same handler.</li>
+                                <li>Use a roving tabindex: <code>tabindex="0"</code> on the selected title and <code>tabindex="-1"</code> on the others, so the whole list is one stop in the page tab order.</li>
+                                <li>Left and Right arrows move to the previous and next title, Home and End jump to the first and last. Move focus with <code>focus()</code> on the newly selected title after the swap.</li>
+                                <li>Hidden panels are <code>display: none</code> through the framework, so their controls are already out of the tab order and out of the accessibility tree. Only the active panel is reachable.</li>
+                                <li>The tabs in this demo are activated by click and not by keyboard, because a list item is not focusable. The roles and the roving tabindex above are what make the same markup usable with a keyboard.</li>
+                                <li><code>data-doc-tab</code> is a docs hook, not framework API. Its value is a CSS id selector, so every panel id has to be unique on the page.</li>
+                                <li>Keep the focus ring. The title transitions color, border, and background only, so the outline from the base layer stays visible on <code>:focus-visible</code>.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>Titles are styled as a group, so every modifier belongs on the list rather than on the individual title.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.tab</code></td>
+                                            <td>Wrapper</td>
+                                            <td>No declarations of its own. Groups a list with its panels and is the scope the script searches within.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tab-list</code></td>
+                                            <td>List</td>
+                                            <td>Cleared list with a 1px bottom border from <code>--r-tab-border-color</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tab-title</code></td>
+                                            <td>Title</td>
+                                            <td>Floated 14px bold label with 10px by 20px of padding, a 2px transparent bottom border, and a 1px negative bottom margin.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tab-list-center</code></td>
+                                            <td>Modifier on the list</td>
+                                            <td>Centers the row and switches the titles to inline-block with no float.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tab-list-fluid</code></td>
+                                            <td>Modifier on the list</td>
+                                            <td>Grid of auto-fit 100px minimum tracks, centered titles, and no clearfix pseudo-elements.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.active</code></td>
+                                            <td>State on a title</td>
+                                            <td>Paints the 2px bottom border with <code>--r-tab-active-color</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.tab-content</code></td>
+                                            <td>Panel</td>
+                                            <td>Hidden with 15px of vertical padding applied when shown. Needs its own <code>.active</code> to display.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>data-doc-tab</code></td>
+                                            <td>Attribute on a title</td>
+                                            <td>Docs hook holding the panel selector. Not part of the stylesheet.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/stat.html">Previous: Stat</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/table.html">Next: Table</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#centered">Centered list</a>
+                        <a class="doc-toc-link" href="#fluid">Fluid list</a>
+                        <a class="doc-toc-link" href="#javascript">JavaScript</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

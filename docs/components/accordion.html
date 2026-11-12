@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Accordion - roolith css</title>
+        <meta name="description" content="Accordion markup, open state, and toggle behavior in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Accordion</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Accordion</h1>
+                            <p class="doc-content-lead">
+                                An accordion stacks related questions or panels and reveals one panel on demand. The
+                                markup is a list of items, and the open state is a single
+                                <code>.active</code>
+                                class on the item that owns the panel.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.accordion</strong>
+                                - defined in
+                                <strong>modules/_accordion.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                The wrapper
+                                <code>.accordion</code>
+                                draws the top border and each
+                                <code>.accordion-item</code>
+                                draws the bottom one, so a stack of items reads as a single block.
+                            </p>
+                            <p>
+                                Add
+                                <code>.active</code>
+                                to an item to open it on first paint. The body is
+                                <code>display: none</code>
+                                until that class is present, so the collapsed panel is not just visually hidden.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="accordion full-width">
+                                    <div class="accordion-item active">
+                                        <div class="accordion-item-title">How do I install roolith css?</div>
+                                        <div class="accordion-item-body">
+                                            <p>
+                                                Link the compiled stylesheet in the document head and use the component
+                                                classes directly.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="accordion-basic">Copy</button>
+                                </div>
+                                <pre><code id="accordion-basic" class="language-html">&lt;div class="accordion"&gt;
+    &lt;div class="accordion-item active"&gt;
+        &lt;div class="accordion-item-title"&gt;How do I install roolith css?&lt;/div&gt;
+        &lt;div class="accordion-item-body"&gt;
+            &lt;p&gt;Link the compiled stylesheet in the document head and use the component classes directly.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="multiple-items">
+                            <h2>Multiple items</h2>
+                            <p>
+                                Repeat
+                                <code>.accordion-item</code>
+                                inside one
+                                <code>.accordion</code>
+                                for each panel. There is no group class, so every item toggles on its own and several
+                                panels can stay open at once.
+                            </p>
+                            <p>
+                                The title carries a small CSS-drawn chevron in its
+                                <code>::after</code>
+                                pseudo-element. It points down while the item is closed and flips when the item gains
+                                <code>.active</code>, so no icon font is needed.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="accordion full-width">
+                                    <div class="accordion-item">
+                                        <div class="accordion-item-title">Which browsers are supported?</div>
+                                        <div class="accordion-item-body">
+                                            <p>
+                                                Current versions of Chrome, Firefox, Safari, and Edge. The stylesheet
+                                                relies on custom properties and color-mix.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item active">
+                                        <div class="accordion-item-title">Can I override the border color?</div>
+                                        <div class="accordion-item-body">
+                                            <p>
+                                                Yes. Set
+                                                <code>--r-accordion-border-color</code>
+                                                where you load the tokens and both the wrapper and the items follow.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <div class="accordion-item-title">Does it need JavaScript?</div>
+                                        <div class="accordion-item-body">
+                                            <p>
+                                                The stylesheet only renders the open state. Toggling needs a few lines of
+                                                script, shown in the next section.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="accordion-multiple">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="accordion-multiple" class="language-html">&lt;div class="accordion"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;div class="accordion-item-title"&gt;Which browsers are supported?&lt;/div&gt;
+        &lt;div class="accordion-item-body"&gt;
+            &lt;p&gt;Current versions of Chrome, Firefox, Safari, and Edge. The stylesheet relies on custom properties and color-mix.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="accordion-item active"&gt;
+        &lt;div class="accordion-item-title"&gt;Can I override the border color?&lt;/div&gt;
+        &lt;div class="accordion-item-body"&gt;
+            &lt;p&gt;Yes. Set &lt;code&gt;--r-accordion-border-color&lt;/code&gt; where you load the tokens and both the wrapper and the items follow.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;div class="accordion-item-title"&gt;Does it need JavaScript?&lt;/div&gt;
+        &lt;div class="accordion-item-body"&gt;
+            &lt;p&gt;The stylesheet only renders the open state. Toggling needs a few lines of script, shown in the next section.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="javascript">
+                            <h2>JavaScript</h2>
+                            <p>
+                                roolith css ships no JavaScript. The snippet below is documentation only and is the same
+                                behavior this page uses: a click on
+                                <code>.accordion-item-title</code>
+                                toggles
+                                <code>.active</code>
+                                on the closest
+                                <code>.accordion-item</code>.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JavaScript</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="accordion-js">Copy</button>
+                                </div>
+                                <pre><code id="accordion-js" class="language-js">document.querySelectorAll('.accordion-item-title').forEach((title) =&gt; {
+    title.addEventListener('click', () =&gt; {
+        title.closest('.accordion-item').classList.toggle('active');
+    });
+});</code></pre>
+                            </div>
+                            <p>
+                                Keep the handler on the title element and let CSS own the visual state. If you need only
+                                one panel open at a time, remove
+                                <code>.active</code>
+                                from the other items in the same
+                                <code>.accordion</code>
+                                before toggling.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The default markup uses plain
+                                <code>div</code>
+                                elements for titles, which is fine for a visual demo but not for a real page. Upgrade the
+                                control and expose the open state before shipping.
+                            </p>
+                            <ul>
+                                <li>
+                                    Use a
+                                    <code>&lt;button type="button"&gt;</code>
+                                    as the title control, or wrap the title text in one, so it is reachable with Tab and
+                                    activated with Enter and Space.
+                                </li>
+                                <li>
+                                    Add
+                                    <code>aria-expanded="true|false"</code>
+                                    to that button and keep it in sync with the
+                                    <code>.active</code>
+                                    class. CSS cannot express expanded state to assistive technology on its own.
+                                </li>
+                                <li>
+                                    Point
+                                    <code>aria-controls</code>
+                                    at the id of the
+                                    <code>.accordion-item-body</code>
+                                    so the relationship is explicit.
+                                </li>
+                                <li>
+                                    Collapsed bodies are already
+                                    <code>display: none</code>
+                                    through the framework, so their links and text stay out of the tab order and the
+                                    accessibility tree.
+                                </li>
+                                <li>
+                                    Focus rings come from the base layer, which outlines
+                                    <code>a</code>,
+                                    <code>button</code>, and
+                                    <code>[tabindex]</code>
+                                    on
+                                    <code>:focus-visible</code>. Do not remove them.
+                                </li>
+                                <li>
+                                    The chevron is decorative and drawn in CSS, so there is nothing extra to label for
+                                    screen readers.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                The stack is two nested wrappers plus a state class. Borders come from
+                                <code>--r-accordion-border-color</code>.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.accordion</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Draws the top border and groups the items.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.accordion-item</code></td>
+                                            <td>Item</td>
+                                            <td>Bottom border with 10px of vertical padding. Carries the open state.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.active</code></td>
+                                            <td>State on the item</td>
+                                            <td>Shows the body and flips the title chevron.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.accordion-item-title</code></td>
+                                            <td>Title</td>
+                                            <td>16/22 bold label with a pointer cursor and the CSS chevron.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.accordion-item-body</code></td>
+                                            <td>Panel</td>
+                                            <td>Hidden until the parent item is active; adds 10px of top padding.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/sass-api.html">
+                                        Previous: Sass API
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/action-menu.html">
+                                        Next: Action menu
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#multiple-items">Multiple items</a>
+                        <a class="doc-toc-link" href="#javascript">JavaScript</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

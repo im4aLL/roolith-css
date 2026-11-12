@@ -2,13 +2,12 @@
 @use '../mixins';
 
 @mixin block-banner() {
-
     .block-banner-title {
         padding-bottom: calc(var(--r-block-padding) / 2);
     }
 
     .block-banner-text {
-        padding-bottom: calc(var(--r-block-padding) * 1.5);
+        margin-bottom: calc(var(--r-block-padding) * 1.5);
         color: var(--r-block-banner-text-color);
     }
 

@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block analytics - roolith css</title>
+        <meta name="description" content="Composite analytics block with a titled header and control, a table or stat body, and a footer action in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block analytics</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block analytics</h1>
+                            <p class="doc-content-lead">
+                                The analytics block is a three part panel: a header that pairs a title with a control, a body that holds a stat row or a stat table, and a footer for the next step. It supplies the spacing between those parts and nothing else, so the numbers come from another block.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-analytics</strong>
+                                - defined in
+                                <strong>blocks/_block-analytics.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                <code>.block-analytics-header</code> is a flex row with <code>space-between</code> and centered items, so the title sits on the left and the control sits on the right. Put the control in <code>.quick-menu</code> when it switches between views, or use a single <a href="/components/button.html">Button</a> when it opens a setting.
+                            </p>
+                            <p>
+                                <code>.block-analytics-body</code> adds 10px of padding above and below, which is half the block padding, and <code>.block-analytics-footer</code> adds 10px above only. A <a href="/blocks/block-stat.html">Block stat</a> row fits the body without extra wrappers.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-analytics">
+                                        <div class="block-analytics-header">
+                                            <h6 class="block-analytics-hl">Traffic overview</h6>
+
+                                            <ul class="quick-menu small">
+                                                <li class="quick-menu-item active">
+                                                    <a class="quick-menu-link" href="#" aria-current="true">Summary</a>
+                                                </li>
+                                                <li class="quick-menu-item">
+                                                    <a class="quick-menu-link" href="#">Sources</a>
+                                                </li>
+                                                <li class="quick-menu-item">
+                                                    <a class="quick-menu-link" href="#">Devices</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="block-analytics-body">
+                                            <div class="block-stat">
+                                                <div class="block-stat-item active">
+                                                    <div class="block-stat-label">Unique visitors</div>
+                                                    <div class="block-stat-value">100k</div>
+                                                    <div class="block-stat-indicator"><span class="indicator is-upward">5%</span></div>
+                                                </div>
+                                                <div class="block-stat-item">
+                                                    <div class="block-stat-label">Page views</div>
+                                                    <div class="block-stat-value">1M</div>
+                                                    <div class="block-stat-indicator"><span class="indicator is-upward">12%</span></div>
+                                                </div>
+                                                <div class="block-stat-item">
+                                                    <div class="block-stat-label">Bounce rate</div>
+                                                    <div class="block-stat-value">40%</div>
+                                                    <div class="block-stat-indicator"><span class="indicator is-downward">2%</span></div>
+                                                </div>
+                                                <div class="block-stat-item">
+                                                    <div class="block-stat-label">Visit duration</div>
+                                                    <div class="block-stat-value">1m 30s</div>
+                                                    <div class="block-stat-indicator"><span class="indicator is-flat">0%</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="block-analytics-footer">
+                                            <a class="button button-outline button-small" href="#">View full report</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-analytics-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-analytics-basic" class="language-html">&lt;div class="block-analytics"&gt;
+    &lt;div class="block-analytics-header"&gt;
+        &lt;h6 class="block-analytics-hl"&gt;Traffic overview&lt;/h6&gt;
+
+        &lt;ul class="quick-menu small"&gt;
+            &lt;li class="quick-menu-item active"&gt;
+                &lt;a class="quick-menu-link" href="#" aria-current="true"&gt;Summary&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="quick-menu-item"&gt;
+                &lt;a class="quick-menu-link" href="#"&gt;Sources&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="quick-menu-item"&gt;
+                &lt;a class="quick-menu-link" href="#"&gt;Devices&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;div class="block-analytics-body"&gt;
+        &lt;div class="block-stat"&gt;
+            &lt;div class="block-stat-item active"&gt;
+                &lt;div class="block-stat-label"&gt;Unique visitors&lt;/div&gt;
+                &lt;div class="block-stat-value"&gt;100k&lt;/div&gt;
+                &lt;div class="block-stat-indicator"&gt;&lt;span class="indicator is-upward"&gt;5%&lt;/span&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-item"&gt;
+                &lt;div class="block-stat-label"&gt;Page views&lt;/div&gt;
+                &lt;div class="block-stat-value"&gt;1M&lt;/div&gt;
+                &lt;div class="block-stat-indicator"&gt;&lt;span class="indicator is-upward"&gt;12%&lt;/span&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-item"&gt;
+                &lt;div class="block-stat-label"&gt;Bounce rate&lt;/div&gt;
+                &lt;div class="block-stat-value"&gt;40%&lt;/div&gt;
+                &lt;div class="block-stat-indicator"&gt;&lt;span class="indicator is-downward"&gt;2%&lt;/span&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-item"&gt;
+                &lt;div class="block-stat-label"&gt;Visit duration&lt;/div&gt;
+                &lt;div class="block-stat-value"&gt;1m 30s&lt;/div&gt;
+                &lt;div class="block-stat-indicator"&gt;&lt;span class="indicator is-flat"&gt;0%&lt;/span&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="block-analytics-footer"&gt;
+        &lt;a class="button button-outline button-small" href="#"&gt;View full report&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The <code>.active</code> class on the stat item paints the muted surface and a pointer cursor, which is the same treatment as hover. Keep it in sync with the view the control has selected, and mirror the selection in <code>aria-current</code> or <code>aria-pressed</code>.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="with-a-table">
+                            <h2>With a stat table</h2>
+                            <p>
+                                The body takes any block that fits the width. A <a href="/blocks/block-stat-table.html">Block stat table</a> is the usual choice for a ranked list, because the indicator bar and the trailing columns carry the comparison.
+                            </p>
+                            <p>
+                                Use a <code>.button</code> or <code>.quick-menu</code> in the header, keep the title short, and let the footer hold one action. Two competing controls in a 600px panel leave no room for the title.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-analytics">
+                                        <div class="block-analytics-header">
+                                            <h6 class="block-analytics-hl">Top pages</h6>
+
+                                            <a class="button button-text button-small" href="#">Export CSV</a>
+                                        </div>
+
+                                        <div class="block-analytics-body">
+                                            <div class="block-stat-table">
+                                                <div class="block-stat-table-head">
+                                                    <div class="block-stat-table-header is-left is-primary">Page URL</div>
+                                                    <div class="block-stat-table-header">Views</div>
+                                                    <div class="block-stat-table-header">Trend</div>
+                                                </div>
+                                                <div class="block-stat-table-body">
+                                                    <div class="block-stat-table-row">
+                                                        <div class="block-stat-table-cell is-left is-primary">
+                                                            <a class="block-stat-table-text" href="#">/pricing</a>
+                                                            <div class="block-stat-table-indicator" style="width: 100%"></div>
+                                                        </div>
+                                                        <div class="block-stat-table-cell">100k</div>
+                                                        <div class="block-stat-table-cell"><span class="indicator is-upward">5%</span></div>
+                                                    </div>
+                                                    <div class="block-stat-table-row">
+                                                        <div class="block-stat-table-cell is-left is-primary">
+                                                            <a class="block-stat-table-text" href="#">/docs/getting-started</a>
+                                                            <div class="block-stat-table-indicator" style="width: 72%"></div>
+                                                        </div>
+                                                        <div class="block-stat-table-cell">72k</div>
+                                                        <div class="block-stat-table-cell"><span class="indicator is-upward">8%</span></div>
+                                                    </div>
+                                                    <div class="block-stat-table-row">
+                                                        <div class="block-stat-table-cell is-left is-primary">
+                                                            <a class="block-stat-table-text" href="#">/blog/roolith-4</a>
+                                                            <div class="block-stat-table-indicator" style="width: 48%"></div>
+                                                        </div>
+                                                        <div class="block-stat-table-cell">48k</div>
+                                                        <div class="block-stat-table-cell"><span class="indicator is-downward">3%</span></div>
+                                                    </div>
+                                                    <div class="block-stat-table-row">
+                                                        <div class="block-stat-table-cell is-left is-primary">
+                                                            <a class="block-stat-table-text" href="#">/changelog</a>
+                                                            <div class="block-stat-table-indicator" style="width: 26%"></div>
+                                                        </div>
+                                                        <div class="block-stat-table-cell">26k</div>
+                                                        <div class="block-stat-table-cell"><span class="indicator is-flat">0%</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="block-analytics-footer">
+                                            <a class="button button-outline button-small" href="#">View full report</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-analytics-table">Copy</button>
+                                </div>
+                                <pre><code id="block-analytics-table" class="language-html">&lt;div class="block-analytics"&gt;
+    &lt;div class="block-analytics-header"&gt;
+        &lt;h6 class="block-analytics-hl"&gt;Top pages&lt;/h6&gt;
+
+        &lt;a class="button button-text button-small" href="#"&gt;Export CSV&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class="block-analytics-body"&gt;
+        &lt;div class="block-stat-table"&gt;
+            &lt;div class="block-stat-table-head"&gt;
+                &lt;div class="block-stat-table-header is-left is-primary"&gt;Page URL&lt;/div&gt;
+                &lt;div class="block-stat-table-header"&gt;Views&lt;/div&gt;
+                &lt;div class="block-stat-table-header"&gt;Trend&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-table-body"&gt;
+                &lt;div class="block-stat-table-row"&gt;
+                    &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                        &lt;a class="block-stat-table-text" href="#"&gt;/pricing&lt;/a&gt;
+                        &lt;div class="block-stat-table-indicator" style="width: 100%"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="block-stat-table-cell"&gt;100k&lt;/div&gt;
+                    &lt;div class="block-stat-table-cell"&gt;&lt;span class="indicator is-upward"&gt;5%&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="block-stat-table-row"&gt;
+                    &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                        &lt;a class="block-stat-table-text" href="#"&gt;/docs/getting-started&lt;/a&gt;
+                        &lt;div class="block-stat-table-indicator" style="width: 72%"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="block-stat-table-cell"&gt;72k&lt;/div&gt;
+                    &lt;div class="block-stat-table-cell"&gt;&lt;span class="indicator is-upward"&gt;8%&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="block-stat-table-row"&gt;
+                    &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                        &lt;a class="block-stat-table-text" href="#"&gt;/blog/roolith-4&lt;/a&gt;
+                        &lt;div class="block-stat-table-indicator" style="width: 48%"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="block-stat-table-cell"&gt;48k&lt;/div&gt;
+                    &lt;div class="block-stat-table-cell"&gt;&lt;span class="indicator is-downward"&gt;3%&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="block-stat-table-row"&gt;
+                    &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                        &lt;a class="block-stat-table-text" href="#"&gt;/changelog&lt;/a&gt;
+                        &lt;div class="block-stat-table-indicator" style="width: 26%"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="block-stat-table-cell"&gt;26k&lt;/div&gt;
+                    &lt;div class="block-stat-table-cell"&gt;&lt;span class="indicator is-flat"&gt;0%&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="block-analytics-footer"&gt;
+        &lt;a class="button button-outline button-small" href="#"&gt;View full report&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The bar width is an inline style in the canonical demo, because the SCSS only sizes the bar to its cell. Compute the percentage from your data and set it with a style attribute or a custom property, rather than adding a width class per value.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="structure">
+                            <h2>Structure and spacing</h2>
+                            <p>
+                                <code>.block-analytics</code> itself carries no declarations. The three part classes are global, not nested under it, so they also work when a page needs only the header or only the footer.
+                            </p>
+                            <p>
+                                The block sets no width, background, border, or radius. Place it in a <a href="/components/box.html">Box</a> or a <a href="/components/card.html">Card</a> when it needs a frame, or drop it in a <code>.column</code> and let the column decide the measure. A panel narrower than about 600px makes a four item stat row cramped, so switch that body to a table or to two rows of stats.
+                            </p>
+                            <p>
+                                The spacing chain is deliberate: the header sits on the top edge, the body adds 10px above and below, and the footer adds 10px above with none below. That keeps the footer close to the data it follows, and any outer padding in your container closes the block.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The block only positions three regions. The names, roles, and state of what you place inside them are your responsibility.
+                            </p>
+                            <ul>
+                                <li>Keep the title on a real heading element. <code>.block-analytics-hl</code> has no styles, so the tag level is free and should match the surrounding page outline.</li>
+                                <li>When the header control switches views inside the panel, mark the current item with <code>aria-current="true"</code> as well as <code>.active</code>, and announce the change in a live region.</li>
+                                <li>The stat table is built from divs. Give it <code>role="table"</code>, <code>role="row"</code>, <code>role="columnheader"</code>, and <code>role="cell"</code>, or use a real <code>&lt;table&gt;</code>, so the values are read in context.</li>
+                                <li>The indicator bar is decoration. Keep the number in a text cell, and do not let the bar width be the only way to compare rows.</li>
+                                <li>Direction color is not enough. The arrow is drawn with a mask and the percentage is text, so the sign survives grayscale and screen readers.</li>
+                                <li>Give the footer link a name that stands alone, such as View the full page report, because it is read out of context in a list of links.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                The block owns the three regions. The title, the controls, and the body content come from the components and blocks you place inside them.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-analytics</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Carries no declarations. The three part classes below are global and do not require this wrapper.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-analytics-header</code></td>
+                                            <td>Header</td>
+                                            <td>Flex row with <code>space-between</code> and centered items, so the title and the control sit on one line.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-analytics-body</code></td>
+                                            <td>Body</td>
+                                            <td>Half the block padding above and below, which is 10px by default.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-analytics-footer</code></td>
+                                            <td>Footer</td>
+                                            <td>Half the block padding above only, which is 10px by default.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-analytics-hl</code></td>
+                                            <td>Header title</td>
+                                            <td>Unstyled hook used by the canonical demo for the title. Any heading element works.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/utilities.html">Previous: Utilities</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-auth.html">Next: Block auth</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#with-a-table">With a stat table</a>
+                        <a class="doc-toc-link" href="#structure">Structure and spacing</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block stat table - roolith css</title>
+        <meta name="description" content="The stat table block builds an analytics table from a grid of header cells, metric cells, and value bars in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block stat table</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block stat table</h1>
+                            <p class="doc-content-lead">
+                                The stat table is a compact analytics table: a wide label column with an optional
+                                value bar, followed by right aligned metric columns. It is built from divs on a CSS
+                                grid instead of a native table, so the markup stays short while the module owns the
+                                column widths and the alignment.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-stat-table</strong>
+                                - defined in
+                                <strong>blocks/_block-stat-table.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                Four elements are structural. <code>.block-stat-table</code> is the wrapper,
+                                <code>.block-stat-table-head</code> holds one <code>.block-stat-table-header</code>
+                                per column, <code>.block-stat-table-body</code> holds the
+                                <code>.block-stat-table-row</code> elements, and each row holds one
+                                <code>.block-stat-table-cell</code> per column.
+                            </p>
+                            <p>
+                                The wrapper and the body are flex columns with a 5px gap, a quarter of
+                                <code>--r-block-padding</code>. The head and every row run the same grid template, so
+                                the columns line up as long as both contain the same number of cells with the same
+                                spans. The wrapper sets 14px text, the head drops to 12px in
+                                <code>--r-block-stat-table-header-color</code>, and every cell pads 6px and aligns its
+                                text to the right.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-stat-table">
+                                        <div class="block-stat-table-head">
+                                            <div class="block-stat-table-header is-left is-primary">Landing page</div>
+                                            <div class="block-stat-table-header">Sessions</div>
+                                            <div class="block-stat-table-header">Conversions</div>
+                                            <div class="block-stat-table-header">Bounce rate</div>
+                                            <div class="block-stat-table-header">Avg. time</div>
+                                        </div>
+                                        <div class="block-stat-table-body">
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">/pricing</div>
+                                                <div class="block-stat-table-cell">128,400</div>
+                                                <div class="block-stat-table-cell">3,942</div>
+                                                <div class="block-stat-table-cell">32%</div>
+                                                <div class="block-stat-table-cell">2m 18s</div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">/docs/getting-started</div>
+                                                <div class="block-stat-table-cell">96,750</div>
+                                                <div class="block-stat-table-cell">1,208</div>
+                                                <div class="block-stat-table-cell">41%</div>
+                                                <div class="block-stat-table-cell">4m 02s</div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">/blog/release-notes</div>
+                                                <div class="block-stat-table-cell">54,310</div>
+                                                <div class="block-stat-table-cell">486</div>
+                                                <div class="block-stat-table-cell">58%</div>
+                                                <div class="block-stat-table-cell">1m 47s</div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">/changelog</div>
+                                                <div class="block-stat-table-cell">21,880</div>
+                                                <div class="block-stat-table-cell">172</div>
+                                                <div class="block-stat-table-cell">61%</div>
+                                                <div class="block-stat-table-cell">1m 12s</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-stat-table-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-stat-table-basic" class="language-html">&lt;div class="block-stat-table"&gt;
+    &lt;div class="block-stat-table-head"&gt;
+        &lt;div class="block-stat-table-header is-left is-primary"&gt;Landing page&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Sessions&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Conversions&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Bounce rate&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Avg. time&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-table-body"&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;/pricing&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;128,400&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;3,942&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;32%&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;2m 18s&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;/docs/getting-started&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;96,750&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;1,208&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;41%&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;4m 02s&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;/blog/release-notes&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;54,310&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;486&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;58%&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;1m 47s&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;/changelog&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;21,880&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;172&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;61%&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;1m 12s&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The head is bold and uppercased, and its color is the faint text token, so the labels
+                                recede behind the numbers. The module has no row hover, no selected state, and no
+                                border between rows: the 5px gap is the only separator, and a clickable row needs its
+                                own hover and focus rule.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="columns">
+                            <h2>Column spans and alignment</h2>
+                            <p>
+                                The same modifier set lives on both the header and the cell:
+                                <code>is-left</code> switches the 6px cell from right to left alignment,
+                                <code>is-primary</code> makes the element span three grid tracks, and
+                                <code>is-secondary</code> spans two. The classes are nested under the header and the
+                                cell in the stylesheet, so they do nothing on other elements.
+                            </p>
+                            <p>
+                                Alignment is not inherited from the head, so a column is declared twice: the header
+                                needs <code>is-left</code> and so does every cell in that column. Spans are declared
+                                twice for the same reason, and a mismatch shows up as shifted columns because the head
+                                and each row are separate grids.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-stat-table">
+                                        <div class="block-stat-table-head">
+                                            <div class="block-stat-table-header is-left is-primary">Source</div>
+                                            <div class="block-stat-table-header is-left is-secondary">Campaign</div>
+                                            <div class="block-stat-table-header">Sessions</div>
+                                            <div class="block-stat-table-header">Signups</div>
+                                        </div>
+                                        <div class="block-stat-table-body">
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">Google</div>
+                                                <div class="block-stat-table-cell is-left is-secondary">brand-search</div>
+                                                <div class="block-stat-table-cell">48,210</div>
+                                                <div class="block-stat-table-cell">1,904</div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">Newsletter</div>
+                                                <div class="block-stat-table-cell is-left is-secondary">october-launch</div>
+                                                <div class="block-stat-table-cell">12,480</div>
+                                                <div class="block-stat-table-cell">812</div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">GitHub</div>
+                                                <div class="block-stat-table-cell is-left is-secondary">readme-link</div>
+                                                <div class="block-stat-table-cell">6,350</div>
+                                                <div class="block-stat-table-cell">421</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-stat-table-columns">Copy</button>
+                                </div>
+                                <pre><code id="block-stat-table-columns" class="language-html">&lt;div class="block-stat-table"&gt;
+    &lt;div class="block-stat-table-head"&gt;
+        &lt;div class="block-stat-table-header is-left is-primary"&gt;Source&lt;/div&gt;
+        &lt;div class="block-stat-table-header is-left is-secondary"&gt;Campaign&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Sessions&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Signups&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-table-body"&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;Google&lt;/div&gt;
+            &lt;div class="block-stat-table-cell is-left is-secondary"&gt;brand-search&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;48,210&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;1,904&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;Newsletter&lt;/div&gt;
+            &lt;div class="block-stat-table-cell is-left is-secondary"&gt;october-launch&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;12,480&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;812&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;GitHub&lt;/div&gt;
+            &lt;div class="block-stat-table-cell is-left is-secondary"&gt;readme-link&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;6,350&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;421&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The track template is <code>repeat(auto-fit, minmax(0, 1fr))</code>, so the tracks it
+                                creates are equal fractions of the row width. The primary column keeps three shares of
+                                that width and a secondary column keeps two, while each metric keeps one.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="bars">
+                            <h2>Text and indicator layers</h2>
+                            <p>
+                                A cell can carry a value bar behind its text. <code>.block-stat-table-indicator</code>
+                                is absolutely positioned against the cell, which is the positioning context, and fills
+                                the full height of it with <code>--r-block-stat-table-indicator-color</code> and
+                                <code>--r-global-border-radius</code>. Its width is the only value the module does not
+                                own: you set it inline as a percentage measured from the data.
+                            </p>
+                            <p>
+                                <code>.block-stat-table-text</code> lifts the label above that bar. The bar is a
+                                positioned element with a zero z-index, so it paints over plain in-flow text; the text
+                                class adds relative positioning and a z-index of one, which puts the content back on
+                                top. Wrap any cell content that must stay readable above a bar.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-stat-table">
+                                        <div class="block-stat-table-head">
+                                            <div class="block-stat-table-header is-left is-primary">Plan</div>
+                                            <div class="block-stat-table-header">MRR</div>
+                                            <div class="block-stat-table-header">Accounts</div>
+                                            <div class="block-stat-table-header">Renewal</div>
+                                        </div>
+                                        <div class="block-stat-table-body">
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">
+                                                    <a href="#" class="block-stat-table-text">Growth</a>
+                                                    <div class="block-stat-table-indicator" style="width: 100%"></div>
+                                                </div>
+                                                <div class="block-stat-table-cell">$42,800</div>
+                                                <div class="block-stat-table-cell">1,204</div>
+                                                <div class="block-stat-table-cell">94%</div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">
+                                                    <a href="#" class="block-stat-table-text">Scale</a>
+                                                    <div class="block-stat-table-indicator" style="width: 68%"></div>
+                                                </div>
+                                                <div class="block-stat-table-cell">$29,100</div>
+                                                <div class="block-stat-table-cell">486</div>
+                                                <div class="block-stat-table-cell">91%</div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">
+                                                    <a href="#" class="block-stat-table-text">Starter</a>
+                                                    <div class="block-stat-table-indicator" style="width: 41%"></div>
+                                                </div>
+                                                <div class="block-stat-table-cell">$17,400</div>
+                                                <div class="block-stat-table-cell">2,310</div>
+                                                <div class="block-stat-table-cell">88%</div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">
+                                                    <a href="#" class="block-stat-table-text">Enterprise</a>
+                                                    <div class="block-stat-table-indicator" style="width: 22%"></div>
+                                                </div>
+                                                <div class="block-stat-table-cell">$9,300</div>
+                                                <div class="block-stat-table-cell">37</div>
+                                                <div class="block-stat-table-cell">97%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-stat-table-bars">Copy</button>
+                                </div>
+                                <pre><code id="block-stat-table-bars" class="language-html">&lt;div class="block-stat-table"&gt;
+    &lt;div class="block-stat-table-head"&gt;
+        &lt;div class="block-stat-table-header is-left is-primary"&gt;Plan&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;MRR&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Accounts&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Renewal&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-table-body"&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                &lt;a href="#" class="block-stat-table-text"&gt;Growth&lt;/a&gt;
+                &lt;div class="block-stat-table-indicator" style="width: 100%"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;$42,800&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;1,204&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;94%&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                &lt;a href="#" class="block-stat-table-text"&gt;Scale&lt;/a&gt;
+                &lt;div class="block-stat-table-indicator" style="width: 68%"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;$29,100&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;486&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;91%&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                &lt;a href="#" class="block-stat-table-text"&gt;Starter&lt;/a&gt;
+                &lt;div class="block-stat-table-indicator" style="width: 41%"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;$17,400&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;2,310&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;88%&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                &lt;a href="#" class="block-stat-table-text"&gt;Enterprise&lt;/a&gt;
+                &lt;div class="block-stat-table-indicator" style="width: 22%"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;$9,300&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;37&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;97%&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                Compute the width when you render the row, as a share of the largest value in the
+                                column, and clamp it at 100%. A bar over 100% escapes the cell and paints into the
+                                neighbour. A zero value can either show no bar at all or a hairline, but it should not
+                                be the only place the number appears.
+                            </p>
+                            <p>
+                                Bars are decoration, so they add nothing to the reading order and need no label. The
+                                number stays in the metric cell, and a reader who cannot see the bar still gets the
+                                full comparison from the value plus the header.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="responsive">
+                            <h2>Responsive columns</h2>
+                            <p>
+                                The module has no breakpoint of its own. The track template holds at every width, so
+                                the columns compress instead of stacking, and <code>minmax(0, 1fr)</code> lets a track
+                                fall below the width of its content. The primary column keeps its three shares against
+                                one for each metric, so the label column has the most room to give while the numbers
+                                get tight.
+                            </p>
+                            <p>
+                                The block does not scroll either, unlike <code>.table-responsive</code> for native
+                                tables. On a narrow screen, drop the least useful metrics or put your own overflow
+                                container around the block. A track that shrinks past its content stops the row from
+                                widening, so a long path wraps at its slashes where it can and overflows its cell where
+                                it cannot; add <code>overflow-wrap: anywhere</code> in your own layer when labels may be
+                                that long. A short label column and three metrics fit a sidebar width, which is the
+                                layout the analytics page uses.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width" style="max-width: 380px">
+                                    <div class="block-stat-table">
+                                        <div class="block-stat-table-head">
+                                            <div class="block-stat-table-header is-left is-primary">Top page</div>
+                                            <div class="block-stat-table-header">Views</div>
+                                            <div class="block-stat-table-header">Trend</div>
+                                        </div>
+                                        <div class="block-stat-table-body">
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">
+                                                    <a href="#" class="block-stat-table-text">/pricing</a>
+                                                    <div class="block-stat-table-indicator" style="width: 100%"></div>
+                                                </div>
+                                                <div class="block-stat-table-cell">128k</div>
+                                                <div class="block-stat-table-cell">
+                                                    <span class="indicator is-upward">8%</span>
+                                                </div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">
+                                                    <a href="#" class="block-stat-table-text">/docs/getting-started</a>
+                                                    <div class="block-stat-table-indicator" style="width: 74%"></div>
+                                                </div>
+                                                <div class="block-stat-table-cell">96k</div>
+                                                <div class="block-stat-table-cell">
+                                                    <span class="indicator is-upward">3%</span>
+                                                </div>
+                                            </div>
+                                            <div class="block-stat-table-row">
+                                                <div class="block-stat-table-cell is-left is-primary">
+                                                    <a href="#" class="block-stat-table-text">/blog/release-notes</a>
+                                                    <div class="block-stat-table-indicator" style="width: 42%"></div>
+                                                </div>
+                                                <div class="block-stat-table-cell">54k</div>
+                                                <div class="block-stat-table-cell">
+                                                    <span class="indicator is-downward">2%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-stat-table-responsive">Copy</button>
+                                </div>
+                                <pre><code id="block-stat-table-responsive" class="language-html">&lt;div class="block-stat-table"&gt;
+    &lt;div class="block-stat-table-head"&gt;
+        &lt;div class="block-stat-table-header is-left is-primary"&gt;Top page&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Views&lt;/div&gt;
+        &lt;div class="block-stat-table-header"&gt;Trend&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-table-body"&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                &lt;a href="#" class="block-stat-table-text"&gt;/pricing&lt;/a&gt;
+                &lt;div class="block-stat-table-indicator" style="width: 100%"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;128k&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;
+                &lt;span class="indicator is-upward"&gt;8%&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                &lt;a href="#" class="block-stat-table-text"&gt;/docs/getting-started&lt;/a&gt;
+                &lt;div class="block-stat-table-indicator" style="width: 74%"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;96k&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;
+                &lt;span class="indicator is-upward"&gt;3%&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="block-stat-table-row"&gt;
+            &lt;div class="block-stat-table-cell is-left is-primary"&gt;
+                &lt;a href="#" class="block-stat-table-text"&gt;/blog/release-notes&lt;/a&gt;
+                &lt;div class="block-stat-table-indicator" style="width: 42%"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;54k&lt;/div&gt;
+            &lt;div class="block-stat-table-cell"&gt;
+                &lt;span class="indicator is-downward"&gt;2%&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The canonical placement is inside <code>.block-analytics-body</code>, which adds 10px of
+                                vertical padding and pairs the table with a heading and a
+                                <a href="/components/quick-menu.html">quick menu</a> switch. The
+                                <a href="/blocks/block-analytics.html">Block analytics</a> page shows that composition,
+                                and the trend column there holds an
+                                <a href="/components/utilities.html#indicators">indicator</a> exactly as the demo above
+                                does.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The block is a grid of <code>div</code> elements, so it has no table semantics. A
+                                screen reader reads each row as a run of text and cannot move from a cell to the header
+                                above it, which is why visual column alignment does not survive into the accessibility
+                                tree.
+                            </p>
+                            <ul>
+                                <li>When the numbers are real data that a reader has to navigate, use the <a href="/components/table.html">table module</a> with <code>&lt;th scope="col"&gt;</code> instead of this block.</li>
+                                <li>If the block has to stay, add the roles yourself: <code>role="table"</code> on the wrapper, <code>role="rowgroup"</code> on the head and the body, <code>role="row"</code> on each row, <code>role="columnheader"</code> on the headers, and <code>role="cell"</code> on the cells, and keep the head first in the document.</li>
+                                <li>The head is uppercased with <code>text-transform</code>, so write the labels in sentence case and let the module do the casing.</li>
+                                <li>Write units into every metric cell. An empty cell reads as nothing, so use a dash or n/a when a value is missing.</li>
+                                <li>The bar is an empty element with no text, so the value has to carry the ranking on its own; keep the bar width in sync with the number instead of treating it as a second data source.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Two component tokens control the look: <code>--r-block-stat-table-header-color</code>
+                                for the head and <code>--r-block-stat-table-indicator-color</code> for the bar. Both
+                                default to theme tokens, so light and dark mode follow without an override, and the
+                                spacing comes from <code>--r-block-padding</code>, which the module divides by four.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-stat-table</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Flex column with a 5px gap and 14px body text. No outer padding, border, or scroll.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-table-head</code></td>
+                                            <td>Structure</td>
+                                            <td>Grid row of headers at 12px, bold, uppercased, in the faint header color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-table-header</code></td>
+                                            <td>Head cell</td>
+                                            <td>6px padding, right aligned. Carries <code>is-left</code>, <code>is-primary</code>, and <code>is-secondary</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-table-body</code></td>
+                                            <td>Structure</td>
+                                            <td>Flex column with a 5px gap between rows.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-table-row</code></td>
+                                            <td>Structure</td>
+                                            <td>Grid row that repeats the head template. Spans and cell counts must match the head.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-table-cell</code></td>
+                                            <td>Body cell</td>
+                                            <td>6px padding, right aligned, and a positioning context for the bar. Carries the same three modifiers.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-table-text</code></td>
+                                            <td>Cell layer</td>
+                                            <td>Relative positioning and a z-index of one, so the content stays above a value bar.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-table-indicator</code></td>
+                                            <td>Cell layer</td>
+                                            <td>Absolute bar at the cell edges with full height and a rounded corner. Width comes from an inline percentage.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-left</code></td>
+                                            <td>Modifier</td>
+                                            <td>Left aligns a header or a cell. Only applies inside this block.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-primary</code></td>
+                                            <td>Modifier</td>
+                                            <td>Spans three grid tracks. Use it on the header and on every cell of that column.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-secondary</code></td>
+                                            <td>Modifier</td>
+                                            <td>Spans two grid tracks. Use it on the header and on every cell of that column.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-stat.html">Previous: Stat</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-svg-map.html">Next: SVG map</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#columns">Column spans and alignment</a>
+                        <a class="doc-toc-link" href="#bars">Text and indicator layers</a>
+                        <a class="doc-toc-link" href="#responsive">Responsive columns</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

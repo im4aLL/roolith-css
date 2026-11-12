@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block form - roolith css</title>
+        <meta name="description" content="Composite settings form block with a bordered group, titled rows, a field column, and an aligned action area in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block form</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block form</h1>
+                            <p class="doc-content-lead">
+                                The form block lays out a settings page as one bordered group of rows. Each row puts a title and a short description beside its fields, and the group ends with an action area for the submit and cancel pair.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-form-group</strong>
+                                - defined in
+                                <strong>blocks/_block-form.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                <code>.block-form-group</code> is the shell. It draws a 1px border in <code>--r-block-form-group-border-color</code>, a radius of twice the global radius, padding of twice the block padding, and a flex column so the rows stack.
+                            </p>
+                            <p>
+                                <code>.block-form</code> is one row. It is a grid with a single column, and from the medium breakpoint up it splits into two tracks: two parts for the title and three parts for the fields. The row gap is the same as the group padding, and every row except the last draws a bottom border in <code>--r-block-form-border-color</code> with matching margin and padding.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-form-group">
+                                        <div class="block-form">
+                                            <div class="block-form-primary">
+                                                <h5 class="block-form-title">Account information</h5>
+                                                <p class="block-form-text">Seen on invoices and in the account switcher.</p>
+                                            </div>
+                                            <div class="block-form-secondary">
+                                                <div class="block-grid">
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-first-name">First name</label>
+                                                            <input
+                                                                class="form-input"
+                                                                id="block-form-first-name"
+                                                                name="first-name"
+                                                                type="text"
+                                                                autocomplete="given-name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-last-name">Last name</label>
+                                                            <input
+                                                                class="form-input"
+                                                                id="block-form-last-name"
+                                                                name="last-name"
+                                                                type="text"
+                                                                autocomplete="family-name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="block-grid">
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-email">Email address</label>
+                                                            <input
+                                                                class="form-input"
+                                                                id="block-form-email"
+                                                                name="email"
+                                                                type="email"
+                                                                autocomplete="email" />
+                                                            <small class="form-text">Password resets and receipts go here.</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-form-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-form-basic" class="language-html">&lt;div class="block-form-group"&gt;
+    &lt;div class="block-form"&gt;
+        &lt;div class="block-form-primary"&gt;
+            &lt;h5 class="block-form-title"&gt;Account information&lt;/h5&gt;
+            &lt;p class="block-form-text"&gt;Seen on invoices and in the account switcher.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="block-form-secondary"&gt;
+            &lt;div class="block-grid"&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="first-name"&gt;First name&lt;/label&gt;
+                        &lt;input class="form-input" id="first-name" name="first-name" type="text" autocomplete="given-name" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="last-name"&gt;Last name&lt;/label&gt;
+                        &lt;input class="form-input" id="last-name" name="last-name" type="text" autocomplete="family-name" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-grid"&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="email"&gt;Email address&lt;/label&gt;
+                        &lt;input class="form-input" id="email" name="email" type="email" autocomplete="email" /&gt;
+                        &lt;small class="form-text"&gt;Password resets and receipts go here.&lt;/small&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                <code>.block-form-secondary</code> is a grid with a single track and a 20px gap, so each <code>.block-grid</code> row inside it stacks with even spacing and handles its own columns. Use <code>.block-grid</code> for the field row and <a href="/components/form.html">Form</a> for the controls themselves.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="full-form">
+                            <h2>Full settings form</h2>
+                            <p>
+                                Stack as many rows as the settings need inside one group. The last row drops its bottom border, bottom margin, and bottom padding, so the group padding alone closes the block.
+                            </p>
+                            <p>
+                                <code>.block-form-action</code> is a plain wrapper with <code>align-self: flex-end</code>, which pushes it to the right edge of the group. Put a <code>.button-bundle</code> inside it so the buttons keep their own shape with a 10px gap, and give the secondary action an outline style.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-form-group">
+                                        <div class="block-form">
+                                            <div class="block-form-primary">
+                                                <h5 class="block-form-title">Account information</h5>
+                                                <p class="block-form-text">Seen on invoices and in the account switcher.</p>
+                                            </div>
+                                            <div class="block-form-secondary">
+                                                <div class="block-grid">
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-full-first-name">First name</label>
+                                                            <input
+                                                                class="form-input"
+                                                                id="block-form-full-first-name"
+                                                                name="first-name"
+                                                                type="text"
+                                                                autocomplete="given-name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-full-last-name">Last name</label>
+                                                            <input
+                                                                class="form-input"
+                                                                id="block-form-full-last-name"
+                                                                name="last-name"
+                                                                type="text"
+                                                                autocomplete="family-name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="block-form">
+                                            <div class="block-form-primary">
+                                                <h5 class="block-form-title">Billing address</h5>
+                                                <p class="block-form-text">Printed on every invoice.</p>
+                                            </div>
+                                            <div class="block-form-secondary">
+                                                <div class="block-grid">
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-address">Street address</label>
+                                                            <input
+                                                                class="form-input"
+                                                                id="block-form-address"
+                                                                name="address"
+                                                                type="text"
+                                                                autocomplete="street-address" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="block-grid">
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-city">City</label>
+                                                            <input
+                                                                class="form-input"
+                                                                id="block-form-city"
+                                                                name="city"
+                                                                type="text"
+                                                                autocomplete="address-level2" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-zip">Zip code</label>
+                                                            <input
+                                                                class="form-input"
+                                                                id="block-form-zip"
+                                                                name="zip"
+                                                                type="text"
+                                                                autocomplete="postal-code" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="block-form-action">
+                                            <div class="button-bundle">
+                                                <button class="button button-outline" type="button">Cancel</button>
+                                                <button class="button button-primary" type="submit">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-form-full">Copy</button>
+                                </div>
+                                <pre><code id="block-form-full" class="language-html">&lt;div class="block-form-group"&gt;
+    &lt;div class="block-form"&gt;
+        &lt;div class="block-form-primary"&gt;
+            &lt;h5 class="block-form-title"&gt;Account information&lt;/h5&gt;
+            &lt;p class="block-form-text"&gt;Seen on invoices and in the account switcher.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="block-form-secondary"&gt;
+            &lt;div class="block-grid"&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="first-name"&gt;First name&lt;/label&gt;
+                        &lt;input class="form-input" id="first-name" name="first-name" type="text" autocomplete="given-name" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="last-name"&gt;Last name&lt;/label&gt;
+                        &lt;input class="form-input" id="last-name" name="last-name" type="text" autocomplete="family-name" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="block-form"&gt;
+        &lt;div class="block-form-primary"&gt;
+            &lt;h5 class="block-form-title"&gt;Billing address&lt;/h5&gt;
+            &lt;p class="block-form-text"&gt;Printed on every invoice.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="block-form-secondary"&gt;
+            &lt;div class="block-grid"&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="address"&gt;Street address&lt;/label&gt;
+                        &lt;input class="form-input" id="address" name="address" type="text" autocomplete="street-address" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="block-grid"&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="city"&gt;City&lt;/label&gt;
+                        &lt;input class="form-input" id="city" name="city" type="text" autocomplete="address-level2" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="zip"&gt;Zip code&lt;/label&gt;
+                        &lt;input class="form-input" id="zip" name="zip" type="text" autocomplete="postal-code" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="block-form-action"&gt;
+        &lt;div class="button-bundle"&gt;
+            &lt;button class="button button-outline" type="button"&gt;Cancel&lt;/button&gt;
+            &lt;button class="button button-primary" type="submit"&gt;Save changes&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                Wrap the whole group in a <code>&lt;form&gt;</code> and keep the action row inside it, so the primary button submits and the browser runs its own validation before the request. <code>.block-form-group</code> adds no width, so place it in a column or a <a href="/components/box.html">Box</a> to control the measure.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="alternate-group">
+                            <h2>Alternate group</h2>
+                            <p>
+                                <code>.block-form-group-alt</code> removes the border and the left and right padding, and keeps everything else. Use it when a card or a page section already draws the frame, and the form should sit flush inside it.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-form-group block-form-group-alt">
+                                        <div class="block-form">
+                                            <div class="block-form-primary">
+                                                <h5 class="block-form-title">Workspace</h5>
+                                                <p class="block-form-text">Shown in the sidebar and on shared links.</p>
+                                            </div>
+                                            <div class="block-form-secondary">
+                                                <div class="block-grid">
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-workspace">Workspace name</label>
+                                                            <input
+                                                                class="form-input"
+                                                                id="block-form-workspace"
+                                                                name="workspace"
+                                                                type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="block-grid-item">
+                                                        <div class="form-field">
+                                                            <label class="form-label" for="block-form-currency">Default currency</label>
+                                                            <select class="form-select" id="block-form-currency" name="currency">
+                                                                <option value="eur">Euro (EUR)</option>
+                                                                <option value="usd">US dollar (USD)</option>
+                                                                <option value="gbp">Pound sterling (GBP)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="block-form-action">
+                                            <div class="button-bundle">
+                                                <button class="button button-outline" type="button">Cancel</button>
+                                                <button class="button button-primary" type="submit">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-form-alt">Copy</button>
+                                </div>
+                                <pre><code id="block-form-alt" class="language-html">&lt;div class="block-form-group block-form-group-alt"&gt;
+    &lt;div class="block-form"&gt;
+        &lt;div class="block-form-primary"&gt;
+            &lt;h5 class="block-form-title"&gt;Workspace&lt;/h5&gt;
+            &lt;p class="block-form-text"&gt;Shown in the sidebar and on shared links.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="block-form-secondary"&gt;
+            &lt;div class="block-grid"&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="workspace"&gt;Workspace name&lt;/label&gt;
+                        &lt;input class="form-input" id="workspace" name="workspace" type="text" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="block-grid-item"&gt;
+                    &lt;div class="form-field"&gt;
+                        &lt;label class="form-label" for="currency"&gt;Default currency&lt;/label&gt;
+                        &lt;select class="form-select" id="currency" name="currency"&gt;
+                            &lt;option value="eur"&gt;Euro (EUR)&lt;/option&gt;
+                            &lt;option value="usd"&gt;US dollar (USD)&lt;/option&gt;
+                            &lt;option value="gbp"&gt;Pound sterling (GBP)&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="block-form-action"&gt;
+        &lt;div class="button-bundle"&gt;
+            &lt;button class="button button-outline" type="button"&gt;Cancel&lt;/button&gt;
+            &lt;button class="button button-primary" type="submit"&gt;Save changes&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                Every color and radius in the block comes from the token layer: <code>--r-block-form-group-border-color</code>, <code>--r-block-form-group-border-radius</code>, <code>--r-block-form-group-padding</code>, <code>--r-block-form-border-color</code>, and <code>--r-block-form-text-color</code>. The first three default to the control border, twice the global radius, and twice <code>--r-block-padding</code>.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The block is layout only, so the form semantics come from the markup you place inside it.
+                            </p>
+                            <ul>
+                                <li>Give every control a <code>&lt;label&gt;</code> tied with <code>for</code> and a matching <code>id</code>. The row title is not a label, because it names the group rather than one field.</li>
+                                <li>Keep <code>.block-form-title</code> on a real heading element and match its level to the page. Two rows at the same level should use the same tag.</li>
+                                <li>When <code>.block-form-text</code> carries a requirement rather than a description, reference it with <code>aria-describedby</code> on the controls it applies to.</li>
+                                <li>Use the <code>error</code> and <code>warning</code> classes on <code>.form-field</code> together with a <code>.form-text</code> message, and add <code>aria-invalid="true"</code> when the field has failed validation.</li>
+                                <li>Wrap the group in a <code>&lt;form&gt;</code> so Enter submits and native validation runs. A <code>&lt;button type="submit"&gt;</code> inside the form needs no script.</li>
+                                <li>Do not disable the submit button as the only guard against a double submit. Set <code>aria-busy="true"</code> on the form while the request is in flight, and keep the focus ring visible on every control and button.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                The block assembles the group, the rows, and the action area. The fields, labels, selects, and buttons are documented on their own pages.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-form-group</code></td>
+                                            <td>Group</td>
+                                            <td>1px border, twice the global radius, twice the block padding, and a flex column for the rows.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-form</code></td>
+                                            <td>Row</td>
+                                            <td>Single-column grid that becomes 2fr title and 3fr fields from the medium breakpoint up. Every row but the last has a bottom border, margin, and padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-form-primary</code></td>
+                                            <td>Row cell</td>
+                                            <td>Title column. Carries no styles of its own; it exists in the canonical markup to hold the heading and description.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-form-secondary</code></td>
+                                            <td>Row cell</td>
+                                            <td>Field column. A single-track grid with a <code>--r-block-padding</code> gap, so each <code>.block-grid</code> inside it stacks.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-form-title</code></td>
+                                            <td>Heading</td>
+                                            <td>Adds half the block padding (10px) below the heading.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-form-text</code></td>
+                                            <td>Description</td>
+                                            <td>Quiet text color from <code>--r-block-form-text-color</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-form-action</code></td>
+                                            <td>Action row</td>
+                                            <td>Aligns itself to the right edge of the group.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-form-group-alt</code></td>
+                                            <td>Group modifier</td>
+                                            <td>Drops the border and the left and right padding for a flush form inside an existing frame.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-enable.html">Previous: Block enable</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-grid.html">Next: Block grid</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#full-form">Full settings form</a>
+                        <a class="doc-toc-link" href="#alternate-group">Alternate group</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

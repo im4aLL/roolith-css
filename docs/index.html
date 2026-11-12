@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>roolith css - a simple responsive CSS boilerplate</title>
+        <meta
+            name="description"
+            content="roolith is a simple responsive CSS boilerplate with design tokens, dark mode, and a ready-to-use component set." />
+        <link rel="icon" href="favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="doc.css" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="doc.js"></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body>
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="doc-home" id="doc-content" tabindex="-1">
+            <section class="container doc-hero" data-doc-hero>
+                <div class="doc-hero-copy">
+                    <div class="doc-eyebrow">
+                        <span class="doc-eyebrow-dot"></span>
+                        Version 4.0.0 - MIT licensed
+                    </div>
+                    <h1>
+                        A simple CSS boilerplate with
+                        <span class="doc-accent-text">real design tokens</span>
+                    </h1>
+                    <p class="doc-hero-lead">
+                        roolith gives you a clean typographic base, a sensible set of components, and a token layer that
+                        makes theming and dark mode a single class flip away.
+                    </p>
+                    <div class="doc-hero-actions">
+                        <a class="button button-primary button-large" href="/components/button.html">
+                            Browse components
+                        </a>
+                        <a class="button button-outline button-large" href="/getting-started/introduction.html">
+                            Read the docs
+                        </a>
+                    </div>
+                    <div class="doc-install">
+                        <span class="doc-install-prompt">$</span>
+                        <code id="install-cmd">npm i roolith-css</code>
+                        <button type="button" class="doc-install-copy" data-doc-copy="install-cmd">Copy</button>
+                    </div>
+                </div>
+
+                <div class="doc-hero-visual" data-doc-lab>
+                    <div class="doc-lab-window">
+                        <div class="doc-lab-bar">
+                            <span class="doc-lab-title">
+                                <span class="doc-lab-live-dot" aria-hidden="true"></span>
+                                token-lab.css
+                            </span>
+                            <span class="doc-lab-hint">Try the controls</span>
+                        </div>
+
+                        <div class="doc-lab-stage">
+                            <div class="card doc-lab-preview">
+                                <div class="card-body">
+                                    <div class="doc-lab-preview-head">
+                                        <div>
+                                            <span class="doc-lab-preview-kicker">Live preview</span>
+                                            <strong class="doc-lab-preview-title">Same markup</strong>
+                                        </div>
+                                        <span class="doc-lab-preview-dot" aria-hidden="true"></span>
+                                    </div>
+                                    <p class="doc-lab-preview-text">These components read the tokens you pick.</p>
+                                    <div class="doc-lab-meter" aria-hidden="true"><span></span></div>
+                                    <div class="doc-lab-preview-actions">
+                                        <button type="button" class="button button-primary button-small" tabindex="-1">
+                                            Primary
+                                        </button>
+                                        <button type="button" class="button button-outline button-small" tabindex="-1">
+                                            Outline
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="doc-lab-controls">
+                            <div class="doc-lab-control">
+                                <span class="doc-lab-label">Accent</span>
+                                <div class="doc-lab-swatches" role="group" aria-label="Accent color">
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #4a5cd0"
+                                        data-doc-lab-color="#4a5cd0"
+                                        aria-pressed="true"
+                                        aria-label="Indigo accent"
+                                        title="Indigo"></button>
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #7c3aed"
+                                        data-doc-lab-color="#7c3aed"
+                                        aria-pressed="false"
+                                        aria-label="Violet accent"
+                                        title="Violet"></button>
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #0f766e"
+                                        data-doc-lab-color="#0f766e"
+                                        aria-pressed="false"
+                                        aria-label="Teal accent"
+                                        title="Teal"></button>
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #be123c"
+                                        data-doc-lab-color="#be123c"
+                                        aria-pressed="false"
+                                        aria-label="Rose accent"
+                                        title="Rose"></button>
+                                    <button
+                                        type="button"
+                                        class="doc-lab-swatch"
+                                        style="--doc-swatch: #94702f"
+                                        data-doc-lab-color="#94702f"
+                                        aria-pressed="false"
+                                        aria-label="Amber accent"
+                                        title="Amber"></button>
+                                </div>
+                            </div>
+                            <div class="doc-lab-control doc-lab-control-radius">
+                                <label class="doc-lab-label" for="doc-lab-radius">
+                                    Radius
+                                    <output class="doc-lab-value" data-doc-lab-radius-value>8px</output>
+                                </label>
+                                <input
+                                    type="range"
+                                    class="doc-lab-range"
+                                    id="doc-lab-radius"
+                                    min="0"
+                                    max="24"
+                                    step="1"
+                                    value="8"
+                                    data-doc-lab-radius />
+                            </div>
+                        </div>
+
+                        <div class="doc-code doc-lab-code">
+                            <div class="doc-code-bar">
+                                <span class="doc-code-lang">css</span>
+                                <button
+                                    type="button"
+                                    class="doc-copy"
+                                    data-doc-copy="doc-lab-snippet"
+                                    aria-label="Copy token overrides">
+                                    Copy
+                                </button>
+                            </div>
+                            <pre><code id="doc-lab-snippet" data-doc-lab-snippet>:root {
+    --r-color-primary: #4a5cd0;
+    --r-global-border-radius: 8px;
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container doc-section-block" id="features">
+                <div class="doc-section-heading">
+                    <div class="doc-section-kicker">Why roolith</div>
+                    <h2>Everything you need, nothing you have to fight</h2>
+                    <p>
+                        A focused foundation for real projects: sensible defaults out of the box, and an override point
+                        for every decision you want to make your own.
+                    </p>
+                </div>
+                <div class="doc-feature-grid">
+                    <div class="card doc-feature">
+                        <div class="card-body">
+                            <div class="doc-feature-icon">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke-width="1.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    aria-hidden="true"
+                                    focusable="false">
+                                    <path
+                                        d="M6.75469 17.2828L5.32612 7.28284C5.154 6.07798 6.08892 5 7.30602 5H10.694C11.9111 5 12.846 6.07797 12.6739 7.28284L11.2453 17.2828C11.1046 18.2681 10.2607 19 9.26541 19H8.73459C7.73929 19 6.89545 18.2681 6.75469 17.2828Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.5" />
+                                    <path
+                                        d="M2 12L6 12M22 12L12 12"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3 class="card-title h6">Token driven</h3>
+                            <p class="card-text">
+                                Every color, radius, shadow, and spacing step flows from CSS custom properties you can
+                                override anywhere in your cascade.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card doc-feature">
+                        <div class="card-body">
+                            <div class="doc-feature-icon">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke-width="1.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    aria-hidden="true"
+                                    focusable="false">
+                                    <path
+                                        d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3 class="card-title h6">Dark mode built in</h3>
+                            <p class="card-text">
+                                Add one class and the whole system re-tunes itself. No parallel stylesheet, no
+                                duplicated component rules.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card doc-feature">
+                        <div class="card-body">
+                            <div class="doc-feature-icon">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke-width="1.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    aria-hidden="true"
+                                    focusable="false">
+                                    <path
+                                        d="M11 13.6V21H3.6C3.26863 21 3 20.7314 3 20.4V13H10.4C10.7314 13 11 13.2686 11 13.6Z"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M11 21H14"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M3 13V10"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M6 3H3.6C3.26863 3 3 3.26863 3 3.6V6"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M14 3H10"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M21 10V14"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M18 3H20.4C20.7314 3 21 3.26863 21 3.6V6"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M18 21H20.4C20.7314 21 21 20.7314 21 20.4V18"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M11 10H14V13"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3 class="card-title h6">Responsive by default</h3>
+                            <p class="card-text">
+                                Fluid type, mobile-first breakpoints, and a flexible 12 column grid that collapses
+                                cleanly at every viewport.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card doc-feature">
+                        <div class="card-body">
+                            <div class="doc-feature-icon">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke-width="1.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    aria-hidden="true"
+                                    focusable="false">
+                                    <path
+                                        d="M4 3L5.77778 20.0899L12 22L18.2222 20.0899L20 3H4Z"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M7 7H16.5L15.5 17L12 18L8.5 17L8.25 14.5"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M16 11.5H7.5"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3 class="card-title h6">Modern CSS foundation</h3>
+                            <p class="card-text">
+                                Built on color-mix(), custom properties, and progressive enhancement with sensible
+                                fallbacks where they matter.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card doc-feature">
+                        <div class="card-body">
+                            <div class="doc-feature-icon">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke-width="1.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    aria-hidden="true"
+                                    focusable="false">
+                                    <path
+                                        d="M5.21173 15.1113L2.52473 12.4243C2.29041 12.1899 2.29041 11.8101 2.52473 11.5757L5.21173 8.88873C5.44605 8.65442 5.82595 8.65442 6.06026 8.88873L8.74727 11.5757C8.98158 11.8101 8.98158 12.1899 8.74727 12.4243L6.06026 15.1113C5.82595 15.3456 5.44605 15.3456 5.21173 15.1113Z"
+                                        stroke="currentColor" />
+                                    <path
+                                        d="M11.5757 21.475L8.88874 18.788C8.65443 18.5537 8.65443 18.1738 8.88874 17.9395L11.5757 15.2525C11.8101 15.0182 12.19 15.0182 12.4243 15.2525L15.1113 17.9395C15.3456 18.1738 15.3456 18.5537 15.1113 18.788L12.4243 21.475C12.19 21.7094 11.8101 21.7094 11.5757 21.475Z"
+                                        stroke="currentColor" />
+                                    <path
+                                        d="M11.5757 8.7475L8.88874 6.06049C8.65443 5.82618 8.65443 5.44628 8.88874 5.21197L11.5757 2.52496C11.8101 2.29065 12.19 2.29065 12.4243 2.52496L15.1113 5.21197C15.3456 5.44628 15.3456 5.82618 15.1113 6.06049L12.4243 8.7475C12.19 8.98181 11.8101 8.98181 11.5757 8.7475Z"
+                                        stroke="currentColor" />
+                                    <path
+                                        d="M17.9396 15.1113L15.2526 12.4243C15.0183 12.1899 15.0183 11.8101 15.2526 11.5757L17.9396 8.88873C18.174 8.65442 18.5539 8.65442 18.7882 8.88873L21.4752 11.5757C21.7095 11.8101 21.7095 12.1899 21.4752 12.4243L18.7882 15.1113C18.5539 15.3456 18.174 15.3456 17.9396 15.1113Z"
+                                        stroke="currentColor" />
+                                </svg>
+                            </div>
+                            <h3 class="card-title h6">Component ready</h3>
+                            <p class="card-text">
+                                Buttons, forms, tables, cards, navigation, and more - all sharing the same token layer
+                                so they stay in sync.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card doc-feature">
+                        <div class="card-body">
+                            <div class="doc-feature-icon">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke-width="1.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    aria-hidden="true"
+                                    focusable="false">
+                                    <path
+                                        d="M9.00001 21L8.00001 21C6.89544 21 6.00001 20.1057 6.00001 19.0011C6.00001 17.4501 6.00001 15.3443 6 14C6 13 4.5 12 4.5 12C4.5 12 6.00001 11 6.00001 10C6.00001 8.827 6.00001 6.62207 6.00001 4.99914C6.00001 3.89457 6.89544 3 8.00001 3L9.00001 3"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M15 21L16 21C17.1046 21 18 20.1057 18 19.0011C18 17.4501 18 15.3443 18 14C18 13 19.5 12 19.5 12C19.5 12 18 11 18 10C18 8.827 18 6.62207 18 4.99914C18 3.89457 17.1046 3 16 3L15 3"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3 class="card-title h6">No JS required</h3>
+                            <p class="card-text">
+                                Everything renders and themes with plain HTML and CSS. Scripts stay optional, so your
+                                bundle stays small.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container doc-section-block" id="palette">
+                <div class="doc-section-heading">
+                    <div class="doc-section-kicker">Palette</div>
+                    <h2>One palette, every surface</h2>
+                    <p>
+                        Core colors map to semantic tokens, so components reference intent instead of raw values. Swap
+                        the primitives and the entire interface follows.
+                    </p>
+                </div>
+                <div class="doc-palette">
+                    <div class="doc-swatch">
+                        <div class="doc-swatch-chip" style="background: var(--r-color-primary)"></div>
+                        <div class="doc-swatch-meta">
+                            <span class="doc-swatch-name">Primary</span>
+                            <span class="doc-swatch-var">--r-color-primary</span>
+                        </div>
+                    </div>
+                    <div class="doc-swatch">
+                        <div class="doc-swatch-chip" style="background: var(--r-color-secondary)"></div>
+                        <div class="doc-swatch-meta">
+                            <span class="doc-swatch-name">Secondary</span>
+                            <span class="doc-swatch-var">--r-color-secondary</span>
+                        </div>
+                    </div>
+                    <div class="doc-swatch">
+                        <div class="doc-swatch-chip" style="background: var(--r-color-tertiary)"></div>
+                        <div class="doc-swatch-meta">
+                            <span class="doc-swatch-name">Tertiary</span>
+                            <span class="doc-swatch-var">--r-color-tertiary</span>
+                        </div>
+                    </div>
+                    <div class="doc-swatch">
+                        <div class="doc-swatch-chip" style="background: var(--r-color-info)"></div>
+                        <div class="doc-swatch-meta">
+                            <span class="doc-swatch-name">Info</span>
+                            <span class="doc-swatch-var">--r-color-info</span>
+                        </div>
+                    </div>
+                    <div class="doc-swatch">
+                        <div class="doc-swatch-chip" style="background: var(--r-color-success)"></div>
+                        <div class="doc-swatch-meta">
+                            <span class="doc-swatch-name">Success</span>
+                            <span class="doc-swatch-var">--r-color-success</span>
+                        </div>
+                    </div>
+                    <div class="doc-swatch">
+                        <div class="doc-swatch-chip" style="background: var(--r-color-warning)"></div>
+                        <div class="doc-swatch-meta">
+                            <span class="doc-swatch-name">Warning</span>
+                            <span class="doc-swatch-var">--r-color-warning</span>
+                        </div>
+                    </div>
+                    <div class="doc-swatch">
+                        <div class="doc-swatch-chip" style="background: var(--r-color-danger)"></div>
+                        <div class="doc-swatch-meta">
+                            <span class="doc-swatch-name">Danger</span>
+                            <span class="doc-swatch-var">--r-color-danger</span>
+                        </div>
+                    </div>
+                    <div class="doc-swatch">
+                        <div class="doc-swatch-chip" style="background: var(--r-color-link)"></div>
+                        <div class="doc-swatch-meta">
+                            <span class="doc-swatch-name">Link</span>
+                            <span class="doc-swatch-var">--r-color-link</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container doc-section-block" id="components">
+                <div class="doc-section-heading">
+                    <div class="doc-section-kicker">Components</div>
+                    <h2>Building blocks that share one language</h2>
+                    <p>
+                        Each component page shows the live result next to the exact markup. Copy, paste, and adjust the
+                        tokens to fit your product.
+                    </p>
+                </div>
+                <div class="doc-component-grid">
+                    <a class="card doc-component-card" href="/components/button.html">
+                        <div class="card-body">
+                            <div class="card-title">Buttons</div>
+                            <p class="card-text doc-component-desc">
+                                Sizes, colors, outline and text variants, plus interaction states.
+                            </p>
+                        </div>
+                    </a>
+                    <a class="card doc-component-card" href="/components/badge.html">
+                        <div class="card-body">
+                            <div class="card-title">Badges</div>
+                            <p class="card-text doc-component-desc">Compact status labels in every palette color.</p>
+                        </div>
+                    </a>
+                    <a class="card doc-component-card" href="/components/form.html">
+                        <div class="card-body">
+                            <div class="card-title">Forms</div>
+                            <p class="card-text doc-component-desc">
+                                Inputs, selects, radios, switches, and search fields.
+                            </p>
+                        </div>
+                    </a>
+                    <a class="card doc-component-card" href="/components/table.html">
+                        <div class="card-body">
+                            <div class="card-title">Tables</div>
+                            <p class="card-text doc-component-desc">
+                                Readable data tables with row states and highlights.
+                            </p>
+                        </div>
+                    </a>
+                    <a class="card doc-component-card" href="/components/card.html">
+                        <div class="card-body">
+                            <div class="card-title">Cards</div>
+                            <p class="card-text doc-component-desc">
+                                Flexible content containers with header and footer slots.
+                            </p>
+                        </div>
+                    </a>
+                    <a class="card doc-component-card" href="/components/nav.html">
+                        <div class="card-body">
+                            <div class="card-title">Navigation</div>
+                            <p class="card-text doc-component-desc">
+                                Navs, breadcrumbs, and pagination for wayfinding.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="container doc-cta">
+                <div class="card card-dark">
+                    <div class="card-body">
+                        <div>
+                            <h2>Start with the docs, ship by lunch</h2>
+                            <p>Drop in the stylesheet, grab the markup, and tune the tokens.</p>
+                        </div>
+                        <div class="doc-cta-actions">
+                            <a class="button button-primary button-large" href="/getting-started/introduction.html">
+                                Open the docs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

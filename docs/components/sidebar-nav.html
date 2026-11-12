@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Sidebar nav - roolith css</title>
+        <meta name="description" content="Sidebar navigation markup with groups, active items, nested lists, badges, dropdown carets, and the compact icon rail in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Sidebar nav</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Sidebar nav</h1>
+                            <p class="doc-content-lead">The sidebar nav is a vertical menu for application and documentation navigation. It groups links under short headers, marks the current page with one state class, and folds into an icon rail on narrow screens.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.sidebar-nav</strong>
+                                - defined in
+                                <strong>modules/_sidebar-nav.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p><code>.sidebar-nav</code> is only a wrapper and carries no declarations of its own. The group supplies the spacing and the separator, and the list item owns the active state, so the wrapper exists to scope one navigation region and to hang the compact modifier on.</p>
+                            <p>Each group pads itself with <code>--r-sidebar-nav-padding</code> vertically and half of it horizontally, then closes with a 1px line from <code>--r-sidebar-group-sep-color</code>. The last group drops both the line and its bottom padding, so the stack ends flush.</p>
+                            <p>The link is a flex row with a 7px gap, 8px of vertical padding, and a color transition. <code>.is-active</code> on the list item paints the item with <code>--r-sidebar-nav-active-background-color</code> and switches the link to <code>--r-sidebar-nav-active-color</code>; hover paints the label with <code>--r-sidebar-nav-link-hover-color</code>, which is the accent color in the light theme.</p>
+                            <div class="doc-demo">
+                                <div style="width: 280px; max-width: 100%">
+                                    <nav class="sidebar-nav" aria-label="Guide">
+                                        <div class="sidebar-nav-group">
+                                            <div class="sidebar-nav-header">Guide</div>
+                                            <ul class="sidebar-nav-list">
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#">
+                                                        <span class="sidebar-nav-list-label">Introduction</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-nav-list-item is-active">
+                                                    <a class="sidebar-nav-list-link" href="#" aria-current="page">
+                                                        <span class="sidebar-nav-list-label">Layout</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#">
+                                                        <span class="sidebar-nav-list-label">Typography</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sidebar-nav-basic">Copy</button>
+                                </div>
+                                <pre><code id="sidebar-nav-basic" class="language-html">&lt;nav class="sidebar-nav" aria-label="Guide"&gt;
+    &lt;div class="sidebar-nav-group"&gt;
+        &lt;div class="sidebar-nav-header"&gt;Guide&lt;/div&gt;
+        &lt;ul class="sidebar-nav-list"&gt;
+            &lt;li class="sidebar-nav-list-item"&gt;
+                &lt;a class="sidebar-nav-list-link" href="#"&gt;
+                    &lt;span class="sidebar-nav-list-label"&gt;Introduction&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="sidebar-nav-list-item is-active"&gt;
+                &lt;a class="sidebar-nav-list-link" href="#" aria-current="page"&gt;
+                    &lt;span class="sidebar-nav-list-label"&gt;Layout&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="sidebar-nav-list-item"&gt;
+                &lt;a class="sidebar-nav-list-link" href="#"&gt;
+                    &lt;span class="sidebar-nav-list-label"&gt;Typography&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                            <p>Wrap the label in <code>.sidebar-nav-list-label</code> rather than putting text straight into the link. The label element is what the collapsed state hides, and it is also the slot that carries the label weight token.</p>
+                        </section>
+
+                        <section class="doc-section" id="groups">
+                            <h2>Groups</h2>
+                            <p>Repeat <code>.sidebar-nav-group</code> for each section of the menu. The header is 11px, uppercase, and painted with <code>--r-sidebar-nav-header-color</code>, a faint text tone that keeps it below the links in the hierarchy.</p>
+                            <p>The header, the label, the badge, and the caret all switch on at the 1024px breakpoint and stay hidden below it. A narrow sidebar therefore shows bare rows with no group titles, which suits a rail of icons but means a phone layout needs another way to label the sections.</p>
+                            <div class="doc-demo">
+                                <div style="width: 280px; max-width: 100%">
+                                    <nav class="sidebar-nav" aria-label="Documentation">
+                                        <div class="sidebar-nav-group">
+                                            <div class="sidebar-nav-header">Getting started</div>
+                                            <ul class="sidebar-nav-list">
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#">
+                                                        <span class="sidebar-nav-list-label">Introduction</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#">
+                                                        <span class="sidebar-nav-list-label">Installation</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-nav-list-item is-active">
+                                                    <a class="sidebar-nav-list-link" href="#" aria-current="page">
+                                                        <span class="sidebar-nav-list-label">Theming</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="sidebar-nav-group">
+                                            <div class="sidebar-nav-header">Components</div>
+                                            <ul class="sidebar-nav-list">
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#">
+                                                        <span class="sidebar-nav-list-label">Accordion</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#">
+                                                        <span class="sidebar-nav-list-label">Messages</span>
+                                                        <span class="sidebar-nav-list-badge badge">12</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#">
+                                                        <span class="sidebar-nav-list-label">Settings</span>
+                                                        <span class="sidebar-nav-list-badge badge">3</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sidebar-nav-groups">Copy</button>
+                                </div>
+                                <pre><code id="sidebar-nav-groups" class="language-html">&lt;nav class="sidebar-nav" aria-label="Documentation"&gt;
+    &lt;div class="sidebar-nav-group"&gt;
+        &lt;div class="sidebar-nav-header"&gt;Getting started&lt;/div&gt;
+        &lt;ul class="sidebar-nav-list"&gt;
+            &lt;li class="sidebar-nav-list-item"&gt;
+                &lt;a class="sidebar-nav-list-link" href="#"&gt;
+                    &lt;span class="sidebar-nav-list-label"&gt;Introduction&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="sidebar-nav-list-item is-active"&gt;
+                &lt;a class="sidebar-nav-list-link" href="#" aria-current="page"&gt;
+                    &lt;span class="sidebar-nav-list-label"&gt;Theming&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="sidebar-nav-group"&gt;
+        &lt;div class="sidebar-nav-header"&gt;Components&lt;/div&gt;
+        &lt;ul class="sidebar-nav-list"&gt;
+            &lt;li class="sidebar-nav-list-item"&gt;
+                &lt;a class="sidebar-nav-list-link" href="#"&gt;
+                    &lt;span class="sidebar-nav-list-label"&gt;Messages&lt;/span&gt;
+                    &lt;span class="sidebar-nav-list-badge badge"&gt;12&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                            <p>The badge slot exists for one reason: it takes <code>margin-left: auto</code> and pushes itself to the right edge of the row. It carries no chip styling of its own, so pair it with <code>.badge</code> for a count or a short status and use a color modifier such as <code>.badge-danger</code> when the count is a warning.</p>
+                        </section>
+
+                        <section class="doc-section" id="nested">
+                            <h2>Nested lists</h2>
+                            <p>A second <code>.sidebar-nav-list</code> inside a list item is a nested group. The module hides it by default, indents it 12px, and cancels the item's right padding so nested rows reach the group edge.</p>
+                            <p><code>.is-open</code> on that inner list reveals it, but only from 1024px up. Below that breakpoint the reveal rule is still <code>display: none</code>, which is why the collapsed sidebar never leaks sub items.</p>
+                            <p>The caret is a 5px border triangle drawn by <code>.sidebar-nav-list-dropdown</code> and sized by <code>--r-sidebar-nav-item-caret-size</code>. It always points down and does not react to the open state, so the open cue has to come from your own rotation or from <code>aria-expanded</code> on the parent link.</p>
+                            <div class="doc-demo">
+                                <div style="width: 280px; max-width: 100%">
+                                    <nav class="sidebar-nav" aria-label="Reports">
+                                        <div class="sidebar-nav-group">
+                                            <ul class="sidebar-nav-list">
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#">
+                                                        <span class="sidebar-nav-list-label">Dashboard</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-nav-list-item is-active">
+                                                    <a class="sidebar-nav-list-link" href="#" aria-expanded="true">
+                                                        <span class="sidebar-nav-list-label">Reports</span>
+                                                        <span class="sidebar-nav-list-dropdown"></span>
+                                                        <span class="sidebar-nav-list-badge badge">3</span>
+                                                    </a>
+                                                    <ul class="sidebar-nav-list is-open">
+                                                        <li class="sidebar-nav-list-item">
+                                                            <a class="sidebar-nav-list-link" href="#">
+                                                                <span class="sidebar-nav-list-label">Sales</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="sidebar-nav-list-item">
+                                                            <a class="sidebar-nav-list-link" href="#" aria-current="page">
+                                                                <span class="sidebar-nav-list-label">Expenses</span>
+                                                                <span class="sidebar-nav-list-badge badge">3</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="sidebar-nav-list-item">
+                                                            <a class="sidebar-nav-list-link" href="#">
+                                                                <span class="sidebar-nav-list-label">Profit</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#">
+                                                        <span class="sidebar-nav-list-label">Messages</span>
+                                                        <span class="sidebar-nav-list-badge badge">99</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sidebar-nav-nested">Copy</button>
+                                </div>
+                                <pre><code id="sidebar-nav-nested" class="language-html">&lt;li class="sidebar-nav-list-item is-active"&gt;
+    &lt;a class="sidebar-nav-list-link" href="#" aria-expanded="true"&gt;
+        &lt;span class="sidebar-nav-list-label"&gt;Reports&lt;/span&gt;
+        &lt;span class="sidebar-nav-list-dropdown"&gt;&lt;/span&gt;
+        &lt;span class="sidebar-nav-list-badge badge"&gt;3&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;ul class="sidebar-nav-list is-open"&gt;
+        &lt;li class="sidebar-nav-list-item"&gt;
+            &lt;a class="sidebar-nav-list-link" href="#"&gt;
+                &lt;span class="sidebar-nav-list-label"&gt;Sales&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="sidebar-nav-list-item"&gt;
+            &lt;a class="sidebar-nav-list-link" href="#" aria-current="page"&gt;
+                &lt;span class="sidebar-nav-list-label"&gt;Expenses&lt;/span&gt;
+                &lt;span class="sidebar-nav-list-badge badge"&gt;3&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/li&gt;</code></pre>
+                            </div>
+                            <p>A caret is placed before a badge in the row, and the module hands the auto margin to the caret once it is present, so <code>.sidebar-nav-list-dropdown + .sidebar-nav-list-badge</code> sits directly after it instead of at the far edge. Nested items also drop the 3px vertical margin that top level items keep.</p>
+                            <p>An active parent paints the whole item, which includes any open nested list, because the nested list sits inside that item. Mark the individual page you are on with <code>.is-active</code> on its own nested item as well when you want the leaf row to stand out.</p>
+                        </section>
+
+                        <section class="doc-section" id="compact">
+                            <h2>Compact rail</h2>
+                            <p>Add <code>sidebar-nav-compact</code> to the wrapper for the collapsed state. It hides the header, the label, the caret, and any nested list, turns the list into an inline-block, and raises the link to 16px, which is the right size for a single icon per row.</p>
+                            <p>The badge stops being a chip in this mode. It becomes a 6px dot in <code>--r-sidebar-nav-badge-dot-color</code>, pinned 4px from the top and 5px outside the right edge of the link, with its text collapsed to nothing by a zero font size and hidden overflow.</p>
+                            <div class="doc-demo">
+                                <div style="width: 80px">
+                                    <nav class="sidebar-nav sidebar-nav-compact" aria-label="Workspace">
+                                        <div class="sidebar-nav-group">
+                                            <ul class="sidebar-nav-list">
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#" aria-label="Dashboard">
+                                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                            <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <span class="sidebar-nav-list-label">Dashboard</span>
+                                                        <span class="sidebar-nav-list-badge badge">3</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-nav-list-item is-active">
+                                                    <a class="sidebar-nav-list-link" href="#" aria-label="Reports" aria-current="page">
+                                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                            <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                                        </svg>
+                                                        <span class="sidebar-nav-list-label">Reports</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-nav-list-item">
+                                                    <a class="sidebar-nav-list-link" href="#" aria-label="Messages, 99 unread">
+                                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                            <path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                                            <path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <span class="sidebar-nav-list-label">Messages</span>
+                                                        <span class="sidebar-nav-list-badge badge">99</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sidebar-nav-compact">Copy</button>
+                                </div>
+                                <pre><code id="sidebar-nav-compact" class="language-html">&lt;nav class="sidebar-nav sidebar-nav-compact" aria-label="Workspace"&gt;
+    &lt;div class="sidebar-nav-group"&gt;
+        &lt;ul class="sidebar-nav-list"&gt;
+            &lt;li class="sidebar-nav-list-item"&gt;
+                &lt;a class="sidebar-nav-list-link" href="#" aria-label="Dashboard"&gt;
+                    &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+                    &lt;span class="sidebar-nav-list-label"&gt;Dashboard&lt;/span&gt;
+                    &lt;span class="sidebar-nav-list-badge badge"&gt;3&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="sidebar-nav-list-item is-active"&gt;
+                &lt;a class="sidebar-nav-list-link" href="#" aria-label="Reports" aria-current="page"&gt;
+                    &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+                    &lt;span class="sidebar-nav-list-label"&gt;Reports&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                            <p>The compact class is a separate modifier, not a media query. Toggle it from your own script when the rail collapses, and keep the full sidebar as the markup that expands again. Set <code>--r-sidebar-nav-badge-dot-color</code> if the accent dot needs to read as a specific status.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The nav is a list of links, so the states that matter are the current page and the open or closed nested list. Both need markup, because neither class is announced.</p>
+                            <ul>
+                                <li>Use <code>&lt;nav&gt;</code> with an <code>aria-label</code> for each navigation region, so a page with a sidebar and a breadcrumb can tell them apart.</li>
+                                <li><code>.is-active</code> is visual only. Add <code>aria-current="page"</code> to the link of the current page, and keep exactly one current link per navigation.</li>
+                                <li>A nested list needs a control. Put <code>aria-expanded="true|false"</code> and <code>aria-controls</code> on the parent link or button, and update them together with <code>.is-open</code>.</li>
+                                <li>Nested lists are <code>display: none</code> until they gain <code>.is-open</code>, and even then only from 1024px up. Their links are unreachable below that width, so keep every destination reachable from the top level or from another entry point.</li>
+                                <li>The group header is plain text in a <code>div</code>. If the grouping carries meaning, use a heading element or point <code>aria-labelledby</code> at the header from the list.</li>
+                                <li>Compact mode hides labels with <code>display: none</code>, so the text leaves the accessibility tree. Give each compact link its own <code>aria-label</code>.</li>
+                                <li>The compact badge keeps its text in the accessibility tree because only the font size is zeroed. Either write the full name in the link label, as the demo does, or mark a decorative dot <code>aria-hidden="true"</code>.</li>
+                                <li>Keep the global focus ring. The link transitions color only, so the outline from the base layer remains visible on <code>:focus-visible</code>.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>Structure classes nest three levels deep at most: wrapper, group, list, item, link. The tokens behind them are listed with the component.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.sidebar-nav</code></td>
+                                            <td>Wrapper</td>
+                                            <td>No declarations of its own. Scopes the navigation and receives the compact modifier.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.sidebar-nav-group</code></td>
+                                            <td>Group</td>
+                                            <td>Vertical and half horizontal padding plus a bottom separator. The last group drops the separator and the bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.sidebar-nav-header</code></td>
+                                            <td>Group title</td>
+                                            <td>11px uppercase faint label. Hidden below 1024px.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.sidebar-nav-list</code></td>
+                                            <td>List</td>
+                                            <td>A nested list is hidden, indented 12px, and pulled out on the right. <code>.is-open</code> reveals it from 1024px up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.sidebar-nav-list-item</code></td>
+                                            <td>Item</td>
+                                            <td>Horizontal padding, radius, and 3px vertical margin. Nested items drop the margin.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-active</code></td>
+                                            <td>State on the item</td>
+                                            <td>Paints the item with the active background and the link with the active color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-open</code></td>
+                                            <td>State on a nested list</td>
+                                            <td>Displays the nested list from 1024px up. It has no effect below that breakpoint.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.sidebar-nav-list-link</code></td>
+                                            <td>Link</td>
+                                            <td>14px flex row, 7px gap, 8px vertical padding, color transition, accent hover.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.sidebar-nav-list-label</code></td>
+                                            <td>Label span</td>
+                                            <td>Weight from <code>--r-sidebar-nav-list-label-font-weight</code>, shown from 1024px up only.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.sidebar-nav-list-badge</code></td>
+                                            <td>Badge slot</td>
+                                            <td>Pushes itself right with an auto margin and shows from 1024px up. Pair it with <code>.badge</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.sidebar-nav-list-dropdown</code></td>
+                                            <td>Caret</td>
+                                            <td>5px downward border triangle in the current color. Takes the auto margin away from a following badge.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.sidebar-nav-compact</code></td>
+                                            <td>Modifier on the wrapper</td>
+                                            <td>Hides headers, labels, carets, and nested lists, raises links to 16px, and turns badges into accent dots.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/quick-menu.html">Previous: Quick menu</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/stat.html">Next: Stat</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#groups">Groups</a>
+                        <a class="doc-toc-link" href="#nested">Nested lists</a>
+                        <a class="doc-toc-link" href="#compact">Compact rail</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

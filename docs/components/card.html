@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Card - roolith css</title>
+        <meta name="description" content="Card surfaces with header, body, footer, image, title, subtitle, text, information, and color variants in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Card</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Card</h1>
+                            <p class="doc-content-lead">
+                                Card is a raised surface with a radius and a hairline shadow that groups one unit of
+                                content. Every part is optional: header, body, footer, image, title, subtitle, text, and
+                                an information row, composed in the order the content needs.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.card</strong>
+                                - defined in
+                                <strong>modules/_card.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                The body slot carries the 25px padding. The container adds the surface, the radius, the
+                                shadow, and a 20px bottom margin, so cards stacked in a column keep their own spacing.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="row full-width">
+                                    <div class="large-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Deployment</h5>
+                                                <p class="card-text">
+                                                    Build 1284 passed on the staging runner and is ready to promote.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="card-basic">Copy</button>
+                                </div>
+                                <pre><code id="card-basic" class="language-html">&lt;div class="card"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Deployment&lt;/h5&gt;
+        &lt;p class="card-text"&gt;
+            Build 1284 passed on the staging runner and is ready to promote.
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="anatomy">
+                            <h2>Title, subtitle, text, and information</h2>
+                            <p>
+                                The text slots are sized for a card, not for page layout.
+                                <code>.card-title</code>
+                                only adds 5px of bottom padding and keeps the heading scale of its element, so use a real
+                                heading or a typography class such as
+                                <code>.h5</code>
+                                to set the level.
+                            </p>
+                            <p>
+                                <code>.card-subtitle</code>
+                                is dimmed with 10px of bottom padding,
+                                <code>.card-text</code>
+                                runs at 14px over 22px lines with 20px below, and
+                                <code>.card-information</code>
+                                is a block of 80% dimmed text with 20px above it for the closing meta line.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="row full-width">
+                                    <div class="large-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Quarterly report</h5>
+                                                <h6 class="card-subtitle">Revenue and retention</h6>
+                                                <p class="card-text">
+                                                    Numbers are final for the quarter ending 30 June, including the
+                                                    adjusted retention figure.
+                                                </p>
+                                                <p class="card-information">Updated 12 July 2025</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="card-anatomy">Copy</button>
+                                </div>
+                                <pre><code id="card-anatomy" class="language-html">&lt;div class="card"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Quarterly report&lt;/h5&gt;
+        &lt;h6 class="card-subtitle"&gt;Revenue and retention&lt;/h6&gt;
+        &lt;p class="card-text"&gt;
+            Numbers are final for the quarter ending 30 June, including the
+            adjusted retention figure.
+        &lt;/p&gt;
+        &lt;p class="card-information"&gt;Updated 12 July 2025&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="header-footer">
+                            <h2>Header and footer</h2>
+                            <p>
+                                Header and footer sit outside the body with 15px by 25px of padding and a 1px border
+                                against the body. Both use the 14px muted slot color, which makes them read as
+                                supporting chrome around the main content.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="row full-width">
+                                    <div class="large-6">
+                                        <div class="card">
+                                            <div class="card-header">Release notes</div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Version 4.0.0</h5>
+                                                <p class="card-text">
+                                                    Adds the token layer, the dark theme, and the rewritten grid.
+                                                </p>
+                                            </div>
+                                            <div class="card-footer">Published 08 July 2025</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="card-header-footer">Copy</button>
+                                </div>
+                                <pre><code id="card-header-footer" class="language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;Release notes&lt;/div&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Version 4.0.0&lt;/h5&gt;
+        &lt;p class="card-text"&gt;
+            Adds the token layer, the dark theme, and the rewritten grid.
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;Published 08 July 2025&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="images">
+                            <h2>Images</h2>
+                            <p>
+                                <code>.card-img</code>
+                                goes directly under the card and runs edge to edge: the card clips its overflow, so the
+                                image takes the top corner radius.
+                                <code>.card-body-img</code>
+                                sits inside the body instead and keeps a 10px margin above and below.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="row full-width">
+                                    <div class="large-6">
+                                        <div class="card">
+                                            <img
+                                                class="card-img"
+                                                src="https://picsum.photos/seed/roolith-card-cover/600/300"
+                                                alt="Placeholder cover image" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Edge to edge image</h5>
+                                                <p class="card-text">Use it for covers, thumbnails, and media summaries.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="large-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Image in the body</h5>
+                                                <img
+                                                    class="card-body-img"
+                                                    src="https://picsum.photos/seed/roolith-card-inline/600/300"
+                                                    alt="Placeholder inline image" />
+                                                <p class="card-text">
+                                                    The image follows the title and keeps the body padding around it.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="card-images">Copy</button>
+                                </div>
+                                <pre><code id="card-images" class="language-html">&lt;div class="card"&gt;
+    &lt;img
+        class="card-img"
+        src="https://picsum.photos/seed/roolith-card-cover/600/300"
+        alt="Placeholder cover image" /&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Edge to edge image&lt;/h5&gt;
+        &lt;p class="card-text"&gt;Use it for covers, thumbnails, and media summaries.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="card"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Image in the body&lt;/h5&gt;
+        &lt;img
+            class="card-body-img"
+            src="https://picsum.photos/seed/roolith-card-inline/600/300"
+            alt="Placeholder inline image" /&gt;
+        &lt;p class="card-text"&gt;
+            The image follows the title and keeps the body padding around it.
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="colors">
+                            <h2>Colors</h2>
+                            <p>
+                                A color class fills the card with a palette value and switches the text to the matching
+                                on-color. Subtitle and information drop to 70% opacity, and the header and footer borders
+                                lighten the fill so they stay visible.
+                            </p>
+                            <p>
+                                Every palette name except white is generated, including dark and black. The fill
+                                comes from the palette rather than the surface token, so a variant holds its color
+                                instead of following the page surface; a few palette values are lightened in the dark
+                                theme.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="row full-width">
+                                    <div class="large-4">
+                                        <div class="card card-primary">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Primary card</h5>
+                                                <p class="card-text">The default emphasis for a promoted record.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="large-4">
+                                        <div class="card card-tertiary">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Tertiary card</h5>
+                                                <p class="card-text">A quieter accent for supporting content.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="large-4">
+                                        <div class="card card-dark">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Dark card</h5>
+                                                <p class="card-text">A fixed dark surface that ignores the theme.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="card-colors">Copy</button>
+                                </div>
+                                <pre><code id="card-colors" class="language-html">&lt;div class="card card-primary"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Primary card&lt;/h5&gt;
+        &lt;p class="card-text"&gt;The default emphasis for a promoted record.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="card card-tertiary"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Tertiary card&lt;/h5&gt;
+        &lt;p class="card-text"&gt;A quieter accent for supporting content.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="card card-dark"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Dark card&lt;/h5&gt;
+        &lt;p class="card-text"&gt;A fixed dark surface that ignores the theme.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="links">
+                            <h2>Links</h2>
+                            <p>
+                                The card module defines no anchor styles. Put the action inside the body, usually a
+                                button or a text link, and let the card stay a container. The information row is designed
+                                to follow that action.
+                            </p>
+                            <p>
+                                Making the whole card a link also works, but you have to add the missing pieces: the card
+                                sets no display, so the anchor keeps its inline box, and there is no hover or focus
+                                treatment beyond the global focus ring. Add a block display, a hover state, and a visible
+                                focus style, and never nest another link or button inside it.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="row full-width">
+                                    <div class="large-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Billing settings</h5>
+                                                <p class="card-text">
+                                                    Update the card on file before the next invoice runs.
+                                                </p>
+                                                <a class="button button-primary" href="#">Open settings</a>
+                                                <p class="card-information">Last changed by the account owner</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="card-links">Copy</button>
+                                </div>
+                                <pre><code id="card-links" class="language-html">&lt;div class="card"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Billing settings&lt;/h5&gt;
+        &lt;p class="card-text"&gt;
+            Update the card on file before the next invoice runs.
+        &lt;/p&gt;
+        &lt;a class="button button-primary" href="#"&gt;Open settings&lt;/a&gt;
+        &lt;p class="card-information"&gt;Last changed by the account owner&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                A card is a container. The heading inside it gives the card its name, so the heading level
+                                has to match the surrounding page structure.
+                            </p>
+                            <ul>
+                                <li>Use a real heading element for <code>.card-title</code> and keep the levels in order across the page.</li>
+                                <li>Give <code>.card-img</code> and <code>.card-body-img</code> an <code>alt</code> attribute. Use an empty value when the image is decorative.</li>
+                                <li>When the whole card becomes a link, give it one clear name, usually the title text, and keep the hit area free of nested controls.</li>
+                                <li>Do not convey state through the card color alone; keep the label text explicit.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Slot classes go inside the card, size comes from your layout, and color classes go on the
+                                card element.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.card</code></td>
+                                            <td>Base</td>
+                                            <td>Surface fill, radius, hairline shadow, clipped overflow, and a 20px bottom margin.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-header</code></td>
+                                            <td>Slot</td>
+                                            <td>14px muted chrome with a bottom border.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-body</code></td>
+                                            <td>Slot</td>
+                                            <td>25px of padding around the content.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-footer</code></td>
+                                            <td>Slot</td>
+                                            <td>14px muted chrome with a top border.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-title</code></td>
+                                            <td>Text</td>
+                                            <td>5px of bottom padding only. The element keeps its heading scale.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-subtitle</code></td>
+                                            <td>Text</td>
+                                            <td>Dimmed with 10px of bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-text</code></td>
+                                            <td>Text</td>
+                                            <td>14px over 22px lines with 20px below.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-information</code></td>
+                                            <td>Text</td>
+                                            <td>Block level, 80% size, dimmed, with 20px above.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-img</code></td>
+                                            <td>Image</td>
+                                            <td>Full width of the card, clipped by the radius.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-body-img</code></td>
+                                            <td>Image</td>
+                                            <td>Full width inside the body with a 10px vertical margin.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.card-primary</code></td>
+                                            <td>Color</td>
+                                            <td>Any palette name except white: secondary, tertiary, info, success, warning, danger, link, dark, black, light.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/button.html">Previous: Button</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/collage.html">Next: Collage</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#anatomy">Title, subtitle, text, and information</a>
+                        <a class="doc-toc-link" href="#header-footer">Header and footer</a>
+                        <a class="doc-toc-link" href="#images">Images</a>
+                        <a class="doc-toc-link" href="#colors">Colors</a>
+                        <a class="doc-toc-link" href="#links">Links</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

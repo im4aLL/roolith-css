@@ -2,7 +2,6 @@
 @use '../settings' as s;
 
 @mixin box() {
-
     .box {
         border: rem(1) solid var(--r-box-border-color);
         border-radius: calc(var(--r-box-border-radius) * 2);
@@ -26,6 +25,10 @@
     .box-body {
         font-size: rem(14);
         line-height: rem(22);
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
     }
 
     .box-footer {

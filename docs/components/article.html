@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Article - roolith css</title>
+        <meta
+            name="description"
+            content="Article prose layout, headers, figures, and lists in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Article</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Article</h1>
+                            <p class="doc-content-lead">
+                                The article component is a prose shell for long-form content. It lifts body copy to a
+                                16px base with a 26px line height, sets consistent rhythm between paragraphs, figures,
+                                lists and quotes, and adds an optional single-column layout for reading pages.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.article</strong>
+                                - defined in
+                                <strong>modules/_article.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                Wrap the content in
+                                <code>.article</code>
+                                and use normal HTML inside it. Paragraphs, blockquotes, definition lists,
+                                <code>.list</code>, and
+                                <code>.list-numbered</code>
+                                all move to 16/26 and keep 20px of space underneath, while the last child drops its
+                                bottom padding so the article does not end on empty space.
+                            </p>
+                            <p>
+                                The heading pairs
+                                <code>.article-header</code>
+                                with
+                                <code>.article-subheader</code>. The subheader renders at 60% of the heading size with
+                                normal weight and half opacity. Add
+                                <code>.blocked</code>
+                                to push it onto its own line.
+                            </p>
+                            <div class="doc-demo">
+                                <article class="article">
+                                    <h3 class="article-header">
+                                        Shipping a smaller stylesheet
+                                        <span class="article-subheader blocked">Notes from the 4.0 build review</span>
+                                    </h3>
+                                    <p>
+                                        Every module is opt-in at the Sass layer. A page that only needs typography and
+                                        buttons can leave the rest of the modules out of the entry point.
+                                    </p>
+                                    <p>
+                                        Start with the base layer, then add one module at a time and check the compiled
+                                        size after each step. The token layer is shared, so removing a module rarely
+                                        leaves unused custom properties behind.
+                                    </p>
+                                </article>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="article-basic">Copy</button>
+                                </div>
+                                <pre><code id="article-basic" class="language-html">&lt;article class="article"&gt;
+    &lt;h3 class="article-header"&gt;
+        Shipping a smaller stylesheet
+        &lt;span class="article-subheader blocked"&gt;Notes from the 4.0 build review&lt;/span&gt;
+    &lt;/h3&gt;
+    &lt;p&gt;Every module is opt-in at the Sass layer. A page that only needs typography and buttons can leave the rest of the modules out of the entry point.&lt;/p&gt;
+    &lt;p&gt;Start with the base layer, then add one module at a time and check the compiled size after each step. The token layer is shared, so removing a module rarely leaves unused custom properties behind.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                            </div>
+                            <p>
+                                <code>.article-header</code>
+                                carries 25px of bottom padding declared with
+                                <code>!important</code>
+                                so a surrounding layout rule cannot collapse the gap under the title.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="primary-layout">
+                            <h2>Primary layout</h2>
+                            <p>
+                                Add
+                                <code>.article-primary</code>
+                                to center the prose in a measured column. The article becomes a three column grid with
+                                10px side columns, a 20px gap, and the content in the middle column. From 640px up the
+                                side columns grow to 100px.
+                            </p>
+                            <p>
+                                Only direct children participate. Figures and blockquotes span the whole grid, and an
+                                <code>&lt;aside&gt;</code>
+                                moves into the right column once the page reaches 1024px, so a note can sit beside the
+                                paragraph it belongs to.
+                            </p>
+                            <div class="doc-demo">
+                                <article class="article article-primary">
+                                    <h3 class="article-header">
+                                        Release notes for 4.0
+                                        <span class="article-subheader blocked">Published 12 March</span>
+                                    </h3>
+                                    <p>
+                                        Version 4 moves the color system to custom properties. The compiled stylesheet
+                                        still works without a build step, but every palette entry can now be replaced at
+                                        runtime.
+                                    </p>
+                                    <aside>
+                                        Margin notes move into the third grid column once the page is 1024px wide.
+                                    </aside>
+                                    <p>
+                                        Component tokens follow the same pattern. Override one variable on a scope and
+                                        only the components inside that scope change, which keeps third-party embeds
+                                        isolated from the rest of the page.
+                                    </p>
+                                </article>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="article-primary">Copy</button>
+                                </div>
+                                <pre><code id="article-primary" class="language-html">&lt;article class="article article-primary"&gt;
+    &lt;h3 class="article-header"&gt;
+        Release notes for 4.0
+        &lt;span class="article-subheader blocked"&gt;Published 12 March&lt;/span&gt;
+    &lt;/h3&gt;
+    &lt;p&gt;Version 4 moves the color system to custom properties. The compiled stylesheet still works without a build step, but every palette entry can now be replaced at runtime.&lt;/p&gt;
+    &lt;aside&gt;Margin notes move into the third grid column once the page is 1024px wide.&lt;/aside&gt;
+    &lt;p&gt;Component tokens follow the same pattern. Override one variable on a scope and only the components inside that scope change, which keeps third-party embeds isolated from the rest of the page.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="figures">
+                            <h2>Figures</h2>
+                            <p>
+                                Use the
+                                <code>figure</code>
+                                element with
+                                <code>.fig</code>
+                                and a
+                                <code>.fig-caption</code>. Inside an article the figure gets a 20px bottom margin, and
+                                inside
+                                <code>.article-primary</code>
+                                it spans the full grid with 20px 40px 40px margins from 640px up.
+                            </p>
+                            <p>
+                                <code>.fig-caption</code>
+                                is a 14/18 caption in the muted image caption color.
+                                <code>.img-full-width</code>
+                                stretches the image to the figure width; without it the image keeps its natural size.
+                            </p>
+                            <div class="doc-demo">
+                                <article class="article">
+                                    <p>
+                                        The summary card now reserves its final height before data arrives, which
+                                        removes the layout shift that appeared on slow connections.
+                                    </p>
+                                    <figure class="fig">
+                                        <img
+                                            src="https://placehold.co/800x300"
+                                            alt="Dashboard with the summary card above the activity table"
+                                            class="img-full-width" />
+                                        <figcaption class="fig-caption">
+                                            The summary card reserves space before the first request resolves.
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="article-figures">Copy</button>
+                                </div>
+                                <pre><code id="article-figures" class="language-html">&lt;article class="article"&gt;
+    &lt;p&gt;The summary card now reserves its final height before data arrives, which removes the layout shift that appeared on slow connections.&lt;/p&gt;
+    &lt;figure class="fig"&gt;
+        &lt;img src="https://placehold.co/800x300" alt="Dashboard with the summary card above the activity table"
+            class="img-full-width" /&gt;
+        &lt;figcaption class="fig-caption"&gt;The summary card reserves space before the first request resolves.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/article&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="lists">
+                            <h2>Lists</h2>
+                            <p>
+                                Add
+                                <code>.list</code>
+                                to a
+                                <code>ul</code>
+                                for disc markers, or
+                                <code>.list-numbered</code>
+                                to an
+                                <code>ol</code>
+                                for decimal markers. Both use the article prose size and keep 20px of space underneath;
+                                nested lists sit 30px in from their parent.
+                            </p>
+                            <div class="doc-demo">
+                                <article class="article">
+                                    <ul class="list">
+                                        <li>Keep the base layer and the token layer in every build.</li>
+                                        <li>
+                                            Add modules as their pages are built.
+                                            <ul>
+                                                <li>Form controls are the heaviest single module.</li>
+                                                <li>Blocks pull in their component dependencies.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Measure the minified file, not the source.</li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="article-list">Copy</button>
+                                </div>
+                                <pre><code id="article-list" class="language-html">&lt;article class="article"&gt;
+    &lt;ul class="list"&gt;
+        &lt;li&gt;Keep the base layer and the token layer in every build.&lt;/li&gt;
+        &lt;li&gt;
+            Add modules as their pages are built.
+            &lt;ul&gt;
+                &lt;li&gt;Form controls are the heaviest single module.&lt;/li&gt;
+                &lt;li&gt;Blocks pull in their component dependencies.&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Measure the minified file, not the source.&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/article&gt;</code></pre>
+                            </div>
+                            <div class="doc-demo">
+                                <article class="article">
+                                    <ol class="list-numbered">
+                                        <li>Install the package and link the compiled stylesheet.</li>
+                                        <li>Add the token layer to your entry point.</li>
+                                        <li>Include only the modules your pages use.</li>
+                                    </ol>
+                                </article>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="article-numbered-list">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="article-numbered-list" class="language-html">&lt;article class="article"&gt;
+    &lt;ol class="list-numbered"&gt;
+        &lt;li&gt;Install the package and link the compiled stylesheet.&lt;/li&gt;
+        &lt;li&gt;Add the token layer to your entry point.&lt;/li&gt;
+        &lt;li&gt;Include only the modules your pages use.&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/article&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The component is a wrapper around semantic markup, so the reading experience depends on
+                                the elements you put inside it.
+                            </p>
+                            <ul>
+                                <li>
+                                    Keep one
+                                    <code>h1</code>
+                                    per page and choose the article heading level to match the document outline. The
+                                    demos use
+                                    <code>h3</code>
+                                    because this page already has an
+                                    <code>h1</code>
+                                    and section
+                                    <code>h2</code>
+                                    elements.
+                                </li>
+                                <li>
+                                    Leave
+                                    <code>.article-subheader</code>
+                                    inside the heading element. Its smaller size and opacity are presentational, and a
+                                    screen reader should announce it as part of the title.
+                                </li>
+                                <li>
+                                    Use
+                                    <code>figure</code>
+                                    and
+                                    <code>figcaption</code>
+                                    so the caption is associated with the image. Describe the image in
+                                    <code>alt</code>
+                                    or leave
+                                    <code>alt=""</code>
+                                    when the caption already carries the full description.
+                                </li>
+                                <li>
+                                    Use
+                                    <code>ul</code>
+                                    for
+                                    <code>.list</code>
+                                    and
+                                    <code>ol</code>
+                                    for
+                                    <code>.list-numbered</code>
+                                    so sequence and item counts are announced.
+                                </li>
+                                <li>
+                                    <code>.article-primary</code>
+                                    moves asides with CSS grid only, so the DOM order still drives reading order. Keep a
+                                    note next to the paragraph it annotates.
+                                </li>
+                                <li>
+                                    The component raises body copy from the 14px base to 16/26. The primary layout only
+                                    sizes the side columns, it does not cap the overall width, so set a maximum width on
+                                    the article for long-form pages.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                The article classes style content you already have. Figures and captions come from the
+                                image module.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.article</code></td>
+                                            <td>Container</td>
+                                            <td>Prose at 16/26 with 20px of space underneath, dimmed asides, no trailing gap.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.article-header</code></td>
+                                            <td>Heading</td>
+                                            <td>25px bottom padding, declared with <code>!important</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.article-subheader</code></td>
+                                            <td>Span inside the header</td>
+                                            <td>60% size, normal weight, 50% opacity.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.blocked</code></td>
+                                            <td>Subheader modifier</td>
+                                            <td>Displays the subheader on its own line.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.article-primary</code></td>
+                                            <td>Article modifier</td>
+                                            <td>Centered grid with 10px side columns, 100px from 640px up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.fig</code></td>
+                                            <td>Figure inside an article</td>
+                                            <td>20px bottom margin. Spans the grid and gains 20px 40px 40px margins at 640px up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.img-full-width</code></td>
+                                            <td>Image</td>
+                                            <td>Sets <code>width: 100%</code> so the image fills the figure.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.fig-caption</code></td>
+                                            <td>Figcaption</td>
+                                            <td>14/18 caption in the muted image caption color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.list</code></td>
+                                            <td>Unordered list inside an article</td>
+                                            <td>Disc markers, nested lists supported, 20px bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.list-numbered</code></td>
+                                            <td>Ordered list inside an article</td>
+                                            <td>Decimal markers with the same spacing as <code>.list</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>aside</code></td>
+                                            <td>Element, no class</td>
+                                            <td>Small and dimmed in an article, italic and moved to the third column at 1024px in <code>.article-primary</code>.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/action-menu.html">
+                                        Previous: Action menu
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/avatar.html">Next: Avatar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#primary-layout">Primary layout</a>
+                        <a class="doc-toc-link" href="#figures">Figures</a>
+                        <a class="doc-toc-link" href="#lists">Lists</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

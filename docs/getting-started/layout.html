@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Layout - roolith css</title>
+        <meta
+            name="description"
+            content="Container, css-grid columns, breakpoints, gutters, and the application layout scaffold in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar doc-layout-page">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/getting-started/introduction.html">Getting started</a></li>
+                                <li class="breadcrumb-item active">Layout</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Layout</h1>
+                            <p class="doc-content-lead">
+                                roolith css ships a centered container, a twelve column grid, and a small application
+                                shell built on the same grid. The grid is written as a real CSS grid, and the float based
+                                grid still compiles if you ask for it.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>Multiple classes</strong>
+                                - defined in
+                                <strong>modules/_css-grid.scss, modules/_grid.scss, modules/_layout.scss</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            <code>$grid-layout</code>
+                            defaults to
+                            <code>css-grid</code>
+                            . The float grid is legacy, and roolith prints a build warning when you select it.
+                        </div>
+
+                        <section class="doc-section" id="container">
+                            <h2>Container</h2>
+                            <p>
+                                <code>.container</code>
+                                caps its content at
+                                <code>var(--r-global-width)</code>
+                                and centers it with auto margins. The token is generated from
+                                <code>$container-width</code>,
+                                which defaults to
+                                <code>rem(1200)</code>.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="container full-width">
+                                    <div class="box box-small">
+                                        <div class="box-body">Content inside .container</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="layout-container">Copy</button>
+                                </div>
+                                <pre><code id="layout-container" class="language-html">&lt;div class="container"&gt;
+    &lt;div class="box box-small"&gt;
+        &lt;div class="box-body"&gt;Content inside .container&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The demo adds <code>full-width</code>, the typography width utility, so the container stretches across the demo box. Without it the container has no width of its own, so inside the flex demo box it only takes the width of its content. It is demo scaffolding only: <code>.container</code> sets a max width and auto margins, no container rule reads <code>full-width</code>, and the snippet above leaves it out.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="grid">
+                            <h2>The row and column system</h2>
+                            <p>
+                                <code>.row</code>
+                                is a grid with
+                                <code>$grid-column-count</code>
+                                equal tracks, twelve by default. Every direct child is a grid item, so a span class works
+                                on a
+                                <code>div</code>,
+                                a
+                                <code>section</code>, or a form field without extra markup.
+                            </p>
+                            <p>
+                                Spans are
+                                <code>small-1</code>
+                                through
+                                <code>small-12</code>,
+                                and the same pattern repeats for the
+                                <code>medium-</code>
+                                and
+                                <code>large-</code>
+                                prefixes. Keep
+                                <code>.columns</code>
+                                on the item as the classic marker - it does nothing under the CSS grid, but the same
+                                markup then still works if you switch to the float grid.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="container full-width doc-demo-rows">
+                                    <div class="row">
+                                        <div class="columns large-12">
+                                            <div class="box box-small"><div class="box-body">large-12</div></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="columns large-6">
+                                            <div class="box box-small"><div class="box-body">large-6</div></div>
+                                        </div>
+                                        <div class="columns large-6">
+                                            <div class="box box-small"><div class="box-body">large-6</div></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="columns large-4">
+                                            <div class="box box-small"><div class="box-body">large-4</div></div>
+                                        </div>
+                                        <div class="columns large-4">
+                                            <div class="box box-small"><div class="box-body">large-4</div></div>
+                                        </div>
+                                        <div class="columns large-4">
+                                            <div class="box box-small"><div class="box-body">large-4</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="layout-grid">Copy</button>
+                                </div>
+                                <pre><code id="layout-grid" class="language-html">&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="columns large-12"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="row"&gt;
+        &lt;div class="columns large-6"&gt;...&lt;/div&gt;
+        &lt;div class="columns large-6"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="row"&gt;
+        &lt;div class="columns large-4"&gt;...&lt;/div&gt;
+        &lt;div class="columns large-4"&gt;...&lt;/div&gt;
+        &lt;div class="columns large-4"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="breakpoints">
+                            <h2 id="breakpoints-heading">Breakpoints</h2>
+                            <p>
+                                The grid emits three prefix groups:
+                                <code>small-</code>
+                                with no media query,
+                                <code>medium-</code>
+                                from 640px, and
+                                <code>large-</code>
+                                from 1024px. There are no
+                                <code>xlarge-</code>
+                                column classes.
+                            </p>
+                            <p>
+                                Any item that carries a
+                                <code>medium-</code>
+                                or
+                                <code>large-</code>
+                                class starts at full width and only takes its span when the breakpoint applies, so the
+                                stack order is mobile first. The example below still writes
+                                <code>small-12</code>
+                                to state the intent.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="container full-width">
+                                    <div class="row">
+                                        <div class="columns large-4 medium-6 small-12">
+                                            <div class="box box-small">
+                                                <div class="box-body">large-4 medium-6 small-12</div>
+                                            </div>
+                                        </div>
+                                        <div class="columns large-4 medium-6 small-12">
+                                            <div class="box box-small">
+                                                <div class="box-body">large-4 medium-6 small-12</div>
+                                            </div>
+                                        </div>
+                                        <div class="columns large-4 medium-6 small-12">
+                                            <div class="box box-small">
+                                                <div class="box-body">large-4 medium-6 small-12</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="layout-breakpoints">Copy</button>
+                                </div>
+                                <pre><code id="layout-breakpoints" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="columns large-4 medium-6 small-12"&gt;...&lt;/div&gt;
+    &lt;div class="columns large-4 medium-6 small-12"&gt;...&lt;/div&gt;
+    &lt;div class="columns large-4 medium-6 small-12"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="breakpoints-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Breakpoint</th>
+                                            <th scope="col">Width</th>
+                                            <th scope="col">Grid prefix</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>small</code></td>
+                                            <td>0</td>
+                                            <td>Yes, no media query</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>medium</code></td>
+                                            <td>640px</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>large</code></td>
+                                            <td>1024px</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>xlarge</code></td>
+                                            <td>1200px</td>
+                                            <td>No column classes</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>xxlarge</code></td>
+                                            <td>1440px</td>
+                                            <td>No column classes</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                <code>xlarge</code>
+                                and
+                                <code>xxlarge</code>
+                                are still available to the
+                                <code>breakpoint</code>
+                                mixin and to the show and hide helpers, so a custom component can use them even though
+                                the grid does not.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="offsets">
+                            <h2>Offsets</h2>
+                            <p>
+                                An offset pushes an item to a later column line. The available range is 1 through 11 per
+                                prefix, matching a twelve column row.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="container full-width">
+                                    <div class="row">
+                                        <div class="columns large-6 large-offset-3">
+                                            <div class="box box-small">
+                                                <div class="box-body">large-6 large-offset-3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="layout-offsets">Copy</button>
+                                </div>
+                                <pre><code id="layout-offsets" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="columns large-6 large-offset-3"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                Add
+                                <code>newrow</code>
+                                to an item to pin it back to column line 1. In the CSS grid that starts a fresh row
+                                immediately; in the float grid it clears the previous float.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="push-pull">
+                            <h2>Push and pull</h2>
+                            <p>
+                                Push and pull change the visual order without touching the markup. Each span records its
+                                column count, so a push of
+                                <code>N</code>
+                                shifts the item right by
+                                <code>N</code>
+                                columns, calculated from its own width, and a pull does the same to the left.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="container full-width">
+                                    <div class="row">
+                                        <div class="columns large-6 large-push-6">
+                                            <div class="box box-small">
+                                                <div class="box-body">large-6 large-push-6 (renders right)</div>
+                                            </div>
+                                        </div>
+                                        <div class="columns large-6 large-pull-6">
+                                            <div class="box box-small">
+                                                <div class="box-body">large-6 large-pull-6 (renders left)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="layout-push-pull">Copy</button>
+                                </div>
+                                <pre><code id="layout-push-pull" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="columns large-6 large-push-6"&gt;Renders on the right&lt;/div&gt;
+    &lt;div class="columns large-6 large-pull-6"&gt;Renders on the left&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                Use equal spans when you swap two neighbours, otherwise the shifted item overshoots the
+                                row. Because push and pull only change the offset, the source order stays intact for
+                                screen readers and keyboard users.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="gutters">
+                            <h2>Gutters and nesting</h2>
+                            <p>
+                                A gutter is the space between columns.
+                                <code>$grid-gutter-size</code>
+                                defaults to
+                                <code>rem(20)</code>
+                                and feeds a three entry map for small, medium, and large. The row carries half a gutter
+                                as padding and so does every item, which puts a full gutter between neighbours and keeps
+                                the outer content aligned with the container edge.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="container full-width">
+                                    <div class="row">
+                                        <div class="columns large-4">
+                                            <div class="box box-small"><div class="box-body">One</div></div>
+                                        </div>
+                                        <div class="columns large-4">
+                                            <div class="box box-small"><div class="box-body">Two</div></div>
+                                        </div>
+                                        <div class="columns large-4">
+                                            <div class="box box-small"><div class="box-body">Three</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="layout-gutters">Copy</button>
+                                </div>
+                                <pre><code id="layout-gutters" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="columns large-4"&gt;One&lt;/div&gt;
+    &lt;div class="columns large-4"&gt;Two&lt;/div&gt;
+    &lt;div class="columns large-4"&gt;Three&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                A row inside a row drops its own padding and pulls back by half a gutter with negative
+                                margins, so nested content lines up at any depth. Wrap a nested row in
+                                <code>.column</code>
+                                when it sits outside a row and needs the full gutter on both sides.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="layout-nesting">Copy</button>
+                                </div>
+                                <pre><code id="layout-nesting" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="columns large-6"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="columns large-6"&gt;Half of the half&lt;/div&gt;
+            &lt;div class="columns large-6"&gt;Half of the half&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="column"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="columns large-12"&gt;Full gutter on both sides&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="application-shell">
+                            <h2>Application layout</h2>
+                            <p>
+                                <code>.layout</code>
+                                is a two column shell for admin style screens. It is a grid with a sidebar column and a
+                                content column, plus a row for the header and a row for the body, and it fills the
+                                viewport with
+                                <code>min-height: 100vh</code>
+                                . Below 1024px the sidebar column uses the compact width; from 1024px up it uses the full
+                                sidebar width.
+                            </p>
+                            <p>
+                                The header spans both columns and is a grid of its own. Its primary cell holds the logo
+                                and the sidebar toggle, and its secondary cell holds search, navigation, and the user
+                                menu. Add
+                                <code>is-sticky</code>
+                                to the header to pin it to the top of the viewport.
+                            </p>
+                            <ul>
+                                <li><code>.layout-primary</code> is the left column and draws the right border.</li>
+                                <li>
+                                    <code>.layout-sidebar</code> is the wrapper used for the sidebar content. It carries
+                                    no rules of its own, so the column spacing comes from
+                                    <code>.layout</code>
+                                    and the navigation inside it.
+                                </li>
+                                <li>
+                                    <code>.layout-secondary</code>
+                                    is the content column with
+                                    <code>rem(20)</code>
+                                    of padding and its own background token.
+                                </li>
+                                <li>
+                                    <code>.layout-compact</code>
+                                    on the shell overrides
+                                    <code>--r-layout-sidebar-width</code>
+                                    with the compact width and hides the header logo.
+                                </li>
+                            </ul>
+                            <div class="message message-info">
+                                There is no inline demo for the shell: it is
+                                <code>min-height: 100vh</code>
+                                by design, so it would take over the viewport. The classes below are the full scaffold.
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="layout-shell">Copy</button>
+                                </div>
+                                <pre><code id="layout-shell" class="language-html">&lt;main class="layout"&gt;
+    &lt;header class="layout-header is-sticky"&gt;
+        &lt;div class="layout-header-primary"&gt;
+            &lt;a class="layout-header-logo" href="/"&gt;Logo&lt;/a&gt;
+            &lt;button class="layout-header-sidebar-toggle" type="button"&gt;Menu&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class="layout-header-secondary"&gt;
+            &lt;form class="form layout-header-search" action="/search" role="search"&gt;
+                &lt;div class="form-field form-field-search"&gt;
+                    &lt;input class="form-input" type="search" name="q" placeholder="Search" /&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+
+            &lt;ul class="nav layout-header-nav"&gt;
+                &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Docs&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;div class="avatar layout-header-avatar"&gt;
+                &lt;figure class="avatar-fig rounded-circle"&gt;
+                    &lt;img src="/avatar.png" alt="" /&gt;
+                &lt;/figure&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;div class="layout-primary"&gt;
+        &lt;aside class="layout-sidebar"&gt;
+            &lt;nav class="sidebar-nav"&gt;
+                &lt;div class="sidebar-nav-group"&gt;
+                    &lt;div class="sidebar-nav-header"&gt;General&lt;/div&gt;
+                    &lt;ul class="sidebar-nav-list"&gt;
+                        &lt;li class="sidebar-nav-list-item is-active"&gt;
+                            &lt;a class="sidebar-nav-list-link" href="#"&gt;
+                                &lt;span class="sidebar-nav-list-label"&gt;Dashboard&lt;/span&gt;
+                            &lt;/a&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/nav&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+
+    &lt;div class="layout-secondary"&gt;
+        &lt;h1 class="h3"&gt;Dashboard&lt;/h1&gt;
+        &lt;p&gt;Page content goes here.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="legacy-grid">
+                            <h2>The legacy float grid</h2>
+                            <p>
+                                Setting
+                                <code>$grid-layout</code>
+                                to
+                                <code>traditional</code>
+                                swaps
+                                <code>modules/_css-grid.scss</code>
+                                for
+                                <code>modules/_grid.scss</code>
+                                . Class names stay the same - spans, offsets, push, pull,
+                                <code>.container</code>,
+                                and
+                                <code>.newrow</code>
+                                - but the mechanics change: items float, spans become width percentages, offsets become
+                                <code>margin-left</code>,
+                                and the row uses a clearfix.
+                            </p>
+                            <div class="message message-info">
+                                The traditional grid is legacy. New work should stay on the default
+                                <code>css-grid</code>
+                                layout.
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">SCSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="layout-legacy-config">Copy</button>
+                                </div>
+                                <pre><code id="layout-legacy-config" class="language-scss">@use 'roolith-css/src/sass/settings' with (
+    $grid-layout: traditional
+);
+@use 'roolith-css/src/sass/roolith';</code></pre>
+                            </div>
+                            <p>
+                                The float grid also styles
+                                <code>.columns</code>
+                                with
+                                <code>float: left</code>
+                                and half a gutter of padding, so a row of floated columns needs
+                                <code>.columns</code>
+                                on every item to keep its shape.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The layout only controls geometry, so the structure and the reading order are yours to get right.</p>
+                            <ul>
+                                <li>
+                                    Build the page from real landmarks - <code>header</code>, <code>nav</code>, <code>main</code>, and <code>footer</code> - and keep a single <code>h1</code> per page. The shell classes carry no landmark semantics of their own.
+                                </li>
+                                <li>
+                                    Keep the DOM order meaningful. The CSS grid and the push and pull modifiers can place an item visually before its neighbour while leaving the source order untouched, and assistive technology follows the source order.
+                                </li>
+                                <li>
+                                    Do not rely on visual order alone in a responsive layout. When a column reflows or a region moves, check that the reading sequence still makes sense without the styling.
+                                </li>
+                                <li>
+                                    Do not give <code>.container</code> or a grid item a fixed pixel width or a <code>user-scalable=no</code> viewport, so the page can still zoom and reflow at 400% without horizontal scrolling.
+                                </li>
+                                <li>
+                                    Keep focus visible when a layout region scrolls. The base layer outlines focusable elements on <code>:focus-visible</code>, so do not remove that outline, and avoid <code>overflow: hidden</code> on a region that can receive focus.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Grid classes are emitted for the
+                                <code>small</code>,
+                                <code>medium</code>, and
+                                <code>large</code>
+                                prefixes. The layout classes belong to the application shell.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.container</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Caps at var(--r-global-width) and centers with auto margins.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.row</code></td>
+                                            <td>Grid</td>
+                                            <td>Twelve equal tracks, items aligned to start, half a gutter of padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.columns</code></td>
+                                            <td>Item</td>
+                                            <td>
+                                                Column marker. Floats in the legacy grid, no rules under css-grid.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.column</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Full gutter on both sides for a nested row that sits outside a row.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.small-1</code></td>
+                                            <td>Span</td>
+                                            <td>
+                                                Through
+                                                <code>.small-12</code>
+                                                , no media query. Also medium and large.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.small-offset-1</code></td>
+                                            <td>Offset</td>
+                                            <td>
+                                                Through 11. Also
+                                                <code>.medium-offset-*</code>
+                                                and
+                                                <code>.large-offset-*</code>.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.small-push-1</code></td>
+                                            <td>Order</td>
+                                            <td>
+                                                Shifts right by its own width. Also
+                                                <code>.small-pull-*</code>
+                                                and the medium and large sets.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.newrow</code></td>
+                                            <td>Item</td>
+                                            <td>Starts a new grid row, or clears floats in the legacy grid.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout</code></td>
+                                            <td>Shell</td>
+                                            <td>Two column grid with a header row and a content row, min-height 100vh.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-header</code></td>
+                                            <td>Shell</td>
+                                            <td>Spans both columns and splits into primary and secondary cells.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.is-sticky</code></td>
+                                            <td>Header</td>
+                                            <td>Sticky header at the top of the viewport with z-index 1000.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-header-primary</code></td>
+                                            <td>Header cell</td>
+                                            <td>Logo and sidebar toggle, with the right border.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-header-secondary</code></td>
+                                            <td>Header cell</td>
+                                            <td>Flex row with a rem(20) gap for search, nav, and avatar.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-header-logo</code></td>
+                                            <td>Header</td>
+                                            <td>Hidden below 1024px, fixed logo width from the token layer.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-header-sidebar-toggle</code></td>
+                                            <td>Header</td>
+                                            <td>Text button with no background or border, hidden below 1024px.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-header-nav</code></td>
+                                            <td>Header</td>
+                                            <td>Nav pushed to the right, hidden below 640px.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-header-search</code></td>
+                                            <td>Header</td>
+                                            <td>Form width from --r-layout-header-search-width.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-header-avatar</code></td>
+                                            <td>Header</td>
+                                            <td>Hidden below 1024px.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-primary</code></td>
+                                            <td>Shell</td>
+                                            <td>Left column with the right border.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-sidebar</code></td>
+                                            <td>Shell</td>
+                                            <td>Sidebar wrapper used in the markup. No rules of its own.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-secondary</code></td>
+                                            <td>Shell</td>
+                                            <td>Content column with rem(20) padding and its own background.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.layout-compact</code></td>
+                                            <td>Shell</td>
+                                            <td>Shrinks the sidebar column and hides the header logo.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a
+                                        class="pagination-link"
+                                        href="/getting-started/theme-playground.html">
+                                        Previous: Theme playground
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/typography.html">Next: Typography</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#container">Container</a>
+                        <a class="doc-toc-link" href="#grid">The row and column system</a>
+                        <a class="doc-toc-link" href="#breakpoints">Breakpoints</a>
+                        <a class="doc-toc-link" href="#offsets">Offsets</a>
+                        <a class="doc-toc-link" href="#push-pull">Push and pull</a>
+                        <a class="doc-toc-link" href="#gutters">Gutters and nesting</a>
+                        <a class="doc-toc-link" href="#application-shell">Application layout</a>
+                        <a class="doc-toc-link" href="#legacy-grid">The legacy float grid</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

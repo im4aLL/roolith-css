@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Avatar - roolith css</title>
+        <meta
+            name="description"
+            content="Avatar sizes, figure shapes, labels, and metadata blocks in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link rel="stylesheet" href="/vendor/highlight-github.min.css" data-hljs-theme="light" />
+        <link rel="stylesheet" href="/vendor/highlight-github-dark.min.css" data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Avatar</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Avatar</h1>
+                            <p class="doc-content-lead">
+                                An avatar pairs a small profile image with a name, a handle, and optional metadata. The
+                                wrapper reserves a fixed square for the image, so rows of avatars line up even when the
+                                labels wrap to two lines.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.avatar</strong>
+                                - defined in
+                                <strong>modules/_avatar.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                <code>.avatar</code>
+                                is a positioned wrapper that reserves
+                                <code>--r-avatar-default-size</code>
+                                of width, currently 2.5rem, plus 15px of padding and a matching
+                                <code>min-height</code>
+                                .
+                                <code>.avatar-fig</code>
+                                is pinned to the top left corner at the same size and crops the image with
+                                <code>object-fit: cover</code>
+                                .
+                            </p>
+                            <p>
+                                The label is a bold 14/18 block, so it can be a link or plain text. Wrap the secondary
+                                line, such as a handle, in a
+                                <code>span</code>
+                                to drop it back to normal weight. Hovering the label shifts it from
+                                <code>--r-avatar-label-color</code>
+                                to
+                                <code>--r-avatar-label-hover-color</code>
+                                .
+                            </p>
+                            <div class="doc-demo">
+                                <div class="avatar">
+                                    <figure class="avatar-fig rounded">
+                                        <img src="https://picsum.photos/40/40?image=500" alt="" />
+                                    </figure>
+                                    <a href="#" class="avatar-label">
+                                        Ariana Cole
+                                        <span>@arianacole</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="avatar-basic">Copy</button>
+                                </div>
+                                <pre><code id="avatar-basic" class="language-html">&lt;div class="avatar"&gt;
+    &lt;figure class="avatar-fig rounded"&gt;
+        &lt;img src="https://picsum.photos/40/40?image=500" alt="" /&gt;
+    &lt;/figure&gt;
+    &lt;a href="#" class="avatar-label"&gt;
+        Ariana Cole
+        &lt;span&gt;@arianacole&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="small">
+                            <h2>Small avatar</h2>
+                            <p>
+                                Add
+                                <code>.avatar-small</code>
+                                next to
+                                <code>.avatar</code>
+                                for comment headers and dense lists. It swaps the
+                                <code>--r-avatar-small-size</code>
+                                token in for the padding, the min-height, and the figure, which is 1.875rem by default.
+                            </p>
+                            <p>
+                                The label moves down 6px in this variant so its baseline lines up with the smaller
+                                image. Only the size changes, so the markup stays the same.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="avatar avatar-small">
+                                    <figure class="avatar-fig rounded">
+                                        <img src="https://picsum.photos/40/40?image=500" alt="" />
+                                    </figure>
+                                    <a href="#" class="avatar-label">
+                                        Ariana Cole
+                                        <span>@arianacole</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="avatar-small">Copy</button>
+                                </div>
+                                <pre><code id="avatar-small" class="language-html">&lt;div class="avatar avatar-small"&gt;
+    &lt;figure class="avatar-fig rounded"&gt;
+        &lt;img src="https://picsum.photos/40/40?image=500" alt="" /&gt;
+    &lt;/figure&gt;
+    &lt;a href="#" class="avatar-label"&gt;
+        Ariana Cole
+        &lt;span&gt;@arianacole&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="figure-shapes">
+                            <h2>Figure shapes</h2>
+                            <p>
+                                The figure carries the shape, not the wrapper.
+                                <code>.rounded</code>
+                                clips the image with
+                                <code>--r-img-radius</code>
+                                and
+                                <code>.rounded-circle</code>
+                                clips it to a circle. Both add
+                                <code>overflow: hidden</code>
+                                , so the crop follows the shape.
+                            </p>
+                            <p>
+                                Leaving both classes off keeps square corners. Mixing shapes in one list looks
+                                inconsistent, so pick one per surface.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="avatar">
+                                    <figure class="avatar-fig rounded">
+                                        <img src="https://picsum.photos/40/40?image=500" alt="" />
+                                    </figure>
+                                    <a href="#" class="avatar-label">
+                                        Ariana Cole
+                                        <span>@arianacole</span>
+                                    </a>
+                                </div>
+                                <div class="avatar">
+                                    <figure class="avatar-fig rounded-circle">
+                                        <img src="https://picsum.photos/40/40?image=500" alt="" />
+                                    </figure>
+                                    <a href="#" class="avatar-label">
+                                        Mira Chen
+                                        <span>@mirachen</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="avatar-figure">Copy</button>
+                                </div>
+                                <pre><code id="avatar-figure" class="language-html">&lt;div class="avatar"&gt;
+    &lt;figure class="avatar-fig rounded"&gt;
+        &lt;img src="https://picsum.photos/40/40?image=500" alt="" /&gt;
+    &lt;/figure&gt;
+    &lt;a href="#" class="avatar-label"&gt;
+        Ariana Cole
+        &lt;span&gt;@arianacole&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="avatar"&gt;
+    &lt;figure class="avatar-fig rounded-circle"&gt;
+        &lt;img src="https://picsum.photos/40/40?image=500" alt="" /&gt;
+    &lt;/figure&gt;
+    &lt;a href="#" class="avatar-label"&gt;
+        Mira Chen
+        &lt;span&gt;@mirachen&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="blocks">
+                            <h2>Metadata blocks</h2>
+                            <p>
+                                <code>.avatar-primary-block</code>
+                                sits directly under the label for inline metadata such as a status and a follower count.
+                                It uses 14/18 type and adds a 5px right margin between its children, so a
+                                <code>span</code>
+                                and two links read as one row.
+                            </p>
+                            <p>
+                                <code>.avatar-secondary-block</code>
+                                holds quieter text underneath, for example a last-seen timestamp. It adds 5px of top
+                                padding and reuses the shared small and dimmed text patterns.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="avatar">
+                                    <figure class="avatar-fig rounded-circle">
+                                        <img src="https://picsum.photos/40/40?image=500" alt="" />
+                                    </figure>
+                                    <a href="#" class="avatar-label">
+                                        Mira Chen
+                                        <span>@mirachen</span>
+                                    </a>
+                                    <div class="avatar-primary-block">
+                                        <span>Uncollected</span>
+                                        <a href="#">22k followers</a>
+                                        <a href="#">1k following</a>
+                                    </div>
+                                    <div class="avatar-secondary-block">Last seen 43 minutes ago</div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="avatar-blocks">Copy</button>
+                                </div>
+                                <pre><code id="avatar-blocks" class="language-html">&lt;div class="avatar"&gt;
+    &lt;figure class="avatar-fig rounded-circle"&gt;
+        &lt;img src="https://picsum.photos/40/40?image=500" alt="" /&gt;
+    &lt;/figure&gt;
+    &lt;a href="#" class="avatar-label"&gt;
+        Mira Chen
+        &lt;span&gt;@mirachen&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;div class="avatar-primary-block"&gt;
+        &lt;span&gt;Uncollected&lt;/span&gt;
+        &lt;a href="#"&gt;22k followers&lt;/a&gt;
+        &lt;a href="#"&gt;1k following&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="avatar-secondary-block"&gt;Last seen 43 minutes ago&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The avatar is a small composite, so the work is in naming the image and the link once,
+                                not twice.
+                            </p>
+                            <ul>
+                                <li>
+                                    Set
+                                    <code>alt=""</code>
+                                    on the image when the
+                                    <code>.avatar-label</code>
+                                    already names the person, as in the demos above. A descriptive
+                                    <code>alt</code>
+                                    is only needed when the picture is the only label.
+                                </li>
+                                <li>
+                                    Keep the person's name as the first text in the label and the handle in the
+                                    <code>span</code>
+                                    so screen readers announce them in that order. The visual weight difference is not
+                                    announced.
+                                </li>
+                                <li>
+                                    <code>.avatar-fig</code>
+                                    is absolutely positioned, so the wrapper's padding and
+                                    <code>min-height</code>
+                                    are what hold the space. Do not override them on a smaller parent or the label will
+                                    overlap the image.
+                                </li>
+                                <li>
+                                    In the metadata block the links are read in sequence. Keep each link self
+                                    descriptive, for example "22k followers" rather than "followers", so it makes sense
+                                    out of context.
+                                </li>
+                                <li>
+                                    The secondary block is ordinary text. Put state such as "Last seen" in the DOM
+                                    rather than in a pseudo-element, and note that dimmed text still needs to meet
+                                    contrast requirements for the surface behind it.
+                                </li>
+                                <li>
+                                    The label is an
+                                    <code>a</code>
+                                    element and picks up the base
+                                    <code>:focus-visible</code>
+                                    outline. Do not remove it, and do not add a second focusable element for the image.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Sizes and label colors come from the
+                                <code>--r-avatar-*</code>
+                                tokens. The figure shape classes are shared with the image module.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.avatar</code></td>
+                                            <td>Wrapper</td>
+                                            <td>
+                                                Reserves the default size plus 15px of left space and sets min-height.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.avatar-small</code></td>
+                                            <td>
+                                                Modifier on
+                                                <code>.avatar</code>
+                                            </td>
+                                            <td>Uses the small token for padding, min-height, and the figure.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.avatar-fig</code></td>
+                                            <td>Figure</td>
+                                            <td>Absolutely positioned top-left box that crops the image to fill it.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.avatar-label</code></td>
+                                            <td>Link or text</td>
+                                            <td>
+                                                Bold 14/18 block with a hover color; an inner span returns to normal
+                                                weight.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.avatar-primary-block</code></td>
+                                            <td>Metadata row</td>
+                                            <td>14/18 type with a 5px right margin between children.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.avatar-secondary-block</code></td>
+                                            <td>Secondary row</td>
+                                            <td>5px top padding, small and dimmed text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.rounded</code></td>
+                                            <td>Figure modifier</td>
+                                            <td>Clips the image with the token radius and hides the overflow.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.rounded-circle</code></td>
+                                            <td>Figure modifier</td>
+                                            <td>Clips the image to a circle and hides the overflow.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/article.html">Previous: Article</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/badge.html">Next: Badge</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#small">Small avatar</a>
+                        <a class="doc-toc-link" href="#figure-shapes">Figure shapes</a>
+                        <a class="doc-toc-link" href="#blocks">Metadata blocks</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

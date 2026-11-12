@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Combo box - roolith css</title>
+        <meta name="description" content="Combo box menus with left and right alignment, nested submenus, group headers, separators, primary and secondary rows, and the JavaScript that opens them in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Combo box</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Combo box</h1>
+                            <p class="doc-content-lead">A combo box is a trigger button with a dropdown list attached to it. The base class provides the positioning context, the menu is a plain list, and a single open class reveals it. Submenus, group headers, and separators are all optional parts of the same list.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.combo-box</strong>
+                                - defined in
+                                <strong>modules/_combo-box.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>Wrap the trigger and the menu in <code>.combo-box</code>, which is an inline-block with relative positioning and left-aligned text. The menu is absolutely positioned under the trigger at <code>top: 100%</code>, so it never pushes the surrounding layout around.</p>
+                            <p>The menu is hidden by default and only becomes visible when the root has <code>.open</code>. That class is the whole CSS contract; roolith css ships no JavaScript, so the trigger wiring in the JavaScript section below is what adds and removes it.</p>
+                            <div class="doc-demo">
+                                <div class="combo-box">
+                                    <button class="button button-primary button-has-icon" type="button" data-doc-combo-box>
+                                        Actions
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                    <ul class="combo-box-menu">
+                                        <li class="combo-box-item"><a class="combo-box-link" href="#">Rename</a></li>
+                                        <li class="combo-box-item"><a class="combo-box-link" href="#">Duplicate</a></li>
+                                        <li class="combo-box-item"><a class="combo-box-link" href="#">Archive</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="combo-box-basic">Copy</button>
+                                </div>
+                                <pre><code id="combo-box-basic" class="language-html">&lt;div class="combo-box"&gt;
+    &lt;button class="button button-primary button-has-icon" type="button" data-doc-combo-box&gt;
+        Actions
+        &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+        &lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;ul class="combo-box-menu"&gt;
+        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Rename&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Duplicate&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Archive&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The menu is 13.75rem wide by default, takes its surface from <code>--r-combo-box-background</code>, and fades in over <code>--r-combo-box-show-animation-duration</code> at 50ms using the shared <code>fadeIn</code> keyframes. Change the width with <code>--r-combo-box-width</code> on the root when labels need more room.</p>
+                            <p>Click the trigger in the demo above: <code>doc-surfaces.js</code> toggles <code>.open</code> on the closest <code>.combo-box</code> and closes any other open combo box, while <code>doc.js</code> handles the outside click and Escape routing that closes this one.</p>
+                        </section>
+
+                        <section class="doc-section" id="alignment">
+                            <h2>Right aligned menu</h2>
+                            <p>Add <code>combo-box-right</code> to the root when the trigger sits at the right edge of its container. The menu then anchors its right edge to the trigger instead of its left edge, and any nested submenu opens to the left so it stays inside the viewport.</p>
+                            <div class="doc-demo">
+                                <div class="full-width text-right">
+                                    <div class="combo-box combo-box-right">
+                                        <button class="button button-outline button-has-icon" type="button" data-doc-combo-box>
+                                            Sort by
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <ul class="combo-box-menu">
+                                            <li class="combo-box-item"><a class="combo-box-link" href="#">Last updated</a></li>
+                                            <li class="combo-box-item"><a class="combo-box-link" href="#">Name</a></li>
+                                            <li class="combo-box-item"><a class="combo-box-link" href="#">Created date</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="combo-box-alignment">Copy</button>
+                                </div>
+                                <pre><code id="combo-box-alignment" class="language-html">&lt;div class="text-right"&gt;
+    &lt;div class="combo-box combo-box-right"&gt;
+        &lt;button class="button button-outline button-has-icon" type="button" data-doc-combo-box&gt;
+            Sort by
+            &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+                &lt;path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+            &lt;/svg&gt;
+        &lt;/button&gt;
+        &lt;ul class="combo-box-menu"&gt;
+            &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Last updated&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Name&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Created date&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="submenu">
+                            <h2>Submenu</h2>
+                            <p>Put a <code>ul.combo-box-submenu</code> inside a <code>li.combo-box-item</code> to nest a second level. The item gains an automatic right-pointing triangle from a generated element, and the submenu opens when the item is hovered, offset to the right of the parent menu.</p>
+                            <p>Submenus nest to any depth because each one is positioned against its own item. With <code>combo-box-right</code>, the submenu flips to the left side of the parent menu instead.</p>
+                            <div class="doc-demo">
+                                <div class="combo-box">
+                                    <button class="button button-primary button-has-icon" type="button" data-doc-combo-box>
+                                        Move to
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                    <ul class="combo-box-menu">
+                                        <li class="combo-box-item"><a class="combo-box-link" href="#">Inbox</a></li>
+                                        <li class="combo-box-item">
+                                            <a class="combo-box-link" href="#">Projects</a>
+                                            <ul class="combo-box-submenu">
+                                                <li class="combo-box-item"><a class="combo-box-link" href="#">Website</a></li>
+                                                <li class="combo-box-item">
+                                                    <a class="combo-box-link" href="#">Mobile app</a>
+                                                    <ul class="combo-box-submenu">
+                                                        <li class="combo-box-item"><a class="combo-box-link" href="#">iOS</a></li>
+                                                        <li class="combo-box-item"><a class="combo-box-link" href="#">Android</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="combo-box-item"><a class="combo-box-link" href="#">Trash</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="combo-box-submenu">Copy</button>
+                                </div>
+                                <pre><code id="combo-box-submenu" class="language-html">&lt;div class="combo-box"&gt;
+    &lt;button class="button button-primary button-has-icon" type="button" data-doc-combo-box&gt;
+        Move to
+        &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+        &lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;ul class="combo-box-menu"&gt;
+        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Inbox&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;
+            &lt;a class="combo-box-link" href="#"&gt;Projects&lt;/a&gt;
+            &lt;ul class="combo-box-submenu"&gt;
+                &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="combo-box-item"&gt;
+                    &lt;a class="combo-box-link" href="#"&gt;Mobile app&lt;/a&gt;
+                    &lt;ul class="combo-box-submenu"&gt;
+                        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;iOS&lt;/a&gt;&lt;/li&gt;
+                        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Android&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Trash&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The submenu is only revealed by <code>:hover</code> on the item. There is no focus or click trigger in the CSS, so a keyboard user cannot reach the second level without extra script. See the accessibility section before shipping a submenu to a keyboard audience.</p>
+                        </section>
+
+                        <section class="doc-section" id="headers-separators">
+                            <h2>Group headers and separators</h2>
+                            <p>A group header is a <code>li.combo-box-item.combo-box-item-header</code>. It uses the same padding as a link but renders 12px uppercase text in <code>--r-combo-box-item-header-color</code>, so it labels a block of items without being clickable.</p>
+                            <p>A separator is an empty <code>li.combo-box-item.combo-box-item-sep</code>. It draws a 1px rule in <code>--r-combo-box-item-sep</code> with vertical margins equal to the item padding.</p>
+                            <div class="doc-demo">
+                                <div class="combo-box">
+                                    <button class="button button-outline button-has-icon" type="button" data-doc-combo-box>
+                                        View
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                    <ul class="combo-box-menu">
+                                        <li class="combo-box-item combo-box-item-header">Layout</li>
+                                        <li class="combo-box-item"><a class="combo-box-link" href="#">List</a></li>
+                                        <li class="combo-box-item"><a class="combo-box-link" href="#">Board</a></li>
+                                        <li class="combo-box-item combo-box-item-sep"></li>
+                                        <li class="combo-box-item combo-box-item-header">Density</li>
+                                        <li class="combo-box-item"><a class="combo-box-link" href="#">Comfortable</a></li>
+                                        <li class="combo-box-item"><a class="combo-box-link" href="#">Compact</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="combo-box-headers-separators">Copy</button>
+                                </div>
+                                <pre><code id="combo-box-headers-separators" class="language-html">&lt;div class="combo-box"&gt;
+    &lt;button class="button button-outline button-has-icon" type="button" data-doc-combo-box&gt;
+        View
+        &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+        &lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;ul class="combo-box-menu"&gt;
+        &lt;li class="combo-box-item combo-box-item-header"&gt;Layout&lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;List&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Board&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="combo-box-item combo-box-item-sep"&gt;&lt;/li&gt;
+        &lt;li class="combo-box-item combo-box-item-header"&gt;Density&lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Comfortable&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;&lt;a class="combo-box-link" href="#"&gt;Compact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Both classes are modifiers on <code>.combo-box-item</code>, so keep the base item class in the markup. A header is a label, not an option, and a separator is decoration; neither should be focusable or carry a link.</p>
+                        </section>
+
+                        <section class="doc-section" id="text-rows">
+                            <h2>Primary and secondary rows</h2>
+                            <p>Every link is a flex row. <code>combo-box-primary</code> groups the label and an optional inline icon with a 5px gap, and <code>combo-box-secondary</code> is the trailing meta slot at 12px in <code>--r-combo-box-secondary-color</code>. The row keeps the two apart with <code>justify-content: space-between</code> and a 10px minimum gap.</p>
+                            <p>The usual secondary value is a keyboard shortcut, but a count or a status word works too. Keep it short: the menu width is fixed, and a long secondary string competes with the primary label for room in the same row.</p>
+                            <div class="doc-demo">
+                                <div class="combo-box">
+                                    <button class="button button-primary button-has-icon" type="button" data-doc-combo-box>
+                                        Edit
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                    <ul class="combo-box-menu">
+                                        <li class="combo-box-item">
+                                            <a class="combo-box-link" href="#">
+                                                <span class="combo-box-primary">Rename</span>
+                                                <span class="combo-box-secondary">Ctrl R</span>
+                                            </a>
+                                        </li>
+                                        <li class="combo-box-item">
+                                            <a class="combo-box-link" href="#">
+                                                <span class="combo-box-primary">Duplicate</span>
+                                                <span class="combo-box-secondary">Ctrl D</span>
+                                            </a>
+                                        </li>
+                                        <li class="combo-box-item">
+                                            <a class="combo-box-link" href="#">
+                                                <span class="combo-box-primary">Export as CSV</span>
+                                                <span class="combo-box-secondary">24 rows</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="combo-box-text-rows">Copy</button>
+                                </div>
+                                <pre><code id="combo-box-text-rows" class="language-html">&lt;div class="combo-box"&gt;
+    &lt;button class="button button-primary button-has-icon" type="button" data-doc-combo-box&gt;
+        Edit
+        &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /&gt;
+        &lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;ul class="combo-box-menu"&gt;
+        &lt;li class="combo-box-item"&gt;
+            &lt;a class="combo-box-link" href="#"&gt;
+                &lt;span class="combo-box-primary"&gt;Rename&lt;/span&gt;
+                &lt;span class="combo-box-secondary"&gt;Ctrl R&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;
+            &lt;a class="combo-box-link" href="#"&gt;
+                &lt;span class="combo-box-primary"&gt;Duplicate&lt;/span&gt;
+                &lt;span class="combo-box-secondary"&gt;Ctrl D&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="combo-box-item"&gt;
+            &lt;a class="combo-box-link" href="#"&gt;
+                &lt;span class="combo-box-primary"&gt;Export as CSV&lt;/span&gt;
+                &lt;span class="combo-box-secondary"&gt;24 rows&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>Links set their own 14px label size, 1.3 line height, item padding, and the <code>--r-combo-box-item-color</code> token, then transition background and color. Hover paints <code>--r-combo-box-item-hover-background-color</code> and the theme decides <code>--r-combo-box-item-hover-color</code>: muted text in light mode, strong text in dark mode.</p>
+                        </section>
+
+                        <section class="doc-section" id="javascript">
+                            <h2>JavaScript</h2>
+                            <p>The component needs script to open and close. roolith css ships no JavaScript; this is a complete minimal behavior for the demos on this site, kept here so you can copy it into your own page.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">JS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="combo-box-javascript">Copy</button>
+                                </div>
+                                <pre><code id="combo-box-javascript" class="language-js">document.querySelectorAll('[data-doc-combo-box]').forEach((trigger) =&gt; {
+    trigger.addEventListener('click', () =&gt; {
+        const combo = trigger.closest('.combo-box');
+        const willOpen = !combo.classList.contains('open');
+
+        document.querySelectorAll('.combo-box.open').forEach((open) =&gt; open.classList.remove('open'));
+        combo.classList.toggle('open', willOpen);
+        trigger.setAttribute('aria-expanded', String(willOpen));
+    });
+});
+
+document.addEventListener('click', (event) =&gt; {
+    if (event.target.closest('.combo-box')) {
+        return;
+    }
+
+    document.querySelectorAll('.combo-box.open').forEach((combo) =&gt; {
+        combo.classList.remove('open');
+        combo.querySelector('[data-doc-combo-box]').setAttribute('aria-expanded', 'false');
+    });
+});
+
+document.addEventListener('keydown', (event) =&gt; {
+    if (event.key !== 'Escape') {
+        return;
+    }
+
+    document.querySelectorAll('.combo-box.open').forEach((combo) =&gt; {
+        combo.classList.remove('open');
+        combo.querySelector('[data-doc-combo-box]').setAttribute('aria-expanded', 'false');
+    });
+});</code></pre>
+                            </div>
+                            <p>The trigger uses a data hook rather than an id, so one script handles every combo box on the page. The handler reads the closest <code>.combo-box</code>, records whether it was open before closing the others, and then restores that state, which is what lets the same button both open and close its own menu.</p>
+                            <p>The demos on this page rely on <code>doc-surfaces.js</code> to toggle <code>.open</code> and close other menus, and on <code>doc.js</code> for outside-click and Escape routing. Neither touches <code>aria-expanded</code>, so the snippet above adds that bookkeeping and keeps the attribute truthful.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>Keep the trigger a real <code>&lt;button type="button"&gt;</code> so focus, Enter, and Space work without extra code. The menu itself is a list of links, which is the simplest structure to announce.</p>
+                            <ul>
+                                <li>Add <code>aria-haspopup="true"</code> and <code>aria-expanded="false"</code> to the trigger, and flip <code>aria-expanded</code> whenever <code>.open</code> changes, as the JavaScript snippet does. The demo triggers omit the attribute because <code>doc-surfaces.js</code> does not update it.</li>
+                                <li>The CSS only opens submenus on <code>:hover</code>, so keyboard focus never reveals them. Add a focus or click path that toggles the submenu, and if the parent becomes a real button, give it <code>aria-expanded</code> too.</li>
+                                <li>Only use <code>role="menu"</code> and <code>role="menuitem"</code> if you implement the full menu keyboard model: arrow keys, Home and End, Escape, and focus movement into the menu. For a list of links, plain list semantics are more honest and need no extra keys.</li>
+                                <li>Close on Escape and return focus to the trigger, and close on an outside click without stealing focus.</li>
+                                <li>Keep the focus ring visible on both the trigger and the links. Do not remove it, and do not rely on the hover fill as the only state cue.</li>
+                                <li>Mark the separator as decoration with <code>role="separator"</code> or <code>aria-hidden="true"</code>, and keep group headers as plain text that is not focusable.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>The root class holds the position, the menu class holds the panel, and the item classes hold the rows and their optional parts.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.combo-box</code></td>
+                                            <td>Base</td>
+                                            <td>Inline-block positioning context with left-aligned text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.open</code></td>
+                                            <td>State</td>
+                                            <td>On the root. Reveals <code>.combo-box-menu</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.combo-box-right</code></td>
+                                            <td>Alignment</td>
+                                            <td>Anchors the menu to the right edge and flips submenus to the left.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.combo-box-menu</code></td>
+                                            <td>Panel</td>
+                                            <td>Absolutely positioned list at 100% from the top, 13.75rem wide, token surface and shadow, 50ms fade in.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.combo-box-item</code></td>
+                                            <td>Row</td>
+                                            <td>Block row with a relative position. Hovering it reveals a nested submenu.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.combo-box-link</code></td>
+                                            <td>Row</td>
+                                            <td>Flex row with space-between, 14px text, item padding, and hover fill.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.combo-box-primary</code></td>
+                                            <td>Content</td>
+                                            <td>Flex group with a 5px gap for the label and an optional icon.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.combo-box-secondary</code></td>
+                                            <td>Content</td>
+                                            <td>12px trailing meta or shortcut in the secondary color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.combo-box-submenu</code></td>
+                                            <td>Submenu</td>
+                                            <td>Nested list inside an item, shown on hover and offset beside the parent menu.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.combo-box-item-sep</code></td>
+                                            <td>Divider</td>
+                                            <td>On an empty item. Draws a 1px rule with vertical margins.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.combo-box-item-header</code></td>
+                                            <td>Label</td>
+                                            <td>On an item. 12px uppercase group label in the header color, with item padding.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/collage.html">Previous: Collage</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/comment.html">Next: Comment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#alignment">Right aligned menu</a>
+                        <a class="doc-toc-link" href="#submenu">Submenu</a>
+                        <a class="doc-toc-link" href="#headers-separators">Group headers and separators</a>
+                        <a class="doc-toc-link" href="#text-rows">Primary and secondary rows</a>
+                        <a class="doc-toc-link" href="#javascript">JavaScript</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

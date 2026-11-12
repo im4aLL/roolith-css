@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block stat - roolith css</title>
+        <meta name="description" content="The stat block lays out a row of headline metrics with a label, a value, and a change indicator in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block stat</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block stat</h1>
+                            <p class="doc-content-lead">
+                                The stat block puts a set of headline metrics next to each other, each with a label, a
+                                number, and an optional change marker. It is a layout shell: the item surface stays
+                                transparent until it is hovered or marked active, and the type sizes are owned by the
+                                block rather than borrowed from a card.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-stat</strong>
+                                - defined in
+                                <strong>blocks/_block-stat.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                The wrapper is a flex column that becomes a row at 640px. Each
+                                <code>.block-stat-item</code>
+                                is a two column grid: the label spans both columns, the value takes the left column, and
+                                the indicator takes the right column on the same row as the value.
+                            </p>
+                            <p>
+                                The slots are independent, so an item without a comparison has no indicator element at
+                                all. The value keeps the left half of the item and the right half stays empty.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-stat">
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Monthly revenue</div>
+                                            <div class="block-stat-value">$48,290</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-upward">12.4%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Active users</div>
+                                            <div class="block-stat-value">12,480</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-upward">4.2%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">P95 latency</div>
+                                            <div class="block-stat-value">184 ms</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-downward">9 ms</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Open tickets</div>
+                                            <div class="block-stat-value">37</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-stat-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-stat-basic" class="language-html">&lt;div class="block-stat"&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Monthly revenue&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;$48,290&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-upward"&gt;12.4%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Active users&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;12,480&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-upward"&gt;4.2%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;P95 latency&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;184 ms&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-downward"&gt;9 ms&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Open tickets&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;37&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                Padding and gaps both come from half of
+                                <code>--r-block-stat-item-gap</code>, which defaults to
+                                <code>--r-block-padding</code> at 1.25rem, so an item pads 10px on every side and the
+                                items sit 10px apart. The item radius is
+                                <code>--r-block-stat-item-border-radius</code>, an 8px value by default.
+                            </p>
+                            <p>
+                                The value is 22px at
+                                <code>--r-global-font-bold-weight</code>
+                                with -0.02em tracking, and the label is 14px in the inherited text color. The module
+                                does not right align the indicator, so a change marker starts at the second column,
+                                near the middle of the item, instead of sitting at the right edge.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="indicators">
+                            <h2>Indicators</h2>
+                            <p>
+                                <code>.block-stat-indicator</code>
+                                only aligns its slot to the bottom of the value row; the marker itself comes from the
+                                <a href="/components/utilities.html#indicators">indicator utilities</a>, which paint a
+                                masked glyph and a color through <code>--r-indicator-upward-color</code>,
+                                <code>--r-indicator-downward-color</code>, <code>--r-indicator-flat-color</code>, and
+                                <code>--r-indicator-online-color</code>.
+                            </p>
+                            <p>
+                                Anything after the value lands in the second column, but only the
+                                <code>.block-stat-indicator</code> wrapper aligns that content to the bottom of the
+                                value row. Keep the wrapper even when the marker is a status dot or a short comparison
+                                word rather than a percentage.
+                            </p>
+                            <p>
+                                Direction is not sentiment. <code>is-upward</code> uses the success color and
+                                <code>is-downward</code> the danger color whatever the metric means, so a falling
+                                refund rate still reads as red. Say which way is good in the label or in the text next
+                                to the marker.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-stat">
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Sessions</div>
+                                            <div class="block-stat-value">214,900</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-upward">6.1%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Bounce rate</div>
+                                            <div class="block-stat-value">38%</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-downward">2.4 pts</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Trial starts</div>
+                                            <div class="block-stat-value">1,842</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-flat">0%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">API uptime</div>
+                                            <div class="block-stat-value">99.98%</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-online">All regions</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-stat-indicators">Copy</button>
+                                </div>
+                                <pre><code id="block-stat-indicators" class="language-html">&lt;div class="block-stat"&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Sessions&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;214,900&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-upward"&gt;6.1%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Bounce rate&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;38%&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-downward"&gt;2.4 pts&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Trial starts&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;1,842&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-flat"&gt;0%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;API uptime&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;99.98%&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-online"&gt;All regions&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="states">
+                            <h2>Active and hover</h2>
+                            <p>
+                                Hovering an item and adding <code>.active</code> produce the same fill, taken from
+                                <code>--r-block-stat-item-hover-background-color</code>, plus a pointer cursor. The
+                                background transitions over 150ms, so the fill arrives with the pointer instead of
+                                snapping on.
+                            </p>
+                            <p>
+                                <code>.active</code> is a plain class with no script behind it. Set it from your router
+                                or from the selection logic that already knows which metric is on screen, and remove it
+                                when the selection moves.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-stat">
+                                        <div class="block-stat-item active">
+                                            <div class="block-stat-label">Sessions</div>
+                                            <div class="block-stat-value">214,900</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-upward">6.1%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Signup rate</div>
+                                            <div class="block-stat-value">4.2%</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-flat">0%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Churn</div>
+                                            <div class="block-stat-value">1.8%</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-downward">0.4 pts</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-stat-states">Copy</button>
+                                </div>
+                                <pre><code id="block-stat-states" class="language-html">&lt;div class="block-stat"&gt;
+    &lt;div class="block-stat-item active"&gt;
+        &lt;div class="block-stat-label"&gt;Sessions&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;214,900&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-upward"&gt;6.1%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Signup rate&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;4.2%&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-flat"&gt;0%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Churn&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;1.8%&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-downward"&gt;0.4 pts&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The block has no focus style and no keyboard handling, because the item is a plain
+                                <code>&lt;div&gt;</code>. When a metric opens a detail view, put the link or the button
+                                inside the item so the focus ring and the key handling come from a real control.
+                            </p>
+                            <p>
+                                The fill defaults to <code>--r-surface-muted</code>, which resolves per theme, so the
+                                hint is visible in dark mode without an override. The item surface itself is
+                                <code>--r-block-stat-item-background-color</code> and starts transparent.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="responsive">
+                            <h2>Responsive row</h2>
+                            <p>
+                                Below 640px the wrapper stays a column, so each item reads as its own stacked block.
+                                From 640px up the same wrapper becomes a row. The docs demo follows the window width,
+                                so narrow the window to watch the switch happen.
+                            </p>
+                            <p>
+                                Items do not grow: each one takes the width of its content. Five short metrics fit on
+                                one line at desktop widths, while a long label or value widens its item and can push
+                                the row past the container. Keep labels to a couple of words and values compact when a
+                                row carries more than four items.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-stat">
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Unique visitors</div>
+                                            <div class="block-stat-value">100k</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-downward">1%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Page views</div>
+                                            <div class="block-stat-value">1M</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-upward">5%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Bounce rate</div>
+                                            <div class="block-stat-value">40%</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-flat">0%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Total visits</div>
+                                            <div class="block-stat-value">400k</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-upward">4%</span>
+                                            </div>
+                                        </div>
+                                        <div class="block-stat-item">
+                                            <div class="block-stat-label">Visit duration</div>
+                                            <div class="block-stat-value">1m 30s</div>
+                                            <div class="block-stat-indicator">
+                                                <span class="indicator is-downward">2%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-stat-responsive">Copy</button>
+                                </div>
+                                <pre><code id="block-stat-responsive" class="language-html">&lt;div class="block-stat"&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Unique visitors&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;100k&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-downward"&gt;1%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Page views&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;1M&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-upward"&gt;5%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Bounce rate&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;40%&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-flat"&gt;0%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Total visits&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;400k&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-upward"&gt;4%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-stat-item"&gt;
+        &lt;div class="block-stat-label"&gt;Visit duration&lt;/div&gt;
+        &lt;div class="block-stat-value"&gt;1m 30s&lt;/div&gt;
+        &lt;div class="block-stat-indicator"&gt;
+            &lt;span class="indicator is-downward"&gt;2%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                The block stops at the layout. It draws no outer padding, so put it inside a container
+                                that owns the spacing, such as a <code>.box</code> body, a
+                                <a href="/components/card.html">card</a>, or the body of an analytics panel. For a
+                                single centered number in a card, use the
+                                <a href="/components/stat.html">stat component</a> instead: it stacks a header, a
+                                value, and a footer, while this block lays out several items in one row.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The block is a set of <code>div</code> elements, so a screen reader reads the label,
+                                the value, and the marker as one run of text per item. Nothing about the layout
+                                conveys a relationship that the reading order does not already give, which is fine for
+                                a strip of summary numbers.
+                            </p>
+                            <ul>
+                                <li>Write the value with its unit and its separators, as in <code>$48,290</code> or <code>184 ms</code>. Shorthand such as <code>100k</code> is read as letters and loses the magnitude.</li>
+                                <li>The arrow in an indicator is a masked background, so add the direction in words, for example <code>12.4% up</code>, or keep a comparison phrase such as "vs last month" next to it.</li>
+                                <li>When the items form a set that a reader should hear as a group, use a list: <code>&lt;ul class="block-stat"&gt;</code> with <code>&lt;li class="block-stat-item"&gt;</code>. The reset already removes the markers and the indent.</li>
+                                <li>If an item is clickable, the item itself is not focusable. Put an <code>&lt;a&gt;</code> or a <code>&lt;button&gt;</code> inside it so the control appears in the tab order.</li>
+                                <li><code>.active</code> only changes the background. Give the selected metric a second cue, such as a heading change or <code>aria-current</code> on the link that points at it.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Four classes build the block and one token family tunes it. The tokens are
+                                <code>--r-block-stat-item-gap</code>, <code>--r-block-stat-item-background-color</code>,
+                                <code>--r-block-stat-item-hover-background-color</code>, and
+                                <code>--r-block-stat-item-border-radius</code>. The gap token is a single length that
+                                the module halves for the outer gap, the item padding, and the item grid gap, so
+                                raising it spaces all three together.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-stat</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Flex column with a 10px default gap, switching to a row at 640px up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-item</code></td>
+                                            <td>Item</td>
+                                            <td>Two column grid with a 10px gap, 10px padding, an 8px radius, and a transparent background.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-item.active</code></td>
+                                            <td>Item state</td>
+                                            <td>Same fill as hover, plus a pointer cursor. The class carries no script and no focus style.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-label</code></td>
+                                            <td>Item slot</td>
+                                            <td>14px label that spans both grid columns.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-value</code></td>
+                                            <td>Item slot</td>
+                                            <td>22px value at <code>--r-global-font-bold-weight</code> with -0.02em letter spacing.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-stat-indicator</code></td>
+                                            <td>Item slot</td>
+                                            <td>Right column of the value row, aligned to the bottom. Place an <code>.indicator</code> inside it.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.indicator</code></td>
+                                            <td>Composition</td>
+                                            <td>Inline change marker from the utilities module. Modifiers: <code>is-upward</code>, <code>is-downward</code>, <code>is-flat</code>, <code>is-online</code>.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-repeater.html">Previous: Block repeater</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-stat-table.html">Next: Stat table</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#indicators">Indicators</a>
+                        <a class="doc-toc-link" href="#states">Active and hover</a>
+                        <a class="doc-toc-link" href="#responsive">Responsive row</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

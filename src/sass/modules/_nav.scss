@@ -3,21 +3,22 @@
 @use '../mixins';
 
 @mixin nav() {
-
     .nav {
-        @include mixins.clearfix();
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: rem(5);
         margin-left: calc(var(--r-nav-spacing) * -1);
-        float: left;
     }
 
     .nav-right {
-        float: right;
+        justify-content: flex-end;
         margin-left: 0;
         margin-right: calc(var(--r-nav-spacing) * -1);
     }
 
     .nav-item {
-        float: left;
+        flex: 0 0 auto;
     }
 
     .nav-link {
@@ -43,28 +44,14 @@
     }
 
     .nav-center {
-        text-align: center;
-        float: none;
-
-        .nav-item {
-            float: none;
-            display: inline-block;
-        }
+        justify-content: center;
+        margin-left: 0;
     }
 
     .nav-vertical {
-        float: none;
+        flex-direction: column;
+        align-items: stretch;
         margin: 0;
-
-        .nav-item {
-            float: none;
-            display: block;
-            padding: 0 0 rem(5);
-
-            &:last-child {
-                padding: 0;
-            }
-        }
     }
 
     .nav-primary {

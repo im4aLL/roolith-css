@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Typography - roolith css</title>
+        <meta
+            name="description"
+            content="Headings, body copy, links, lists, code, and quotes in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/getting-started/introduction.html">Getting started</a></li>
+                                <li class="breadcrumb-item active">Typography</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Typography</h1>
+                            <p class="doc-content-lead">
+                                Element defaults cover the common cases, and a small set of utility classes covers the
+                                rest. Headings step up at 1024px, body copy sits on a 14px to 22px rhythm, and list,
+                                alignment, and emphasis helpers are one class each.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>Multiple elements and classes</strong>
+                                - defined in
+                                <strong>_typography.scss</strong>
+                            </div>
+                        </header>
+
+                        <div class="message message-info">
+                            <code>_reset.scss</code>
+                            zeroes the margins of body, headings, paragraphs, lists, and blockquotes with
+                            <code>:where()</code>. Spacing is then yours to add, and any consumer rule wins over the
+                            reset.
+                        </div>
+
+                        <section class="doc-section" id="base-text">
+                            <h2>Base text</h2>
+                            <p>
+                                <code>html</code>
+                                takes its font size from
+                                <code>--r-global-base-font-size</code>,
+                                which is
+                                <code>$base-font-size: 100%</code>
+                                by default. That keeps the browser default instead of forcing a pixel size, so
+                                <code>rem</code>
+                                values follow the reader's zoom.
+                            </p>
+                            <p>
+                                Body copy is set by the
+                                <code>p</code>
+                                element at
+                                <code>rem(14)</code>
+                                with a
+                                <code>rem(22)</code>
+                                line height.
+                                <code>strong</code>
+                                uses the bold weight token,
+                                <code>em</code>
+                                is italic,
+                                <code>u</code>
+                                underlines,
+                                <code>abbr</code>
+                                gets a dotted underline and a help cursor.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <p>
+                                        Body copy sits at 14px with a 22px line height.
+                                        <strong>Strong</strong>
+                                        uses the bold weight token,
+                                        <em>emphasis</em>
+                                        is italic, and
+                                        <u>underline</u>
+                                        adds a rule.
+                                    </p>
+                                    <p>
+                                        Abbreviations such as
+                                        <abbr title="Cascading Style Sheets">CSS</abbr>
+                                        get a dotted underline and a help cursor.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="typography-base-text">Copy</button>
+                                </div>
+                                <pre><code id="typography-base-text" class="language-html">&lt;p&gt;
+    Body copy sits at 14px with a 22px line height.
+    &lt;strong&gt;Strong&lt;/strong&gt; uses the bold weight token,
+    &lt;em&gt;emphasis&lt;/em&gt; is italic, and &lt;u&gt;underline&lt;/u&gt; adds a rule.
+&lt;/p&gt;
+
+&lt;p&gt;
+    Abbreviations such as &lt;abbr title="Cascading Style Sheets"&gt;CSS&lt;/abbr&gt;
+    get a dotted underline and a help cursor.
+&lt;/p&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="headings">
+                            <h2 id="headings-heading">Headings</h2>
+                            <p>
+                                Every heading level steps up once at 1024px, which keeps the small screen scale compact
+                                without a fluid clamp. Tracking follows the rendered size rather than the level: it
+                                tightens to
+                                <code>-0.03em</code>
+                                from 24px and to
+                                <code>-0.04em</code>
+                                from 40px.
+                            </p>
+                            <p>
+                                The
+                                <code>.h1</code>
+                                through
+                                <code>.h6</code>
+                                classes apply the same size and weight to any element, which is how you keep a visual
+                                hierarchy that does not match the document outline. The demo below uses <code>div</code>
+                                elements with those classes, so this page keeps its single <code>h1</code>.
+                            </p>
+                            <div class="doc-demo doc-demo-stack">
+                                <div class="h1">Heading one</div>
+                                <div class="h2">Heading two</div>
+                                <div class="h3">Heading three</div>
+                                <div class="h4">Heading four</div>
+                                <div class="h5">Heading five</div>
+                                <div class="h6">Heading six</div>
+                                <p class="h4">A paragraph with .h4</p>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="typography-headings">Copy</button>
+                                </div>
+                                <pre><code id="typography-headings" class="language-html">&lt;div class="h1"&gt;Heading one&lt;/div&gt;
+&lt;div class="h2"&gt;Heading two&lt;/div&gt;
+&lt;div class="h3"&gt;Heading three&lt;/div&gt;
+&lt;div class="h4"&gt;Heading four&lt;/div&gt;
+&lt;div class="h5"&gt;Heading five&lt;/div&gt;
+&lt;div class="h6"&gt;Heading six&lt;/div&gt;
+
+&lt;p class="h4"&gt;A paragraph with .h4&lt;/p&gt;</code></pre>
+                            </div>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="headings-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Step</th>
+                                            <th scope="col">Size</th>
+                                            <th scope="col">Line height</th>
+                                            <th scope="col">From 1024px</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.h1</code></td>
+                                            <td>36px / 2.25rem</td>
+                                            <td>42px</td>
+                                            <td>48px / 56px</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.h2</code></td>
+                                            <td>30px / 1.875rem</td>
+                                            <td>36px</td>
+                                            <td>40px / 46px</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.h3</code></td>
+                                            <td>26px / 1.625rem</td>
+                                            <td>34px</td>
+                                            <td>32px / 40px</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.h4</code></td>
+                                            <td>22px / 1.375rem</td>
+                                            <td>28px</td>
+                                            <td>28px / 34px</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.h5</code></td>
+                                            <td>18px / 1.125rem</td>
+                                            <td>22px</td>
+                                            <td>22px / 28px</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.h6</code></td>
+                                            <td>16px / 1rem</td>
+                                            <td>20px</td>
+                                            <td>18px / 24px</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="links">
+                            <h2>Links</h2>
+                            <p>
+                                A link takes
+                                <code>var(--r-link)</code>
+                                and moves to
+                                <code>var(--r-accent)</code>
+                                on hover. Underlines are applied inside prose containers -
+                                <code>p</code>,
+                                <code>blockquote</code>,
+                                <code>dl</code>,
+                                <code>.list</code>,
+                                <code>.list-numbered</code>,
+                                <code>.comment-body</code>,
+                                <code>label</code>, and
+                                <code>.message</code>
+                                - so a link in body copy is not signaled by color alone.
+                            </p>
+                            <p>
+                                Because the rule lists prose containers rather than components, a link inside
+                                <code>.nav</code>,
+                                <code>.tag</code>, or
+                                <code>.avatar</code>
+                                keeps its own styling; only an anchor that declares
+                                <code>text-decoration</code>
+                                itself, such as
+                                <code>.button</code>, opts out.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <p>
+                                        A link inside body copy, like <a href="#">the layout guide</a>, carries an
+                                        underline.
+                                    </p>
+                                    <a href="#">A standalone link is not underlined; hover changes only its color.</a>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="typography-links">Copy</button>
+                                </div>
+                                <pre><code id="typography-links" class="language-html">&lt;p&gt;
+    A link inside body copy, like &lt;a href="#"&gt;the layout guide&lt;/a&gt;,
+    carries an underline.
+&lt;/p&gt;
+
+&lt;a href="#"&gt;A standalone link is not underlined; hover changes only its color.&lt;/a&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="lists">
+                            <h2>Lists</h2>
+                            <p>
+                                The reset removes list markers and padding.
+                                <code>.list</code>
+                                restores disc markers and
+                                <code>.list-numbered</code>
+                                restores decimals on the same base: 14px copy, 22px line height, 25px of vertical
+                                padding, a 15px left margin, and a 10px gap under each item. Nested lists indent by
+                                30px.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <ul class="list">
+                                        <li>Container, row, and column classes</li>
+                                        <li>
+                                            Grid utilities
+                                            <ul>
+                                                <li>Spans</li>
+                                                <li>Offsets</li>
+                                            </ul>
+                                        </li>
+                                        <li>Application shell</li>
+                                    </ul>
+                                    <ol class="list-numbered">
+                                        <li>Add the stylesheet</li>
+                                        <li>Wrap the page in a container</li>
+                                        <li>Compose a row of columns</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="typography-lists">Copy</button>
+                                </div>
+                                <pre><code id="typography-lists" class="language-html">&lt;ul class="list"&gt;
+    &lt;li&gt;Container, row, and column classes&lt;/li&gt;
+    &lt;li&gt;
+        Grid utilities
+        &lt;ul&gt;
+            &lt;li&gt;Spans&lt;/li&gt;
+            &lt;li&gt;Offsets&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Application shell&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol class="list-numbered"&gt;
+    &lt;li&gt;Add the stylesheet&lt;/li&gt;
+    &lt;li&gt;Wrap the page in a container&lt;/li&gt;
+    &lt;li&gt;Compose a row of columns&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                            </div>
+                            <p>
+                                Definition lists are styled too: <code>dt</code> takes the bold weight with 5px below it,
+                                and <code>dd</code> keeps 15px between entries. Add
+                                <code>.indented-list</code>
+                                to the
+                                <code>dl</code>
+                                to indent every description by 30px, which reads better for long attribute lists.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <dl class="indented-list">
+                                        <dt>Grid</dt>
+                                        <dd>Twelve columns, css-grid by default.</dd>
+                                        <dt>Gutter</dt>
+                                        <dd>Half a gutter on the row, half on each item.</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="typography-definition-list">Copy</button>
+                                </div>
+                                <pre><code id="typography-definition-list" class="language-html">&lt;dl class="indented-list"&gt;
+    &lt;dt&gt;Grid&lt;/dt&gt;
+    &lt;dd&gt;Twelve columns, css-grid by default.&lt;/dd&gt;
+    &lt;dt&gt;Gutter&lt;/dt&gt;
+    &lt;dd&gt;Half a gutter on the row, half on each item.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="small-and-dimmed">
+                            <h2>Small and dimmed text</h2>
+                            <p>
+                                <code>small</code>
+                                and
+                                <code>.small</code>
+                                drop to 80% size with a 1.3em line height.
+                                <code>.dimmed</code>
+                                lowers opacity to 0.6 instead, which keeps the font size and only reduces emphasis.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <p>Regular body copy for comparison.</p>
+                                    <p class="small">Small copy for metadata and helper text.</p>
+                                    <p class="dimmed">Dimmed copy for secondary information.</p>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="typography-small-dimmed">Copy</button>
+                                </div>
+                                <pre><code id="typography-small-dimmed" class="language-html">&lt;p&gt;Regular body copy for comparison.&lt;/p&gt;
+&lt;p class="small"&gt;Small copy for metadata and helper text.&lt;/p&gt;
+&lt;p class="dimmed"&gt;Dimmed copy for secondary information.&lt;/p&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="alignment">
+                            <h2>Alignment and floats</h2>
+                            <p>
+                                Three text classes and two float classes cover the common cases.
+                                <code>.full-width</code>
+                                sets
+                                <code>width: 100%</code>
+                                for a block that should ignore its content width. A floated element needs a clearfix
+                                parent, and roolith css ships
+                                <code>.clearfix</code>
+                                for that.
+                            </p>
+                            <div class="doc-demo doc-demo-stack">
+                                <div class="box box-small full-width text-left">
+                                    <div class="box-body">Aligned left</div>
+                                </div>
+                                <div class="box box-small full-width text-center">
+                                    <div class="box-body">Aligned center</div>
+                                </div>
+                                <div class="box box-small full-width text-right">
+                                    <div class="box-body">Aligned right</div>
+                                </div>
+                                <div class="clearfix full-width">
+                                    <div class="box box-small float-left">
+                                        <div class="box-body">Floated left</div>
+                                    </div>
+                                    <div class="box box-small float-right">
+                                        <div class="box-body">Floated right</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="typography-alignment">Copy</button>
+                                </div>
+                                <pre><code id="typography-alignment" class="language-html">&lt;div class="full-width text-left"&gt;Aligned left&lt;/div&gt;
+&lt;div class="full-width text-center"&gt;Aligned center&lt;/div&gt;
+&lt;div class="full-width text-right"&gt;Aligned right&lt;/div&gt;
+
+&lt;div class="clearfix full-width"&gt;
+    &lt;div class="float-left"&gt;Floated left&lt;/div&gt;
+    &lt;div class="float-right"&gt;Floated right&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="code">
+                            <h2>Code and pre</h2>
+                            <p>
+                                <code>code</code>
+                                is an inline chip: monospace, 90% size, a muted surface, and a hairline border. The
+                                framework keeps inline code on one line with
+                                <code>white-space: nowrap</code>, and this docs site lets inline code wrap so a long
+                                token does not widen the page. Only block code inside
+                                <code>pre</code>
+                                renders the thin themed scrollbar; an inline copy wraps instead of scrolling.
+                            </p>
+                            <p>
+                                Inside
+                                <code>pre</code>
+                                the same element switches to a block with
+                                <code>rem(15)</code>
+                                of padding, a 14px size, the code background token, and 20px below it.
+                                <code>kbd</code>
+                                reuses the inline style with a solid muted surface to read as a key cap.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <p>
+                                        Use <code>grid-column-end</code> when a span needs to be set in CSS.
+                                    </p>
+                                    <pre><code>@use 'roolith-css/src/sass/settings' with (
+    $grid-gutter-size: 1.5rem
+);
+@use 'roolith-css/src/sass/roolith';</code></pre>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="typography-code">Copy</button>
+                                </div>
+                                <pre><code id="typography-code" class="language-html">&lt;p&gt;
+    Use &lt;code&gt;grid-column-end&lt;/code&gt; when a span needs to be set in CSS.
+&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@use 'roolith-css/src/sass/settings' with (
+    $grid-gutter-size: 1.5rem
+);
+@use 'roolith-css/src/sass/roolith';&lt;/code&gt;&lt;/pre&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="quotes-and-rules">
+                            <h2>Blockquote and horizontal rule</h2>
+                            <p>
+                                <code>blockquote</code>
+                                leads with a 3px muted border and 20px of padding. A
+                                <code>cite</code>
+                                inside it drops to 80% and moves to its own line, prefixed so the attribution is not
+                                signaled by position alone.
+                            </p>
+                            <p>
+                                <code>hr</code>
+                                is a 1px two tone rule with 15px above and below, which reads as a groove on both light
+                                and dark surfaces.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <blockquote>
+                                        Design is not just what it looks like and feels like. Design is how it works.
+                                        <cite>Steve Jobs</cite>
+                                    </blockquote>
+                                    <hr />
+                                    <p>Content after the rule.</p>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="typography-quotes">Copy</button>
+                                </div>
+                                <pre><code id="typography-quotes" class="language-html">&lt;blockquote&gt;
+    Design is not just what it looks like and feels like. Design is how it works.
+    &lt;cite&gt;Steve Jobs&lt;/cite&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Content after the rule.&lt;/p&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>Typography classes change how text looks, not what it means, so the document outline and the plain text settings still decide how the page reads.</p>
+                            <ul>
+                                <li>
+                                    Keep one <code>h1</code> per page and do not skip levels. The <code>.h1</code> through <code>.h6</code> utilities are a visual size only, so a heading that looks smaller is still an <code>h2</code> or <code>h3</code> in the markup.
+                                </li>
+                                <li>
+                                    Keep body line length readable. The framework sets font size and line height but no measure, so cap a prose column with your own <code>max-width</code> instead of letting text run the full width of a wide screen.
+                                </li>
+                                <li>
+                                    Do not use <code>.dimmed</code> as the only way to convey important information. It lowers opacity to 0.6, which reduces contrast below the readable range for small copy.
+                                </li>
+                                <li>
+                                    Make a link distinguishable by more than color. The framework underlines links inside prose containers; a link that stands alone has no underline, so add one (or another non-color cue) yourself.
+                                </li>
+                                <li>
+                                    Use real list markup rather than visual bullets. <code>.list</code> and <code>.list-numbered</code> style <code>ul</code> and <code>ol</code>, and a screen reader announces the item count only when the list element is real.
+                                </li>
+                                <li>
+                                    Respect the user font-size setting. Sizes are written in <code>rem</code> against <code>$base-font-size: 100%</code>, so a reader who raises the browser font size gets larger text, and a hardcoded pixel size in your own CSS cancels that.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Elements carry the defaults. These classes extend or override them without adding
+                                markup.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.h1</code></td>
+                                            <td>Heading size</td>
+                                            <td>
+                                                Also
+                                                <code>.h2</code>
+                                                through <code>.h6</code>. Same size and weight as the element, no
+                                                outline change.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.small</code></td>
+                                            <td>Size</td>
+                                            <td>80% of the inherited size with a 1.3em line height.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.dimmed</code></td>
+                                            <td>Emphasis</td>
+                                            <td>Opacity 0.6 at the inherited size.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.list</code></td>
+                                            <td>List</td>
+                                            <td>Disc markers on the 14px to 22px base with 25px vertical padding, a 15px left margin, and a 10px gap under each item.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.list-numbered</code></td>
+                                            <td>List</td>
+                                            <td>Decimal markers on the same base.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.indented-list</code></td>
+                                            <td>Definition list</td>
+                                            <td>Indents every dd by 30px. Set it on the dl.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.text-left</code></td>
+                                            <td>Alignment</td>
+                                            <td>
+                                                Text align. Also
+                                                <code>.text-center</code>
+                                                and
+                                                <code>.text-right</code>.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.float-left</code></td>
+                                            <td>Float</td>
+                                            <td>
+                                                Also
+                                                <code>.float-right</code>. Needs a
+                                                <code>.clearfix</code>
+                                                parent.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.full-width</code></td>
+                                            <td>Width</td>
+                                            <td>width: 100% on the element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/layout.html">Previous: Layout</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/sass-api.html">Next: Sass API</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#base-text">Base text</a>
+                        <a class="doc-toc-link" href="#headings">Headings</a>
+                        <a class="doc-toc-link" href="#links">Links</a>
+                        <a class="doc-toc-link" href="#lists">Lists</a>
+                        <a class="doc-toc-link" href="#small-and-dimmed">Small and dimmed text</a>
+                        <a class="doc-toc-link" href="#alignment">Alignment and floats</a>
+                        <a class="doc-toc-link" href="#code">Code and pre</a>
+                        <a class="doc-toc-link" href="#quotes-and-rules">Blockquote and horizontal rule</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

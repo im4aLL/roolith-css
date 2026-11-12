@@ -98,9 +98,8 @@
     .layout-header-nav {
         --r-nav-link-color: var(--r-layout-header-nav-color);
 
-        margin-left: auto;
-        float: none;
         display: none;
+        margin-left: auto;
 
         @include mixins.breakpoint(medium-up) {
             display: inline-flex;

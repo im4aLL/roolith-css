@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Comment - roolith css</title>
+        <meta
+            name="description"
+            content="Comment markup, action rows, indented replies, and highlight states in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link rel="stylesheet" href="/vendor/highlight-github.min.css" data-hljs-theme="light" />
+        <link rel="stylesheet" href="/vendor/highlight-github-dark.min.css" data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Comment</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Comment</h1>
+                            <p class="doc-content-lead">
+                                A comment stacks an author block, body text, and a row of actions. The
+                                <code>.comment</code>
+                                base class owns the spacing, while
+                                <code>.comment-group</code>
+                                draws the dividers between entries in a thread.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.comment</strong>
+                                - defined in
+                                <strong>modules/_comment.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                The author block reuses the avatar component, so
+                                <code>.avatar .avatar-small</code>
+                                with
+                                <code>.avatar-fig</code>
+                                and
+                                <code>.avatar-label</code>
+                                already handles the image, the name, and the handle.
+                            </p>
+                            <p>
+                                <code>.comment</code>
+                                itself only carries padding of 20px on the top and sides. The top border and the divider
+                                between entries come from
+                                <code>.comment-group</code>
+                                in the next section, so a single entry can sit inside a card or panel without a stray
+                                rule.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="comment">
+                                        <div class="avatar avatar-small">
+                                            <figure class="avatar-fig rounded">
+                                                <img src="https://picsum.photos/40/40?image=500" alt="" />
+                                            </figure>
+                                            <a href="#" class="avatar-label">
+                                                Priya Raman
+                                                <span>@priya</span>
+                                            </a>
+                                        </div>
+                                        <div class="comment-body">
+                                            The drawer covers the release notes now. Short version: the token layer
+                                            moved and nothing else broke.
+                                        </div>
+                                        <div class="comment-info">23 min ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="comment-basic">Copy</button>
+                                </div>
+                                <pre><code id="comment-basic" class="language-html">&lt;div class="comment"&gt;
+    &lt;div class="avatar avatar-small"&gt;
+        &lt;figure class="avatar-fig rounded"&gt;
+            &lt;img src="https://picsum.photos/40/40?image=500" alt="" /&gt;
+        &lt;/figure&gt;
+        &lt;a href="#" class="avatar-label"&gt;
+            Priya Raman
+            &lt;span&gt;@priya&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="comment-body"&gt;
+        The drawer covers the release notes now. Short version: the token layer moved and nothing else broke.
+    &lt;/div&gt;
+    &lt;div class="comment-info"&gt;23 min ago&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="actions">
+                            <h2>Actions</h2>
+                            <p>
+                                <code>.comment-info</code>
+                                is the small dimmed metadata row. Repeat it when you need a second line such as a like
+                                summary, since each row carries 20px of bottom padding and has no marker of its own.
+                            </p>
+                            <p>
+                                Actions go in a
+                                <code>ul.comment-action</code>
+                                . Every
+                                <code>.comment-action-item</code>
+                                floats left with 15px of right padding and the quiet text color, so a leading
+                                <code>span</code>
+                                can hold a count before the link. The
+                                <code>.comment-action-item-link</code>
+                                is an inline-flex row with a 5px gap for the icon and label, and only the color
+                                transitions.
+                            </p>
+                            <p>
+                                The examples use Iconoir class names on the
+                                <code>i</code>
+                                elements, matching the framework examples. Load the Iconoir stylesheet described on the
+                                Introduction page if the glyphs are missing; the text labels stay readable without it.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="comment">
+                                        <div class="avatar avatar-small">
+                                            <figure class="avatar-fig rounded">
+                                                <img src="https://picsum.photos/40/40?image=501" alt="" />
+                                            </figure>
+                                            <a href="#" class="avatar-label">
+                                                Marcus Lee
+                                                <span>@marcus</span>
+                                            </a>
+                                        </div>
+                                        <div class="comment-body">
+                                            Reproduced on Safari 17 as well. The field keeps focus after the panel
+                                            closes, which was the part that felt broken.
+                                        </div>
+                                        <div class="comment-info">2 hours ago - edited</div>
+                                        <ul class="comment-action">
+                                            <li class="comment-action-item">
+                                                <span>2 likes</span>
+                                                <a href="#" class="comment-action-item-link">
+                                                    <i class="iconoir-thumbs-up"></i>
+                                                    Like
+                                                </a>
+                                            </li>
+                                            <li class="comment-action-item">
+                                                <a href="#" class="comment-action-item-link">
+                                                    <i class="iconoir-reply"></i>
+                                                    Reply
+                                                </a>
+                                            </li>
+                                            <li class="comment-action-item">
+                                                <a href="#" class="comment-action-item-link">
+                                                    <i class="iconoir-share-android"></i>
+                                                    Share
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="comment-info">Priya, Tom and 3 others like this</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="comment-actions">Copy</button>
+                                </div>
+                                <pre><code id="comment-actions" class="language-html">&lt;div class="comment"&gt;
+    &lt;div class="avatar avatar-small"&gt;
+        &lt;figure class="avatar-fig rounded"&gt;
+            &lt;img src="https://picsum.photos/40/40?image=501" alt="" /&gt;
+        &lt;/figure&gt;
+        &lt;a href="#" class="avatar-label"&gt;
+            Marcus Lee
+            &lt;span&gt;@marcus&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="comment-body"&gt;
+        Reproduced on Safari 17 as well. The field keeps focus after the panel closes, which was the part that felt broken.
+    &lt;/div&gt;
+    &lt;div class="comment-info"&gt;2 hours ago - edited&lt;/div&gt;
+    &lt;ul class="comment-action"&gt;
+        &lt;li class="comment-action-item"&gt;
+            &lt;span&gt;2 likes&lt;/span&gt;
+            &lt;a href="#" class="comment-action-item-link"&gt;
+                &lt;i class="iconoir-thumbs-up"&gt;&lt;/i&gt;
+                Like
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="comment-action-item"&gt;
+            &lt;a href="#" class="comment-action-item-link"&gt;
+                &lt;i class="iconoir-reply"&gt;&lt;/i&gt;
+                Reply
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="comment-action-item"&gt;
+            &lt;a href="#" class="comment-action-item-link"&gt;
+                &lt;i class="iconoir-share-android"&gt;&lt;/i&gt;
+                Share
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="comment-info"&gt;Priya, Tom and 3 others like this&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="comment-group">
+                            <h2>Comment group</h2>
+                            <p>
+                                <code>.comment-group</code>
+                                draws the top border and gives every nested
+                                <code>.comment</code>
+                                a bottom border, so a list of entries reads as one divided block.
+                            </p>
+                            <p>
+                                Put the whole thread in a single group and keep pagination or a "show more" control
+                                inside it, so the dividers line up with the entries.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="comment-group">
+                                        <div class="comment">
+                                            <div class="avatar avatar-small">
+                                                <figure class="avatar-fig rounded">
+                                                    <img src="https://picsum.photos/40/40?image=502" alt="" />
+                                                </figure>
+                                                <a href="#" class="avatar-label">
+                                                    Dana Whitfield
+                                                    <span>@dana</span>
+                                                </a>
+                                            </div>
+                                            <div class="comment-body">
+                                                Does the drawer lock body scroll while it is open? We had a bug where
+                                                the page kept scrolling behind the overlay.
+                                            </div>
+                                            <div class="comment-info">14 min ago</div>
+                                        </div>
+                                        <div class="comment">
+                                            <div class="avatar avatar-small">
+                                                <figure class="avatar-fig rounded">
+                                                    <img src="https://picsum.photos/40/40?image=503" alt="" />
+                                                </figure>
+                                                <a href="#" class="avatar-label">
+                                                    Tomas Ruiz
+                                                    <span>@tomas</span>
+                                                </a>
+                                            </div>
+                                            <div class="comment-body">
+                                                It does not. Only the drawer body scrolls, so you still need to set
+                                                overflow on the document while a drawer is open.
+                                            </div>
+                                            <div class="comment-info">9 min ago</div>
+                                        </div>
+                                        <div class="spacer-20"></div>
+                                        <a href="#" class="button button-small">Show more 20 replies</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="comment-group-markup">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="comment-group-markup" class="language-html">&lt;div class="comment-group"&gt;
+    &lt;div class="comment"&gt;
+        &lt;div class="avatar avatar-small"&gt;
+            &lt;figure class="avatar-fig rounded"&gt;
+                &lt;img src="https://picsum.photos/40/40?image=502" alt="" /&gt;
+            &lt;/figure&gt;
+            &lt;a href="#" class="avatar-label"&gt;
+                Dana Whitfield
+                &lt;span&gt;@dana&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="comment-body"&gt;
+            Does the drawer lock body scroll while it is open? We had a bug where the page kept scrolling behind the overlay.
+        &lt;/div&gt;
+        &lt;div class="comment-info"&gt;14 min ago&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="comment"&gt;
+        &lt;div class="avatar avatar-small"&gt;
+            &lt;figure class="avatar-fig rounded"&gt;
+                &lt;img src="https://picsum.photos/40/40?image=503" alt="" /&gt;
+            &lt;/figure&gt;
+            &lt;a href="#" class="avatar-label"&gt;
+                Tomas Ruiz
+                &lt;span&gt;@tomas&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="comment-body"&gt;
+            It does not. Only the drawer body scrolls, so you still need to set overflow on the document while a drawer is open.
+        &lt;/div&gt;
+        &lt;div class="comment-info"&gt;9 min ago&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;a href="#" class="button button-small"&gt;Show more 20 replies&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="indented-replies">
+                            <h2>Indented replies</h2>
+                            <p>
+                                Replies use
+                                <code>.comment-indent-1</code>
+                                through
+                                <code>.comment-indent-10</code>
+                                . Each step adds 5% of the container width, because the class maps the step number to a
+                                percentage, so the indentation scales with the column instead of using fixed pixels.
+                            </p>
+                            <p>
+                                Keep replies inside the same
+                                <code>.comment-group</code>
+                                as their parent so the dividers and padding stay consistent. Two or three levels are
+                                usually enough before the remaining width gets too narrow on small screens.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="comment-group">
+                                        <div class="comment">
+                                            <div class="avatar avatar-small">
+                                                <figure class="avatar-fig rounded">
+                                                    <img src="https://picsum.photos/40/40?image=504" alt="" />
+                                                </figure>
+                                                <a href="#" class="avatar-label">
+                                                    Aiko Tanaka
+                                                    <span>@aiko</span>
+                                                </a>
+                                            </div>
+                                            <div class="comment-body">
+                                                Shipping the token rename in 4.1 then, and keeping the old names as
+                                                aliases for one release.
+                                            </div>
+                                            <div class="comment-info">1 hour ago</div>
+                                        </div>
+                                        <div class="comment comment-indent-1">
+                                            <div class="avatar avatar-small">
+                                                <figure class="avatar-fig rounded">
+                                                    <img src="https://picsum.photos/40/40?image=505" alt="" />
+                                                </figure>
+                                                <a href="#" class="avatar-label">
+                                                    Ben Osei
+                                                    <span>@ben</span>
+                                                </a>
+                                            </div>
+                                            <div class="comment-body">
+                                                Aliases sound good. We only touch
+                                                <code>--r-color-primary</code>
+                                                in two places.
+                                            </div>
+                                            <div class="comment-info">42 min ago</div>
+                                        </div>
+                                        <div class="comment comment-indent-2">
+                                            <div class="avatar avatar-small">
+                                                <figure class="avatar-fig rounded">
+                                                    <img src="https://picsum.photos/40/40?image=506" alt="" />
+                                                </figure>
+                                                <a href="#" class="avatar-label">
+                                                    Aiko Tanaka
+                                                    <span>@aiko</span>
+                                                </a>
+                                            </div>
+                                            <div class="comment-body">
+                                                Then the deprecation warning lands in the same minor release.
+                                            </div>
+                                            <div class="comment-info">30 min ago</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="comment-replies">Copy</button>
+                                </div>
+                                <pre><code id="comment-replies" class="language-html">&lt;div class="comment-group"&gt;
+    &lt;div class="comment"&gt;
+        &lt;div class="avatar avatar-small"&gt;
+            &lt;figure class="avatar-fig rounded"&gt;
+                &lt;img src="https://picsum.photos/40/40?image=504" alt="" /&gt;
+            &lt;/figure&gt;
+            &lt;a href="#" class="avatar-label"&gt;
+                Aiko Tanaka
+                &lt;span&gt;@aiko&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="comment-body"&gt;
+            Shipping the token rename in 4.1 then, and keeping the old names as aliases for one release.
+        &lt;/div&gt;
+        &lt;div class="comment-info"&gt;1 hour ago&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="comment comment-indent-1"&gt;
+        &lt;div class="avatar avatar-small"&gt;
+            &lt;figure class="avatar-fig rounded"&gt;
+                &lt;img src="https://picsum.photos/40/40?image=505" alt="" /&gt;
+            &lt;/figure&gt;
+            &lt;a href="#" class="avatar-label"&gt;
+                Ben Osei
+                &lt;span&gt;@ben&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="comment-body"&gt;
+            Aliases sound good. We only touch &lt;code&gt;--r-color-primary&lt;/code&gt; in two places.
+        &lt;/div&gt;
+        &lt;div class="comment-info"&gt;42 min ago&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="comment comment-indent-2"&gt;
+        &lt;div class="avatar avatar-small"&gt;
+            &lt;figure class="avatar-fig rounded"&gt;
+                &lt;img src="https://picsum.photos/40/40?image=506" alt="" /&gt;
+            &lt;/figure&gt;
+            &lt;a href="#" class="avatar-label"&gt;
+                Aiko Tanaka
+                &lt;span&gt;@aiko&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="comment-body"&gt;
+            Then the deprecation warning lands in the same minor release.
+        &lt;/div&gt;
+        &lt;div class="comment-info"&gt;30 min ago&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="states">
+                            <h2>States</h2>
+                            <p>
+                                <code>.comment-highlight</code>
+                                paints the entry with
+                                <code>--r-comment-highlight-color</code>
+                                , which is the usual way to mark a pinned or unread comment in a thread.
+                            </p>
+                            <p>
+                                <code>.comment-blurred</code>
+                                applies a 2px blur at 40% opacity. The text stays in the DOM and stays selectable, so
+                                treat it as a visual gate only; if the content must not be readable, do not send it to
+                                the browser.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="comment-group">
+                                        <div class="comment comment-highlight">
+                                            <div class="avatar avatar-small">
+                                                <figure class="avatar-fig rounded">
+                                                    <img src="https://picsum.photos/40/40?image=507" alt="" />
+                                                </figure>
+                                                <a href="#" class="avatar-label">
+                                                    Sofia Almeida
+                                                    <span>@sofia</span>
+                                                </a>
+                                            </div>
+                                            <div class="comment-body">
+                                                Pinned: the 4.0 upgrade guide is in the docs, start there before opening
+                                                an issue.
+                                            </div>
+                                            <div class="comment-info">Pinned by a maintainer</div>
+                                        </div>
+                                        <div class="comment comment-blurred">
+                                            <div class="avatar avatar-small">
+                                                <figure class="avatar-fig rounded">
+                                                    <img src="https://picsum.photos/40/40?image=508" alt="" />
+                                                </figure>
+                                                <a href="#" class="avatar-label">
+                                                    Hidden author
+                                                    <span>@hidden</span>
+                                                </a>
+                                            </div>
+                                            <div class="comment-body">
+                                                This reply was flagged by three readers and is blurred until a moderator
+                                                reviews it.
+                                            </div>
+                                            <div class="comment-info">Flagged 5 min ago</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="comment-states">Copy</button>
+                                </div>
+                                <pre><code id="comment-states" class="language-html">&lt;div class="comment-group"&gt;
+    &lt;div class="comment comment-highlight"&gt;
+        &lt;div class="avatar avatar-small"&gt;
+            &lt;figure class="avatar-fig rounded"&gt;
+                &lt;img src="https://picsum.photos/40/40?image=507" alt="" /&gt;
+            &lt;/figure&gt;
+            &lt;a href="#" class="avatar-label"&gt;
+                Sofia Almeida
+                &lt;span&gt;@sofia&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="comment-body"&gt;
+            Pinned: the 4.0 upgrade guide is in the docs, start there before opening an issue.
+        &lt;/div&gt;
+        &lt;div class="comment-info"&gt;Pinned by a maintainer&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="comment comment-blurred"&gt;
+        &lt;div class="avatar avatar-small"&gt;
+            &lt;figure class="avatar-fig rounded"&gt;
+                &lt;img src="https://picsum.photos/40/40?image=508" alt="" /&gt;
+            &lt;/figure&gt;
+            &lt;a href="#" class="avatar-label"&gt;
+                Hidden author
+                &lt;span&gt;@hidden&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="comment-body"&gt;
+            This reply was flagged by three readers and is blurred until a moderator reviews it.
+        &lt;/div&gt;
+        &lt;div class="comment-info"&gt;Flagged 5 min ago&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>
+                                <code>.comment-small</code>
+                                goes on the comment element and shrinks the body to 12px over 18px lines with 10px of
+                                vertical padding, which suits compact threads in a sidebar or a popover.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="comment comment-small">
+                                        <div class="comment-body">
+                                            Merged. The changelog entry lands with the next tag.
+                                        </div>
+                                        <div class="comment-info">Just now</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="comment-small">Copy</button>
+                                </div>
+                                <pre><code id="comment-small" class="language-html">&lt;div class="comment comment-small"&gt;
+    &lt;div class="comment-body"&gt;
+        Merged. The changelog entry lands with the next tag.
+    &lt;/div&gt;
+    &lt;div class="comment-info"&gt;Just now&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                Comments are prose plus a small set of links, so the markup carries most of the work.
+                                The rules below cover what the classes cannot express.
+                            </p>
+                            <ul>
+                                <li>
+                                    Actions are real
+                                    <code>&lt;a href&gt;</code>
+                                    elements with visible text. When an action is icon only, keep an
+                                    <code>aria-label</code>
+                                    on the link and mark the icon
+                                    <code>aria-hidden="true"</code>
+                                    .
+                                </li>
+                                <li>
+                                    The avatar image is decorative because the author name sits next to it. Keep
+                                    <code>alt=""</code>
+                                    and do not repeat the name in the alternative text.
+                                </li>
+                                <li>
+                                    Use
+                                    <code>&lt;time datetime="2025-03-04T09:12"&gt;</code>
+                                    when the timestamp matters; a relative label such as "23 min ago" is helpful to read
+                                    but useless to a parser.
+                                </li>
+                                <li>
+                                    <code>.comment-blurred</code>
+                                    does not remove text from the accessibility tree. Do not rely on it to hide content
+                                    from anyone, including screen reader users.
+                                </li>
+                                <li>
+                                    Indentation is visual only. If nesting changes the meaning of a reply, expose it in
+                                    the text or with a heading, and keep the reading order parent first.
+                                </li>
+                                <li>
+                                    The highlight color comes from a token. Check the contrast of the body text on that
+                                    background in both light and dark mode.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                Borders come from
+                                <code>--r-comment-border</code>
+                                and the highlight from
+                                <code>--r-comment-highlight-color</code>
+                                . Both follow the active theme.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.comment</code></td>
+                                            <td>Wrapper</td>
+                                            <td>20px padding on the top and sides. No divider on its own.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-group</code></td>
+                                            <td>Thread wrapper</td>
+                                            <td>Top border plus a bottom border on each nested comment.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-body</code></td>
+                                            <td>Body text</td>
+                                            <td>14/22 with 15px of vertical padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-info</code></td>
+                                            <td>Metadata row</td>
+                                            <td>Small dimmed text with 20px of bottom padding. Repeat as needed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-action</code></td>
+                                            <td>Action list</td>
+                                            <td>Clears the floated items and adds 20px of bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-action-item</code></td>
+                                            <td>Action list item</td>
+                                            <td>Floats left with 15px of right padding and the quiet text color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-action-item-link</code></td>
+                                            <td>Action link</td>
+                                            <td>
+                                                Inline-flex with a 5px gap for icon and label; transitions color only.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-indent-1</code></td>
+                                            <td>Reply depth</td>
+                                            <td>
+                                                Margin left of step / 20, so 5% per step up to
+                                                <code>.comment-indent-10</code>
+                                                .
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-highlight</code></td>
+                                            <td>State</td>
+                                            <td>
+                                                Paints the background with
+                                                <code>--r-comment-highlight-color</code>
+                                                .
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-blurred</code></td>
+                                            <td>State</td>
+                                            <td>2px blur at 40% opacity. Visual only, the text stays in the DOM.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.comment-small</code></td>
+                                            <td>Density</td>
+                                            <td>12/18 body text with 10px of vertical padding.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/combo-box.html">Previous: Combo box</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/datepicker.html">Next: Datepicker</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#actions">Actions</a>
+                        <a class="doc-toc-link" href="#comment-group">Comment group</a>
+                        <a class="doc-toc-link" href="#indented-replies">Indented replies</a>
+                        <a class="doc-toc-link" href="#states">States</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

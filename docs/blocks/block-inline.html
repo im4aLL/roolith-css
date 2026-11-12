@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block inline - roolith css</title>
+        <meta name="description" content="Build a single-row filter bar with labels, fields, toggles, and action groups using the roolith css block inline classes." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block inline</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block inline</h1>
+                            <p class="doc-content-lead">A block inline puts a row of form controls on one baseline: filters, a search box, a few toggles, and the buttons that apply them. It stacks the controls below 640px and turns them into a bottom-aligned row above it, using the existing form and button classes.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-inline</strong>
+                                - defined in
+                                <strong>blocks/_block-inline.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p><code>.block-inline</code> is the wrapper, and it only restyles descendant <code>.form-label</code> elements: 11px, uppercase, 50% opacity, and 2px of bottom padding. That is what makes a filter row read as compact secondary controls instead of a full form.</p>
+                            <p><code>.block-inline-form</code> is the row. It is a wrapping flex column with a <code>--r-block-inline-gap</code> gap, and from 640px up it becomes a row aligned at <code>flex-end</code>, which lines every control up along its bottom edge. Fields inside the row drop the 20px bottom margin that <code>.form</code> normally gives them, so nothing pushes the row apart.</p>
+                            <p>Keep the <code>.form</code> class on the same element as <code>.block-inline-form</code>. The block owns the layout; <code>.form</code> is the hook that supplies the field margin, and the block resets it.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-inline">
+                                        <form class="form block-inline-form" action="#">
+                                            <div class="form-field form-field-search" style="width: 100%; max-width: 280px">
+                                                <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
+                                                <input type="search" class="form-input" placeholder="Search invoices" aria-label="Search invoices" />
+                                            </div>
+                                            <div class="form-field" style="width: 220px">
+                                                <label class="form-label" for="block-inline-status">Status</label>
+                                                <select class="form-select" id="block-inline-status">
+                                                    <option value="">All statuses</option>
+                                                    <option value="draft">Draft</option>
+                                                    <option value="sent">Sent</option>
+                                                    <option value="paid">Paid</option>
+                                                </select>
+                                            </div>
+                                            <div class="block-inline-button-group">
+                                                <button type="submit" class="button button-primary">Filter</button>
+                                                <button type="reset" class="button button-outline">Reset</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-inline-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-inline-basic" class="language-html">&lt;div class="block-inline"&gt;
+    &lt;form class="form block-inline-form" action="#"&gt;
+        &lt;div class="form-field form-field-search"&gt;
+            &lt;span class="form-field-search-icon"&gt;&lt;i class="icon icon-search"&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;input type="search" class="form-input" placeholder="Search invoices" aria-label="Search invoices" /&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-field"&gt;
+            &lt;label class="form-label" for="block-inline-status"&gt;Status&lt;/label&gt;
+            &lt;select class="form-select" id="block-inline-status"&gt;
+                &lt;option value=""&gt;All statuses&lt;/option&gt;
+                &lt;option value="draft"&gt;Draft&lt;/option&gt;
+                &lt;option value="sent"&gt;Sent&lt;/option&gt;
+                &lt;option value="paid"&gt;Paid&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div class="block-inline-button-group"&gt;
+            &lt;button type="submit" class="button button-primary"&gt;Filter&lt;/button&gt;
+            &lt;button type="reset" class="button button-outline"&gt;Reset&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The gap token defaults to half of <code>--r-block-padding</code>, so a 20px block rhythm gives a 10px gap in the row, including the space between the buttons. Override <code>--r-block-inline-gap</code> on the wrapper to tighten or loosen the whole row at once.</p>
+                        </section>
+
+                        <section class="doc-section" id="labels">
+                            <h2>Labels and alignment</h2>
+                            <p>Labels are optional per field but worth keeping in a filter bar. Inside <code>.block-inline</code> they shrink to 11px uppercase at 50% opacity with 2px below. The same <code>.form-label</code> class keeps its 14px form style outside the block, so this is a context rule, not a variant.</p>
+                            <p><code>.block-inline-v-center</code> aligns a control that has no input box, such as a checkbox or a switch, with the fields beside it. From 640px up the field gets a 37px minimum height and centers its content vertically, so the control lines up with the input boxes around it. Below 640px the class does nothing, because the row is already stacked.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-inline">
+                                        <form class="form block-inline-form" action="#">
+                                            <div class="form-field" style="width: 220px">
+                                                <label class="form-label" for="block-inline-recipient">Recipient</label>
+                                                <input type="text" class="form-input" id="block-inline-recipient" value="Accounts team" />
+                                            </div>
+                                            <div class="form-field" style="width: 200px">
+                                                <label class="form-label" for="block-inline-period">Period</label>
+                                                <select class="form-select" id="block-inline-period">
+                                                    <option>This month</option>
+                                                    <option>Last month</option>
+                                                    <option>This quarter</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-field block-inline-v-center">
+                                                <label class="form-checkbox-label">
+                                                    <input type="checkbox" class="form-check-input" />
+                                                    Include drafts
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="button button-primary">Apply</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-inline-labels">Copy</button>
+                                </div>
+                                <pre><code id="block-inline-labels" class="language-html">&lt;div class="block-inline"&gt;
+    &lt;form class="form block-inline-form" action="#"&gt;
+        &lt;div class="form-field"&gt;
+            &lt;label class="form-label" for="block-inline-recipient"&gt;Recipient&lt;/label&gt;
+            &lt;input type="text" class="form-input" id="block-inline-recipient" value="Accounts team" /&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-field"&gt;
+            &lt;label class="form-label" for="block-inline-period"&gt;Period&lt;/label&gt;
+            &lt;select class="form-select" id="block-inline-period"&gt;
+                &lt;option&gt;This month&lt;/option&gt;
+                &lt;option&gt;Last month&lt;/option&gt;
+                &lt;option&gt;This quarter&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-field block-inline-v-center"&gt;
+            &lt;label class="form-checkbox-label"&gt;
+                &lt;input type="checkbox" class="form-check-input" /&gt;
+                Include drafts
+            &lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;button type="submit" class="button button-primary"&gt;Apply&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <p>The search field in the first example has no visible label because the icon and placeholder carry it. Give that input an <code>aria-label</code>, as the markup does, instead of leaving it unnamed.</p>
+                        </section>
+
+                        <section class="doc-section" id="alt-section">
+                            <h2>Right-aligned section</h2>
+                            <p><code>.block-inline-alt-section</code> groups the controls that should sit at the far end of the row. Up to 640px it is a flex column with the same gap, so it stacks with the fields. From 640px up it takes <code>margin-left: auto</code>, becomes a row, and aligns to <code>flex-end</code>, so it starts after the fields and ends flush with the right edge.</p>
+                            <p><code>.block-inline-button-group</code> is a plain flex row with the same gap. It keeps a submit and reset pair together without merging their borders, so it is not the same as <code>.button-group</code> and each button keeps its own radius.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-inline">
+                                        <form class="form block-inline-form" action="#">
+                                            <div class="form-field form-field-search" style="width: 100%; max-width: 260px">
+                                                <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
+                                                <input type="search" class="form-input" placeholder="Search projects" aria-label="Search projects" />
+                                            </div>
+                                            <div class="form-field" style="width: 200px">
+                                                <label class="form-label" for="block-inline-owner">Owner</label>
+                                                <select class="form-select" id="block-inline-owner">
+                                                    <option>Anyone</option>
+                                                    <option>Design</option>
+                                                    <option>Engineering</option>
+                                                </select>
+                                            </div>
+                                            <div class="block-inline-alt-section">
+                                                <div class="form-field form-switch block-inline-v-center">
+                                                    <label for="block-inline-published" class="form-switch-label">
+                                                        <input type="checkbox" class="form-switch-input" id="block-inline-published" />
+                                                        <span class="form-switch-slider"></span>
+                                                        <span class="form-switch-slider-text">Published</span>
+                                                    </label>
+                                                </div>
+                                                <div class="block-inline-button-group">
+                                                    <button type="submit" class="button button-primary">Filter</button>
+                                                    <button type="reset" class="button button-outline">Reset</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-inline-alt">Copy</button>
+                                </div>
+                                <pre><code id="block-inline-alt" class="language-html">&lt;div class="block-inline"&gt;
+    &lt;form class="form block-inline-form" action="#"&gt;
+        &lt;div class="form-field form-field-search"&gt;
+            &lt;span class="form-field-search-icon"&gt;&lt;i class="icon icon-search"&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;input type="search" class="form-input" placeholder="Search projects" aria-label="Search projects" /&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-field"&gt;
+            &lt;label class="form-label" for="block-inline-owner"&gt;Owner&lt;/label&gt;
+            &lt;select class="form-select" id="block-inline-owner"&gt;
+                &lt;option&gt;Anyone&lt;/option&gt;
+                &lt;option&gt;Design&lt;/option&gt;
+                &lt;option&gt;Engineering&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div class="block-inline-alt-section"&gt;
+            &lt;div class="form-field form-switch block-inline-v-center"&gt;
+                &lt;label for="block-inline-published" class="form-switch-label"&gt;
+                    &lt;input type="checkbox" class="form-switch-input" id="block-inline-published" /&gt;
+                    &lt;span class="form-switch-slider"&gt;&lt;/span&gt;
+                    &lt;span class="form-switch-slider-text"&gt;Published&lt;/span&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+
+            &lt;div class="block-inline-button-group"&gt;
+                &lt;button type="submit" class="button button-primary"&gt;Filter&lt;/button&gt;
+                &lt;button type="reset" class="button button-outline"&gt;Reset&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="filter-bar">
+                            <h2>Filter bar</h2>
+                            <p>A real filter bar combines the pieces: a search field, one select per filter, an optional toggle, and the action group. The block only lays them out. Submitting the form, filtering the data, and updating the result count are yours, whether that happens on the server or in <code>submit</code> and <code>reset</code> handlers.</p>
+                            <p>Keep each field to one job and give the row a heading or a label when the filter scope is not obvious. If filtering happens without a submit, move the actions into the change handler and keep the button group for an explicit apply step.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-inline">
+                                        <form class="form block-inline-form" action="#">
+                                            <div class="form-field form-field-search" style="width: 240px">
+                                                <span class="form-field-search-icon"><i class="icon icon-search"></i></span>
+                                                <input type="search" class="form-input" placeholder="Search orders" aria-label="Search orders" />
+                                            </div>
+                                            <div class="form-field" style="width: 180px">
+                                                <label class="form-label" for="block-inline-channel">Channel</label>
+                                                <select class="form-select" id="block-inline-channel">
+                                                    <option>All channels</option>
+                                                    <option>Online</option>
+                                                    <option>Retail</option>
+                                                    <option>Partner</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-field" style="width: 180px">
+                                                <label class="form-label" for="block-inline-range">Date range</label>
+                                                <select class="form-select" id="block-inline-range">
+                                                    <option>Last 7 days</option>
+                                                    <option>Last 30 days</option>
+                                                    <option>This quarter</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-field block-inline-v-center">
+                                                <label class="form-checkbox-label">
+                                                    <input type="checkbox" class="form-check-input" />
+                                                    Only refunds
+                                                </label>
+                                            </div>
+                                            <div class="form-field form-switch block-inline-v-center">
+                                                <label for="block-inline-archived" class="form-switch-label">
+                                                    <input type="checkbox" class="form-switch-input" id="block-inline-archived" />
+                                                    <span class="form-switch-slider"></span>
+                                                    <span class="form-switch-slider-text">Archived</span>
+                                                </label>
+                                            </div>
+                                            <div class="block-inline-button-group">
+                                                <button type="submit" class="button button-primary">Apply</button>
+                                                <button type="reset" class="button button-outline">Clear</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-inline-filter">Copy</button>
+                                </div>
+                                <pre><code id="block-inline-filter" class="language-html">&lt;div class="block-inline"&gt;
+    &lt;form class="form block-inline-form" action="#"&gt;
+        &lt;div class="form-field form-field-search"&gt;
+            &lt;span class="form-field-search-icon"&gt;&lt;i class="icon icon-search"&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;input type="search" class="form-input" placeholder="Search orders" aria-label="Search orders" /&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-field"&gt;
+            &lt;label class="form-label" for="block-inline-channel"&gt;Channel&lt;/label&gt;
+            &lt;select class="form-select" id="block-inline-channel"&gt;
+                &lt;option&gt;All channels&lt;/option&gt;
+                &lt;option&gt;Online&lt;/option&gt;
+                &lt;option&gt;Retail&lt;/option&gt;
+                &lt;option&gt;Partner&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-field"&gt;
+            &lt;label class="form-label" for="block-inline-range"&gt;Date range&lt;/label&gt;
+            &lt;select class="form-select" id="block-inline-range"&gt;
+                &lt;option&gt;Last 7 days&lt;/option&gt;
+                &lt;option&gt;Last 30 days&lt;/option&gt;
+                &lt;option&gt;This quarter&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-field block-inline-v-center"&gt;
+            &lt;label class="form-checkbox-label"&gt;
+                &lt;input type="checkbox" class="form-check-input" /&gt;
+                Only refunds
+            &lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-field form-switch block-inline-v-center"&gt;
+            &lt;label for="block-inline-archived" class="form-switch-label"&gt;
+                &lt;input type="checkbox" class="form-switch-input" id="block-inline-archived" /&gt;
+                &lt;span class="form-switch-slider"&gt;&lt;/span&gt;
+                &lt;span class="form-switch-slider-text"&gt;Archived&lt;/span&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class="block-inline-button-group"&gt;
+            &lt;button type="submit" class="button button-primary"&gt;Apply&lt;/button&gt;
+            &lt;button type="reset" class="button button-outline"&gt;Clear&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The block changes spacing and label size, not form semantics. Every control still needs a programmatic name, and the row should stay usable with a keyboard and a screen reader.</p>
+                            <ul>
+                                <li>Point every <code>&lt;label&gt;</code> at its control with <code>for</code> and a matching <code>id</code>. When a field has no visible label, as with the search box, add <code>aria-label</code> instead of leaving it unnamed.</li>
+                                <li>The 11px uppercase label is a visual transform. The accessible name is still the text in the markup, so write it in sentence case and let CSS change the presentation.</li>
+                                <li>The label is rendered at 50% opacity and 11px. Check it against the surface behind it, and do not make it the only visible cue for a field whose purpose is unclear.</li>
+                                <li>Set <code>type="submit"</code> and <code>type="reset"</code> explicitly. A button inside a form defaults to submit, which is easy to trigger by accident.</li>
+                                <li>Announce filtered results in a live region when the filter runs without a page load, and keep the result count in the same place so the change is easy to find.</li>
+                                <li>Keep the native focus ring on every field and button. Do not replace focus with a color change on hover.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>The block adds four layout classes around the existing form and button modules. No new field, label, or button class is introduced here.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-inline</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Restyles descendant <code>.form-label</code> to 11px uppercase at 50% opacity with 2px of bottom padding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-inline-form</code></td>
+                                            <td>Form</td>
+                                            <td>Wrapping flex column with a <code>--r-block-inline-gap</code> gap. A bottom-aligned row from 640px up, and it zeroes the bottom margin of child <code>.form-field</code> elements.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-inline-button-group</code></td>
+                                            <td>Group</td>
+                                            <td>Flex row with the same gap. Keeps related buttons separate, unlike <code>.button-group</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-inline-v-center</code></td>
+                                            <td>Align</td>
+                                            <td>From 640px up: 37px minimum height with centered content. For checkboxes and switches that have no field box.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-inline-alt-section</code></td>
+                                            <td>Align</td>
+                                            <td>Flex column with the gap below 640px. From 640px up: <code>margin-left: auto</code>, row direction, and end alignment.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-header.html">Previous: Block header</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-list.html">Next: Block list</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#labels">Labels and alignment</a>
+                        <a class="doc-toc-link" href="#alt-section">Right-aligned section</a>
+                        <a class="doc-toc-link" href="#filter-bar">Filter bar</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

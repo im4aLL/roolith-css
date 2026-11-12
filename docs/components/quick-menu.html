@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Quick menu - roolith css</title>
+        <meta name="description" content="Quick menu markup, small and x-small sizes, the active ancestor pattern, icon composition, and local token overrides in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Quick menu</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Quick menu</h1>
+                            <p class="doc-content-lead">A quick menu is a compact switcher for a few related views, such as a chart range or a list layout. The wrapper draws one muted surface and every link is a pill inside it, so the current choice reads as a raised tile rather than a separate button.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.quick-menu</strong>
+                                - defined in
+                                <strong>modules/_quick-menu.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>The wrapper is a <code>&lt;ul&gt;</code> with one <code>&lt;li&gt;</code> per choice. The base class sets <code>inline-flex</code>, a radius from <code>--r-global-border-radius</code>, a fill from <code>--r-quick-menu-background</code>, and a font size from <code>--r-quick-menu-font-size</code>.</p>
+                            <p>Padding and gap both derive from <code>--r-quick-menu-spacing</code>: the wrapper pads itself with half of it and uses the same half as the flex gap, while each link pads itself with the full spacing vertically and one and a half times the spacing horizontally. At the default token values that is 4px of wrapper padding and gap, and 8px by 12px inside each link.</p>
+                            <div class="doc-demo">
+                                <ul class="quick-menu">
+                                    <li class="quick-menu-item active">
+                                        <a class="quick-menu-link" href="#">Days</a>
+                                    </li>
+                                    <li class="quick-menu-item">
+                                        <a class="quick-menu-link" href="#">Weeks</a>
+                                    </li>
+                                    <li class="quick-menu-item">
+                                        <a class="quick-menu-link" href="#">Months</a>
+                                    </li>
+                                    <li class="quick-menu-item">
+                                        <a class="quick-menu-link" href="#">Years</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="quick-menu-basic">Copy</button>
+                                </div>
+                                <pre><code id="quick-menu-basic" class="language-html">&lt;ul class="quick-menu"&gt;
+    &lt;li class="quick-menu-item active"&gt;
+        &lt;a class="quick-menu-link" href="#"&gt;Days&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="quick-menu-item"&gt;
+        &lt;a class="quick-menu-link" href="#"&gt;Weeks&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="quick-menu-item"&gt;
+        &lt;a class="quick-menu-link" href="#"&gt;Months&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="quick-menu-item"&gt;
+        &lt;a class="quick-menu-link" href="#"&gt;Years&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                            <p>Hover and the active state share one fill, <code>--r-quick-menu-link-hover-background</code>, so the current choice and the hovered choice look the same. That token resolves to <code>--r-surface</code> in the light theme and <code>--r-surface-page</code> in the dark theme, which keeps the pill one step above the muted wrapper in both modes.</p>
+                            <p><code>.quick-menu-item</code> is unstyled markup rather than framework styling: <code>_quick-menu.scss</code> has no <code>.quick-menu-item</code> selector. Keep the element because it keeps the list semantic and because it is the element that holds the active class, which the next sections rely on.</p>
+                        </section>
+
+                        <section class="doc-section" id="sizes">
+                            <h2>Sizes</h2>
+                            <p><code>small</code> and <code>x-small</code> do not restate the padding or the font size on the links. Each modifier redeclares <code>--r-quick-menu-font-size</code> and <code>--r-quick-menu-spacing</code> on the wrapper, and the wrapper padding, the flex gap, and the link padding all read those properties, so every measurement follows from two declarations.</p>
+                            <p><code>x-small</code> also drops the wrapper fill and the wrapper padding. At that size the menu reads as a row of text links, and the active link switches to <code>--r-quick-menu-background</code> because there is no wrapper surface left to contrast against.</p>
+                            <div class="doc-demo">
+                                <ul class="quick-menu">
+                                    <li class="quick-menu-item active"><a class="quick-menu-link" href="#">Days</a></li>
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Weeks</a></li>
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Months</a></li>
+                                </ul>
+                                <ul class="quick-menu small">
+                                    <li class="quick-menu-item active"><a class="quick-menu-link" href="#">Days</a></li>
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Weeks</a></li>
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Months</a></li>
+                                </ul>
+                                <ul class="quick-menu x-small">
+                                    <li class="quick-menu-item active"><a class="quick-menu-link" href="#">Days</a></li>
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Weeks</a></li>
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Months</a></li>
+                                </ul>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="quick-menu-sizes">Copy</button>
+                                </div>
+                                <pre><code id="quick-menu-sizes" class="language-html">&lt;ul class="quick-menu"&gt;...&lt;/ul&gt;
+
+&lt;ul class="quick-menu small"&gt;...&lt;/ul&gt;
+
+&lt;ul class="quick-menu x-small"&gt;...&lt;/ul&gt;</code></pre>
+                            </div>
+                            <p>The small pair resolves to a 12px font over a 5px spacing, and the x-small pair to a 10px font over a 4px spacing. Override <code>--r-quick-menu-spacing-small</code> or <code>--r-quick-menu-font-size-small</code> where you load the tokens if a whole page needs a tighter or looser small menu; set the pair on a single element only when one menu should differ from the rest.</p>
+                        </section>
+
+                        <section class="doc-section" id="active-link">
+                            <h2>Active link</h2>
+                            <p>The active state is an ancestor match, not a class on the link. The module styles the link for <code>:hover</code> and for <code>.active &amp;</code>, so <code>active</code> belongs on the <code>.quick-menu-item</code> that wraps the link. Adding it to the <code>&lt;a&gt;</code> itself paints nothing.</p>
+                            <div class="doc-demo">
+                                <ul class="quick-menu">
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Table</a></li>
+                                    <li class="quick-menu-item active"><a class="quick-menu-link" href="#">Chart</a></li>
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Export</a></li>
+                                </ul>
+                                <ul class="quick-menu x-small">
+                                    <li class="quick-menu-item active"><a class="quick-menu-link" href="#">Table</a></li>
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Chart</a></li>
+                                    <li class="quick-menu-item"><a class="quick-menu-link" href="#">Export</a></li>
+                                </ul>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="quick-menu-active">Copy</button>
+                                </div>
+                                <pre><code id="quick-menu-active" class="language-html">&lt;ul class="quick-menu"&gt;
+    &lt;li class="quick-menu-item"&gt;
+        &lt;a class="quick-menu-link" href="#"&gt;Table&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="quick-menu-item active"&gt;
+        &lt;a class="quick-menu-link" href="#"&gt;Chart&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="quick-menu-item"&gt;
+        &lt;a class="quick-menu-link" href="#"&gt;Export&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                            <p>No script moves the class for you. Set it on the item that matches the current view on load, and move it when the view changes, keeping at most one active item per menu.</p>
+                        </section>
+
+                        <section class="doc-section" id="icons">
+                            <h2>Icons</h2>
+                            <p>The link is inline-flex, so an icon and a label share one line and stay centered together. The module adds no gap between them, so an icon that sits next to text needs its own spacing, either an inline margin or a spacing class of your own. Icon-only links need nothing extra because the link padding already supplies the hit area.</p>
+                            <div class="doc-demo">
+                                <ul class="quick-menu">
+                                    <li class="quick-menu-item active">
+                                        <a class="quick-menu-link" href="#" aria-label="Grid view" aria-current="true">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="quick-menu-item">
+                                        <a class="quick-menu-link" href="#" aria-label="List view">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="quick-menu small">
+                                    <li class="quick-menu-item active">
+                                        <a class="quick-menu-link" href="#">
+                                            <i class="icon icon-small icon-download" style="margin-right: 6px"></i>
+                                            CSV
+                                        </a>
+                                    </li>
+                                    <li class="quick-menu-item">
+                                        <a class="quick-menu-link" href="#">
+                                            <i class="icon icon-small icon-download" style="margin-right: 6px"></i>
+                                            PDF
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="quick-menu-icons">Copy</button>
+                                </div>
+                                <pre><code id="quick-menu-icons" class="language-html">&lt;ul class="quick-menu"&gt;
+    &lt;li class="quick-menu-item active"&gt;
+        &lt;a class="quick-menu-link" href="#" aria-label="Grid view" aria-current="true"&gt;
+            &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="quick-menu-item"&gt;
+        &lt;a class="quick-menu-link" href="#" aria-label="List view"&gt;
+            &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class="quick-menu small"&gt;
+    &lt;li class="quick-menu-item active"&gt;
+        &lt;a class="quick-menu-link" href="#"&gt;
+            &lt;i class="icon icon-small icon-download" style="margin-right: 6px"&gt;&lt;/i&gt;
+            CSV
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                            <p>The framework ships two masked icons, <code>.icon-search</code> and <code>.icon-download</code>, and <code>.icon</code> paints them with <code>--r-icon-color</code>. <code>.icon-small</code> drops the box to 14px for tighter rows. For any other glyph use an inline SVG at 16px and mark it <code>aria-hidden="true"</code>, as the live demo does.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The component renders as a list of links and nothing more, so every state that matters has to live in the markup as well as in the class.</p>
+                            <ul>
+                                <li><code>.active</code> is visual only. Mirror it with <code>aria-current="page"</code> on a navigation link, or with <code>aria-pressed</code> on a toggle button, and update both together.</li>
+                                <li>Use real <code>&lt;a href&gt;</code> elements for navigation. A link without an <code>href</code> is not focusable and is not announced as a link.</li>
+                                <li>The wrapper is inline-flex and does not wrap, so keep labels to one or two words. A long menu overflows its container instead of breaking to a second line.</li>
+                                <li>Give every icon-only link a name with <code>aria-label</code> and hide the icon from assistive technology, because a masked <code>.icon</code> renders no text.</li>
+                                <li>Keep the global focus ring. The module transitions background and color only, so the outline from the base layer stays visible on <code>:focus-visible</code>.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>Every size class stacks onto <code>.quick-menu</code> and works by redeclaring the two local spacing and font tokens.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.quick-menu</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Inline-flex pill with a muted fill, the global radius, half-spacing padding and gap, and the base font size.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.quick-menu-item</code></td>
+                                            <td>Convention</td>
+                                            <td>Unstyled structural element. The module has no selector for it; the list item only holds the <code>.active</code> class that the link selector reads.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.quick-menu-link</code></td>
+                                            <td>Link</td>
+                                            <td>Inline-flex link with full-spacing vertical padding, 1.5x horizontal padding, the global radius, and a background and color transition.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.small</code></td>
+                                            <td>Modifier on the wrapper</td>
+                                            <td>Redeclares the spacing and font size tokens to the small pair: 5px and 12px.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.x-small</code></td>
+                                            <td>Modifier on the wrapper</td>
+                                            <td>Redeclares the tokens to the x-small pair, 4px and 10px, and also clears the wrapper fill and padding. The active link then uses the muted fill.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.active</code></td>
+                                            <td>State on the item</td>
+                                            <td>Fills any <code>.quick-menu-link</code> inside it with the hover token. On an <code>.x-small</code> menu the fill falls back to the muted background.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/popover.html">Previous: Popover</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/sidebar-nav.html">Next: Sidebar nav</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#sizes">Sizes</a>
+                        <a class="doc-toc-link" href="#active-link">Active link</a>
+                        <a class="doc-toc-link" href="#icons">Icons</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

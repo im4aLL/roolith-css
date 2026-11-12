@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Block list - roolith css</title>
+        <meta name="description" content="Stack settings, summaries, and checklists in a vertical block list with optional dividers using the roolith css block list classes." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/blocks/block-analytics.html">Blocks</a></li>
+                                <li class="breadcrumb-item active">Block list</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Block list</h1>
+                            <p class="doc-content-lead">A block list stacks short rows: settings, summary lines, checklists, and anything else that reads top to bottom. The block supplies the rhythm between rows and an optional divider, and leaves the content of each row to the component you place inside it.</p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.block-list</strong>
+                                - defined in
+                                <strong>blocks/_block-list.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p><code>.block-list</code> is a flex column with no gap of its own. Spacing comes from each <code>.block-list-item</code>, which gets half of <code>--r-block-padding</code> above and below, so a 20px block rhythm gives 10px of padding per edge and 20px between two rows.</p>
+                            <p>The global reset already removes list margins, padding, and markers, so an unstyled <code>&lt;ul&gt;</code> is the right element here: it keeps the list semantics without adding a bullet or indent that the block would have to undo.</p>
+                            <p><code>.block-list-label</code> sets a row label to 14px. That matches paragraph copy rather than the 16px body size, so the label does not grow when the list sits inside larger text. The class does not bold the text; use a heading or a <code>&lt;strong&gt;</code> when a row needs more emphasis.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <ul class="block-list">
+                                        <li class="block-list-item">
+                                            <span class="block-list-label">Workspace</span>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <span class="block-list-label">Plan</span>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <span class="block-list-label">Region</span>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <span class="block-list-label">Seats</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-list-basic">Copy</button>
+                                </div>
+                                <pre><code id="block-list-basic" class="language-html">&lt;ul class="block-list"&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;span class="block-list-label"&gt;Workspace&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;span class="block-list-label"&gt;Plan&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;span class="block-list-label"&gt;Region&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;span class="block-list-label"&gt;Seats&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                            <p>Because the spacing lives on the item, you can drop the padding from one row or add a taller block inside another without breaking the rest of the list. The token <code>--r-block-padding</code> controls every edge at once.</p>
+                        </section>
+
+                        <section class="doc-section" id="bordered">
+                            <h2>Bordered list</h2>
+                            <p>Add <code>.block-list-bordered</code> to the list for a divider between rows. The selector is <code>.block-list-bordered .block-list-item</code>, so the modifier has to sit on the list or on another ancestor, not on each item.</p>
+                            <p>Every item gets a 1px bottom border, and <code>:last-child</code> removes it, so the list never ends with a stray line. The color comes from <code>--r-block-list-item-border-color</code>, which resolves to a step on the muted surface scale, so the divider follows the theme without a separate dark-mode rule.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <ul class="block-list block-list-bordered">
+                                        <li class="block-list-item">
+                                            <span class="block-list-label">Build 1284 passed</span>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <span class="block-list-label">Container image pushed</span>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <span class="block-list-label">Staging deployed</span>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <span class="block-list-label">Smoke tests passed</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-list-bordered">Copy</button>
+                                </div>
+                                <pre><code id="block-list-bordered" class="language-html">&lt;ul class="block-list block-list-bordered"&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;span class="block-list-label"&gt;Build 1284 passed&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;span class="block-list-label"&gt;Container image pushed&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;span class="block-list-label"&gt;Staging deployed&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;span class="block-list-label"&gt;Smoke tests passed&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                            <p>The divider sits at the bottom edge of the item padding, so it is 10px below the label and 10px above the next one. Keep that in mind when a row gets its own padding; the two add up.</p>
+                        </section>
+
+                        <section class="doc-section" id="values">
+                            <h2>Label and value rows</h2>
+                            <p>The block has no value class. Pair <code>.block-list-label</code> with plain text and place the two ends with your own layout: the block only owns the row padding. A flex row with <code>justify-content: space-between</code> keeps the value at the right edge without a second column.</p>
+                            <p>The demo reuses <code>.block-list-label</code> for the value so both ends share the 14px size. The class sets only the size, so the value is still plain text.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <ul class="block-list block-list-bordered">
+                                        <li class="block-list-item">
+                                            <div style="display: flex; justify-content: space-between; gap: 16px">
+                                                <span class="block-list-label">Storage used</span>
+                                                <span class="block-list-label">48.2 GB of 100 GB</span>
+                                            </div>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <div style="display: flex; justify-content: space-between; gap: 16px">
+                                                <span class="block-list-label">Bandwidth this month</span>
+                                                <span class="block-list-label">612 GB</span>
+                                            </div>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px">
+                                                <span class="block-list-label">Deployment</span>
+                                                <span class="badge badge-success">Live</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-list-values">Copy</button>
+                                </div>
+                                <pre><code id="block-list-values" class="language-html">&lt;ul class="block-list block-list-bordered"&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;div style="display: flex; justify-content: space-between; gap: 16px"&gt;
+            &lt;span class="block-list-label"&gt;Storage used&lt;/span&gt;
+            &lt;span class="block-list-label"&gt;48.2 GB of 100 GB&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;div style="display: flex; justify-content: space-between; gap: 16px"&gt;
+            &lt;span class="block-list-label"&gt;Bandwidth this month&lt;/span&gt;
+            &lt;span class="block-list-label"&gt;612 GB&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;div style="display: flex; justify-content: space-between; align-items: center; gap: 16px"&gt;
+            &lt;span class="block-list-label"&gt;Deployment&lt;/span&gt;
+            &lt;span class="badge badge-success"&gt;Live&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                            <p>Keep values short. The block never truncates or wraps a row for you, so a long value either wraps inside the flex row or pushes the label aside. For a two-column layout with many rows, a <a href="/components/table.html">table</a> or the stat table block is the better fit.</p>
+                        </section>
+
+                        <section class="doc-section" id="actions">
+                            <h2>Actions and controls</h2>
+                            <p>Rows are plain block content, so buttons, badges, and form controls drop in without a wrapper. Keep row actions small: <code>.button-small</code> or <code>.button-text</code> keeps the row height predictable, while a full size button stretches every row to its own height.</p>
+                            <p>A checkbox row uses <code>.form-checkbox-label</code> and <code>.form-check-input</code>, the same classes as the <a href="/components/form.html">form module</a>. The label covers the row content, so a click anywhere on the text toggles the box.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <ul class="block-list block-list-bordered">
+                                        <li class="block-list-item">
+                                            <div style="display: flex; align-items: center; gap: 10px">
+                                                <span class="block-list-label">Ada Lovelace</span>
+                                                <span class="badge badge-primary">Owner</span>
+                                                <button class="button button-small button-text" type="button" style="margin-left: auto" aria-label="Manage Ada Lovelace">Manage</button>
+                                            </div>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <div style="display: flex; align-items: center; gap: 10px">
+                                                <span class="block-list-label">Grace Hopper</span>
+                                                <span class="badge">Admin</span>
+                                                <button class="button button-small button-text" type="button" style="margin-left: auto" aria-label="Manage Grace Hopper">Manage</button>
+                                            </div>
+                                        </li>
+                                        <li class="block-list-item">
+                                            <div style="display: flex; align-items: center; gap: 10px">
+                                                <span class="block-list-label">Alan Turing</span>
+                                                <span class="badge">Member</span>
+                                                <button class="button button-small button-text" type="button" style="margin-left: auto" aria-label="Manage Alan Turing">Manage</button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-list-actions">Copy</button>
+                                </div>
+                                <pre><code id="block-list-actions" class="language-html">&lt;ul class="block-list block-list-bordered"&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;div style="display: flex; align-items: center; gap: 10px"&gt;
+            &lt;span class="block-list-label"&gt;Ada Lovelace&lt;/span&gt;
+            &lt;span class="badge badge-primary"&gt;Owner&lt;/span&gt;
+            &lt;button class="button button-small button-text" type="button" style="margin-left: auto" aria-label="Manage Ada Lovelace"&gt;Manage&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;div style="display: flex; align-items: center; gap: 10px"&gt;
+            &lt;span class="block-list-label"&gt;Grace Hopper&lt;/span&gt;
+            &lt;span class="badge"&gt;Admin&lt;/span&gt;
+            &lt;button class="button button-small button-text" type="button" style="margin-left: auto" aria-label="Manage Grace Hopper"&gt;Manage&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="block-list-item"&gt;
+        &lt;div style="display: flex; align-items: center; gap: 10px"&gt;
+            &lt;span class="block-list-label"&gt;Alan Turing&lt;/span&gt;
+            &lt;span class="badge"&gt;Member&lt;/span&gt;
+            &lt;button class="button button-small button-text" type="button" style="margin-left: auto" aria-label="Manage Alan Turing"&gt;Manage&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                            <p>Name every row action after the row it changes, not just "Manage", because a screen reader can list buttons out of context. <code>aria-label="Manage Ada Lovelace"</code> on the button is enough when the visible label has to stay short.</p>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>The block is a stack of rows, and the element you choose for each row decides what a screen reader announces.</p>
+                            <ul>
+                                <li>Use <code>&lt;ul&gt;</code> with <code>&lt;li&gt;</code> for a set of rows, as the demos do, so the item count is announced. The reset removes the markers, so the block looks the same.</li>
+                                <li>For label and value pairs, prefer <code>&lt;dl&gt;</code> with <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code>, which ties each value to its label. Two spans in a flex row read as two unrelated runs of text.</li>
+                                <li>Give every row action a name that includes the row, as the demos do with <code>aria-label="Manage Ada Lovelace"</code>, because a screen reader can list the buttons out of context.</li>
+                                <li>Keep focus visible. The item padding and the divider do not clip the framework <code>:focus-visible</code> ring, so do not add <code>overflow: hidden</code> on a row that holds a control.</li>
+                                <li>A badge such as Owner or Live carries meaning, so keep the word in the text and do not reduce the row state to a color alone.</li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>The block defines one container, one item, one label, and an ancestor modifier for dividers.</p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.block-list</code></td>
+                                            <td>Wrapper</td>
+                                            <td>Flex column with no gap; the items carry the spacing.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-list-item</code></td>
+                                            <td>Item</td>
+                                            <td>Half of <code>--r-block-padding</code> above and below, 10px per edge at the default 20px rhythm.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-list-label</code></td>
+                                            <td>Label</td>
+                                            <td>14px label text. No weight change and no truncation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.block-list-bordered</code></td>
+                                            <td>Modifier</td>
+                                            <td>Ancestor modifier. Adds a 1px bottom border to each item from <code>--r-block-list-item-border-color</code>, removed on the last child.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-inline.html">Previous: Block inline</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/blocks/block-repeater.html">Next: Block repeater</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#bordered">Bordered list</a>
+                        <a class="doc-toc-link" href="#values">Label and value rows</a>
+                        <a class="doc-toc-link" href="#actions">Actions and controls</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

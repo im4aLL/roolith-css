@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Action menu - roolith css</title>
+        <meta
+            name="description"
+            content="Action menu lists for record, panel, and block header actions in the roolith css framework." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/components/accordion.html">Components</a></li>
+                                <li class="breadcrumb-item active">Action menu</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Action menu</h1>
+                            <p class="doc-content-lead">
+                                An action menu collects the actions that apply to one record, panel, or block header.
+                                The list lays out vertically on small screens and switches to a horizontal row from
+                                640px up, so the same markup fits a narrow table row and a wide toolbar.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>.action-menu-list</strong>
+                                - defined in
+                                <strong>modules/_action-menu.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="basic-usage">
+                            <h2>Basic usage</h2>
+                            <p>
+                                The
+                                <code>.action-menu</code>
+                                root carries variant classes but declares no styles of its own. Layout lives on
+                                <code>.action-menu-list</code>, which is a flex column with a
+                                <code>--r-action-menu-list-gap</code>
+                                gap and turns into a row at the
+                                <code>medium-up</code>
+                                breakpoint of 640px.
+                            </p>
+                            <p>
+                                Each
+                                <code>.action-menu-link</code>
+                                is a padded flex row with an 8px gap, a 14px label, the token radius, and hover styles
+                                that swap the muted text for the accent color over
+                                <code>--r-surface-muted</code>. Its resting background is
+                                <code>--r-action-menu-item-background</code>, which is
+                                <code>var(--r-surface)</code>
+                                in light mode and
+                                <code>transparent</code>
+                                in dark mode.
+                            </p>
+                            <div class="doc-demo">
+                                <nav class="action-menu" aria-label="Invoice actions">
+                                    <ul class="action-menu-list">
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <span class="action-menu-label">Open</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <span class="action-menu-label">Duplicate</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <span class="action-menu-label">Export</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <span class="action-menu-label">Archive</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="action-menu-basic">Copy</button>
+                                </div>
+                                <pre><code id="action-menu-basic" class="language-html">&lt;nav class="action-menu" aria-label="Invoice actions"&gt;
+    &lt;ul class="action-menu-list"&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;span class="action-menu-label"&gt;Open&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;span class="action-menu-label"&gt;Duplicate&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;span class="action-menu-label"&gt;Export&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;span class="action-menu-label"&gt;Archive&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                            <p>
+                                Narrow your browser below 640px to see the same list stack. Nothing in the markup
+                                changes, only the flex direction.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="icons">
+                            <h2>Icons</h2>
+                            <p>
+                                Drop an icon inside the link next to
+                                <code>.action-menu-label</code>
+                                and give it
+                                <code>.action-menu-icon</code>. The link is already a flex row, so the 8px gap spaces the
+                                icon from the text.
+                            </p>
+                            <p>
+                                The framework does not ship an icon set. The repository root demos, <code>index.html</code>
+                                and <code>admin.html</code>, load Iconoir and use classes such as
+                                <code>iconoir-settings</code>, which works because the link is a flex row and the icon
+                                inherits its font size. The example below uses inline SVG with
+                                <code>currentColor</code>
+                                so it renders without any extra stylesheet and inherits the link color on hover.
+                            </p>
+                            <div class="doc-demo">
+                                <nav class="action-menu" aria-label="Record actions">
+                                    <ul class="action-menu-list">
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <svg
+                                                    class="action-menu-icon"
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.25"
+                                                    stroke-linecap="round"
+                                                    aria-hidden="true">
+                                                    <circle cx="8" cy="8" r="2.2" />
+                                                    <path
+                                                        d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M12.6 3.4l-1.1 1.1M4.5 11.5l-1.1 1.1" />
+                                                </svg>
+                                                <span class="action-menu-label">Settings</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <svg
+                                                    class="action-menu-icon"
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.25"
+                                                    stroke-linecap="round"
+                                                    aria-hidden="true">
+                                                    <path d="M8 3v10M3 8h10" />
+                                                </svg>
+                                                <span class="action-menu-label">Add new</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <svg
+                                                    class="action-menu-icon"
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.25"
+                                                    stroke-linecap="round"
+                                                    aria-hidden="true">
+                                                    <path d="M8 2v8M5 7l3 3 3-3M2.5 13.5h11" />
+                                                </svg>
+                                                <span class="action-menu-label">Download</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <svg
+                                                    class="action-menu-icon"
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.25"
+                                                    stroke-linecap="round"
+                                                    aria-hidden="true">
+                                                    <path d="M2.5 4.5h11M6.5 4.5V2.5h3v2M4 4.5l.7 9h6.6l.7-9" />
+                                                </svg>
+                                                <span class="action-menu-label">Delete</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="action-menu-icons">Copy</button>
+                                </div>
+                                <pre><code id="action-menu-icons" class="language-html">&lt;nav class="action-menu" aria-label="Record actions"&gt;
+    &lt;ul class="action-menu-list"&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;svg class="action-menu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                    &lt;circle cx="8" cy="8" r="2.2" /&gt;
+                    &lt;path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M12.6 3.4l-1.1 1.1M4.5 11.5l-1.1 1.1" /&gt;
+                &lt;/svg&gt;
+                &lt;span class="action-menu-label"&gt;Settings&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;svg class="action-menu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                    &lt;path d="M8 3v10M3 8h10" /&gt;
+                &lt;/svg&gt;
+                &lt;span class="action-menu-label"&gt;Add new&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;svg class="action-menu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                    &lt;path d="M8 2v8M5 7l3 3 3-3M2.5 13.5h11" /&gt;
+                &lt;/svg&gt;
+                &lt;span class="action-menu-label"&gt;Download&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;svg class="action-menu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                    &lt;path d="M2.5 4.5h11M6.5 4.5V2.5h3v2M4 4.5l.7 9h6.6l.7-9" /&gt;
+                &lt;/svg&gt;
+                &lt;span class="action-menu-label"&gt;Delete&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                            <p>
+                                An Iconoir icon drops in the same way:
+                                <code>&lt;i class="iconoir-plus-square action-menu-icon"&gt;&lt;/i&gt;</code>
+                                replaces the SVG.
+                            </p>
+                        </section>
+
+                        <section class="doc-section" id="primary">
+                            <h2>Primary variant</h2>
+                            <p>
+                                Add
+                                <code>.action-menu-primary</code>
+                                to the
+                                <code>.action-menu</code>
+                                root to turn the links into stacked, centered tiles. The link becomes a column, is capped
+                                at 150px wide, and centers its text; the icon is sized from the
+                                <code>.action-menu-icon</code>
+                                font size of 18px.
+                            </p>
+                            <p>
+                                Inline SVG does not read font size, so set
+                                <code>width</code>
+                                and
+                                <code>height</code>
+                                to 18 on the SVG in this variant. The icons below do exactly that.
+                            </p>
+                            <div class="doc-demo">
+                                <nav class="action-menu action-menu-primary" aria-label="Report actions">
+                                    <ul class="action-menu-list">
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <svg
+                                                    class="action-menu-icon"
+                                                    width="18"
+                                                    height="18"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.25"
+                                                    stroke-linecap="round"
+                                                    aria-hidden="true">
+                                                    <circle cx="8" cy="8" r="2.2" />
+                                                    <path
+                                                        d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M12.6 3.4l-1.1 1.1M4.5 11.5l-1.1 1.1" />
+                                                </svg>
+                                                <span class="action-menu-label">Settings</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <svg
+                                                    class="action-menu-icon"
+                                                    width="18"
+                                                    height="18"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.25"
+                                                    stroke-linecap="round"
+                                                    aria-hidden="true">
+                                                    <path d="M8 3v10M3 8h10" />
+                                                </svg>
+                                                <span class="action-menu-label">Add new</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <svg
+                                                    class="action-menu-icon"
+                                                    width="18"
+                                                    height="18"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.25"
+                                                    stroke-linecap="round"
+                                                    aria-hidden="true">
+                                                    <path d="M8 2v8M5 7l3 3 3-3M2.5 13.5h11" />
+                                                </svg>
+                                                <span class="action-menu-label">Download</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <svg
+                                                    class="action-menu-icon"
+                                                    width="18"
+                                                    height="18"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.25"
+                                                    stroke-linecap="round"
+                                                    aria-hidden="true">
+                                                    <path d="M2.5 4.5h11M6.5 4.5V2.5h3v2M4 4.5l.7 9h6.6l.7-9" />
+                                                </svg>
+                                                <span class="action-menu-label">Delete</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="action-menu-primary">Copy</button>
+                                </div>
+                                <pre><code id="action-menu-primary" class="language-html">&lt;nav class="action-menu action-menu-primary" aria-label="Report actions"&gt;
+    &lt;ul class="action-menu-list"&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;svg class="action-menu-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                    &lt;circle cx="8" cy="8" r="2.2" /&gt;
+                    &lt;path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M12.6 3.4l-1.1 1.1M4.5 11.5l-1.1 1.1" /&gt;
+                &lt;/svg&gt;
+                &lt;span class="action-menu-label"&gt;Settings&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;svg class="action-menu-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                    &lt;path d="M8 3v10M3 8h10" /&gt;
+                &lt;/svg&gt;
+                &lt;span class="action-menu-label"&gt;Add new&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;svg class="action-menu-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                    &lt;path d="M8 2v8M5 7l3 3 3-3M2.5 13.5h11" /&gt;
+                &lt;/svg&gt;
+                &lt;span class="action-menu-label"&gt;Download&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;svg class="action-menu-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.25" stroke-linecap="round" aria-hidden="true"&gt;
+                    &lt;path d="M2.5 4.5h11M6.5 4.5V2.5h3v2M4 4.5l.7 9h6.6l.7-9" /&gt;
+                &lt;/svg&gt;
+                &lt;span class="action-menu-label"&gt;Delete&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="highlight">
+                            <h2>Highlight item</h2>
+                            <p>
+                                Add
+                                <code>.action-menu-item-highlight</code>
+                                to an
+                                <code>.action-menu-item</code>
+                                to mark it with a 5px dot in the top right corner. The dot is painted with
+                                <code>var(--r-accent)</code>
+                                by the item's
+                                <code>::before</code>
+                                pseudo-element, and it is positioned against the item's
+                                <code>position: relative</code>, so the modifier only works on the list item.
+                            </p>
+                            <p>
+                                A single dot carries no meaning on its own. Use it for a secondary cue, such as "this
+                                action destroys data", and keep the meaning in the label.
+                            </p>
+                            <div class="doc-demo">
+                                <nav class="action-menu" aria-label="Queue actions">
+                                    <ul class="action-menu-list">
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <span class="action-menu-label">Retry</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item action-menu-item-highlight">
+                                            <a href="#" class="action-menu-link">
+                                                <span class="action-menu-label">Delete</span>
+                                            </a>
+                                        </li>
+                                        <li class="action-menu-item">
+                                            <a href="#" class="action-menu-link">
+                                                <span class="action-menu-label">Inspect</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="action-menu-highlight">
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre><code id="action-menu-highlight" class="language-html">&lt;nav class="action-menu" aria-label="Queue actions"&gt;
+    &lt;ul class="action-menu-list"&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;span class="action-menu-label"&gt;Retry&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item action-menu-item-highlight"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;span class="action-menu-label"&gt;Delete&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="action-menu-item"&gt;
+            &lt;a href="#" class="action-menu-link"&gt;
+                &lt;span class="action-menu-label"&gt;Inspect&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="accessibility">
+                            <h2>Accessibility</h2>
+                            <p>
+                                The component is a list of controls, so the semantics come from the elements you choose
+                                inside it.
+                            </p>
+                            <ul>
+                                <li>
+                                    Wrap the list in
+                                    <code>&lt;nav&gt;</code>
+                                    with an
+                                    <code>aria-label</code>
+                                    that names the group, because a page can hold several action menus. A
+                                    <code>&lt;ul&gt;</code>
+                                    keeps the item count available to screen readers.
+                                </li>
+                                <li>
+                                    Use
+                                    <code>&lt;a&gt;</code>
+                                    for navigation and
+                                    <code>&lt;button type="button"&gt;</code>
+                                    for commands. The
+                                    <code>.action-menu-link</code>
+                                    class works on both.
+                                </li>
+                                <li>
+                                    The highlight dot is a
+                                    <code>::before</code>
+                                    pseudo-element, so it has no text alternative. Pair it with a label that states the
+                                    consequence, for example "Delete", rather than relying on the dot.
+                                </li>
+                                <li>
+                                    <code>.action-menu-label</code>
+                                    sets
+                                    <code>user-select: none</code>. Keep it to the action name and do not put text there
+                                    that users need to copy.
+                                </li>
+                                <li>
+                                    In the primary variant the link is capped at 150px and labels wrap rather than
+                                    truncate. Keep labels to one or two words so the tiles stay even.
+                                </li>
+                                <li>
+                                    Focus outlines come from the base layer, which draws a 2px
+                                    <code>:focus-visible</code>
+                                    ring on links and buttons. Leave it in place.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="doc-section" id="reference">
+                            <h2 id="reference-heading">Class reference</h2>
+                            <p>
+                                The root carries the variant, the list owns layout, and the link owns the visual
+                                treatment. Spacing and colors come from the
+                                <code>--r-action-menu-*</code>
+                                tokens.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Applies</th>
+                                            <th scope="col">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>.action-menu</code></td>
+                                            <td>Root</td>
+                                            <td>No declarations of its own. Carries the primary modifier.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.action-menu-primary</code></td>
+                                            <td>Root modifier</td>
+                                            <td>Stacks icon over label, centers text, caps links at 150px.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.action-menu-list</code></td>
+                                            <td>List</td>
+                                            <td>Flex column with the token gap; a row from 640px up.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.action-menu-item</code></td>
+                                            <td>List item</td>
+                                            <td>Relative positioning context for the highlight dot.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.action-menu-item-highlight</code></td>
+                                            <td>List item modifier</td>
+                                            <td>Adds the 5px accent dot in the top right corner.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.action-menu-link</code></td>
+                                            <td>Link or button</td>
+                                            <td>Padded flex row, 14px text, hover accent and muted surface.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.action-menu-icon</code></td>
+                                            <td>Icon element</td>
+                                            <td>Sits in the link's flex row. Font size is 18px in the primary variant.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.action-menu-label</code></td>
+                                            <td>Label span</td>
+                                            <td>Holds the action name and disables text selection.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/accordion.html">Previous: Accordion</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/components/article.html">Next: Article</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#icons">Icons</a>
+                        <a class="doc-toc-link" href="#primary">Primary variant</a>
+                        <a class="doc-toc-link" href="#highlight">Highlight item</a>
+                        <a class="doc-toc-link" href="#accessibility">Accessibility</a>
+                        <a class="doc-toc-link" href="#reference">Class reference</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>

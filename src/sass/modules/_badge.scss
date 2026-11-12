@@ -11,7 +11,7 @@
         background: var(--r-badge-surface);
         border: rem(1) solid var(--r-badge-background);
         color: var(--r-badge-color);
-        border-radius: rem(5);
+        border-radius: var(--r-badge-border-radius);
         font-size: rem(11);
         line-height: 1;
         text-transform: uppercase;

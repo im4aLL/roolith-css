@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Installation - roolith css</title>
+        <meta
+            name="description"
+            content="Install roolith css from npm, link the built stylesheet, use the SCSS source directly, or build it yourself." />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
+        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../doc.css" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github.min.css"
+            data-hljs-theme="light" />
+        <link
+            rel="stylesheet"
+            href="/vendor/highlight-github-dark.min.css"
+            data-hljs-theme="dark" />
+        <script src="/doc-search.js"></script>
+        <script src="/doc-surfaces.js"></script>
+        <script src="../doc.js"></script>
+        <script src="/vendor/highlight.min.js" defer></script>
+        <script src="/include-fragment.js" defer></script>
+    </head>
+    <body class="has-sidebar">
+        <include-fragment class="doc-fragment" src="/partials/header.html">
+            <p>Loading...</p>
+        </include-fragment>
+
+        <main class="layout doc-layout">
+            <div class="layout-primary">
+                <include-fragment class="doc-fragment" src="/partials/sidebar.html">
+                    <p>Loading...</p>
+                </include-fragment>
+            </div>
+
+            <div class="layout-secondary">
+                <div class="doc-main">
+                    <div class="doc-content" id="doc-content" tabindex="-1">
+                        <div class="doc-breadcrumb-row">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/getting-started/introduction.html">Getting started</a></li>
+                                <li class="breadcrumb-item active">Installation</li>
+                            </ol>
+                        </div>
+
+                        <header class="doc-content-header">
+                            <h1>Installation</h1>
+                            <p class="doc-content-lead">
+                                roolith installs as an npm package whose entry point is the SCSS source. You can compile that source in your own pipeline, or build the framework once and link a single CSS file. Both routes expose the same token layer.
+                            </p>
+                            <div class="doc-import-line">
+                                class:
+                                <strong>Multiple classes</strong>
+                                - defined in
+                                <strong>src/sass/roolith.scss</strong>
+                            </div>
+                        </header>
+
+                        <section class="doc-section" id="install-from-npm">
+                            <h2>Install from npm</h2>
+                            <p><code>roolith-css</code> is published on npm. The package entry declared in <code>package.json</code> is <code>./src/sass/roolith.scss</code>, and the prebuilt stylesheet ships alongside it at <code>dist/roolith-4.0.0.min.css</code>.</p>
+                            <p>You can compile the SCSS in your own pipeline or copy the prebuilt file into your assets and link it. The next two sections cover <a href="#stylesheet">the built stylesheet</a> and <a href="#scss">the SCSS source</a>.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">Shell</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="installation-npm">Copy</button>
+                                </div>
+                                <pre><code id="installation-npm" class="language-bash">npm i roolith-css</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="stylesheet">
+                            <h2>Link the built stylesheet</h2>
+                            <p>The build writes one file, <code>dist/roolith-4.0.0.min.css</code>. Both parts of that name come from the package: the Vite config names assets <code>[name]-[version].min.css</code> and the input is <code>roolith</code>.</p>
+                            <p>Copy the file wherever your static assets live, then link it once per page. Everything below is rendered by that stylesheet alone, with no page specific CSS.</p>
+                            <div class="doc-demo">
+                                <button class="button button-primary" type="button">Primary</button>
+                                <button class="button button-outline" type="button">Outline</button>
+                                <span class="badge badge-primary">Primary</span>
+                                <span class="badge badge-success">Success</span>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="installation-stylesheet">Copy</button>
+                                </div>
+                                <pre><code id="installation-stylesheet" class="language-html">&lt;link rel="stylesheet" href="roolith-4.0.0.min.css" /&gt;</code></pre>
+                            </div>
+                            <div class="message message-info">
+                                This documentation site loads the stylesheet as <code>../roolith-4.0.0.min.css</code>, which resolves to <code>docs/roolith-4.0.0.min.css</code>. A CDN link will replace it later; until then point your pages at the file you build or copy.
+                            </div>
+                        </section>
+
+                        <section class="doc-section" id="scss">
+                            <h2>Use the SCSS source</h2>
+                            <p>Import the entry point from your own Sass file. <code>roolith.scss</code> loads <code>main</code> and runs <code>roolith-everything()</code>, so one <code>@use</code> emits the token layer, the reset, base styles, modules, blocks, layout, and state rules in one pass.</p>
+                            <p>The import resolves from <code>node_modules</code>. Bundlers such as Vite resolve package paths for you; the Sass CLI needs <code>--load-path=node_modules</code>.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">SCSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="installation-scss">Copy</button>
+                                </div>
+                                <pre><code id="installation-scss" class="language-scss">@use 'roolith-css/src/sass/roolith.scss';</code></pre>
+                            </div>
+                            <p>To decide what the build emits, load <code>main</code> instead. It declares the same mixins but writes nothing on its own, so the includes you write become the stylesheet. It owns no variables, so overrides go through <code>settings</code>, which you load with a <code>with</code> block before <code>main</code>.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">SCSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="installation-scss-main">Copy</button>
+                                </div>
+                                <pre><code id="installation-scss-main" class="language-scss">@use 'roolith-css/src/sass/main' as r;
+
+@include r.roolith-base();
+@include r.roolith-modules();
+@include r.roolith-extended-modules();
+@include r.roolith-blocks();
+@include r.roolith-layout();
+@include r.roolith-state();</code></pre>
+                            </div>
+                            <p>The first four groups cover the tokens, reset, typography, components, and composed blocks. <code>roolith-layout()</code> adds the grid and the application scaffold, and <code>roolith-state()</code> adds the show, hide, and <code>.is-*</code> helpers, so drop either include only when the page does not need them. <code>roolith-everything()</code> calls all six in that order.</p>
+                            <p>The compiled output still declares the token layer as CSS custom properties, so runtime theming works the same way whether you compile the SCSS or link the built file. Overrides stay plain CSS either way.</p>
+                        </section>
+
+                        <section class="doc-section" id="build-from-source">
+                            <h2>Build from source</h2>
+                            <p>Clone the repository, install the dev dependencies, then build. Vite writes the stylesheet to <code>dist/</code>, names it after the package name and version, and adds a banner comment with the version and build date.</p>
+                            <p><code>npm run dev</code> starts the Vite dev server, which serves the demo pages in the repository root and recompiles the SCSS on change. <code>npm run build</code> performs the production build and empties <code>dist/</code> first.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">Shell</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="installation-build">Copy</button>
+                                </div>
+                                <pre><code id="installation-build" class="language-bash">npm install
+npm run dev
+npm run build</code></pre>
+                            </div>
+                            <p>Autoprefixer runs through the PostCSS config in the repository root, so the build output carries the vendor prefixes that the source does not spell out.</p>
+                        </section>
+
+                        <section class="doc-section" id="variables">
+                            <h2>CSS variable dump</h2>
+                            <p>Two scripts print the token layer to a stylesheet you can read, diff, and hand to a designer. <code>npm run css-vars</code> writes only the theme tokens declared on <code>:root</code>, <code>.theme-light</code>, and <code>.theme-dark</code>.</p>
+                            <p><code>npm run css-vars:all</code> includes every custom property the framework sets, including the ones scoped to component rules, such as <code>--grid-span</code> on the grid classes.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">Shell</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="installation-variables">Copy</button>
+                                </div>
+                                <pre><code id="installation-variables" class="language-bash">npm run css-vars
+npm run css-vars:all
+node scripts/generate-css-variables.mjs --out tokens.css</code></pre>
+                            </div>
+                            <p>Both scripts write <code>dist/roolith-variables.css</code> by default and accept <code>--out</code> for another path. A build empties <code>dist/</code>, so run the dump after <code>npm run build</code> when you want the token list next to the compiled CSS.</p>
+                        </section>
+
+                        <section class="doc-section" id="document-shell">
+                            <h2>HTML document shell</h2>
+                            <p>A roolith page needs the doctype, a viewport meta tag so the grid collapses on phones, and one stylesheet link. Put a theme class on <code>&lt;html&gt;</code> only when you want to force a mode.</p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="installation-document-shell">Copy</button>
+                                </div>
+                                <pre><code id="installation-document-shell" class="language-html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+        &lt;title&gt;My page&lt;/title&gt;
+        &lt;link rel="stylesheet" href="roolith-4.0.0.min.css" /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;main class="container"&gt;
+            &lt;h1&gt;My page&lt;/h1&gt;
+            &lt;p&gt;Content starts here.&lt;/p&gt;
+        &lt;/main&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            </div>
+                            <p>Leave the theme class off to follow the operating system through <code>prefers-color-scheme</code>. Add <code>class="theme-light"</code> or <code>class="theme-dark"</code> to pin a mode; the rules behind both are covered in <a href="/getting-started/theming.html">Theming</a>.</p>
+                        </section>
+
+                        <div class="pagination doc-pagination">
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/introduction.html">Previous: Introduction</a>
+                                </div>
+                            </div>
+                            <div class="pagination-list">
+                                <div class="pagination-item">
+                                    <a class="pagination-link" href="/getting-started/theming.html">Next: Theming</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="doc-toc" aria-label="On this page">
+                        <div class="doc-toc-title">On this page</div>
+                        <a class="doc-toc-link" href="#install-from-npm">Install from npm</a>
+                        <a class="doc-toc-link" href="#stylesheet">Link the built stylesheet</a>
+                        <a class="doc-toc-link" href="#scss">Use the SCSS source</a>
+                        <a class="doc-toc-link" href="#build-from-source">Build from source</a>
+                        <a class="doc-toc-link" href="#variables">CSS variable dump</a>
+                        <a class="doc-toc-link" href="#document-shell">HTML document shell</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <include-fragment class="doc-fragment" src="/partials/footer.html">
+            <p>Loading...</p>
+        </include-fragment>
+    </body>
+</html>
