@@ -8,6 +8,7 @@
         <link rel="icon" href="../favicon.ico" sizes="any" />
         <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
         <link rel="stylesheet" href="../doc.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
         <link
             rel="stylesheet"
             href="/vendor/highlight-github.min.css"
@@ -81,17 +82,26 @@
                                                     <ul class="action-menu-list">
                                                         <li class="action-menu-item">
                                                             <a href="#" class="action-menu-link">
+                                                                <i class="iconoir-settings action-menu-icon" aria-hidden="true"></i>
                                                                 <span class="action-menu-label">Settings</span>
                                                             </a>
                                                         </li>
                                                         <li class="action-menu-item">
                                                             <a href="#" class="action-menu-link">
-                                                                <span class="action-menu-label">Export</span>
+                                                                <i class="iconoir-plus-square action-menu-icon" aria-hidden="true"></i>
+                                                                <span class="action-menu-label">Add new</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="action-menu-item action-menu-item-highlight">
+                                                            <a href="#" class="action-menu-link">
+                                                                <i class="iconoir-trash action-menu-icon" aria-hidden="true"></i>
+                                                                <span class="action-menu-label">Delete</span>
                                                             </a>
                                                         </li>
                                                         <li class="action-menu-item">
                                                             <a href="#" class="action-menu-link">
-                                                                <span class="action-menu-label">Share</span>
+                                                                <i class="iconoir-download action-menu-icon" aria-hidden="true"></i>
+                                                                <span class="action-menu-label">Download</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -125,17 +135,26 @@
                 &lt;ul class="action-menu-list"&gt;
                     &lt;li class="action-menu-item"&gt;
                         &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;i class="iconoir-settings action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
                             &lt;span class="action-menu-label"&gt;Settings&lt;/span&gt;
                         &lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li class="action-menu-item"&gt;
                         &lt;a href="#" class="action-menu-link"&gt;
-                            &lt;span class="action-menu-label"&gt;Export&lt;/span&gt;
+                            &lt;i class="iconoir-plus-square action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
+                            &lt;span class="action-menu-label"&gt;Add new&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="action-menu-item action-menu-item-highlight"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;i class="iconoir-trash action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
+                            &lt;span class="action-menu-label"&gt;Delete&lt;/span&gt;
                         &lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li class="action-menu-item"&gt;
                         &lt;a href="#" class="action-menu-link"&gt;
-                            &lt;span class="action-menu-label"&gt;Share&lt;/span&gt;
+                            &lt;i class="iconoir-download action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
+                            &lt;span class="action-menu-label"&gt;Download&lt;/span&gt;
                         &lt;/a&gt;
                     &lt;/li&gt;
                 &lt;/ul&gt;
@@ -145,6 +164,113 @@
 &lt;/div&gt;</code></pre>
                             </div>
                             <p>All spacing comes from one token. <code>--r-block-padding</code> is <code>1.25rem</code> by default, which produces the 20px below the block, the 10px below the breadcrumb, the 10px above the container, and the gap between its two sides. Override it on the block for a tighter header, or on <code>:root</code> to retune every block that shares the rhythm.</p>
+                        </section>
+
+                        <section class="doc-section" id="primary-actions">
+                            <h2>Primary action menu</h2>
+                            <p><code>.action-menu-primary</code> on the <code>.action-menu</code> root turns each link into a stacked tile: the link becomes a column capped at 150px, the label centers under the icon, and <code>.action-menu-icon</code> grows to 18px. It suits a short set of commands whose icons carry most of the meaning.</p>
+                            <p>This page loads Iconoir from a CDN in the head, and the demos put an <code>&lt;i&gt;</code> with the glyph class and <code>.action-menu-icon</code> inside each link. The block only spaces the icon, so any icon set that paints with <code>color</code> works the same way.</p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <div class="block-header">
+                                        <nav aria-label="Breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                                <li class="breadcrumb-item"><a href="#">Reports</a></li>
+                                                <li class="breadcrumb-item active" aria-current="page">Revenue</li>
+                                            </ol>
+                                        </nav>
+                                        <div class="block-header-container">
+                                            <div>
+                                                <h3>Revenue</h3>
+                                                <p>Quarterly recurring revenue by region, refreshed every hour.</p>
+                                            </div>
+                                            <div class="block-header-secondary">
+                                                <nav class="action-menu action-menu-primary" aria-label="Report actions">
+                                                    <ul class="action-menu-list">
+                                                        <li class="action-menu-item">
+                                                            <a href="#" class="action-menu-link">
+                                                                <i class="iconoir-settings action-menu-icon" aria-hidden="true"></i>
+                                                                <span class="action-menu-label">Settings</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="action-menu-item">
+                                                            <a href="#" class="action-menu-link">
+                                                                <i class="iconoir-plus-square action-menu-icon" aria-hidden="true"></i>
+                                                                <span class="action-menu-label">Add new</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="action-menu-item action-menu-item-highlight">
+                                                            <a href="#" class="action-menu-link">
+                                                                <i class="iconoir-trash action-menu-icon" aria-hidden="true"></i>
+                                                                <span class="action-menu-label">Delete</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="action-menu-item">
+                                                            <a href="#" class="action-menu-link">
+                                                                <i class="iconoir-download action-menu-icon" aria-hidden="true"></i>
+                                                                <span class="action-menu-label">Download</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-header-primary-actions">Copy</button>
+                                </div>
+                                <pre><code id="block-header-primary-actions" class="language-html">&lt;div class="block-header"&gt;
+    &lt;nav aria-label="Breadcrumb"&gt;
+        &lt;ol class="breadcrumb"&gt;
+            &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Reports&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="breadcrumb-item active" aria-current="page"&gt;Revenue&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/nav&gt;
+
+    &lt;div class="block-header-container"&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Revenue&lt;/h3&gt;
+            &lt;p&gt;Quarterly recurring revenue by region, refreshed every hour.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="block-header-secondary"&gt;
+            &lt;nav class="action-menu action-menu-primary" aria-label="Report actions"&gt;
+                &lt;ul class="action-menu-list"&gt;
+                    &lt;li class="action-menu-item"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;i class="iconoir-settings action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
+                            &lt;span class="action-menu-label"&gt;Settings&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="action-menu-item"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;i class="iconoir-plus-square action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
+                            &lt;span class="action-menu-label"&gt;Add new&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="action-menu-item action-menu-item-highlight"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;i class="iconoir-trash action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
+                            &lt;span class="action-menu-label"&gt;Delete&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="action-menu-item"&gt;
+                        &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;i class="iconoir-download action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
+                            &lt;span class="action-menu-label"&gt;Download&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
                         </section>
 
                         <section class="doc-section" id="action-led">
@@ -216,16 +342,19 @@
                                                     <ul class="action-menu-list">
                                                         <li class="action-menu-item">
                                                             <a href="#" class="action-menu-link">
+                                                                <i class="iconoir-check action-menu-icon" aria-hidden="true"></i>
                                                                 <span class="action-menu-label">Request approval</span>
                                                             </a>
                                                         </li>
                                                         <li class="action-menu-item">
                                                             <a href="#" class="action-menu-link">
+                                                                <i class="iconoir-download action-menu-icon" aria-hidden="true"></i>
                                                                 <span class="action-menu-label">Download all invoices</span>
                                                             </a>
                                                         </li>
                                                         <li class="action-menu-item">
                                                             <a href="#" class="action-menu-link">
+                                                                <i class="iconoir-archive action-menu-icon" aria-hidden="true"></i>
                                                                 <span class="action-menu-label">Archive month</span>
                                                             </a>
                                                         </li>
@@ -260,16 +389,19 @@
                 &lt;ul class="action-menu-list"&gt;
                     &lt;li class="action-menu-item"&gt;
                         &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;i class="iconoir-check action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
                             &lt;span class="action-menu-label"&gt;Request approval&lt;/span&gt;
                         &lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li class="action-menu-item"&gt;
                         &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;i class="iconoir-download action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
                             &lt;span class="action-menu-label"&gt;Download all invoices&lt;/span&gt;
                         &lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li class="action-menu-item"&gt;
                         &lt;a href="#" class="action-menu-link"&gt;
+                            &lt;i class="iconoir-archive action-menu-icon" aria-hidden="true"&gt;&lt;/i&gt;
                             &lt;span class="action-menu-label"&gt;Archive month&lt;/span&gt;
                         &lt;/a&gt;
                     &lt;/li&gt;
@@ -289,6 +421,7 @@
                                 <li>Give the page exactly one <code>&lt;h1&gt;</code>. These demos use <code>&lt;h3&gt;</code> because this documentation page already has an <code>&lt;h1&gt;</code>; in an application the title inside <code>.block-header-container</code> is normally the page <code>&lt;h1&gt;</code>.</li>
                                 <li>Wrap the breadcrumb in <code>&lt;nav aria-label="Breadcrumb"&gt;</code> and keep the ordered list. Put <code>aria-current="page"</code> on the current item, because <code>.active</code> is visual only.</li>
                                 <li>Give every <code>&lt;nav class="action-menu"&gt;</code> a label that describes the group, such as "Report actions", so the landmark list stays useful when a page has more than one menu.</li>
+                                <li>The icon font glyph is decoration. Hide it with <code>aria-hidden="true"</code> and let <code>.action-menu-label</code> name the link; the glyph has no accessible name of its own.</li>
                                 <li>Keep the source order trail, heading, then actions. At wide widths the actions sit on the right, but both reading and tab order still reach them after the heading.</li>
                                 <li>Let the heading wrap rather than truncating it, and keep the supporting line as a real paragraph so it is announced in context.</li>
                                 <li>Use a link for navigation and a button for an action. The header changes layout, not element semantics.</li>
@@ -350,6 +483,7 @@
                     <nav class="doc-toc" aria-label="On this page">
                         <div class="doc-toc-title">On this page</div>
                         <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
+                        <a class="doc-toc-link" href="#primary-actions">Primary action menu</a>
                         <a class="doc-toc-link" href="#action-led">Action-led header</a>
                         <a class="doc-toc-link" href="#responsive">Responsive stacking</a>
                         <a class="doc-toc-link" href="#accessibility">Accessibility</a>

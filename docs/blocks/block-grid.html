@@ -4,18 +4,14 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Block grid - roolith css</title>
-        <meta name="description" content="Lay out cards, boxes, stats, and form fields in equal auto-fit tracks with the roolith css block grid class and its responsive gap." />
+        <meta
+            name="description"
+            content="Lay out cards, boxes, stats, and form fields in equal auto-fit tracks with the roolith css block grid class and its responsive gap." />
         <link rel="icon" href="../favicon.ico" sizes="any" />
         <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
         <link rel="stylesheet" href="../doc.css" />
-        <link
-            rel="stylesheet"
-            href="/vendor/highlight-github.min.css"
-            data-hljs-theme="light" />
-        <link
-            rel="stylesheet"
-            href="/vendor/highlight-github-dark.min.css"
-            data-hljs-theme="dark" />
+        <link rel="stylesheet" href="/vendor/highlight-github.min.css" data-hljs-theme="light" />
+        <link rel="stylesheet" href="/vendor/highlight-github-dark.min.css" data-hljs-theme="dark" />
         <script src="/doc-search.js"></script>
         <script src="/doc-surfaces.js"></script>
         <script src="../doc.js"></script>
@@ -47,7 +43,11 @@
 
                         <header class="doc-content-header">
                             <h1>Block grid</h1>
-                            <p class="doc-content-lead">A block grid places items in equal tracks and adds the block rhythm between them. It is the layout half of several blocks, including form rows and card groups, and it composes with any module that produces a card-sized block.</p>
+                            <p class="doc-content-lead">
+                                A block grid places items in equal tracks and adds the block rhythm between them. It is
+                                the layout half of several blocks, including form rows and card groups, and it composes
+                                with any module that produces a card-sized block.
+                            </p>
                             <div class="doc-import-line">
                                 class:
                                 <strong>.block-grid</strong>
@@ -58,9 +58,36 @@
 
                         <section class="doc-section" id="basic-usage">
                             <h2>Basic usage</h2>
-                            <p><code>.block-grid</code> is a grid container with a track list that only applies from 640px up. The base declaration is <code>grid-template-columns: repeat(auto-fit, 1fr)</code>, which is not a valid auto-repeat track list, so browsers drop it and the grid stays on its default single column. From 640px up the module sets <code>grid-template-columns: repeat(auto-fit, minmax(0, 1fr))</code> and a gap of <code>--r-block-padding</code>, which is 20px at the default <code>1.25rem</code> block rhythm.</p>
-                            <p><code>minmax(0, 1fr)</code> lets a track shrink below the intrinsic width of its content instead of forcing the grid wider than its container. The trade-off is that a long unbroken string can overflow its cell, so add <code>overflow-wrap: anywhere</code> or a <code>min-width: 0</code> wrapper inside the item when the content is user supplied.</p>
-                            <p><code>auto-fit</code> is not a fixed column count. The browser resolves the tracks from the available width and collapses tracks that hold no items, which is what lets the same markup work in a narrow form column and on a full-width page.</p>
+                            <p>
+                                <code>.block-grid</code>
+                                is a grid container with a track list that only applies from 640px up. The base
+                                declaration is
+                                <code>grid-template-columns: repeat(auto-fit, 1fr)</code>
+                                , which is not a valid auto-repeat track list, so browsers drop it and the grid stays on
+                                its default single column. From 640px up the module sets
+                                <code>grid-template-columns: repeat(auto-fit, minmax(0, 1fr))</code>
+                                and a gap of
+                                <code>--r-block-padding</code>
+                                , which is 20px at the default
+                                <code>1.25rem</code>
+                                block rhythm.
+                            </p>
+                            <p>
+                                <code>minmax(0, 1fr)</code>
+                                lets a track shrink below the intrinsic width of its content instead of forcing the grid
+                                wider than its container. The trade-off is that a long unbroken string can overflow its
+                                cell, so add
+                                <code>overflow-wrap: anywhere</code>
+                                or a
+                                <code>min-width: 0</code>
+                                wrapper inside the item when the content is user supplied.
+                            </p>
+                            <p>
+                                <code>auto-fit</code>
+                                is not a fixed column count. The browser resolves the tracks from the available width
+                                and collapses tracks that hold no items, which is what lets the same markup work in a
+                                narrow form column and on a full-width page.
+                            </p>
                             <div class="doc-demo">
                                 <div class="block-grid full-width">
                                     <div class="box">
@@ -83,7 +110,9 @@
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
-                                    <button type="button" class="doc-copy" data-doc-copy="block-grid-basic">Copy</button>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-grid-basic">
+                                        Copy
+                                    </button>
                                 </div>
                                 <pre><code id="block-grid-basic" class="language-html">&lt;div class="block-grid"&gt;
     &lt;div class="box"&gt;
@@ -103,13 +132,38 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                             </div>
-                            <p>There is no item class. Every direct child of <code>.block-grid</code> becomes a grid item, so the <code>block-grid-item</code> wrapper in the repository demos is optional and receives no styles of its own.</p>
+                            <p>
+                                There is no item class. Every direct child of
+                                <code>.block-grid</code>
+                                becomes a grid item, so the
+                                <code>block-grid-item</code>
+                                wrapper in the repository demos is optional and receives no styles of its own.
+                            </p>
                         </section>
 
                         <section class="doc-section" id="responsive">
                             <h2>Responsive behavior</h2>
-                            <p>One breakpoint decides the layout: 640px. Below it only <code>display: grid</code> applies, because the invalid <code>repeat(auto-fit, 1fr)</code> declaration is dropped and the items land in one implicit column with no gap. That stacked result is incidental, not a designed fallback, so do not rely on it as a documented narrow-screen layout. At 640px and up the auto-fit track list and the <code>--r-block-padding</code> gap turn on together, so the spacing appears at the same moment the tracks do.</p>
-                            <p>Resize the browser to see the change. If you need a fixed column count per breakpoint, use the grid module's <code>.row</code> and <code>.columns</code> spans, or set your own <code>grid-template-columns</code> on a wrapper around the block.</p>
+                            <p>
+                                One breakpoint decides the layout: 640px. Below it only
+                                <code>display: grid</code>
+                                applies, because the invalid
+                                <code>repeat(auto-fit, 1fr)</code>
+                                declaration is dropped and the items land in one implicit column with no gap. That
+                                stacked result is incidental, not a designed fallback, so do not rely on it as a
+                                documented narrow-screen layout. At 640px and up the auto-fit track list and the
+                                <code>--r-block-padding</code>
+                                gap turn on together, so the spacing appears at the same moment the tracks do.
+                            </p>
+                            <p>
+                                Resize the browser to see the change. If you need a fixed column count per breakpoint,
+                                use the grid module's
+                                <code>.row</code>
+                                and
+                                <code>.columns</code>
+                                spans, or set your own
+                                <code>grid-template-columns</code>
+                                on a wrapper around the block.
+                            </p>
                             <div class="doc-demo">
                                 <div class="block-grid full-width">
                                     <div class="box">
@@ -133,7 +187,9 @@
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
-                                    <button type="button" class="doc-copy" data-doc-copy="block-grid-responsive">Copy</button>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-grid-responsive">
+                                        Copy
+                                    </button>
                                 </div>
                                 <pre><code id="block-grid-responsive" class="language-html">&lt;div class="block-grid"&gt;
     &lt;div class="box"&gt;
@@ -154,34 +210,59 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                             </div>
-                            <p>A <code>.box</code> has no margin of its own, so stacked boxes sit directly against each other below 640px. A <code>.card</code> keeps its 20px bottom margin, which is why a card grid still reads as separate items on a phone. Pick the composition with the spacing behavior you want at both widths.</p>
+                            <p>
+                                A
+                                <code>.box</code>
+                                has no margin of its own, so stacked boxes sit directly against each other below 640px.
+                                A
+                                <code>.card</code>
+                                keeps its 20px bottom margin, which is why a card grid still reads as separate items on
+                                a phone. Pick the composition with the spacing behavior you want at both widths.
+                            </p>
                         </section>
 
                         <section class="doc-section" id="cards">
                             <h2>Cards in a grid</h2>
-                            <p>Cards drop in without a wrapper: the grid sizes the track, the card fills it, and the card body supplies the padding and the type scale. The grid only decides the track width and the gap.</p>
-                            <p>A card keeps its own 20px bottom margin. On a phone that margin is the space between stacked cards; when the grid puts items on more than one row it adds to the 20px gap. Set the margin to zero on the card when the gap has to be exactly <code>--r-block-padding</code>.</p>
+                            <p>
+                                Cards drop in without a wrapper: the grid sizes the track, the card fills it, and the
+                                card body supplies the padding and the type scale. The grid only decides the track width
+                                and the gap.
+                            </p>
+                            <p>
+                                A card keeps its own 20px bottom margin. On a phone that margin is the space between
+                                stacked cards; when the grid puts items on more than one row it adds to the 20px gap.
+                                Set the margin to zero on the card when the gap has to be exactly
+                                <code>--r-block-padding</code>
+                                .
+                            </p>
                             <div class="doc-demo">
                                 <div class="block-grid full-width">
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Deployment</h5>
-                                            <p class="card-text">Promote build 1284 to production when the smoke tests are green.</p>
-                                            <button class="button button-small button-text" type="button">Open run</button>
+                                            <p class="card-text">
+                                                Promote build 1284 to production when the smoke tests are green.
+                                            </p>
+                                            <button class="button button-small" type="button">Open run</button>
                                         </div>
                                     </div>
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Preview</h5>
-                                            <p class="card-text">Every pull request gets its own preview URL and a fresh database.</p>
-                                            <button class="button button-small button-text" type="button">Open preview</button>
+                                            <p class="card-text">
+                                                Every pull request gets its own preview URL and a fresh database.
+                                            </p>
+                                            <button class="button button-small" type="button">Open preview</button>
                                         </div>
                                     </div>
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Rollback</h5>
-                                            <p class="card-text">Return to the previous revision without dropping the current connection pool.</p>
-                                            <button class="button button-small button-text" type="button">Open history</button>
+                                            <p class="card-text">
+                                                Return to the previous revision without dropping the current connection
+                                                pool.
+                                            </p>
+                                            <button class="button button-small" type="button">Open history</button>
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +270,9 @@
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
-                                    <button type="button" class="doc-copy" data-doc-copy="block-grid-cards">Copy</button>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-grid-cards">
+                                        Copy
+                                    </button>
                                 </div>
                                 <pre><code id="block-grid-cards" class="language-html">&lt;div class="block-grid"&gt;
     &lt;div class="card"&gt;
@@ -215,13 +298,28 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                             </div>
-                            <p>Below 640px the cards stack and every card keeps its own 20px margin, so the stack never touches. That is also why a card grid needs no extra row gap at that width.</p>
+                            <p>
+                                Below 640px the cards stack and every card keeps its own 20px margin, so the stack never
+                                touches. That is also why a card grid needs no extra row gap at that width.
+                            </p>
                         </section>
 
                         <section class="doc-section" id="stats">
                             <h2>Stats in a grid</h2>
-                            <p>Stats are a common grid payload. Put a <code>.stat</code> inside a <code>.card</code> for the raised surface, then let the block grid handle the row. The stat centers its own text and supplies the header, body, and footer scale; the grid only decides how many of them share a row.</p>
-                            <p>Keep the labels the same length across a stat row so the values line up, and avoid a second grid around a single stat. One grid with one card per stat is easier to reorder than nested grids.</p>
+                            <p>
+                                Stats are a common grid payload. Put a
+                                <code>.stat</code>
+                                inside a
+                                <code>.card</code>
+                                for the raised surface, then let the block grid handle the row. The stat centers its own
+                                text and supplies the header, body, and footer scale; the grid only decides how many of
+                                them share a row.
+                            </p>
+                            <p>
+                                Keep the labels the same length across a stat row so the values line up, and avoid a
+                                second grid around a single stat. One grid with one card per stat is easier to reorder
+                                than nested grids.
+                            </p>
                             <div class="doc-demo">
                                 <div class="block-grid full-width">
                                     <div class="card">
@@ -257,7 +355,9 @@
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
-                                    <button type="button" class="doc-copy" data-doc-copy="block-grid-stats">Copy</button>
+                                    <button type="button" class="doc-copy" data-doc-copy="block-grid-stats">
+                                        Copy
+                                    </button>
                                 </div>
                                 <pre><code id="block-grid-stats" class="language-html">&lt;div class="block-grid"&gt;
     &lt;div class="card"&gt;
@@ -290,24 +390,58 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                             </div>
-                            <p>The same layout carries form fields. Each <code>.block-grid</code> inside a <a href="/blocks/block-form.html">block form</a> pairs two fields, which is the canonical use of the class and the reason it has no background, border, or padding of its own.</p>
+                            <p>
+                                The same layout carries form fields. Each
+                                <code>.block-grid</code>
+                                inside a
+                                <a href="/blocks/block-form.html">block form</a>
+                                pairs two fields, which is the canonical use of the class and the reason it has no
+                                background, border, or padding of its own.
+                            </p>
                         </section>
 
                         <section class="doc-section" id="accessibility">
                             <h2>Accessibility</h2>
-                            <p>The grid is layout only. It changes where the items sit, not what they are, so the semantics come from the DOM order and from the content of each item.</p>
+                            <p>
+                                The grid is layout only. It changes where the items sit, not what they are, so the
+                                semantics come from the DOM order and from the content of each item.
+                            </p>
                             <ul>
-                                <li>Keep the DOM order meaningful, because reading order follows the source and a grid can place items visually away from it.</li>
-                                <li>Do not use explicit <code>grid-row</code> or <code>grid-column</code> placements that reorder the items. If the visual order has to change, change the markup order instead.</li>
-                                <li>Keep each card heading in sequence and at a consistent level, so a reader can move between cards by heading.</li>
-                                <li>Keep each card link or button descriptive on its own, since a list of controls is read out of context.</li>
-                                <li>The grid adds no landmark and no list semantics. When the items form a set, put them in a <code>&lt;ul&gt;</code> and label the list when the page holds more than one.</li>
+                                <li>
+                                    Keep the DOM order meaningful, because reading order follows the source and a grid
+                                    can place items visually away from it.
+                                </li>
+                                <li>
+                                    Do not use explicit
+                                    <code>grid-row</code>
+                                    or
+                                    <code>grid-column</code>
+                                    placements that reorder the items. If the visual order has to change, change the
+                                    markup order instead.
+                                </li>
+                                <li>
+                                    Keep each card heading in sequence and at a consistent level, so a reader can move
+                                    between cards by heading.
+                                </li>
+                                <li>
+                                    Keep each card link or button descriptive on its own, since a list of controls is
+                                    read out of context.
+                                </li>
+                                <li>
+                                    The grid adds no landmark and no list semantics. When the items form a set, put them
+                                    in a
+                                    <code>&lt;ul&gt;</code>
+                                    and label the list when the page holds more than one.
+                                </li>
                             </ul>
                         </section>
 
                         <section class="doc-section" id="reference">
                             <h2 id="reference-heading">Class reference</h2>
-                            <p>The block defines a single layout class. Everything inside it belongs to the component you place there, and the spacing token belongs to the block layer.</p>
+                            <p>
+                                The block defines a single layout class. Everything inside it belongs to the component
+                                you place there, and the spacing token belongs to the block layer.
+                            </p>
                             <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
                                 <table class="table">
                                     <thead>
@@ -321,12 +455,31 @@
                                         <tr>
                                             <td><code>.block-grid</code></td>
                                             <td>Wrapper</td>
-                                            <td><code>display: grid</code>. The base <code>repeat(auto-fit, 1fr)</code> is an invalid auto-repeat track list and is dropped, so below 640px the grid sits on the default single column. From 640px up: <code>repeat(auto-fit, minmax(0, 1fr))</code> tracks with a <code>--r-block-padding</code> gap.</td>
+                                            <td>
+                                                <code>display: grid</code>
+                                                . The base
+                                                <code>repeat(auto-fit, 1fr)</code>
+                                                is an invalid auto-repeat track list and is dropped, so below 640px the
+                                                grid sits on the default single column. From 640px up:
+                                                <code>repeat(auto-fit, minmax(0, 1fr))</code>
+                                                tracks with a
+                                                <code>--r-block-padding</code>
+                                                gap.
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td><code>.card</code>, <code>.box</code>, <code>.stat</code></td>
+                                            <td>
+                                                <code>.card</code>
+                                                ,
+                                                <code>.box</code>
+                                                ,
+                                                <code>.stat</code>
+                                            </td>
                                             <td>Composition</td>
-                                            <td>Any direct child becomes a grid item. Cards carry a 20px bottom margin; boxes and stats do not, so the gap only exists from 640px up.</td>
+                                            <td>
+                                                Any direct child becomes a grid item. Cards carry a 20px bottom margin;
+                                                boxes and stats do not, so the gap only exists from 640px up.
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

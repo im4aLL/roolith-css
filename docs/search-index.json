@@ -1612,6 +1612,10 @@
                     "anchor": "basic-usage"
                 },
                 {
+                    "text": "Primary action menu",
+                    "anchor": "primary-actions"
+                },
+                {
                     "text": "Action-led header",
                     "anchor": "action-led"
                 },
