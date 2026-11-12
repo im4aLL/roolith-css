@@ -66,7 +66,9 @@
                             <h2>Basic usage</h2>
                             <p>
                                 <code>.pagination</code>
-                                is a flex column with a 10px gap and centered items, so the controls and the meta row stack
+                                is a flex column with a gap from
+                                <code>--r-pagination-gap</code>
+                                and centered items, so the controls and the meta row stack
                                 on narrow screens. From 640px it becomes a row with
                                 <code>space-between</code>, which keeps one group on each edge. With a single child the row
                                 puts it on the left edge, so a lone link group is centered on phones and left aligned on
@@ -75,11 +77,13 @@
                             <p>
                                 Inside it,
                                 <code>.pagination-list</code>
-                                is a wrapping flex row with a 5px gap, and
+                                is a wrapping flex row with a gap from
+                                <code>--r-pagination-list-gap</code>, and
                                 <code>.pagination-item</code>
                                 holds a
-                                <code>.pagination-link</code>. The link is 32px tall with 6px by 10px of padding, a 1px
-                                border, the radius token, and a background transition.
+                                <code>.pagination-link</code>. The link height and padding come from
+                                <code>--r-pagination-item-height</code> and
+                                <code>--r-pagination-item-spacing</code>, and it adds a 1px border, the radius token, and a background transition.
                             </p>
                             <div class="doc-demo">
                                 <div class="full-width">
@@ -202,7 +206,9 @@
                             <h2>Meta row</h2>
                             <p>
                                 <code>.pagination-meta</code>
-                                holds the summary and the page size control. It is a centered flex column with a 10px gap
+                                holds the summary and the page size control. It is a centered flex column with the pagination gap
+                                from
+                                <code>--r-pagination-gap</code>
                                 and switches to a row from 640px, matching the parent direction. Use it as the other child
                                 of
                                 <code>.pagination</code>
@@ -214,7 +220,9 @@
                                 <code>.pagination-meta-selection</code>
                                 is where the form classes compose: the nested
                                 <code>.form-field</code>
-                                becomes a flex row with a 10px gap and no bottom margin, and its
+                                becomes a flex row with the gap from
+                                <code>--r-pagination-gap</code>
+                                and no bottom margin, and its
                                 <code>.form-label</code>
                                 loses padding and is set to
                                 <code>nowrap</code>. The
@@ -300,6 +308,68 @@
                             </div>
                         </section>
 
+                        <section class="doc-section" id="small">
+                            <h2>Small pagination</h2>
+                            <p>
+                                <code>.pagination-small</code>
+                                on the nav compacts the whole component: the outer gap drops to 8px, the list gap to 4px, the item font to 12px, the link height to 26px, and the link padding to 4px by 8px. The meta label follows the item font token, so the summary shrinks with the controls.
+                            </p>
+                            <div class="doc-demo">
+                                <div class="full-width">
+                                    <nav class="pagination pagination-small" aria-label="Compact search results pages">
+                                        <ul class="pagination-list">
+                                            <li class="pagination-item">
+                                                <a class="pagination-link" href="#" aria-label="Previous page">Previous</a>
+                                            </li>
+                                            <li class="pagination-item is-number">
+                                                <a class="pagination-link" href="#">1</a>
+                                            </li>
+                                            <li class="pagination-item is-number pagination-item-active">
+                                                <a class="pagination-link" href="#" aria-current="page">2</a>
+                                            </li>
+                                            <li class="pagination-item is-number">
+                                                <a class="pagination-link" href="#">3</a>
+                                            </li>
+                                            <li class="pagination-item">
+                                                <a class="pagination-link" href="#" aria-label="Next page">Next</a>
+                                            </li>
+                                        </ul>
+                                        <div class="pagination-meta">
+                                            <div class="pagination-meta-label">Showing 21 - 40 of 200</div>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="pagination-small">Copy</button>
+                                </div>
+                                <pre><code id="pagination-small" class="language-html">&lt;nav class="pagination pagination-small" aria-label="Compact search results pages"&gt;
+    &lt;ul class="pagination-list"&gt;
+        &lt;li class="pagination-item"&gt;
+            &lt;a class="pagination-link" href="#" aria-label="Previous page"&gt;Previous&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item is-number"&gt;
+            &lt;a class="pagination-link" href="#"&gt;1&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item is-number pagination-item-active"&gt;
+            &lt;a class="pagination-link" href="#" aria-current="page"&gt;2&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item is-number"&gt;
+            &lt;a class="pagination-link" href="#"&gt;3&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pagination-item"&gt;
+            &lt;a class="pagination-link" href="#" aria-label="Next page"&gt;Next&lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="pagination-meta"&gt;
+        &lt;div class="pagination-meta-label"&gt;Showing 21 - 40 of 200&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                        </section>
+
                         <section class="doc-section" id="accessibility">
                             <h2>Accessibility</h2>
                             <p>
@@ -319,10 +389,9 @@
                         <section class="doc-section" id="reference">
                             <h2 id="reference-heading">Class reference</h2>
                             <p>
-                                Colors, radius, and font size come from the
+                                Colors, radius, font size, gaps, item height, and padding come from the
                                 <code>--r-pagination-*</code>
-                                token group. The 32px link height, the padding, and the 1px border are fixed rem values in
-                                the module.
+                                token group. The 1px border and the 1.3 line height stay fixed in the module.
                             </p>
                             <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
                                 <table class="table">
@@ -338,13 +407,20 @@
                                             <td><code>.pagination</code></td>
                                             <td>Base</td>
                                             <td>
-                                                Flex column, centered, 10px gap; a space-between row from 640px up.
+                                                Flex column, centered, gap from <code>--r-pagination-gap</code>; a space-between row from 640px up.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>.pagination-small</code></td>
+                                            <td>Variant</td>
+                                            <td>
+                                                Compacts the outer and list gaps, item font, link height, link padding, and meta label.
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><code>.pagination-list</code></td>
                                             <td>Group</td>
-                                            <td>Wrapping flex row with a 5px gap.</td>
+                                            <td>Wrapping flex row with a gap from <code>--r-pagination-list-gap</code>.</td>
                                         </tr>
                                         <tr>
                                             <td><code>.pagination-item</code></td>
@@ -368,14 +444,13 @@
                                             <td><code>.pagination-link</code></td>
                                             <td>Link</td>
                                             <td>
-                                                32px flex link, 6px by 10px padding, 1px border, radius token, hover
-                                                surface.
+                                                32px-by-default flex link with padding from <code>--r-pagination-item-spacing</code>, a 1px border, the radius token, and a hover surface.
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><code>.pagination-meta</code></td>
                                             <td>Group</td>
-                                            <td>Centered column with a 10px gap; row from 640px up.</td>
+                                            <td>Centered column with <code>--r-pagination-gap</code>; row from 640px up.</td>
                                         </tr>
                                         <tr>
                                             <td><code>.pagination-meta-label</code></td>
@@ -386,7 +461,7 @@
                                             <td><code>.pagination-meta-selection</code></td>
                                             <td>Group</td>
                                             <td>
-                                                Makes the nested <code>.form-field</code> a flex row with a 10px gap
+                                                Makes the nested <code>.form-field</code> a flex row with <code>--r-pagination-gap</code>
                                                 and no bottom margin, and strips the label padding.
                                             </td>
                                         </tr>
@@ -414,6 +489,7 @@
                         <a class="doc-toc-link" href="#basic-usage">Basic usage</a>
                         <a class="doc-toc-link" href="#numbers">Numbered pages</a>
                         <a class="doc-toc-link" href="#meta">Meta row</a>
+                        <a class="doc-toc-link" href="#small">Small pagination</a>
                         <a class="doc-toc-link" href="#accessibility">Accessibility</a>
                         <a class="doc-toc-link" href="#reference">Class reference</a>
                     </nav>

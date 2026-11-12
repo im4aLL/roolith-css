@@ -542,11 +542,6 @@
     margin: 0;
 }
 
-.doc-playground-trend-up {
-    font-weight: var(--r-global-font-bold-weight);
-    color: var(--r-color-success-text);
-}
-
 .doc-playground-trend-warn {
     font-weight: var(--r-global-font-bold-weight);
     color: var(--r-color-warning-text);
@@ -595,6 +590,28 @@
     gap: 8px;
     font-size: 12px;
     color: var(--r-text-muted);
+}
+
+.doc-playground-popover {
+    margin-top: 10px;
+}
+
+.doc-playground-panel-switch {
+    margin-top: 12px;
+}
+
+.doc-playground-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.doc-playground-stage-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
 }
 
 .doc-playground-search {

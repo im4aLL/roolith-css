@@ -394,6 +394,19 @@
                                                 Northwind
                                                 <span class="badge badge-primary">Pro</span>
                                             </div>
+                                            <div class="dropdown dropdown-small">
+                                                <button
+                                                    type="button"
+                                                    class="button button-outline button-small has-dropdown-icon">
+                                                    Actions
+                                                </button>
+                                                <div class="dropdown-body">
+                                                    <a class="dropdown-item">Redeploy</a>
+                                                    <a class="dropdown-item">Roll back</a>
+                                                    <span class="dropdown-item-sep"></span>
+                                                    <a class="dropdown-item">View logs</a>
+                                                </div>
+                                            </div>
                                             <nav class="doc-playground-app-nav" aria-label="Preview app">
                                                 <a class="active">Overview</a>
                                                 <a>Deployments</a>
@@ -420,8 +433,34 @@
                                                 <div>
                                                     <h3 class="doc-playground-app-title">Deployments</h3>
                                                     <p class="doc-playground-app-subtitle">
-                                                        Builds across every environment, newest first.
+                                                        Builds across
+                                                        <span class="tooltip tooltip-bottom">
+                                                            every environment
+                                                            <span class="tooltip-content">
+                                                                Production, staging, and preview.
+                                                            </span>
+                                                        </span>
+                                                        and sorts newest first.
                                                     </p>
+                                                    <div class="popover-container doc-playground-popover">
+                                                        <button
+                                                            type="button"
+                                                            class="button button-outline button-small"
+                                                            data-doc-popover="#doc-playground-usage"
+                                                            aria-controls="doc-playground-usage"
+                                                            aria-expanded="false">
+                                                            Plan usage
+                                                        </button>
+                                                        <div class="popover" id="doc-playground-usage">
+                                                            <div class="popover-header">
+                                                                Monthly deployments
+                                                            </div>
+                                                            <div class="popover-body">
+                                                                182 of 250 used. The counter resets on the first
+                                                                of the month.
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="doc-playground-row">
                                                     <button type="button" class="button button-outline button-small">
@@ -439,7 +478,7 @@
                                                         <span class="stat-header">Deploys today</span>
                                                         <span class="stat-body">24</span>
                                                         <span class="stat-footer">
-                                                            <span class="doc-playground-trend-up">+6</span>
+                                                            <span class="indicator is-upward">+6</span>
                                                             vs yesterday
                                                         </span>
                                                     </div>
@@ -456,7 +495,7 @@
                                                         <span class="stat-header">Avg build time</span>
                                                         <span class="stat-body">2m 14s</span>
                                                         <span class="stat-footer">
-                                                            <span class="doc-playground-trend-up">11s faster</span>
+                                                            <span class="indicator is-upward">11s faster</span>
                                                             this week
                                                         </span>
                                                     </div>
@@ -476,6 +515,64 @@
 
                                             <div class="doc-playground-app-columns">
                                                 <div class="doc-playground-app-main-col">
+                                                    <div class="card card-small doc-playground-panel">
+                                                        <div class="card-header">
+                                                            <div class="doc-playground-panel-head">
+                                                                <strong>Current build</strong>
+                                                                <span class="badge badge-primary">
+                                                                    Running
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="doc-playground-stack">
+                                                                <div class="doc-playground-stage">
+                                                                    <div class="doc-playground-stage-head">
+                                                                        <span>Lint</span>
+                                                                        <span class="doc-playground-value">
+                                                                            Passed
+                                                                        </span>
+                                                                    </div>
+                                                                    <progress
+                                                                        class="progress-success"
+                                                                        value="100"
+                                                                        max="100"
+                                                                        aria-label="Lint progress"></progress>
+                                                                </div>
+                                                                <div class="doc-playground-stage">
+                                                                    <div class="doc-playground-stage-head">
+                                                                        <span>Bundle</span>
+                                                                        <span class="doc-playground-value">
+                                                                            62%
+                                                                        </span>
+                                                                    </div>
+                                                                    <progress
+                                                                        class="progress-primary"
+                                                                        value="62"
+                                                                        max="100"
+                                                                        aria-label="Bundle progress"></progress>
+                                                                </div>
+                                                                <div class="doc-playground-stage">
+                                                                    <div class="doc-playground-stage-head">
+                                                                        <span>Deploy</span>
+                                                                        <span class="doc-playground-value">
+                                                                            Waiting
+                                                                        </span>
+                                                                    </div>
+                                                                    <progress
+                                                                        value="0"
+                                                                        max="100"
+                                                                        aria-label="Deploy progress"></progress>
+                                                                </div>
+                                                                <div class="tags">
+                                                                    <span class="tag">main</span>
+                                                                    <span class="tag">v2.14.0</span>
+                                                                    <span class="tag">production</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="card card-small doc-playground-panel">
                                                         <div class="card-header">
                                                             <div class="doc-playground-panel-head">
@@ -617,7 +714,7 @@
                                                         </div>
                                                         <div class="card-footer doc-playground-panel-foot">
                                                             <span>Showing 3 of 42</span>
-                                                            <nav class="pagination" aria-label="Deployments pagination">
+                                                            <nav class="pagination pagination-small" aria-label="Deployments pagination">
                                                                 <ul class="pagination-list">
                                                                     <li class="pagination-item">
                                                                         <a class="pagination-link">
@@ -694,7 +791,12 @@
 
                                                 <div class="doc-playground-app-side">
                                                     <div class="card card-small doc-playground-panel">
-                                                        <div class="card-header">Activity</div>
+                                                        <div class="card-header">
+                                                            <div class="doc-playground-panel-head">
+                                                                <strong>Activity</strong>
+                                                                <span class="indicator is-online">Live</span>
+                                                            </div>
+                                                        </div>
                                                         <div class="card-body">
                                                             <div class="doc-playground-stack">
                                                                 <div class="message message-small message-success">
@@ -768,6 +870,17 @@
                                                                         <option>Maintainer</option>
                                                                     </select>
                                                                 </div>
+                                                                <label class="form-switch-label">
+                                                                    <input
+                                                                        class="form-switch-input"
+                                                                        type="checkbox"
+                                                                        name="playground-invite-approval"
+                                                                        checked />
+                                                                    <span class="form-switch-slider"></span>
+                                                                    <span class="form-switch-slider-text">
+                                                                        Require approval for production
+                                                                    </span>
+                                                                </label>
                                                                 <button
                                                                     type="button"
                                                                     class="button button-primary button-block">
@@ -811,6 +924,19 @@
                                                                         </label>
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                            <div class="doc-playground-panel-switch">
+                                                                <label class="form-switch-label">
+                                                                    <input
+                                                                        class="form-switch-input"
+                                                                        type="checkbox"
+                                                                        name="playground-auto-refresh"
+                                                                        checked />
+                                                                    <span class="form-switch-slider"></span>
+                                                                    <span class="form-switch-slider-text">
+                                                                        Auto refresh
+                                                                    </span>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                     </div>
