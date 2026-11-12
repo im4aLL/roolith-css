@@ -507,6 +507,441 @@ function initScrollableTables() {
     });
 }
 
+let repeaterRowCounter = 0;
+let repeaterDrag = null;
+
+const REPEATER_DRAG_CLASS = 'is-dragging';
+
+/**
+ * Return the rows of a repeater in their current visual order.
+ * @param {HTMLElement} repeater - Root carrying `data-doc-repeater`.
+ * @returns {HTMLElement[]} The row elements.
+ */
+function repeaterRows(repeater) {
+    return Array.from(repeater.querySelectorAll('.block-repeater-item'));
+}
+
+/**
+ * Describe a row by its field name, falling back to its position.
+ * @param {HTMLElement} row - The row element.
+ * @param {number} index - Zero-based row position.
+ * @returns {string} A phrase such as `the Region field`.
+ */
+function repeaterRowLabel(row, index) {
+    const input = row.querySelector('[data-doc-repeater-name]');
+    const name = input instanceof HTMLInputElement ? input.value.trim() : '';
+    return name ? `the ${name} field` : `field ${index + 1}`;
+}
+
+/**
+ * Announce a repeater change through the polite status region inside the block.
+ * @param {HTMLElement} repeater - Root carrying `data-doc-repeater`.
+ * @param {string} message - Text to announce.
+ * @returns {void}
+ */
+function announceRepeaterChange(repeater, message) {
+    const status = repeater.querySelector('[data-doc-repeater-status]');
+    if (status) {
+        status.textContent = message;
+    }
+}
+
+/**
+ * Keep ids, field names, and row action labels in step with the current order.
+ * Ids stay stable per row, while names follow the row index for form submission.
+ * @param {HTMLElement} repeater - Root carrying `data-doc-repeater`.
+ * @returns {void}
+ */
+function syncRepeaterRows(repeater) {
+    repeaterRows(repeater).forEach((row, index) => {
+        if (!row.dataset.repeaterRowId) {
+            repeaterRowCounter += 1;
+            row.dataset.repeaterRowId = String(repeaterRowCounter);
+        }
+
+        const suffix = row.dataset.repeaterRowId;
+
+        row.querySelectorAll('.form-field').forEach((field) => {
+            const input = field.querySelector('input');
+            const label = field.querySelector('label');
+
+            if (!(input instanceof HTMLInputElement) || !label) {
+                return;
+            }
+
+            if (input.matches('[data-doc-repeater-name]')) {
+                input.id = `block-repeater-name-${suffix}`;
+                input.name = `fields[${index}][name]`;
+            } else if (input.matches('[data-doc-repeater-value]')) {
+                input.id = `block-repeater-value-${suffix}`;
+                input.name = `fields[${index}][value]`;
+            }
+
+            if (input.id) {
+                label.setAttribute('for', input.id);
+            }
+        });
+
+        const description = repeaterRowLabel(row, index);
+        const sort = row.querySelector('[data-doc-repeater-sort]');
+        const remove = row.querySelector('[data-doc-repeater-remove]');
+
+        if (sort instanceof HTMLElement) {
+            sort.draggable = true;
+            sort.setAttribute('aria-label', `Reorder ${description}`);
+        }
+
+        if (remove) {
+            remove.setAttribute('aria-label', `Remove ${description}`);
+        }
+    });
+}
+
+/**
+ * Append a blank row copied from the first row, focus its name field, and announce it.
+ * @param {HTMLElement} repeater - Root carrying `data-doc-repeater`.
+ * @returns {void}
+ */
+function addRepeaterRow(repeater) {
+    const list = repeater.querySelector('.block-repeater-list');
+    const source = repeater.querySelector('.block-repeater-item');
+
+    if (!list || !source) {
+        return;
+    }
+
+    const row = source.cloneNode(true);
+    delete row.dataset.repeaterRowId;
+
+    row.querySelectorAll('input').forEach((input) => {
+        input.removeAttribute('id');
+        input.value = '';
+    });
+
+    list.append(row);
+    syncRepeaterRows(repeater);
+
+    const firstInput = row.querySelector('[data-doc-repeater-name]');
+    if (firstInput instanceof HTMLInputElement) {
+        firstInput.focus();
+    }
+
+    announceRepeaterChange(repeater, `Added ${repeaterRowLabel(row, repeaterRows(repeater).length - 1)}.`);
+}
+
+/**
+ * Remove the row that owns the clicked button and keep focus in a useful place.
+ * @param {HTMLElement} button - The clicked remove control.
+ * @returns {void}
+ */
+function removeRepeaterRow(button) {
+    const repeater = button.closest('[data-doc-repeater]');
+    const row = button.closest('.block-repeater-item');
+
+    if (!(repeater instanceof HTMLElement) || !(row instanceof HTMLElement)) {
+        return;
+    }
+
+    const rows = repeaterRows(repeater);
+    if (rows.length <= 1) {
+        return;
+    }
+
+    const index = rows.indexOf(row);
+    const description = repeaterRowLabel(row, index);
+
+    row.remove();
+    syncRepeaterRows(repeater);
+
+    const remaining = repeaterRows(repeater);
+    const nextRow = remaining[Math.min(index, remaining.length - 1)];
+    const nextRemove = nextRow ? nextRow.querySelector('[data-doc-repeater-remove]') : null;
+    const addButton = repeater.querySelector('[data-doc-repeater-add]');
+
+    if (nextRemove instanceof HTMLElement && nextRemove.offsetParent !== null) {
+        nextRemove.focus();
+    } else if (addButton instanceof HTMLElement) {
+        addButton.focus();
+    }
+
+    announceRepeaterChange(repeater, `Removed ${description}.`);
+}
+
+/**
+ * Move a row one position up or down and report whether it changed position.
+ * @param {HTMLElement} row - The row to move.
+ * @param {-1 | 1} direction - Up when negative, down when positive.
+ * @returns {boolean} Whether the row moved.
+ */
+function moveRepeaterRow(row, direction) {
+    const sibling = direction < 0 ? row.previousElementSibling : row.nextElementSibling;
+    const list = row.parentElement;
+
+    if (!sibling || !list) {
+        return false;
+    }
+
+    if (direction < 0) {
+        list.insertBefore(row, sibling);
+    } else {
+        list.insertBefore(sibling, row);
+    }
+
+    return true;
+}
+
+/**
+ * Start dragging a row from its sort handle.
+ * @param {DragEvent} event - The dragstart event.
+ * @returns {void}
+ */
+function startRepeaterDrag(event) {
+    const handle = event.target instanceof Element ? event.target.closest('[data-doc-repeater-sort]') : null;
+    const row = handle ? handle.closest('.block-repeater-item') : null;
+    const repeater = handle ? handle.closest('[data-doc-repeater]') : null;
+
+    if (!(handle instanceof HTMLElement) || !row || !(repeater instanceof HTMLElement) || !event.dataTransfer) {
+        return;
+    }
+
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', '');
+
+    repeaterDrag = {
+        row,
+        repeater,
+        startIndex: repeaterRows(repeater).indexOf(row),
+    };
+    row.classList.add(REPEATER_DRAG_CLASS);
+}
+
+/**
+ * Reorder rows while a dragged row crosses the midpoint of a sibling.
+ * @param {DragEvent} event - The dragover event.
+ * @returns {void}
+ */
+function moveRepeaterDrag(event) {
+    if (!repeaterDrag) {
+        return;
+    }
+
+    const { row, repeater } = repeaterDrag;
+    const overRow = event.target instanceof Element ? event.target.closest('.block-repeater-item') : null;
+
+    if (!overRow || overRow === row || overRow.closest('[data-doc-repeater]') !== repeater) {
+        return;
+    }
+
+    event.preventDefault();
+
+    if (event.dataTransfer) {
+        event.dataTransfer.dropEffect = 'move';
+    }
+
+    const rect = overRow.getBoundingClientRect();
+    const before = event.clientY < rect.top + rect.height / 2;
+    overRow.parentElement.insertBefore(row, before ? overRow : overRow.nextSibling);
+}
+
+/**
+ * Finish a drag, renumber the rows, and announce the new position.
+ * @param {DragEvent} event - The dragend or drop event.
+ * @returns {void}
+ */
+function endRepeaterDrag(event) {
+    if (!repeaterDrag) {
+        return;
+    }
+
+    event.preventDefault();
+
+    const { row, repeater, startIndex } = repeaterDrag;
+    repeaterDrag = null;
+    row.classList.remove(REPEATER_DRAG_CLASS);
+    syncRepeaterRows(repeater);
+
+    const index = repeaterRows(repeater).indexOf(row);
+    if (index !== startIndex) {
+        announceRepeaterChange(repeater, `Moved ${repeaterRowLabel(row, index)} to position ${index + 1}.`);
+    }
+}
+
+/**
+ * Move a focused row with the arrow keys on its sort handle.
+ * @param {KeyboardEvent} event - The keydown event.
+ * @returns {void}
+ */
+function handleRepeaterKeydown(event) {
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') {
+        return;
+    }
+
+    const handle = event.target instanceof Element ? event.target.closest('[data-doc-repeater-sort]') : null;
+    const row = handle ? handle.closest('.block-repeater-item') : null;
+    const repeater = handle ? handle.closest('[data-doc-repeater]') : null;
+
+    if (!handle || !row || !(repeater instanceof HTMLElement)) {
+        return;
+    }
+
+    event.preventDefault();
+
+    if (!moveRepeaterRow(row, event.key === 'ArrowUp' ? -1 : 1)) {
+        return;
+    }
+
+    syncRepeaterRows(repeater);
+
+    const index = repeaterRows(repeater).indexOf(row);
+    announceRepeaterChange(repeater, `Moved ${repeaterRowLabel(row, index)} to position ${index + 1}.`);
+}
+
+/**
+ * Refresh row action labels when a field name changes.
+ * @param {Event} event - The input event.
+ * @returns {void}
+ */
+function handleRepeaterInput(event) {
+    const input = event.target;
+
+    if (!(input instanceof Element) || !input.matches('[data-doc-repeater-name]')) {
+        return;
+    }
+
+    const repeater = input.closest('[data-doc-repeater]');
+    if (repeater instanceof HTMLElement) {
+        syncRepeaterRows(repeater);
+    }
+}
+
+/**
+ * Keep the fixed SVG map tooltip inside the viewport and next to the pointer.
+ * @param {HTMLElement} tooltip - The tooltip element.
+ * @param {number} clientX - Pointer viewport x.
+ * @param {number} clientY - Pointer viewport y.
+ * @returns {void}
+ */
+function positionSvgMapTooltip(tooltip, clientX, clientY) {
+    const padding = 8;
+    const rect = tooltip.getBoundingClientRect();
+    let left = clientX + 12;
+    let top = clientY - rect.height - 12;
+
+    if (left + rect.width + padding > window.innerWidth) {
+        left = clientX - rect.width - 12;
+    }
+
+    if (top < padding) {
+        top = clientY + 12;
+    }
+
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+}
+
+/**
+ * Fill the tooltip with the name and metrics carried by a map path.
+ * @param {HTMLElement} tooltip - The tooltip element.
+ * @param {SVGPathElement} path - The hovered path.
+ * @returns {boolean} Whether the path had a name and the tooltip was filled.
+ */
+function renderSvgMapTooltip(tooltip, path) {
+    const { name, pageviews, uniqueVisitors, visits } = path.dataset;
+
+    if (!name) {
+        return false;
+    }
+
+    const content = document.createElement('div');
+    content.className = 'block-svg-map-tooltip-content';
+
+    const title = document.createElement('div');
+    title.className = 'block-svg-map-tooltip-content-hl';
+    title.textContent = name;
+    content.append(title);
+
+    [
+        ['Pageviews', pageviews],
+        ['Unique', uniqueVisitors],
+        ['Visits', visits],
+    ].forEach(([label, value]) => {
+        if (!value) {
+            return;
+        }
+
+        const metric = document.createElement('div');
+        metric.className = 'block-svg-map-tooltip-content-text';
+        metric.textContent = `${label}: ${value}`;
+        content.append(metric);
+    });
+
+    tooltip.replaceChildren(content);
+
+    return true;
+}
+
+/**
+ * Hide the SVG map tooltip.
+ * @param {HTMLElement} tooltip - The tooltip element.
+ * @returns {void}
+ */
+function hideSvgMapTooltip(tooltip) {
+    tooltip.classList.remove('show');
+}
+
+/**
+ * Bind the demo SVG map to a tooltip that follows the pointer and shows the
+ * analytics each country path carries, mirroring the canonical demo.
+ * @returns {void}
+ */
+function initSvgMap() {
+    const map = document.querySelector('[data-doc-svg-map]');
+    const tooltip = document.querySelector('[data-doc-svg-map-tooltip]');
+
+    if (!(map instanceof HTMLElement) || !(tooltip instanceof HTMLElement)) {
+        return;
+    }
+
+    map.querySelectorAll('path').forEach((path) => {
+        path.addEventListener('mouseenter', (event) => {
+            if (!renderSvgMapTooltip(tooltip, path)) {
+                return;
+            }
+
+            tooltip.classList.add('show');
+            positionSvgMapTooltip(tooltip, event.clientX, event.clientY);
+        });
+
+        path.addEventListener('mousemove', (event) => {
+            positionSvgMapTooltip(tooltip, event.clientX, event.clientY);
+        });
+
+        path.addEventListener('mouseleave', () => hideSvgMapTooltip(tooltip));
+
+        path.addEventListener(
+            'touchstart',
+            (event) => {
+                const touch = event.touches[0];
+
+                if (!touch || !renderSvgMapTooltip(tooltip, path)) {
+                    return;
+                }
+
+                tooltip.classList.add('show');
+                positionSvgMapTooltip(tooltip, touch.clientX, touch.clientY);
+                event.preventDefault();
+            },
+            { passive: false },
+        );
+
+        path.addEventListener('touchend', () => hideSvgMapTooltip(tooltip));
+        path.addEventListener('touchcancel', () => hideSvgMapTooltip(tooltip));
+    });
+
+    window.addEventListener('scroll', () => hideSvgMapTooltip(tooltip), { passive: true });
+    window.addEventListener('resize', () => hideSvgMapTooltip(tooltip));
+}
+
 /**
  * Handle clicks on document-level controls. Delegation keeps the behavior working
  * for markup added by the include-fragment partials after the page has loaded.
@@ -571,6 +1006,21 @@ async function handleClick(event) {
                 flashCopied(copyButton);
             }
         }
+        return;
+    }
+
+    const repeaterAdd = target.closest('[data-doc-repeater-add]');
+    if (repeaterAdd) {
+        const repeater = repeaterAdd.closest('[data-doc-repeater]');
+        if (repeater instanceof HTMLElement) {
+            addRepeaterRow(repeater);
+        }
+        return;
+    }
+
+    const repeaterRemove = target.closest('[data-doc-repeater-remove]');
+    if (repeaterRemove) {
+        removeRepeaterRow(repeaterRemove);
         return;
     }
 
@@ -736,6 +1186,12 @@ function handleFragmentEvent(event) {
 function initDocSite() {
     document.addEventListener('click', handleClick);
     document.addEventListener('keydown', handleKeydown);
+    document.addEventListener('dragstart', startRepeaterDrag);
+    document.addEventListener('dragover', moveRepeaterDrag);
+    document.addEventListener('drop', endRepeaterDrag);
+    document.addEventListener('dragend', endRepeaterDrag);
+    document.addEventListener('keydown', handleRepeaterKeydown);
+    document.addEventListener('input', handleRepeaterInput);
     initSearch();
     document.addEventListener('load', handleFragmentEvent);
     document.addEventListener('error', handleFragmentEvent, true);
@@ -753,6 +1209,14 @@ function initDocSite() {
     scheduleNavSync();
 
     initScrollableTables();
+
+    document.querySelectorAll('[data-doc-repeater]').forEach((repeater) => {
+        if (repeater instanceof HTMLElement) {
+            syncRepeaterRows(repeater);
+        }
+    });
+
+    initSvgMap();
 
     initLabControls();
     document.querySelectorAll('[data-doc-hero]').forEach((hero) => initSpotlight(hero));

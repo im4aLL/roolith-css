@@ -930,6 +930,27 @@ html.theme-dark .doc-theme-toggle .doc-icon-moon {
     font-size: 14px;
 }
 
+.doc-map-download {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.doc-repeater-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.block-repeater-item.is-dragging {
+    opacity: 0.6;
+}
+
 .doc-table-class-wide th:first-child,
 .doc-table-class-wide td:first-child {
     width: 190px;
