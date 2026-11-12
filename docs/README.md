@@ -39,7 +39,7 @@ All navigation, partials, and the search index use root-absolute URLs, so the `d
 
 ## Favicon
 
-`favicon.ico` is the same 16x16 icon the legacy site at `http://habibhadi.com/lab/roolith/` serves, and it lives at the docs root, so the root page links it as `favicon.ico` and every subfolder page links it as `../favicon.ico`. Reference it as `type="image/x-icon"`. Do not add `sizes="any"`, because that keyword promises a scalable icon, and browsers can then skip the raster ICO and show no icon at all.
+`favicon.ico` is a 16x16 icon, the one the deployed site at `https://roolith-css.habibhadi.com/` serves. It lives at the docs root, so the root page links it as `favicon.ico` and every subfolder page links it as `../favicon.ico`. Reference it as `type="image/x-icon"`. Do not add `sizes="any"`, because that keyword promises a scalable icon, and browsers can then skip the raster ICO and show no icon at all.
 
 ## Build
 
