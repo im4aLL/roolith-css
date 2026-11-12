@@ -23,6 +23,7 @@
         <script src="../playground-controls.js" defer></script>
         <script src="../playground-advanced.js" defer></script>
         <script src="../playground.js" defer></script>
+        <script src="../playground-fonts.js" defer></script>
         <script src="../playground-demo.js" defer></script>
     </head>
     <body class="doc-playground-page">
@@ -335,19 +336,99 @@
                                                 id="doc-playground-font"
                                                 data-doc-playground-font>
                                                 <option value="">Framework default</option>
-                                                <option
-                                                    value='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'>
-                                                    System sans
-                                                </option>
-                                                <option value='Georgia, "Times New Roman", serif'>Serif</option>
-                                                <option
-                                                    value="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
-                                                    Monospace
-                                                </option>
-                                                <option value='"Helvetica Neue", Helvetica, Arial, sans-serif'>
-                                                    Helvetica
-                                                </option>
+                                                <optgroup label="Local stacks">
+                                                    <option
+                                                        value='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'>
+                                                        System sans
+                                                    </option>
+                                                    <option value='Georgia, "Times New Roman", serif'>
+                                                        Serif
+                                                    </option>
+                                                    <option
+                                                        value="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+                                                        Monospace
+                                                    </option>
+                                                    <option
+                                                        value='"Helvetica Neue", Helvetica, Arial, sans-serif'>
+                                                        Helvetica
+                                                    </option>
+                                                </optgroup>
+                                                <optgroup label="Google fonts - sans">
+                                                    <option
+                                                        value="'Inter', sans-serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap">
+                                                        Inter
+                                                    </option>
+                                                    <option
+                                                        value="'Roboto', sans-serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap">
+                                                        Roboto
+                                                    </option>
+                                                    <option
+                                                        value="'Open Sans', sans-serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;display=swap">
+                                                        Open Sans
+                                                    </option>
+                                                    <option
+                                                        value="'Lato', sans-serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&amp;display=swap">
+                                                        Lato
+                                                    </option>
+                                                    <option
+                                                        value="'Montserrat', sans-serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap">
+                                                        Montserrat
+                                                    </option>
+                                                    <option
+                                                        value="'Poppins', sans-serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap">
+                                                        Poppins
+                                                    </option>
+                                                    <option
+                                                        value="'Source Sans 3', sans-serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&amp;display=swap">
+                                                        Source Sans 3
+                                                    </option>
+                                                    <option
+                                                        value="'DM Sans', sans-serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;display=swap">
+                                                        DM Sans
+                                                    </option>
+                                                    <option
+                                                        value="'Work Sans', sans-serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&amp;display=swap">
+                                                        Work Sans
+                                                    </option>
+                                                </optgroup>
+                                                <optgroup label="Google fonts - serif">
+                                                    <option
+                                                        value="'Merriweather', serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;display=swap">
+                                                        Merriweather
+                                                    </option>
+                                                    <option
+                                                        value="'Playfair Display', serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;display=swap">
+                                                        Playfair Display
+                                                    </option>
+                                                    <option
+                                                        value="'Lora', serif"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&amp;display=swap">
+                                                        Lora
+                                                    </option>
+                                                </optgroup>
+                                                <optgroup label="Google fonts - monospace">
+                                                    <option
+                                                        value="'JetBrains Mono', monospace"
+                                                        data-doc-font-load="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap">
+                                                        JetBrains Mono
+                                                    </option>
+                                                </optgroup>
                                             </select>
+                                            <p class="doc-playground-note">
+                                                Google font families load from fonts.googleapis.com
+                                                the first time you choose one.
+                                            </p>
                                         </div>
                                     </div>
 
@@ -373,6 +454,13 @@
                                 <div class="doc-playground-actions">
                                     <button type="button" class="button button-medium" data-doc-playground-reset>
                                         Reset
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="button button-primary button-medium"
+                                        data-doc-playground-copy
+                                        disabled>
+                                        Copy CSS
                                     </button>
                                 </div>
                                 <p class="doc-playground-status" role="status" data-doc-playground-status>

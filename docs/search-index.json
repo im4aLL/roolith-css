@@ -159,6 +159,10 @@
                     "anchor": "mixins-heading"
                 },
                 {
+                    "text": "The breakpoint mixin",
+                    "anchor": "breakpoint-mixin-heading"
+                },
+                {
                     "text": "Sass settings and CSS variables",
                     "anchor": "sass-vs-css-variables"
                 }
@@ -748,6 +752,10 @@
                     "anchor": "icon-button"
                 },
                 {
+                    "text": "Small panel",
+                    "anchor": "small-panel"
+                },
+                {
                     "text": "Open state",
                     "anchor": "active-state"
                 },
@@ -1015,6 +1023,10 @@
                 {
                     "text": "Meta row",
                     "anchor": "meta"
+                },
+                {
+                    "text": "Small pagination",
+                    "anchor": "small"
                 },
                 {
                     "text": "Accessibility",

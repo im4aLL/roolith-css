@@ -17,7 +17,6 @@
         css: '[data-doc-playground-css]',
         count: '[data-doc-playground-count]',
         status: '[data-doc-playground-status]',
-        copy: '[data-doc-playground-copy]',
         reset: '[data-doc-playground-reset]',
         preview: '.doc-playground-preview',
         fontFamily: '[data-doc-playground-font]',
@@ -52,7 +51,7 @@
     /**
      * Bind result handed to the controller.
      * @typedef {object} BoundControls
-     * @property {object} elements - Bound controls, including the `colors`, `hex`, and `scopes` groups.
+     * @property {object} elements - Bound controls, including the `colors`, `hex`, and `scopes` groups and the `copyButtons` list.
      * @property {ControlBounds} bounds - Allowed control values.
      */
 
@@ -89,6 +88,24 @@
             }
 
             elements[name] = element;
+        }
+
+        return true;
+    }
+
+    /**
+     * Collect every copy button, so the controller can keep all of them in sync
+     * and each one copies the same generated stylesheet.
+     * @param {HTMLElement} root - Playground root element.
+     * @param {object} elements - Element map to fill.
+     * @returns {boolean} True when at least one copy button exists.
+     */
+    function bindCopyButtons(root, elements) {
+        elements.copyButtons = Array.from(root.querySelectorAll('[data-doc-playground-copy]'));
+
+        if (elements.copyButtons.length === 0) {
+            console.error('Theme playground: missing [data-doc-playground-copy]');
+            return false;
         }
 
         return true;
@@ -216,7 +233,12 @@
             scopes: [],
         };
 
-        if (!bindElements(root, elements) || !bindColorPairs(root, elements) || !bindScopes(root, elements)) {
+        if (
+            !bindElements(root, elements) ||
+            !bindCopyButtons(root, elements) ||
+            !bindColorPairs(root, elements) ||
+            !bindScopes(root, elements)
+        ) {
             return null;
         }
 

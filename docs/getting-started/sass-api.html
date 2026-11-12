@@ -717,6 +717,118 @@
                             </div>
                         </section>
 
+                        <section class="doc-section" id="breakpoint-mixin">
+                            <h2 id="breakpoint-mixin-heading">The breakpoint mixin</h2>
+                            <p>
+                                <code>breakpoint($range)</code>
+                                wraps its content in a media query built from
+                                <code>$breakpoints</code>
+                                , so a custom component answers at the same widths as the grid. Write the base
+                                styles on the bare selector, then pass a range name to add the larger sizes inside
+                                the query.
+                            </p>
+                            <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="breakpoint-mixin-heading">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Range</th>
+                                            <th scope="col">Emitted query with the default map</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>small-only</code></td>
+                                            <td><code>@media (max-width: 639px)</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>medium-up</code></td>
+                                            <td><code>@media (min-width: 640px)</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>medium-only</code></td>
+                                            <td><code>@media (min-width: 640px) and (max-width: 1023px)</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>large-up</code></td>
+                                            <td><code>@media (min-width: 1024px)</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>large-only</code></td>
+                                            <td><code>@media (min-width: 1024px) and (max-width: 1199px)</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>xlarge-up</code></td>
+                                            <td><code>@media (min-width: 1200px)</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>xlarge-only</code></td>
+                                            <td><code>@media (min-width: 1200px) and (max-width: 1439px)</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>xxlarge-only</code></td>
+                                            <td><code>@media (min-width: 1440px)</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>xxlarge-up</code></td>
+                                            <td><code>@media (min-width: 1440px)</code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                There is no
+                                <code>small-up</code>
+                                range because small is the base and needs no query. Each
+                                <code>-only</code>
+                                upper bound comes from the next named width minus one, so
+                                <code>xxlarge-only</code>
+                                and
+                                <code>xxlarge-up</code>
+                                are the same query: the map has no wider key. An unknown range name emits nothing,
+                                so a typo fails quietly; check the compiled CSS when a breakpoint seems to do
+                                nothing.
+                            </p>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">SCSS</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="sass-api-breakpoint-mixin">Copy</button>
+                                </div>
+                                <pre><code id="sass-api-breakpoint-mixin" class="language-scss">@use 'roolith-css/src/sass/mixins' as *;
+
+.card-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+
+    @include breakpoint(medium-up) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include breakpoint(large-up) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.sidebar-hint {
+    display: none;
+
+    @include breakpoint(medium-only) {
+        display: block;
+    }
+}</code></pre>
+                            </div>
+                            <p>
+                                Change
+                                <code>$breakpoints</code>
+                                in the settings
+                                <code>with</code>
+                                block to move every query at once. The map replaces the default rather than merging
+                                into it, so keep all five keys. The grid prefixes, the show and hide helpers, and
+                                every component built on the mixin read the same map, which keeps those breakpoints
+                                aligned after an override.
+                            </p>
+                        </section>
+
                         <section class="doc-section" id="sass-vs-css-variables">
                             <h2>Sass settings and CSS variables</h2>
                             <p>
@@ -775,6 +887,7 @@
                         <a class="doc-toc-link" href="#selective-builds">Selective builds</a>
                         <a class="doc-toc-link" href="#functions">Functions</a>
                         <a class="doc-toc-link" href="#mixins">Mixins</a>
+                        <a class="doc-toc-link" href="#breakpoint-mixin">The breakpoint mixin</a>
                         <a class="doc-toc-link" href="#sass-vs-css-variables">Sass settings and CSS variables</a>
                     </nav>
                 </div>

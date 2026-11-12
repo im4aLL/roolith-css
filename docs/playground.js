@@ -462,7 +462,9 @@
         elements.previewStyle.textContent = model.renderPreviewCss(blocks, activeScope, selector);
         elements.css.textContent = model.renderOverrideCss(blocks) || EMPTY_CSS;
         elements.count.textContent = `${overrideCount} token${overrideCount === 1 ? '' : 's'}`;
-        elements.copy.disabled = overrideCount === 0;
+        for (const button of elements.copyButtons) {
+            button.disabled = overrideCount === 0;
+        }
         elements.reset.disabled = overrideCount === 0;
         elements.radiusValue.textContent = `${state.radius}px`;
         elements.fontSizeValue.textContent = `${state.fontSize}px`;
@@ -695,9 +697,10 @@
     /**
      * Copy the generated stylesheet that is on screen and announce the result.
      * Depends on `copyText` and `flashCopied` from `doc.js`.
+     * @param {HTMLButtonElement} button - Copy button that requested the copy.
      * @returns {Promise<void>} Resolves once the clipboard attempt finishes.
      */
-    async function handleCopy() {
+    async function handleCopy(button) {
         if (overrideCount === 0) {
             return;
         }
@@ -709,7 +712,7 @@
             return;
         }
 
-        flashCopyButton(elements.copy);
+        flashCopyButton(button);
         announceTemporary(`Copied ${overrideCount} token${overrideCount === 1 ? '' : 's'}.`);
     }
 
@@ -792,7 +795,9 @@
         root.addEventListener('click', handleClick);
         root.addEventListener('keydown', handleKeydown);
         window.addEventListener('pagehide', flushPersist);
-        elements.copy.addEventListener('click', handleCopy);
+        for (const button of elements.copyButtons) {
+            button.addEventListener('click', () => handleCopy(button));
+        }
         elements.reset.addEventListener('click', handleReset);
 
         syncControls();
