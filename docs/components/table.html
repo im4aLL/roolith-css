@@ -68,41 +68,39 @@
                             <p>The first cell in each row drops its left padding, so the table lines up with the heading above it instead of sitting 10px to the right. The striped, bordered, and primary variants put that padding back because they own the outer edge themselves.</p>
                             <p>A table is as wide as its content by default. Add <code>.full-width</code> from the typography module to stretch it to the container, and reach for the responsive wrapper below when the column count can pass the available width.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Worker</th>
-                                                <th scope="col">Region</th>
-                                                <th scope="col">Queue</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Sync worker</td>
-                                                <td>eu-west-1</td>
-                                                <td>128</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mail worker</td>
-                                                <td>us-east-1</td>
-                                                <td>0</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Export worker</td>
-                                                <td>ap-south-1</td>
-                                                <td>12</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table full-width">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Worker</th>
+                                            <th scope="col">Region</th>
+                                            <th scope="col">Queue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Sync worker</td>
+                                            <td>eu-west-1</td>
+                                            <td>128</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mail worker</td>
+                                            <td>us-east-1</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Export worker</td>
+                                            <td>ap-south-1</td>
+                                            <td>12</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="table-basic">Copy</button>
                                 </div>
-                                <pre><code id="table-basic" class="language-html">&lt;table class="table"&gt;
+                                <pre><code id="table-basic" class="language-html">&lt;table class="table full-width"&gt;
     &lt;thead&gt;
         &lt;tr&gt;
             &lt;th scope="col"&gt;Worker&lt;/th&gt;
@@ -136,46 +134,44 @@
                             <h2>Striped rows</h2>
                             <p><code>.table-striped</code> shades every even body row with <code>--r-table-row-striped-color</code> and lifts the hovered row to <code>--r-table-row-striped-hover-color</code>. It shares the primary group, so the header also gets <code>--r-table-primary-header-color</code> behind it.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Plan</th>
-                                                <th scope="col">Seats</th>
-                                                <th scope="col">Monthly</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Starter</td>
-                                                <td>3</td>
-                                                <td>$0</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Team</td>
-                                                <td>25</td>
-                                                <td>$120</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Business</td>
-                                                <td>100</td>
-                                                <td>$480</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Enterprise</td>
-                                                <td>Unlimited</td>
-                                                <td>Contact us</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table table-striped full-width">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Plan</th>
+                                            <th scope="col">Seats</th>
+                                            <th scope="col">Monthly</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Starter</td>
+                                            <td>3</td>
+                                            <td>$0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Team</td>
+                                            <td>25</td>
+                                            <td>$120</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Business</td>
+                                            <td>100</td>
+                                            <td>$480</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Enterprise</td>
+                                            <td>Unlimited</td>
+                                            <td>Contact us</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="table-striped">Copy</button>
                                 </div>
-                                <pre><code id="table-striped" class="language-html">&lt;table class="table table-striped"&gt;
+                                <pre><code id="table-striped" class="language-html">&lt;table class="table table-striped full-width"&gt;
     &lt;thead&gt;
         &lt;tr&gt;
             &lt;th scope="col"&gt;Plan&lt;/th&gt;
@@ -214,41 +210,39 @@
                             <p><code>.table-bordered</code> draws the top and left border on the table itself and puts the bottom and right border on each cell, which closes a full grid. The header row drops its own bottom border because the cells already provide one, so no line doubles up.</p>
                             <p>The variant also restores the first-cell left padding and keeps the background transition on body rows. It is the right choice when a row has to be readable across a wide gap, such as a comparison table.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Check</th>
-                                                <th scope="col">Build</th>
-                                                <th scope="col">Tests</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Lint</td>
-                                                <td>Passed</td>
-                                                <td>12s</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Unit</td>
-                                                <td>Passed</td>
-                                                <td>48s</td>
-                                            </tr>
-                                            <tr>
-                                                <td>End to end</td>
-                                                <td>Flaky</td>
-                                                <td>3m 20s</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table table-bordered full-width">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Check</th>
+                                            <th scope="col">Build</th>
+                                            <th scope="col">Tests</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Lint</td>
+                                            <td>Passed</td>
+                                            <td>12s</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Unit</td>
+                                            <td>Passed</td>
+                                            <td>48s</td>
+                                        </tr>
+                                        <tr>
+                                            <td>End to end</td>
+                                            <td>Flaky</td>
+                                            <td>3m 20s</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="table-bordered">Copy</button>
                                 </div>
-                                <pre><code id="table-bordered" class="language-html">&lt;table class="table table-bordered"&gt;
+                                <pre><code id="table-bordered" class="language-html">&lt;table class="table table-bordered full-width"&gt;
     &lt;thead&gt;
         &lt;tr&gt;
             &lt;th scope="col"&gt;Check&lt;/th&gt;
@@ -282,50 +276,48 @@
                             <p><code>.table-primary</code> fills the header with <code>--r-table-primary-header-color</code> and transitions the background of every body row to <code>--r-table-row-hover-color</code> on hover. It is the default choice for a data table that a reader scans row by row.</p>
                             <p>A sortable column needs a control inside the <code>&lt;th&gt;</code>. <code>.table-thead-label</code> is a full width flex button that spreads the label and the sort glyph to opposite edges, resets the background, border, and padding, inherits the cell type, and sets a pointer cursor.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <table class="table table-primary">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">
-                                                    <button type="button" class="table-thead-label">
-                                                        Worker
-                                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-                                                            <path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
-                                                    </button>
-                                                </th>
-                                                <th scope="col" aria-sort="ascending">
-                                                    <button type="button" class="table-thead-label">
-                                                        Queue
-                                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-                                                            <path d="M8 15l4-4 4 4" stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
-                                                    </button>
-                                                </th>
-                                                <th scope="col">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Sync worker</td>
-                                                <td>128</td>
-                                                <td>Running</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mail worker</td>
-                                                <td>0</td>
-                                                <td>Idle</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table table-primary full-width">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                <button type="button" class="table-thead-label">
+                                                    Worker
+                                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                                                        <path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </th>
+                                            <th scope="col" aria-sort="ascending">
+                                                <button type="button" class="table-thead-label">
+                                                    Queue
+                                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                                                        <path d="M8 15l4-4 4 4" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Sync worker</td>
+                                            <td>128</td>
+                                            <td>Running</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mail worker</td>
+                                            <td>0</td>
+                                            <td>Idle</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="table-primary">Copy</button>
                                 </div>
-                                <pre><code id="table-primary" class="language-html">&lt;table class="table table-primary"&gt;
+                                <pre><code id="table-primary" class="language-html">&lt;table class="table table-primary full-width"&gt;
     &lt;thead&gt;
         &lt;tr&gt;
             &lt;th scope="col"&gt;
@@ -370,55 +362,53 @@
                             <p>Two of those gradients scroll with the content and two stay fixed, which is what makes a shadow appear only on a side that still has hidden columns. Once the table is fully visible both shadows disappear, so the effect needs no JavaScript.</p>
                             <p>The wrapper raises the inner <code>.table</code> to a <code>--r-table-min-width</code> of 30rem so columns do not collapse before the scroll starts, and it applies the shared 4px scrollbar from <code>--r-scrollbar-track</code> and <code>--r-scrollbar-thumb</code>.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <div class="table-responsive" tabindex="0" role="region" aria-label="Deployments, scrollable table">
-                                        <table class="table table-primary full-width">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Service</th>
-                                                    <th scope="col">Environment</th>
-                                                    <th scope="col">Region</th>
-                                                    <th scope="col">Version</th>
-                                                    <th scope="col">CPU</th>
-                                                    <th scope="col">Memory</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Last deploy</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>api</td>
-                                                    <td>production</td>
-                                                    <td>eu-west-1</td>
-                                                    <td>4.0.0</td>
-                                                    <td>42%</td>
-                                                    <td>1.2 GB</td>
-                                                    <td>Healthy</td>
-                                                    <td>2 minutes ago</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>worker</td>
-                                                    <td>production</td>
-                                                    <td>us-east-1</td>
-                                                    <td>3.9.4</td>
-                                                    <td>71%</td>
-                                                    <td>2.4 GB</td>
-                                                    <td>Degraded</td>
-                                                    <td>1 hour ago</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>scheduler</td>
-                                                    <td>staging</td>
-                                                    <td>ap-south-1</td>
-                                                    <td>4.0.0-rc.2</td>
-                                                    <td>8%</td>
-                                                    <td>512 MB</td>
-                                                    <td>Healthy</td>
-                                                    <td>Yesterday</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                <div class="table-responsive full-width" tabindex="0" role="region" aria-label="Deployments, scrollable table">
+                                    <table class="table table-primary full-width">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Service</th>
+                                                <th scope="col">Environment</th>
+                                                <th scope="col">Region</th>
+                                                <th scope="col">Version</th>
+                                                <th scope="col">CPU</th>
+                                                <th scope="col">Memory</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Last deploy</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>api</td>
+                                                <td>production</td>
+                                                <td>eu-west-1</td>
+                                                <td>4.0.0</td>
+                                                <td>42%</td>
+                                                <td>1.2 GB</td>
+                                                <td>Healthy</td>
+                                                <td>2 minutes ago</td>
+                                            </tr>
+                                            <tr>
+                                                <td>worker</td>
+                                                <td>production</td>
+                                                <td>us-east-1</td>
+                                                <td>3.9.4</td>
+                                                <td>71%</td>
+                                                <td>2.4 GB</td>
+                                                <td>Degraded</td>
+                                                <td>1 hour ago</td>
+                                            </tr>
+                                            <tr>
+                                                <td>scheduler</td>
+                                                <td>staging</td>
+                                                <td>ap-south-1</td>
+                                                <td>4.0.0-rc.2</td>
+                                                <td>8%</td>
+                                                <td>512 MB</td>
+                                                <td>Healthy</td>
+                                                <td>Yesterday</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <div class="doc-code">
@@ -426,7 +416,7 @@
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="table-responsive">Copy</button>
                                 </div>
-                                <pre><code id="table-responsive" class="language-html">&lt;div class="table-responsive" tabindex="0" role="region" aria-label="Deployments, scrollable table"&gt;
+                                <pre><code id="table-responsive" class="language-html">&lt;div class="table-responsive full-width" tabindex="0" role="region" aria-label="Deployments, scrollable table"&gt;
     &lt;table class="table table-primary full-width"&gt;
         &lt;thead&gt;
             &lt;tr&gt;
@@ -464,34 +454,32 @@
                             <p><code>.is-highlight</code> tints a row with <code>--r-table-row-highlight-color</code> and draws a 3px inset bar in <code>--r-accent</code> on the first cell. Use it for the row a deep link just landed on, or for the row that a bulk action changed.</p>
                             <p><code>.is-checked</code> tints a row with <code>--r-table-row-hover-color</code>. It is a separate class from the checkbox state, so keep the two in sync in your script and do not let the tint carry the meaning on its own.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Invoice</th>
-                                                <th scope="col">Client</th>
-                                                <th scope="col">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="is-highlight">
-                                                <td>INV-1042</td>
-                                                <td>Northwind</td>
-                                                <td>$2,400</td>
-                                            </tr>
-                                            <tr class="is-checked">
-                                                <td>INV-1043</td>
-                                                <td>Contoso</td>
-                                                <td>$860</td>
-                                            </tr>
-                                            <tr>
-                                                <td>INV-1044</td>
-                                                <td>Fabrikam</td>
-                                                <td>$1,150</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table table-bordered full-width">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Invoice</th>
+                                            <th scope="col">Client</th>
+                                            <th scope="col">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="is-highlight">
+                                            <td>INV-1042</td>
+                                            <td>Northwind</td>
+                                            <td>$2,400</td>
+                                        </tr>
+                                        <tr class="is-checked">
+                                            <td>INV-1043</td>
+                                            <td>Contoso</td>
+                                            <td>$860</td>
+                                        </tr>
+                                        <tr>
+                                            <td>INV-1044</td>
+                                            <td>Fabrikam</td>
+                                            <td>$1,150</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
@@ -517,45 +505,43 @@
                             <p>A checkbox column is an ordinary cell with <code>.form-check-input</code> inside it. The table gives that input a 7px by 12px margin so the control centers against the 18px line instead of sitting on the baseline.</p>
                             <p>Repeat the input in the header for a select all control, and use <code>.is-indeterminate</code> on it when only some rows are selected. The modifier fills the box with <code>--r-surface-muted</code>, draws the accent border, and renders a dash.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <table class="table table-primary">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">
-                                                    <input type="checkbox" class="form-check-input is-indeterminate" aria-label="Select all invoices" />
-                                                </th>
-                                                <th scope="col">Invoice</th>
-                                                <th scope="col">Client</th>
-                                                <th scope="col">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="is-checked">
-                                                <td>
-                                                    <input type="checkbox" class="form-check-input" checked aria-label="Select INV-1042" />
-                                                </td>
-                                                <td>INV-1042</td>
-                                                <td>Northwind</td>
-                                                <td>$2,400</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="form-check-input" aria-label="Select INV-1043" />
-                                                </td>
-                                                <td>INV-1043</td>
-                                                <td>Contoso</td>
-                                                <td>$860</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table table-primary full-width">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                <input type="checkbox" class="form-check-input is-indeterminate" aria-label="Select all invoices" />
+                                            </th>
+                                            <th scope="col">Invoice</th>
+                                            <th scope="col">Client</th>
+                                            <th scope="col">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="is-checked">
+                                            <td>
+                                                <input type="checkbox" class="form-check-input" checked aria-label="Select INV-1042" />
+                                            </td>
+                                            <td>INV-1042</td>
+                                            <td>Northwind</td>
+                                            <td>$2,400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="form-check-input" aria-label="Select INV-1043" />
+                                            </td>
+                                            <td>INV-1043</td>
+                                            <td>Contoso</td>
+                                            <td>$860</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="table-selection">Copy</button>
                                 </div>
-                                <pre><code id="table-selection" class="language-html">&lt;table class="table table-primary"&gt;
+                                <pre><code id="table-selection" class="language-html">&lt;table class="table table-primary full-width"&gt;
     &lt;thead&gt;
         &lt;tr&gt;
             &lt;th scope="col"&gt;
@@ -593,54 +579,52 @@
                             <h2>Composition</h2>
                             <p>Cells are plain block content, so badges and buttons drop in without wrappers. Keep row actions small: a <code>.button-text</code> or a <code>.button-small</code> keeps the row height predictable, while a full size button stretches every row to 40px or more.</p>
                             <div class="doc-demo">
-                                <div class="full-width">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Worker</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Started</th>
-                                                <th scope="col">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Sync worker</td>
-                                                <td><span class="badge badge-success">Active</span></td>
-                                                <td>4 minutes ago</td>
-                                                <td>
-                                                    <button type="button" class="button button-text button-small">Restart</button>
-                                                    <button type="button" class="button button-text button-small">Logs</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mail worker</td>
-                                                <td><span class="badge badge-warning">Paused</span></td>
-                                                <td>2 hours ago</td>
-                                                <td>
-                                                    <button type="button" class="button button-text button-small">Resume</button>
-                                                    <button type="button" class="button button-text button-small">Logs</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Export worker</td>
-                                                <td><span class="badge badge-danger">Failed</span></td>
-                                                <td>Yesterday</td>
-                                                <td>
-                                                    <button type="button" class="button button-text button-small">Retry</button>
-                                                    <button type="button" class="button button-text button-small">Logs</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table table-striped full-width">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Worker</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Started</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Sync worker</td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                            <td>4 minutes ago</td>
+                                            <td>
+                                                <button type="button" class="button button-text button-small">Restart</button>
+                                                <button type="button" class="button button-text button-small">Logs</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mail worker</td>
+                                            <td><span class="badge badge-warning">Paused</span></td>
+                                            <td>2 hours ago</td>
+                                            <td>
+                                                <button type="button" class="button button-text button-small">Resume</button>
+                                                <button type="button" class="button button-text button-small">Logs</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Export worker</td>
+                                            <td><span class="badge badge-danger">Failed</span></td>
+                                            <td>Yesterday</td>
+                                            <td>
+                                                <button type="button" class="button button-text button-small">Retry</button>
+                                                <button type="button" class="button button-text button-small">Logs</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="table-composition">Copy</button>
                                 </div>
-                                <pre><code id="table-composition" class="language-html">&lt;table class="table table-striped"&gt;
+                                <pre><code id="table-composition" class="language-html">&lt;table class="table table-striped full-width"&gt;
     &lt;thead&gt;
         &lt;tr&gt;
             &lt;th scope="col"&gt;Worker&lt;/th&gt;
@@ -674,6 +658,246 @@
                             <p>Write the status word in the badge. The tint is only a second cue, and a row of colors tells a screen reader nothing.</p>
                         </section>
 
+                        <section class="doc-section" id="full-example">
+                            <h2>Full example</h2>
+                            <p>The example below stacks the pieces: a responsive wrapper, a primary header with a select-all checkbox and three sortable columns, a selection column, and the <code>.is-checked</code> and <code>.is-highlight</code> row states. Badges carry the status word, so the tint is never the only cue.</p>
+                            <p>Sorting and selection are still your script. The header checkbox starts in the mixed state with <code>.is-indeterminate</code>, and every checked row pairs its input with <code>.is-checked</code>.</p>
+                            <div class="doc-demo">
+                                <div class="table-responsive full-width" tabindex="0" role="region" aria-label="Team members, scrollable table">
+                                    <table class="table table-primary full-width">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <input type="checkbox" class="form-check-input is-indeterminate" aria-label="Select all members" />
+                                                </th>
+                                                <th scope="col">
+                                                    <button type="button" class="table-thead-label">
+                                                        Name
+                                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                                                            <path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th scope="col" aria-sort="ascending">
+                                                    <button type="button" class="table-thead-label">
+                                                        Age
+                                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                                                            <path d="M8 15l4-4 4 4" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th scope="col" aria-sort="descending">
+                                                    <button type="button" class="table-thead-label">
+                                                        Sex
+                                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                                                            <path d="M8 9l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th scope="col">Location</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Role</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" aria-label="Select Dave Gamache" />
+                                                </td>
+                                                <td>Dave Gamache</td>
+                                                <td>26</td>
+                                                <td>Male</td>
+                                                <td>San Francisco</td>
+                                                <td>dave@northwind.com</td>
+                                                <td>Owner</td>
+                                                <td><span class="badge badge-success">Active</span></td>
+                                            </tr>
+                                            <tr class="is-checked">
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" checked aria-label="Select Dwayne Johnson" />
+                                                </td>
+                                                <td>Dwayne Johnson</td>
+                                                <td>42</td>
+                                                <td>Male</td>
+                                                <td>Hayward</td>
+                                                <td>dwayne@northwind.com</td>
+                                                <td>Admin</td>
+                                                <td><span class="badge badge-success">Active</span></td>
+                                            </tr>
+                                            <tr class="is-checked">
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" checked aria-label="Select Ada Lovelace" />
+                                                </td>
+                                                <td>Ada Lovelace</td>
+                                                <td>36</td>
+                                                <td>Female</td>
+                                                <td>London</td>
+                                                <td>ada@northwind.com</td>
+                                                <td>Engineer</td>
+                                                <td><span class="badge badge-info">Invited</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" aria-label="Select Grace Hopper" />
+                                                </td>
+                                                <td>Grace Hopper</td>
+                                                <td>45</td>
+                                                <td>Female</td>
+                                                <td>New York</td>
+                                                <td>grace@northwind.com</td>
+                                                <td>Engineer</td>
+                                                <td><span class="badge badge-warning">Suspended</span></td>
+                                            </tr>
+                                            <tr class="is-highlight">
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" aria-label="Select Alan Turing" />
+                                                </td>
+                                                <td>Alan Turing</td>
+                                                <td>38</td>
+                                                <td>Male</td>
+                                                <td>Manchester</td>
+                                                <td>alan@northwind.com</td>
+                                                <td>Analyst</td>
+                                                <td><span class="badge badge-secondary">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" aria-label="Select Katherine Johnson" />
+                                                </td>
+                                                <td>Katherine Johnson</td>
+                                                <td>51</td>
+                                                <td>Female</td>
+                                                <td>Hampton</td>
+                                                <td>katherine@northwind.com</td>
+                                                <td>Analyst</td>
+                                                <td><span class="badge badge-danger">Deactivated</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="doc-code">
+                                <div class="doc-code-bar">
+                                    <span class="doc-code-lang">HTML</span>
+                                    <button type="button" class="doc-copy" data-doc-copy="table-full-example">Copy</button>
+                                </div>
+                                <pre><code id="table-full-example" class="language-html">&lt;div class="table-responsive full-width" role="region" aria-label="Team members, scrollable table"&gt;
+    &lt;table class="table table-primary full-width"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th scope="col"&gt;
+                    &lt;input type="checkbox" class="form-check-input is-indeterminate" aria-label="Select all members" /&gt;
+                &lt;/th&gt;
+                &lt;th scope="col"&gt;
+                    &lt;button type="button" class="table-thead-label"&gt;
+                        Name
+                        &lt;svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"&gt;
+                            &lt;path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                        &lt;/svg&gt;
+                    &lt;/button&gt;
+                &lt;/th&gt;
+                &lt;th scope="col" aria-sort="ascending"&gt;
+                    &lt;button type="button" class="table-thead-label"&gt;
+                        Age
+                        &lt;svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"&gt;
+                            &lt;path d="M8 15l4-4 4 4" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                        &lt;/svg&gt;
+                    &lt;/button&gt;
+                &lt;/th&gt;
+                &lt;th scope="col" aria-sort="descending"&gt;
+                    &lt;button type="button" class="table-thead-label"&gt;
+                        Sex
+                        &lt;svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"&gt;
+                            &lt;path d="M8 9l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /&gt;
+                        &lt;/svg&gt;
+                    &lt;/button&gt;
+                &lt;/th&gt;
+                &lt;th scope="col"&gt;Location&lt;/th&gt;
+                &lt;th scope="col"&gt;Email&lt;/th&gt;
+                &lt;th scope="col"&gt;Role&lt;/th&gt;
+                &lt;th scope="col"&gt;Status&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type="checkbox" class="form-check-input" aria-label="Select Dave Gamache" /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;Dave Gamache&lt;/td&gt;
+                &lt;td&gt;26&lt;/td&gt;
+                &lt;td&gt;Male&lt;/td&gt;
+                &lt;td&gt;San Francisco&lt;/td&gt;
+                &lt;td&gt;dave@northwind.com&lt;/td&gt;
+                &lt;td&gt;Owner&lt;/td&gt;
+                &lt;td&gt;&lt;span class="badge badge-success"&gt;Active&lt;/span&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class="is-checked"&gt;
+                &lt;td&gt;
+                    &lt;input type="checkbox" class="form-check-input" checked aria-label="Select Dwayne Johnson" /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;Dwayne Johnson&lt;/td&gt;
+                &lt;td&gt;42&lt;/td&gt;
+                &lt;td&gt;Male&lt;/td&gt;
+                &lt;td&gt;Hayward&lt;/td&gt;
+                &lt;td&gt;dwayne@northwind.com&lt;/td&gt;
+                &lt;td&gt;Admin&lt;/td&gt;
+                &lt;td&gt;&lt;span class="badge badge-success"&gt;Active&lt;/span&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class="is-checked"&gt;
+                &lt;td&gt;
+                    &lt;input type="checkbox" class="form-check-input" checked aria-label="Select Ada Lovelace" /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;Ada Lovelace&lt;/td&gt;
+                &lt;td&gt;36&lt;/td&gt;
+                &lt;td&gt;Female&lt;/td&gt;
+                &lt;td&gt;London&lt;/td&gt;
+                &lt;td&gt;ada@northwind.com&lt;/td&gt;
+                &lt;td&gt;Engineer&lt;/td&gt;
+                &lt;td&gt;&lt;span class="badge badge-info"&gt;Invited&lt;/span&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type="checkbox" class="form-check-input" aria-label="Select Grace Hopper" /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;Grace Hopper&lt;/td&gt;
+                &lt;td&gt;45&lt;/td&gt;
+                &lt;td&gt;Female&lt;/td&gt;
+                &lt;td&gt;New York&lt;/td&gt;
+                &lt;td&gt;grace@northwind.com&lt;/td&gt;
+                &lt;td&gt;Engineer&lt;/td&gt;
+                &lt;td&gt;&lt;span class="badge badge-warning"&gt;Suspended&lt;/span&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class="is-highlight"&gt;
+                &lt;td&gt;
+                    &lt;input type="checkbox" class="form-check-input" aria-label="Select Alan Turing" /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;Alan Turing&lt;/td&gt;
+                &lt;td&gt;38&lt;/td&gt;
+                &lt;td&gt;Male&lt;/td&gt;
+                &lt;td&gt;Manchester&lt;/td&gt;
+                &lt;td&gt;alan@northwind.com&lt;/td&gt;
+                &lt;td&gt;Analyst&lt;/td&gt;
+                &lt;td&gt;&lt;span class="badge badge-secondary"&gt;Pending&lt;/span&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type="checkbox" class="form-check-input" aria-label="Select Katherine Johnson" /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;Katherine Johnson&lt;/td&gt;
+                &lt;td&gt;51&lt;/td&gt;
+                &lt;td&gt;Female&lt;/td&gt;
+                &lt;td&gt;Hampton&lt;/td&gt;
+                &lt;td&gt;katherine@northwind.com&lt;/td&gt;
+                &lt;td&gt;Analyst&lt;/td&gt;
+                &lt;td&gt;&lt;span class="badge badge-danger"&gt;Deactivated&lt;/span&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </section>
+
                         <section class="doc-section" id="accessibility">
                             <h2>Accessibility</h2>
                             <p>A table is the right element only when the content has rows and columns that relate to each other. For a two column list of labels and values, use a description list instead.</p>
@@ -693,7 +917,7 @@
                             <h2 id="reference-heading">Class reference</h2>
                             <p>The variants stack onto <code>.table</code>. The row classes go on a <code>&lt;tr&gt;</code>, and <code>.table-thead-label</code> goes on a button inside a header cell.</p>
                             <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
-                                <table class="table">
+                                <table class="table full-width">
                                     <thead>
                                         <tr>
                                             <th scope="col">Class</th>
@@ -781,6 +1005,7 @@
                         <a class="doc-toc-link" href="#row-states">Row states</a>
                         <a class="doc-toc-link" href="#selection">Selection column</a>
                         <a class="doc-toc-link" href="#composition">Composition</a>
+                        <a class="doc-toc-link" href="#full-example">Full example</a>
                         <a class="doc-toc-link" href="#accessibility">Accessibility</a>
                         <a class="doc-toc-link" href="#reference">Class reference</a>
                     </nav>
