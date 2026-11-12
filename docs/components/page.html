@@ -10,14 +10,8 @@
         <link rel="icon" href="../favicon.ico" sizes="any" />
         <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
         <link rel="stylesheet" href="../doc.css" />
-        <link
-            rel="stylesheet"
-            href="/vendor/highlight-github.min.css"
-            data-hljs-theme="light" />
-        <link
-            rel="stylesheet"
-            href="/vendor/highlight-github-dark.min.css"
-            data-hljs-theme="dark" />
+        <link rel="stylesheet" href="/vendor/highlight-github.min.css" data-hljs-theme="light" />
+        <link rel="stylesheet" href="/vendor/highlight-github-dark.min.css" data-hljs-theme="dark" />
         <script src="/doc-search.js"></script>
         <script src="/doc-surfaces.js"></script>
         <script src="../doc.js"></script>
@@ -70,7 +64,8 @@
                                 is a flex container that centers its single child both ways. Inside it,
                                 <code>.page-content</code>
                                 holds the four slots: an optional
-                                <code>.page-icon</code>, a
+                                <code>.page-icon</code>
+                                , a
                                 <code>.page-header</code>
                                 for the title, a
                                 <code>.page-body</code>
@@ -81,12 +76,14 @@
                             <p>
                                 <code>.page-normal</code>
                                 goes on the same element as
-                                <code>.page</code>. It sets
+                                <code>.page</code>
+                                . It sets
                                 <code>height: auto</code>
                                 and
-                                <code>display: block</code>, and its content block switches to left aligned text with 60px
-                                of top padding. Use it whenever the shell is not the whole screen, for example inside a
-                                dashboard column or a card area.
+                                <code>display: block</code>
+                                , and its content block switches to left aligned text with 60px of top padding. Use it
+                                whenever the shell is not the whole screen, for example inside a dashboard column or a
+                                card area.
                             </p>
                             <div class="doc-demo">
                                 <div class="full-width">
@@ -158,14 +155,14 @@
                                 <code>height: 100%</code>
                                 and then
                                 <code>height: 100vh</code>
-                                and centers the content block, which is the shape you want for a standalone route such as
-                                a 404 or an auth result. Place it directly under
+                                and centers the content block, which is the shape you want for a standalone route such
+                                as a 404 or an auth result. Place it directly under
                                 <code>body</code>
                                 or inside the main region, not inside a card that already has its own padding.
                             </p>
                             <p>
-                                The demo pins a 300px height on the shell so it fits on this page. In production the class
-                                does not need it: leave the height alone and let
+                                The demo pins a 300px height on the shell so it fits on this page. In production the
+                                class does not need it: leave the height alone and let
                                 <code>100vh</code>
                                 do the work.
                             </p>
@@ -190,9 +187,7 @@
                                                 </svg>
                                             </div>
                                             <h2 class="page-header">Session expired</h2>
-                                            <div class="page-body">
-                                                Sign in again to continue where you left off.
-                                            </div>
+                                            <div class="page-body">Sign in again to continue where you left off.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +195,9 @@
                             <div class="doc-code">
                                 <div class="doc-code-bar">
                                     <span class="doc-code-lang">HTML</span>
-                                    <button type="button" class="doc-copy" data-doc-copy="page-full-height">Copy</button>
+                                    <button type="button" class="doc-copy" data-doc-copy="page-full-height">
+                                        Copy
+                                    </button>
                                 </div>
                                 <pre><code id="page-full-height" class="language-html">&lt;div class="page"&gt;
     &lt;div class="page-content"&gt;
@@ -220,10 +217,12 @@
                                 <code>.page-normal</code>
                                 when the shell renders inside an existing layout, and keep the heading level at
                                 <code>h1</code>
-                                on a standalone route because it is then the only heading on the screen. The live demo uses
+                                on a standalone route because it is then the only heading on the screen. The live demo
+                                uses
                                 <code>h2</code>
                                 because it sits inside this page, which already has an
-                                <code>h1</code>.
+                                <code>h1</code>
+                                .
                             </p>
                             <p>
                                 <code>.page-footer</code>
@@ -255,9 +254,10 @@
                                             <div class="page-body">
                                                 <p>
                                                     We could not find
-                                                    <code>/reports/q3-revenue</code>. It may have been renamed, moved,
-                                                    or deleted.
+                                                    <code>/reports/q3-revenue</code>
+                                                    . It may have been renamed, moved, or deleted.
                                                 </p>
+                                                <div class="spacer-10"></div>
                                                 <p><a class="button button-primary" href="#">Back to dashboard</a></p>
                                             </div>
                                             <div class="page-footer">
@@ -298,23 +298,47 @@
                         <section class="doc-section" id="accessibility">
                             <h2>Accessibility</h2>
                             <p>
-                                The shell only draws the surface. The landmark, the heading, and the focus behavior belong
-                                to the page that renders it.
+                                The shell only draws the surface. The landmark, the heading, and the focus behavior
+                                belong to the page that renders it.
                             </p>
                             <ul>
-                                <li>Render the shell inside a real <code>main</code> landmark, and keep one <code>h1</code> on the screen. Put <code>.page-header</code> on that heading rather than on a second title.</li>
-                                <li>Announce a 404 or a status screen in the document title and in the heading text, so the message does not depend on the icon or the color.</li>
-                                <li>On a client-side route change, move focus to the heading. A route that only swaps content leaves a keyboard and screen reader user at the top of the previous page.</li>
-                                <li>Hide decorative icons from assistive technology with <code>aria-hidden="true"</code> on the SVG, and give an icon that carries meaning a text alternative when no visible text explains it.</li>
-                                <li>Keep the visual shell presentational. <code>.page</code> adds no role and no label, so the surrounding layout has to supply the landmark and the heading level.</li>
+                                <li>
+                                    Render the shell inside a real
+                                    <code>main</code>
+                                    landmark, and keep one
+                                    <code>h1</code>
+                                    on the screen. Put
+                                    <code>.page-header</code>
+                                    on that heading rather than on a second title.
+                                </li>
+                                <li>
+                                    Announce a 404 or a status screen in the document title and in the heading text, so
+                                    the message does not depend on the icon or the color.
+                                </li>
+                                <li>
+                                    On a client-side route change, move focus to the heading. A route that only swaps
+                                    content leaves a keyboard and screen reader user at the top of the previous page.
+                                </li>
+                                <li>
+                                    Hide decorative icons from assistive technology with
+                                    <code>aria-hidden="true"</code>
+                                    on the SVG, and give an icon that carries meaning a text alternative when no visible
+                                    text explains it.
+                                </li>
+                                <li>
+                                    Keep the visual shell presentational.
+                                    <code>.page</code>
+                                    adds no role and no label, so the surrounding layout has to supply the landmark and
+                                    the heading level.
+                                </li>
                             </ul>
                         </section>
 
                         <section class="doc-section" id="reference">
                             <h2 id="reference-heading">Class reference</h2>
                             <p>
-                                The shell classes are structural and read no component tokens beyond the palette utilities
-                                used for color. Spacing comes from fixed rem values in the module.
+                                The shell classes are structural and read no component tokens beyond the palette
+                                utilities used for color. Spacing comes from fixed rem values in the module.
                             </p>
                             <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
                                 <table class="table">
@@ -329,30 +353,32 @@
                                         <tr>
                                             <td><code>.page</code></td>
                                             <td>Base</td>
-                                            <td>
-                                                Full viewport height as a flex container, centered on both axes.
-                                            </td>
+                                            <td>Full viewport height as a flex container, centered on both axes.</td>
                                         </tr>
                                         <tr>
                                             <td><code>.page-normal</code></td>
                                             <td>Variant</td>
                                             <td>
-                                                On the same element as <code>.page</code>. Height auto and block display
-                                                for use inside a layout.
+                                                On the same element as
+                                                <code>.page</code>
+                                                . Height auto and block display for use inside a layout.
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><code>.page-content</code></td>
                                             <td>Child</td>
                                             <td>
-                                                Centered text by default; under <code>.page-normal</code> it gets 60px of
-                                                top padding and left aligned text.
+                                                Centered text by default; under
+                                                <code>.page-normal</code>
+                                                it gets 60px of top padding and left aligned text.
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><code>.page-icon</code></td>
                                             <td>Slot</td>
-                                            <td>Sets a 72px font size for an icon glyph. Inline SVG needs its own size.</td>
+                                            <td>
+                                                Sets a 72px font size for an icon glyph. Inline SVG needs its own size.
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><code>.page-header</code></td>
