@@ -30,7 +30,7 @@
 
     // Block Stat Table
     --r-block-stat-table-header-color: var(--r-text-faint);
-    --r-block-stat-table-indicator-color: var(--r-surface-muted);
+    --r-block-stat-table-indicator-color: var(--r-color-neutral-150);
 
     // Block Stat
     --r-block-stat-item-gap: var(--r-block-padding);
@@ -100,7 +100,6 @@
 
     // Card
     --r-card-radius: var(--r-global-border-radius);
-    --r-card-shadow: 0 0 0 0.0625rem rgba(0, 0, 0, 0.04);
     --r-card-header-footer-border: var(--r-border-subtle);
     --r-card-header-footer-color: var(--r-text-subtle);
     --r-card-background: var(--r-surface);
@@ -108,6 +107,7 @@
     --r-card-spacing-small: 0.9375rem;
     --r-card-header-footer-spacing: 0.9375rem 1.5625rem;
     --r-card-header-footer-spacing-small: 0.625rem 0.9375rem;
+    --r-card-border: var(--r-border-muted);
 
     // Collage
     --r-collage-item-default-width: 12.5rem;
@@ -327,7 +327,6 @@
     --r-progress-bar-radius: var(--r-global-border-radius);
 
     // Quick Menu
-    --r-quick-menu-background: var(--r-surface-muted);
     --r-quick-menu-spacing: 0.5rem;
     --r-quick-menu-font-size: 0.875rem;
     --r-quick-menu-spacing-small: 0.3125rem;
@@ -403,6 +402,7 @@
     --r-action-menu-item-background: var(--r-surface);
 
     // Quick Menu
+    --r-quick-menu-background: var(--r-surface-muted);
     --r-quick-menu-link-hover-background: var(--r-surface);
 
     // Tag
@@ -457,6 +457,7 @@
     --r-action-menu-item-background: transparent;
 
     // Quick Menu
+    --r-quick-menu-background: var(--r-color-neutral-150);
     --r-quick-menu-link-hover-background: var(--r-surface-page);
 
     // Tag

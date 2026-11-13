@@ -16,6 +16,7 @@ The Advanced switch reveals one editor per token in `playground-tokens.js`, whic
 - `roolith-4.0.0.min.css`: the local framework build the pages load, so the docs always describe the shipped CSS.
 - `datepicker-demo.js`: the datepicker page demo controller, and only that page loads it. It initializes the vendored js-datepicker library on the `.form-datepicker-js` field, guards on both the library global and the field so it stays inert elsewhere, and relies on the library appending its panel to the field wrapper the framework overrides target.
 - `vendor/`: the local highlight.js and js-datepicker builds, the light and dark code themes, and the upstream license files.
+- `images/`: every demo image, served from this folder, plus the provenance notes in the Images section below.
 - `index.html`: the overview page. `favicon.ico` sits next to it.
 - `generate-search-index.mjs`: the script that rebuilds `search-index.json`.
 - `scripts/generate-playground-tokens.mjs`: the script that rebuilds `playground-tokens.js`. It compiles the theme scopes and the component token mixins, subtracts the component and private tokens, and writes the sorted catalog. `--check` compares the committed file with a fresh render.
@@ -75,15 +76,67 @@ The script scans every page under `docs`, skipping `partials` and dot directorie
 
 ## Runtime dependencies
 
-The site has no required CDN runtime dependencies. Every script, stylesheet, and font the pages load is served from this folder:
+The site serves every script and stylesheet itself, and its one network font dependency is Inter from the Google Fonts CDN:
 
 - `include-fragment.js` is a small local custom element that fetches `partials/*.html` with `credentials: 'same-origin'`, swaps the response into the element, and leaves the fallback text in place when a request fails. A successful partial gets `is-loaded` and a failed one gets `is-error`, and `doc.js` uses both states. It replaces the previous CDN-loaded `@github/include-fragment-element` package.
 - `vendor/highlight.min.js` provides syntax highlighting, and `vendor/highlight-github.min.css` with `vendor/highlight-github-dark.min.css` provide the light and dark code themes. `vendor/highlight.LICENSE` carries the upstream license.
 - `vendor/datepicker.min.js` and `vendor/datepicker.min.css` are js-datepicker 5.18.4, the third-party library the datepicker page demos. Only that page loads them, and `vendor/datepicker.LICENSE` carries the upstream MIT notice. The page's code sample still points at the unpkg URLs, since a project consuming roolith picks its own copy of the library.
 
-Nothing else the site depends on is fetched from the network, but a few demo pages hot-link remote images from `picsum.photos` and `placehold.co`, so those demos show broken images without a network connection.
+Nothing else the site depends on is fetched from the network, and no page hot-links a remote image, so every demo renders offline.
 
 Framework users still pick their own icon and font assets. The Introduction page documents the CDN links for Iconoir and Inter, and those stay optional choices for a project using roolith rather than requirements of this docs site.
+
+## Fonts
+
+The pages render in Inter because the framework base font stack names it, and `doc.css` opens with an `@import` of the Google Fonts stylesheet for `family=Inter:ital,wght@0,400..700;1,400..700`, which covers every `font-weight` the stylesheets use in both styles, with `display=swap`. Every page already loads `doc.css`, so the import is the one place the font is requested and no page head repeats it. The italic axis is part of the request because the typography page demos `em`, and a browser only downloads the italic files when italic text actually renders. Without it a visitor who does not have Inter installed sees the system sans-serif fallback from the framework stack.
+
+The `@import` must stay the first thing in the file, since CSS ignores an import that follows a rule. It also costs one extra round trip compared with a `link` in the page head: the browser discovers the font stylesheet only after it has fetched and parsed `doc.css`, so it cannot preconnect to `fonts.googleapis.com` or `fonts.gstatic.com` ahead of time. That is the deliberate trade for a single edit point; if the first-paint font swap ever needs to be tighter, move the request back into a head `link` with the two preconnects, which means touching every page.
+
+The theme playground's family loader only injects the stylesheet for the Google family a visitor picks, with no connection hints of its own, so the playground never fetches a family before it is chosen.
+
+## Images
+
+Every demo image is a file in `images/`, referenced with a relative `../images/...` path, so the demos never wait on a remote host and never show a broken tile. The six oldest files (`1.jpg`, `2.jpeg`, `3.jpeg`, `4.png`, `5.jpeg`, `6.jpeg`) are the media demos on the utilities page and in the playground preview.
+
+Avatars are AI-generated faces from [UIFaces](https://uifaces.co/), so no real person is depicted, and each named demo persona has one file that every page reuses, which keeps the same face on the avatar page, the comment thread, and the playground activity feed. They are fetched from `https://mockmind-api.uifaces.co/content/human/<id>.jpg` and resized to 240x240 at JPEG quality 82, which covers the 120px circle at 2x:
+
+| File | UIFaces id | Persona |
+| --- | --- | --- |
+| `avatar-aiko-tanaka.jpg` | 107 | Aiko Tanaka |
+| `avatar-ariana-cole.jpg` | 44 | Ariana Cole |
+| `avatar-ben-osei.jpg` | 42 | Ben Osei |
+| `avatar-dana-whitfield.jpg` | 105 | Dana Whitfield |
+| `avatar-hidden-author.jpg` | 45 | Hidden author |
+| `avatar-marcus-lee.jpg` | 73 | Marcus Lee |
+| `avatar-mira-chen.jpg` | 78 | Mira Chen |
+| `avatar-portrait.jpg` | 60 | The `.img.rounded-circle` demo |
+| `avatar-priya-raman.jpg` | 9 | Priya Raman |
+| `avatar-sofia-almeida.jpg` | 68 | Sofia Almeida |
+| `avatar-tomas-ruiz.jpg` | 50 | Tomas Ruiz |
+
+Photos come from [Pexels](https://www.pexels.com/license/), which allows free use without attribution. Each file is the photo cropped to the size the layout uses, including the 200x400 portrait tile in the collage, and the three audience rows in the playground reuse photo files because a customer segment is not a person:
+
+| File | Source | Size |
+| --- | --- | --- |
+| `photo-abstract-curve.jpg` | 1103970 | 400x400 |
+| `photo-architecture.jpg` | 1029606 | 400x400 |
+| `photo-aurora.jpg` | 3617500 | 400x400 |
+| `photo-waterfall.jpg` | 210186 | 400x400 |
+| `photo-bungalows.jpg` | 1287460 | 200x200 |
+| `photo-camera.jpg` | 274973 | 200x200 |
+| `photo-city-night.jpg` | 373912 | 200x200 |
+| `photo-color-swatches.jpg` | 276267 | 200x200 |
+| `photo-flowers.jpg` | 4247596 | 200x200 |
+| `photo-house.jpg` | 259588 | 200x200 |
+| `photo-mountain-lake.jpg` | 358482 | 200x200 |
+| `photo-mountains.jpg` | 1699030 | 200x200 |
+| `photo-mountains-portrait.jpg` | 1699030 | 200x400 |
+| `photo-skyline-clouds.jpg` | 325185 | 200x200 |
+| `photo-city-aerial.jpg` | 409127 | 600x300 |
+| `photo-open-book.jpg` | 1112048 | 600x300 |
+| `placeholder-800x300.png` | placehold.co | 800x300 |
+
+To add or replace a photo, download it at the size the layout needs with `https://images.pexels.com/photos/<id>/pexels-photo-<id>.jpeg?auto=compress&cs=tinysrgb&w=<width>&h=<height>&fit=crop`, save it here, and reference it from the page. Keep the aspect ratio the markup expects, because the collage and card demos crop with `object-fit` rather than reserving a fixed box.
 
 ## Adding a page
 

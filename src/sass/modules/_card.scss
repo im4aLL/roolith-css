@@ -4,7 +4,7 @@
 
 @mixin card() {
     .card {
-        box-shadow: var(--r-card-shadow);
+        border: rem(1) solid var(--r-card-border);
         border-radius: var(--r-card-radius);
         overflow: hidden;
         margin-bottom: rem(20);

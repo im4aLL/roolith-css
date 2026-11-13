@@ -6,7 +6,8 @@
  * the markup owns the mapping and this script only injects the stylesheet once
  * per URL. The generated theme CSS stays in the page controller; this file only
  * makes the chosen family available to the browser. Nothing here is exposed
- * globally.
+ * globally. The site only requests fonts on demand here, so this script does not
+ * add connection hints of its own.
  */
 (function () {
     'use strict';
@@ -16,32 +17,6 @@
     const LOAD_ATTRIBUTE = 'data-doc-font-load';
 
     const loaded = new Set();
-
-    let preconnected = false;
-
-    /**
-     * Add the font host preconnects once, before the first stylesheet request.
-     * @returns {void}
-     */
-    function preconnect() {
-        if (preconnected) {
-            return;
-        }
-        preconnected = true;
-
-        [
-            { href: 'https://fonts.googleapis.com', crossOrigin: null },
-            { href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
-        ].forEach(({ href, crossOrigin }) => {
-            const link = document.createElement('link');
-            link.rel = 'preconnect';
-            link.href = href;
-            if (crossOrigin !== null) {
-                link.crossOrigin = crossOrigin;
-            }
-            document.head.appendChild(link);
-        });
-    }
 
     /**
      * Load the stylesheet of the currently selected option when it defines one.
@@ -55,8 +30,6 @@
         if (!href || loaded.has(href)) {
             return;
         }
-
-        preconnect();
 
         const link = document.createElement('link');
         link.rel = 'stylesheet';

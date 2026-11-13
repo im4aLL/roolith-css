@@ -2,18 +2,17 @@
 @use '../mixins';
 
 @mixin indicator() {
-
     .indicator {
         position: relative;
-        padding-left: calc(var(--r-indicator-icon-size) + #{rem(3)});
+        display: inline-flex;
+        gap: rem(3);
+        align-items: center;
         font-size: rem(14);
         color: var(--r-indicator-flat-color);
 
         &::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+            display: inline-flex;
             width: var(--r-indicator-icon-size);
             height: var(--r-indicator-icon-size);
             mask-repeat: no-repeat;
