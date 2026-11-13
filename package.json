@@ -10,6 +10,7 @@
         "preview": "vite preview",
         "css-vars": "node scripts/generate-css-variables.mjs",
         "css-vars:all": "node scripts/generate-css-variables.mjs --all",
+        "docs:version": "node scripts/version-docs-assets.mjs",
         "test": "node docs/check-playground-theme.mjs && node scripts/generate-playground-tokens.mjs --check",
         "check:playground": "node docs/check-playground-theme.mjs && node scripts/generate-playground-tokens.mjs --check",
         "tokens": "node scripts/generate-playground-tokens.mjs"
