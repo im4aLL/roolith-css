@@ -96,7 +96,9 @@ The `@import` must stay the first thing in the file, since CSS ignores an import
 
 The theme playground's family loader only injects the stylesheet for the Google family a visitor picks, with no connection hints of its own, so the playground never fetches a family before it is chosen.
 
-The standalone examples under `examples/` do not load `doc.css`, so each one requests its own Google Fonts stylesheet: Inter everywhere, plus Instrument Serif for the company page and Space Grotesk for the multipurpose page. Each request has a local fallback stack, so a demo still renders with system fonts when the network is unavailable. Those requests belong to the demos, not to the docs shell.
+The standalone examples under `examples/` do not load `doc.css`, so each one requests its own Google Fonts stylesheet: Inter everywhere, plus Instrument Serif for the company page, Space Grotesk for the multipurpose page, JetBrains Mono for the developer platform, Fraunces for the storefront, and Instrument Serif for the bistro. Each request has a local fallback stack, so a demo still renders with system fonts when the network is unavailable. Those requests belong to the demos, not to the docs shell.
+
+The developer platform, storefront, and bistro examples are deliberately styled almost entirely through `--r-*` custom property overrides. Their stylesheets hold the light and dark token blocks plus a few dozen layout declarations, with no component restyling, so they double as a working reference for the theming guide.
 
 ## Images
 
@@ -138,6 +140,13 @@ Photos come from [Pexels](https://www.pexels.com/license/), which allows free us
 | `photo-skyline-clouds.jpg` | 325185 | 200x200 |
 | `photo-city-aerial.jpg` | 409127 | 600x300 |
 | `photo-open-book.jpg` | 1112048 | 600x300 |
+| `photo-bistro-interior.jpg` | 67468 | 800x600 |
+| `photo-bistro-chef.jpg` | 1267320 | 600x600 |
+| `photo-bistro-plate.jpg` | 3659862 | 400x400 |
+| `photo-bistro-wine.jpg` | 941861 | 400x400 |
+| `photo-bistro-supper.jpg` | 3184183 | 400x400 |
+| `photo-bistro-service.jpg` | 262978 | 400x400 |
+| `photo-bistro-cheese.jpg` | 1126728 | 400x400 |
 | `placeholder-800x300.png` | placehold.co | 800x300 |
 
 To add or replace a photo, download it at the size the layout needs with `https://images.pexels.com/photos/<id>/pexels-photo-<id>.jpeg?auto=compress&cs=tinysrgb&w=<width>&h=<height>&fit=crop`, save it here, and reference it from the page. Keep the aspect ratio the markup expects, because the collage and card demos crop with `object-fit` rather than reserving a fixed box.

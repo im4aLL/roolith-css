@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="en" class="theme-light">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Kite - webhook delivery your API can trust</title>
+        <meta
+            name="description"
+            content="Kite signs, retries, and logs every webhook your product sends, with replayable delivery history and one API call to start." />
+        <meta name="theme-color" content="#f7f9fd" />
+        <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" />
+        <link rel="stylesheet" href="../../roolith-4.1.0.min.css" />
+        <script>
+            (function () {
+                var root = document.documentElement;
+                var stored = null;
+                try {
+                    stored = window.localStorage.getItem('kite-theme');
+                } catch (error) {
+                    stored = null;
+                }
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = stored === 'dark' || stored === 'light' ? stored : prefersDark ? 'dark' : 'light';
+                root.classList.toggle('theme-dark', theme === 'dark');
+                root.classList.toggle('theme-light', theme === 'light');
+            })();
+        </script>
+        <link rel="stylesheet" href="example-docs.css" />
+        <script src="example-docs.js" defer></script>
+    </head>
+    <body class="ex-docs">
+        <a class="button button-primary button-small ex-docs-skip" href="#main">Skip to content</a>
+
+        <div class="ex-docs-announce">
+            <div class="container ex-docs-announce__inner">
+                <span class="badge badge-primary ex-docs-announce__badge">New</span>
+                <p class="ex-docs-announce__text">
+                    Kite Edge is in public beta: deliveries now leave from 34 regions.
+                </p>
+                <a class="ex-docs-announce__link" href="#how">
+                    Read the release notes
+                    <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path
+                            d="M5 12h14M13 6l6 6-6 6"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <header class="ex-docs-header" data-header>
+            <div class="container ex-docs-header__inner">
+                <a class="ex-docs-brand" href="#main" aria-label="Kite home">
+                    <svg class="ex-docs-brand__mark" width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                        <path d="M16 2.5 29 15.5H3Z" fill="currentColor" />
+                        <path d="M3 15.5h26L16 29.5Z" fill="currentColor" opacity="0.45" />
+                    </svg>
+                    <span class="ex-docs-brand__name">Kite</span>
+                </a>
+
+                <nav class="ex-docs-nav" aria-label="Primary">
+                    <ul class="nav ex-docs-nav__list">
+                        <li class="nav-item"><a class="nav-link ex-docs-nav__link" href="#features">Platform</a></li>
+                        <li class="nav-item"><a class="nav-link ex-docs-nav__link" href="#docs">Docs</a></li>
+                        <li class="nav-item"><a class="nav-link ex-docs-nav__link" href="#pricing">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link ex-docs-nav__link" href="#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+
+                <div class="ex-docs-actions">
+                    <button
+                        class="ex-docs-icon-button ex-docs-theme"
+                        type="button"
+                        aria-pressed="false"
+                        aria-label="Switch to dark theme"
+                        data-theme-toggle>
+                        <svg
+                            class="ex-docs-icon-moon"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false">
+                            <path
+                                d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <svg
+                            class="ex-docs-icon-sun"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false">
+                            <circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.6" />
+                            <path
+                                d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.4 5.4l1.5 1.5M17.1 17.1l1.5 1.5M18.6 5.4l-1.5 1.5M6.9 17.1l-1.5 1.5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                    <a class="button button-primary ex-docs-button ex-docs-button--small ex-docs-header__cta" href="#pricing">
+                        Start free
+                    </a>
+                    <button
+                        class="ex-docs-icon-button ex-docs-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="site-menu"
+                        aria-label="Open menu"
+                        data-menu-toggle>
+                        <span class="ex-docs-bars" aria-hidden="true"><span></span><span></span></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="ex-docs-menu" id="site-menu" data-menu-panel hidden>
+                <div class="container">
+                    <nav aria-label="Mobile primary">
+                        <ul class="ex-docs-menu__list">
+                            <li><a class="ex-docs-menu__link" href="#features">Platform</a></li>
+                            <li><a class="ex-docs-menu__link" href="#docs">Docs</a></li>
+                            <li><a class="ex-docs-menu__link" href="#pricing">Pricing</a></li>
+                            <li><a class="ex-docs-menu__link" href="#faq">FAQ</a></li>
+                        </ul>
+                    </nav>
+                    <a class="button button-primary ex-docs-button full-width" href="#pricing">Start free</a>
+                    <p class="ex-docs-menu__note ex-docs-mono">Free plan - 10,000 deliveries a month</p>
+                </div>
+            </div>
+        </header>
+
+        <main id="main" tabindex="-1">
+            <section class="ex-docs-hero" aria-labelledby="hero-title">
+                <div class="container ex-docs-hero__inner">
+                    <div class="ex-docs-hero__copy">
+                        <p class="ex-docs-hero__tags">
+                            <span class="ex-docs-chip ex-docs-mono">v4 API</span>
+                            <span class="ex-docs-chip ex-docs-mono">HMAC-SHA256</span>
+                            <span class="ex-docs-chip ex-docs-mono">34 regions</span>
+                        </p>
+                        <h1 id="hero-title" class="ex-docs-hero__title">Ship webhooks your users can trust.</h1>
+                        <p class="ex-docs-hero__lede">
+                            Kite takes the events your product emits, signs every delivery, retries until an endpoint
+                            answers, and keeps a replayable log of each attempt.
+                        </p>
+                        <div class="ex-docs-hero__actions">
+                            <a class="button button-primary ex-docs-button" href="#pricing">Start for free</a>
+                            <a class="button button-outline ex-docs-button" href="#docs">Read the docs</a>
+                        </div>
+                        <p class="ex-docs-hero__note">10,000 deliveries a month on the free plan. No card, no sales call.</p>
+                    </div>
+
+                    <div class="ex-docs-hero__visual">
+                        <div class="ex-docs-console">
+                            <div class="ex-docs-console__chrome">
+                                <span class="ex-docs-console__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <span class="ex-docs-console__url ex-docs-mono">console.kite.dev/events</span>
+                                <span class="ex-docs-console__live ex-docs-mono">
+                                    <span class="ex-docs-dot" aria-hidden="true"></span>
+                                    live
+                                </span>
+                            </div>
+                            <div class="ex-docs-console__body">
+                                <div class="ex-docs-console__row">
+                                    <span class="ex-docs-console__label ex-docs-mono">Request</span>
+                                    <span class="ex-docs-chip ex-docs-chip--method ex-docs-mono">POST</span>
+                                    <span class="ex-docs-console__path ex-docs-mono">/v1/events</span>
+                                </div>
+                                <pre class="ex-docs-console__code"><code class="ex-docs-mono"><span class="ex-docs-tok-cmd">curl</span> -X POST <span class="ex-docs-tok-url">https://api.kite.dev/v1/events</span> \
+  -H <span class="ex-docs-tok-str">"Authorization: Bearer sk_live_8f2c"</span> \
+  -H <span class="ex-docs-tok-str">"Content-Type: application/json"</span> \
+  -d '{
+    <span class="ex-docs-tok-key">"type"</span>: <span class="ex-docs-tok-str">"invoice.paid"</span>,
+    <span class="ex-docs-tok-key">"endpoint"</span>: <span class="ex-docs-tok-str">"https://acme.dev/hooks/kite"</span>,
+    <span class="ex-docs-tok-key">"payload"</span>: { <span class="ex-docs-tok-key">"id"</span>: <span class="ex-docs-tok-str">"inv_2041"</span>, <span class="ex-docs-tok-key">"amount"</span>: <span class="ex-docs-tok-num">4800</span> }
+  }'</code></pre>
+                                <div class="ex-docs-console__row ex-docs-console__row--foot">
+                                    <span class="ex-docs-console__label ex-docs-mono">Response</span>
+                                    <span class="ex-docs-chip ex-docs-chip--ok ex-docs-mono">202 Accepted</span>
+                                    <span class="ex-docs-chip ex-docs-chip--quiet ex-docs-mono">148 ms</span>
+                                    <span class="ex-docs-chip ex-docs-chip--quiet ex-docs-mono">signed v2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <aside class="ex-docs-float" aria-label="Delivery success">
+                            <span class="ex-docs-float__label ex-docs-mono">Delivery success</span>
+                            <strong class="ex-docs-float__value">99.99%</strong>
+                            <span class="ex-docs-float__meta ex-docs-mono">last 30 days - 34 regions</span>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ex-docs-trust" aria-label="Customer story">
+                <div class="container ex-docs-trust__inner">
+                    <p class="ex-docs-trust__label ex-docs-mono">In production</p>
+                    <blockquote class="ex-docs-trust__quote">
+                        We deleted 1,400 lines of retry code the week we moved to Kite. The delivery log found two
+                        customer endpoints that had been failing quietly for months.
+                    </blockquote>
+                    <div class="avatar avatar-small ex-docs-trust__author">
+                        <figure class="avatar-fig rounded-circle">
+                            <img
+                                src="../../images/avatar-dana-whitfield.jpg"
+                                alt="Dana Whitfield"
+                                width="30"
+                                height="30" />
+                        </figure>
+                        <p class="avatar-label">Dana Whitfield <span>Platform lead, Meridian</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="ex-docs-section" aria-labelledby="features-title">
+                <div class="container">
+                    <div class="ex-docs-section__head">
+                        <div class="ex-docs-section__head-main">
+                            <p class="ex-docs-eyebrow ex-docs-mono">Platform</p>
+                            <h2 id="features-title" class="ex-docs-section__title">
+                                Delivery infrastructure without the infrastructure.
+                            </h2>
+                        </div>
+                        <p class="ex-docs-section__lede">
+                            Kite sits between your application and your customers' endpoints, so your code sends one
+                            request and your team stops owning a retry queue, a signature library, and a dashboard
+                            nobody wants to build.
+                        </p>
+                    </div>
+
+                    <div class="ex-docs-features">
+                        <article class="ex-docs-feature">
+                            <div class="ex-docs-feature__top">
+                                <span class="ex-docs-feature__mark" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" focusable="false">
+                                        <path
+                                            d="M12 3.2 19 6v5.1c0 4.2-2.9 7.5-7 9.1-4.1-1.6-7-4.9-7-9.1V6l7-2.8Z"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.4"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="m9 12 2.2 2.2L15.4 10"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.4"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <span class="ex-docs-feature__index ex-docs-mono">01</span>
+                            </div>
+                            <p class="ex-docs-feature__kicker ex-docs-mono">Signatures</p>
+                            <h3 class="ex-docs-feature__title">Signed on the way out</h3>
+                            <p class="ex-docs-feature__text">
+                                Every request carries an HMAC-SHA256 signature over the exact bytes we send. Rotate a
+                                secret without dropping a delivery, and check it with one SDK helper or any standard
+                                crypto library.
+                            </p>
+                            <p class="ex-docs-feature__foot ex-docs-mono">Kite-Signature: v2=c0f4...8a1</p>
+                        </article>
+
+                        <article class="ex-docs-feature">
+                            <div class="ex-docs-feature__top">
+                                <span class="ex-docs-feature__mark" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" focusable="false">
+                                        <path
+                                            d="M20.4 12a8.4 8.4 0 1 1-2.5-6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.4"
+                                            stroke-linecap="round" />
+                                        <path
+                                            d="M20.6 3.6v5h-5"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.4"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M12 8.2V12l2.6 1.6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.4"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <span class="ex-docs-feature__index ex-docs-mono">02</span>
+                            </div>
+                            <p class="ex-docs-feature__kicker ex-docs-mono">Reliability</p>
+                            <h3 class="ex-docs-feature__title">Retries that end</h3>
+                            <p class="ex-docs-feature__text">
+                                Twelve jittered attempts across 24 hours, then a dead-letter queue that keeps the last
+                                response we received. A 4xx other than 429 stops the sequence, because a malformed
+                                payload will not heal.
+                            </p>
+                            <p class="ex-docs-feature__foot ex-docs-mono">attempt 3 of 12 - backoff 8s</p>
+                        </article>
+
+                        <article class="ex-docs-feature">
+                            <div class="ex-docs-feature__top">
+                                <span class="ex-docs-feature__mark" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" focusable="false">
+                                        <path
+                                            d="M4 6.4h16M4 12h9M4 17.6h6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.4"
+                                            stroke-linecap="round" />
+                                        <circle cx="16.6" cy="15.4" r="3.4" fill="none" stroke="currentColor" stroke-width="1.4" />
+                                        <path d="m19.1 17.9 2 2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                                    </svg>
+                                </span>
+                                <span class="ex-docs-feature__index ex-docs-mono">03</span>
+                            </div>
+                            <p class="ex-docs-feature__kicker ex-docs-mono">Debugging</p>
+                            <h3 class="ex-docs-feature__title">Replay anything</h3>
+                            <p class="ex-docs-feature__text">
+                                Search 30 days of history by event type, endpoint, or response code. Replay one attempt
+                                or a whole window, and compare the response body before you resend it to production.
+                            </p>
+                            <p class="ex-docs-feature__foot ex-docs-mono">replay dev_01H9XK4Q --attempts 2..4</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="how" class="ex-docs-section ex-docs-section--tint" aria-labelledby="how-title">
+                <div class="container">
+                    <div class="ex-docs-how">
+                        <div class="ex-docs-how__copy">
+                            <p class="ex-docs-eyebrow ex-docs-mono">How it works</p>
+                            <h2 id="how-title" class="ex-docs-section__title">Live in three requests.</h2>
+                            <p class="ex-docs-section__lede">
+                                No agents to install and no queue to run. Point your first event at Kite and the
+                                dashboard has a delivery timeline within a minute.
+                            </p>
+                            <p class="ex-docs-how__action">
+                                <a class="button button-outline ex-docs-button" href="#docs">Follow the quickstart</a>
+                            </p>
+                        </div>
+
+                        <div class="ex-docs-how__steps">
+                            <div class="ex-docs-flow" aria-hidden="true">
+                                <span class="ex-docs-mono ex-docs-flow__req">POST /v1/events</span>
+                                <span class="ex-docs-flow__arrow ex-docs-mono">-&gt;</span>
+                                <span class="ex-docs-mono ex-docs-flow__ok">202 Accepted</span>
+                                <span class="ex-docs-mono ex-docs-flow__ms">40 ms</span>
+                            </div>
+                            <ol class="ex-docs-steps">
+                                <li class="ex-docs-step">
+                                    <span class="ex-docs-step__num ex-docs-mono" aria-hidden="true">01</span>
+                                    <div class="ex-docs-step__body">
+                                        <h3 class="ex-docs-step__title">Send one request</h3>
+                                        <p class="ex-docs-step__text">
+                                            Your app posts an event to Kite instead of fanning out to customer
+                                            endpoints. The API answers 202 with a delivery id in about 40 ms.
+                                        </p>
+                                        <p class="ex-docs-step__meta ex-docs-mono">202 - delivery id - ~40 ms</p>
+                                    </div>
+                                </li>
+                                <li class="ex-docs-step">
+                                    <span class="ex-docs-step__num ex-docs-mono" aria-hidden="true">02</span>
+                                    <div class="ex-docs-step__body">
+                                        <h3 class="ex-docs-step__title">We sign and deliver</h3>
+                                        <p class="ex-docs-step__text">
+                                            Kite signs the payload, opens a fresh connection per endpoint, and records
+                                            the handshake, the status code, and the body we got back.
+                                        </p>
+                                        <p class="ex-docs-step__meta ex-docs-mono">signed v2 - HMAC-SHA256 - per endpoint</p>
+                                    </div>
+                                </li>
+                                <li class="ex-docs-step">
+                                    <span class="ex-docs-step__num ex-docs-mono" aria-hidden="true">03</span>
+                                    <div class="ex-docs-step__body">
+                                        <h3 class="ex-docs-step__title">Watch, replay, ship</h3>
+                                        <p class="ex-docs-step__text">
+                                            Charts show p95 latency and failure reasons per endpoint. Replay from the
+                                            dashboard, the CLI, or the API once the fix is deployed.
+                                        </p>
+                                        <p class="ex-docs-step__meta ex-docs-mono">p95 latency - failure reasons - replay</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="docs" class="ex-docs-section" aria-labelledby="docs-title">
+                <div class="container">
+                    <div class="ex-docs-docs">
+                        <aside class="ex-docs-docs__side" aria-label="Reference navigation">
+                            <div class="ex-docs-search">
+                                <label class="ex-docs-search__label" for="docs-search">Search the reference</label>
+                                <div class="ex-docs-search__field">
+                                    <span class="ex-docs-search__icon" aria-hidden="true">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" focusable="false">
+                                            <circle cx="10.8" cy="10.8" r="6.3" fill="none" stroke="currentColor" stroke-width="1.6" />
+                                            <path d="m15.6 15.6 3.6 3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <input
+                                        class="form-input ex-docs-search__input"
+                                        type="search"
+                                        id="docs-search"
+                                        name="docs-search"
+                                        placeholder="Try replay or signature" />
+                                </div>
+                                <small class="ex-docs-search__hint">Searches guides, event types, and error codes.</small>
+                            </div>
+
+                            <nav class="ex-docs-side-nav" aria-label="Getting started">
+                                <p class="ex-docs-side-nav__label ex-docs-mono">Getting started</p>
+                                <ul class="nav nav-vertical ex-docs-side-nav__list">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#docs" aria-current="page">Quickstart</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="#docs">Authentication</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#docs">Verifying signatures</a></li>
+                                </ul>
+                            </nav>
+
+                            <nav class="ex-docs-side-nav" aria-label="Reference">
+                                <p class="ex-docs-side-nav__label ex-docs-mono">Reference</p>
+                                <ul class="nav nav-vertical ex-docs-side-nav__list">
+                                    <li class="nav-item"><a class="nav-link" href="#docs">Event types</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#docs">Endpoints</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#docs">Error codes</a></li>
+                                </ul>
+                            </nav>
+                        </aside>
+
+                        <div class="ex-docs-docs__main">
+                            <p class="ex-docs-eyebrow ex-docs-mono">Guides</p>
+                            <h2 id="docs-title" class="ex-docs-section__title">Docs that close the support ticket.</h2>
+                            <p class="ex-docs-section__lede">
+                                Every page is written next to the code it documents, reviewed by the engineers who own
+                                the endpoint, and versioned with the API.
+                            </p>
+
+                            <ul class="nav ex-docs-tabs">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#docs" aria-current="page">Overview</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="#docs">Send an event</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#docs">Verify a signature</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#docs">Replay</a></li>
+                            </ul>
+
+                            <div class="ex-docs-codeblock">
+                                <div class="ex-docs-codeblock__bar">
+                                    <span class="ex-docs-codeblock__lang ex-docs-mono">typescript</span>
+                                    <span class="ex-docs-codeblock__file ex-docs-mono">send-event.ts</span>
+                                    <span class="ex-docs-codeblock__copy" aria-hidden="true">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" focusable="false">
+                                            <rect x="8.5" y="8.5" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+                                            <path d="M15.5 5.5H7a1.5 1.5 0 0 0-1.5 1.5v8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <pre><code class="ex-docs-mono"><span class="ex-docs-tok-key">import</span> { Kite } <span class="ex-docs-tok-key">from</span> <span class="ex-docs-tok-str">'@kite/sdk'</span>;
+
+<span class="ex-docs-tok-key">const</span> kite = <span class="ex-docs-tok-key">new</span> Kite({ key: process.env.KITE_KEY });
+
+<span class="ex-docs-tok-key">await</span> kite.events.send({
+    type: <span class="ex-docs-tok-str">'invoice.paid'</span>,
+    endpoint: <span class="ex-docs-tok-str">'https://acme.dev/hooks/kite'</span>,
+    payload: { id: <span class="ex-docs-tok-str">'inv_2041'</span>, amount: <span class="ex-docs-tok-num">4800</span> },
+});
+
+<span class="ex-docs-tok-comment">// 202 Accepted, delivery id dev_01H9XK4Q</span></code></pre>
+                            </div>
+
+                            <h3 class="ex-docs-subtitle">Headers Kite signs</h3>
+                            <div
+                                class="table-responsive ex-docs-table-wrap"
+                                tabindex="0"
+                                role="region"
+                                aria-label="Signature headers Kite sends">
+                                <table class="table ex-docs-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Header</th>
+                                            <th scope="col">Example</th>
+                                            <th scope="col">Purpose</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="ex-docs-mono">Kite-Signature</code></td>
+                                            <td><code class="ex-docs-mono">v2=c0f4...8a1</code></td>
+                                            <td>HMAC-SHA256 over the timestamp and the raw body.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="ex-docs-mono">Kite-Timestamp</code></td>
+                                            <td><code class="ex-docs-mono">1735689600</code></td>
+                                            <td>Unix seconds, rejected outside a five minute window.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="ex-docs-mono">Kite-Delivery-Id</code></td>
+                                            <td><code class="ex-docs-mono">dev_01H9XK4Q</code></td>
+                                            <td>Stable id for the attempt, safe to dedupe on.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="ex-docs-mono">Kite-Attempt</code></td>
+                                            <td><code class="ex-docs-mono">3</code></td>
+                                            <td>Retry counter for this event, starting at 1.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="avatar avatar-small ex-docs-byline">
+                                <figure class="avatar-fig rounded-circle">
+                                    <img
+                                        src="../../images/avatar-priya-raman.jpg"
+                                        alt="Priya Raman"
+                                        width="30"
+                                        height="30" />
+                                </figure>
+                                <p class="avatar-label">
+                                    Priya Raman <span>Docs lead, edited today at 09:12 UTC</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pricing" class="ex-docs-section ex-docs-section--tint" aria-labelledby="pricing-title">
+                <div class="container">
+                    <div class="ex-docs-section__head">
+                        <div class="ex-docs-section__head-main">
+                            <p class="ex-docs-eyebrow ex-docs-mono">Pricing</p>
+                            <h2 id="pricing-title" class="ex-docs-section__title">Pay for deliveries, not seats.</h2>
+                        </div>
+                        <p class="ex-docs-section__lede">
+                            Signing, retries, delivery logs, and replay are in every plan. Limits reset on the first of
+                            the month, and an overage costs 0.40 USD per 1,000 deliveries.
+                        </p>
+                    </div>
+
+                    <div class="ex-docs-pricing">
+                        <article class="ex-docs-plan">
+                            <div class="ex-docs-plan__top">
+                                <h3 class="ex-docs-plan__name ex-docs-mono">Hobby</h3>
+                            </div>
+                            <p class="ex-docs-plan__price">
+                                <span class="ex-docs-plan__figure">$0</span>
+                            </p>
+                            <p class="ex-docs-plan__cycle">per month, forever</p>
+                            <ul class="ex-docs-checks">
+                                <li>10,000 deliveries a month</li>
+                                <li>2 endpoints</li>
+                                <li>3-day log retention</li>
+                                <li>Email support</li>
+                                <li>Community Slack</li>
+                            </ul>
+                            <a class="button button-outline ex-docs-button ex-docs-plan__cta" href="#docs">Start free</a>
+                        </article>
+
+                        <article class="ex-docs-plan ex-docs-plan--featured">
+                            <div class="ex-docs-plan__top">
+                                <h3 class="ex-docs-plan__name ex-docs-mono">Team</h3>
+                                <span class="ex-docs-plan__tag ex-docs-mono">Most popular</span>
+                            </div>
+                            <p class="ex-docs-plan__price">
+                                <span class="ex-docs-plan__figure">$79</span>
+                            </p>
+                            <p class="ex-docs-plan__cycle">per month, billed monthly</p>
+                            <ul class="ex-docs-checks">
+                                <li>500,000 deliveries a month</li>
+                                <li>Unlimited endpoints</li>
+                                <li>30-day log retention</li>
+                                <li>Replay and CSV export</li>
+                                <li>99.95% uptime SLA</li>
+                                <li>Shared Slack channel</li>
+                            </ul>
+                            <a class="button button-primary ex-docs-button ex-docs-plan__cta" href="#docs">Start 14-day trial</a>
+                        </article>
+
+                        <article class="ex-docs-plan">
+                            <div class="ex-docs-plan__top">
+                                <h3 class="ex-docs-plan__name ex-docs-mono">Scale</h3>
+                            </div>
+                            <p class="ex-docs-plan__price">
+                                <span class="ex-docs-plan__figure ex-docs-plan__figure--text">Custom</span>
+                            </p>
+                            <p class="ex-docs-plan__cycle">annual contract</p>
+                            <ul class="ex-docs-checks">
+                                <li>Volume delivery pricing</li>
+                                <li>90-day log retention</li>
+                                <li>SAML single sign-on</li>
+                                <li>Dedicated EU or US region</li>
+                                <li>24/7 support with on-call</li>
+                            </ul>
+                            <a class="button button-outline ex-docs-button ex-docs-plan__cta" href="#faq">Talk to sales</a>
+                        </article>
+                    </div>
+
+                    <div class="ex-docs-limits">
+                        <h2 class="ex-docs-limits__title" id="limits-title">Plan limits</h2>
+                        <div
+                            class="table-responsive ex-docs-table-wrap ex-docs-table-wrap--limits"
+                            tabindex="0"
+                            role="region"
+                            aria-label="Plan limits per tier">
+                            <table class="table ex-docs-table ex-docs-table--limits">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Plan</th>
+                                        <th scope="col" class="ex-docs-table__num">Deliveries a month</th>
+                                        <th scope="col" class="ex-docs-table__num">Requests a second</th>
+                                        <th scope="col" class="ex-docs-table__num">Log retention</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Hobby</td>
+                                        <td class="ex-docs-table__num">10,000</td>
+                                        <td class="ex-docs-table__num">50</td>
+                                        <td class="ex-docs-table__num">3 days</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Team</td>
+                                        <td class="ex-docs-table__num">500,000</td>
+                                        <td class="ex-docs-table__num">500</td>
+                                        <td class="ex-docs-table__num">30 days</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Scale</td>
+                                        <td class="ex-docs-table__num">Negotiated</td>
+                                        <td class="ex-docs-table__num">Negotiated</td>
+                                        <td class="ex-docs-table__num">90 days</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="faq" class="ex-docs-section" aria-labelledby="faq-title">
+                <div class="container">
+                    <div class="ex-docs-faq">
+                        <div class="ex-docs-faq__head">
+                            <p class="ex-docs-eyebrow ex-docs-mono">Support</p>
+                            <h2 id="faq-title" class="ex-docs-section__title">Questions from the support queue.</h2>
+                            <p class="ex-docs-faq__lede">
+                                Still stuck? <a href="#docs">Search the error codes</a> or write to support@kite.dev,
+                                where a delivery engineer answers.
+                            </p>
+                        </div>
+
+                        <div class="accordion ex-docs-accordion" data-faq>
+                            <div class="accordion-item active">
+                                <div
+                                    class="accordion-item-title"
+                                    id="faq-question-1"
+                                    role="button"
+                                    tabindex="0"
+                                    aria-expanded="true"
+                                    aria-controls="faq-answer-1">
+                                    How many times does Kite retry a failed delivery?
+                                </div>
+                                <div class="accordion-item-body" id="faq-answer-1" role="region" aria-labelledby="faq-question-1">
+                                    <p>
+                                        Twelve attempts with exponential backoff and jitter spread over 24 hours. A 4xx
+                                        response other than 429 stops the sequence immediately, because retrying a
+                                        malformed payload only wastes your endpoint's time.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div
+                                    class="accordion-item-title"
+                                    id="faq-question-2"
+                                    role="button"
+                                    tabindex="0"
+                                    aria-expanded="false"
+                                    aria-controls="faq-answer-2">
+                                    Can I verify a signature without the SDK?
+                                </div>
+                                <div class="accordion-item-body" id="faq-answer-2" role="region" aria-labelledby="faq-question-2">
+                                    <p>
+                                        Yes. We sign a standard HMAC-SHA256 digest of the timestamp and the raw request
+                                        body, so any language with a crypto library can check it. The verifier guide
+                                        lists the exact string we sign for each event.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div
+                                    class="accordion-item-title"
+                                    id="faq-question-3"
+                                    role="button"
+                                    tabindex="0"
+                                    aria-expanded="false"
+                                    aria-controls="faq-answer-3">
+                                    What happens when an endpoint is down for a day?
+                                </div>
+                                <div class="accordion-item-body" id="faq-answer-3" role="region" aria-labelledby="faq-question-3">
+                                    <p>
+                                        The event lands in the dead-letter queue with the last response we received.
+                                        Replay it from the dashboard, the CLI, or the API once the endpoint is healthy
+                                        again, and the attempt counter keeps its history.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div
+                                    class="accordion-item-title"
+                                    id="faq-question-4"
+                                    role="button"
+                                    tabindex="0"
+                                    aria-expanded="false"
+                                    aria-controls="faq-answer-4">
+                                    Which regions do deliveries leave from?
+                                </div>
+                                <div class="accordion-item-body" id="faq-answer-4" role="region" aria-labelledby="faq-question-4">
+                                    <p>
+                                        Kite delivers from the region closest to your endpoint across 34 locations.
+                                        Payloads rest in the region you choose when the workspace is created, and EU
+                                        workspaces keep their logs in the EU.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div
+                                    class="accordion-item-title"
+                                    id="faq-question-5"
+                                    role="button"
+                                    tabindex="0"
+                                    aria-expanded="false"
+                                    aria-controls="faq-answer-5">
+                                    How do I migrate from my own retry queue?
+                                </div>
+                                <div class="accordion-item-body" id="faq-answer-5" role="region" aria-labelledby="faq-question-5">
+                                    <p>
+                                        Drain your existing queue into the migration endpoint, keep both paths live for
+                                        a week, then compare delivery counts and response codes in the logs before you
+                                        switch the last endpoint over.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="ex-docs-footer">
+            <div class="container">
+                <div class="ex-docs-footer__top">
+                    <div class="ex-docs-footer__brand">
+                        <a class="ex-docs-brand" href="#main" aria-label="Kite home">
+                            <svg class="ex-docs-brand__mark" width="22" height="22" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                                <path d="M16 2.5 29 15.5H3Z" fill="currentColor" />
+                                <path d="M3 15.5h26L16 29.5Z" fill="currentColor" opacity="0.45" />
+                            </svg>
+                            <span class="ex-docs-brand__name ex-docs-brand__name--footer">Kite</span>
+                        </a>
+                        <p class="ex-docs-footer__text">
+                            Webhook delivery for teams that would rather ship product than run a retry queue. Written in
+                            Berlin, delivered from 34 regions.
+                        </p>
+                        <p class="ex-docs-footer__status">
+                            <span class="indicator is-upward">99.99% delivery success, last 30 days</span>
+                        </p>
+                    </div>
+                    <nav class="ex-docs-footer__col" aria-label="Product">
+                        <p class="ex-docs-footer__label ex-docs-mono">Product</p>
+                        <ul class="nav nav-vertical ex-docs-footer__list">
+                            <li class="nav-item"><a class="nav-link" href="#features">Platform</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="ex-docs-footer__col" aria-label="Developers">
+                        <p class="ex-docs-footer__label ex-docs-mono">Developers</p>
+                        <ul class="nav nav-vertical ex-docs-footer__list">
+                            <li class="nav-item"><a class="nav-link" href="#docs">Quickstart</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#docs">Signature headers</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#docs">CLI reference</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="ex-docs-footer__col" aria-label="Company">
+                        <p class="ex-docs-footer__label ex-docs-mono">Company</p>
+                        <ul class="nav nav-vertical ex-docs-footer__list">
+                            <li class="nav-item"><a class="nav-link" href="#faq">Support</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#main">Status</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#main">Changelog</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="ex-docs-footer__legal">
+                    <p class="ex-docs-footer__legal-text">
+                        &copy; 2025 Kite Systems GmbH. All rights reserved. Prices in USD, excluding VAT.
+                    </p>
+                    <p class="ex-docs-footer__legal-text">
+                        <a href="../../index.html">Built with roolith css</a>
+                        <span class="ex-docs-footer__sep" aria-hidden="true">-</span>
+                        <a href="#main">Privacy</a>
+                        <span class="ex-docs-footer__sep" aria-hidden="true">-</span>
+                        <a href="#main">Terms</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

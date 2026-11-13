@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en" class="theme-light">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Juniper - bistro and wine bar on Cadell Street, London</title>
+        <meta
+            name="description"
+            content="Juniper is a twenty-eight seat bistro and wine bar on Cadell Street in east London. One menu written each morning, thirty wines open by the glass, dinner Tuesday to Sunday." />
+        <meta name="theme-color" content="#f7f1e4" />
+        <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap" />
+        <link rel="stylesheet" href="../../roolith-4.1.0.min.css" />
+        <link rel="stylesheet" href="example-bistro.css" />
+        <script>
+            (function () {
+                var stored = null;
+                try {
+                    stored = window.localStorage.getItem('ex-bistro-theme');
+                } catch (error) {
+                    stored = null;
+                }
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = stored === 'dark' || stored === 'light' ? stored : prefersDark ? 'dark' : 'light';
+                document.documentElement.classList.toggle('theme-dark', theme === 'dark');
+                document.documentElement.classList.toggle('theme-light', theme === 'light');
+            })();
+        </script>
+        <script src="example-bistro.js" defer></script>
+    </head>
+    <body class="ex-bistro">
+        <a class="button button-small ex-bistro-skip" href="#main">Skip to content</a>
+
+        <div class="ex-bistro-strip">
+            <div class="container ex-bistro-strip-inner">
+                <p class="small">Dinner Tuesday to Sunday, 17:00 to 21:30</p>
+                <p class="small">
+                    <a href="tel:+442079460318">+44 20 7946 0318</a>
+                    <span aria-hidden="true"> / </span>
+                    <a href="mailto:table@juniperbistro.example">table@juniperbistro.example</a>
+                </p>
+            </div>
+        </div>
+
+        <header class="ex-bistro-header">
+            <div class="container">
+                <div class="ex-bistro-header-inner">
+                    <a class="ex-bistro-brand" href="#main">Juniper</a>
+
+                    <nav class="nav ex-bistro-nav" aria-label="Primary">
+                        <a class="nav-link" href="#story">The house</a>
+                        <a class="nav-link" href="#menu">Menu</a>
+                        <a class="nav-link" href="#wine">Wine</a>
+                        <a class="nav-link" href="#visit">Visit</a>
+                    </nav>
+
+                    <div class="ex-bistro-header-actions">
+                        <button
+                            class="button ex-bistro-theme-toggle"
+                            type="button"
+                            data-theme-toggle
+                            aria-pressed="false"
+                            aria-label="Switch to dark theme">
+                            <span class="ex-bistro-theme-toggle__icon ex-bistro-theme-toggle__icon--moon" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                    <path d="M16.2 12.1A6.5 6.5 0 0 1 7.9 3.8 7 7 0 1 0 16.2 12.1Z" />
+                                </svg>
+                            </span>
+                            <span class="ex-bistro-theme-toggle__icon ex-bistro-theme-toggle__icon--sun" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                    <circle cx="10" cy="10" r="3.5" />
+                                    <path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M15.3 4.7l-1.4 1.4M6.1 13.9l-1.4 1.4" />
+                                </svg>
+                            </span>
+                        </button>
+                        <a class="button button-primary ex-bistro-reserve-action" href="#reserve">Reserve</a>
+                        <button
+                            class="button ex-bistro-nav-toggle hide-large-up"
+                            type="button"
+                            data-nav-toggle
+                            aria-expanded="false"
+                            aria-controls="site-menu"
+                            aria-label="Open navigation">
+                            Menu
+                        </button>
+                    </div>
+                </div>
+
+                <nav class="ex-bistro-menu hide-large-up" id="site-menu" aria-label="Mobile" hidden data-nav-panel>
+                    <ul class="nav nav-vertical">
+                        <li class="nav-item"><a class="nav-link" href="#story">The house</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#wine">Wine</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#visit">Visit</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#reserve">Reservations</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main id="main" tabindex="-1">
+            <section class="ex-bistro-hero" aria-labelledby="hero-title">
+                <div class="container">
+                    <div class="row ex-bistro-hero-row">
+                        <div class="small-12 large-6 ex-bistro-hero-copy">
+                            <p class="ex-bistro-kicker">Neighbourhood bistro and wine bar, since 2016</p>
+                            <h1 id="hero-title">
+                                <span class="ex-bistro-hero-line">A small room,</span>
+                                <span class="ex-bistro-hero-line">a long table,</span>
+                                <span class="ex-bistro-hero-line"><em>a slow supper.</em></span>
+                            </h1>
+                            <p class="ex-bistro-lede">
+                                Twenty-eight seats, one menu written each morning, and a wine list that leans on small
+                                growers. We open at five, and the kitchen keeps going until the last plate leaves the
+                                pass.
+                            </p>
+                            <div class="ex-bistro-actions-row">
+                                <a class="button button-primary" href="#reserve">Book a table</a>
+                                <a class="button button-outline" href="#menu">See the menu</a>
+                            </div>
+                            <ul class="ex-bistro-facts">
+                                <li>28 seats</li>
+                                <li>Walk-ins at the bar</li>
+                                <li>Corkage 12</li>
+                            </ul>
+                        </div>
+
+                        <div class="small-12 large-6 ex-bistro-hero-media">
+                            <figure class="ex-bistro-figure ex-bistro-hero-figure">
+                                <img
+                                    src="../../images/photo-bistro-interior.jpg"
+                                    alt="The dining room at Juniper, with white-clothed tables and tall windows onto Cadell Street"
+                                    width="800"
+                                    height="600" />
+                                <figcaption>The front room at six, before the first sitting.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-color-light ex-bistro-story" id="story" aria-labelledby="story-title">
+                <div class="container">
+                    <div class="row ex-bistro-story-row">
+                        <div class="small-12 large-5">
+                            <figure class="ex-bistro-figure ex-bistro-story-figure">
+                                <img
+                                    src="../../images/photo-bistro-chef.jpg"
+                                    alt="Nell Farmer finishing a dish with a spoon at the pass"
+                                    width="600"
+                                    height="600" />
+                                <figcaption>Nell Farmer, chef and co-owner.</figcaption>
+                            </figure>
+                        </div>
+                        <div class="small-12 large-7 ex-bistro-story-copy">
+                            <p class="ex-bistro-kicker">The house</p>
+                            <h2 id="story-title">A grocer's counter, and a kitchen <em>behind it</em></h2>
+                            <div class="article ex-bistro-copy">
+                                <p>
+                                    Juniper has been on Cadell Street since 1931, when it opened as a greengrocer. We
+                                    kept the counter, the brass rail and the cold room, took out the shelving, and
+                                    turned the rest of the shop into a dining room of twenty-eight seats.
+                                </p>
+                                <p>
+                                    Nell Farmer writes the menu on the back of the morning delivery note. If the fish is
+                                    not good enough that day it does not go on the board. Priya Raman buys the wine from
+                                    eleven growers, four of them organic, and keeps thirty bottles open at any one time.
+                                </p>
+                                <p>
+                                    The room is candle-lit and plain: bentwood chairs, paper menus, no music before
+                                    seven. On Sundays we cook one long lunch and let it run until the bread is gone.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ex-bistro-carte" id="menu" aria-labelledby="menu-title">
+                <div class="container">
+                    <div class="ex-bistro-section-head ex-bistro-section-head-center">
+                        <p class="ex-bistro-kicker">Tonight's menu</p>
+                        <h2 id="menu-title">Written <em>each morning</em></h2>
+                        <p class="ex-bistro-lede">
+                            Two courses 34, three courses 42. Prices in pounds; a 12.5 percent service charge is added
+                            for tables of six or more.
+                        </p>
+                    </div>
+
+                    <div class="row ex-bistro-carte-columns">
+                        <div class="small-12 medium-6 large-4 ex-bistro-carte-group">
+                            <h3 class="h5" id="menu-starters">Starters</h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Dish</th>
+                                        <th class="text-right" scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Buttermilk fried artichokes
+                                            <span class="small dimmed">Lemon aioli, sea salt</span>
+                                        </td>
+                                        <td class="text-right">9</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Brown shrimp on toast
+                                            <span class="small dimmed">Parsley, cayenne butter</span>
+                                        </td>
+                                        <td class="text-right">11</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Chicory, pear and walnut
+                                            <span class="small dimmed">Colston Bassett, cider dressing</span>
+                                        </td>
+                                        <td class="text-right">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Roast bone marrow
+                                            <span class="small dimmed">Grilled sourdough, pickled shallot</span>
+                                        </td>
+                                        <td class="text-right">12</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="small-12 medium-6 large-4 ex-bistro-carte-group">
+                            <h3 class="h5" id="menu-mains">Mains</h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Dish</th>
+                                        <th class="text-right" scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Hake, mussels and cider cream
+                                            <span class="small dimmed">Sea beet, new potatoes</span>
+                                        </td>
+                                        <td class="text-right">24</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Lamb shoulder for two
+                                            <span class="small dimmed">Rosemary, salt-baked potatoes, greens</span>
+                                        </td>
+                                        <td class="text-right">48</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Wild mushroom barley
+                                            <span class="small dimmed">Hen of the woods, aged parmesan</span>
+                                        </td>
+                                        <td class="text-right">19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Devilled kidneys on toast
+                                            <span class="small dimmed">Watercress, mustard cream</span>
+                                        </td>
+                                        <td class="text-right">17</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="small-12 medium-6 large-4 ex-bistro-carte-group">
+                            <h3 class="h5" id="menu-desserts">Desserts</h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Dish</th>
+                                        <th class="text-right" scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Set custard
+                                            <span class="small dimmed">Burnt honey, oat crumb</span>
+                                        </td>
+                                        <td class="text-right">8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Damson sorbet
+                                            <span class="small dimmed">Bay leaf syrup, shortbread</span>
+                                        </td>
+                                        <td class="text-right">7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Chocolate and olive oil pot
+                                            <span class="small dimmed">Sea salt, rye toast</span>
+                                        </td>
+                                        <td class="text-right">9</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Stilton and oat biscuits
+                                            <span class="small dimmed">Quince, celery</span>
+                                        </td>
+                                        <td class="text-right">10</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row ex-bistro-carte-note">
+                        <div class="small-12 medium-6">
+                            <p class="small dimmed">
+                                Bread and butter 4. The cheese trolley comes round at half past nine. Ask your server
+                                about the dishes cooked without gluten.
+                            </p>
+                        </div>
+                        <div class="small-12 medium-6">
+                            <p class="small">
+                                <strong>Wine pairing.</strong>
+                                Three glasses chosen by Priya for the menu above, 32. Ask for the pairing when you
+                                order, or take the list and choose your own.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-color-dark ex-bistro-wine" id="wine" aria-labelledby="wine-title">
+                <div class="container">
+                    <div class="row ex-bistro-wine-row">
+                        <div class="small-12 large-7 ex-bistro-wine-copy">
+                            <p class="ex-bistro-kicker">Wine</p>
+                            <h2 id="wine-title">Thirty bottles open, <em>eleven growers</em></h2>
+                            <div class="article ex-bistro-copy">
+                                <p>
+                                    Priya Raman keeps the list short and the fridge cold. Thirty wines are open by the
+                                    glass at any time, from eleven growers, four of them organic. Everything on the list
+                                    comes from a grower small enough to answer the phone.
+                                </p>
+                                <p>
+                                    Four of the eleven farm organically, two work with no added sulphur, and all of them
+                                    are within a day's drive of a ferry. If you bring a bottle you love, corkage is
+                                    twelve on Mondays and Tuesdays.
+                                </p>
+                            </div>
+                            <blockquote class="ex-bistro-quote">
+                                We are not here to surprise anyone. We are here to feed people well, twice.
+                                <cite>Nell Farmer, chef and co-owner</cite>
+                            </blockquote>
+                        </div>
+                        <div class="small-12 large-5 ex-bistro-wine-media">
+                            <figure class="ex-bistro-figure ex-bistro-wine-figure">
+                                <img
+                                    src="../../images/photo-bistro-wine.jpg"
+                                    alt="Wine glasses set on a dark table beside candles at Juniper"
+                                    width="400"
+                                    height="400" />
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ex-bistro-gallery" id="gallery" aria-labelledby="gallery-title">
+                <div class="container">
+                    <div class="ex-bistro-section-head ex-bistro-gallery-head">
+                        <p class="ex-bistro-kicker">The room</p>
+                        <h2 id="gallery-title">Around the room</h2>
+                    </div>
+
+                    <div class="collage ex-bistro-gallery-grid">
+                        <div class="collage-item">
+                            <img
+                                class="fig-fit"
+                                src="../../images/photo-bistro-service.jpg"
+                                alt="A plate of salad and bruschetta being carried through the dining room"
+                                width="400"
+                                height="400" />
+                        </div>
+                        <div class="collage-item">
+                            <img
+                                class="fig-fit"
+                                src="../../images/photo-bistro-plate.jpg"
+                                alt="A plate of rare beef with greens and roast potato"
+                                width="400"
+                                height="400" />
+                        </div>
+                        <div class="collage-item">
+                            <img
+                                class="fig-fit"
+                                src="../../images/photo-bistro-supper.jpg"
+                                alt="Friends sharing plates and wine around a table"
+                                width="400"
+                                height="400" />
+                        </div>
+                        <div class="collage-item">
+                            <img
+                                class="fig-fit"
+                                src="../../images/photo-bistro-cheese.jpg"
+                                alt="A cheese board with pickles and beer on the bar"
+                                width="400"
+                                height="400" />
+                        </div>
+                        <div class="collage-item">
+                            <img
+                                class="fig-fit"
+                                src="../../images/photo-bistro-chef.jpg"
+                                alt="Nell Farmer finishing a dish at the pass"
+                                width="600"
+                                height="600" />
+                        </div>
+                        <div class="collage-item">
+                            <img
+                                class="fig-fit"
+                                src="../../images/photo-bistro-interior.jpg"
+                                alt="The empty dining room in the late afternoon light"
+                                width="800"
+                                height="600" />
+                        </div>
+                    </div>
+                    <p class="small ex-bistro-gallery-note">
+                        Photographs from the last twelve months. The room is small, so we photograph it before service.
+                    </p>
+                </div>
+            </section>
+
+            <section class="bg-color-light ex-bistro-reserve" id="reserve" aria-labelledby="reserve-title">
+                <div class="container">
+                    <div class="row ex-bistro-reserve-row">
+                        <div class="small-12 large-4 ex-bistro-reserve-copy">
+                            <p class="ex-bistro-kicker">Reservations</p>
+                            <h2 id="reserve-title">Book a table</h2>
+                            <div class="article ex-bistro-copy">
+                                <p>
+                                    We hold tables for twenty minutes. For seven or more, or for the back room and its
+                                    twelve seats, call us and we will sort something out.
+                                </p>
+                                <p>
+                                    The kitchen can cook around most allergies. Tell us in the notes and Nell will write
+                                    you a version of the menu.
+                                </p>
+                            </div>
+                            <p class="ex-bistro-contact">
+                                <a href="tel:+442079460318">+44 20 7946 0318</a><br />
+                                <a href="mailto:table@juniperbistro.example">table@juniperbistro.example</a>
+                            </p>
+                        </div>
+
+                        <div class="small-12 large-8">
+                            <div class="card ex-bistro-form-card">
+                                <div class="card-body">
+                                    <form class="form ex-bistro-form" data-reservation novalidate>
+                                        <div class="row">
+                                            <div class="small-12 medium-4">
+                                                <div class="form-field">
+                                                    <label class="form-label" for="res-date">Date</label>
+                                                    <input class="form-input" type="date" id="res-date" name="date" required />
+                                                </div>
+                                            </div>
+                                            <div class="small-12 medium-4">
+                                                <div class="form-field">
+                                                    <label class="form-label" for="res-time">Time</label>
+                                                    <select class="form-select" id="res-time" name="time" required>
+                                                        <option value="">Choose a time</option>
+                                                        <option>17:00</option>
+                                                        <option>17:30</option>
+                                                        <option>18:00</option>
+                                                        <option>18:30</option>
+                                                        <option>19:00</option>
+                                                        <option>19:30</option>
+                                                        <option>20:00</option>
+                                                        <option>20:30</option>
+                                                        <option>21:00</option>
+                                                        <option>21:30</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="small-12 medium-4">
+                                                <div class="form-field">
+                                                    <label class="form-label" for="res-guests">Guests</label>
+                                                    <select class="form-select" id="res-guests" name="guests" required>
+                                                        <option value="">How many</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                    <small class="form-text">Seven or more? Please call.</small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="small-12 medium-6">
+                                                <div class="form-field">
+                                                    <label class="form-label" for="res-name">Name</label>
+                                                    <input
+                                                        class="form-input"
+                                                        type="text"
+                                                        id="res-name"
+                                                        name="name"
+                                                        autocomplete="name"
+                                                        required />
+                                                </div>
+                                            </div>
+                                            <div class="small-12 medium-6">
+                                                <div class="form-field">
+                                                    <label class="form-label" for="res-email">Email</label>
+                                                    <input
+                                                        class="form-input"
+                                                        type="email"
+                                                        id="res-email"
+                                                        name="email"
+                                                        autocomplete="email"
+                                                        required />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-field">
+                                            <label class="form-label" for="res-notes">Notes for the kitchen</label>
+                                            <textarea
+                                                class="form-textarea"
+                                                id="res-notes"
+                                                name="notes"
+                                                rows="3"
+                                                aria-describedby="res-notes-help"></textarea>
+                                            <small class="form-text" id="res-notes-help">
+                                                Allergies, a birthday, a buggy, or the seat by the window.
+                                            </small>
+                                        </div>
+
+                                        <div class="button-bundle ex-bistro-form-actions">
+                                            <button class="button button-primary" type="submit">Request a table</button>
+                                            <button class="button" type="reset">Clear</button>
+                                        </div>
+                                        <small class="form-text ex-bistro-form-footnote">
+                                            We reply by email within a few hours during service.
+                                        </small>
+                                    </form>
+
+                                    <div
+                                        class="message message-success ex-bistro-form-status"
+                                        role="status"
+                                        tabindex="-1"
+                                        data-reservation-status
+                                        hidden>
+                                        <p><strong>Thank you, your table request is in.</strong></p>
+                                        <p class="small">
+                                            We will confirm by email before eleven o'clock tomorrow. To change anything,
+                                            call +44 20 7946 0318.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ex-bistro-visit" id="visit" aria-labelledby="visit-title">
+                <div class="container">
+                    <div class="ex-bistro-section-head">
+                        <p class="ex-bistro-kicker">Visit</p>
+                        <h2 id="visit-title">Where to find us</h2>
+                    </div>
+
+                    <div class="row ex-bistro-visit-row">
+                        <div class="small-12 medium-4">
+                            <div class="card">
+                                <h3 class="card-header">The address</h3>
+                                <div class="card-body">
+                                    <p>
+                                        14 Cadell Street<br />
+                                        London E2 7PJ
+                                    </p>
+                                    <p class="small dimmed">
+                                        Two doors from the old market hall, on the quiet side of the street.
+                                    </p>
+                                    <a class="button button-outline button-small" href="https://maps.google.com/?q=Cadell+Street+London">
+                                        Open the map
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="small-12 medium-4">
+                            <div class="card">
+                                <h3 class="card-header" id="visit-hours">Hours</h3>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Tuesday to Thursday</th>
+                                                <td class="text-right">17:00 - 23:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Friday and Saturday</th>
+                                                <td class="text-right">12:00 - 23:30</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Sunday</th>
+                                                <td class="text-right">12:00 - 20:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Monday</th>
+                                                <td class="text-right">Closed</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="small-12 medium-4">
+                            <div class="card">
+                                <h3 class="card-header">Getting here</h3>
+                                <div class="card-body">
+                                    <ul class="list">
+                                        <li>Bethnal Green, six minutes on foot</li>
+                                        <li>Buses 8 and 388 stop on Cadell Street</li>
+                                        <li>Two cycle stands outside the door</li>
+                                        <li>No car park; the yard is for deliveries</li>
+                                    </ul>
+                                    <div class="tags">
+                                        <span class="tag">Step-free entrance</span>
+                                        <span class="tag">Dogs welcome</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="ex-bistro-footer">
+            <div class="container">
+                <div class="row ex-bistro-footer-grid">
+                    <div class="small-12 large-5">
+                        <p class="ex-bistro-footer-brand">Juniper</p>
+                        <p class="small dimmed ex-bistro-footer-blurb">
+                            Bistro and wine bar at 14 Cadell Street, London E2. Dinner Tuesday to Sunday, lunch on
+                            Fridays and at the weekend.
+                        </p>
+                    </div>
+                    <div class="small-6 large-3">
+                        <p class="small ex-bistro-footer-heading">Visit</p>
+                        <ul class="nav nav-vertical">
+                            <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#wine">Wine</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reserve">Reservations</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#visit">Find us</a></li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-4">
+                        <p class="small ex-bistro-footer-heading">Contact</p>
+                        <p class="small ex-bistro-footer-contact">
+                            <a href="tel:+442079460318">+44 20 7946 0318</a><br />
+                            <a href="mailto:table@juniperbistro.example">table@juniperbistro.example</a>
+                        </p>
+                        <p class="small dimmed">No bookings by direct message, please.</p>
+                    </div>
+                </div>
+
+                <hr />
+
+                <p class="small dimmed ex-bistro-footer-note">
+                    Juniper is a demonstration site built with <a href="../../index.html">roolith css</a>. The
+                    restaurant is fictional, the menu is not cooked, and the reservation form sends nothing anywhere.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

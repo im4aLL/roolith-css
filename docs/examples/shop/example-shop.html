@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en" class="theme-light">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Foxtail - homeware and prints for slower rooms</title>
+        <meta
+            name="description"
+            content="Foxtail is a small homeware studio in Lewes: archival photography prints on cotton paper, hand-dyed linen, dried stems, and framing finished by hand in the workshop."
+        />
+        <meta name="theme-color" content="#f7f1e6" />
+        <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&amp;family=Instrument+Sans:ital,wght@0,400..600;1,400..500&amp;display=swap"
+        />
+        <link rel="stylesheet" href="../../roolith-4.1.0.min.css" />
+        <link rel="stylesheet" href="example-shop.css" />
+        <script>
+            (function () {
+                var root = document.documentElement;
+                var stored = null;
+
+                try {
+                    stored = window.localStorage.getItem('foxtail-theme');
+                } catch (error) {
+                    stored = null;
+                }
+
+                var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                root.classList.remove('theme-light');
+                root.classList.add(dark ? 'theme-dark' : 'theme-light');
+
+                var meta = document.querySelector('meta[name="theme-color"]');
+
+                if (meta) {
+                    meta.setAttribute('content', dark ? '#171a14' : '#f7f1e6');
+                }
+            })();
+        </script>
+        <script src="example-shop.js" defer></script>
+    </head>
+    <body class="ex-shop">
+        <a class="button button-primary button-small ex-shop-skip" href="#main">Skip to content</a>
+
+        <div class="ex-shop-announce">
+            <div class="container ex-shop-announce__inner">
+                <p class="ex-shop-announce__text">Free UK delivery over GBP 75, and thirty days to change your mind.</p>
+                <a class="ex-shop-announce__link" href="#help">
+                    Delivery details
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M3 8h10M9 4l4 4-4 4" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <header class="ex-shop-header">
+            <div class="container">
+                <div class="ex-shop-header__inner">
+                    <a class="ex-shop-wordmark" href="#main">
+                        Foxtail
+                        <span class="ex-shop-wordmark__meta">Lewes</span>
+                    </a>
+
+                    <nav class="ex-shop-nav" aria-label="Primary">
+                        <a class="ex-shop-nav__link" href="#shop">Shop</a>
+                        <a class="ex-shop-nav__link" href="#categories">Categories</a>
+                        <a class="ex-shop-nav__link" href="#journal">Journal</a>
+                        <a class="ex-shop-nav__link" href="#visit">Studio</a>
+                        <a class="ex-shop-nav__link" href="#help">Help</a>
+                    </nav>
+
+                    <div class="ex-shop-tools">
+                        <div class="form-field-search ex-shop-search">
+                            <label class="is-hidden" for="search-desktop">Search the shop</label>
+                            <span class="form-field-search-icon" aria-hidden="true">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" focusable="false">
+                                    <circle cx="11" cy="11" r="7" />
+                                    <path d="m16.5 16.5 4 4" />
+                                </svg>
+                            </span>
+                            <input
+                                class="form-input"
+                                type="search"
+                                id="search-desktop"
+                                name="q"
+                                placeholder="Search the shop"
+                                autocomplete="off"
+                            />
+                        </div>
+
+                        <a class="button button-text ex-shop-account" href="#visit">Account</a>
+
+                        <button
+                            class="button button-outline ex-shop-icon-button ex-shop-theme"
+                            type="button"
+                            aria-pressed="false"
+                            aria-label="Switch to dark theme"
+                            data-theme-toggle
+                        >
+                            <svg class="ex-shop-theme__moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5 6.6 6.6 0 0 1-8.5-8.5Z" />
+                            </svg>
+                            <svg class="ex-shop-theme__sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <circle cx="12" cy="12" r="4.2" />
+                                <path d="M12 2.8v2.1M12 19.1v2.1M4.5 4.5l1.5 1.5M18 18l1.5 1.5M2.8 12h2.1M19.1 12h2.1M4.5 19.5 6 18M18 6l1.5-1.5" />
+                            </svg>
+                        </button>
+
+                        <a class="button button-outline ex-shop-bag" href="#shop">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <path d="M5.5 8h13l-1 11.5h-11z" />
+                                <path d="M9 8V6.5a3 3 0 0 1 6 0V8" />
+                            </svg>
+                            <span>Bag</span>
+                            <span class="badge badge-primary" data-cart-count aria-live="polite">0</span>
+                        </a>
+
+                        <button
+                            class="button button-outline ex-shop-icon-button ex-shop-menu-toggle"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="shop-menu"
+                            aria-label="Open menu"
+                            data-menu-toggle
+                        >
+                            <span class="ex-shop-bars" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="shop-menu" class="ex-shop-menu" hidden data-menu-panel>
+                <div class="container">
+                    <div class="form-field-search ex-shop-menu__search">
+                        <label class="is-hidden" for="search-mobile">Search the shop</label>
+                        <span class="form-field-search-icon" aria-hidden="true">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" focusable="false">
+                                <circle cx="11" cy="11" r="7" />
+                                <path d="m16.5 16.5 4 4" />
+                            </svg>
+                        </span>
+                        <input
+                            class="form-input"
+                            type="search"
+                            id="search-mobile"
+                            name="q"
+                            placeholder="Search prints, linen, framing"
+                            autocomplete="off"
+                        />
+                    </div>
+
+                    <nav class="ex-shop-menu__nav" aria-label="Mobile">
+                        <a class="ex-shop-menu__link" href="#shop">
+                            Shop all
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <path d="M5 12h14M13 6l6 6-6 6" />
+                            </svg>
+                        </a>
+                        <a class="ex-shop-menu__link" href="#categories">Categories</a>
+                        <a class="ex-shop-menu__link" href="#journal">Journal</a>
+                        <a class="ex-shop-menu__link" href="#visit">Studio and visits</a>
+                        <a class="ex-shop-menu__link" href="#help">Delivery and returns</a>
+                        <a class="ex-shop-menu__link" href="#visit">Account and orders</a>
+                    </nav>
+
+                    <div class="ex-shop-menu__actions">
+                        <a class="button button-primary" href="#shop">Shop the spring list</a>
+                        <a class="button button-outline" href="#letters">Join the letter</a>
+                    </div>
+                    <p class="ex-shop-menu__note">Free UK delivery over GBP 75. Studio open Thursday to Saturday.</p>
+                </div>
+            </div>
+        </header>
+
+        <main id="main" tabindex="-1">
+            <section class="ex-shop-hero-section" aria-labelledby="hero-title">
+                <div class="ex-shop-hero__wash" aria-hidden="true"></div>
+                <div class="container">
+                    <div class="ex-shop-hero">
+                        <div class="ex-shop-hero__copy">
+                            <p class="tag ex-shop-kicker">The spring list</p>
+                            <h1 class="ex-shop-title" id="hero-title">Pieces that make a room feel <em>finished</em></h1>
+                            <p class="ex-shop-lede">
+                                Foxtail is a small homeware studio on Bell Lane. We print a short list of photographs on
+                                cotton paper, dye linen in the yard, and dry stems that hold their colour for a year or
+                                more. Nothing here turns over with the season.
+                            </p>
+                            <div class="ex-shop-hero__actions">
+                                <a class="button button-primary" href="#shop">Shop the spring list</a>
+                                <a class="button button-outline" href="#visit">Visit the studio</a>
+                            </div>
+                            <div class="ex-shop-rating">
+                                <div class="ex-shop-rating__avatars">
+                                    <img class="rounded-circle" src="../../images/avatar-dana-whitfield.jpg" alt="" width="36" height="36" />
+                                    <img class="rounded-circle" src="../../images/avatar-marcus-lee.jpg" alt="" width="36" height="36" />
+                                    <img class="rounded-circle" src="../../images/avatar-priya-raman.jpg" alt="" width="36" height="36" />
+                                </div>
+                                <div class="ex-shop-rating__copy">
+                                    <svg class="ex-shop-stars" width="84" height="16" viewBox="0 0 84 16" fill="currentColor" aria-hidden="true" focusable="false">
+                                        <path d="M8 1.4l1.93 4.1 4.48.62-3.28 3.18.79 4.44L8 11.62l-3.92 2.12.79-4.44L1.59 6.12l4.48-.62z" />
+                                        <path d="M25 1.4l1.93 4.1 4.48.62-3.28 3.18.79 4.44L25 11.62l-3.92 2.12.79-4.44-3.28-3.18 4.48-.62z" />
+                                        <path d="M42 1.4l1.93 4.1 4.48.62-3.28 3.18.79 4.44L42 11.62l-3.92 2.12.79-4.44-3.28-3.18 4.48-.62z" />
+                                        <path d="M59 1.4l1.93 4.1 4.48.62-3.28 3.18.79 4.44L59 11.62l-3.92 2.12.79-4.44-3.28-3.18 4.48-.62z" />
+                                        <path d="M76 1.4l1.93 4.1 4.48.62-3.28 3.18.79 4.44L76 11.62l-3.92 2.12.79-4.44-3.28-3.18 4.48-.62z" />
+                                    </svg>
+                                    <p class="ex-shop-rating__text">4.8 out of 5 from 1,240 orders since 2014</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <figure class="ex-shop-hero__figure">
+                            <div class="ex-shop-hero__frame">
+                                <img
+                                    class="ex-shop-hero__img"
+                                    src="images/northern-light.jpg"
+                                    alt="A green aurora arcing over snow-covered mountains beneath a deep blue sky"
+                                    width="1200"
+                                    height="1500"
+                                    fetchpriority="high"
+                                    decoding="async"
+                                />
+                                <p class="ex-shop-hero__stamp">
+                                    <span class="ex-shop-hero__stamp-label">Framed in Lewes</span>
+                                    <span class="ex-shop-hero__stamp-name">Oiled oak, cut by hand</span>
+                                </p>
+                            </div>
+                            <figcaption class="ex-shop-hero__caption">
+                                Northern Light, printed at A1 on 310gsm cotton rag. GBP 120 framed, GBP 85 for the print alone.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <section id="categories" class="ex-shop-section" aria-labelledby="categories-title">
+                <div class="container">
+                    <div class="ex-shop-section__head">
+                        <div>
+                            <p class="ex-shop-eyebrow">Four shelves</p>
+                            <h2 class="ex-shop-h2" id="categories-title">Browse the shop</h2>
+                        </div>
+                        <a class="ex-shop-text-link" href="#shop">
+                            Shop all pieces
+                            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <path d="M3 8h10M9 4l4 4-4 4" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="ex-shop-tiles">
+                        <a class="ex-shop-tile" href="#shop">
+                            <img
+                                src="images/wall-prints.jpg"
+                                alt="Soft cream and sand waves folding across a plain background"
+                                width="900"
+                                height="1200"
+                                loading="lazy"
+                            />
+                            <div class="ex-shop-tile__shade" aria-hidden="true"></div>
+                            <div class="ex-shop-tile__body">
+                                <div class="ex-shop-tile__text">
+                                    <h3 class="ex-shop-tile__title">Wall prints</h3>
+                                    <span class="ex-shop-tile__count">38 pieces</span>
+                                </div>
+                                <span class="ex-shop-tile__arrow" aria-hidden="true">
+                                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                        <path d="M4 12 12 4M6 4h6v6" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+
+                        <a class="ex-shop-tile" href="#shop">
+                            <img
+                                src="images/textiles.jpg"
+                                alt="Racks of patterned fabric in ochre, indigo, and plum"
+                                width="900"
+                                height="1200"
+                                loading="lazy"
+                            />
+                            <div class="ex-shop-tile__shade" aria-hidden="true"></div>
+                            <div class="ex-shop-tile__body">
+                                <div class="ex-shop-tile__text">
+                                    <h3 class="ex-shop-tile__title">Textiles</h3>
+                                    <span class="ex-shop-tile__count">14 pieces</span>
+                                </div>
+                                <span class="ex-shop-tile__arrow" aria-hidden="true">
+                                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                        <path d="M4 12 12 4M6 4h6v6" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+
+                        <a class="ex-shop-tile" href="#shop">
+                            <img
+                                src="images/dried-stems.jpg"
+                                alt="Dried palms, grasses, and seed heads arranged in a metal jug on a wooden stool"
+                                width="900"
+                                height="1200"
+                                loading="lazy"
+                            />
+                            <div class="ex-shop-tile__shade" aria-hidden="true"></div>
+                            <div class="ex-shop-tile__body">
+                                <div class="ex-shop-tile__text">
+                                    <h3 class="ex-shop-tile__title">Dried stems</h3>
+                                    <span class="ex-shop-tile__count">9 bunches</span>
+                                </div>
+                                <span class="ex-shop-tile__arrow" aria-hidden="true">
+                                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                        <path d="M4 12 12 4M6 4h6v6" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+
+                        <a class="ex-shop-tile" href="#visit">
+                            <img
+                                src="images/studio-visits.jpg"
+                                alt="A potter shaping a bowl at a workbench in a sunlit studio"
+                                width="900"
+                                height="1200"
+                                loading="lazy"
+                            />
+                            <div class="ex-shop-tile__shade" aria-hidden="true"></div>
+                            <div class="ex-shop-tile__body">
+                                <div class="ex-shop-tile__text">
+                                    <h3 class="ex-shop-tile__title">Studio visits</h3>
+                                    <span class="ex-shop-tile__count">Thursday to Saturday</span>
+                                </div>
+                                <span class="ex-shop-tile__arrow" aria-hidden="true">
+                                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                        <path d="M4 12 12 4M6 4h6v6" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="shop" class="ex-shop-section" aria-labelledby="shop-title">
+                <div class="container">
+                    <div class="ex-shop-section__head">
+                        <div>
+                            <p class="ex-shop-eyebrow">Spring list</p>
+                            <h2 class="ex-shop-h2" id="shop-title">New in the shop</h2>
+                        </div>
+                        <p class="ex-shop-section__note">Six pieces from the spring list, all in small runs.</p>
+                    </div>
+
+                    <div class="ex-shop-products">
+                        <article class="ex-shop-product">
+                            <div class="ex-shop-product__media">
+                                <img
+                                    class="ex-shop-product__img"
+                                    src="images/golden-hour.jpg"
+                                    alt="Table Mountain silhouetted across the sea at golden hour, with waves breaking over dark rocks in the foreground"
+                                    width="900"
+                                    height="1200"
+                                    loading="lazy"
+                                />
+                                <p class="ex-shop-product__badge"><span class="badge badge-primary">Best seller</span></p>
+                            </div>
+                            <div class="ex-shop-product__body">
+                                <h3 class="ex-shop-product__title">Golden Hour, Table Mountain</h3>
+                                <p class="ex-shop-product__meta">Archival giclee, A2, unframed</p>
+                                <div class="ex-shop-product__foot">
+                                    <p class="ex-shop-product__price"><strong>GBP 48</strong></p>
+                                    <button
+                                        class="button button-outline ex-shop-add"
+                                        type="button"
+                                        data-add-to-cart
+                                        data-product="Golden Hour, Table Mountain"
+                                    >
+                                        Add to bag
+                                    </button>
+                                </div>
+                                <p class="ex-shop-add-status" data-cart-status role="status"></p>
+                            </div>
+                        </article>
+
+                        <article class="ex-shop-product">
+                            <div class="ex-shop-product__media">
+                                <img
+                                    class="ex-shop-product__img"
+                                    src="images/city-cloud.jpg"
+                                    alt="A single glass skyscraper fading into thick fog"
+                                    width="900"
+                                    height="1200"
+                                    loading="lazy"
+                                />
+                                <p class="ex-shop-product__badge"><span class="badge badge-secondary">Printed to order</span></p>
+                            </div>
+                            <div class="ex-shop-product__body">
+                                <h3 class="ex-shop-product__title">City Above the Cloud</h3>
+                                <p class="ex-shop-product__meta">Archival giclee, A3, unframed</p>
+                                <div class="ex-shop-product__foot">
+                                    <p class="ex-shop-product__price"><strong>GBP 36</strong></p>
+                                    <button
+                                        class="button button-outline ex-shop-add"
+                                        type="button"
+                                        data-add-to-cart
+                                        data-product="City Above the Cloud"
+                                    >
+                                        Add to bag
+                                    </button>
+                                </div>
+                                <p class="ex-shop-add-status" data-cart-status role="status"></p>
+                            </div>
+                        </article>
+
+                        <article class="ex-shop-product">
+                            <div class="ex-shop-product__media">
+                                <img
+                                    class="ex-shop-product__img"
+                                    src="images/curve-study.jpg"
+                                    alt="Layered blue, cream, and rust paint strokes across a textured canvas"
+                                    width="900"
+                                    height="1200"
+                                    loading="lazy"
+                                />
+                                <p class="ex-shop-product__badge"><span class="badge badge-secondary">New</span></p>
+                            </div>
+                            <div class="ex-shop-product__body">
+                                <h3 class="ex-shop-product__title">Curve Study in Blue</h3>
+                                <p class="ex-shop-product__meta">Archival giclee, A2, unframed</p>
+                                <div class="ex-shop-product__foot">
+                                    <p class="ex-shop-product__price"><strong>GBP 48</strong></p>
+                                    <button
+                                        class="button button-outline ex-shop-add"
+                                        type="button"
+                                        data-add-to-cart
+                                        data-product="Curve Study in Blue"
+                                    >
+                                        Add to bag
+                                    </button>
+                                </div>
+                                <p class="ex-shop-add-status" data-cart-status role="status"></p>
+                            </div>
+                        </article>
+
+                        <article class="ex-shop-product">
+                            <div class="ex-shop-product__media">
+                                <img
+                                    class="ex-shop-product__img"
+                                    src="images/glass-cloud.jpg"
+                                    alt="Angular white and glass building against a pale sky"
+                                    width="900"
+                                    height="1200"
+                                    loading="lazy"
+                                />
+                                <p class="ex-shop-product__badge"><span class="badge badge-secondary">Restocked</span></p>
+                            </div>
+                            <div class="ex-shop-product__body">
+                                <h3 class="ex-shop-product__title">Glass and Cloud</h3>
+                                <p class="ex-shop-product__meta">Archival giclee, A3, unframed</p>
+                                <div class="ex-shop-product__foot">
+                                    <p class="ex-shop-product__price"><strong>GBP 36</strong></p>
+                                    <button
+                                        class="button button-outline ex-shop-add"
+                                        type="button"
+                                        data-add-to-cart
+                                        data-product="Glass and Cloud"
+                                    >
+                                        Add to bag
+                                    </button>
+                                </div>
+                                <p class="ex-shop-add-status" data-cart-status role="status"></p>
+                            </div>
+                        </article>
+
+                        <article class="ex-shop-product">
+                            <div class="ex-shop-product__media">
+                                <img
+                                    class="ex-shop-product__img"
+                                    src="images/loom-swatches.jpg"
+                                    alt="A stack of folded woven textiles in oatmeal, rust, and cream beside a glass vase of dried grasses"
+                                    width="900"
+                                    height="1200"
+                                    loading="lazy"
+                                />
+                                <p class="ex-shop-product__badge"><span class="badge badge-primary">Studio pick</span></p>
+                            </div>
+                            <div class="ex-shop-product__body">
+                                <h3 class="ex-shop-product__title">Loom swatch set</h3>
+                                <p class="ex-shop-product__meta">24 weaves, boxed with notes</p>
+                                <div class="ex-shop-product__foot">
+                                    <p class="ex-shop-product__price"><strong>GBP 12</strong></p>
+                                    <button
+                                        class="button button-outline ex-shop-add"
+                                        type="button"
+                                        data-add-to-cart
+                                        data-product="Loom swatch set"
+                                    >
+                                        Add to bag
+                                    </button>
+                                </div>
+                                <p class="ex-shop-add-status" data-cart-status role="status"></p>
+                            </div>
+                        </article>
+
+                        <article class="ex-shop-product">
+                            <div class="ex-shop-product__media">
+                                <img
+                                    class="ex-shop-product__img"
+                                    src="images/bougainvillea.jpg"
+                                    alt="Dense magenta bougainvillea bracts and green leaves"
+                                    width="900"
+                                    height="1200"
+                                    loading="lazy"
+                                />
+                                <p class="ex-shop-product__badge"><span class="badge badge-primary">Small batch</span></p>
+                            </div>
+                            <div class="ex-shop-product__body">
+                                <h3 class="ex-shop-product__title">Bougainvillea stems</h3>
+                                <p class="ex-shop-product__meta">One bunch, 55cm, cut to order</p>
+                                <div class="ex-shop-product__foot">
+                                    <p class="ex-shop-product__price"><strong>GBP 34</strong></p>
+                                    <button
+                                        class="button button-outline ex-shop-add"
+                                        type="button"
+                                        data-add-to-cart
+                                        data-product="Bougainvillea stems"
+                                    >
+                                        Add to bag
+                                    </button>
+                                </div>
+                                <p class="ex-shop-add-status" data-cart-status role="status"></p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="journal" class="ex-shop-section" aria-labelledby="journal-title">
+                <div class="container">
+                    <div class="ex-shop-journal">
+                        <div class="ex-shop-journal__media">
+                            <img
+                                src="images/reading-nook.jpg"
+                                alt="An open book with a dried leaf at the spine, resting on a wooden table"
+                                width="1200"
+                                height="1000"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="ex-shop-journal__body">
+                            <p class="ex-shop-eyebrow ex-shop-eyebrow--light">Journal, issue 14</p>
+                            <h2 class="ex-shop-h2 ex-shop-h2--light" id="journal-title">The reading nook issue</h2>
+                            <p class="ex-shop-journal__text">
+                                A short study of corners built for one person: a low lamp, a chair older than the
+                                house, and a print hung at eye level. Thirty photographs, plus a conversation with our
+                                framer about why oak is worth the wait.
+                            </p>
+                            <div class="ex-shop-journal__byline">
+                                <img src="../../images/avatar-portrait.jpg" alt="" width="28" height="28" loading="lazy" />
+                                <p>Words and photographs from the studio</p>
+                            </div>
+                            <div class="ex-shop-journal__foot">
+                                <p class="ex-shop-journal__meta">Thirty photographs inside</p>
+                                <a class="ex-shop-journal__link" href="#letters">
+                                    Read the issue
+                                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                        <path d="M3 8h10M9 4l4 4-4 4" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="help" class="ex-shop-benefits-section" aria-labelledby="help-title">
+                <div class="container">
+                    <div class="ex-shop-section__head">
+                        <div>
+                            <p class="ex-shop-eyebrow">The practical bits</p>
+                            <h2 class="ex-shop-h2" id="help-title">Buying from the studio</h2>
+                        </div>
+                        <p class="ex-shop-section__note">Small runs, honest materials, and a workshop that answers its own post.</p>
+                    </div>
+
+                    <div class="ex-shop-benefits">
+                        <div class="ex-shop-benefit">
+                            <span class="ex-shop-benefit__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                    <rect x="3.5" y="3.5" width="17" height="17" rx="2" />
+                                    <path d="M8 8h8v8H8z" />
+                                </svg>
+                            </span>
+                            <p class="ex-shop-benefit__title">Framed by hand</p>
+                            <p class="ex-shop-benefit__text">Oiled oak and ash, cut and joined two streets from the shop.</p>
+                        </div>
+                        <div class="ex-shop-benefit">
+                            <span class="ex-shop-benefit__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                    <path d="M2.5 6.5h10v9h-10z" />
+                                    <path d="M12.5 10h4l4 3.5v2h-8z" />
+                                    <circle cx="6.5" cy="17.5" r="1.6" />
+                                    <circle cx="16.5" cy="17.5" r="1.6" />
+                                </svg>
+                            </span>
+                            <p class="ex-shop-benefit__title">Free delivery over GBP 75</p>
+                            <p class="ex-shop-benefit__text">Two to four working days, tracked, in recycled packaging.</p>
+                        </div>
+                        <div class="ex-shop-benefit">
+                            <span class="ex-shop-benefit__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                    <circle cx="12" cy="12" r="8.5" />
+                                    <path d="M12 7.5V12l3 2" />
+                                </svg>
+                            </span>
+                            <p class="ex-shop-benefit__title">Thirty days to decide</p>
+                            <p class="ex-shop-benefit__text">Live with it, then send it back if the room disagrees.</p>
+                        </div>
+                        <div class="ex-shop-benefit">
+                            <span class="ex-shop-benefit__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                    <path d="M5 19c0-8 6-13.5 14.5-13.5C19.5 14 14 19.5 5 19Z" />
+                                    <path d="M5 19 13 11" />
+                                </svg>
+                            </span>
+                            <p class="ex-shop-benefit__title">Made to last</p>
+                            <p class="ex-shop-benefit__text">Small runs, repairable frames, and paper worth keeping.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="letters" class="ex-shop-section" aria-labelledby="letters-title">
+                <div class="container">
+                    <div class="ex-shop-newsletter">
+                        <div class="ex-shop-newsletter__copy">
+                            <p class="ex-shop-eyebrow ex-shop-eyebrow--light">Once a month</p>
+                            <h2 class="ex-shop-h2 ex-shop-h2--light" id="letters-title">The Foxtail letter</h2>
+                            <p class="ex-shop-newsletter__text">
+                                New prints, small restocks, and one room we liked. Sent on the first Thursday of the
+                                month, written by the two of us who run the shop.
+                            </p>
+                        </div>
+                        <div class="ex-shop-newsletter__action">
+                            <form class="ex-shop-letter-form" action="#letters">
+                                <div class="form-field">
+                                    <label class="form-label ex-shop-letter-form__label" for="letters-email">Email address</label>
+                                    <div class="ex-shop-letter-form__row">
+                                        <input
+                                            class="form-input ex-shop-letter-form__input"
+                                            type="email"
+                                            id="letters-email"
+                                            name="email"
+                                            placeholder="you@example.com"
+                                            autocomplete="email"
+                                            required
+                                        />
+                                        <button class="button ex-shop-letter-form__submit" type="submit">Subscribe</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <p class="ex-shop-letter-form__note">One letter a month. Unsubscribe in a click.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="ex-shop-footer" id="visit">
+            <div class="container">
+                <div class="ex-shop-footer__top">
+                    <div class="ex-shop-footer__studio">
+                        <p class="ex-shop-footer__wordmark">Foxtail</p>
+                        <p class="ex-shop-footer__text">
+                            Homeware and prints for slower rooms. Drawn, printed, and finished in Lewes, East Sussex.
+                        </p>
+                        <p class="ex-shop-footer__email">
+                            <a href="mailto:hello@foxtail.co">hello@foxtail.co</a>
+                        </p>
+                    </div>
+
+                    <nav class="ex-shop-footer__col" aria-label="Shop">
+                        <h2 class="ex-shop-footer__label">Shop</h2>
+                        <ul class="ex-shop-footer__list">
+                            <li><a href="#shop">New in</a></li>
+                            <li><a href="#shop">Wall prints</a></li>
+                            <li><a href="#categories">Textiles</a></li>
+                            <li><a href="#categories">Dried stems</a></li>
+                            <li><a href="#shop">Gift cards</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="ex-shop-footer__col" aria-label="Studio">
+                        <h2 class="ex-shop-footer__label">Studio</h2>
+                        <ul class="ex-shop-footer__list">
+                            <li><a href="#visit">Our story</a></li>
+                            <li><a href="#visit">The workshop</a></li>
+                            <li><a href="#help">Framing service</a></li>
+                            <li><a href="#journal">Journal</a></li>
+                            <li><a href="#letters">The letter</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="ex-shop-footer__col" aria-label="Help">
+                        <h2 class="ex-shop-footer__label">Help</h2>
+                        <ul class="ex-shop-footer__list">
+                            <li><a href="#help">Delivery</a></li>
+                            <li><a href="#help">Returns</a></li>
+                            <li><a href="#journal">Care guide</a></li>
+                            <li><a href="#visit">Trade enquiries</a></li>
+                            <li><a href="#visit">Contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="ex-shop-footer__col">
+                        <h2 class="ex-shop-footer__label">Visit</h2>
+                        <address class="ex-shop-footer__address">
+                            14 Bell Lane<br />
+                            Lewes BN7 1XU<br />
+                            Thursday to Saturday<br />
+                            10am to 5pm
+                        </address>
+                    </div>
+                </div>
+
+                <div class="ex-shop-footer__legal">
+                    <p class="ex-shop-footer__copyright">
+                        &copy; 2025 Foxtail Homeware Ltd. All prices include VAT. Photographs printed in Sussex.
+                    </p>
+                    <nav class="ex-shop-footer__legal-nav" aria-label="Legal">
+                        <a href="#visit">Privacy</a>
+                        <a href="#visit">Terms</a>
+                        <a href="#visit">Accessibility</a>
+                        <a href="../../index.html">Built with roolith css</a>
+                    </nav>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
