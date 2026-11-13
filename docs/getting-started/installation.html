@@ -8,7 +8,7 @@
             name="description"
             content="Install roolith css from npm, link the built stylesheet, use the SCSS source directly, or build it yourself." />
         <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../roolith-4.1.0.min.css" />
         <link rel="stylesheet" href="../doc.css" />
         <link
             rel="stylesheet"
@@ -62,7 +62,7 @@
 
                         <section class="doc-section" id="install-from-npm">
                             <h2>Install from npm</h2>
-                            <p><code>roolith-css</code> is published on npm. The package entry declared in <code>package.json</code> is <code>./src/sass/roolith.scss</code>, and the prebuilt stylesheet ships alongside it at <code>dist/roolith-4.0.0.min.css</code>.</p>
+                            <p><code>roolith-css</code> is published on npm. The package entry declared in <code>package.json</code> is <code>./src/sass/roolith.scss</code>, and the prebuilt stylesheet ships alongside it at <code>dist/roolith-4.1.0.min.css</code>.</p>
                             <p>You can compile the SCSS in your own pipeline or copy the prebuilt file into your assets and link it. The next two sections cover <a href="#stylesheet">the built stylesheet</a> and <a href="#scss">the SCSS source</a>.</p>
                             <div class="doc-code">
                                 <div class="doc-code-bar">
@@ -75,7 +75,7 @@
 
                         <section class="doc-section" id="stylesheet">
                             <h2>Link the built stylesheet</h2>
-                            <p>The build writes one file, <code>dist/roolith-4.0.0.min.css</code>. Both parts of that name come from the package: the Vite config names assets <code>[name]-[version].min.css</code> and the input is <code>roolith</code>.</p>
+                            <p>The build writes one file, <code>dist/roolith-4.1.0.min.css</code>. Both parts of that name come from the package: the Vite config names assets <code>[name]-[version].min.css</code> and the input is <code>roolith</code>.</p>
                             <p>Copy the file wherever your static assets live, then link it once per page. Everything below is rendered by that stylesheet alone, with no page specific CSS.</p>
                             <div class="doc-demo">
                                 <button class="button button-primary" type="button">Primary</button>
@@ -88,10 +88,10 @@
                                     <span class="doc-code-lang">HTML</span>
                                     <button type="button" class="doc-copy" data-doc-copy="installation-stylesheet">Copy</button>
                                 </div>
-                                <pre><code id="installation-stylesheet" class="language-html">&lt;link rel="stylesheet" href="roolith-4.0.0.min.css" /&gt;</code></pre>
+                                <pre><code id="installation-stylesheet" class="language-html">&lt;link rel="stylesheet" href="roolith-4.1.0.min.css" /&gt;</code></pre>
                             </div>
                             <div class="message message-info">
-                                This documentation site loads the stylesheet as <code>../roolith-4.0.0.min.css</code>, which resolves to <code>docs/roolith-4.0.0.min.css</code>. A CDN link will replace it later; until then point your pages at the file you build or copy.
+                                This documentation site loads the stylesheet as <code>../roolith-4.1.0.min.css</code>, which resolves to <code>docs/roolith-4.1.0.min.css</code>. A CDN link will replace it later; until then point your pages at the file you build or copy.
                             </div>
                         </section>
 
@@ -171,7 +171,7 @@ node scripts/generate-css-variables.mjs --out tokens.css</code></pre>
         &lt;meta charset="utf-8" /&gt;
         &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
         &lt;title&gt;My page&lt;/title&gt;
-        &lt;link rel="stylesheet" href="roolith-4.0.0.min.css" /&gt;
+        &lt;link rel="stylesheet" href="roolith-4.1.0.min.css" /&gt;
     &lt;/head&gt;
     &lt;body&gt;
         &lt;main class="container"&gt;

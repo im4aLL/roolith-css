@@ -15,7 +15,7 @@ npm i roolith-css
 Link the prebuilt stylesheet:
 
 ```html
-<link rel="stylesheet" href="roolith-4.0.0.min.css" />
+<link rel="stylesheet" href="roolith-4.1.0.min.css" />
 ```
 
 Or import the SCSS entry point, which emits tokens, reset, base styles, modules, blocks, layout, and state rules:

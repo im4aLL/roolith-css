@@ -6,7 +6,7 @@
         <title>Card - roolith css</title>
         <meta name="description" content="Card surfaces with header, body, footer, image, title, subtitle, text, information, and color variants in the roolith css framework." />
         <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../roolith-4.1.0.min.css" />
         <link rel="stylesheet" href="../doc.css" />
         <link
             rel="stylesheet"
@@ -48,9 +48,9 @@
                         <header class="doc-content-header">
                             <h1>Card</h1>
                             <p class="doc-content-lead">
-                                Card is a raised surface with a radius and a hairline shadow that groups one unit of
-                                content. Every part is optional: header, body, footer, image, title, subtitle, text, and
-                                an information row, composed in the order the content needs.
+                                Card is a bordered surface with a radius that groups one unit of content. Every part
+                                is optional: header, body, footer, image, title, subtitle, text, and an information
+                                row, composed in the order the content needs.
                             </p>
                             <div class="doc-import-line">
                                 class:
@@ -63,8 +63,9 @@
                         <section class="doc-section" id="basic-usage">
                             <h2>Basic usage</h2>
                             <p>
-                                The body slot carries the 25px padding. The container adds the surface, the radius, the
-                                shadow, and a 20px bottom margin, so cards stacked in a column keep their own spacing.
+                                The body slot carries the 25px padding. The container adds the surface, the radius, a
+                                1px border, and a 20px bottom margin, so cards stacked in a column keep their own
+                                spacing.
                             </p>
                             <div class="doc-demo">
                                 <div class="row full-width">
@@ -410,7 +411,7 @@
                                         <tr>
                                             <td><code>.card</code></td>
                                             <td>Base</td>
-                                            <td>Surface fill, radius, hairline shadow, clipped overflow, and a 20px bottom margin.</td>
+                                            <td>Surface fill, radius, 1px border, clipped overflow, and a 20px bottom margin.</td>
                                         </tr>
                                         <tr>
                                             <td><code>.card-header</code></td>

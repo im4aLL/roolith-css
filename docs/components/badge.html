@@ -6,7 +6,7 @@
         <title>Badge - roolith css</title>
         <meta name="description" content="Badge colors, sizing, and inline usage for status labels and counts in the roolith css framework." />
         <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="../roolith-4.0.0.min.css" />
+        <link rel="stylesheet" href="../roolith-4.1.0.min.css" />
         <link rel="stylesheet" href="../doc.css" />
         <link
             rel="stylesheet"
@@ -231,12 +231,12 @@
                             <p>
                                 The color class stacks onto
                                 <code>.badge</code>
-                                . On the base chip, three values are tokens: <code>--r-badge-surface</code> for the
-                                fill, <code>--r-badge-background</code> for the border, and <code>--r-badge-color</code>
-                                for the label. The geometry and type values are fixed in the module: 3px by 4px padding,
-                                a 5px radius, an 11px font size, and a line height of 1. <code>--r-badge-radius</code> is
-                                declared in <code>_component-var.scss</code>, but <code>_badge.scss</code> hardcodes the
-                                5px radius today, so overriding that token does not change the chip.
+                                . On the base chip, four values are tokens: <code>--r-badge-surface</code> for the
+                                fill, <code>--r-badge-background</code> for the border, <code>--r-badge-color</code> for
+                                the label, and <code>--r-badge-border-radius</code> for the chip radius, which defaults
+                                to half of <code>--r-global-border-radius</code>. The remaining geometry and type values
+                                are fixed in the module: 3px by 4px padding, an 11px font size, and a line height of 1,
+                                trimmed to the cap height.
                             </p>
                             <div class="doc-table-wrap" tabindex="0" role="region" aria-labelledby="reference-heading">
                                 <table class="table">
