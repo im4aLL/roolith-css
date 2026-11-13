@@ -377,6 +377,65 @@ function closeSidebar() {
 }
 
 /**
+ * Test whether the compact site navigation panel is open.
+ * @returns {boolean} Whether the panel is open.
+ */
+function isNavOpen() {
+    return document.documentElement.classList.contains('doc-nav-open');
+}
+
+/**
+ * Open or close the compact site navigation panel used on sidebar-less pages.
+ * @param {boolean} open - Whether the panel should be open.
+ * @param {boolean} returnFocus - Whether to return focus to the toggle when closing.
+ * @returns {void}
+ */
+function setNavOpen(open, returnFocus) {
+    const panel = document.getElementById('doc-mobile-nav');
+    const scrim = document.querySelector('[data-doc-nav-close]');
+    if (!panel) {
+        return;
+    }
+
+    document.documentElement.classList.toggle('doc-nav-open', open);
+    panel.hidden = !open;
+    if (scrim instanceof HTMLElement) {
+        scrim.hidden = !open;
+    }
+
+    document.querySelectorAll('[data-doc-nav-toggle]').forEach((button) => {
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        button.setAttribute('aria-label', open ? 'Close site navigation' : 'Open site navigation');
+    });
+
+    if (open) {
+        const firstLink = panel.querySelector('a');
+        if (firstLink) {
+            firstLink.focus();
+        }
+        return;
+    }
+
+    if (returnFocus) {
+        const toggle = document.querySelector('[data-doc-nav-toggle]');
+        if (toggle) {
+            toggle.focus();
+        }
+    }
+}
+
+/**
+ * Close the compact site navigation panel when it is open.
+ * @param {boolean} returnFocus - Whether to return focus to the toggle.
+ * @returns {void}
+ */
+function closeNav(returnFocus) {
+    if (isNavOpen()) {
+        setNavOpen(false, returnFocus);
+    }
+}
+
+/**
  * Normalize a pathname so `/`, `/index.html`, `/foo/`, and a clean `/foo` URL all
  * compare consistently, because static hosts may strip or add the `.html` suffix.
  * @param {string} pathname - Pathname to normalize.
@@ -412,7 +471,7 @@ function isCurrentPage(href) {
  * @returns {void}
  */
 function markActiveNav() {
-    document.querySelectorAll('.layout-header-nav, .doc-footer .nav').forEach((list) => {
+    document.querySelectorAll('.layout-header-nav, .doc-mobile-nav-list, .doc-footer .nav').forEach((list) => {
         let matched = false;
         list.querySelectorAll('.nav-item').forEach((item) => {
             const link = item.querySelector('a');
@@ -954,6 +1013,25 @@ async function handleClick(event) {
         return;
     }
 
+    if (target.closest('[data-doc-nav-toggle]')) {
+        setNavOpen(!isNavOpen());
+        return;
+    }
+
+    if (target.closest('[data-doc-nav-close]')) {
+        closeNav(true);
+        return;
+    }
+
+    if (target.closest('#doc-mobile-nav a')) {
+        closeNav(false);
+        return;
+    }
+
+    if (!target.closest('#doc-mobile-nav') && !target.closest('[data-doc-nav-toggle]')) {
+        closeNav(false);
+    }
+
     if (!target.closest('[data-doc-search]') && !target.closest('[data-doc-search-toggle]')) {
         closeSearchResults();
         closeSearchBar();
@@ -1132,6 +1210,11 @@ function handleKeydown(event) {
         return;
     }
 
+    if (isNavOpen()) {
+        closeNav(true);
+        return;
+    }
+
     const modal = document.querySelector('.modal.active');
     if (modal) {
         closeModal(modal);
@@ -1200,6 +1283,7 @@ function initDocSite() {
     SIDEBAR_MEDIA.addEventListener('change', (event) => {
         if (!event.matches) {
             closeSidebar();
+            closeNav(false);
         }
     });
 

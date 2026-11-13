@@ -5,7 +5,9 @@ Maintainer notes for the roolith docs. This file is not part of the site.
 ## Contents
 
 - `getting-started/`, `components/`, `blocks/`: hand-written static HTML pages, one per topic.
-- `partials/`: shared HTML fragments (`header.html`, `sidebar.html`, `footer.html`) pulled into each page at runtime.
+- `example.html`, `examples.css`: the examples hub linked from the header navigation. It is sidebar-less like `index.html`, and `examples.css` styles only this page.
+- `examples/`: the standalone example demos. Each folder holds one `example-<name>.html`, `example-<name>.css`, and `example-<name>.js`, and loads the framework stylesheet directly, so a demo can be opened, copied, or shipped without the docs shell. The search index skips this folder.
+- `partials/`: shared HTML fragments (`header.html`, `sidebar.html`, `footer.html`) pulled into each page at runtime. The header also owns the compact site navigation panel (`#doc-mobile-nav`). The inline header nav is hidden at 1023px and below: docs pages use the sidebar, which carries the Showcase -> Examples entry, while sidebar-less pages (`index.html`, `example.html`) show the header nav toggle. `doc.js` owns open, close, Escape, scrim, focus return, and resize behavior. The search input collapses into its toggle at 1199px and below so the top-level nav stays on one line.
 - `include-fragment.js`: the local `include-fragment` custom element that fetches those partials.
 - `doc.css`, `doc.js`, `doc-search.js`, `doc-surfaces.js`: styles plus shared page behavior, the search UI, and the transient modal, drawer, popover, and combo box controllers, split by responsibility. Pages must load `doc-search.js`, then `doc-surfaces.js`, then `doc.js`, in that order, and all three are required, because the later scripts call functions declared in the earlier ones, and `doc-surfaces.js` also calls the table gate from `doc.js` at runtime after all three scripts have loaded, which is the one reverse dependency. `doc.js` keeps the remaining demo controllers deliberately; extract another file when the next surface change lands.
 - `search-index.json`: the search data consumed by `doc-search.js`. It is generated, not edited by hand.
@@ -72,7 +74,7 @@ After changing page headings or adding a page, regenerate the index from the rep
 node docs/generate-search-index.mjs
 ```
 
-The script scans every page under `docs`, skipping `partials` and dot directories, and writes `docs/search-index.json`. Page groups come from the folder name, so a new top-level folder needs an entry in the script's `groupByFolder` map.
+The script scans every page under `docs`, skipping `partials`, `examples`, and dot directories, and writes `docs/search-index.json`. Page groups come from the folder name, so a new top-level folder needs an entry in the script's `groupByFolder` map. Root-level pages other than the overview map to `Overview`.
 
 ## Runtime dependencies
 
@@ -93,6 +95,8 @@ The pages render in Inter because the framework base font stack names it, and `d
 The `@import` must stay the first thing in the file, since CSS ignores an import that follows a rule. It also costs one extra round trip compared with a `link` in the page head: the browser discovers the font stylesheet only after it has fetched and parsed `doc.css`, so it cannot preconnect to `fonts.googleapis.com` or `fonts.gstatic.com` ahead of time. That is the deliberate trade for a single edit point; if the first-paint font swap ever needs to be tighter, move the request back into a head `link` with the two preconnects, which means touching every page.
 
 The theme playground's family loader only injects the stylesheet for the Google family a visitor picks, with no connection hints of its own, so the playground never fetches a family before it is chosen.
+
+The standalone examples under `examples/` do not load `doc.css`, so each one requests its own Google Fonts stylesheet: Inter everywhere, plus Instrument Serif for the company page and Space Grotesk for the multipurpose page. Each request has a local fallback stack, so a demo still renders with system fonts when the network is unavailable. Those requests belong to the demos, not to the docs shell.
 
 ## Images
 

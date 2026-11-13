@@ -1,0 +1,1297 @@
+<!doctype html>
+<html lang="en" class="theme-light">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Pulse dashboard - roolith css example</title>
+        <meta name="description" content="A production-grade analytics dashboard example built with roolith css, including responsive navigation, live SVG charts, a data table, and a complete light and dark theme." />
+        <meta name="theme-color" content="#f6f7f9" />
+        <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="../../roolith-4.1.0.min.css" />
+        <script>
+            (function () {
+                var root = document.documentElement;
+                root.classList.add('ex-dashboard-js');
+                try {
+                    if (window.localStorage.getItem('pulse-theme') === 'dark') {
+                        root.classList.remove('theme-light');
+                        root.classList.add('theme-dark');
+                    }
+                } catch (error) {
+                    root.classList.remove('theme-dark');
+                    root.classList.add('theme-light');
+                }
+            })();
+        </script>
+        <link rel="stylesheet" href="example-dashboard.css" />
+        <script src="example-dashboard.js" defer></script>
+    </head>
+    <body class="ex-dashboard-body">
+        <a class="ex-dashboard-skip-link" href="#main-content">Skip to main content</a>
+
+        <div class="ex-dashboard-app">
+            <aside class="ex-dashboard-sidebar" id="pulse-sidebar" aria-label="Pulse workspace navigation">
+                <div class="ex-dashboard-brand">
+                    <a class="ex-dashboard-brand-link" href="#main-content" aria-label="Pulse dashboard home">
+                        <span class="ex-dashboard-logo" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="M2.5 13h4l2.2-6.2 4.1 12.4 2.6-8 1.4 1.8h4.7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="ex-dashboard-brand-text">
+                            <span class="ex-dashboard-brand-name">Pulse</span>
+                            <span class="ex-dashboard-brand-meta">Analytics</span>
+                        </span>
+                    </a>
+                    <button class="ex-dashboard-icon-button ex-dashboard-sidebar-close" id="sidebar-close" type="button" aria-label="Close navigation">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="ex-dashboard-workspace-wrap" data-menu>
+                    <button class="ex-dashboard-workspace" id="workspace-trigger" type="button" data-menu-trigger aria-haspopup="menu" aria-expanded="false" aria-controls="workspace-menu">
+                        <span class="ex-dashboard-workspace-mark" aria-hidden="true">A</span>
+                        <span class="ex-dashboard-workspace-copy">
+                            <span class="ex-dashboard-workspace-name" id="workspace-name">Acme Inc.</span>
+                            <span class="ex-dashboard-workspace-plan" id="workspace-plan">Scale plan</span>
+                        </span>
+                        <svg class="ex-dashboard-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                            <path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="ex-dashboard-popover ex-dashboard-workspace-popover" id="workspace-menu" role="menu" aria-labelledby="workspace-trigger" data-menu-panel hidden>
+                        <div class="ex-dashboard-menu-label" role="presentation">Workspaces</div>
+                        <button class="ex-dashboard-menu-item is-selected" type="button" role="menuitemradio" aria-checked="true" tabindex="-1" data-workspace-option data-workspace-name="Acme Inc." data-workspace-plan="Scale plan">
+                            <span class="ex-dashboard-workspace-mark" aria-hidden="true">A</span>
+                            <span class="ex-dashboard-menu-item-copy">
+                                <span>Acme Inc.</span>
+                                <span class="ex-dashboard-menu-meta">Scale plan</span>
+                            </span>
+                            <svg class="ex-dashboard-menu-check" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="m5 12 4.2 4.2L19 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button class="ex-dashboard-menu-item" type="button" role="menuitemradio" aria-checked="false" tabindex="-1" data-workspace-option data-workspace-name="Northwind Labs" data-workspace-plan="Growth plan">
+                            <span class="ex-dashboard-workspace-mark is-alt" aria-hidden="true">N</span>
+                            <span class="ex-dashboard-menu-item-copy">
+                                <span>Northwind Labs</span>
+                                <span class="ex-dashboard-menu-meta">Growth plan</span>
+                            </span>
+                            <svg class="ex-dashboard-menu-check" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="m5 12 4.2 4.2L19 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button class="ex-dashboard-menu-item" type="button" role="menuitemradio" aria-checked="false" tabindex="-1" data-workspace-option data-workspace-name="Harbor &amp; Co." data-workspace-plan="Starter plan">
+                            <span class="ex-dashboard-workspace-mark is-warm" aria-hidden="true">H</span>
+                            <span class="ex-dashboard-menu-item-copy">
+                                <span>Harbor &amp; Co.</span>
+                                <span class="ex-dashboard-menu-meta">Starter plan</span>
+                            </span>
+                            <svg class="ex-dashboard-menu-check" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="m5 12 4.2 4.2L19 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div class="ex-dashboard-menu-sep" role="separator"></div>
+                        <a class="ex-dashboard-menu-item" href="/example.html" role="menuitem" tabindex="-1">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            </svg>
+                            Create a workspace
+                        </a>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav ex-dashboard-nav" aria-label="Primary">
+                    <div class="sidebar-nav-group">
+                        <div class="sidebar-nav-header">Overview</div>
+                        <ul class="sidebar-nav-list">
+                            <li class="sidebar-nav-list-item is-active">
+                                <a class="sidebar-nav-list-link" href="#main-content" aria-current="page">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <rect x="3" y="3" width="7.5" height="7.5" rx="1.6" stroke="currentColor" stroke-width="1.7" />
+                                        <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6" stroke="currentColor" stroke-width="1.7" />
+                                        <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6" stroke="currentColor" stroke-width="1.7" />
+                                        <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6" stroke="currentColor" stroke-width="1.7" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M2.5 13h4l2.2-6.2 4.1 12.4 2.6-8 1.4 1.8h4.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Live visitors</span>
+                                    <span class="ex-dashboard-live-badge" aria-hidden="true">Live</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-nav-group">
+                        <div class="sidebar-nav-header">Analytics</div>
+                        <ul class="sidebar-nav-list">
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Revenue</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M4 4h16l-6.2 8v6.2L10 21v-9L4 4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Funnels</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Retention</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-nav-group">
+                        <div class="sidebar-nav-header">Customers</div>
+                        <ul class="sidebar-nav-list">
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="M3.5 20c.4-3.5 2.4-5.5 5.5-5.5s5.1 2 5.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                        <path d="M16 5.5a3 3 0 0 1 0 5M17.5 14.7c2 .6 3.1 2.4 3.4 5.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Customers</span>
+                                    <span class="sidebar-nav-list-badge badge">24</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M12 3a9 9 0 1 0 9 9h-9V3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                        <path d="M15.5 3.8A9 9 0 0 1 20.2 8.5H15.5V3.8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Segments</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-nav-group">
+                        <div class="sidebar-nav-header">Orders</div>
+                        <ul class="sidebar-nav-list">
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M5.5 8h13l-1 12h-11l-1-12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                        <path d="M9 8V6.5a3 3 0 0 1 6 0V8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Orders</span>
+                                    <span class="sidebar-nav-list-badge badge badge-primary">8</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M4 9v5h3l6 4V5L7 9H4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                        <path d="M17 8.5a6 6 0 0 1 0 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Refunds</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-nav-group">
+                        <div class="sidebar-nav-header">Products</div>
+                        <ul class="sidebar-nav-list">
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                        <path d="m4 7.5 8 4.5 8-4.5M12 12v9" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Catalog</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="m12 3 8 4-8 4-8-4 8-4ZM4 12l8 4 8-4M4 17l8 4 8-4" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Inventory</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-nav-group">
+                        <div class="sidebar-nav-header">Reports</div>
+                        <ul class="sidebar-nav-list">
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M6 3h8l4 4v14H6V3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                        <path d="M14 3v5h4M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Report library</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-nav-list-item">
+                                <a class="sidebar-nav-list-link" href="#main-content">
+                                    <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    <span class="sidebar-nav-list-label">Scheduled</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="ex-dashboard-sidebar-bottom">
+                    <nav class="sidebar-nav ex-dashboard-nav ex-dashboard-nav-utility" aria-label="Support">
+                        <div class="sidebar-nav-group">
+                            <ul class="sidebar-nav-list">
+                                <li class="sidebar-nav-list-item">
+                                    <a class="sidebar-nav-list-link" href="#main-content">
+                                        <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.7" />
+                                            <path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3 1a7 7 0 0 0-2-1.2L14.2 3h-4.4l-.4 2.7a7 7 0 0 0-2 1.2l-2.3-1-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 2 1.2l.4 2.7h4.4l.4-2.7a7 7 0 0 0 2-1.2l2.3 1 2-3.4-2-1.5c.1-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                        </svg>
+                                        <span class="sidebar-nav-list-label">Settings</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-nav-list-item">
+                                    <a class="sidebar-nav-list-link" href="#main-content">
+                                        <svg class="ex-dashboard-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7" />
+                                            <path d="M9.7 9a2.4 2.4 0 1 1 3.1 2.3c-.6.2-.8.7-.8 1.3v.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                            <circle cx="12" cy="16.6" r=".9" fill="currentColor" />
+                                        </svg>
+                                        <span class="sidebar-nav-list-label">Help &amp; support</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="ex-dashboard-upgrade">
+                        <div class="ex-dashboard-upgrade-head">
+                            <span class="ex-dashboard-upgrade-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                    <path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <span class="ex-dashboard-upgrade-title">Advanced insights</span>
+                        </div>
+                        <p>Unlock cohort forecasting and unlimited report history.</p>
+                        <a class="button button-primary button-small button-block" href="/example.html">View plans</a>
+                    </div>
+
+                    <div class="ex-dashboard-profile">
+                        <img class="ex-dashboard-avatar is-large" src="../../images/avatar-priya-raman.jpg" alt="" width="34" height="34" />
+                        <span class="ex-dashboard-profile-copy">
+                            <span class="ex-dashboard-profile-name">Priya Raman</span>
+                            <span class="ex-dashboard-profile-role">Workspace admin</span>
+                        </span>
+                        <a class="ex-dashboard-profile-link" href="/example.html" aria-label="Account settings">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="ex-dashboard-scrim" id="sidebar-scrim" aria-hidden="true"></div>
+
+            <div class="ex-dashboard-main">
+                <header class="ex-dashboard-topbar">
+                    <div class="ex-dashboard-topbar-left">
+                        <button class="ex-dashboard-icon-button ex-dashboard-menu-toggle" id="sidebar-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="pulse-sidebar">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            </svg>
+                        </button>
+                        <nav class="ex-dashboard-crumbs" aria-label="Breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#main-content">Workspace</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Overview</li>
+                            </ol>
+                        </nav>
+                        <span class="ex-dashboard-mobile-title">Overview</span>
+                    </div>
+
+                    <form class="ex-dashboard-search" id="global-search-form" role="search">
+                        <label class="ex-dashboard-sr-only" for="global-search">Search customers, orders, and reports</label>
+                        <svg class="ex-dashboard-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8" />
+                            <path d="m16.5 16.5 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                        </svg>
+                        <input class="ex-dashboard-search-input" id="global-search" type="search" name="q" placeholder="Search customers, orders, reports" autocomplete="off" aria-keyshortcuts="Control+K Meta+K" />
+                        <kbd aria-hidden="true">Ctrl K</kbd>
+                    </form>
+
+                    <div class="ex-dashboard-actions">
+                        <button class="ex-dashboard-icon-button ex-dashboard-theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                            <svg class="ex-dashboard-icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="M20 14.2A8.4 8.4 0 0 1 9.8 4 8.5 8.5 0 1 0 20 14.2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                            </svg>
+                            <svg class="ex-dashboard-icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7" />
+                                <path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                            </svg>
+                        </button>
+
+                        <div class="ex-dashboard-menu-wrap" data-menu>
+                            <button class="ex-dashboard-icon-button ex-dashboard-notification-button" id="notifications-trigger" type="button" data-menu-trigger aria-haspopup="dialog" aria-expanded="false" aria-controls="notifications-menu" aria-label="Notifications, 3 unread">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                    <path d="M18 9.5a6 6 0 1 0-12 0c0 5-2 6.5-2 6.5h16s-2-1.5-2-6.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                    <path d="M10 19.5a2.2 2.2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                </svg>
+                                <span class="ex-dashboard-notification-dot" id="notification-dot" aria-hidden="true"></span>
+                            </button>
+                            <div class="ex-dashboard-popover ex-dashboard-notifications-popover" id="notifications-menu" role="dialog" aria-label="Notifications" data-menu-panel hidden>
+                                <div class="ex-dashboard-popover-head">
+                                    <span class="ex-dashboard-popover-title">Notifications</span>
+                                    <button class="ex-dashboard-popover-link" id="mark-notifications-read" type="button">Mark all read</button>
+                                </div>
+                                <div class="ex-dashboard-notification">
+                                    <span class="ex-dashboard-notification-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7" />
+                                            <path d="m8.5 12 2.4 2.4 4.6-4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p>Order <strong>#PL-4821</strong> was paid. Revenue is up 18% today.</p>
+                                        <time datetime="2025-06-12T09:22:00Z">12 minutes ago</time>
+                                    </div>
+                                </div>
+                                <div class="ex-dashboard-notification">
+                                    <span class="ex-dashboard-notification-icon is-warning" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M12 4 21 20H3L12 4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                            <path d="M12 9v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                            <circle cx="12" cy="17" r=".9" fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p>Harbor &amp; Co. is showing a churn risk. Aiko flagged the account.</p>
+                                        <time datetime="2025-06-12T08:58:00Z">36 minutes ago</time>
+                                    </div>
+                                </div>
+                                <div class="ex-dashboard-notification">
+                                    <span class="ex-dashboard-notification-icon is-info" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                            <path d="M6 3h8l4 4v14H6V3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                            <path d="M14 3v5h4M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p>Sofia published the Q2 acquisition report. It is ready to share.</p>
+                                        <time datetime="2025-06-12T08:05:00Z">1 hour ago</time>
+                                    </div>
+                                </div>
+                                <div class="ex-dashboard-popover-foot">
+                                    <a class="ex-dashboard-card-link" href="/example.html" data-menu-auto-close>View all notifications</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ex-dashboard-menu-wrap" data-menu>
+                            <button class="ex-dashboard-icon-button" id="help-trigger" type="button" data-menu-trigger aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" aria-label="Help and resources">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                    <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7" />
+                                    <path d="M9.7 9a2.4 2.4 0 1 1 3.1 2.3c-.6.2-.8.7-.8 1.3v.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    <circle cx="12" cy="16.6" r=".9" fill="currentColor" />
+                                </svg>
+                            </button>
+                            <div class="ex-dashboard-popover ex-dashboard-help-popover" id="help-menu" role="menu" aria-labelledby="help-trigger" data-menu-panel hidden>
+                                <div class="ex-dashboard-menu-label" role="presentation">Resources</div>
+                                <a class="ex-dashboard-menu-item" href="/getting-started/introduction.html" role="menuitem" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                        <path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    Documentation
+                                </a>
+                                <a class="ex-dashboard-menu-item" href="/getting-started/theming.html" role="menuitem" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M12 3a9 9 0 1 0 0 18c1.3 0 2-1 2-2 0-1.4-1.4-1.8-1.4-3 0-1.1.9-1.5 2-1.5h1.9c2.5 0 4.5-2 4.5-4.5C21 5.7 17 3 12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                                        <circle cx="7.5" cy="10" r="1" fill="currentColor" />
+                                        <circle cx="10" cy="6.8" r="1" fill="currentColor" />
+                                        <circle cx="14" cy="6.8" r="1" fill="currentColor" />
+                                    </svg>
+                                    Theming guide
+                                </a>
+                                <a class="ex-dashboard-menu-item" href="/components/table.html" role="menuitem" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="M3 9h18M9 9v11" stroke="currentColor" stroke-width="1.7" />
+                                    </svg>
+                                    Component reference
+                                </a>
+                                <div class="ex-dashboard-menu-sep" role="separator"></div>
+                                <a class="ex-dashboard-menu-item" href="mailto:support@example.com" role="menuitem" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    Contact support
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="ex-dashboard-menu-wrap ex-dashboard-account-wrap" data-menu>
+                            <button class="ex-dashboard-avatar-button" id="account-trigger" type="button" data-menu-trigger aria-haspopup="menu" aria-expanded="false" aria-controls="account-menu" aria-label="Account menu for Priya Raman">
+                                <img src="../../images/avatar-priya-raman.jpg" alt="" width="30" height="30" />
+                                <svg class="ex-dashboard-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                    <path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="ex-dashboard-popover ex-dashboard-account-popover" id="account-menu" role="menu" aria-labelledby="account-trigger" data-menu-panel hidden>
+                                <div class="ex-dashboard-profile-card" role="presentation">
+                                    <img class="ex-dashboard-avatar is-large" src="../../images/avatar-priya-raman.jpg" alt="" width="38" height="38" />
+                                    <span class="ex-dashboard-menu-item-copy">
+                                        <strong>Priya Raman</strong>
+                                        <span class="ex-dashboard-menu-meta">priya@acme.co</span>
+                                    </span>
+                                </div>
+                                <a class="ex-dashboard-menu-item" href="/example.html" role="menuitem" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="M5 20c.5-3.6 3-5.7 7-5.7s6.5 2.1 7 5.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    Profile
+                                </a>
+                                <a class="ex-dashboard-menu-item" href="/example.html" role="menuitem" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="M3.5 20c.4-3.5 2.4-5.5 5.5-5.5s5.1 2 5.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                        <path d="M16 5.5a3 3 0 0 1 0 5M17.5 14.7c2 .6 3.1 2.4 3.4 5.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    Team settings
+                                </a>
+                                <a class="ex-dashboard-menu-item" href="/example.html" role="menuitem" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="M3 9h18M7 15h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    Billing
+                                </a>
+                                <div class="ex-dashboard-menu-sep" role="separator"></div>
+                                <button class="ex-dashboard-menu-item" type="button" role="menuitem" tabindex="-1" data-toast="You have been signed out of the demo.">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M10 4H5v16h5M14 8l4 4-4 4M8 12h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    Sign out
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="ex-dashboard-content" id="main-content" tabindex="-1">
+                    <div class="block-header ex-dashboard-page-header">
+                        <div class="block-header-container">
+                            <div>
+                                <p class="ex-dashboard-eyebrow"><span class="ex-dashboard-live-dot" aria-hidden="true"></span>Live as of 09:41 UTC</p>
+                                <h1 class="ex-dashboard-title">Good morning, Priya</h1>
+                                <p class="ex-dashboard-subtitle">Here is how Pulse is performing across your workspace today.</p>
+                            </div>
+                            <div class="block-header-secondary ex-dashboard-page-actions">
+                                <div class="ex-dashboard-select-wrap">
+                                    <svg class="ex-dashboard-select-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                    <label class="ex-dashboard-sr-only" for="date-range">Date range</label>
+                                    <select class="form-select ex-dashboard-select" id="date-range">
+                                        <option value="7d">Last 7 days</option>
+                                        <option value="30d" selected>Last 30 days</option>
+                                        <option value="12m">Last 12 months</option>
+                                    </select>
+                                </div>
+                                <label class="form-switch ex-dashboard-compare">
+                                    <input class="form-switch-input" id="compare-toggle" type="checkbox" checked />
+                                    <span class="form-switch-slider" aria-hidden="true"></span>
+                                    <span class="form-switch-label">Compare</span>
+                                </label>
+                                <button class="button ex-dashboard-export" type="button" data-toast="Preparing your CSV export. We will email it when it is ready.">
+                                    <svg class="ex-dashboard-btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    Export
+                                </button>
+                                <button class="button button-primary ex-dashboard-new-report" type="button" data-modal-open="new-report-modal">
+                                    <svg class="ex-dashboard-btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+                                    </svg>
+                                    New report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="ex-dashboard-kpis" aria-label="Key performance indicators">
+                        <article class="card ex-dashboard-kpi ex-dashboard-kpi-highlight ex-dashboard-reveal">
+                            <div class="ex-dashboard-kpi-head">
+                                <span class="ex-dashboard-kpi-label">Revenue</span>
+                                <span class="ex-dashboard-kpi-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M12 3v18M16.5 7.2c-.9-1-2.4-1.5-4.2-1.5-2.4 0-4 1.1-4 2.9 0 4 8.4 2.2 8.4 6.2 0 1.9-1.7 3.1-4.3 3.1-1.9 0-3.5-.6-4.6-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="ex-dashboard-kpi-value">$128,430</div>
+                            <div class="ex-dashboard-kpi-meta">
+                                <span class="ex-dashboard-delta is-up"><span class="indicator is-upward">18.2%</span></span>
+                                <span>vs. $108,650 last month</span>
+                            </div>
+                            <div class="ex-dashboard-spark">
+                                <svg class="ex-dashboard-sparkline is-accent" viewBox="0 0 120 36" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                                    <defs>
+                                        <linearGradient id="spark-revenue" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="currentColor" stop-opacity=".24" />
+                                            <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M0 31 C10 30 16 22 24 24 C32 26 40 17 48 19 C56 21 64 12 72 14 C80 16 88 7 96 9 C104 11 112 3 120 4 L120 36 L0 36 Z" fill="url(#spark-revenue)" />
+                                    <path d="M0 31 C10 30 16 22 24 24 C32 26 40 17 48 19 C56 21 64 12 72 14 C80 16 88 7 96 9 C104 11 112 3 120 4" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                        </article>
+
+                        <article class="card ex-dashboard-kpi ex-dashboard-reveal">
+                            <div class="ex-dashboard-kpi-head">
+                                <span class="ex-dashboard-kpi-label">Active customers</span>
+                                <span class="ex-dashboard-kpi-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="M3.5 20c.4-3.5 2.4-5.5 5.5-5.5s5.1 2 5.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                        <path d="M16 5.5a3 3 0 0 1 0 5M17.5 14.7c2 .6 3.1 2.4 3.4 5.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="ex-dashboard-kpi-value">8,942</div>
+                            <div class="ex-dashboard-kpi-meta">
+                                <span class="ex-dashboard-delta is-up"><span class="indicator is-upward">6.4%</span></span>
+                                <span>412 new this month</span>
+                            </div>
+                            <div class="ex-dashboard-spark">
+                                <svg class="ex-dashboard-sparkline is-info" viewBox="0 0 120 36" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                                    <defs>
+                                        <linearGradient id="spark-customers" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="currentColor" stop-opacity=".2" />
+                                            <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M0 28 C10 26 16 27 24 23 C32 19 40 21 48 17 C56 13 64 16 72 12 C80 8 88 10 96 8 C104 6 112 7 120 5 L120 36 L0 36 Z" fill="url(#spark-customers)" />
+                                    <path d="M0 28 C10 26 16 27 24 23 C32 19 40 21 48 17 C56 13 64 16 72 12 C80 8 88 10 96 8 C104 6 112 7 120 5" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                        </article>
+
+                        <article class="card ex-dashboard-kpi ex-dashboard-reveal">
+                            <div class="ex-dashboard-kpi-head">
+                                <span class="ex-dashboard-kpi-label">Conversion rate</span>
+                                <span class="ex-dashboard-kpi-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M4 17 9 12l3 3 7-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M15 7h4v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="ex-dashboard-kpi-value">3.84%</div>
+                            <div class="ex-dashboard-kpi-meta">
+                                <span class="ex-dashboard-delta is-up"><span class="indicator is-upward">0.42 pts</span></span>
+                                <span>vs. 3.42% last month</span>
+                            </div>
+                            <div class="ex-dashboard-spark">
+                                <svg class="ex-dashboard-sparkline is-success" viewBox="0 0 120 36" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                                    <defs>
+                                        <linearGradient id="spark-conversion" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="currentColor" stop-opacity=".2" />
+                                            <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M0 27 C10 24 16 26 24 20 C32 14 40 18 48 15 C56 12 64 15 72 10 C80 5 88 9 96 7 C104 5 112 4 120 3 L120 36 L0 36 Z" fill="url(#spark-conversion)" />
+                                    <path d="M0 27 C10 24 16 26 24 20 C32 14 40 18 48 15 C56 12 64 15 72 10 C80 5 88 9 96 7 C104 5 112 4 120 3" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                        </article>
+
+                        <article class="card ex-dashboard-kpi ex-dashboard-reveal">
+                            <div class="ex-dashboard-kpi-head">
+                                <span class="ex-dashboard-kpi-label">Avg. order value</span>
+                                <span class="ex-dashboard-kpi-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.7" />
+                                        <path d="M3 10h18M7 15h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="ex-dashboard-kpi-value">$84.20</div>
+                            <div class="ex-dashboard-kpi-meta">
+                                <span class="ex-dashboard-delta is-down"><span class="indicator is-downward">2.1%</span></span>
+                                <span>vs. $86.00 last month</span>
+                            </div>
+                            <div class="ex-dashboard-spark">
+                                <svg class="ex-dashboard-sparkline is-warning" viewBox="0 0 120 36" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                                    <defs>
+                                        <linearGradient id="spark-aov" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="currentColor" stop-opacity=".18" />
+                                            <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M0 10 C10 12 16 9 24 12 C32 15 40 12 48 15 C56 18 64 15 72 18 C80 21 88 18 96 21 C104 24 112 22 120 25 L120 36 L0 36 Z" fill="url(#spark-aov)" />
+                                    <path d="M0 10 C10 12 16 9 24 12 C32 15 40 12 48 15 C56 18 64 15 72 18 C80 21 88 18 96 21 C104 24 112 22 120 25" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                        </article>
+                    </section>
+
+                    <div class="ex-dashboard-grid ex-dashboard-grid-analytics">
+                        <article class="card ex-dashboard-card ex-dashboard-revenue ex-dashboard-reveal">
+                            <div class="ex-dashboard-card-head">
+                                <div>
+                                    <h2 class="ex-dashboard-card-title">Revenue overview</h2>
+                                    <p class="ex-dashboard-card-sub">Gross revenue across all channels</p>
+                                </div>
+                                <div class="ex-dashboard-tabs" role="tablist" aria-label="Revenue period">
+                                    <button class="ex-dashboard-tab" id="period-tab-7d" type="button" role="tab" aria-controls="revenue-panel" aria-selected="false" tabindex="-1" data-period-tab="7d">7d</button>
+                                    <button class="ex-dashboard-tab" id="period-tab-30d" type="button" role="tab" aria-controls="revenue-panel" aria-selected="true" tabindex="0" data-period-tab="30d">30d</button>
+                                    <button class="ex-dashboard-tab" id="period-tab-12m" type="button" role="tab" aria-controls="revenue-panel" aria-selected="false" tabindex="-1" data-period-tab="12m">12m</button>
+                                </div>
+                            </div>
+
+                            <div class="ex-dashboard-revenue-panel" id="revenue-panel" role="tabpanel" aria-labelledby="period-tab-30d" tabindex="0">
+                                <div class="ex-dashboard-revenue-body">
+                                    <div class="ex-dashboard-revenue-summary">
+                                        <div>
+                                            <div class="ex-dashboard-revenue-value"><span class="ex-dashboard-currency">$</span><strong id="revenue-total">128,430</strong></div>
+                                            <div class="ex-dashboard-revenue-meta">
+                                                <span class="ex-dashboard-delta is-up" id="revenue-delta-chip"><span class="indicator is-upward" id="revenue-delta">18.2%</span></span>
+                                                <span class="ex-dashboard-revenue-compare" id="revenue-compare-summary">vs. $108,650 in the previous 30 days</span>
+                                            </div>
+                                        </div>
+                                        <div class="ex-dashboard-chart-legend" aria-label="Chart legend">
+                                            <span><span class="ex-dashboard-legend-dot is-current" aria-hidden="true"></span>This period</span>
+                                            <span id="revenue-compare-legend-item"><span class="ex-dashboard-legend-dot is-compare" aria-hidden="true"></span><span id="revenue-compare-legend">Previous 30 days</span></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ex-dashboard-chart">
+                                        <div class="ex-dashboard-chart-yaxis" id="revenue-yaxis" aria-hidden="true">
+                                            <span style="top: 5%">$20k</span>
+                                            <span style="top: 27.5%">$15k</span>
+                                            <span style="top: 50%">$10k</span>
+                                            <span style="top: 72.5%">$5k</span>
+                                            <span style="top: 95%">$0</span>
+                                        </div>
+                                        <div class="ex-dashboard-chart-main">
+                                            <div class="ex-dashboard-chart-plot" id="revenue-plot">
+                                                <svg class="ex-dashboard-chart-svg" viewBox="0 0 720 240" preserveAspectRatio="none" role="img" aria-labelledby="revenue-chart-title revenue-chart-desc">
+                                                    <title id="revenue-chart-title">Revenue over the last 30 days</title>
+                                                    <desc id="revenue-chart-desc">Revenue rose from $7,200 to $17,130 over the period, with a total of $128,430 compared with $108,650 in the previous period.</desc>
+                                                    <defs>
+                                                        <linearGradient id="revenue-area-fill" x1="0" y1="0" x2="0" y2="1">
+                                                            <stop offset="0%" stop-color="var(--ex-chart-accent)" stop-opacity=".26" />
+                                                            <stop offset="72%" stop-color="var(--ex-chart-accent)" stop-opacity=".05" />
+                                                            <stop offset="100%" stop-color="var(--ex-chart-accent)" stop-opacity="0" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                    <g class="ex-dashboard-chart-grid" aria-hidden="true">
+                                                        <line x1="0" y1="12" x2="720" y2="12" />
+                                                        <line x1="0" y1="66" x2="720" y2="66" />
+                                                        <line x1="0" y1="120" x2="720" y2="120" />
+                                                        <line x1="0" y1="174" x2="720" y2="174" />
+                                                        <line x1="0" y1="228" x2="720" y2="228" />
+                                                    </g>
+                                                    <path id="revenue-area" class="ex-dashboard-chart-area" d="M0 150.24 L65.45 140.52 L130.91 143.76 L196.36 126.48 L261.82 131.88 L327.27 113.52 L392.73 107.04 L458.18 115.68 L523.64 95.16 L589.09 100.56 L654.55 81.12 L720 43 L720 228 L0 228 Z" />
+                                                    <path id="revenue-compare-line" class="ex-dashboard-chart-compare" d="M0 158.88 L65.45 153.48 L130.91 151.32 L196.36 143.76 L261.82 139.44 L327.27 135.12 L392.73 129.72 L458.18 132.96 L523.64 117.84 L589.09 121.08 L654.55 94.2 L720 69.78" />
+                                                    <path id="revenue-line" class="ex-dashboard-chart-line" d="M0 150.24 L65.45 140.52 L130.91 143.76 L196.36 126.48 L261.82 131.88 L327.27 113.52 L392.73 107.04 L458.18 115.68 L523.64 95.16 L589.09 100.56 L654.55 81.12 L720 43" />
+                                                </svg>
+                                                <span class="ex-dashboard-chart-cursor" id="revenue-cursor" aria-hidden="true"></span>
+                                                <span class="ex-dashboard-chart-marker" id="revenue-marker" style="left: 100%; top: 17.92%" aria-hidden="true"></span>
+                                                <div class="ex-dashboard-chart-tooltip" id="revenue-tooltip" aria-hidden="true" hidden></div>
+                                            </div>
+                                            <div class="ex-dashboard-chart-xaxis" id="revenue-xaxis" aria-hidden="true">
+                                                <span>May 14</span>
+                                                <span>May 17</span>
+                                                <span>May 20</span>
+                                                <span>May 23</span>
+                                                <span>May 26</span>
+                                                <span>May 29</span>
+                                                <span>Jun 1</span>
+                                                <span>Jun 4</span>
+                                                <span>Jun 6</span>
+                                                <span>Jun 8</span>
+                                                <span>Jun 10</span>
+                                                <span>Jun 12</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ex-dashboard-chart-summary">
+                                        <div>
+                                            <span>Total this period</span>
+                                            <strong id="revenue-summary-total">$128,430</strong>
+                                        </div>
+                                        <div id="revenue-summary-compare-block">
+                                            <span>Previous period</span>
+                                            <strong id="revenue-summary-compare">$108,650</strong>
+                                        </div>
+                                        <div>
+                                            <span>Avg. daily</span>
+                                            <strong id="revenue-summary-daily">$4,281</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card ex-dashboard-card ex-dashboard-traffic ex-dashboard-reveal">
+                            <div class="ex-dashboard-card-head">
+                                <div>
+                                    <h2 class="ex-dashboard-card-title">Traffic sources</h2>
+                                    <p class="ex-dashboard-card-sub">How visitors found Pulse this month</p>
+                                </div>
+                                <span class="badge badge-success">Healthy</span>
+                            </div>
+
+                            <div class="ex-dashboard-donut-wrap">
+                                <svg class="ex-dashboard-donut" viewBox="0 0 160 160" role="img" aria-labelledby="traffic-chart-title traffic-chart-desc">
+                                    <title id="traffic-chart-title">Traffic sources</title>
+                                    <desc id="traffic-chart-desc">Organic search is 42 percent, direct is 26 percent, referral is 18 percent, social is 9 percent, and email is 5 percent of 48,290 sessions.</desc>
+                                    <g transform="rotate(-90 80 80)">
+                                        <circle class="ex-dashboard-donut-track" cx="80" cy="80" r="62" />
+                                        <circle class="ex-dashboard-donut-segment ex-dashboard-donut-1" cx="80" cy="80" r="62" stroke-dasharray="158.61 230.95" stroke-dashoffset="0" />
+                                        <circle class="ex-dashboard-donut-segment ex-dashboard-donut-2" cx="80" cy="80" r="62" stroke-dasharray="96.28 293.27" stroke-dashoffset="-163.61" />
+                                        <circle class="ex-dashboard-donut-segment ex-dashboard-donut-3" cx="80" cy="80" r="62" stroke-dasharray="65.12 324.44" stroke-dashoffset="-264.9" />
+                                        <circle class="ex-dashboard-donut-segment ex-dashboard-donut-4" cx="80" cy="80" r="62" stroke-dasharray="30.06 359.5" stroke-dashoffset="-335.02" />
+                                        <circle class="ex-dashboard-donut-segment ex-dashboard-donut-5" cx="80" cy="80" r="62" stroke-dasharray="14.48 375.08" stroke-dashoffset="-370.08" />
+                                    </g>
+                                </svg>
+                                <div class="ex-dashboard-donut-center">
+                                    <strong>48,290</strong>
+                                    <span>Sessions</span>
+                                </div>
+                            </div>
+
+                            <ul class="ex-dashboard-source-list">
+                                <li class="ex-dashboard-source">
+                                    <span class="ex-dashboard-source-dot ex-dashboard-donut-1" aria-hidden="true"></span>
+                                    <span class="ex-dashboard-source-name">Organic search</span>
+                                    <span class="ex-dashboard-source-value">42%</span>
+                                </li>
+                                <li class="ex-dashboard-source">
+                                    <span class="ex-dashboard-source-dot ex-dashboard-donut-2" aria-hidden="true"></span>
+                                    <span class="ex-dashboard-source-name">Direct</span>
+                                    <span class="ex-dashboard-source-value">26%</span>
+                                </li>
+                                <li class="ex-dashboard-source">
+                                    <span class="ex-dashboard-source-dot ex-dashboard-donut-3" aria-hidden="true"></span>
+                                    <span class="ex-dashboard-source-name">Referral</span>
+                                    <span class="ex-dashboard-source-value">18%</span>
+                                </li>
+                                <li class="ex-dashboard-source">
+                                    <span class="ex-dashboard-source-dot ex-dashboard-donut-4" aria-hidden="true"></span>
+                                    <span class="ex-dashboard-source-name">Social</span>
+                                    <span class="ex-dashboard-source-value">9%</span>
+                                </li>
+                                <li class="ex-dashboard-source">
+                                    <span class="ex-dashboard-source-dot ex-dashboard-donut-5" aria-hidden="true"></span>
+                                    <span class="ex-dashboard-source-name">Email</span>
+                                    <span class="ex-dashboard-source-value">5%</span>
+                                </li>
+                            </ul>
+
+                            <div class="ex-dashboard-insight">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                    <path d="M4 17 9 12l3 3 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15 7h4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <p><strong>Organic search</strong> is up <span class="indicator is-upward">12.4%</span> week over week.</p>
+                            </div>
+
+                            <div class="ex-dashboard-card-foot">
+                                <a class="ex-dashboard-card-link" href="/example.html">
+                                    View acquisition report
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <article class="card ex-dashboard-card ex-dashboard-table-card ex-dashboard-reveal">
+                        <div class="ex-dashboard-card-head ex-dashboard-card-head-padded">
+                            <div>
+                                <h2 class="ex-dashboard-card-title">Recent orders</h2>
+                                <p class="ex-dashboard-card-sub">1,284 orders this month. Updated 2 minutes ago.</p>
+                            </div>
+                            <div class="ex-dashboard-head-actions">
+                                <span class="badge badge-primary">Live</span>
+                                <a class="button button-text button-small" href="/example.html">View all orders</a>
+                            </div>
+                        </div>
+
+                        <div class="ex-dashboard-table-wrap">
+                            <table class="table ex-dashboard-table">
+                                <caption class="ex-dashboard-sr-only">Recent orders placed in the Acme Inc. workspace</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Order</th>
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col" class="ex-dashboard-th-amount">Amount</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col"><span class="ex-dashboard-sr-only">Actions</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ex-dashboard-cell-order" data-label="Order"><a class="ex-dashboard-order-id" href="/example.html">#PL-4821</a></td>
+                                        <td class="ex-dashboard-cell-customer" data-label="Customer">
+                                            <div class="ex-dashboard-customer">
+                                                <img class="ex-dashboard-avatar" src="../../images/avatar-ariana-cole.jpg" alt="" width="28" height="28" />
+                                                <span class="ex-dashboard-customer-name">Ariana Cole</span>
+                                            </div>
+                                        </td>
+                                        <td class="ex-dashboard-cell-product" data-label="Product">Aurora lamp</td>
+                                        <td class="ex-dashboard-cell-date" data-label="Date"><time datetime="2025-06-12">Jun 12</time></td>
+                                        <td class="ex-dashboard-cell-amount ex-dashboard-amount" data-label="Amount">$249.00</td>
+                                        <td class="ex-dashboard-cell-status" data-label="Status"><span class="badge badge-success">Paid</span></td>
+                                        <td class="ex-dashboard-cell-action">
+                                            <div class="ex-dashboard-row-menu" data-menu>
+                                                <button class="ex-dashboard-icon-button ex-dashboard-row-action" id="order-actions-4821" type="button" data-menu-trigger aria-haspopup="menu" aria-expanded="false" aria-controls="order-menu-4821" aria-label="Actions for order PL-4821">
+                                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <circle cx="5" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="12" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="19" cy="12" r="1.4" fill="currentColor" />
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-body ex-dashboard-row-popover" id="order-menu-4821" role="menu" aria-labelledby="order-actions-4821" data-menu-panel hidden>
+                                                    <a class="dropdown-item" href="/example.html" role="menuitem" tabindex="-1">View order details</a>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-copy-order="PL-4821">Copy order ID</button>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-toast="Invoice download started for order PL-4821.">Download invoice</button>
+                                                    <div class="dropdown-item-sep" role="separator"></div>
+                                                    <button class="dropdown-item is-danger" type="button" role="menuitem" tabindex="-1" data-toast="The refund flow is not wired up in this demo.">Refund order</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ex-dashboard-cell-order" data-label="Order"><a class="ex-dashboard-order-id" href="/example.html">#PL-4820</a></td>
+                                        <td class="ex-dashboard-cell-customer" data-label="Customer">
+                                            <div class="ex-dashboard-customer">
+                                                <img class="ex-dashboard-avatar" src="../../images/avatar-marcus-lee.jpg" alt="" width="28" height="28" />
+                                                <span class="ex-dashboard-customer-name">Marcus Lee</span>
+                                            </div>
+                                        </td>
+                                        <td class="ex-dashboard-cell-product" data-label="Product">Wireless headphones</td>
+                                        <td class="ex-dashboard-cell-date" data-label="Date"><time datetime="2025-06-12">Jun 12</time></td>
+                                        <td class="ex-dashboard-cell-amount ex-dashboard-amount" data-label="Amount">$189.00</td>
+                                        <td class="ex-dashboard-cell-status" data-label="Status"><span class="badge badge-warning">Pending</span></td>
+                                        <td class="ex-dashboard-cell-action">
+                                            <div class="ex-dashboard-row-menu" data-menu>
+                                                <button class="ex-dashboard-icon-button ex-dashboard-row-action" id="order-actions-4820" type="button" data-menu-trigger aria-haspopup="menu" aria-expanded="false" aria-controls="order-menu-4820" aria-label="Actions for order PL-4820">
+                                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <circle cx="5" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="12" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="19" cy="12" r="1.4" fill="currentColor" />
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-body ex-dashboard-row-popover" id="order-menu-4820" role="menu" aria-labelledby="order-actions-4820" data-menu-panel hidden>
+                                                    <a class="dropdown-item" href="/example.html" role="menuitem" tabindex="-1">View order details</a>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-copy-order="PL-4820">Copy order ID</button>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-toast="Invoice download started for order PL-4820.">Download invoice</button>
+                                                    <div class="dropdown-item-sep" role="separator"></div>
+                                                    <button class="dropdown-item is-danger" type="button" role="menuitem" tabindex="-1" data-toast="The refund flow is not wired up in this demo.">Refund order</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ex-dashboard-cell-order" data-label="Order"><a class="ex-dashboard-order-id" href="/example.html">#PL-4819</a></td>
+                                        <td class="ex-dashboard-cell-customer" data-label="Customer">
+                                            <div class="ex-dashboard-customer">
+                                                <img class="ex-dashboard-avatar" src="../../images/avatar-sofia-almeida.jpg" alt="" width="28" height="28" />
+                                                <span class="ex-dashboard-customer-name">Sofia Almeida</span>
+                                            </div>
+                                        </td>
+                                        <td class="ex-dashboard-cell-product" data-label="Product">Linen throw</td>
+                                        <td class="ex-dashboard-cell-date" data-label="Date"><time datetime="2025-06-11">Jun 11</time></td>
+                                        <td class="ex-dashboard-cell-amount ex-dashboard-amount" data-label="Amount">$128.00</td>
+                                        <td class="ex-dashboard-cell-status" data-label="Status"><span class="badge badge-success">Paid</span></td>
+                                        <td class="ex-dashboard-cell-action">
+                                            <div class="ex-dashboard-row-menu" data-menu>
+                                                <button class="ex-dashboard-icon-button ex-dashboard-row-action" id="order-actions-4819" type="button" data-menu-trigger aria-haspopup="menu" aria-expanded="false" aria-controls="order-menu-4819" aria-label="Actions for order PL-4819">
+                                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <circle cx="5" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="12" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="19" cy="12" r="1.4" fill="currentColor" />
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-body ex-dashboard-row-popover" id="order-menu-4819" role="menu" aria-labelledby="order-actions-4819" data-menu-panel hidden>
+                                                    <a class="dropdown-item" href="/example.html" role="menuitem" tabindex="-1">View order details</a>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-copy-order="PL-4819">Copy order ID</button>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-toast="Invoice download started for order PL-4819.">Download invoice</button>
+                                                    <div class="dropdown-item-sep" role="separator"></div>
+                                                    <button class="dropdown-item is-danger" type="button" role="menuitem" tabindex="-1" data-toast="The refund flow is not wired up in this demo.">Refund order</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ex-dashboard-cell-order" data-label="Order"><a class="ex-dashboard-order-id" href="/example.html">#PL-4818</a></td>
+                                        <td class="ex-dashboard-cell-customer" data-label="Customer">
+                                            <div class="ex-dashboard-customer">
+                                                <img class="ex-dashboard-avatar" src="../../images/avatar-tomas-ruiz.jpg" alt="" width="28" height="28" />
+                                                <span class="ex-dashboard-customer-name">Tomas Ruiz</span>
+                                            </div>
+                                        </td>
+                                        <td class="ex-dashboard-cell-product" data-label="Product">Stoneware set</td>
+                                        <td class="ex-dashboard-cell-date" data-label="Date"><time datetime="2025-06-11">Jun 11</time></td>
+                                        <td class="ex-dashboard-cell-amount ex-dashboard-amount" data-label="Amount">$96.00</td>
+                                        <td class="ex-dashboard-cell-status" data-label="Status"><span class="badge badge-danger">Refunded</span></td>
+                                        <td class="ex-dashboard-cell-action">
+                                            <div class="ex-dashboard-row-menu" data-menu>
+                                                <button class="ex-dashboard-icon-button ex-dashboard-row-action" id="order-actions-4818" type="button" data-menu-trigger aria-haspopup="menu" aria-expanded="false" aria-controls="order-menu-4818" aria-label="Actions for order PL-4818">
+                                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <circle cx="5" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="12" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="19" cy="12" r="1.4" fill="currentColor" />
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-body ex-dashboard-row-popover" id="order-menu-4818" role="menu" aria-labelledby="order-actions-4818" data-menu-panel hidden>
+                                                    <a class="dropdown-item" href="/example.html" role="menuitem" tabindex="-1">View order details</a>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-copy-order="PL-4818">Copy order ID</button>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-toast="Invoice download started for order PL-4818.">Download invoice</button>
+                                                    <div class="dropdown-item-sep" role="separator"></div>
+                                                    <button class="dropdown-item is-danger" type="button" role="menuitem" tabindex="-1" data-toast="The refund flow is not wired up in this demo.">Refund order</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ex-dashboard-cell-order" data-label="Order"><a class="ex-dashboard-order-id" href="/example.html">#PL-4817</a></td>
+                                        <td class="ex-dashboard-cell-customer" data-label="Customer">
+                                            <div class="ex-dashboard-customer">
+                                                <img class="ex-dashboard-avatar" src="../../images/avatar-aiko-tanaka.jpg" alt="" width="28" height="28" />
+                                                <span class="ex-dashboard-customer-name">Aiko Tanaka</span>
+                                            </div>
+                                        </td>
+                                        <td class="ex-dashboard-cell-product" data-label="Product">Travel backpack</td>
+                                        <td class="ex-dashboard-cell-date" data-label="Date"><time datetime="2025-06-10">Jun 10</time></td>
+                                        <td class="ex-dashboard-cell-amount ex-dashboard-amount" data-label="Amount">$164.00</td>
+                                        <td class="ex-dashboard-cell-status" data-label="Status"><span class="badge badge-success">Paid</span></td>
+                                        <td class="ex-dashboard-cell-action">
+                                            <div class="ex-dashboard-row-menu" data-menu>
+                                                <button class="ex-dashboard-icon-button ex-dashboard-row-action" id="order-actions-4817" type="button" data-menu-trigger aria-haspopup="menu" aria-expanded="false" aria-controls="order-menu-4817" aria-label="Actions for order PL-4817">
+                                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <circle cx="5" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="12" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="19" cy="12" r="1.4" fill="currentColor" />
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-body ex-dashboard-row-popover" id="order-menu-4817" role="menu" aria-labelledby="order-actions-4817" data-menu-panel hidden>
+                                                    <a class="dropdown-item" href="/example.html" role="menuitem" tabindex="-1">View order details</a>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-copy-order="PL-4817">Copy order ID</button>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-toast="Invoice download started for order PL-4817.">Download invoice</button>
+                                                    <div class="dropdown-item-sep" role="separator"></div>
+                                                    <button class="dropdown-item is-danger" type="button" role="menuitem" tabindex="-1" data-toast="The refund flow is not wired up in this demo.">Refund order</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ex-dashboard-cell-order" data-label="Order"><a class="ex-dashboard-order-id" href="/example.html">#PL-4816</a></td>
+                                        <td class="ex-dashboard-cell-customer" data-label="Customer">
+                                            <div class="ex-dashboard-customer">
+                                                <img class="ex-dashboard-avatar" src="../../images/avatar-ben-osei.jpg" alt="" width="28" height="28" />
+                                                <span class="ex-dashboard-customer-name">Ben Osei</span>
+                                            </div>
+                                        </td>
+                                        <td class="ex-dashboard-cell-product" data-label="Product">Desk organizer</td>
+                                        <td class="ex-dashboard-cell-date" data-label="Date"><time datetime="2025-06-10">Jun 10</time></td>
+                                        <td class="ex-dashboard-cell-amount ex-dashboard-amount" data-label="Amount">$72.00</td>
+                                        <td class="ex-dashboard-cell-status" data-label="Status"><span class="badge badge-success">Paid</span></td>
+                                        <td class="ex-dashboard-cell-action">
+                                            <div class="ex-dashboard-row-menu" data-menu>
+                                                <button class="ex-dashboard-icon-button ex-dashboard-row-action" id="order-actions-4816" type="button" data-menu-trigger aria-haspopup="menu" aria-expanded="false" aria-controls="order-menu-4816" aria-label="Actions for order PL-4816">
+                                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                                        <circle cx="5" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="12" cy="12" r="1.4" fill="currentColor" />
+                                                        <circle cx="19" cy="12" r="1.4" fill="currentColor" />
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-body ex-dashboard-row-popover" id="order-menu-4816" role="menu" aria-labelledby="order-actions-4816" data-menu-panel hidden>
+                                                    <a class="dropdown-item" href="/example.html" role="menuitem" tabindex="-1">View order details</a>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-copy-order="PL-4816">Copy order ID</button>
+                                                    <button class="dropdown-item" type="button" role="menuitem" tabindex="-1" data-toast="Invoice download started for order PL-4816.">Download invoice</button>
+                                                    <div class="dropdown-item-sep" role="separator"></div>
+                                                    <button class="dropdown-item is-danger" type="button" role="menuitem" tabindex="-1" data-toast="The refund flow is not wired up in this demo.">Refund order</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="ex-dashboard-table-foot">
+                            <span>Showing <strong>6</strong> of <strong>1,284</strong> orders</span>
+                            <a class="ex-dashboard-card-link" href="/example.html">
+                                Open order workspace
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                    <path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <div class="ex-dashboard-grid ex-dashboard-grid-split">
+                        <article class="card ex-dashboard-card ex-dashboard-products ex-dashboard-reveal">
+                            <div class="ex-dashboard-card-head">
+                                <div>
+                                    <h2 class="ex-dashboard-card-title">Top products</h2>
+                                    <p class="ex-dashboard-card-sub">By revenue in the last 30 days</p>
+                                </div>
+                                <a class="button button-text button-small" href="/example.html">View all</a>
+                            </div>
+
+                            <ol class="ex-dashboard-product-list">
+                                <li class="ex-dashboard-product">
+                                    <span class="ex-dashboard-product-rank">01</span>
+                                    <div class="ex-dashboard-product-main">
+                                        <div class="ex-dashboard-product-top">
+                                            <span class="ex-dashboard-product-name">Wireless headphones</span>
+                                            <span class="ex-dashboard-product-revenue">$41,820</span>
+                                        </div>
+                                        <progress class="ex-dashboard-progress" value="100" max="100" aria-label="Wireless headphones share of top product revenue">100%</progress>
+                                        <div class="ex-dashboard-product-meta">
+                                            <span>324 sold</span>
+                                            <span class="indicator is-upward">12.4%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ex-dashboard-product">
+                                    <span class="ex-dashboard-product-rank">02</span>
+                                    <div class="ex-dashboard-product-main">
+                                        <div class="ex-dashboard-product-top">
+                                            <span class="ex-dashboard-product-name">Aurora desk lamp</span>
+                                            <span class="ex-dashboard-product-revenue">$30,640</span>
+                                        </div>
+                                        <progress class="ex-dashboard-progress" value="73" max="100" aria-label="Aurora desk lamp share of top product revenue">73%</progress>
+                                        <div class="ex-dashboard-product-meta">
+                                            <span>218 sold</span>
+                                            <span class="indicator is-upward">8.1%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ex-dashboard-product">
+                                    <span class="ex-dashboard-product-rank">03</span>
+                                    <div class="ex-dashboard-product-main">
+                                        <div class="ex-dashboard-product-top">
+                                            <span class="ex-dashboard-product-name">Stoneware mug set</span>
+                                            <span class="ex-dashboard-product-revenue">$23,910</span>
+                                        </div>
+                                        <progress class="ex-dashboard-progress" value="57" max="100" aria-label="Stoneware mug set share of top product revenue">57%</progress>
+                                        <div class="ex-dashboard-product-meta">
+                                            <span>398 sold</span>
+                                            <span class="indicator is-upward">4.6%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ex-dashboard-product">
+                                    <span class="ex-dashboard-product-rank">04</span>
+                                    <div class="ex-dashboard-product-main">
+                                        <div class="ex-dashboard-product-top">
+                                            <span class="ex-dashboard-product-name">Linen throw blanket</span>
+                                            <span class="ex-dashboard-product-revenue">$17,260</span>
+                                        </div>
+                                        <progress class="ex-dashboard-progress" value="41" max="100" aria-label="Linen throw blanket share of top product revenue">41%</progress>
+                                        <div class="ex-dashboard-product-meta">
+                                            <span>142 sold</span>
+                                            <span class="indicator is-downward">1.8%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ex-dashboard-product">
+                                    <span class="ex-dashboard-product-rank">05</span>
+                                    <div class="ex-dashboard-product-main">
+                                        <div class="ex-dashboard-product-top">
+                                            <span class="ex-dashboard-product-name">Travel backpack</span>
+                                            <span class="ex-dashboard-product-revenue">$11,740</span>
+                                        </div>
+                                        <progress class="ex-dashboard-progress" value="28" max="100" aria-label="Travel backpack share of top product revenue">28%</progress>
+                                        <div class="ex-dashboard-product-meta">
+                                            <span>98 sold</span>
+                                            <span class="indicator is-upward">2.3%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+
+                            <div class="ex-dashboard-card-foot">
+                                <span>Catalog health <strong class="ex-dashboard-positive">Excellent</strong></span>
+                                <a class="ex-dashboard-card-link" href="/example.html">
+                                    Manage catalog
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="card ex-dashboard-card ex-dashboard-activity-card ex-dashboard-reveal">
+                            <div class="ex-dashboard-card-head">
+                                <div>
+                                    <h2 class="ex-dashboard-card-title">Team activity</h2>
+                                    <p class="ex-dashboard-card-sub">What your team shipped today</p>
+                                </div>
+                                <span class="ex-dashboard-activity-online"><span aria-hidden="true"></span>4 online</span>
+                            </div>
+
+                            <ul class="ex-dashboard-activity-list">
+                                <li class="ex-dashboard-activity">
+                                    <img class="ex-dashboard-avatar" src="../../images/avatar-priya-raman.jpg" alt="" width="32" height="32" />
+                                    <div class="ex-dashboard-activity-body">
+                                        <p><strong>Priya Raman</strong> approved a refund for <a href="/example.html">#PL-4818</a></p>
+                                        <time datetime="2025-06-12T09:29:00Z">12 min ago</time>
+                                    </div>
+                                </li>
+                                <li class="ex-dashboard-activity">
+                                    <img class="ex-dashboard-avatar" src="../../images/avatar-marcus-lee.jpg" alt="" width="32" height="32" />
+                                    <div class="ex-dashboard-activity-body">
+                                        <p><strong>Marcus Lee</strong> moved <a href="/example.html">Northwind Labs</a> to the Scale plan</p>
+                                        <time datetime="2025-06-12T09:03:00Z">38 min ago</time>
+                                    </div>
+                                </li>
+                                <li class="ex-dashboard-activity">
+                                    <img class="ex-dashboard-avatar" src="../../images/avatar-sofia-almeida.jpg" alt="" width="32" height="32" />
+                                    <div class="ex-dashboard-activity-body">
+                                        <p><strong>Sofia Almeida</strong> published the Q2 acquisition report</p>
+                                        <time datetime="2025-06-12T08:41:00Z">1 hr ago</time>
+                                    </div>
+                                </li>
+                                <li class="ex-dashboard-activity">
+                                    <img class="ex-dashboard-avatar" src="../../images/avatar-tomas-ruiz.jpg" alt="" width="32" height="32" />
+                                    <div class="ex-dashboard-activity-body">
+                                        <p><strong>Tomas Ruiz</strong> invited 3 teammates to the workspace</p>
+                                        <time datetime="2025-06-12T07:41:00Z">2 hrs ago</time>
+                                    </div>
+                                </li>
+                                <li class="ex-dashboard-activity">
+                                    <img class="ex-dashboard-avatar" src="../../images/avatar-aiko-tanaka.jpg" alt="" width="32" height="32" />
+                                    <div class="ex-dashboard-activity-body">
+                                        <p><strong>Aiko Tanaka</strong> flagged a churn risk on Harbor &amp; Co.</p>
+                                        <time datetime="2025-06-12T06:41:00Z">3 hrs ago</time>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="ex-dashboard-card-foot">
+                                <span>5 updates today</span>
+                                <a class="ex-dashboard-card-link" href="/example.html">
+                                    View all activity
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <footer class="ex-dashboard-footer">
+                        <p>Built with <a href="/example.html">roolith css</a> - Pulse Analytics demo</p>
+                        <p>Last updated <time datetime="2025-06-12T09:41:00Z">Jun 12, 2025 at 09:41 UTC</time></p>
+                    </footer>
+                </main>
+            </div>
+        </div>
+
+        <div class="modal ex-dashboard-modal" id="new-report-modal" aria-hidden="true">
+            <div class="modal-content ex-dashboard-modal-content" role="dialog" aria-modal="true" aria-labelledby="new-report-title" tabindex="-1">
+                <button class="modal-close ex-dashboard-modal-close" type="button" data-modal-close aria-label="Close new report dialog">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                    </svg>
+                </button>
+                <form class="form ex-dashboard-report-form" id="new-report-form">
+                    <h2 class="modal-header" id="new-report-title">New report</h2>
+                    <div class="modal-body">
+                        <p class="ex-dashboard-modal-lead">Build a report from your live Pulse data. It will appear in your report library as soon as it is created.</p>
+                        <div class="ex-dashboard-form-grid">
+                            <div class="form-field">
+                                <label class="form-label" for="report-name">Report name</label>
+                                <input class="form-input" id="report-name" name="report-name" type="text" value="Weekly performance" required />
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="report-type">Report type</label>
+                                <select class="form-select" id="report-type" name="report-type">
+                                    <option>Revenue</option>
+                                    <option>Acquisition</option>
+                                    <option>Customers</option>
+                                    <option>Orders</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="report-range">Date range</label>
+                            <select class="form-select" id="report-range" name="report-range">
+                                <option>Last 7 days</option>
+                                <option selected>Last 30 days</option>
+                                <option>Last 12 months</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <span class="form-label">Delivery</span>
+                            <label class="form-checkbox-label">
+                                <input class="form-check-input" type="checkbox" name="report-email" checked />
+                                Email me when the report is ready
+                            </label>
+                            <label class="form-checkbox-label">
+                                <input class="form-check-input" type="checkbox" name="report-schedule" />
+                                Add to scheduled reports
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer modal-footer-right">
+                        <button class="button button-outline" type="button" data-modal-close>Cancel</button>
+                        <button class="button button-primary" type="submit">Create report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="ex-dashboard-toast" id="dashboard-toast" role="status" aria-live="polite" hidden>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7" />
+                <path d="m8.5 12 2.4 2.4 4.6-4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="ex-dashboard-toast-text">Report created.</span>
+        </div>
+    </body>
+</html>

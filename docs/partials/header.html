@@ -86,6 +86,7 @@
                 <li class="nav-item"><a class="nav-link" href="/getting-started/introduction.html">Docs</a></li>
                 <li class="nav-item"><a class="nav-link" href="/components/accordion.html">Components</a></li>
                 <li class="nav-item"><a class="nav-link" href="/blocks/block-header.html">Blocks</a></li>
+                <li class="nav-item"><a class="nav-link" href="/example.html">Examples</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="/getting-started/theme-playground.html">Playground</a>
                 </li>
@@ -209,6 +210,40 @@
             </a>
             <button
                 type="button"
+                class="button button-icon button-text doc-nav-toggle"
+                data-doc-nav-toggle
+                aria-expanded="false"
+                aria-controls="doc-mobile-nav"
+                aria-label="Open site navigation">
+                <svg
+                    class="doc-icon-menu"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false">
+                    <path d="M3 5H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 12H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 19H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <svg
+                    class="doc-icon-close"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false">
+                    <path
+                        d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button
+                type="button"
                 class="button button-icon button-text doc-sidebar-toggle"
                 data-doc-sidebar-toggle
                 aria-expanded="false"
@@ -243,5 +278,23 @@
             </button>
         </div>
     </div>
+    <nav class="doc-mobile-nav" id="doc-mobile-nav" aria-label="Site navigation" hidden>
+        <ul class="nav nav-vertical doc-mobile-nav-list">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="/getting-started/introduction.html">Docs</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/components/accordion.html">Components</a></li>
+            <li class="nav-item"><a class="nav-link" href="/blocks/block-header.html">Blocks</a></li>
+            <li class="nav-item"><a class="nav-link" href="/example.html">Examples</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="/getting-started/theme-playground.html">Playground</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/im4aLL/roolith-css">GitHub</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="doc-mobile-nav-scrim" data-doc-nav-close aria-hidden="true" hidden></div>
 </header>
 <div class="doc-sidebar-scrim" data-doc-sidebar-close aria-hidden="true"></div>

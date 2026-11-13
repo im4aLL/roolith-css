@@ -1833,6 +1833,12 @@
                     "anchor": "components"
                 }
             ]
+        },
+        {
+            "title": "Three complete examples, one stylesheet",
+            "url": "/example.html",
+            "group": "Overview",
+            "headings": []
         }
     ]
 }

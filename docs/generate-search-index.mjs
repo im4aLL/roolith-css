@@ -4,8 +4,8 @@
  * Usage (from the repository root):
  *   node docs/generate-search-index.mjs
  *
- * The script walks every .html file under docs, skipping docs/partials
- * and any dot directory, and writes:
+ * The script walks every .html file under docs, skipping docs/partials,
+ * docs/examples, and any dot directory, and writes:
  *
  *   {
  *       "pages": [
@@ -19,7 +19,7 @@
  *   }
  *
  * title is the page <h1>, url is the docs-relative path with a leading slash,
- * group is derived from the folder (Overview for docs/index.html), and headings
+ * group is derived from the folder (Overview for docs/index.html and other root pages), and headings
  * are the h2 and h3 headings inside section.doc-section, ignoring demo and code
  * blocks so sample content does not pollute search. Each heading keeps its text
  * plus the anchor of its own id or the enclosing section id, so search results
@@ -35,9 +35,10 @@ import { fileURLToPath } from 'node:url';
 const docsDir = path.dirname(fileURLToPath(import.meta.url));
 const outputFile = path.join(docsDir, 'search-index.json');
 
-const ignoredDirectories = new Set(['partials']);
+const ignoredDirectories = new Set(['partials', 'examples']);
 
 const groupByFolder = new Map([
+    ['', 'Overview'],
     ['getting-started', 'Getting started'],
     ['components', 'Components'],
     ['blocks', 'Blocks'],

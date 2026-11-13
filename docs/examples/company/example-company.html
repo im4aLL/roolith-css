@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="en" class="theme-light">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Northwind - Finance operations, quietly on time</title>
+        <meta
+            name="description"
+            content="Northwind is the finance operations workspace that brings billing, payments, reconciliation, and forecasting into one calm place."
+        />
+        <meta name="theme-color" content="#faf7f1" />
+        <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+        />
+        <link rel="stylesheet" href="../../roolith-4.1.0.min.css" />
+        <link rel="stylesheet" href="example-company.css" />
+        <script src="example-company.js" defer></script>
+    </head>
+    <body class="ex-company">
+        <a class="ex-company-skip" href="#main">Skip to content</a>
+
+        <div class="ex-company-announce">
+            <div class="ex-company-shell ex-company-announce__inner">
+                <p class="ex-company-announce__text">
+                    <span class="ex-company-announce__pill">New</span>
+                    Northwind Forecast is now generally available.
+                </p>
+                <a class="ex-company-announce__link" href="#platform">
+                    Explore Forecast
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <header class="ex-company-header" data-header>
+            <div class="ex-company-shell ex-company-header__inner">
+                <a class="ex-company-brand" href="#main">
+                    <svg class="ex-company-brand__mark" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                        <rect class="ex-company-brand__mark-bg" width="32" height="32" rx="9" />
+                        <path class="ex-company-brand__mark-fg" d="M9.5 22.5v-13h3.2l6.8 8.6V9.5h3v13h-3.1l-6.9-8.7v8.7H9.5Z" />
+                    </svg>
+                    <span class="ex-company-brand__wordmark">Northwind</span>
+                </a>
+
+                <nav class="ex-company-header__nav" aria-label="Primary">
+                    <a class="ex-company-header__nav-link" href="#platform" data-nav-link>Platform</a>
+                    <a class="ex-company-header__nav-link" href="#solutions" data-nav-link>Solutions</a>
+                    <a class="ex-company-header__nav-link" href="#customers" data-nav-link>Customers</a>
+                    <a class="ex-company-header__nav-link" href="#pricing" data-nav-link>Pricing</a>
+                </nav>
+
+                <div class="ex-company-header__actions">
+                    <a class="ex-company-header__signin" href="#pricing">Sign in</a>
+                    <a class="button button-primary ex-company-button ex-company-header__cta" href="#pricing">Start free</a>
+                    <button
+                        class="ex-company-header__toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="company-mobile-menu"
+                        aria-label="Open menu"
+                        data-menu-toggle
+                    >
+                        <span class="ex-company-header__bars" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="ex-company-header__mobile" id="company-mobile-menu" hidden data-menu-panel>
+                <nav class="ex-company-header__mobile-nav" aria-label="Mobile primary">
+                    <a class="ex-company-header__mobile-link" href="#platform">
+                        Platform
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </a>
+                    <a class="ex-company-header__mobile-link" href="#solutions">
+                        Solutions
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </a>
+                    <a class="ex-company-header__mobile-link" href="#customers">
+                        Customers
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </a>
+                    <a class="ex-company-header__mobile-link" href="#pricing">
+                        Pricing
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </a>
+                </nav>
+                <div class="ex-company-header__mobile-actions">
+                    <a class="button ex-company-button ex-company-button--quiet" href="#pricing">Sign in</a>
+                    <a class="button button-primary ex-company-button" href="#pricing">Start free</a>
+                </div>
+                <p class="ex-company-header__mobile-note">14-day trial. No credit card required.</p>
+            </div>
+        </header>
+
+        <main id="main" tabindex="-1">
+            <section class="ex-company-hero" aria-labelledby="hero-title">
+                <div class="ex-company-hero__wash" aria-hidden="true"></div>
+                <div class="ex-company-shell">
+                    <div class="ex-company-hero__grid">
+                        <div class="ex-company-hero__copy">
+                            <p class="ex-company-hero__eyebrow">
+                                <span class="ex-company-hero__eyebrow-dot" aria-hidden="true"></span>
+                                Finance operations platform
+                            </p>
+                            <h1 class="ex-company-hero__title" id="hero-title">
+                                Every close,
+                                <em>quietly on time.</em>
+                            </h1>
+                            <p class="ex-company-hero__lede">
+                                Northwind connects billing, payments, reconciliation, and forecasting in one calm
+                                workspace, so your team spends less time chasing numbers and more time deciding what
+                                they mean.
+                            </p>
+                            <div class="ex-company-hero__actions">
+                                <a class="button button-primary ex-company-button" href="#pricing">
+                                    Start free
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg>
+                                </a>
+                                <a class="button ex-company-button ex-company-button--quiet" href="#how-it-works">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                        <circle cx="12" cy="12" r="9" />
+                                        <path d="M10 8.5 16 12l-6 3.5v-7Z" />
+                                    </svg>
+                                    See how it works
+                                </a>
+                            </div>
+                            <div class="ex-company-hero__trust">
+                                <div class="ex-company-hero__avatars" aria-hidden="true">
+                                    <img src="../../images/avatar-ariana-cole.jpg" alt="" width="72" height="72" />
+                                    <img src="../../images/avatar-ben-osei.jpg" alt="" width="72" height="72" />
+                                    <img src="../../images/avatar-mira-chen.jpg" alt="" width="72" height="72" />
+                                </div>
+                                <div class="ex-company-hero__rating">
+                                    <div class="ex-company-hero__stars" role="img" aria-label="Rated 4.9 out of 5">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                    </div>
+                                    <p><strong>4.9 / 5</strong> from 2,400+ finance teams</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="ex-company-hero__visual"
+                            role="img"
+                            aria-label="Northwind dashboard preview showing net revenue, cash collected, collection health, and recent payment activity."
+                        >
+                            <div class="ex-company-hero__glow" aria-hidden="true"></div>
+
+                            <div class="ex-company-app">
+                                <div class="ex-company-app__bar">
+                                    <span class="ex-company-app__dots" aria-hidden="true">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                    <span class="ex-company-app__url">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                            <rect x="4" y="10" width="16" height="10" rx="2" />
+                                            <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                                        </svg>
+                                        app.northwind.co/overview
+                                    </span>
+                                    <img
+                                        class="ex-company-app__avatar"
+                                        src="../../images/avatar-aiko-tanaka.jpg"
+                                        alt=""
+                                        width="40"
+                                        height="40"
+                                    />
+                                </div>
+
+                                <div class="ex-company-app__body">
+                                    <div class="ex-company-app__sidebar">
+                                        <div class="ex-company-app__workspace">
+                                            <span class="ex-company-app__workspace-mark" aria-hidden="true">M</span>
+                                            <span class="ex-company-app__workspace-name">
+                                                Meridian
+                                                <small>Finance</small>
+                                            </span>
+                                        </div>
+                                        <div class="ex-company-app__side-nav">
+                                            <span class="ex-company-app__side-item is-active">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></svg>
+                                                Overview
+                                            </span>
+                                            <span class="ex-company-app__side-item">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6V3Z" /><path d="M9 11h7M9 15h7" /></svg>
+                                                Invoices
+                                            </span>
+                                            <span class="ex-company-app__side-item">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="13" rx="2" /><path d="M3 10h18" /></svg>
+                                                Payments
+                                            </span>
+                                            <span class="ex-company-app__side-item">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 18V9M10 18V5M16 18v-6M22 18V3" /></svg>
+                                                Forecast
+                                            </span>
+                                        </div>
+                                        <div class="ex-company-app__side-foot">
+                                            <span class="ex-company-app__side-dot" aria-hidden="true"></span>
+                                            All systems calm
+                                        </div>
+                                    </div>
+
+                                    <div class="ex-company-app__main">
+                                        <div class="ex-company-app__head">
+                                            <div>
+                                                <p class="ex-company-app__kicker">Monday, 14 April</p>
+                                                <p class="ex-company-app__title">Good morning, Aiko</p>
+                                            </div>
+                                            <div class="ex-company-app__head-right">
+                                                <span class="badge badge-success">Live</span>
+                                                <span class="ex-company-app__new">New invoice</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="block-stat ex-company-app__stats">
+                                            <div class="block-stat-item">
+                                                <div class="block-stat-label">Net revenue</div>
+                                                <div class="block-stat-value">$128.4k</div>
+                                                <div class="block-stat-indicator">
+                                                    <span class="indicator is-upward">12.4%</span>
+                                                </div>
+                                            </div>
+                                            <div class="block-stat-item">
+                                                <div class="block-stat-label">Outstanding</div>
+                                                <div class="block-stat-value">$24.1k</div>
+                                                <div class="block-stat-indicator">
+                                                    <span class="indicator is-downward">6.2%</span>
+                                                </div>
+                                            </div>
+                                            <div class="block-stat-item">
+                                                <div class="block-stat-label">Runway</div>
+                                                <div class="block-stat-value">19 mo</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="ex-company-app__panels">
+                                            <div class="card ex-company-app__chart">
+                                                <div class="card-body">
+                                                    <div class="ex-company-app__card-head">
+                                                        <div>
+                                                            <p class="ex-company-app__card-label">Cash collected</p>
+                                                            <p class="ex-company-app__amount">$128,420</p>
+                                                        </div>
+                                                        <span class="indicator is-upward">12.4%</span>
+                                                    </div>
+                                                    <svg class="ex-company-app__chart-svg" viewBox="0 0 320 96" width="320" height="96" aria-hidden="true" focusable="false">
+                                                        <defs>
+                                                            <linearGradient id="ex-company-bar-gradient" x1="0" y1="0" x2="0" y2="1">
+                                                                <stop offset="0" stop-color="#a7b1ff" />
+                                                                <stop offset="1" stop-color="#5c67db" stop-opacity="0.35" />
+                                                            </linearGradient>
+                                                        </defs>
+                                                        <g stroke="rgba(255,255,255,0.08)" stroke-width="1">
+                                                            <line x1="0" y1="20" x2="320" y2="20" />
+                                                            <line x1="0" y1="44" x2="320" y2="44" />
+                                                            <line x1="0" y1="68" x2="320" y2="68" />
+                                                            <line x1="0" y1="92" x2="320" y2="92" />
+                                                        </g>
+                                                        <g fill="url(#ex-company-bar-gradient)">
+                                                            <rect x="10" y="58" width="18" height="34" rx="4" />
+                                                            <rect x="44" y="49" width="18" height="43" rx="4" />
+                                                            <rect x="78" y="63" width="18" height="29" rx="4" />
+                                                            <rect x="112" y="41" width="18" height="51" rx="4" />
+                                                            <rect x="146" y="52" width="18" height="40" rx="4" />
+                                                            <rect x="180" y="34" width="18" height="58" rx="4" />
+                                                            <rect x="214" y="46" width="18" height="46" rx="4" />
+                                                            <rect x="248" y="28" width="18" height="64" rx="4" />
+                                                            <rect x="282" y="15" width="18" height="77" rx="4" />
+                                                        </g>
+                                                        <rect x="282" y="15" width="18" height="77" rx="4" fill="#c8cfff" />
+                                                    </svg>
+                                                    <div class="ex-company-app__legend" aria-hidden="true">
+                                                        <span><i></i>This year</span>
+                                                        <span><i class="is-muted"></i>Last year</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card ex-company-app__health">
+                                                <div class="card-body">
+                                                    <p class="ex-company-app__card-label">Collection health</p>
+                                                    <div class="ex-company-app__ring" style="--ex-company-ring: 94">
+                                                        <span>94%</span>
+                                                    </div>
+                                                    <p class="ex-company-app__health-line">142 of 150 matched</p>
+                                                    <p class="ex-company-app__health-note">8 exceptions remain</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card ex-company-app__activity">
+                                            <div class="card-body">
+                                                <div class="ex-company-app__activity-head">
+                                                    <p>Recent activity</p>
+                                                    <span>View all</span>
+                                                </div>
+                                                <div class="ex-company-app__activity-row">
+                                                    <img src="../../images/avatar-ariana-cole.jpg" alt="" width="56" height="56" />
+                                                    <div class="ex-company-app__activity-copy">
+                                                        <p>Ariana Cole approved <span>INV-2048</span></p>
+                                                        <p class="ex-company-app__activity-time">2 minutes ago</p>
+                                                    </div>
+                                                    <span class="ex-company-app__activity-amount">$4,200</span>
+                                                </div>
+                                                <div class="ex-company-app__activity-row">
+                                                    <img src="../../images/avatar-ben-osei.jpg" alt="" width="56" height="56" />
+                                                    <div class="ex-company-app__activity-copy">
+                                                        <p>Ben Osei matched a payment</p>
+                                                        <p class="ex-company-app__activity-time">8 minutes ago</p>
+                                                    </div>
+                                                    <span class="ex-company-app__activity-amount">$12,480</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card ex-company-float ex-company-float--payment">
+                                <div class="card-body">
+                                    <span class="ex-company-float__icon" aria-hidden="true">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                            <path d="m5 13 4 4L19 7" />
+                                        </svg>
+                                    </span>
+                                    <span class="ex-company-float__copy">
+                                        <span class="ex-company-float__label">Payment received</span>
+                                        <strong class="ex-company-float__value">$12,480</strong>
+                                        <span class="ex-company-float__meta">Aiko Tanaka / just now</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="card ex-company-float ex-company-float--forecast">
+                                <div class="card-body">
+                                    <span class="ex-company-float__label">Forecast confidence</span>
+                                    <strong class="ex-company-float__value">98.2%</strong>
+                                    <svg width="132" height="28" viewBox="0 0 132 28" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M2 23 22 18 38 20 56 12 74 15 92 8 110 10 130 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ex-company-proof" aria-label="Customer logos">
+                <div class="ex-company-shell">
+                    <p class="ex-company-proof__label">Trusted by operators at</p>
+                    <ul class="ex-company-proof__list">
+                        <li><span class="ex-company-proof__logo ex-company-proof__logo--serif">Meridian</span></li>
+                        <li><span class="ex-company-proof__logo ex-company-proof__logo--tracking">ALTO</span></li>
+                        <li><span class="ex-company-proof__logo ex-company-proof__logo--bold">Kestrel</span></li>
+                        <li><span class="ex-company-proof__logo ex-company-proof__logo--light">Lumen</span></li>
+                        <li><span class="ex-company-proof__logo ex-company-proof__logo--wide">Arbor</span></li>
+                        <li>
+                            <span class="ex-company-proof__logo ex-company-proof__logo--star">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                Northstar
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="ex-company-section ex-company-features" id="platform" aria-labelledby="platform-title">
+                <div class="ex-company-shell">
+                    <div class="ex-company-section__head" data-reveal>
+                        <p class="ex-company-section__eyebrow">Platform</p>
+                        <h2 class="ex-company-section__title" id="platform-title">
+                            One calm place for every
+                            <em>moving number.</em>
+                        </h2>
+                        <p class="ex-company-section__lede">
+                            Replace the tabs, exports, and side spreadsheets with a workspace that keeps the whole
+                            finance picture in step.
+                        </p>
+                    </div>
+
+                    <div class="row ex-company-features__row">
+                        <div class="medium-6 large-4 ex-company-features__col">
+                            <article class="card ex-company-feature" data-reveal>
+                                <div class="card-body ex-company-feature__body">
+                                    <span class="ex-company-feature__icon" aria-hidden="true">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                            <path d="M5 4h11l3 3v13H5V4Z" />
+                                            <path d="M8 9h8M8 13h8M8 17h5" />
+                                        </svg>
+                                    </span>
+                                    <h3 class="ex-company-feature__title">Unified ledger</h3>
+                                    <p class="ex-company-feature__text">
+                                        Every invoice, payout, fee, and refund in one reconciled timeline, with the
+                                        source record always one click away.
+                                    </p>
+                                    <a class="ex-company-feature__link" href="#solutions">
+                                        Explore the ledger
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="medium-6 large-4 ex-company-features__col">
+                            <article class="card ex-company-feature" data-reveal>
+                                <div class="card-body ex-company-feature__body">
+                                    <span class="ex-company-feature__icon" aria-hidden="true">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                            <path d="M3 17 9 11l4 4 8-8" />
+                                            <path d="M15 7h6v6" />
+                                        </svg>
+                                    </span>
+                                    <h3 class="ex-company-feature__title">Cash forecasting</h3>
+                                    <p class="ex-company-feature__text">
+                                        See 90 days ahead with models trained on your own payment history, not a generic
+                                        industry average.
+                                    </p>
+                                    <a class="ex-company-feature__link" href="#solutions">
+                                        See forecasting
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="medium-6 large-4 ex-company-features__col">
+                            <article class="card ex-company-feature" data-reveal>
+                                <div class="card-body ex-company-feature__body">
+                                    <span class="ex-company-feature__icon" aria-hidden="true">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                            <circle cx="6" cy="6" r="2.5" />
+                                            <circle cx="18" cy="18" r="2.5" />
+                                            <path d="M8.5 6H14a4 4 0 0 1 0 8H9a4 4 0 0 0 0 8h6.5" />
+                                        </svg>
+                                    </span>
+                                    <h3 class="ex-company-feature__title">Approval workflows</h3>
+                                    <p class="ex-company-feature__text">
+                                        Route spend to the right approver with policy-aware rules, clear limits, and a
+                                        full decision trail.
+                                    </p>
+                                    <a class="ex-company-feature__link" href="#solutions">
+                                        Build a workflow
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="medium-6 large-4 ex-company-features__col">
+                            <article class="card ex-company-feature" data-reveal>
+                                <div class="card-body ex-company-feature__body">
+                                    <span class="ex-company-feature__icon" aria-hidden="true">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                            <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+                                            <path d="m3 12 9 5 9-5M3 16l9 5 9-5" />
+                                        </svg>
+                                    </span>
+                                    <h3 class="ex-company-feature__title">Multi-entity close</h3>
+                                    <p class="ex-company-feature__text">
+                                        Consolidate subsidiaries and currencies without the spreadsheet gymnastics or
+                                        the late-night reconciliation pass.
+                                    </p>
+                                    <a class="ex-company-feature__link" href="#solutions">
+                                        Close across entities
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="medium-6 large-4 ex-company-features__col">
+                            <article class="card ex-company-feature" data-reveal>
+                                <div class="card-body ex-company-feature__body">
+                                    <span class="ex-company-feature__icon" aria-hidden="true">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                            <path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3Z" />
+                                            <path d="m8.5 12 2.3 2.3 4.7-4.6" />
+                                        </svg>
+                                    </span>
+                                    <h3 class="ex-company-feature__title">Audit-ready trails</h3>
+                                    <p class="ex-company-feature__text">
+                                        Every change is logged, attributed, and exportable in one click, so audit
+                                        season stops arriving as a surprise.
+                                    </p>
+                                    <a class="ex-company-feature__link" href="#solutions">
+                                        See the audit trail
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="medium-6 large-4 ex-company-features__col">
+                            <article class="card ex-company-feature" data-reveal>
+                                <div class="card-body ex-company-feature__body">
+                                    <span class="ex-company-feature__icon" aria-hidden="true">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                            <path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" />
+                                        </svg>
+                                    </span>
+                                    <h3 class="ex-company-feature__title">Open API</h3>
+                                    <p class="ex-company-feature__text">
+                                        Push and pull every object with a typed, documented API, webhooks, and an SDK
+                                        your engineers will actually enjoy.
+                                    </p>
+                                    <a class="ex-company-feature__link" href="#solutions">
+                                        Read the API docs
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ex-company-section ex-company-section--tint ex-company-automation" id="solutions" aria-labelledby="solutions-title">
+                <div class="ex-company-shell">
+                    <div class="ex-company-split">
+                        <div class="ex-company-split__copy" data-reveal>
+                            <p class="ex-company-section__eyebrow">Automation</p>
+                            <h2 class="ex-company-section__title" id="solutions-title">
+                                Reconciliation that
+                                <em>finishes itself.</em>
+                            </h2>
+                            <p class="ex-company-section__lede">
+                                Northwind matches payments to invoices, flags the genuine exceptions, and learns your
+                                rules as it goes. Your team reviews a short list, not a hundred rows.
+                            </p>
+                            <ul class="ex-company-checklist">
+                                <li>
+                                    <span class="ex-company-checklist__icon" aria-hidden="true">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m5 13 4 4L19 7" /></svg>
+                                    </span>
+                                    99.98% match accuracy across 42 currencies
+                                </li>
+                                <li>
+                                    <span class="ex-company-checklist__icon" aria-hidden="true">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m5 13 4 4L19 7" /></svg>
+                                    </span>
+                                    Exceptions grouped by root cause, not by date
+                                </li>
+                                <li>
+                                    <span class="ex-company-checklist__icon" aria-hidden="true">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m5 13 4 4L19 7" /></svg>
+                                    </span>
+                                    A complete audit note written for every match
+                                </li>
+                            </ul>
+                            <a class="ex-company-text-link" href="#how-it-works">
+                                See automation in action
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                            </a>
+                        </div>
+
+                        <div class="ex-company-split__visual" data-reveal>
+                            <div class="card ex-company-panel">
+                                <div class="card-body ex-company-panel__body">
+                                    <div class="ex-company-panel__head">
+                                        <div>
+                                            <p class="ex-company-panel__kicker">Reconciliation / April</p>
+                                            <p class="ex-company-panel__title">Northwind ledger</p>
+                                        </div>
+                                        <span class="badge badge-success">Auto</span>
+                                    </div>
+
+                                    <div class="tab ex-company-tabs" data-tabs>
+                                        <div class="tab-list ex-company-tabs__list" role="tablist" aria-label="Reconciliation views">
+                                            <button
+                                                class="tab-title ex-company-tabs__tab"
+                                                type="button"
+                                                role="tab"
+                                                id="recon-tab-matches"
+                                                aria-controls="recon-panel-matches"
+                                                aria-selected="true"
+                                                tabindex="0"
+                                            >
+                                                Matches
+                                            </button>
+                                            <button
+                                                class="tab-title ex-company-tabs__tab"
+                                                type="button"
+                                                role="tab"
+                                                id="recon-tab-exceptions"
+                                                aria-controls="recon-panel-exceptions"
+                                                aria-selected="false"
+                                                tabindex="-1"
+                                            >
+                                                Exceptions
+                                            </button>
+                                            <button
+                                                class="tab-title ex-company-tabs__tab"
+                                                type="button"
+                                                role="tab"
+                                                id="recon-tab-activity"
+                                                aria-controls="recon-panel-activity"
+                                                aria-selected="false"
+                                                tabindex="-1"
+                                            >
+                                                Activity
+                                            </button>
+                                        </div>
+
+                                        <div
+                                            class="tab-content active ex-company-tabs__panel"
+                                            id="recon-panel-matches"
+                                            role="tabpanel"
+                                            aria-labelledby="recon-tab-matches"
+                                            tabindex="0"
+                                        >
+                                            <div class="ex-company-match__summary">
+                                                <span>142 of 150 matched automatically</span>
+                                                <strong>94%</strong>
+                                            </div>
+                                            <progress class="ex-company-progress progress-primary" value="142" max="150" aria-label="142 of 150 payments matched automatically"></progress>
+                                            <div class="ex-company-match">
+                                                <div class="ex-company-match__row">
+                                                    <img class="ex-company-match__avatar" src="../../images/avatar-aiko-tanaka.jpg" alt="" width="56" height="56" />
+                                                    <span class="ex-company-match__who">
+                                                        <strong>Aiko Tanaka</strong>
+                                                        <span>INV-2048 / Northwind</span>
+                                                    </span>
+                                                    <span class="ex-company-match__amount">$4,200</span>
+                                                    <span class="badge badge-success">Matched</span>
+                                                </div>
+                                                <div class="ex-company-match__row">
+                                                    <img class="ex-company-match__avatar" src="../../images/avatar-sofia-almeida.jpg" alt="" width="56" height="56" />
+                                                    <span class="ex-company-match__who">
+                                                        <strong>Sofia Almeida</strong>
+                                                        <span>INV-2049 / Meridian</span>
+                                                    </span>
+                                                    <span class="ex-company-match__amount">$7,840</span>
+                                                    <span class="badge badge-success">Matched</span>
+                                                </div>
+                                                <div class="ex-company-match__row">
+                                                    <img class="ex-company-match__avatar" src="../../images/avatar-tomas-ruiz.jpg" alt="" width="56" height="56" />
+                                                    <span class="ex-company-match__who">
+                                                        <strong>Tomas Ruiz</strong>
+                                                        <span>INV-2051 / Alto</span>
+                                                    </span>
+                                                    <span class="ex-company-match__amount">$2,960</span>
+                                                    <span class="badge badge-success">Matched</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="tab-content ex-company-tabs__panel"
+                                            id="recon-panel-exceptions"
+                                            role="tabpanel"
+                                            aria-labelledby="recon-tab-exceptions"
+                                            tabindex="0"
+                                        >
+                                            <div class="ex-company-match__summary">
+                                                <span>8 exceptions need a human</span>
+                                                <strong>2 priorities</strong>
+                                            </div>
+                                            <progress class="ex-company-progress progress-warning" value="8" max="150" aria-label="8 of 150 payments need review"></progress>
+                                            <div class="ex-company-match">
+                                                <div class="ex-company-match__row">
+                                                    <span class="ex-company-match__glyph ex-company-match__glyph--warning" aria-hidden="true">!</span>
+                                                    <span class="ex-company-match__who">
+                                                        <strong>INV-2054 / Kestrel</strong>
+                                                        <span>Amount differs by $120.00</span>
+                                                    </span>
+                                                    <span class="ex-company-match__amount">$9,120</span>
+                                                    <span class="badge badge-warning">Review</span>
+                                                </div>
+                                                <div class="ex-company-match__row">
+                                                    <span class="ex-company-match__glyph ex-company-match__glyph--warning" aria-hidden="true">!</span>
+                                                    <span class="ex-company-match__who">
+                                                        <strong>INV-2057 / Lumen</strong>
+                                                        <span>Payment arrived in two parts</span>
+                                                    </span>
+                                                    <span class="ex-company-match__amount">$3,400</span>
+                                                    <span class="badge badge-warning">Review</span>
+                                                </div>
+                                                <div class="ex-company-match__row">
+                                                    <span class="ex-company-match__glyph ex-company-match__glyph--warning" aria-hidden="true">!</span>
+                                                    <span class="ex-company-match__who">
+                                                        <strong>INV-2061 / Arbor</strong>
+                                                        <span>Missing remittance reference</span>
+                                                    </span>
+                                                    <span class="ex-company-match__amount">$1,280</span>
+                                                    <span class="badge badge-warning">Review</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="tab-content ex-company-tabs__panel"
+                                            id="recon-panel-activity"
+                                            role="tabpanel"
+                                            aria-labelledby="recon-tab-activity"
+                                            tabindex="0"
+                                        >
+                                            <div class="ex-company-match__summary">
+                                                <span>Today in the ledger</span>
+                                                <strong>18 events</strong>
+                                            </div>
+                                            <div class="ex-company-match">
+                                                <div class="ex-company-match__row">
+                                                    <img class="ex-company-match__avatar" src="../../images/avatar-dana-whitfield.jpg" alt="" width="56" height="56" />
+                                                    <span class="ex-company-match__who">
+                                                        <strong>Dana Whitfield</strong>
+                                                        <span>Approved the April close checklist</span>
+                                                    </span>
+                                                    <span class="ex-company-match__time">09:42</span>
+                                                </div>
+                                                <div class="ex-company-match__row">
+                                                    <img class="ex-company-match__avatar" src="../../images/avatar-marcus-lee.jpg" alt="" width="56" height="56" />
+                                                    <span class="ex-company-match__who">
+                                                        <strong>Marcus Lee</strong>
+                                                        <span>Resolved INV-2054 amount difference</span>
+                                                    </span>
+                                                    <span class="ex-company-match__time">09:18</span>
+                                                </div>
+                                                <div class="ex-company-match__row">
+                                                    <img class="ex-company-match__avatar" src="../../images/avatar-priya-raman.jpg" alt="" width="56" height="56" />
+                                                    <span class="ex-company-match__who">
+                                                        <strong>Priya Raman</strong>
+                                                        <span>Exported the audit pack</span>
+                                                    </span>
+                                                    <span class="ex-company-match__time">08:56</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ex-company-section ex-company-process" id="how-it-works" aria-labelledby="process-title">
+                <div class="ex-company-shell">
+                    <div class="ex-company-section__head ex-company-section__head--center" data-reveal>
+                        <p class="ex-company-section__eyebrow">How it works</p>
+                        <h2 class="ex-company-section__title" id="process-title">
+                            Three steps to a
+                            <em>quieter close.</em>
+                        </h2>
+                    </div>
+                    <ol class="ex-company-steps">
+                        <li class="ex-company-steps__item" data-reveal>
+                            <span class="ex-company-steps__num" aria-hidden="true">01</span>
+                            <h3 class="ex-company-steps__title">Connect your stack</h3>
+                            <p class="ex-company-steps__text">
+                                Link your bank, billing tool, and ledger in minutes. Northwind starts learning your
+                                payment patterns immediately.
+                            </p>
+                        </li>
+                        <li class="ex-company-steps__item" data-reveal>
+                            <span class="ex-company-steps__num" aria-hidden="true">02</span>
+                            <h3 class="ex-company-steps__title">Set your rules</h3>
+                            <p class="ex-company-steps__text">
+                                Choose how matches, approvals, and exceptions should behave. Every rule is written in
+                                plain language and easy to revise.
+                            </p>
+                        </li>
+                        <li class="ex-company-steps__item" data-reveal>
+                            <span class="ex-company-steps__num" aria-hidden="true">03</span>
+                            <h3 class="ex-company-steps__title">Close with confidence</h3>
+                            <p class="ex-company-steps__text">
+                                Watch the ledger reconcile itself, review the short exception list, and sign off before
+                                the coffee goes cold.
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="ex-company-stats" aria-labelledby="stats-title">
+                <div class="ex-company-shell">
+                    <div class="ex-company-section__head ex-company-section__head--center ex-company-stats__head" data-reveal>
+                        <p class="ex-company-section__eyebrow ex-company-section__eyebrow--light">By the numbers</p>
+                        <h2 class="ex-company-section__title ex-company-section__title--light" id="stats-title">
+                            Quiet software.
+                            <em>Loud results.</em>
+                        </h2>
+                    </div>
+                    <div class="ex-company-stats__grid">
+                        <div class="ex-company-stats__item" data-reveal>
+                            <p class="ex-company-stats__value" aria-hidden="true">
+                                <span data-counter data-counter-target="2.4" data-counter-decimals="1">2.4</span>
+                                <span class="ex-company-stats__unit">B</span>
+                            </p>
+                            <span class="ex-company-sr-only">2.4 billion payments reconciled</span>
+                            <p class="ex-company-stats__label">Payments reconciled</p>
+                            <p class="ex-company-stats__note">Across 42 currencies and 18 markets</p>
+                        </div>
+                        <div class="ex-company-stats__item" data-reveal>
+                            <p class="ex-company-stats__value" aria-hidden="true">
+                                <span data-counter data-counter-target="99.98" data-counter-decimals="2">99.98</span>
+                                <span class="ex-company-stats__unit">%</span>
+                            </p>
+                            <span class="ex-company-sr-only">99.98 percent match accuracy</span>
+                            <p class="ex-company-stats__label">Match accuracy</p>
+                            <p class="ex-company-stats__note">Learned from each customer's own ledger</p>
+                        </div>
+                        <div class="ex-company-stats__item" data-reveal>
+                            <p class="ex-company-stats__value" aria-hidden="true">
+                                <span data-counter data-counter-target="6.5" data-counter-decimals="1">6.5</span>
+                                <span class="ex-company-stats__unit">days</span>
+                            </p>
+                            <span class="ex-company-sr-only">6.5 days average close</span>
+                            <p class="ex-company-stats__label">Average close</p>
+                            <p class="ex-company-stats__note">Down from 14 days before Northwind</p>
+                        </div>
+                        <div class="ex-company-stats__item" data-reveal>
+                            <p class="ex-company-stats__value" aria-hidden="true">
+                                <span data-counter data-counter-target="38" data-counter-decimals="0">38</span>
+                                <span class="ex-company-stats__unit">%</span>
+                            </p>
+                            <span class="ex-company-sr-only">38 percent less spreadsheet time</span>
+                            <p class="ex-company-stats__label">Less spreadsheet time</p>
+                            <p class="ex-company-stats__note">Measured across 300 finance teams</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ex-company-section ex-company-testimonials" id="customers" aria-labelledby="customers-title">
+                <div class="ex-company-shell">
+                    <div class="ex-company-section__head" data-reveal>
+                        <p class="ex-company-section__eyebrow">Customers</p>
+                        <h2 class="ex-company-section__title" id="customers-title">
+                            Trusted where the numbers
+                            <em>really matter.</em>
+                        </h2>
+                    </div>
+                    <div class="ex-company-quotes__grid">
+                        <figure class="ex-company-pullquote" data-reveal>
+                            <span class="ex-company-pullquote__mark" aria-hidden="true">&ldquo;</span>
+                            <blockquote class="ex-company-pullquote__body">
+                                <p>
+                                    Northwind gave us back the first week of every month. The close is no longer an
+                                    event. It is <em>quietly done.</em>
+                                </p>
+                            </blockquote>
+                            <figcaption class="ex-company-pullquote__person">
+                                <img src="../../images/avatar-dana-whitfield.jpg" alt="" width="104" height="104" />
+                                <span class="ex-company-pullquote__meta">
+                                    <strong>Dana Whitfield</strong>
+                                    <span>VP Finance, Meridian</span>
+                                </span>
+                            </figcaption>
+                        </figure>
+
+                        <div class="ex-company-quotes__aside">
+                            <article class="card ex-company-quote" data-reveal>
+                                <div class="card-body ex-company-quote__body">
+                                    <div class="ex-company-quote__stars" role="img" aria-label="5 out of 5 stars">
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                    </div>
+                                    <p class="ex-company-quote__text">
+                                        We cut our close from 12 days to 5 without adding headcount. The team finally
+                                        trusts the number on the first read.
+                                    </p>
+                                    <div class="ex-company-quote__person">
+                                        <img src="../../images/avatar-marcus-lee.jpg" alt="" width="64" height="64" />
+                                        <span>
+                                            <strong>Marcus Lee</strong>
+                                            <span>Controller, Kestrel</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="card ex-company-quote" data-reveal>
+                                <div class="card-body ex-company-quote__body">
+                                    <div class="ex-company-quote__stars" role="img" aria-label="5 out of 5 stars">
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z" /></svg>
+                                    </div>
+                                    <p class="ex-company-quote__text">
+                                        The exception list is the product. We open it on Monday, clear six items, and
+                                        the rest of the week belongs to actual finance work.
+                                    </p>
+                                    <div class="ex-company-quote__person">
+                                        <img src="../../images/avatar-priya-raman.jpg" alt="" width="64" height="64" />
+                                        <span>
+                                            <strong>Priya Raman</strong>
+                                            <span>Head of Operations, Lumen</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ex-company-cta" id="pricing" aria-labelledby="pricing-title">
+                <div class="ex-company-shell">
+                    <div class="ex-company-cta__panel" data-reveal>
+                        <div class="ex-company-cta__copy">
+                            <p class="ex-company-section__eyebrow ex-company-section__eyebrow--light">Start today</p>
+                            <h2 class="ex-company-section__title ex-company-section__title--light" id="pricing-title">
+                                Make your next close
+                                <em>the calmest one yet.</em>
+                            </h2>
+                            <p class="ex-company-cta__lede">
+                                Bring your ledger, your bank, and your team into one workspace. See the difference in
+                                your first close, not your third quarter.
+                            </p>
+                            <div class="ex-company-cta__actions">
+                                <a class="button ex-company-button ex-company-button--light" href="#newsletter">
+                                    Start free
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                                </a>
+                                <a class="button ex-company-button ex-company-button--ghost" href="#newsletter">Talk to sales</a>
+                            </div>
+                            <p class="ex-company-cta__note">14-day trial / No credit card required / SOC 2 Type II</p>
+                        </div>
+
+                        <aside class="ex-company-price" aria-label="Growth plan pricing">
+                            <div class="ex-company-price__head">
+                                <span class="ex-company-price__name">Growth</span>
+                                <span class="badge ex-company-price__badge">Most popular</span>
+                            </div>
+                            <p class="ex-company-price__value">$24<span>/ seat / month</span></p>
+                            <p class="ex-company-price__desc">For teams ready to retire the close spreadsheet.</p>
+                            <ul class="ex-company-price__list">
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4 4L19 7" /></svg>
+                                    Unlimited entities and currencies
+                                </li>
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4 4L19 7" /></svg>
+                                    Automated reconciliation
+                                </li>
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4 4L19 7" /></svg>
+                                    90-day cash forecast
+                                </li>
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4 4L19 7" /></svg>
+                                    Audit-ready exports and API
+                                </li>
+                            </ul>
+                            <a class="button ex-company-button ex-company-button--light ex-company-price__cta" href="#newsletter">Start 14-day trial</a>
+                            <p class="ex-company-price__small">Billed annually. Cancel anytime.</p>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="ex-company-footer" id="newsletter">
+            <div class="ex-company-shell">
+                <div class="ex-company-footer__top">
+                    <div class="ex-company-footer__brand">
+                        <a class="ex-company-brand ex-company-brand--footer" href="#main">
+                            <svg class="ex-company-brand__mark" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                                <rect class="ex-company-brand__mark-bg" width="32" height="32" rx="9" />
+                                <path class="ex-company-brand__mark-fg" d="M9.5 22.5v-13h3.2l6.8 8.6V9.5h3v13h-3.1l-6.9-8.7v8.7H9.5Z" />
+                            </svg>
+                            <span class="ex-company-brand__wordmark">Northwind</span>
+                        </a>
+                        <p class="ex-company-footer__desc">
+                            The finance operations workspace for teams who would rather steer the business than chase
+                            the spreadsheet.
+                        </p>
+
+                        <form class="ex-company-footer__newsletter" data-newsletter>
+                            <label class="ex-company-footer__label" for="ex-company-email">The monthly close</label>
+                            <div class="ex-company-footer__field">
+                                <input
+                                    class="form-input"
+                                    id="ex-company-email"
+                                    type="email"
+                                    name="email"
+                                    placeholder="you@company.com"
+                                    autocomplete="email"
+                                    required
+                                />
+                                <button class="button button-primary ex-company-button ex-company-button--small" type="submit">
+                                    Subscribe
+                                </button>
+                            </div>
+                            <p class="ex-company-footer__note">One short letter a month. No noise, no spam.</p>
+                            <p class="ex-company-footer__status" role="status" aria-live="polite" data-newsletter-status></p>
+                        </form>
+
+                        <div class="ex-company-footer__socials">
+                            <a class="ex-company-footer__social" href="#" aria-label="Northwind on LinkedIn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.2 8.65 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.34-2.04-3.34-2.04 0-2.35 1.6-2.35 3.24V21h-4V9Z" /></svg>
+                            </a>
+                            <a class="ex-company-footer__social" href="#" aria-label="Northwind on X">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.9 2H22l-6.78 7.75L23 22h-6.16l-4.83-6.32L6.5 22H3.4l7.25-8.29L3 2h6.32l4.36 5.76L18.9 2Zm-1.08 18h1.7L8.26 3.9H6.44L17.82 20Z" /></svg>
+                            </a>
+                            <a class="ex-company-footer__social" href="#" aria-label="Northwind on YouTube">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77C22 15.2 22 12 22 12s0-3.2-.4-4.8ZM10 15.2V8.8l5.2 3.2-5.2 3.2Z" /></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ex-company-footer__col">
+                        <h3 class="ex-company-footer__heading">Product</h3>
+                        <ul class="ex-company-footer__links">
+                            <li><a href="#platform">Overview</a></li>
+                            <li><a href="#solutions">Reconciliation</a></li>
+                            <li><a href="#platform">Forecasting</a></li>
+                            <li><a href="#solutions">Approvals</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="ex-company-footer__col">
+                        <h3 class="ex-company-footer__heading">Solutions</h3>
+                        <ul class="ex-company-footer__links">
+                            <li><a href="#customers">Startups</a></li>
+                            <li><a href="#customers">Mid-market</a></li>
+                            <li><a href="#customers">Enterprise</a></li>
+                            <li><a href="#customers">Finance teams</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="ex-company-footer__col">
+                        <h3 class="ex-company-footer__heading">Resources</h3>
+                        <ul class="ex-company-footer__links">
+                            <li><a href="#platform">Documentation</a></li>
+                            <li><a href="#platform">API reference</a></li>
+                            <li><a href="#platform">Changelog</a></li>
+                            <li><a href="#pricing">Security</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="ex-company-footer__col">
+                        <h3 class="ex-company-footer__heading">Company</h3>
+                        <ul class="ex-company-footer__links">
+                            <li><a href="#customers">About</a></li>
+                            <li><a href="#customers">Careers</a></li>
+                            <li><a href="#customers">Customers</a></li>
+                            <li><a href="#newsletter">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ex-company-footer__bottom">
+                    <p>&copy; 2025 Northwind Systems, Inc. All rights reserved.</p>
+                    <div class="ex-company-footer__legal">
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                        <a href="#">Security</a>
+                    </div>
+                    <a class="ex-company-footer__built" href="/example.html">
+                        Built with roolith css
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
